@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/iscroll.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {width: 100%;overflow: hidden;position: absolute;bottom:0;top: 1.2rem;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;-webkit-transform:translate3d(0,0,0);}
+        .scroller-pullUp{background:none;}
+
+        .integral-header{font-size:0.3rem;background-color:#fff;margin-bottom: 0.1rem;height:1rem;line-height:1rem;}
+        .integral-header>div>span{display:inline-block;vertical-align:middle;}
+        .integral-header .i-instruction{float:right;color:#ff3c00;font-size:0.24rem;margin-right:0.24rem;}
+        .integral-header .m-icon{width:0.32rem;height:0.32rem;background:url("images/my/integral.png") no-repeat scroll center center / contain;margin:0 0.12rem 0 0.25rem;}
+        .integral-header .m-num{margin:0 0 0 0.2rem;}
+        .integral-item{background-color:#fff;border-bottom:1px solid #eeeef1;padding:0.2rem 0.21rem 0.18rem 0.25rem;}
+        .integral-item .i-line1{font-size:0.3rem;}
+        .integral-item .i-line1 .i-title{}
+        .integral-item .i-line1 .i-num{float:right;}
+        .integral-item .i-line2{font-size:0.24rem;margin:0.18rem 0 0 0;color:rgba(0,0,0,.5);}
+
+        #eventTypeName{
+            position: fixed;
+            z-index: 100;
+            background: #fff;font-size:0.24rem;
+            width:100%;word-wrap: break-word;
+        }
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        function loaded () {
+            
+            function initTuWenScroll(str){
+                var downIcon,upIcon,scrollerPullDown,scrollerPullUp,pullUpMsg,upLoading,downLoading,pullDownMsg; 
+                downIcon = $("."+str+" .down-icon");
+                pullDownMsg = $("."+str+" .pull-down-msg");
+                scrollerPullDown = $("."+str+" .scroller-pullDown");
+                scrollerPullUp = $("."+str+" .scroller-pullUp");
+                upLoading = $("."+str+" .scroller-pullUp .loading");
+                downLoading = $("."+str+" .scroller-pullDown .loading");
+                upIcon = $("."+str+" .up-icon");
+                pullUpMsg = $("."+str+" .pull-up-msg");
+
+                var tuwenScroller = new IScroll('.'+str, {
+                    preventDefault:false,
+                    probeType: 3,
+                    scrollbars: true,
+                    mouseWheel: true,
+                    interactiveScrollbars: true,
+                    shrinkScrollbars: 'scale',
+                    fadeScrollbars: true,click:true,
+                });
+                tuwenScroller.on("scroll",function(){
+                    var y = this.y,
+                        maxY = this.maxScrollY - y,
+                        downHasClass = downIcon.hasClass("reverse_icon"),
+                        upHasClass = upIcon.hasClass("reverse_icon");
+                    
+                    if(y >= 40){
+                        !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松手开始更新');
+                        if(y>= 150){
+                            //this.scrollTo(0,0, 600); 
+                        }
+                        return "";
+                    }else if(y < 40 && y > 0){
+                        downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉刷新');
+                        return "";
+                    }
+                    
+                    if(maxY >= 40){
+                        !upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松手开始更新');
+                        if(maxY >= 150){
+                            //this.scrollTo(0,this.maxScrollY, 600); 
+                        }
+                        return "";
+                    }else if(maxY < 40 && maxY >=0){
+                        upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看更多');
+                        return "";
+                    }
+                });
+                tuwenScroller.on("slideUp",function(){
+                    if(this.maxScrollY - this.y > 40){
+                        //alert("slideUp");
+                        upIcon.css('display','none');
+                        pullUpMsg.css('display','none');
+                        upLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            upIcon.css('display','inline-block');
+                            pullUpMsg.css('display','inline-block');
+                            upLoading.css('display','none'); 
+                            $('.goods-wrap').append('');
+                            tuwenScroller.refresh();
+                        },3000);
+                        
+                    }
+                });
+                tuwenScroller.on("slideDown",function(){
+                    if(this.y > 40){
+                        //alert("slideDown");
+                        scrollerPullDown.css({'position':'relative','top':'0'});
+                        downIcon.css('display','none');
+                        pullDownMsg.css('display','none');
+                        downLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            scrollerPullDown.css({'position':'absolute','top':'-0.7rem'});
+                            downIcon.css('display','inline-block');
+                            pullDownMsg.css('display','inline-block');
+                            downLoading.css('display','none'); 
+                            $('.goods-wrap').prepend('');
+                            tuwenScroller.refresh();
+                        },3000);
+                    }
+                });
+            }
+            initTuWenScroll('scroller-wrap');
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article>
+        <div class="integral-header">
+            <div><span class="m-icon"></span><span class="">我的积分</span><span class="m-num">360</span><span class="i-instruction">积分说明</span></div>
+        </div>
+        <div id="wrapper" class="scroller-wrap">
+            <div id="scroller">
+                <div class="scroller-pullDown">
+                    <span class="pull-down-icon down-icon"></span>
+                    <span class="pull-down-msg">下拉刷新</span>
+                    <span class="loading"></span>
+                </div>
+                <div>
+
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">每日签到</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">注册送积分</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">购物送积分</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">购物送积分</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">购物送积分</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">活动消耗积分</span><span class="i-num">-5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">购物抵用积分</span><span class="i-num">-5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">每日签到</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">每日签到</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">每日签到</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">每日签到</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">每日签到</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                    <div class="integral-item">
+                        <div class="i-line1"><span class="i-title">每日签到</span><span class="i-num">+5.00</span></div>
+                        <div class="i-line2"><span class="">2016-01-14</span></div>
+                    </div>
+                </div>
+                <div class="scroller-pullUp">
+                    <span class="pull-up-icon up-icon"></span>
+                    <span class="pull-up-msg">上拉查看更多</span>
+                    <span class="loading"></span>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div id='eventTypeName'></div>
+</body>
+</html>

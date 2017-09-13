@@ -1,0 +1,66 @@
+<include file="../../Public/header1" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/public/css/admin/table.css" />
+<div class="p_position"><span>当前位置></span><{$position}></div>
+<section class="content" >
+    <section class="widget">
+        <div class="widget-container"> 
+
+            <div class="addlink">
+                <span>分类：<select name="type"><option value="0">请选择</option><option value="1">友情链接</option><option value="2">家教主页</option><option value="3">培训主页</option></select><br/>
+
+                <span>名称：</span><input type="name" name="name" value="<{$data.name}>"/><br/>
+                <span>网址：</span><input type="text" name="url" value="<{$data.url}>" /><br/>
+                <span>图片：</span><input type="file" name="logo" /><span></span><br/>
+                <if condition="$data['logo']"><img src="__ROOT__/<{$data.logo}>" width="100px" /><br/></if>
+                <span>城市：</span><span id='getcityonly'></span><br/>
+                <span>描述：</span><textarea rows="3" cols="80" name="descrip"><{$data.descrip}></textarea><br/>
+                <button>确认提交</button>
+
+                <input type="hidden" name="mod" value="<{$data.id}>" />
+                <input type="hidden" name="token" value="<{$token}>"/>
+              	<input type="hidden" name="timestamp" value="<{$timestamp}>"/>
+
+
+            </div>
+
+        </div>
+
+    </section>
+    <div class="footinfo">
+        <div style="height:80px">
+		Copyright(c)2013 badoue.com 深圳百士兴科技有限公司版权所有 All Rights Reserved 粤ICP备13084511号-2
+        </div>
+                    
+    </div>
+    
+</section>
+
+
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script>
+getCityOnly();
+
+$(function(){
+	var fid = "<{$data.type}>", city_id = "<{$data.city_id}>";
+	$("select[name='type']").find('option[value='+fid+']').attr('selected',true);
+	$("select[name='city_id']").find('option[value='+city_id+']').attr('selected',true);
+})
+
+$('button').click(function(){
+	$(".addlink").wrap("<form action='' method='post' enctype='multipart/form-data'></form>");
+	var node = $("input[name='logo']").val(),img = $("img").attr('src');
+	if(node || img){
+		return true;
+	}else{
+		$("input[name='logo']").next().text('图片不能为空').css('color','red');
+		return false;
+	}
+	
+	return false;
+});
+
+</script>
+
+
+<include file="../../Public/footer" />
+

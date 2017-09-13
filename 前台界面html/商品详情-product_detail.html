@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>商品详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/iscroll.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeeef;}
+        /*iscroll*/
+        #wrapper {font-size:0.24rem;position: absolute;z-index: 1;top: 0;bottom: 0.68rem;left: 0;width: 100%;overflow: hidden;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}        
+       
+        .focus-pic{position:relative;}
+        /*焦点图*/
+        .swiper-container {width: 100%;height: 6.4rem;margin-left: auto;margin-right: auto;font-size: 14px;}
+        .swiper-container .swiper-slide {text-align: center;font-size: 18px;background: #000;display: -webkit-box;display: -webkit-flex;display: flex;-webkit-box-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-webkit-align-items: center;align-items: center;}
+        .swiper-container .swiper-slide img {width: 100%;height: 100%;max-width: 100%;max-height: 100%;-ms-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);transform: translate(-50%, -50%);position: absolute;left: 50%;top: 50%;}
+        /*底部*/
+        .m-footer{width:100%;position:fixed;bottom:-1px;z-index:2;height:0.7rem;font-size:0.24rem;text-align:center;overflow: hidden;}
+        .m-footer .car{background-color:#ff6600;}
+        .m-footer .buy{background-color:#ff0000;}
+        .m-footer .txt-btn{color:#fff;float:left;width:44.53125%;line-height: 0.7rem;}
+        .m-footer .consult{color:#0273ff;float:left;width:10.9375%;}
+        .m-footer .consult .consult-icon {vertical-align: middle;width: 0.41rem;height: 0.41rem;background: url(images/consult.png) no-repeat center center / 100% 100%;margin:0 auto;}
+        .m-footer .consult .consult-icon+span{display: block;height: .3rem;line-height: 0.24rem;font-size:0.2rem;}
+        /*商品描述*/
+        .good-discribe{padding:.12rem 5%;background-color:#fff;}
+        .good-discribe .good-title{font-size:0.26rem;color: #333;}
+        .good-discribe .d1{color:#ff3c00;font-size:0.28rem;margin: 0.1rem 0;text-align:center;}
+        .good-discribe .d1 span{display:inline-block;vertical-align:top;line-height:0.4rem;height:0.4rem;}
+        .good-discribe .d1 .price{float:left;}
+        .good-discribe .d1 .original-price{font-size:0.22rem;text-decoration: line-through;color:#a3a3a3;}
+        .good-discribe .d1 .commission{}
+        .good-discribe .d1 .d-sale{float: right;}
+        .good-discribe .d1 .instrction-icon{width:0.28rem;background:url(images/good-details/instrction-icon.png) no-repeat center center;background-size:contain;margin-left:0.1rem;}
+        .good-discribe .discount{background-color: #ff3c00;color: #fff;padding: 0.1rem 0;border-radius: 0.15rem;font-size: 0.26rem;display: block;margin: 0.2rem auto;width: 3rem;text-align: center;}
+        .good-discribe .d2{font-size:0.24rem;margin: 0.1rem 0;color:#a3a3a3;}
+        .good-discribe .d2 .current-sales{margin-left:0.5rem;}
+        .good-discribe .d2 .on-sale{display:inline-block;vertical-align:middle;width:0.76rem;height:0.34rem;line-height:0.34rem;background:url(images/on-sale.png) no-repeat center center / 100% 100%;color:#ff0000;margin-right:0.18rem;padding: 0.02rem 0 0.02rem 0.14rem}
+        .good-discribe .d2 .on-sale+span{color:#ff0000;display:inline-block;vertical-align:middle;}
+        /*商品评价*/
+        .evaluation{padding:.12rem 5%;font-size:0.18rem;background-color: #fff;margin-top: 0.1rem;}
+        .evaluation .ev-title{margin-bottom: 0.1rem;font-size:0.24rem;}
+        .evaluation .ev-cont{font-size:0.22rem;}
+        .evaluation .ev-cont .ev-info{}
+        .evaluation .ev-cont .ev-info>div{display:inline-block;vertical-align: middle;}
+        .evaluation .ev-cont .ev-info .ev-img img{width:0.28rem;}
+        .evaluation .ev-cont .ev-info .ev-id{margin: 0 0.04rem 0 0.06rem;}
+        .evaluation .ev-cont .ev-info .ev-icon img{width:0.23rem;}
+        .evaluation .ev-cont .ev-txt{color:#a3a3a3;}
+        .evaluation .all{width: 1.7rem;margin: 0.14rem auto;line-height: 0.42rem;font-size: 0.22rem;border: 1px solid #ff3c00;border-radius: 0.06rem;text-align: center;color: #ff3c00;}
+        .evaluation .seprate{width: 120%;height: 1px;background-color: #eeeeef;margin-left: -10%;margin: 0.1rem 0 0.1rem -10%;}
+        .up-more{background-color:#eeeef1;height:0.46rem;width:100%;}
+        .up-more>div{font-size: 0.22rem;text-align: center;height: 1px;width: 96.25%;margin: 0.225rem 1.875%;background-color: #dededf;position:relative;float: left;}
+        .up-more span{display: block;position: absolute;left: 50%;margin-left: -20%;top: -0.1rem;background-color: #eeeeef;width: 40%;line-height: 0.2rem;}
+        .good-comment{float:right;}
+
+        /*图文详情*/
+        .tuwen{height:100%;background-color: #fff;width:100%;text-align: center;position: fixed;top:140%;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration:800ms;transition-duration:800ms;}
+        .tuwen-show{top:0;bottom:0;}
+        .tuwen>div{    position: absolute;width: 100%;top: 0;bottom: 0;left: 0;}
+        .tuwen .tuwen-header{width: 100%;height: 0.68rem;border-bottom: 1px solid #eeeeef;position: relative;background-color: #fff;}
+        .tuwen .tuwen-header .txt-btn{    font-size: 0.24rem;color: #282828;text-align: center;line-height: 0.68rem;float: left;width: 33.33%;}
+        .tuwen .tuwen-header .red-line{position: absolute;height: 1px;width: 33.33%;bottom: -1px;background-color: #fb4d00;left: 0;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;z-index:2;}
+        .tuwen .tuwen-cont{width:100%;position: absolute;top: 0.68rem;bottom:0;left:0;}
+        .tuwen .tuwen-cont .swiper-wrapper{}
+        .tuwen .tuwen-cont .swiper-slide{}
+        .tuwen .tuwen-cont .swiper-slide img{width:100%;}
+        .tuwen .tuwen-cont .swiper-slide>div{font-size: 0.24rem;position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;width: 100%;overflow: hidden;}
+        
+        /*分享*/
+        .share-btn{width: 0.72rem;height: 0.66rem;position: absolute;top: 0.2rem;right: 0.2rem;background: url(images/good-details/share1.png) no-repeat center center /60%;z-index: 5;}
+        .share-area{width:100%;text-align: center;position: fixed;bottom: -100%;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .share-area-show{bottom: 0;}
+        .share-area .share-cont{font-size:0.18rem;padding: 0 3.75% 0.6rem 3.75%;overflow: auto;background-color: rgba(255,255,255,.9);}
+        .share-area .share-cont .share-title{font-size:0.24rem;margin: 0.24rem auto;}
+        .share-area .share-cont .way1{overflow: auto;}
+        .share-area .share-cont .way1>div{width: 16.2%;float: left;margin-right: 6.6%;}
+        .share-area .share-cont .way1>div img{width:100%;}
+        .share-area .share-cont .way1>div span{display:block;}
+        .share-area .share-cont .way2{clear: both;overflow: auto;}
+        .share-area .share-cont .way2>div{width: 16.2%;float: left;margin-right: 6.6%;}
+        .share-area .share-cont .way2>div img{width:100%;}
+        .share-area .share-cont .way2>div span{display:block;}
+        .share-area .share-gap{    width: 100%;height: 0.1rem;background-color: rgba(255,255,255,.8);}
+        .share-area .chare-cancel{font-size: 0.24rem;height: 0.68rem;line-height: 0.68rem;background-color: #fff;}
+        .share-area .seprate{width: 100%;margin: 0.24rem auto;height: 1px;background-color: #fff;}
+
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;height: 100%;z-index: 3;position: fixed;display:none;}
+
+        /*添加购物车*/
+        .add-area{background-color: #fff;position: fixed;bottom: -100%;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;transition-duration: 400ms;}
+        .add-area-show {bottom: 0 !important;}
+        .add-area .sku{width:100%;margin: 0 auto;overflow: hidden;height:6rem;max-height: 600px;position:relative;color:#515151;padding: 0 5%;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;-ms-box-sizing: border-box;}
+        #sku-scroller {-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .add-area .all-title{font-size:0.24rem;}
+        .add-area .all-list{font-size:0.2rem;}
+        .add-area .all-list>div.on{background-color: #ff6519;color: #fff;}
+        .add-area .all-list>div{height: 0.38rem;line-height: 0.38rem;float: left;background-color: #eeeeef;border-radius: 3px;margin: 0.2rem 0.08rem 0 0;padding: 0 0.12rem;}
+        .add-area .good-info{font-size:0.22rem;position: relative;height: 1.78rem;width: 92.5%;margin: 0 auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-info .good-img{position: absolute;width: 31.4%;top: -0.32rem;height: 1.84rem;}
+        .add-area .good-info .good-img img{width: 100%;height:100%;}
+        .add-area .good-info .good-s{position: absolute;left: 35%;top: 0.55rem;color:#a3a3a3;}
+        .add-area .good-info .good-price{color:#ff3c00;font-size:0.24rem;}
+        .add-area .good-info .good-store{margin:0.1rem 0;}
+        .add-area .good-info .add-close-btn{position:absolute;height:.52rem;width:.52rem;right: -0.2rem;background:url("images/good-details/add-close.png") no-repeat center center / 50%;}
+        .add-area .good-color{padding: 0.2rem 0;overflow: auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-size{clear:both;padding: 0.2rem 0;overflow: auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-structure{clear:both;padding: 0.2rem 0;overflow: auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-num{clear:both;padding: 0.2rem 0;overflow: auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-num .n-title{float:left;}
+        .add-area .good-num .n-title .sub{font-size:0.2rem;color:#a3a3a3;}
+        .add-area .good-num .n-zoom{font-size:0.18rem;float:right;margin-right: 0.35rem;}
+        .add-area .good-num .n-zoom>span{display:inline-block;vertical-align:middle;width:0.56rem;line-height:0.48rem;text-align:center;border-radius:2px;font-size:0.24rem;}
+        .add-area .good-num .n-zoom .add{background-color:#e4e3e3;color:rgba(0,0,0,.5);font-size:0.3rem;}
+        .add-area .good-num .n-zoom .minus{background-color:#eeeef1;color:rgba(0,0,0,.5);font-size:0.3rem;}
+        .add-area .good-num .n-zoom .num{background-color:#e1e1e3;}
+        .add-area .save-btn{background-color:#ff3c00;color:#fff;text-align:center;font-size:0.28rem;height: 0.68rem;line-height: 0.68rem;margin-top:0.3rem;}
+        @media only screen and (max-height:512px){
+            .add-area .sku{
+                height: 5rem;
+            }
+            .add-area{
+                bottom: -110%;
+            }
+        }
+        /*设为推广产品*/
+        .set-recomm{position:fixed;width:92.75%;left:3.625%;text-align:center;bottom: -100%;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .set-recomm-show{bottom:0.26rem;}
+        .set-recomm>div{background-color:#fff;}
+        .set-recomm .s-shelf-btn{line-height:0.8rem;font-size:0.32rem;border-top-left-radius: 0.06rem;border-top-right-radius: 0.06rem;margin-bottom:1px;}
+        .set-recomm .s-share-btn{line-height:0.8rem;font-size:0.32rem;border-bottom-left-radius: 0.06rem;border-bottom-right-radius: 0.06rem;}
+        .set-recomm .s-cancel-btn{line-height:0.68rem;font-size:0.28rem;margin-top: 0.1rem;border-radius: 0.06rem;}
+        .set-recomm-tips{width: 2.4rem;line-height: 0.9rem;border-radius: 0.06rem;background: rgba(0,0,0,.5);color: #fff;font-size: 0.36rem;text-align: center;position: fixed;z-index: 4;top: 50%;margin-top: -0.45rem;left: 50%;margin-left: -1.2rem;display:none;transition: all ease-in 500ms;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+
+        var Scroll,skuScroller;  
+        function loaded () {
+            /*商品详情*/
+            var upIcon = $("#wrapper .up-icon");
+            var pullUpMsg = $("#wrapper .pull-up-msg");
+            myScroll = new IScroll('#wrapper', { 
+                probeType: 3,
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+            myScroll.on("scroll",function(){
+                var y = this.y,
+                maxY = this.maxScrollY - y;
+                //upHasClass = upIcon.hasClass("reverse_icon");
+                
+                if(maxY >= 40){
+                    //!upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松开查看图文详情');
+                    $('.tuwen').addClass('active');
+                    return "";
+                }else if(maxY < 40 && maxY >=0){
+                    //upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看图文详情');
+                    return "";
+                }
+            });
+            myScroll.on("slideUp",function(){
+                if(this.maxScrollY - this.y > 40){
+                    //alert("slideUp");
+                    if($('.tuwen').hasClass('active')){
+                        $('.tuwen').addClass('tuwen-show');
+                    }
+                    //upIcon.removeClass("reverse_icon");
+                }
+            });
+
+            /*图文详情*/
+            function initTuWenScroll(str){
+                var downIcon = $("."+str+" .down-icon");
+                var pullDownMsg = $("."+str+" .pull-down-msg");
+                var tuwenScroller = new IScroll('.'+str, {
+                    probeType: 3,
+                    scrollbars: true,
+                    mouseWheel: true,
+                    interactiveScrollbars: true,
+                    shrinkScrollbars: 'scale',
+                    fadeScrollbars: true
+                });
+                tuwenScroller.on("scroll",function(){
+                    var y = this.y,
+                    maxY = this.maxScrollY - y,
+                    downHasClass = downIcon.hasClass("reverse_icon");
+                    if(y >= 40){
+                        !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松开返回商品详情');
+                        $('.tuwen').removeClass('active');
+                        return "";
+                    }else if(y < 40 && y > 0){
+                        downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉返回商品详情');
+                        return "";
+                    }
+                });
+                tuwenScroller.on("slideDown",function(){
+                    if(this.y > 40){
+                        //alert("slideDown");
+                        if(!$('.tuwen').hasClass('active')){
+                            $('.tuwen').removeClass('tuwen-show');
+                        }
+                        upIcon.removeClass("reverse_icon")
+                    }
+                });
+            }
+            initTuWenScroll('tuwen1');
+            initTuWenScroll('tuwen2');
+            initTuWenScroll('tuwen3');
+            /*sku*/
+            skuScroller = new IScroll('.sku', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <!--<div class="scroller-pullDown">
+                <span id="" class="pull-down-icon down-icon"></span>
+                <span id="pullDown-msg" class="pull-down-msg">下拉刷新</span>
+            </div>-->
+            <div id="scroller-content">
+                <section class="focus-pic">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                           <div class="swiper-slide">
+                                <!-- Required swiper-lazy class and image source specified in data-src attribute -->
+                                <img src="images/good-details/banner.png">
+                                <!-- Preloader image -->
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images/good-details/banner.png">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images/good-details/banner.png">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images/good-details/banner.png">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images/good-details/banner.png">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images/good-details/banner.png">
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                        <!-- Add Arrows 
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>-->
+                    </div>
+                    <div class="share-btn"></div>
+                    <script src="js/swiper.js"></script>
+                    <script>
+                    var swiper = new Swiper('.swiper-container', {
+                        pagination: '.swiper-pagination',
+                        slidesPerView: 1,
+                        paginationClickable: true,
+                        centeredSlides: true,
+                        loop: true,
+                        autoplay: 2500,
+                        autoplayDisableOnInteraction: false
+                    });
+                    </script> 
+                </section>
+                <section class="good-discribe">
+                    <div class="good-title">特价五包下乡 欧式床 实木床 法式床田园高箱床 双人 床1.8米皮床</div>
+                    <div class="d1">
+                        <span class="price">￥1150</span>
+                        <!--<span class="original-price">￥3300</span>-->
+                        <span class="commission"><span>￥20(分佣金额)</span><span class="instrction-icon"></span></span>
+                        <span class="d-sale"><span>6折起</span><span class="instrction-icon"></span></span>
+                    </div>
+                    <div class="d2">市场价：<span class="">￥3300</span></div>
+                    <div class="d2"><span class="on-sale">促销</span><span class="">满500件30元</span></div>
+                    <div class="d2"><span>库存：900件</span><span class="current-sales">当前销量：9580件</span></div>
+                    <div class="d2"><span>运费：快递：0.00     </span><span class="current-sales"> EMS：10.00</span></div>
+                    <span class="discount">设为推广产品</span>
+                </section>
+                <section class="evaluation">
+                    <div class="ev-title">宝贝评价（<span>1366</span>）<span class="good-comment">好评率98%</span></div>
+                    <div class="ev-cont">
+                        <div class="ev-info">
+                            <div class="ev-img"><img src="images/good-details/user.png" alt=""></div>
+                            <div class="ev-id">C***8</div>
+                            <div class="ev-icon">
+                                <img src="images/good-details/heart.png" alt="">
+                                <img src="images/good-details/heart.png" alt="">
+                                <img src="images/good-details/heart.png" alt="">
+                                <img src="images/good-details/heart.png" alt="">
+                                <img src="images/good-details/heart.png" alt="">
+                            </div>
+                        </div>
+                        <div class="ev-txt">床收到了！质量很好！做工很精致！漂亮大方！性价比高！客服人很好哦！表扬一下！这个床比我在别家买的还值！</div>
+                    </div>
+                    <div class="seprate"></div>
+                    <div class="ev-cont">
+                        <div class="ev-info">
+                            <div class="ev-img"><img src="images/good-details/user.png" alt=""></div>
+                            <div class="ev-id">C***8</div>
+                            <div class="ev-icon">
+                                <img src="images/good-details/heart.png" alt="">
+                                <img src="images/good-details/heart.png" alt="">
+                                <img src="images/good-details/heart.png" alt="">
+                                <img src="images/good-details/heart.png" alt="">
+                            </div>
+                        </div>
+                        <div class="ev-txt">质量做工真不错 很大气 很舒服 没有色差 真是不错的一款床 性价比很高......</div>
+                    </div>
+                    <div class="all">查看全部评论</div>
+                </section>
+                <div class="up-more" id="pullUp">
+                    <div><span>继续拖动查看图文详情</span></div>
+                </div>
+            </div>
+            <!--<div class="scroller-pullUp">
+                <span id="" class="pull-up-icon up-icon"></span>
+                <span id="pullUp-msg" class="pull-up-msg">上拉查看图文详情</span>
+            </div>-->
+        </div>
+    </article>
+    <footer class="m-footer">
+        <div class="consult"><div class="consult-icon"></div><span>咨询</span></div>
+        <div class="car txt-btn" title="添加购物车">添加购物车</div>
+        <div class="buy txt-btn" title="立即购买">立即购买</div>
+    </footer>
+    <div class="bg-layer"></div>
+    <article class="tuwen">
+        <div>
+            <div class="tuwen-header">
+                <div class="good-d txt-btn">商品详情</div>
+                <div class="param txt-btn">规格参数</div>
+                <div class="servive txt-btn">售后服务</div>
+                <div class="red-line"></div>
+            </div>
+            <div class="tuwen-cont">
+                <div class="swiper-wrapper">
+                   <div class="swiper-slide">
+                        <div class="tuwen1">
+                            <div>
+                                <div class="scroller-pullDown">
+                                    <span id="" class="pull-down-icon down-icon"></span>
+                                    <span id="pullDown-msg" class="pull-down-msg">下拉返回商品详情</span>
+                                </div>
+                                <div>
+                                    1
+                                    <img src="images/good-details/d.png" alt="">
+                                    <img src="images/good-details/d.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tuwen2">
+                            <div>
+                                <div class="scroller-pullDown">
+                                    <span id="" class="pull-down-icon down-icon"></span>
+                                    <span id="pullDown-msg" class="pull-down-msg">下拉返回商品详情</span>
+                                </div>
+                                <div>
+                                    2
+                                    <img src="images/good-details/d.png" alt="">
+                                    <img src="images/good-details/d.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tuwen3">
+                            <div>
+                                <div class="scroller-pullDown">
+                                    <span id="" class="pull-down-icon down-icon"></span>
+                                    <span id="pullDown-msg" class="pull-down-msg">下拉返回商品详情</span>
+                                </div>
+                                <div>
+                                    3
+                                    <img src="images/good-details/d.png" alt="">
+                                    <img src="images/good-details/d.png" alt="">
+                                    <img src="images/good-details/d.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+            var swiper = new Swiper('.tuwen-cont', {
+                slidesPerView: 1,
+                centeredSlides: true,
+                //loop: true,
+                onSlideNextStart: function(swiper){
+                    var i = $(".tuwen .swiper-slide-active").index();
+                    console.log(i);
+                    var left = Number(i)?(Number(i)*33.33):0;
+                    $('.tuwen .red-line').css('left',left+'%');
+                },
+                onSlidePrevStart: function(swiper){
+                    var i = $(".tuwen .swiper-slide-active").index();
+                    console.log(i);
+                    var left = Number(i)?(Number(i)*33.33):0;
+                    $('.tuwen .red-line').css('left',left+'%');
+                },
+                onSlideChangeEnd: function(swiper){
+                    console.log($(".tuwen .swiper-slide-active")[0]);
+                }
+            });
+            </script>
+        </div>
+    </article>
+    <article class="share-area">
+        <div class="share-cont">
+            <div class="share-title">分享</div>
+            <div class="way1">
+                <div>
+                    <img src="images/good-details/erweima.png" alt="">
+                    <span>二维码</span>
+                </div>
+                <div>
+                    <img src="images/good-details/copy.png" alt="">
+                    <span>复制</span>
+                </div>
+                <div>
+                    <img src="images/good-details/jietu.png" alt="">
+                    <span>截屏分享</span>
+                </div>
+            </div>
+            <div class="seprate"></div>
+            <div class="way2">
+                <div>
+                    <img src="images/good-details/wechat.png" alt="">
+                    <span>微信</span>
+                </div>
+                <div>
+                    <img src="images/good-details/wechat-zone.png" alt="">
+                    <span>微信朋友圈</span>
+                </div>
+                <div>
+                    <img src="images/good-details/qq.png" alt="">
+                    <span>QQ</span>
+                </div>
+                <div>
+                    <img src="images/good-details/qq-zone.png" alt="">
+                    <span>QQ空间</span>
+                </div>
+            </div>
+        </div>
+        <div class="share-gap"></div>
+        <div class="chare-cancel">取消</div>
+    </article>
+    <article class="add-area">
+        <div class="good-info">
+            <div class="good-img"><img src="images/good-details/good-sm.png" alt=""></div>
+            <div class="good-s">
+                <div class="good-price">￥1150-6550</div>
+                <div class="good-store">库存900件</div>
+                <div>请选择  颜色分类  家具结构</div>
+            </div>
+            <div class="add-close-btn"></div>
+        </div>
+        <div class="sku" id="sku-wrapper">
+            <div id="sku-scroller">
+                <div class="good-color">
+                    <div class="c-title all-title">颜色分类</div>
+                    <div class="c-list all-list">
+                        <div>双人床+0.8妆台+妆凳+床头柜+送床垫</div>
+                        <div>法式床+0.8妆台+妆凳+床垫</div>
+                        <div>法式床+推拉门衣柜+送床垫</div>
+                        <div>法式床+推拉门衣柜+送床垫</div>
+                        <div>进口皮月光白-描银</div>
+                        <div>进口皮月光白-描银</div>
+                        <div>进口皮月光白-描银</div>
+                        <div>进口布富贵紫艺-描银</div>
+                    </div>
+                </div>
+                <div class="good-size">
+                    <div class="s-title all-title">尺寸</div>
+                    <div class="s-list all-list">
+                        <div>1800mm*2000mm</div>
+                        <div>1600mm*2000mm</div>
+                    </div>
+                </div>
+                <div class="good-structure">
+                    <div class="st-title all-title">家具结构</div>
+                    <div class="st-list all-list">
+                        <div>箱框结构</div>
+                        <div>框架结构</div>
+                    </div>
+                </div>
+                <div class="good-num">
+                    <div class="n-title all-title">购买数量<span class="sub">（每人限购5件）</span></div>
+                    <div class="n-zoom">
+                        <span class="minus">-</span>
+                        <span class="num">0</span>
+                        <span class="add">+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="save-btn">确定</div>
+    </article>
+    <div class="set-recomm">
+        <div class="s-shelf-btn">直接上架</div>
+        <div class="s-share-btn">分享给好友</div>
+        <div class="s-cancel-btn">取消</div>
+    </div>
+    <div class="set-recomm-tips">上架成功</div>
+    <script>
+        /*图文详情*/
+        $('.tuwen-header .txt-btn').on('tap',function(){
+            swiper.slideTo($(this).index(),500,true);
+        });
+        /*footer action*/
+        $(".m-footer .txt-btn").on("tap",function(e){
+            if($(this).hasClass('share')){
+                $(this).find("span").addClass('on');
+                $('.bg-layer').css('display',"block");
+                $(".share-area").addClass('share-area-show');
+            }
+            if($(this).hasClass('collection')){
+                if($(this).find("span").hasClass('on')){
+                    $(this).find("span").removeClass('on');
+                    alert("取消收藏");
+                }else{
+                    $(this).find("span").addClass('on');
+                    alert("已收藏");
+                }
+            }
+            if($(this).hasClass('car')){
+                $('.bg-layer').css('display',"block");
+                $(".add-area").addClass('add-area-show');
+            }
+        });
+        $(".bg-layer").on("tap",function(e){
+            $(".share-area").removeClass('share-area-show');
+            $(".add-area").removeClass('add-area-show');
+            $(".set-recomm").removeClass('set-recomm-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+            $('.m-footer>a.share').find("span").removeClass('on');
+        });
+        $(".chare-cancel").on("tap",function(e){
+            $(".share-area").removeClass('share-area-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+            $('.m-footer>a.share').find("span").removeClass('on');
+        });
+        /*添加购物车，弹出层，保存*/
+        $(".add-area .save-btn").on("tap",function(e){
+            $(".add-area").removeClass('add-area-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+        });
+        /*添加购物车，弹出层，关闭*/
+        $(".add-area .add-close-btn").on("tap",function(e){
+            $(".add-area").removeClass('add-area-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+        });
+        /*添加购物车，弹出层，数量加减*/
+        $(".add-area .minus").on("tap",function(e){
+            var nunObj = $(".add-area .num");
+            var num = nunObj.text();
+            if(Number(num)>0){
+                nunObj.text(Number(num)-1);
+            }
+        });
+        $(".add-area .add").on("tap",function(e){
+            var nunObj = $(".add-area .num");
+            var num = nunObj.text();
+            if(Number(num)>=0){
+                nunObj.text(Number(num)+1);
+            }
+        });
+        /*添加购物车，弹出层，参数选中*/
+        $(".add-area .all-list>div").on("tap",function(){
+            $(this).toggleClass('on');
+            $(this).siblings('div').removeClass('on');
+        });
+        /*设为推广产品*/
+        $(".good-discribe .discount").on("tap",function(){
+            $('.bg-layer').css('display',"block");
+            $(".set-recomm").addClass('set-recomm-show');
+        });
+        $(".set-recomm .s-cancel-btn").on("tap",function(){
+            $('.bg-layer').css('display',"none");
+            $(".set-recomm").removeClass('set-recomm-show');
+        });
+        $(".set-recomm .s-shelf-btn").on("tap",function(){
+            $('.bg-layer').css('display',"none");
+            $(".set-recomm").removeClass('set-recomm-show');
+
+            $('.set-recomm-tips').css({'display':"block"});
+            setTimeout(function(){
+                $('.set-recomm-tips').css({'opacity':'0'});
+            },500);
+            setTimeout(function(){
+                $('.set-recomm-tips').css({'opacity':'1'});
+                $('.set-recomm-tips').css('display','none');
+            },1000);
+        });
+    </script>
+</body>
+</html>

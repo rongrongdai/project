@@ -1,0 +1,18 @@
+<include file="../../Public/header" />
+<include file="../../Public/naviter" />
+<section class="content">
+    <iframe src="__APP__/Index/Index/icontent" name="ifrm" id="irm" scrolling="no" frameborder="0" width="100%"  onLoad="iFrameHeight('irm')" >
+        
+    </iframe>
+</section>
+<script type="text/javascript" language="javascript"> 
+function iFrameHeight(ele) { 
+    var ifm= document.getElementById(ele);
+    var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument; 
+    if(ifm != null && subWeb != null) { 
+        ifm.height = subWeb.body.scrollHeight;
+    } 
+} 
+</script> 
+<include file="../../Public/footer" />
+

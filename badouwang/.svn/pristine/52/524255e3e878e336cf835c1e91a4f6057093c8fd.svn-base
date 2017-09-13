@@ -1,0 +1,72 @@
+<include file="../../Public/header1" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/public/css/admin/table.css" />
+<div class="p_position"><span>当前位置></span><{$position}></div>
+<section class="content" >
+    <section class="widget">
+        <div class="widget-container">
+            <div style="height:40px;margin:10px;width:600px;margin-left:230px">
+                教师名：<input type="text" style="display: inline;width:100px;height: 30px;" name="real_name"/>  城市：<input type="text" style="display: inline;width:100px;height: 30px;" name="city"/> 类别：<input type="text" style="display: inline;width:100px;height: 30px;" name="grade"/><select name="verified" style="border: 1px solid lightgrey;width:80px;height:30px;margin-left:20px;"><option value="1">已认证</option><option value="0">待认证</option></select> <button id="sea">搜索</button>
+            </div>
+            <table style="width:1000px;">
+                <tr>
+                    <td width="10%">教师会员名</td><td width="10%">教师真实姓名</td><td width="10%">认证状态</td><td width="10%">学校</td><td width="10%">类别</td><td width="10%">城市</td><td width="10%">操作</td>
+                </tr>
+                <foreach name='datas' item='teacher'>
+                    <tr>
+                        <td width="10%"><{$teacher.uname}></td><td width="10%"><{$teacher.real_name}></td><td width="10%"><if condition="$teacher.verified eq 1">已认证<else />待认证</if></td><td width="10%"><{$teacher.school}></td>
+                        <td width="10"><foreach name='identity' key='k' item='v'><if condition="$teacher['type'] == $k"><{$v}></if></foreach></td>
+
+                        <td width="10%"><{$teacher.city}></td>
+                        <td width="10%"><if condition="$teacher['verified'] eq 3"><a href="./detail?id=<{$teacher.id}>&type=teacher&uid=<{$teacher.uid}>" title="审核">审核</a>
+                        <else /><a style="color:green;">已审核</a></if></td>
+                    </tr>
+                </foreach>
+                
+            </table>
+            <{$page}>
+        </div>
+        <div class="content cycle">
+			<div id="flot-example-2" class=""></div>
+			<div id="flot-example-1" class=""></div>
+		</div>
+        </div>
+    </section>
+    <div class="footinfo">
+        <div style="height:80px">
+		Copyright(c)2013 badoue.com 深圳百士兴科技有限公司版权所有 All Rights Reserved 粤ICP备13084511号-2
+        </div>
+                    
+    </div>
+    
+</section>
+
+<script>
+    $(function(){
+        $("#sea").click(function(){
+            var search='';
+            var sarr=new Array('real_name','city','grade');
+            for(i in sarr){
+                if(search){
+                    if($("input[name="+sarr[i]+"]").val()){
+                        search+='&'+sarr[i]+'='+$("input[name="+sarr[i]+"]").val();
+                    }
+                }else{
+                  if($("input[name="+sarr[i]+"]").val()){
+                        search+='?'+sarr[i]+'='+$("input[name="+sarr[i]+"]").val();
+                    }
+                }
+            }
+            if(search){
+                search+='&verified='+$("select[name=verified]").val();
+            }else{
+                search+='?verified='+$("select[name=verified]").val();
+            }
+            location.href='index'+search;
+           
+        })
+    })
+</script>
+
+<import file="js_lib/upload/jquery-uploadify"/>
+<include file="../../Public/footer" />
+

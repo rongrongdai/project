@@ -1,0 +1,291 @@
+<?php
+class AjaxUserAction extends CommonAction{
+        //private $model;
+        public function __construct() {
+            //$this->model=new UserModel();
+            parent::__construct();
+        }
+    //验证码验证
+    public function  vcode(){
+        $str = $_SESSION['vcode'];
+        //安全处理用户键入内容
+        $str2 =$this->getData(array('vcode'),'get');
+        if($str == strtolower($str2['vcode'])){
+            echo "right";
+        }else{
+            echo "error";
+        }
+    }
+    //验证该邮箱是否被注册
+   public function vuser(){
+        $model = M('User');
+        $user = $this->getData(array('uname'),'get');
+        $uname = $user['uname'];
+        $res = $model->where("uname='$uname'")->find();
+        if($res && $uname != ''){
+            echo 'exists';
+        }else{
+            echo 'not';
+        }
+    }
+    //验证登录密码是否正确
+    public function vpass(){
+        $model = M('User');
+        $data = $this->getData(array('uname','password'),'post');
+        $uname = $data['uname'];
+        import('Com.PasswordHelper');
+        $pass = PasswordHelper::advDecode($data['password']);
+
+        //限制登录次数
+        $res = $model->where("uname='$uname'")->find();
+        if($res){
+            $err_login = $res['err_login'];
+            $err_time = $res['err_time'];
+
+            if(date("d",$err_time) == date("d",time())){
+                if($err_login > 3){//今天超过三次
+                    echo json_encode(array('limit'=>'limit','msg'=>'超过限制次数，明天再来'));
+                }else{
+                    //-----------
+                    $con = $model->where("uname='{$uname}' and password='{$pass}'")->find();
+                    if($con){
+                        //登录成功
+                        $model->where("uname='$uname'")->setField('err_login',0);
+                        echo json_encode('pass');
+                    }else{
+                        $model->where("uname='$uname'")->setInc('err_login');
+                        $model->where("uname='$uname'")->setField('err_time',time());
+                        echo json_encode(array('limit'=>'limit','msg'=>'还有'.(3-$err_login).'次机会'));
+                    }
+                    //-----
+                }
+            }else{//当天前的错误次数清零
+                $model->where("uname='$uname'")->setField('err_login',0);
+                //-----------
+                $con = $model->where("uname='{$uname}' and password='{$pass}'")->find();
+                if($con){
+                    echo json_encode('pass');
+                }else{
+                    $model->where("uname='$uname'")->setInc('err_login');
+                    $model->where("uname='$uname'")->setField('err_time',time());
+                    echo json_encode(array('limit'=>'limit','msg'=>'还有3二次机会'));
+                }
+                //-----
+            }
+        }else{//用户不存在
+            echo json_encode('wrong');                
+        }
+        
+    }
+
+    //邀请好友注册
+    public function invite(){
+        $uid = session('uid');
+        $code = mt_rand(100,999).time();
+        $res = M('User_invite')->data(array('uid'=>$uid,'code'=>$code))->add();
+        if($res){
+            echo json_encode(md5($code));
+        }
+    }
+
+
+    //获取密保
+    public  function getP(){
+        $uname=$this->getData(array('uname'),'get');
+        if($uname['uname']){
+            $question=M('User')->where("uname='$uname[uname]'")->field('p_question')->find();
+            if($question){
+                $res=array('code'=>1,'data'=>$question);
+            }
+        }else{
+            $res=array('code'=>0,'message'=>'请重新登录后再试！');
+        }
+        echo json_encode($res);
+    }
+    //验证密保
+    public function valiP(){
+        $garr=$this->getData(array('answer','uname'),'get');
+        if($garr['answer']){
+            import('Com.Config');
+            $max=Config::getConfig('用户配置','u_locktimes');
+            $udata=M('User')->where("uname='$garr[uname]'")->field('p_awswer,l_times,l_time')->find();
+            if($udata['l_time']){
+                echo json_encode(array('code'=>0,'message'=>'用户已被锁住，请明日重试！'));
+                exit();
+            }
+            if($udata['l_times']>=$max['c_value']){
+                $now=time();
+                $usql="update bd_user set l_times=l_times+1,l_time='$now' where uname='$garr[uname]'";
+                M('User')->execute($usql);
+                $res=array('code'=>0,'message'=>'今日已输错'.$max['c_value'].'次，请明日重试！');
+                echo json_encode($res);
+            }else{
+                if($garr['answer']===$udata['p_awswer']){
+                    $res=M('User')->where("uname='$garr[uname]'")->setField(array('fpwd_step'=>3,'l_times'=>0));
+                    if($res){
+                        $res=array('code'=>'1','message'=>'验证密保成功！');
+                    }else{
+                        $res=array('code'=>'0','message'=>'验证密保失败，请重试！');
+                    }
+                    echo json_encode($res);
+                }else{
+                    $usql="update bd_user set l_times=l_times+1 where uname='$garr[uname]'";
+                    M('User')->execute($usql);
+                    $res=array('code'=>0,'message'=>'还有'.($max['c_value']-$udata['l_times']-1).'次机会！');
+                    echo json_encode($res);
+                }
+            }
+        }else{
+            $res=array('code'=>0,'message'=>'参数不正确！');
+        }
+        
+    }
+    //获取用户城市
+    public function getl(){
+        import('Com.IpHelper');
+        $uinfo=  IpHelper::taobaoIP();
+        if(count($uinfo)){
+            echo json_encode(array('code'=>1,'city'=>$uinfo));
+        }else{
+             echo json_encode(array('code'=>0,'message'=>'获取失败！'));
+        }
+    }
+    //解锁问题
+    public function unlock_question(){
+        $data=$this->getData(array('qid'),'get');
+        if($data['qid']){
+            $data['atimestamp']=time();$data['uid']=session('uid');
+            $answer=M('Answ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            er');
+            if(!M('Question_ulock')->where("uid=$data[uid] and qid=$data[qid]")->count()){
+                $res=M('Question_ulock')->add($data);
+                $this->ajaxr($res,'解锁问题成功！','解锁问题失败！');
+            }else{
+                    $res=array('code'=>0,'message'=>"您已经解锁该问题！");
+                     echo json_encode($res);
+            }
+        }else{
+            $res=array('code'=>0,'message'=>"问题不存在！");
+            echo json_encode($res);
+        }
+    }
+    //签到
+    public function sign(){
+        $uid=session('uid');
+        if($uid){
+            $ls=M('User_sign')->where("uid='$uid'")->order('timestamp desc')->field('timestamp')->find();
+            $sday=date('Y-m-d',$ls['timestamp']);
+            if($sday!==date('Y-m-d',time())){
+                 $data=array('uid'=>$uid,'timestamp'=>time());
+                 $res=M('User_sign')->add($data);
+                 $this->ajaxr($res, '签到成功','签到失败！');
+            }else{
+                $this->ajaxr(false, '', '今日已签到！');
+            }
+        }
+    }
+    public function getDymics(){
+        $parr=$this->getData(array('uid','page'),'get');
+        if(!$parr['uid']){
+            $this->ajaxr(false, '', '该用户不存在');
+            return;
+        }
+        if(!$parr['page']){
+            $parr['page']=1;
+        }
+        $pagesize=6;
+        $min=($parr['page']-1)*$pagesize;
+        $sql="select * from bd_dynamic where uid='$parr[uid]' order by publisttime desc limit $min,$pagesize";
+        $res=array('code'=>1,'dys'=>M('Dynamic')->query($sql));
+        echo json_encode($res);
+    }
+    //获取问题
+    public function getQuestions(){
+        $parr=$this->getData(array('uid','page'), 'get');
+    }
+    //获取搜索用户
+    public function getUsers(){
+        $keyword=$this->getData(array('keyword'),'get');
+        $page=$this->initPage();
+        $uid=session('uid');
+        if(strpos($keyword['keyword'],'男')===0){
+            $sex=1;
+        }else if(strpos( $keyword['keyword'],'女')===0){
+            $sex=2;
+        }
+        if($keyword['keyword']){
+            $sql="select users.*,follow.sum from (select fields.rname,fields.sex,user.uname,user.uid,fields.address,fields.lab,fields.visitednumber,fields.content,fields.user_pic img from bd_user user right join bd_memberfields fields on fields.uid=user.uid ) users left join (select count(id) sum,fid,uid from bd_user_follow where uid='$uid' group by fid)follow on follow.fid=users.uid  where";
+            if($sex){
+                $sql.=" sex='$sex'";
+                $sql.= " and uname like '%$keyword[keyword]%' or rname like '%$keyword[keyword]%' "
+                    . "or lab like '%$keyword[keyword]%' or address like '%$keyword[keyword]%' ";
+            }else{
+                $sql.= " uname like '%$keyword[keyword]%' or rname like '%$keyword[keyword]%' "
+                    . "or lab like '%$keyword[keyword]%' or address like '%$keyword[keyword]%' ";
+            }
+            
+            $sql="select * from ($sql) res where res.uid <> '$uid'";
+            $where="uid <> '{$uid}'";
+            if($sex){
+                $where.=" and sex='$sex'";
+            }
+           
+            $where.="or uname like '%$keyword[keyword]%' or rname like '%$keyword[keyword]%' "
+                    . "or labs like '%$keyword[keyword]%' or address like '%$keyword[keyword]%' or rname like '%$keyword[keyword]%'";
+            $res=$this->getPageData(M('User'),$where, $sql, $page,'',"select count(uid) sum from ($sql) res");
+            echo json_encode($res);
+        }else{
+            $this->error('请输入查询条件！');
+        }
+    }
+    //找回密保邮件
+    public function pfind(){
+        $uid=session('uid');
+        import("Com.Mail");
+        $upro=M("User")->where("uid='$uid'")->field('uname,p_question,p_awswer')->find();
+        $content="<h3></h3><br/><h3>你的密保问题是：$upro[p_question]答案为：$upro[p_awswer] </h3><br> ,请妥善保存密保答案!";
+        $res=Mail::sendMail($content, '', '密保找回', $upro['uname'],$upro['uname']);
+        $this->ajaxr($res, '邮件发送成功，注意接收！','邮件发送失败，请重试');    
+    }
+
+    //课时确认
+    public function classHour(){
+        $arr = $this->getData(array('kid'),'post');
+        $kid = $arr['kid'];
+        $data = M('teacher_ks')->where("kid=$kid and k_status=0")->field('date,classhour')->find();
+        echo json_encode($data);
+    }
+
+    //我的课表|日历
+    public function Calendar(){
+        $arr = $this->getData(array('cy','cm'),'post');
+        $cY = $arr['cy'];
+        $cM = $arr['cm'];
+
+        import("Com.Calendar");
+        $data = Calendar::showCalendar($cY,$cM);
+
+        //查询当月课表
+        $uid = session('uid');
+        $days = date("t",mktime(0,0,0,$cM,1,$cY));
+        $f_day = strtotime($cY."-".$cM."-01");
+        $l_day = strtotime($cY."-".$cM."-".$days);
+        $schedule = M("Teacher_ks")->where("stid=$uid and k_confirm=1 and unix_timestamp(date) between $f_day and $l_day ")->field("distinct(date)")->select();
+
+        echo json_encode(array('calendar'=>$data,'schedule'=>$schedule));
+    }
+
+    //返回选择的课程表
+    public function schedule(){
+        $arr = $this->getData(array('xdate'),'post');
+        $date = $arr['xdate'];
+        $uid = session('uid');
+        $condition = "stid=$uid and date='{$date}' and k_confirm=1";
+
+        $sql = "SELECT ks.*,o.* FROM bd_teacher_ks ks JOIN bd_jjbm_order o ON ks.kid=o.id WHERE ".$condition;
+        $res = M()->query($sql);
+
+        echo json_encode($res);
+    }
+
+
+}

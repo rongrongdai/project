@@ -1,0 +1,8 @@
+<?php
+//搜索控制器
+class SearchAction extends CommonAction{
+    //获取搜索列表
+    //获取大家都在搜索
+    //
+}
+

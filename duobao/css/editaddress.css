@@ -1,0 +1,183 @@
+@charset "UTF-8";
+/*CSS public 2016.1.7*/
+@charset utf-8; 
+
+.talent{ background-color: #f2f2f2; }
+
+.addall{ background-color: #ffffff; }
+
+.site1{ border-bottom: 1px solid #c1c0bd; }
+.site1 .site_ld{ margin:0 auto;  width: 90%; font-size: 0.42rem; line-height: 1.2rem; color: #323232; position: relative;}
+
+.site1 .site_ld .consignee{
+    width: 6rem;
+    height: 1rem;
+    margin-left: 1rem;
+    font-size: 0.42rem;
+}
+
+.site1 .site_ld .contact{
+    width: 6rem;
+    height: 1rem;
+    margin-left: 0.57rem;
+    font-size: 0.42rem;
+
+}
+
+
+.site1 .site_ld  .aditadd{
+    width: 6rem;
+    height: 1rem;
+    margin-left:1.42rem;
+    font-size: 0.42rem;
+
+}
+.site1 .site_ld  .addat{ 
+   display: inline-block;
+    width: 0.9rem;
+    height: 1.0rem;
+    background-size: 0.41rem 0.41rem !important;
+    background: url("../img/icon_down@2x.png") no-repeat center center;
+    position: absolute;
+    top: 0.2rem;
+}
+
+.site1 .site_ld  .xxcontact{
+    width: 6rem;
+    height: 1rem;
+    margin-left:0.56rem;
+    font-size: 0.42rem;
+
+}
+
+
+
+/*滑动按钮*/
+.checkbox {
+  position: relative;
+  display: inline-block;
+  margin-top: 0.2rem;
+}
+.checkbox:after, .checkbox:before {
+  font-family: FontAwesome;
+  -webkit-font-feature-settings: normal;
+     -moz-font-feature-settings: normal;
+          font-feature-settings: normal;
+  -webkit-font-kerning: auto;
+     -moz-font-kerning: auto;
+          font-kerning: auto;
+  -webkit-font-language-override: normal;
+     -moz-font-language-override: normal;
+          font-language-override: normal;
+  font-stretch: normal;
+  font-style: normal;
+  font-synthesis: weight style;
+  font-variant: normal;
+  font-weight: normal;
+  text-rendering: auto;
+}
+.checkbox label {
+  width: 1.15rem;
+  height: 0.6rem;
+  background: #ccc;
+  position: relative;
+  display: inline-block;
+  border-radius: 0.46rem;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.checkbox label:after {
+  content: '';
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100%;
+  left: 0;
+  top: 1px;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.checkbox input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+} 
+
+.checkbox input:hover + label:after {
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.15);
+}
+.checkbox input:checked + label:after {
+  left: 0.65rem;
+}
+ 
+.checkbox input:checked + label {
+  background: #5cb531;
+}
+.checkbox input:checked + label:after {
+  background: #FFFFFF;
+}             
+/*滑动按钮结束*/
+
+
+
+
+
+/*保存*/
+.w_all {
+    width: 98%;
+    margin: 0.6rem auto;
+}
+
+.w_all .btn_con {
+    background-color: #1b96fe;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    border: 1px solid #e8e8e8;
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+    font-size: 0.46rem;
+    height: 1.2rem;
+}
+
+
+
+
+.edaddall{ display: block; }
+
+
+
+
+
+
+/*我的收货地址暂无信息*/
+.sw_order {
+    margin: 4rem 0 0 2.7rem;
+    width: 50%;
+    text-align: center;
+}
+.sw_order img {
+    width: 2rem;
+    height: 2rem;
+}
+.sw_order .or1 {
+    font-size: 0.42rem;
+    margin: 0.2rem 0 0.5rem 0;
+}
+
+
+
+
+
+
+

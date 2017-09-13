@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/*CSS public 2016.1.7*/
+body{background-color: #fff;}
+.fl {
+    float: left;
+}
+.fr{
+   float: right;
+}
+
+.index_br img{ width: 100%; height: 4.08rem; }
+
+.index_title{ border-top:1px solid #c1c0bd;   height: 0.88rem; line-height: 0.88rem;  font-size: 0.34rem; text-align: center; color: #323232; border-bottom:1px solid #c1c0bd;}
+
+.index_content:after{ visibility: hidden; display: block; font-size: 0; content: " ";   clear: both;  }
+
+.index_content .conte{
+    width: 49.8%;
+    /*height: 4.92rem;*/
+   /*border-top: 1px solid #c1c0bd;*/
+   border-bottom: 1px solid #c1c0bd;
+}
+.index_content .tl{  border-right: 1px solid #c1c0bd; }
+
+
+.index_content  .cont{ width: 90%; margin:0 auto;}
+.index_content  .cont .contimg{ width: 3.78rem; height: 3.6rem;  margin-left: 0.3rem; }
+
+
+.cont .contao:after{ visibility: hidden; display: block; font-size: 0; content: " ";   clear: both;  }
+.cont .contao {
+	margin:0.23rem 0;
+}
+
+.cont .contao .bar{  
+    width: 2.7rem;
+    height: 0.14rem;
+    background: #ffc77f;
+    border-radius: 0.5rem;
+    margin:0.1rem 0;
+}
+.cont .contao .bar_bg{
+    background: #ff9000;
+    height: 0.14rem;
+    border-radius: 0.5rem;
+    display: block;
+}
+.cont .contao .tesu{   color: #1b96fe; }
+
+.c_right img{ width: 0.8rem; height: 0.8rem;   margin: 0.25rem 0 0 0; }
+
+
+
+
+.homes_menu{ height: 1.25rem; }

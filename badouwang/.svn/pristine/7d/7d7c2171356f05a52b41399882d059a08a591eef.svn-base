@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="__ROOT__/public/css/home/Individualcenter.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/public/css/home/imgareaselect-animated.css">
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+<title>基本信息</title>
+</head>
+
+<body>
+    <div class="hy-indall">
+        <div class="hy-inone">
+            <div class="hy-iwy"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$user.user_pic}>" class="hy-img" /></div>
+               <div class="hy-wen">
+                  <p class="hy-zy"><php>$h=date('H',time());</php><if condition="($h gt 0) AND ($h lt '12')">早上<elseif condition="$h eq '12'" />中午<elseif condition="($h gt 12) AND ($h lt 19)"/>下午<else/>晚上</if>好，<{$Think.session.uname}></p>
+                  <p>个人信息:<if condition='$user.content neq ""'><{$user.content}><else/>暂未设置！</if></p>
+                  <p>你目前的身份是:<span><if condition="$user.type eq 1">用户<elseif condition="$user.type eq 2"/>家教<elseif condition="$user.type eq 3"/>培训机构<else/>代理商</if></span>       &nbsp;拥有账户余额:<span><if condition="$user.money gt 0"><{$user.money}><else/>0.00</if></span>元          &nbsp;账户积分:<span><if condition="$user.u_credit gt 0"><{$user.u_credit}><else/>0</if></span></p>
+                  <p>学豆:<span><if condition="$user.vmoney gt 0"><{$user.vmoney}><else/>0</if></span>个     &nbsp;免费发布机会:<span><if condition="$total gt 0"><{$total}><else/>0</if></span>次</p>
+               </div>
+        </div>
+
+        <div class="hy-intwo">
+           <div class="hy-intwyi">
+              <div class="hy-ite"><p class="py">会员服务</p></div>
+               <div class="hy-itasi">
+                  <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/y1.gif" />
+                  <p><a href="__APP__/User/User/uframe?page=charge" target="_top">充值</a><br />
+                  成功后，现金计入账户余额</p>
+               </div>
+               <div class="hy-itasi">
+                  <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/y2.gif" />
+                  <p><a href="javascript:">提现</a><br />
+                  获取收益</p>
+               </div>
+
+               <div style="clear:both;"></div>
+               <div class="hy-itasi">
+                  <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/y3.gif" />
+                  <p><a href="__APP__/User/User/uframe?page=deposit">钱包</a><br />
+                  查看我的财富值</p>
+               </div>
+
+
+               <div class="hy-itasi" style="margin-left:90px;">
+                  <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/y4.gif" />
+                  <p><a href="javascript:">换肤</a><br />
+                  选择你喜欢的主题和颜色</p>
+               </div>
+
+           </div>
+
+
+            <div class="hy-intwer" id="s_time" >
+               <iframe style='margin-left:60px;'  allowtransparency="true" frameborder="0" width="140" height="203" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=2&z=1&t=0&v=1&d=2&bd=0&k=&f=&q=1&e=1&a=1&c=54511&w=140&h=203&align=center"></iframe>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="__ROOT__/public/js/home/jquery.mousewheel.js"></script>
+    <script src="__ROOT__/public/js/home/nicescroll.js"></script>
+    <script src="__ROOT__/public/js/home/noscroll.js"></script>
+    <script src="__ROOT__/public/js/home/common.js"></script>
+    <script>
+    $(".per-inimg").wrap("<form id='myupload' action='__URL__/uploadimg' method='post' enctype='multipart/form-data'></form>");
+    $('#sctp').click(function(){
+      $('#img').change(function(){var file=this.files[0],r=new FileReader();
+        r.readAsDataURL(file);
+        $(r).load(function(){
+          $('#re-img').html('<img src="'+ this.result +'" width="100px" height="100px" /><p id="qdsc"  class="per-inimghy" style="cursor:pointer;">确定</p>');
+
+        });
+      });
+     $('#qdsc').live('click',function(){
+        var showimg = $("#re-img");
+            $("#myupload").ajaxSubmit({dataType:'json',
+                beforeSend:function(){showimg.empty();showimg.html("上传中<img   src='__ROOT__/public/images/home/index/loading.gif' />");}, 
+                success:function(data){var img = "__ROOT__/"+data.pic;
+                    showimg.html('<img  src="'+img+'" width="100px" height="100px" />');$("#cht").fadeIn().delay(800).fadeOut();},
+                error:function(xhr){showimg.html("上传失败");showimg.html(xhr.responseText);}  
+            });
+      });
+      
+    }); 
+     
+     
+     $(function(){
+         
+     })
+     
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,button { margin:0;padding:0;border:0;outline:none;}
+body{ font-size:50px; color:#333; background:#fff; font-family:'microsoft yahei',Arial, Helvetica, sans-serif;}
+html {
+ /* 禁用iPhone中Safari的字号自动调整 */
+ -webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;font-size: 62.5%;
+}
+table {border-collapse:collapse;border-spacing:0;}
+fieldset,img { border:0;}
+address,caption,cite,code,dfn,em,i,strong,th,var {font-style:normal;font-weight:normal;}
+ol,ul {list-style:none;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal;}
+abbr,acronym { border:0; }
+.overclear{ margin:0; line-height:0; padding:0; clear:both; border:0; height:0;}
+.clear{clear:both;}
+.clearfix:after { content:"."; display:block; height:0; font-size:0; visibility:hidden; clear:both; } 
+.clearfix { zoom:1; }  
+a{outline:0;blr:expression(this.onFocus=this.blur()); text-decoration:none;}
+a,input {outline:none;color: #333;}
+
+.blod{font-weight:bold;}
+.red{color:#e12228 !important;}
+.blue{color:#1483d5 !important;}
+.gray{color:#9c9c9c !important;}
+
+.float_r{float:right;}
+.float_l{float:left;}
+
+.text_c{ text-align:center;}
+.text_l{ text-align:left;}
+.text_r{ text-align:right;}
+
+.margin_c{margin:0 auto; }
+.nodata{text-align:center;color:#9d9d9d;}
+.nodata img{width:50%;}
+
+/*对话弹框*/
+.dialog{position:fixed; width:100%; height:100%; top:0;left:0;z-index:99; display:none;}
+.dialog_mask{width:100%; height:100%; background:#000;opacity: 0.3;}
+.dialog_main{ background:#fff; border-radius:10px; margin:0 auto;z-index:100; position:absolute; max-width:90%; }
+.dialog_body{padding:30px 15px;font-size:1.25em;text-align:center; line-height:30px; }
+.dialog_foot{width:100%; height:40px; color:#0078ff; border-top:2px solid #cacaca;}
+.dialog_foot a{line-height:40px; display:inline-block; text-align:center;font-size:1.25em; }
+/*对话弹框*/
+
+/*主体*/
+.body-box{margin:0 auto; width:100%; height:100%; position:relative; }
+
+/*主体*/
+
+.flex_box_wrap{display: -moz-box; display: -webkit-box; display: -ms-box; display: -o-box;}
+.flex_box{-moz-box-flex: 1; -webkit-box-flex: 1; -ms-box-flex: 1; -o-box-flex: 1;}
+
+
+ @media all and (max-width:374px) {
+    
+}
+

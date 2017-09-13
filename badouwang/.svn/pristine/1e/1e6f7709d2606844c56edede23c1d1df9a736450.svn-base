@@ -1,0 +1,18 @@
+<?php
+//家教信息控制器
+class TeachAction extends CommonAction{
+    //获取家教列表
+    public function getTeachs(){
+        
+    }
+    //收藏家教
+    public function tCollect(){
+        
+    }
+    //家教报名
+    public function inclass(){
+        
+    }
+    //获取机构信息
+}
+

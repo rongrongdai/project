@@ -1,0 +1,16 @@
+<?php
+/**
+ * 
+ * @author fanbo
+ */
+class MapService {
+    private static $key='9f5703253d6926ecce6928a37c0e6a67';
+    //初始化，建表
+    private static function dopost($data){
+        $ch = curl_init();
+    }
+    public static function init(){
+        $url='http://yuntuapi.amap.com/datamanage/table/create';
+        
+    }
+}

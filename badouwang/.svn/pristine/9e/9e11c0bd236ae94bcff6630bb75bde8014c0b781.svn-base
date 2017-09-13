@@ -1,0 +1,156 @@
+@charset "utf-8";
+/* CSS Document */
+body{height:100%; margin:0; padding:0; font:14px/22px "微软雅黑","宋体",Arial; color:#333; word-wrap:break-word; background-color:#00b38a;}
+input{line-height: 30px;}
+#allba{ height:610px; width:100%; }
+#thehead{ margin:0 auto; width:650px; height:425px; top:70px; position:relative;}
+.theheadone{ height:120px; width:650px;}
+.theheadone a img{ border-style: none}
+/*登录*/
+.theheadtwo{height:320px; width:650px; background-color:#eafffd;border-radius:4px;box-shadow:2px 2px 4px #333; }
+.Contentone{ width:340px;  float:left;padding:30px;}
+
+.loginForm .inp{width:240px; height:35px;  font-size:14px; color:#777; border:1px solid #ccc; padding:5px 10px;margin:5px 0px;}
+.loginForm .inr{width:240px; height:35px;  font-size:14px; color:#777; border:1px solid #ccc; padding:2px 10px;margin:6px 0px;}
+
+
+input[type=checkbox]{font-size:16px; color:#777; }
+.Contentone .wenyi{color:#777; margin: 20px 0px 0px 10px; font: 16px "微软雅黑","宋体",Arial;}
+.fr{ text-decoration:none; margin: 20px 0px 0px 80px; font-size:16px; color:#777;  }
+.fr:hover{color:#019875}
+
+#submitLogin{ width:155px; height:46px; font-size:16px; line-height:46px;  background:#00b38a; color:#fff; border:none; text-align:center; margin:10px 0 0 20px; cursor:pointer;}
+
+#submitLogin:hover{ background:#fc9f31; color:#FFF;}
+
+.Contentone #msg{display:block;color:red;margin:6px 0 0 20px;height:16px;}
+
+.Contenttwo{float:left;}
+.Contenttwoyi{ border-right:1px dashed #999; float:left; height:240px; margin:40px 0 0 0px;}
+.pepro{margin:40px 0px 10px 20px; font-size:14px; color:#777; }
+.pepro span{ color:#F60;}
+.Contenttwoer{ margin:20px 0px 10px 20px; font-size:16px; color:#777; }
+.registor_now{ color:#00a57f;  text-decoration:none;  font-size:16px;  margin:30px 0px 0px 20px;}
+.registor_now:hover { color:#00a57f;  text-decoration:underline;}
+
+.login_others{  margin:40px 20px 10px 20px; font-size:14px; color:#777;}
+
+.tupcs{  margin:0px 0px 0px 20px; width:220px; height:60px;}
+.icon_wb a{ width:54px; height:56px; float:left; background-image:url(../../images/home/xinl.gif);}
+.icon_wb a:hover{ background-image:url(../../images/home/xl1.gif);width:54px; height:56px;}
+.icon_qq a{ width:58px; height:56px; float:left;  background-image:url(../../images/home/qq.gif);}
+
+.icon_qq a:hover{width:58px; height:56px;   background-image:url(../../images/home/qq1.gif);}
+.icon_weixin a{ width:58px; height:55px;  float:left; background-image:url(../../images/home/weix.gif);}
+.icon_weixin a:hover{ width:58px; height:55px;  background-image:url(../../images/home/weix1.gif);}
+
+/*注册*/
+.theheadtwo-yit{ height:360px; width:650px; background-color:#eafffd;border-radius:4px;box-shadow:2px 2px 4px #333;}
+.Contentone .the-lj{overflow:hidden;height:32px;line-height:32px; margin:3px auto -6px; }
+.Contentone .the-lj select{width:80px;height:28px;line-height:25px;margin:3px 5px 0 0;}
+.Contentone .the-lj select option{overflow:hidden;width:80px;height:25px;line-height:25px;}
+.Contentone .cherwen{margin:50px 0 0;}
+.Contentone #text{  width:150px; height:30px; font-size:14px; color:#777; border:1px solid #ccc; padding:3px 10px;margin:15px 0;}
+.imgeeems{ position:relative; top:8.5px;left:5px;}
+.Contentone select{width:78px; height:20px;float:left}
+
+.Contentone .error,.right{ position:relative; top:3px;left:10px;color:red;}
+.Contentone #submitregis{ width:120px; height:35px; font-size:16px; line-height:35px;  background:#00b38a; color:#fff; border:none; text-align:center;  margin:20px 0px 0px 60px; cursor:pointer;}
+.Contentone #submitregis:hover{  background:#fc9f31; color:#FFF;}
+
+.Contentone #vcd{position: relative;left:15px;top:3px;}
+.Contentone #vqu{position: relative;left:5px;top:8px;}
+.imgareaselect-border1 {background: url(../../images/home/index/border-v.gif) repeat-y left top;}
+.imgareaselect-border2 {background: url(../../images/home/index/border-h.gif) repeat-x left top;}
+.imgareaselect-border3 {background: url(../../images/home/index/border-v.gif) repeat-y right top;}
+.imgareaselect-border4 {background: url(../../images/home/index/border-h.gif) repeat-x left bottom;}
+.imgareaselect-border1, .imgareaselect-border2, .imgareaselect-border3, .imgareaselect-border4 {filter: alpha(opacity=50);opacity: 0.5;}
+.imgareaselect-handle {background-color: #fff;border: solid 1px #000;filter: alpha(opacity=50);opacity: 0.5;}
+.imgareaselect-outer {background-color: #000;filter: alpha(opacity=50);opacity: 0.5;}
+
+/*找回密码*/
+.retrievpasdwd{ width:375px; height:210px; border:1px #FFF solid; margin:0px 120px; position:relative; top:45px;}
+.retrievpasdwdyuan{ background:none repeat scroll 0 0 #00b38a;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px; position:absolute;}
+.retrievpasdwd .yuanwen { font-size:16px; position:relative; top:-13px; left:10px; font-weight:bold; color:#FFF;}
+.retrievpasdwdzhengfx{ width:150px; height:6px; background-color:#CCC; position:relative; top:-43px; left:30px; }
+.retrievpasdwdyuanyi{background:none repeat scroll 0 0 #CCC;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px; position:absolute;
+ top:0px; left:150px; }
+.retrievpasdwd .yuanwenyi{  font-size:16px; position:relative; font-weight:bold; top:-72px; left:160px; color:#FFF;}
+.retrizhengfxer{ width:150px; height:6px; background-color:#CCC; position:relative; top:-102px; left:180px; }
+
+.retrievpasdwdyuaner{ background:none repeat scroll 0 0 #CCC;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px; position:absolute;
+ top:0px; left:300px; }
+.retrievpasdwd .yuanwener{font-size:16px; position:relative; font-weight:bold; top:-132px; left:310px; color:#FFF;}
+.repaemill{ position:relative; top:-140px; left:-20px; font-size:14px; color:#333; font-family:'Microsoft YaHei';}
+.repaemillone{ position:relative; top:-160px; left:140px; font-size:14px; color:#333; font-family:'Microsoft YaHei';}
+.repaemilltwo{ position:relative; top:-185px; left:290px; font-size:14px; color:#333; font-family:'Microsoft YaHei';}
+.retemailinput input{ width:350px; height:30px;  font-size:16px; color:#777; border:none; padding:5px 10px; position:relative; top:-150px;}
+.retrzhaomim input{ width:155px; height:46px; font-size:16px; line-height:46px;  background:#00b38a; color:#fff; border:none; text-align:center; margin:20px 0px 0 0px; position:relative; top:-150px;}
+
+/*找回密码第二步*/
+.retrievpasdwdzhengfxyi{ width:150px; height:6px; background-color:#00b38a; position:relative; top:-43px; left:30px;}
+.retrievpasdwdyuanyiyi{background:none repeat scroll 0 0 #00b38a;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px;
+ position:absolute; top:0px; left:150px; }
+ .retrczmimm{ position:relative; left:100px; top:-80px;  font-size:16px; color:#CCC; font-family:'Microsoft YaHei';}
+ .retrczmimm span{  font-size:18px;  color:#00b38a;}
+ .retrczmimmyi{  position:relative; left:100px; top:-60px;  font-size:16px; color:#CCC; font-family:'Microsoft YaHei';}
+ .retrdengluyoux input{ width:155px; height:46px; font-size:16px; line-height:46px;  background:#00b38a; color:#fff; border:none; text-align:center; margin:20px 0px 0px 100px; position:relative; top:-50px;}
+
+
+/*找回密码第三步*/
+.retrizhengfxeryi{ width:150px; height:6px; background-color:#00b38a; position:relative; top:-102px; left:180px; }
+.retrievpasdwdyuaneryi{ background:none repeat scroll 0 0 #00b38a;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px; 
+ position:absolute;top:0px; left:300px;}
+
+.retryouxingdiz{ position:relative; left:100px; top:-90px;  font-size:16px; color:#CCC; font-family:'Microsoft YaHei';}
+.retryouxingdiz span{ font-size:18px;  color:#00b38a;}
+.retemimainput #email{ width:350px; height:30px;  font-size:16px; color:#777; border:none; padding:5px 10px; position:relative; top:-80px; 
+left:100px;}
+.retemimainput #password{ width:350px; height:30px;  font-size:16px; color:#777; border:none; padding:5px 10px; position:relative; top:-70px; 
+left:100px;}
+.retemimainput #qingd{ width:155px; height:35px; font-size:16px; line-height:35px;  background:#00b38a; color:#fff; border:none; position:relative; top:-15px; right:273px;  text-align:center;}
+
+
+
+/*注册完善资料一*/
+.enroll-top{ margin:80px auto; width:650px;}
+.enroll-top img{ width:650px; height:117px;}
+.enroll-top .enroll-cen{height:350px; width:650px;  background-color:#eafffd;  border-radius:4px; box-shadow: 2px 2px 4px #333; }
+.enroll-top .enroll-cen .waxs{ text-align:center; font-size:20px; padding-top:30px; color:#777;}
+.enroll-top .enroll-cen .nc{ font-size:16px; color:#777; margin-left:160px; margin-bottom:30px;}
+.enroll-top .enroll-cen .nc .nchen{width:240px; height:30px; border:1px solid #ccc; padding:2px 10px; outline:none; margin:25px 0px 0px 15px;}
+.enroll-top .enroll-cen .nc .ses{ margin-right:5px;}
+.enroll-top .enroll-cen .gxi{ font-size:16px; color:#777; margin-left:28px; margin-bottom:40px; }
+.enroll-top .enroll-cen .qdin{ width:120px; height:35px; font-size:16px; line-height:35px; background:#00b38a; color:#fff; border:none; text-align:center;
+ cursor:pointer; margin-left:270px; position:relative; top:30px;}
+.enroll-top .enroll-cen .qdin:hover{ background:#fc9f31;}
+.enroll-top .msg1, .enroll-top .msg2, .enroll-top .msg3{font-size:12px; color:red; margin-left:20px;}
+
+
+/*注册完善资料二*/
+.enrotw-top{margin:60px auto; width:650px;}
+.enrotw-top img{ width:650px; height:117px;}
+.enrotw-top .enrot-content{ height:450px; width:650px;  background-color:#eafffd;  border-radius:4px; box-shadow: 2px 2px 4px #333;}
+.enrotw-top .enrot-content .en-cey{ font-size:16px; color:#777; width:380px;  margin-left:130px;}
+.enrotw-top .enrot-content .en-cey .nchen{ width:240px; height:30px; border:1px solid #ccc; padding:2px 10px; outline:none; margin:25px 0px 0px 10px;}
+.enrotw-top .enrot-content .en-cey .anniu{ height:35px; margin-left:10px; font-size:16px; background:#00b38a; color:#EEE; cursor:pointer; border:none;}
+.enrotw-top .enrot-content .en-cey .anniu:hover{background:#fc9f31; color:#FFF;}
+
+.enrotw-top .enrot-content .en-ceer{font-size:12px; color:#777; line-height:25px; background:#EEE; width:318px; margin-left:188px; margin-top:8px; text-align:center; }
+.enrotw-top .enrot-content .en-cesa{ width:318px;  margin-left:188px;  margin-top:10px; height:160px;}
+.enrotw-top .enrot-content .en-cesa .imgs{ width:150px; height:150px; float:left;}
+.enrotw-top .enrot-content .en-cesa .sau{ float:right; width:130px; }
+.enrotw-top .enrot-content .en-cesa .sau img{ width:150px; height:150px;}
+.enrotw-top .enrot-content .en-cesa .sau input{  height:30px; font-size:16px; background:#00b38a; color:#EEE; cursor:pointer; margin-top:18px; margin-left:10px; border:none; }
+.enrotw-top .enrot-content .en-cesa .sau input:hover{ background:#fc9f31; color:#FFF;}
+.enrotw-top .enrot-content .en-cewu{ width:380px;  margin-left:130px; height:65px; margin-top:10px;}
+.enrotw-top .enrot-content .en-cewu .pm{ font-size:16px; color:#777; float:left; margin:0;}
+.enrotw-top .enrot-content .en-cewu .en-cewy{ float:right; width:315px;}
+.enrotw-top .enrot-content .en-cewu .en-cewy span{ font-size:12px; color:#777; margin:0 9px 3px 0; float:left; padding:0 5px;cursor:pointer;border:none;}
+.enrotw-top .enrot-content .en-cewu .en-cewy .aclick{ background:#fc9f31; color:#FFF;}
+.enrotw-top .enrot-content .en-zuid{position:absolute;margin:2px 0 0 280px;color:red;height:12px;line-height:12px;font-size:12px;}
+
+.enrotw-top .enrot-content .en-celiu{width:318px; margin-left:188px;}
+.enrotw-top .enrot-content .en-celiu .biqd{ width:285px; height:35px;  padding:2px 10px; outline:none;}
+.enrotw-top .enrot-content .hadew{ height:30px; font-size:16px; background:#00b38a; color:#EEE; cursor:pointer; margin-top:18px; margin-left:290px; width:90px; text-align:center; border:none;}
+.enrotw-top .enrot-content .hadew:hover{ background:#fc9f31; color:#FFF;}

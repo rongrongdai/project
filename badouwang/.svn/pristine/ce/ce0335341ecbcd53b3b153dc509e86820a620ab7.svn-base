@@ -1,0 +1,9 @@
+<?php
+//收藏控制器
+class CollectionAction extends CommonAction{
+    //收藏家教
+    //收藏培训课程
+    //收藏试卷
+    //收藏学问
+}
+

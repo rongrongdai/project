@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+       
+       /*用户信息*/
+       .user-info{font-size:0.24rem;position:relative;color: #fff;}
+       .user-info .blur-bg{width:100%;height:3.2rem;position:absolute;top:0;left:0;z-index: -2;background: rgba(0,0,0,0) url("images/my/user.png") no-repeat center center/100%;filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */-webkit-filter: blur(10px); /* Chrome, Opera */-moz-filter: blur(10px);-ms-filter: blur(10px);    filter: blur(10px);filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */}
+       .user-info .layer-bg{width:100%;height:3.2rem;position:absolute;top:0;left:0;z-index: -1;background: rgba(0,0,0,.5);}
+       .user-info>div{display:inline-block;vertical-align:middle;}
+       .user-info .u-img-wrap{height: 1.68rem;width: 1.68rem;margin: 0.76rem 0.6rem 0.76rem 0.9rem;}
+       .user-info .u-img-wrap>img{width: 100%;}
+       .user-info .u-txt{}
+       .user-info .u-txt>p{margin: 0.14rem 0;}
+       .user-info .u-txt .crown{display:inline-block;vertical-align: bottom;margin-left: 0.15rem;width:0.24rem;height:0.24rem;background:url("images/my/crown.png") no-repeat scroll center center / contain;}
+       .user-info .u-txt .u-class{color:#ff6519;}
+       .user-property{padding: 0 0.24rem;background-color: #fff;font-size: 0.24rem;}
+       .user-property .func-line1{height: 0.68rem;line-height: 0.68rem;border-bottom:1px solid #eeeef1;}
+       .user-property .func-line2{padding: 0.2rem;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <div class="user-info">
+                <div class="u-img-wrap"><img src="images/my/user.png" alt=""></div>
+                <div  class="u-txt">
+                    <p><span>[A_girl]</span><span class="crown"></span></p>
+                    <p>会员级别：<span class="u-class">普通会员</span></p>
+                </div>
+                <div class="layer-bg"></div>
+                <div class="blur-bg"></div>
+            </div>
+            <div class="user-property">
+                <div class="func-line1"><span>分销商等级介绍</span></div>
+                <div class="func-line2"><span>可获得一定比例的佣金，邀请人数达到100可升级为二级分销商</span></div>
+            </div>
+        </div>
+    </article>
+    
+    
+    <script>
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>订单详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;width: 100%;overflow: hidden;background-color: #eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}        
+
+        /*订单*/
+        .order{font-size:0.24rem;}
+        .order .address{padding: 0.24rem;background-color: #fff;margin:0.1rem 0 0.2rem 0;}
+        .order .address .user-info{padding-left: 0.34rem;}
+        .order .address .user-info .phone{margin-left:0.24rem;float:right;margin-right:0.3rem;}
+        .order .address .ad-info{font-size:0.2rem;margin-top: 0.15rem;}
+        .order .address .ad-info>span{display: inline-block;vertical-align:middle;}
+        .order .address .ad-info>span:last-child{width:90%;}
+        .order .address .ad-info .position{width: 0.19rem;height: 0.27rem;background:url("images/order/position.png") no-repeat scroll center center / contain;margin-right: 0.15rem;}
+        .order .address .ad-info .right-arrow{float:right;width: 0.12rem;height: 0.24rem;background:url("images/right-arrow.png") no-repeat scroll center center / contain;}
+        .order .shop{padding: 0.19rem 0.24rem;background-color: #fff;margin:0.2rem 0 0.2rem 0;}
+        .order .shop>span{display: inline-block;vertical-align:top;height: 0.31rem;line-height:0.31rem;}
+        .order .shop .logo{width: 0.36rem;background:url("images/industry/shop.png") no-repeat scroll center center / contain;}
+        .order .shop .name{margin:0 0.45rem 0 0.12rem;font-size:0.28rem;}
+        .order .shop .right-arrow{width: 0.31rem;height: 0.31rem;background:url("images/good-details/phone.png") no-repeat scroll center center / contain;float:right;}
+        .order .good-info{background-color: #fff;}
+        .order .good-info .good-d{    font-size: 0.2rem;clear: both;overflow: auto;padding: 0.24rem 0;border-bottom: 1px solid #eeeef1;margin: 0 0.24rem;}
+        .order .good-info .good-d .img-wrap{    width: 27%;height: 1.6rem;float: left;}
+        .order .good-info .good-d .img-wrap>img{width:100%;height:100%;}
+        .order .good-info .good-d .info-wrap{margin-left: 3%;position: relative;width: 70%;float: left;height: 1.6rem;}
+        .order .good-info .good-d .info-wrap .row2{position: absolute;bottom: 0.42rem;width: 100%;}
+        .order .good-info .good-d .info-wrap .good-price{color:#ff0000;}
+        .order .good-info .good-d .info-wrap .good-num{float:right;}
+        .order .good-info .o-row{overflow: auto;line-height: 0.7rem;border-bottom: 1px solid #eeeef1;text-align: center;padding: 0 0.24rem;}
+        .order .good-info .o-row .col1{float:left;}
+        .order .good-info .o-row .col1 .num{}
+        .order .good-info .o-row .col2{display: inline-block;vertical-align: top;}
+        .order .good-info .o-row .col3{float:right;}
+        .order .good-info .o-row .col3 .status{color:#ff3c00;}
+        .order .good-info .o-row .col3 .consult-icon{display:inline-block;vertical-align:middle;width:0.41rem;height:0.41rem;background:url(images/consult.png) no-repeat center center / 100% 100%;margin-right: 0.1rem;}
+        .order .good-info .o-row .col3 .consult-txt{color:#0273ff;}
+        .order .row4{border-top:1px solid #eeeef1;color:#a3a3a3;background-color:#fff;margin:0.2rem 0;font-size:0.24rem;overflow: auto;}
+        .order .row4>div{padding: 0 0.24rem;}
+        .order .row4>div:first-child{border-bottom:1px solid #eeeef1;}
+        .order .row4>div>p{margin: 0.24rem 0;}
+        .order .row4>div>p span{display:inline-block;vertical-align:top;}
+        .order .row4>div>p span:first-child{width:1.2rem;}
+        .order .row4>div>p span:last-child{width:79%;}
+        .order-btn{text-align:right;margin: 0 0.1rem;}
+        .order-btn .btn{width: 1.38rem;height: 0.6rem;line-height: 0.6rem;border-radius: 0.04rem;display: inline-block;vertical-align: middle;color:rgba(16,16,16,.5);margin:0.2rem 0.1rem 0.2rem 0;border:1px solid rgba(0,0,0,.5);text-align:center;}
+        .order-btn .cancel{}
+        .order-btn .pay{color: #fff;border:1px solid #ff6519;background-color:#ff3c00;}
+
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var Scroll,skuScroller;
+        function loaded () {
+            Scroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <section class="order" >
+                <div class="address">
+                    <div class="user-info"><span>收件人：</span><span>罗小姐</span><span class="phone">13266886888</span></div>
+                    <div class="ad-info"><span class="position"></span><span>广东省深圳市龙华新区龙华市场荣昌街哎呀呀龙华新区龙华 市场荣昌街</span></div>
+                </div>
+                <div class="good-info">
+                    <div class="good-d">
+                        <div class="img-wrap"><img src="images/order/good.png" alt=""></div>
+                        <div class="info-wrap">
+                            <div><span>AOZZO/奥朵CL10113/24欧式壁灯吸顶灯卧室 灯书房灯饰水晶灯</span></div>
+                            <div class="row2"><span class="good-price">￥1600</span><span class="good-num">x1</span></div>
+                        </div>
+                    </div>
+                    <div class="good-d">
+                        <div class="img-wrap"><img src="images/order/good.png" alt=""></div>
+                        <div class="info-wrap">
+                            <div><span>AOZZO/奥朵CL10113/24欧式壁灯吸顶灯卧室 灯书房灯饰水晶灯</span></div>
+                            <div class="row2"><span class="good-price">￥1600</span><span class="good-num">x1</span></div>
+                        </div>
+                    </div>
+                    <div class="o-row">
+                        <span class="col1">实付款：<span class="sum">￥6800.00</span></span>
+                        <span class="col3"><span class="status">售后中</span></span>
+                    </div>
+                    <div class="o-row">
+                        <span class="col1">共1件商品</span>
+                        <span class="col2">物流记录</span>
+                        <span class="col3"><span class="consult-icon"></span><span class="consult-txt">在线咨询</span></span>
+                    </div>
+                </div>
+                <div class="row4">
+                    <div>
+                        <p><span>订单号：</span><span>20151115223841</span></p>
+                        <p><span>下单时间：</span><span>2015-11-15  22:38:41</span></p>
+                        <p><span>付款时间：</span><span>2015-11-15  22:38:41</span></p>
+                        <p><span>签收时间：</span><span>2015-11-15  22:38:41</span></p>
+                    </div>
+                </div>
+                <div class="order-btn">
+                    <div class="btn">售后进度</div>
+                </div>
+            </section>
+        </div>
+    </article>
+    <script>
+        
+    </script>
+</body>
+</html>

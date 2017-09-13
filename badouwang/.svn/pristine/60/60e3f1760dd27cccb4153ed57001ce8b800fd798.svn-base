@@ -1,0 +1,337 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/teach_detail.css"/>
+
+
+
+
+<!--<div class="pwid"><div class="hotnav" style="border-bottom:2px solid #009170;color:#333;height:32px;">当前位置： <a href="javascript:history.back()" >平台教师</a> >  <a href="javascript:" >详情页</a></div></div>
+
+<div class="teac-oy">
+       <div class="teac-left">
+            <p><strong class="zl"><{$data.real_name}></strong><img   src="__ROOT__/public/images/home/yp1.gif" class="img1"/> 银牌老师   <span class="cz"><{$data.dname}><{$data.cname}></span></p>
+            <p class="pi">教龄：32年 | 性别：女 | 年龄：56岁 |  常用授课地点：<{$data.address}> </p>
+            <div class="left-oy">
+                <div class="oy-left">
+                 <img   src="__ROOT__<{$data.c_img}>" class="img2" />
+                </div>
+                <div class="oy-right">
+                   <p><strong class="jq"><{$data.price}></strong>元/小时</p>
+ 
+                   <p>已售 <span class="ysu">196</span> | 5人已评价
+                    <for start="0" end="5">
+                      <img   src="__ROOT__/public/images/home/pxu/sjxpx.png" />
+                    </for>  
+                     5.0分
+                   </p>
+                  
+                   <div class="xkel">
+                      <p>累计课程时：<span>200</span></p>
+                      <p>学生人数：<span>200</span></p>
+                   </div>
+                   
+                   
+                   
+                  <select id="s1_text1_kr" class="xlk">
+                      <option selected="" value="0">请选择授课方式</option>
+                      <option value="1">老师上门</option>
+                      <option value="2">学生上门</option>
+                      <option value="3">协商地点</option>
+                  </select>
+                  <a href="__URL__/order?tid=<{$data.id}>"><p class="yke">向他约课</p></a>
+                   
+                </div>    
+            </div>
+          
+       </div>
+       
+       
+     <div class="teac-right">
+            <div class="teac-riy">
+             <div class="teac-re">
+               <p class="duig">√</p>
+               <p class="js">教师质料认证</p>
+             </div>
+             <p class="rp">
+              	<a href="javascript:"><img src="__ROOT__/public/images/home/xqy1.gif" /><span>身份认证</span></a>   
+             	<a href="javascript:"><img src="__ROOT__/public/images/home/xqy2.gif" /><span>教师资格证</span></a>
+              </p>
+
+           </div>
+           
+           <div class="rsa">
+             <img   src="__ROOT__/public/images/home/wxfh.gif" />
+                    <div class="deon">
+                    <p class="da">HI~</p>
+                    <P>扫一扫有惊喜哦</P>
+                    <P>最新教育质询发布平台</P>
+                    </div>
+           </div>
+              
+          <div class="deer">
+             <div class="dey">
+               <img   src="__ROOT__/public/images/home/xrt1.gif" />
+               <p>在线咨询</p>
+             </div>
+             <div class="dee">
+                <img  style="margin:10px 0 0 20px" src="__ROOT__/public/images/home/xrt2.gif" />
+                <p>400-611-911</p>
+             </div>
+          </div>
+                  
+          <div class="desan nav-fx">
+      
+             <img   src="__ROOT__/public/images/home/x2r.gif" class="imq"/><a href="javascript:"></a>
+          </div>
+
+     </div>
+ 
+
+</div>-->
+<!-----------中间的部分---------->
+<div class="pwid">
+	<div class="hotnav" >当前位置：<a href="javascript:history.go(-2)">  家教</a> > <a href="javascript:history.go(-1)">  列表页</a> > <a href="javascript:"> 详情页</a></div>
+</div>
+
+<div class="connerqq">
+<div class="con">
+	<div class="c_top_title">
+    	<span class="s_name">王老师</span><span class="cher_name">语文老师</span>
+        <div class="c_top_right">
+            <span class="sc_name"><span>★</span>收藏</span>
+            <span class="fx_name"><span><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/sharebtn.jpg" width="" height="" /></span><span>分享</span></span>        
+        </div>
+    </div>
+    <div class="tent_con">
+        <div class="c_left">
+        	<div class="img_name"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="#" width="130" height="130" /></div>
+    		<div class="den_name"> 
+            <p class="duig">√</p>
+            <p class="js">教师质料认证</p>
+            </div>
+          
+            <p class="rp"><a href="javascript:"><img src="__ROOT__/public/images/home/icon1.png" /><span>身份认证</span></a></p>   
+            <p class="rp"><a href="javascript:"><img src="__ROOT__/public/images/home/icon2.png" /><span>教师资格证</span></a></p>
+  
+
+        </div>
+        <div class="c_con">
+            <div class="top_name">教龄：7年 | 性别：女 | 年龄：31岁 | 授课地点：龙华地铁站边</div>
+            <div class="con_name">说明：做学生的良师益友，亲其师才能信其道。教学风格幽默风趣，语言简练富有亲和力。课堂气氛活跃，寓教于乐。洞悉中高考考纲、考点，精研中高考教材教法。辅导学生有耐心、有方法，能迅速提高学生成绩，树立学生学习的自信心。</div>
+            <div class="bot_name">
+            	   <p><strong class="jq">345</strong>元/小时</p>
+                   <p>已售 <span class="ysu">196</span> | 5人已评价
+                    <for start="0" end="5">
+                      <img src="__ROOT__/public/images/home/pxu/sjxpx.png" />
+                    </for>  
+                     5.0分
+                   </p>
+            
+                   <div class="xkel">
+                      <p>累计课程时：<span>200</span></p>
+                      <p>学生人数：<span>200</span></p>
+                   </div>
+                   
+                   
+                 <div class="skefs">
+                  <select id="s1_text1_kr" class="xlk">
+                      <option selected="" value="0">请选择授课方式</option>
+                      <option value="1">老师上门</option>
+                      <option value="2">学生上门</option>
+                      <option value="3">协商地点</option>
+                  </select>
+                  <a href="__URL__/order?tid=<{$data.id}>"><p class="yke">向他约课</p></a>
+                  </div>
+            </div>
+        </div>
+        <div class="c_right">
+        	<div class="top">先试听后付费，不满意不付费</div>
+            <div class="fol">好老师价</div>
+             <div class="rsa">
+             <img src="__ROOT__/public/images/home/erwei .png" />
+                    <div class="deon">
+                    <p class="da">HI~</p>
+                    <P>扫一扫有惊喜哦</P>
+                    <P>最新教育质询发布平台</P>
+                    </div>
+           </div>
+              
+          <div class="deer">
+             <div class="dey">
+               <img   src="__ROOT__/public/images/home/xrt1.gif" />
+               <p>在线咨询</p>
+             </div>
+             <div class="dee">
+                <img  style="margin:10px 0 0 20px" src="__ROOT__/public/images/home/xrt2.gif" />
+                <p>400-611-911</p>
+             </div>
+          </div>
+          
+        </div>
+	</div>
+</div>
+</div>
+<!-----------中间的部分结束---------->
+
+<div class="teac-cner">
+    <div class="tcen-left">
+         <div class="lf-y">
+           <a class="lf-a css1 oe" href="javascript:">基本资料</a>
+           <a class="lf-a css2" href="javascript:">约课记录</a>
+           <a class="lf-a css3" href="javascript:">家长评论</a>
+         </div>
+         
+
+         <div class="lf-er css1" style="display:block">ssssssssss</div>
+         <div class="lf-er css2">222222</div>
+         <div class="lf-er css3">4444444444</div>
+
+    </div>
+    
+    
+    
+    
+    
+    <div class="tcen-right">
+         <div class="right-y">
+            <table border="0"  cellspacing="0">
+               <tr class="zr">
+                <td colspan="7">可授课时间</td>
+               </tr>
+               <tr class="ske">
+                 <td>周一</td>
+                 <td>周二</td>
+                 <td>周三</td>
+                 <td>周四</td>
+                 <td>周五</td>
+                 <td>周六</td>
+                 <td>周天</td>
+               </tr>
+              <tr>
+                 <td>上</td>
+                 <td>上</td>
+                 <td>上</td>
+                 <td>上</td>
+                 <td>上</td>
+                 <td>上</td>
+                 <td>上</td>
+               </tr>
+               <tr>
+                 <td>下</td>
+                 <td>下</td>
+                 <td>下</td>
+                 <td>下</td>
+                 <td>下</td>
+                 <td><span class="gou">√</span></td>
+                 <td><span class="gou">√</span></td>
+               </tr>
+               <tr>
+                 <td>晚</td>
+                 <td><span class="gou">√</span></td>
+                 <td><span class="gou">√</span></td>
+                 <td>晚</td>
+                 <td>晚</td>
+                 <td><span class="gou">√</span></td>
+                 <td><span class="gou">√</span></td>
+               </tr>
+            </table>
+         </div>
+         
+         <div class="right-e">
+           <p class="right-ep">授课地点</p>
+           <div id="amap" class="imt" style="height:215px;"></div>
+         </div>
+         
+         <div class="right-s">
+           <p class="right-ep">四大保障</p>
+           <div class="ri-di">
+             <div class="rie-di">
+                 <img   src="__ROOT__/public/images/home/jjy1.gif" />
+                 <p>真实</p>
+             </div>
+             
+             <div class="rie-di">
+                 <img   src="__ROOT__/public/images/home/jjy2.gif" />
+                 <p>安全</p>
+             </div>
+             
+              <div class="rie-di">
+                 <img   src="__ROOT__/public/images/home/jjy3.gif" />
+                 <p>保密</p>
+             </div>
+             
+              <div class="rie-di">
+                 <img   src="__ROOT__/public/images/home/jjy4.gif" />
+                 <p>专业</p>
+             </div>
+             
+           </div> 
+            
+         </div>
+         
+    </div>
+</div>
+
+
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/36e5);</script>
+
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=f2b95ba8317b9b7eb3b4dcf919bcb973"></script>
+<script>
+$('.lf-a').click(function(){
+	$('.lf-er').hide();
+	$('.lf-er.' + $(this).attr('class').replace(/lf-a /,'').replace(/ oe/,'')).show();
+    $('.lf-a').removeClass('oe');
+	$(this).addClass('oe');
+})	
+
+function initialize(x,y){
+  var position=new AMap.LngLat(x,y);
+  var mapObj=new AMap.Map("amap",{
+      view: new AMap.View2D({
+          center:position,
+          zoom:15
+        })
+    });
+
+  var marker = new AMap.Marker({              
+    map:mapObj,                 
+    position: new AMap.LngLat(x, y),                 
+    offset: new AMap.Pixel(-10,-34),                 
+    icon: "http://webapi.amap.com/images/0.png"                 
+  });
+}
+
+function placeSearch(city,addr){
+    var MSearch;
+    AMap.service(["AMap.PlaceSearch"], function() {       
+        MSearch = new AMap.PlaceSearch({
+            pageSize:1,
+            pageIndex:1,
+            city:city 
+        });
+        MSearch.search(addr, function(status, result){
+          if(status === 'complete' && result.info === 'OK'){
+            var Lx = result.poiList.pois[0].location.getLng();
+            var Ly = result.poiList.pois[0].location.getLat();
+            initialize(Lx,Ly);
+          }
+        }); 
+    });
+}
+<!--5.载入地图-->
+window.onload = function(){
+  var city = "深圳",addr = "<{$data.address}>";
+  placeSearch(city,addr);
+};
+
+
+  $('.nav-fx').html('<span class="cht"><img src="__ROOT__/public/images/home/x2r.gif" class="imq"/><a href="javascript:">分享到：</a></span><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"><a class="bds_sqq"></a><a class="bds_qzone"></a><a class="bds_tsina"></a><a class="bds_tqq"></a><a class="bds_more"></a></div>');
+  $('.nav-fx').css({});
+  $('.nav-fx .cht').css({float:"left",lineHeight:"24px", height:"24px", color:"#666", fontSize:"12px", padding:"2px 0 0 0"});
+  $('#bdshare').css( { float:"left"});
+  $('#bdshare').find('a').css( { margin:"0 0 0 -1px"});
+</script>
+<include file="../../../Public/default/footer" />
+</body>
+</html>

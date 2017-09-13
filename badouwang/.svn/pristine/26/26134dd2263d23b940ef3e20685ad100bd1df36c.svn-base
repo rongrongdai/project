@@ -1,0 +1,159 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/exam.css"/>
+
+
+
+<div class="pwid">
+	<div class="hotnav">当前位置：<a href="javascript:history.go(-2)">  题库</a> > <a href="javascript:history.back()"> 列表页</a> > <a href="javascript:"> 详情页</a></div>
+</div>
+
+<div class="deta">
+	<div class="dimg">
+    	<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$data.user_pic}>" />
+    </div>
+    <div class="right">
+    	<div class="title" id="collect">
+            
+                <if condition="$collect">
+                	<span class="f_left yes"><{$data.name}></span>
+                    <span class="collect-ed" ><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  class="col_img" src="__ROOT__/public/images/home/exam/gou_chen.png" /><span>收藏</span></span>
+                <else />
+                	<span class="f_left"><{$data.name}></span>
+                    <span class="collect-no" onclick="collect(<{$data.id}>)" ><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  class="col_img" src="__ROOT__/public/images/home/exam/gou_hui.png" /><span>收藏</span></span>
+                </if>
+            
+        </div>
+        
+        
+        <div class="con">
+        	<div class="line">年份：<{$data.ctime|date="Y",###}>年</div>
+        	<div class="line">类型：模拟考试</div>
+        	<div class="line">合格分数：<{$data.accept}>分</div>
+        	<div class="line">总分：<{$data.total}>分</div>
+        	<div class="line">作答：<{$data.time}>分钟</div>
+        	<div class="line">提供机构：<{$data.rname}></div>
+        	<div class="line"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/exam/xj01.jpg" width="27" height="27"><div><{$data.answer}>人做过</div></div>
+        	<div class="line"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/exam/xj02.jpg" width="27" height="27"><div id="message"><{$data.message}>人评论</div></div>
+        </div>
+        <a class="kao" onclick="answer(<{$data.id}>)" href="#">普通模考</a>
+
+    </div>
+	<div class="tix">
+    	<div class="title">题型介绍</div>
+    </div>
+    <div class="conner">
+    	<h3><{$data.name}></h3>
+        <p><{$data.content}></p>
+    </div>
+    
+	<div class="tix">
+    	<div class="title">最新评论</div>
+    </div>
+    
+    <if condition="$message">
+    	<foreach name="message" item="vo" key="i">
+    		<div class="coners"><div class="nam">
+	            <a class="tita"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.user_pic}>" /></a>
+	            <div class="con">
+	            	<div class="contet"><{$vo.content}></div>
+	                <div class="rname"><{$vo.ctime|date="Y-m-d H:i:s",###}> [ 来自<{$vo.address}>]</div>
+	            </div>
+	            <div id="praise">
+                    <img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"  src="__ROOT__/public/images/home/exam/dj03.jpg" width="24" height="19">
+                    <div id="shu<{$vo.id}>">(<{$vo.praise}>)</div>
+                </div>
+        	</div></div>
+    	</foreach>
+    <else/>	
+    	<div id="shafa" class="coners" style="text-align:center;"><span>暂无评论！</span></div>
+    </if>
+		
+    
+    <!--<div id="liuyanss"></div>
+    <div class="coners" id="liuyan">
+            <span class="cht" onclick="message()">我要评论</span>
+    </div>-->
+
+<div id="info">发表成功</div>
+</div>
+
+<script>
+	/*function message(){
+		$("#liuyan").html("");
+		var node = '<div class="coners"><textarea id="pub" name="content" rows="4" cols="154" style="resize:none;"></textarea><span class="cht" onclick="pub(<{$data.id}>)">立即发布</span></div>';
+		$(node).prependTo("#liuyan");
+	}
+
+	function pub(id){
+		var content = $("#pub").val();
+        var pattern = (/\S/).exec(content);
+        if(!pattern){
+            show('内容不能为空');
+            return false;
+        }
+		$.post("__ROOT__/index.php/Ajax/AjaxExam/publish",{'sid':id,'content':content},function(json){
+			if(json.code == 'success'){
+				$("#liuyan").html("");$("#shafa").html("");$("#message").html("");
+            var node ='<div class="coners" ><div class="nam"><div class="titimg"><a><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/'+json.data.img+'" width="40" height="40" /></a><div >求助</div></div><div class="con"><div class="contet">'+json.data.content+'</div><div class="rname">'+json.data.ctime+' [来自'+json.data.address+']</div></div><div id="praise" class="right" onclick="praise('+json.data.id+')"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/exam/dj03.jpg" width="24" height="19"><div>('+json.data.praise+')</div></div></div></div>';
+            var nodes = '<span class="cht" onclick="message()">我要评论</span>';
+            $(node).appendTo("#liuyanss");
+            $(nodes).appendTo("#liuyan");
+            $("<span>"+json.message+"人评论</span>").appendTo("#message");
+
+            show('发表成功');
+	        }else if(json.code == 'error'){
+	            show('亲！你还没登录呢');
+	        }else if(json.code == 'quick'){
+	            show('亲！你先休息一会儿吧');
+	        }
+		},'json');
+	}
+	
+    function praise(id){
+        $.post("__ROOT__/index.php/Ajax/AjaxExam/praise",{'id':id},function(data){
+            if(data){
+                $("#shu"+id).html("");
+                $("<span>("+data+")</span>").appendTo("#shu"+id);
+            }else{
+                show('您已点赞啦');
+            }   
+        },'json');
+    }
+    */
+
+    function show(text){
+        var pageW = $(window).width(), pageH = $(window).height(), boxW = $("#info").outerWidth(),boxH = $("#info").outerHeight(),scrollH = $(window).scrollTop();
+        $("#info").html(text).css({'top':(pageH/2-boxH/2+scrollH)+'px','left':(pageW/2-boxW/2)+"px"}).fadeIn(1000).delay(500).fadeOut(1000);
+    }
+
+    function answer(id){
+        $.get("__ROOT__/index.php/Ajax/AjaxExam/answer",{'id':id},function(data){
+            if(data === 'nologin'){
+                show('亲！你还没登录呢');
+            }else if(data === 'nomoney'){
+                show('亲！你的学豆不足');
+            }else{
+                window.location.href="__URL__/exampaper?sid=<{$data.id}>";
+            }
+        },'json');
+    }
+
+    function collect(id){
+        $.get("__ROOT__/index.php/Ajax/AjaxExam/collect",{'aid':id},function(data){
+            if(data === 'nologin'){
+                show('亲！你还没登录呢');
+            }else{
+                show('收藏成功');
+				$('.col_img').attr('src','__ROOT__/public/images/home/exam/gou_chen.png')
+				$('.f_left').addClass('yes')
+                $('.collect-no').attr('onclick','');
+            }
+        },'json');
+    }
+
+
+</script>
+
+
+
+<include file="../../../Public/default/footer" />

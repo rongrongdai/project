@@ -1,0 +1,10 @@
+<?php
+//课程控制器
+class CourseAction extends CommonAction{
+    //获取优惠课程
+    //报名优惠课程
+    //收藏课程
+    //分享课程
+    //获取优秀课程
+}
+

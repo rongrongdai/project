@@ -1,0 +1,169 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/tListpage.css" />
+<!--培训列表页内容-->
+<div class="Lpage-one">
+    
+        <div class="Lpyi-one">
+              <div class="Lpyi-yi"><p>当前位置 :<a href="javacsript:"> 培训 </a>> <a href="javacsript:">列表页</a></p></div>
+              
+              <div id="wlkc_all_lanmu">
+                   <foreach name="classes" item="class">
+                        <div class="top">
+                            <div class="title"><{$key}></div>
+                            <div>
+                                <ul class="menu">
+                                    <foreach name="class" item="sclass">
+                                        <li name='pc'>
+                                            <span><a href="javascript:" class="tablink" id="<{$sclass.id}>"><{$sclass.name}></php></a></span>
+                                            <if condition="$sclass.classes neq ''">
+
+                                            <ul>  <foreach name="sclass.classes" item="sub">
+                                                        <li><a href="javascript:;" id="<{$sub.0.id}>" name='cc'><{$sub.0.name}></a></li>
+                                                    </foreach>
+                                                 
+                                            </ul>
+                                            </if>
+                                        </li>
+                                    </foreach>
+                                </ul>
+
+                            </div>
+                        </div>
+                        </foreach>
+                        
+<div class="t-content">
+<div class="left">
+<h2 class="sea68-left-h2"><div style="float:left;width:80px;">搜索地址:</div>
+          <foreach name='citys' item="city">
+              <span cid="<{$city.id}>" href="javascript:;" style="margin-right:10px;cursor:pointer;"><font color="#F93"><{$city.name}></font></span>
+          </foreach>
+</h2></div></div>	            
+
+
+ </div>
+<!--不用修改的代码-->     
+         <div class="Lpyi-there">
+                 <div class="Lpyi-ther" name="spreds">
+                     <div class="Lpyi-hqr"><p>搜索到 <span><if condition="$sum gt 0"><{$sum}><else/>0</if></span> 个相关课程</p></div>
+ 
+
+              <foreach name="datas" item="data">
+               <div class="Lp-xqy" name="kc">
+                   <div class="Lp-xqyi"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$data.img}>" width="161" height="145"/></div>
+                   <div class="Lp-xqer">
+                   <p><{$data.aname}></p>
+                   <p>发布者：<span><{$data.real_name}></span>    评价<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" /><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" /><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" /><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" /><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" /></p>
+                   <span>
+                    课程简介：<{$data.introduce|strip_tags}>
+                    </span>
+                   <p><span>地址：<{$data.p_address}>  时间：<{$data.s_time|date='Y-m-d',###}>  招生人数：<if condition="$data.number gt 0"><{$data.number}><else/>0</if><span></p>
+                    </div>
+                   <div class="Lp-xqsan">
+                       <p class="jg">价格：<if condition="$data.price gt 0"><{$data.price}><else/>0</if></p>
+                   <p class="yy" id="<{$data.id}>" type="<{$data.type}>">查看详情</p>
+                   </div>
+
+
+               </div>
+              </foreach>
+              
+            
+              
+             <div class="baocts" style="display:none;">
+                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/baoc.png" /><p>抱歉！没有找到符合条件的培训课程</p>
+             </div>
+              
+             <div style="clear:both" class="pagtje"><{$pages}></div>
+             </div>
+         </div>
+
+</div>
+
+  <!--推荐机构-->
+       <div class="Lpone-er">
+           <div class="Lpreyi"><p>&nbsp;推荐机构</p></div>
+           <div class="Lpreer">
+               <foreach name="adv_organs" item="organ">
+              <div class="jg-yi">
+              <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/gg1.gif" />
+              <p><{$organ.real_name}></p>
+              <p class="yishe"><{$organ.info}></p>
+              </div>
+              </foreach>
+           </div>
+       </div>
+       
+       
+</div>
+
+<!--关注学校-->
+      <div  class="Lpage-twosas">
+        <div class="Lpage-two">
+             <div class="indexsix-y">
+                <div class="indexsix-yi"><p>最受关注的学校</p></div>
+             </div>
+             <div class="indexsix-e">
+                  <div class="schooly"><a href="http://www.gedu.org" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s1.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.xdf.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s2.png" /></a></div>
+                  <div class="schooly"><a href="http://www.bdqn.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s3.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.bond520.com" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s4.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.tedu.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s5.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.21edu.com" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s6.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.ef.com.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s7.jpg" /></a></div>
+             </div>
+        </div>
+</div>
+   
+<script>
+    $(function(){
+        $(".yy").click(function(){
+            if($(this).attr('type')==='1'){
+                location.href="__ROOT__/index.php/Organ/Organ/odetail?type=1&id="+$(this).attr("id");
+            }else{
+                location.href="__ROOT__/index.php/Organ/Organ/odetail?type=1&id="+$(this).attr("id");
+            }
+        })
+        var page=1;
+        var cid='<{$cid}>';
+        var url=location.href;
+        $(".menu li,li ul li").click(function(){
+            if($(this).find("ul").size()){
+                return;
+            }
+            
+            url=decodeURI(url);
+            var cid=$(this).find("span a").attr("id");
+            if(!cid){
+                cid=$(this).find("a").attr("id");
+            }
+            if(url.indexOf('cid')!==-1){
+                url=url.replace(/(cid=)(\d*)/,"$1"+cid);
+            }else{
+               if(url.indexOf('?')!==-1){
+                   url+="&cid="+cid;
+               }else{
+                   url+='?cid='+cid;
+               }
+            }
+            url=encodeURI(url);
+            $(this).find("a").attr('href',url);
+        });
+        $(".t-content span").click(function(){
+            url=decodeURI(url);
+            if(url.indexOf('ct')!==-1){
+                url=url.replace(/([\u4e00-\u9fa5])+/,$(this).text());
+            }else{
+               if(url.indexOf('?')===-1){
+                    url+="?ct="+$(this).text();
+               }else{
+                    url+="&ct="+$(this).text();
+               }
+            }
+            url=encodeURI(url);
+            location.href=url;
+        });
+     
+    })
+</script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<include file="../../../Public/default/footer" />

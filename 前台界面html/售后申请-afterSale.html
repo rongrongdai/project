@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>售后申请</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {width: 100%;overflow: hidden;position: absolute;bottom:0;top:0.2rem;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        .after-sale{font-size:0.28rem;background-color:#fff;color:#1a1a1a;}
+        .after-sale .u-right{float: right;clear: both;}
+        .after-sale span{display:inline-block;vertical-align:middle;}
+        .after-sale .u-right .u-arrow{width: 0.4rem;height: 0.4rem;background: url("images/after-sale.png") no-repeat scroll center center / contain;}
+        .after-sale .active .u-right .u-arrow{background: url("images/after-sale-active.png") no-repeat scroll center center / contain;}
+        .u-line2>div{border-bottom: 1px solid #eeeef1;margin: 0 0.3rem;height:1.02rem;line-height:1.02rem;}
+        .u-line2>div:first-child{border-bottom: 1px dashed #eeeef1;color:#666;font-size:0.26rem;height:0.7rem;line-height:0.7rem;}
+        .u-line3{margin-top:0.2rem;}
+        .u-line3>div{margin: 0 0.3rem;}
+        .u-line3>div:first-child{border-bottom: 1px dashed #eeeef1;height:0.7rem;line-height:0.7rem;color:#666;font-size:0.26rem;}
+        .u-line3>div>textarea{width:100%;margin: 0.2rem 0;color:#1a1a1a;font-size:0.26rem;}
+        .after-sale-btn{height:0.8rem;line-height:0.8rem;text-align:center;width:92.5%;margin:0 auto;font-size:0.36rem;border-radius:0.06rem;margin:0.4rem auto 0.2rem auto;background-color:#ff3c00;color:#fff;}
+        </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="after-sale u-line2" >
+                    <div><span>退换货类型：</span></div>
+                    <div class="a-option"><span>退货申请</span><span class="u-right"><span class="u-arrow"></span></span></div>
+                    <div class="a-option"><span>换货申请</span><span class="u-right"><span class="u-arrow"></span></span></div>
+                </div>
+                <div class="after-sale u-line3" >
+                    <div><span>申请理由：</span></div>
+                    <div><textarea name="" id="" rows="10"></textarea></div>
+                </div>
+                <div class="after-sale-btn">提交申请</div>
+            </div>
+        </div>
+    </article>
+    <script>
+    $('.a-option').on('tap',function(){
+        var _self = this;
+        $('.a-option').each(function(){
+            if(this==_self){
+                $(this).toggleClass('active');
+            }else{
+                $(this).removeClass('active');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

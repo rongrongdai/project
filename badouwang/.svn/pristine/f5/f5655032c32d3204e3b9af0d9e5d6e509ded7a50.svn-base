@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+    a{ text-decoration:none;}
+    ul,ol {list-style:none;}
+	p{ margin:0;}
+   .yuek-all{ width:1200px; margin:0 auto;}
+   .yuek-all .top{ height:34px; line-height:34px; font-size:12px; border-bottom:2px solid #009170; margin-bottom:15px;}
+   .yuek-all .top a{color: #333333;}
+   .yuek-all .top a:hover{ color:#00b38a;}
+   
+   .yuek-all .top-y{ border:1px #C0CFCB solid;}
+   .yuek-all .top-y .ye{ border-bottom:1px solid #009170; padding:10px 20px; color:#333333; font-size:12px; margin-bottom:10px;}
+   .yuek-all .top-y .top-ycen{ width:1090px; margin:0 auto;}
+   .yuek-all .top-y .top-ycen .cey{ height:80px; border-bottom:1px solid #009170; margin-bottom:10px; }
+   .yuek-all .top-y .top-ycen .cey .cer{ width:750px; float:left; border-right:1px #C0CFCB solid;}
+   .yuek-all .top-y .top-ycen .cey .cer img{ width:65px; height:65px; border-radius:65px; float:left;}
+   .yuek-all .top-y .top-ycen .cey .cer .cere{ float:left; font-size:12px; color:#333333; margin-left:5px; }
+   .yuek-all .top-y .top-ycen .cey .cer .cere .py{font-size:14px; margin:5px 0px;}
+   .yuek-all .top-y .top-ycen .cey .cer .cere .pe{ color:#FF3333; margin:5px 0px;}
+   
+   .yuek-all .top-y .top-ycen .cey .cesi{ float:right; width:330px; text-align:center; margin-top:20px; font-size:14px; color:#333333;}
+   .yuek-all .top-y .top-ycen .cey .cesi span{ color:#FF3333;}
+   .yuek-all .top-y .top-ycen .web{ margin-bottom:20px; height:620px;}
+   .yuek-all .top-y .top-ycen .web .webons{ border:1px #C0CFCB solid; width:690px;  float:left;}
+   .yuek-all .top-y .top-ycen .web .webons .cen{ background:#f9f9f9; padding:13px 15px; font-size:14px; color:#333333;  border-bottom:1px solid #C0CFCB;}
+   .yuek-all .top-y .top-ycen .web .webons .cen p ,.yuek-all .top-y .top-ycen .web .webons .cen input{ margin:10px 3px;}
+   .yuek-all .top-y .top-ycen .web .webons .cen span{ margin-right:20px;}
+   .yuek-all .top-y .top-ycen .web .webons .cen .any{ font-size:12px; border-radius:6px; line-height:25px; border:1px #C0CFCB solid; text-align:center; width:50px; padding:5px;}
+   .yuek-all .top-y .top-ycen .web .webons .cen .any:hover{background:#fc9f31; color:#FFF; cursor:pointer;}
+   .yuek-all .top-y .top-ycen .web .webons .kse{ margin:10px; border:1px solid #C0CFCB;}
+   .yuek-all .top-y .top-ycen .web .webons .kse .te{background:#f9f9f9; height:35px;}
+   .yuek-all .top-y .top-ycen .web .webons .kse td{ width:130px; text-align:center; color:#333333; font-size:12px; line-height:30px;}
+   .yuek-all .top-y .top-ycen .web .webons .kse table .bj{color:#0066FF;}
+   .yuek-all .top-y .top-ycen .web .webons .time{ font-size:16px; color:#FF9900; margin-left:20px;}
+   .yuek-all .top-y .top-ycen .web .webons .timey{ color:#333333;  font-size:12px; margin:14px 10px;}
+   .yuek-all .top-y .top-ycen .web .webons textarea{resize:none; padding:4px; margin-bottom:10px; margin-left:15px;}
+   .yuek-all .top-y .top-ycen .web .webons .ps{ margin-left:530px; color:#6699FF; font-size:14px;}
+   .yuek-all .top-y .top-ycen .web .webons .anyw{ font-size:12px; border-radius:6px; line-height:25px; border:1px #C0CFCB solid; text-align:center; width:50px; padding:5px; margin-bottom:10px; margin-left:20px;}
+   .yuek-all .top-y .top-ycen .web .webons .anyw:hover{background:#fc9f31; color:#FFF; cursor:pointer;}
+   
+   .yuek-all .top-y .top-ycen .web .cen-rith{ float:right; width:380px; }
+   .yuek-all .top-y .top-ycen .web .cen-rith .cel{font-size:13px; color:#333333; text-align:center; margin:10px 0px;}
+   .yuek-all .top-y .top-ycen .web .cen-rith .cen-ric{border:1px #C0CFCB solid; height:230px;}
+</style>
+
+</head>
+
+<body>
+   <div class="yuek-all">
+       <div class="top">
+       当前位置：<a href="javascript:"> 平台教师 </a> > <a href="javascript:">约课</a>
+       </div>
+       <div class="top-y">
+          <p class="ye">我要约课</p>
+          <div class="top-ycen">
+                 <div class="cey">
+                    <div class="cer">
+                      <img src="images/u127.jpg" />
+                       <div class="cere">
+                        <p class="py">曾老师</p>
+                        <p>高中数学-专业辅导...订单课时为: 1 课时 老师上门</p>
+                        <p class="pe">请联系老师确认上课时间、地点后，再向老师发起约课</p>
+                       </div>
+                       </div>
+                   <div class="cesi">
+                     <P>订单课时为: <span>1 课时</span></P>
+                   </div>
+               </div>
+             
+             <div class="web">
+                 <div class="webons">
+                   <div class="cen">
+                     <p>请选择上课次数</p>
+                     <input type="radio" />只上一次  <input type="radio" />每天都上  <input type="radio" />每周都上
+                     <p><span>请选择开始日期</span>  <span>设置开始时间</span>  <span>设置时长</span></p>
+                     <select>
+                         <option selected="" value="0">请选择</option>
+                         <option value="1">自己不想上课</option>
+                         <option value="2">自己的原因</option>
+                         <option value="3">老师的原因</option>
+                      </select>
+           
+                     <select>
+                          <option selected="" value="0">请选择</option>
+                          <option value="1">自己不想上课</option>
+                          <option value="2">自己的原因</option>
+                          <option value="3">老师的原因</option>
+                     </select>
+           
+                     <select>
+                          <option selected="" value="0">请选择</option>
+                          <option value="1">自己不想上课</option>
+                          <option value="2">自己的原因</option>
+                          <option value="3">老师的原因</option>
+                     </select>
+                    <p class="any">添加课程</p> 
+                    </div>
+                    
+                    <div class="kse">
+                      <table>
+                        <tr class="te">
+                          <td>日期</td>
+                          <td>时间</td>
+                          <td>次数</td>
+                          <td>时长</td>
+                          <td>操作</td>
+                        </tr>
+                        <tr>
+                          <td>8月1日</td>
+                          <td>23:00-00:00</td>
+                          <td>1次</td>
+                          <td>1小时</td>
+                          <td class="bj">编辑   删除  </td>
+                        </tr>
+                      </table>
+                    </div>
+                    
+                    <p class="time">共1小时</p>
+                    <p class="timey">课程地址: 深圳市龙华新区东环一路天汇大厦A座  修改地址</p>
+                    <p class="timey">留言：</p>
+                    <textarea rows="6" cols="85"></textarea>
+                    <p class="ps">还可以输入99字</p>
+                    <p class="anyw">提交预约</p>
+                 </div>
+                 
+                 
+                   <div class="cen-rith">
+                       <div class="cen-ric"></div>
+                       <p class="cel">当天你没有课程安排哦~~</p>
+                       <p class="cel">当天曾老师没有课程安排哦~</p>
+                   </div>
+                   
+             </div>
+             
+             
+             
+             
+          </div>
+       </div>
+   </div>
+
+</body>
+</html>

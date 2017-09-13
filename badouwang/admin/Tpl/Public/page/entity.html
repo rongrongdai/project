@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理员管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+    .hint{
+        margin-left:10px;
+    };
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#"><{$position}></a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab2" class="selected" name="hand">实体操作</a></li> 
+                 
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    
+    
+<!--    <ul class="seachform">
+    
+    <li><label>会员名</label><input name="" type="text" class="scinput" /></li>
+    </li>
+    <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+    
+    </ul>-->
+    
+    <form id='dataform' method='post' action="<{$action}>">
+    <table class="tablelist">
+        <tbody>
+        <foreach name="form" item="f_item">
+                        <tr>
+                           <td width="20%"><{$f_item.info}></td><td width="80%"><{$f_item.html}><br><span class='hint'></span></td>
+                       </tr>
+        </foreach>
+        </tbody>
+    </table>
+    <inptut type='hidden' name='edit' value="<if condition='$edit'>1<else />0</if>" />
+    <input name="" type="submit" class="btn" value="保存配置" style='margin-left:400px;' id='s_data'>
+    </form>
+   
+  
+    
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+        <script src="__ROOT__/public/js/validater.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+  
+    </div>
+</body>
+
+</html>
+<script src='__ROOT__/public/js/admin/common.js'></script>
+<script>
+    //校验函数
+    function check(field,fname){
+                var res=false;
+                 if(field){
+                       var femail=field.split(',');
+                       for(fd in femail){
+                            res=fname(fd);
+                            if(res){
+                               $("#"+fd).parent().find(".hint").text(res).css("color","red");
+                           }
+                        }
+                    }
+                    return res;
+    }   
+    $(function(){
+            var hand="<{$position}>";
+            hand=hand.substr(hand.lastIndexOf('>')+1,hand.length);
+            $("a[name=hand]").text(hand);
+            $()
+            $("#dataform").submit(function(){
+            var nullcheck="<{$null}>";
+            var nullinfo="<{$null_info}>";
+            var email="<{$email}>";
+            var spec="<{$spec}>";
+            var res=false;
+            if(nullcheck){
+                var nullck=nullcheck.split(',');
+                var nullinfo=nullinfo.split(',');
+                res=null_check(nullck,nullinfo);
+                 if(res){
+                 var fk="#"+res[0];
+                 $(fk).parent().find(".hint").text(res[1]).css("color","red");
+                 return false;
+               }else{
+                   res=check(email,'email_check')
+                   if (res===false){
+                       res=check(spec,'spe_check');
+                   }
+                   return !res;
+               }
+            }
+           
+            return res;
+        })
+        $("input[type=text]").focus(function(){
+            $(".hint").text("");
+        })
+    })
+    
+</script>

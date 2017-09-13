@@ -1,0 +1,172 @@
+<include file="../../../Public/default/header" />
+<link href="__ROOT__/public/css/home/bxjgou.css" rel="stylesheet" type="text/css" />
+<style>
+    .decet-two{ border:1px #dcdcdc solid;}
+    .decrtw-yi{ margin:20px 0px 30px 20px; color:#333333; font-size:18px;}
+    .decrtw-yi p{ line-height:45px; }
+    .decrtw-yi span{ margin-left:50px;}
+    .dectw-kcyi{ height:120px; margin:20px 20px 30px 40px;}
+    .de-xmi{ font-size:12px; color:#808080;}
+    .dectw-kcyceny{  width:120px; clear:both; float:left; }
+    .dectw-kcycenyi{ width:88px; height:88px; border:#dcdcdc 1px solid;}
+    .dectw-kcycene{ float:left; color:#808080; font-size:14px; line-height:25px;}
+    .dectw-kcycene img{ margin-bottom:20px;}
+    .dectw-kcycene .shij{ color:#f39800;}
+</style>
+   <!--导航条结束-->
+   
+   <!--培训机构内容-->
+   
+   <div class="pxjg-one">
+      <div class="pxjg-cy">
+             <div class="pxjg-ce"></div>
+             <p class="pxjg-cs">机构在线</p>
+             <div class="pxjg-cw">粉丝:1000</div>
+             <div class="pxjg-cl">+ 关注</div>
+      </div>
+      
+      <div class="pxjg-er">
+          <p class="plwy"><{$organ.oname}> <if condition="$organ.o_img neq ''"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="<{$organ.o_img}>" /></if></p>
+      <p class="plwe"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/001.png" />机构名称：好学指导中心有限公司</p>
+      <p class="plws"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/002.png" />所在地:<{$organ.city}>   <span>积分:3000</span></p>
+      <p class="plwsi">简介：<{$organ.tintroduce}></p>
+      </div>
+      <div class="pxjg-san">
+         <div class="ps-y">
+           <p class="ps-xy">老师数量</p>
+           <p class="ps-xe"><if condition="$sumt gt 0"><{$sumt}><else/>0</if>名</p>
+         </div>
+         <div class="ps-y">
+             <p class="ps-xy">学生评价</p>
+             <p class="ps-xe">9分</p>
+         </div>
+         <div class="ps-y">
+             <p class="ps-xy">服务学生</p>
+             <p class="ps-xe"><if condition="$sumin gt 0"><{$sumin}><else/>0</if>名</p>
+         </div>
+         
+         <div class="ps-e">
+           <p> <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/004.png" />向TA咨询</p>
+         </div>
+          <p class="ps-s"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/005.png" />累计投诉：<span>0 </span>次</p>
+          <p class="ps-si">在线联系：<a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=e7b6f4e3e8ae17b84501ccd479d49ccdb6529bf78ae1dd18"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  border="0" src="http://wpa.qq.com/imgd?IDKEY=e7b6f4e3e8ae17b84501ccd479d49ccdb6529bf78ae1dd18&pic=52" alt="点击这里给我发消息" title="点击这里给我发消息"></a></p>
+      </div>
+      
+   </div>
+  
+  
+  
+  <div class="pxjg-two">
+     <div class="ptw-y">
+         <div class="ptw-yi"><p style='margin-left:40px;'><if condition="$mess.dymess neq ''"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/007.gif" style='margin-right: 30px;'/><{$mess.dymess}> </if></p></div>
+        <div class="ptw-ye">
+          <ul>
+            <li name="teach">家教</li>
+            <li class="wda" name="organ">培训</li>
+            <li name="bonouns">优惠券</li>
+            <li name="comment">服务评论(<if condition="$csum gt 0"><{$csum}><else/>0</if>)</li>
+          </ul>
+          
+        </div>
+
+     
+      <!--隐藏div-->
+        <div class="ptw-ys" name="organ" >
+             <p>全部: 优惠课程</p>
+             <foreach name="course" item="data" style="margin-left:10px">
+                    <div class="ptw-kc" id="<{$data.id}>">
+                        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/008.gif" class="pyw-kim" />
+                        <p class="ptw-k-a"><span><{$data.city}></span><{$data.cname}></p>
+                        <p class="ptw-k-b">￥<{$data.price}>起 <span>详情</span></p>
+                        <p class="ptw-k-c">上课地点：<{$organ.city}></p>
+                        <p class="ptw-k-d">课程开始时间：<{$data.s_time|date="Y-m-d",###}></p>
+                    </div> 
+            </foreach>
+            
+
+        </div>
+         <!--隐藏div-->
+        <div class="ptw-ys" name="teach" style="display:none">
+             <p>全部: 优惠课程</p>
+             <foreach name="teach" item="data" style="margin-left:10px" >
+                    <div class="ptw-kc" id="<{$data.id}>">
+                        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/008.gif" class="pyw-kim" />
+                        <p class="ptw-k-a"><span><{$data.city}></span><{$data.cname}></p>
+                        <p class="ptw-k-b">￥<{$data.price}>/小时起 <span>详情</span></p>
+                        <p class="ptw-k-c">服务范围：<{$data.rcity}></p>
+                        <p class="ptw-k-d">课程开始时间：<{$data.dtime}></p>
+                    </div> 
+            </foreach>
+        </div>
+        <!--隐藏__课程评论-->
+             <div class="decet-two" style="display:none" name="cmt">
+                 <foreach name="comments" item="comment">
+                <div class="dectw-kcyi">
+                     <div class="dectw-kcyceny">
+                     <div class="dectw-kcycenyi"></div>
+                     <p class="de-xmi">Better Man</p>
+                    </div>
+                   
+                   <div class="dectw-kcycene">
+                       <php>
+                          for($i=0;$i<$comment['star'];$i++){
+                                echo '<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/xxin.png" />';
+                          }
+                          for($i=0;$i<5-$comment['star'];$i++){
+                            echo '<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/xxingx.png" />';
+                          }
+                        </php>
+                    <p><{$comment.content}></p>
+                    <p class="shij"><{$comment.com_timestamp|date="Y-m-d H:i",###}></p>
+                   </div>
+                   
+                 </div>
+             </foreach>
+                 
+          </div>
+  
+  </div>
+  
+  
+  <!--八斗代购商-->
+  <div class="ptw-er">
+     <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/009.gif" class="pt-ry" />
+  </div>
+  
+  </div> 
+  </div>
+  <script>
+      $(".ptw-ye").find("li").click(function(){
+           $(".ptw-ye").find("li").removeClass("wda");
+           $(this).addClass("wda");
+      })
+      $(function(){
+          $("li[name=teach]").click(function(){
+              $(".ptw-ys").hide();
+               $(".decet-two").hide();
+               $("div[name=teach]").show();
+          });
+           $("li[name=organ]").click(function(){
+              $(".ptw-ys").hide();
+              $(".decet-two").hide();
+              $("div[name=organ]").show();
+          });
+          $("li[name=comment").click(function(){
+              $(".ptw-ys").hide();
+              $("div[name=cmt]").show();
+          });
+          $(".ptw-ys").find(".ptw-k-b").find("span").click(function(){
+              var t=$(this).parent().parent().parent().attr("name");
+              var id=$(this).parent().parent().attr("id");
+              switch(t){
+                  case 'organ':
+                      location.href="__ROOT__/index.php/Organ/Organ/odetail?id="+id;
+                      break;
+                  case 'teach':
+                      location.href="__ROOT__/index.php/Organ/Organ/otdetail?id="+id;
+              }
+          });
+      })
+      
+  </script>
+<include file="../../../Public/default/footer" />

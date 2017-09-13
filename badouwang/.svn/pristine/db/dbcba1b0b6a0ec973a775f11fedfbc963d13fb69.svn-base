@@ -1,0 +1,178 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ padding:0; margin:0; }
+body{ /*font-family:"微软雅黑";*/ sans-serif;font-size:12px;}
+ul,li{ list-style:none;}
+a{ text-decoration:none;}
+.clear{ clear:both; width:100%; height:0; overflow:hidden;}
+img{ border:none;}
+
+
+
+/*导航条*/
+.nav-one{ width:100%; height:25px; background-color:#00b38a; }
+.nav-two{ width:100%; height:5px; background-color:#ec9f73;}
+
+.nav-there{ width:1200px; margin:0 auto;}
+.nav-yi{ float:left; }
+.nav-yi img{ margin:15px 0px 10px 0px;}
+.nav-er{ float:left; width:1025px; }
+.nav-er li{ width:100px; height:90px; float:left; margin-left:35px;  line-height:85px; color:#000;  font-size:18px; text-align:center; font-weight:800; }
+.nav-er .guan{ border-bottom:3px #00b38a solid;  color:#00b38a;}
+.nav-er .zhu{ background-color:#e5e4e4; width:150px; height:93px; padding-right:30px;}
+
+
+/*内容*/
+.cher-one{ height:417px; width:100%; background-color:#c93729; float:left;  }
+.cher-one img{ margin-left:230px;}
+
+.cher-two{ height:337px; float:left; width:100%; }
+.chert-y{ width:1200px;  height:157px; margin:0 auto; margin-top:110px;}
+.chert-yi{ width:620px; height:80px;}
+.ertyi{ width:550px; height:55px; border-bottom:5px #b1afae solid; float:left;}
+.ertyi p{ color:#00b38a; font-size:34px; font-weight:bold; margin-top:10px;}
+.erter{ width:55px; height:55px; border-bottom:5px #d51d18 solid; float:left;}
+
+
+.chert-er p{ text-indent:2em; font-size:18px;  line-height:25px; font-family:微软雅黑;}
+
+
+.cher-there{ height:290px; background:#e7e7e6; float:left; width:100%; margin-bottom:20px;
+box-shadow:15px 3px 20px #000;
+-webkit-box-shadow:15px 3px 20px  #000;
+-o-box-shadow:15px 3px 20px  #000;
+-moz-box-shadow:15px 3px 20px  #000;
+-ms-box-shadow:15px 3px 20px  #000;
+
+}
+
+.chthe-y{ height:200px;  margin:0 auto; width:1200px; margin-top:45px;}
+.chthe-y .xinlc{ font-size:30px;  color:#000000; }
+.chthe-y img{ position:relative; left:590px; top:20px;}
+.chthe-y .lojiao{ margin:20px 0px 0px 0px; color:#f51d1d; font-size:19px; text-indent:2em; font-family:微软雅黑;}
+
+
+
+.cher-four{ float:left; width:100%; }
+.chf-yi{ margin:0 auto; width:1200px; height:157px; margin-top:50px; }
+.chf-ei{ height:680px;}
+
+.chf-huiy{ width:580px; height:310px; background:#f1f1f0; float:left; margin:10px 10px 10px 0px; border-radius:12px;}
+
+.ch-shic{ width:240px; height:280px;  margin-left:75px; float:left;}
+.ch-shier{ width:200px; float:left; margin-top:20px;}
+
+.ch-shic .cer-shi{ font-size:36px; color:#7a7979; margin-top:20px; }
+.ch-shic p{ color:#7a7979; font-size:24px; line-height:60px;}
+
+
+.cher-five{float:left; width:100%; margin-top:90px;}
+
+.chfiv-er{ height:540px; width:100%; background:url(../../images/home/fuzhuye/shuzi.gif); background-repeat:no-repeat; background-position:bottom;}
+
+.fiv-yi{width:280px;  position:relative; top:140px; left:80px;}
+.fiv-yi .o1{ color:#ffc000; font-size:82px; margin:-10px 0px 30px 80px;}
+.fiv-yi .o2{ color:#ffc000; font-size:24px;}
+.fiv-yi p,.five-e p,.fiv-san p{ font-size:16px; line-height:28px; }
+
+.fiv-er{ width:440px; position:relative; left:410px; top:-160px;}
+.five-y{ width:110px; color:#00b050; font-size:86px; margin-top:24px; float:left;}
+.five-e{ width:325px;  float:left; }
+.five-e .zy{ color:#00b050; font-size:24px; margin-bottom:10px;}
+
+
+
+.fiv-san{ width:240px; height:200px; position:relative; left:940px;  top:-180px;}
+.fiv-san .os1{ color:#00b0f0; font-size:78px; margin-bottom:20px;}
+.sh-six{ margin-top:94px;}
+
+
+
+.cher-six{ float:left; width:100%; background:#eeeeee;}
+.csix-yi{ width:1200px; margin:0 auto; height:290px; margin-top:60px;}
+.csix-y{ width:230px; height:230px;  float:left; margin:10px 0px 0px 10px;
+           background:#eefbaf;
+           -moz-border-radius: 200px / 200px; 
+           -webkit-border-radius: 200px / 200px;
+           border-radius: 200px / 200px;}
+		   
+.csix-e{width:220px; height:220px;  float:left; margin:5px 0px 0px 5px;
+           background:#00b38a;
+           -moz-border-radius: 200px / 200px; 
+           -webkit-border-radius: 200px / 200px;
+           border-radius: 200px / 200px;}
+.csix-s{width:200px; height:200px;  float:left; margin:10px 0px 0px 10px;
+           background:#FFF;
+           -moz-border-radius: 200px / 200px; 
+           -webkit-border-radius: 200px / 200px;
+           border-radius: 200px / 200px;}
+		   
+.csix-s .six-y{ font-size:30px;  margin:15px 0px 0px 70px;}
+
+.csix-s .six-e{  margin-left:62px;}
+
+.csix-s p{ font-size:24px; color:#00b38a;  line-height:35px; width:150px; margin-left:30px; }
+
+
+.csix-er{ width:1200px; margin:0 auto; height:150px;  background:url(../../images/home/fuzhuye/zhaossm.gif); background-repeat:no-repeat; background-position:bottom;}
+.csix-er p{ font-size:24px; position:relative; width:106px;}
+.csix-er .cwesyi{ color:#0fff0f;  top:40px; left:40px; }
+.csix-er .cweser{ color:#2727ff;  left:330px; }
+.csix-er  .cwessan{ color:#00b0f0; left:670px; top:-60px;}
+.csix-er .cwessi{ color:#fa243d; left:980px; top:-90px; width:200px;}
+
+
+.csix-san{ width:1200px; margin:0 auto; height:320px; background:url(../../images/home/fuzhuye/xinqq.gif);background-repeat:no-repeat; background-position:bottom; margin-bottom:60px;}
+.csix-san p{ color:#fa243d; font-size:18px; line-height:30px; }
+.csan-y{  width:354px;  position:relative; top:60px; left:60px;}
+.csan-e{ width:354px;  position:relative; left:800px; top:-20px;}
+
+
+
+
+.cher-Seven{ width:100%;  float:left;}
+.sev-otn{  margin-top:30px; margin-bottom:80px;}
+.sevn-one{ width:910px;  margin-left:155px;}
+.sevn-yi{ height:260px; background:#eeeeee; margin:0px 20px 0px 20px;}
+.sev-sjx{  width:0;  height:0;   border-top:170px solid #7ecef4;  border-right:290px solid transparent;}
+.sev-sjx p,.sev-sjxe p{ font-size:30px; color:#FFF; position:relative;  width:240px;  top:-140px; left:20px;}
+
+.sev-weny{   width:320px; position:relative; left:200px; top:-110px;}
+.sev-weny p, .sev-wene p{ font-size:18px; line-height:30px;}
+
+.sev-wene{ width:190px;position:relative; left:500px; top:-250px;}
+
+.wlais{ font-size:23px; margin:20px 0px 20px 0px; font-weight:600;}
+
+
+.sev-sjxe{  width:0;  height:0;   border-top:170px solid #f37676;  border-right:290px solid transparent;}
+
+
+.ertyiy{ width:500px; height:90px; border-bottom:5px #b1afae solid; float:left; clear:both;}
+.ertyiy p{ color:#00b38a; font-size:34px; font-weight:bold; margin-top:40px;}
+.ertery{ width:85px; height:90px; border-bottom:5px #d51d18 solid; float:left;  }
+
+.sevn-two{ margin:17px 0px 0px 87px;  height:440px;}
+.sevn-ty{ width:657px; font-size:24px; line-height:45px; float:left; margin-top:40px; font-weight:700;}
+
+.sevn-ther{ width:980px; margin-top:60px; font-size:24px; font-weight:700;}
+.sevn-ther p{ margin-left:120px; margin-bottom:30px;}
+.sev-tup{ height:300px; background:url(../../images/home/fuzhuye/zshais.gif); background-repeat:no-repeat; background-position:left; float:left;  }
+.sev-bup { color:#00b38a; font-size:18px; width:400px; line-height:0px; position:relative; top:70px; right:30px;}
+.sexins{ color:#ea2a20; position:relative; left:250px; top:100px;} 
+
+
+.cher-eight{  width:100%; float:left; background-color:#f84a52; margin-top:110px;}
+.cher-eight p{ font-size:36px; color:#FFF; margin:75px 0px 0px 180px;}
+.CSeiht-yi{ width:330px; height:90px; margin:-65px 0px 60px 890px;  background-color:#ffd407;}
+.CSeiht-yi  span{ font-size:30px; color:#FFF;  margin:0px 10px 0px 70px; line-height:85px;}
+.CSeiht-yi  img{ position:relative; top:7px;}
+
+/*尾部*/
+.weibu{ width:100%; float:left; background:#f5f5f4;}
+.weibu p{ color:#6d6a6a; font-size:14px;}
+.weibu a{color:#6d6a6a;}
+.weibu .Ceigt-yi{ margin:60px 0px 0px 490px;}
+.weibu .Ceigt-er{ margin:20px 0px 0px 410px;}
+.weibu .Ceigt-sa{ margin:20px 0px 50px 480px;}

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网站设置</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">网站设置</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+     <div class="formtitle"><span>基本设置</span></div>
+     <form method="post" action="saveConfig" enctype="multipart/form-data" id="webconfig">
+        <ul class="forminfo">
+        <li><label>网站名字</label><input type="text"   placeholder="网站名称" class="dfinput" name="web_name" id="web_name" value="<{$web_name}>"/><i>名称不能超过30个字符</i></li>
+        <li><label>网站地址</label><input type="text"   placeholder="网站地址" class="dfinput" name="web_siteurl" value="<{$web_siteurl}>" id="web_siteurl"/></li>
+        <li><label>网站log</label><cite><span style="margin-left:-10px;" id="img"><if condition="$web_img neq ''">  <img src="__ROOT__/public<{$web_img}>" align="center" width="100px" style="margin-left:10px;"></span></if>
+                    <button class="btn" id="c_img">选择图片</button><input id="web_img" name="web_img"  type="file"  style="display:none;" value="<{$web_img}>" /><span class="hint"></span></li>
+        <li><label>首页关键字</label><input type="text"   placeholder="qcms" class="dfinput"  name="web_keyword" value="<{$web_keyword}>" id="web_keyword"/><i>多个关键字用,隔开</i></li>
+        <li><label>网站版权信息</label><textarea  rows="3" class="textinput" name="web_cop"  style="width:330px;height:80px;" id="web_cop"><{$web_cop}></textarea></li>
+        <li><label>首页描述</label><textarea  rows="3" class="textinput" name="web_desp" style="width:330px;height:80px;" id="web_desp"><{$web_desp}></textarea>  </li>
+        <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+        </ul>
+         <input type="hidden" name="token" value="<{$token}>" />
+           <input type="hidden" name="timestamp" value="<{$timestamp}>" />
+         </form>
+        </div> 
+        
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+  
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+    <script src="__ROOT__/public/js/validater.js"></script>
+    <script>
+    $(function(){
+       $("#s_config").click(function(){
+           var ck;
+           if($("#img")){
+             ck= Array("web_name","web_siteurl","web_cop","web_keyword","web_desp");
+           }else{
+             ck= Array("web_name","web_siteurl","web_cop","web_keyword","web_desp","web_img");
+           }
+           var ci=Array("网站名称","网址","网站log","版权信息","网站关键字","网站描述");
+           var res=null_check(ck,ci);
+           if(res){
+             var fk="#"+res[0];
+             $(fk).parent().find(".hint").text(res[1]).css("color","red");
+             return false;
+           }else{
+              return true;
+           }
+       })
+       $(function(){
+           $("#c_img").click(function(){
+               $("#web_img").click();
+               return false;
+           })
+       })
+    })
+</script>
+
+
+

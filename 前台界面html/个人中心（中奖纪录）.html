@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>中奖纪录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/iscroll.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeeef;}
+        
+        .tuwen{height:100%;background-color: #fff;width:100%;text-align: center;position: fixed;top:0;bottom:0;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .tuwen .scroller{position:absolute;width:100%;}
+        .tuwen>div{    position: absolute;width: 100%;top: 0;bottom: 0;left: 0;}
+        .tuwen .tuwen-header{width: 5.92rem;height: 0.6rem;position: relative;background-color: #fff;margin: 0.2rem auto;border-radius: 0.1rem;}
+        .tuwen .tuwen-header>div{border-right:1px solid #969696;box-sizing: border-box;border: 1px solid #969696;margin-left: -1px;}
+        .tuwen .tuwen-header .txt-btn{font-size: 0.24rem;color: #282828;text-align: center;line-height: 0.6rem;float: left;width: 33.33%;}
+        .tuwen .tuwen-header .servive{border-top-right-radius:0.1rem;border-bottom-right-radius:0.1rem;}
+        .tuwen .tuwen-header .good-d{border-top-left-radius:0.1rem;border-bottom-left-radius:0.1rem;}
+        .tuwen .tuwen-header .param{}
+        .tuwen .tuwen-header .active{background-color:#969696;color:#fff;}
+        .tuwen .tuwen-cont{width:100%;position: absolute;top: 1rem;bottom:0;left:0;border-top: 1px solid #cbcbcb;}
+        .tuwen .tuwen-cont .swiper-wrapper{}
+        .tuwen .tuwen-cont .swiper-slide{}
+        .tuwen .tuwen-cont .swiper-slide img{width:100%;}
+        .tuwen .tuwen-cont .swiper-slide>div{font-size: 0.24rem;position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;width: 100%;overflow: hidden;background-color: #eeeef1;}
+        
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;height: 100%;z-index: 3;position: fixed;display:none;}
+
+        .record-all{}
+        .record-used{}
+        .record-expire{}
+        .record-item{width: 6rem;margin: 0.2rem auto;background-color: #fff;font-size: 0.22rem;padding: 0.16rem 0.2rem;box-sizing: border-box;}
+        .record-item .r-header{padding-bottom:0.16rem;border-bottom:1px solid #eeeef1;overflow: auto;}
+        .record-item .r-header .r-name{float:left;}
+        .record-item .r-header .r-status{float:right;}
+        .record-item .r-body{text-align: left;}
+        .record-item .r-body .r-pic{width:1.38rem;height:1.38rem;display: inline-block;vertical-align: bottom;margin:0.16rem 0.16rem 0 0.16rem;position:relative;}
+        .record-item .r-body .r-pic>img{width:100%;height:100%;}
+        .record-item .r-body .r-pic>span.r-pic-status{width:100%;line-height:0.28rem;border-radius:0.1rem;background-color:#b8b8b8;color:#fff;display:none;bottom: 0;left: 0;position: absolute;font-size:0.2rem;text-align:center;}
+        .record-item .r-body .r-pic>span.invilide{display:block;}
+        .record-item .r-body .r-info{display: inline-block;vertical-align: bottom;width: 2.8rem;text-align:left;}
+        .record-item .r-body .r-info .r-title{font-size: 0.24rem;margin: 0.12rem 0;}
+        .record-item .r-body .r-info .r-date{color:#7f7f7f;}
+        .record-item .r-body .r-conform-btn{font-size: 0.24rem;width:1.1rem;line-height:0.42rem;border-radius:0.1rem;background-color:#ff3c00;color:#fff;display: inline-block;vertical-align: bottom;text-align:center;}
+        
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        function loaded () {
+            
+            function initTuWenScroll(str){
+                var downIcon,upIcon,scrollerPullDown,scrollerPullUp,pullUpMsg,upLoading,downLoading,pullDownMsg; 
+                downIcon = $("."+str+" .down-icon");
+                pullDownMsg = $("."+str+" .pull-down-msg");
+                scrollerPullDown = $("."+str+" .scroller-pullDown");
+                scrollerPullUp = $("."+str+" .scroller-pullUp");
+                upLoading = $("."+str+" .scroller-pullUp .loading");
+                downLoading = $("."+str+" .scroller-pullDown .loading");
+                upIcon = $("."+str+" .up-icon");
+                pullUpMsg = $("."+str+" .pull-up-msg");
+
+                var tuwenScroller = new IScroll('.'+str, {
+                    probeType: 3,
+                    scrollbars: true,
+                    mouseWheel: true,
+                    interactiveScrollbars: true,
+                    shrinkScrollbars: 'scale',
+                    fadeScrollbars: true
+                });
+                tuwenScroller.on("scroll",function(){
+                    var y = this.y,
+                        maxY = this.maxScrollY - y,
+                        downHasClass = downIcon.hasClass("reverse_icon"),
+                        upHasClass = upIcon.hasClass("reverse_icon");
+                    
+                    if(y >= 40){
+                        !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松手开始更新');
+                        return "";
+                    }else if(y < 40 && y > 0){
+                        downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉刷新');
+                        return "";
+                    }
+                    
+                    if(maxY >= 40){
+                        !upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松手开始更新');
+                        return "";
+                    }else if(maxY < 40 && maxY >=0){
+                        upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看更多');
+                        return "";
+                    }
+                });
+                tuwenScroller.on("slideUp",function(){
+                    if(this.maxScrollY - this.y > 40){
+                        //alert("slideUp");
+                        upIcon.css('display','none');
+                        pullUpMsg.css('display','none');
+                        upLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            upIcon.css('display','inline-block');
+                            pullUpMsg.css('display','inline-block');
+                            upLoading.css('display','none'); 
+                            $('.goods-wrap').append('');
+                            tuwenScroller.refresh();
+                        },3000);
+                        
+                    }
+                });
+                tuwenScroller.on("slideDown",function(){
+                    if(this.y > 40){
+                        //alert("slideDown");
+                        scrollerPullDown.css({'position':'relative','top':'0'});
+                        downIcon.css('display','none');
+                        pullDownMsg.css('display','none');
+                        downLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            scrollerPullDown.css({'position':'absolute','top':'-0.7rem'});
+                            downIcon.css('display','inline-block');
+                            pullDownMsg.css('display','inline-block');
+                            downLoading.css('display','none'); 
+                            $('.goods-wrap').prepend('');
+                            tuwenScroller.refresh();
+                        },3000);
+                    }
+                });
+            }
+            initTuWenScroll('tuwen1');
+            initTuWenScroll('tuwen2');
+            initTuWenScroll('tuwen3');
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="bg-layer"></div>
+    <article class="tuwen">
+        <div>
+            <div class="tuwen-header">
+                <div class="good-d txt-btn active">全部</div>
+                <div class="param txt-btn">有效</div>
+                <div class="servive txt-btn">失效</div>
+            </div>
+            <div class="tuwen-cont">
+                <div class="swiper-wrapper">
+                   <div class="swiper-slide">
+                        <div class="tuwen1">
+                            <div class="scroller">
+                                <div class="scroller-pullDown">
+                                    <span class="pull-down-icon down-icon"></span>
+                                    <span class="pull-down-msg">下拉刷新</span>
+                                    <span class="loading"></span>
+                                </div>
+                                <div class="record-all">
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待收货</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record1.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">hellokitty抱枕</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class="r-conform-btn">确认收货</div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">已收货</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record2.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">水杯</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record3.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">已使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record4.png" alt="">
+                                                <span class="r-pic-status invilide">失效</span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待收货</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record1.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">hellokitty抱枕</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class="r-conform-btn">确认收货</div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待收货</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record1.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">hellokitty抱枕</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class="r-conform-btn">确认收货</div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待收货</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record1.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">hellokitty抱枕</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class="r-conform-btn">确认收货</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="scroller-pullUp">
+                                    <span class="pull-up-icon up-icon"></span>
+                                    <span class="pull-up-msg">上拉查看更多</span>
+                                    <span class="loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tuwen2">
+                            <div class="scroller">
+                                <div class="scroller-pullDown">
+                                    <span class="pull-down-icon down-icon"></span>
+                                    <span class="pull-down-msg">下拉刷新</span>
+                                    <span class="loading"></span>
+                                </div>
+                                <div class="record-used">
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record3.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record3.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record3.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record3.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record3.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record3.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">待使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record3.png" alt="">
+                                                <span class="r-pic-status"></span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="scroller-pullUp">
+                                    <span class="pull-up-icon up-icon"></span>
+                                    <span class="pull-up-msg">上拉查看更多</span>
+                                    <span class="loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tuwen3">
+                            <div class="scroller">
+                                <div class="scroller-pullDown">
+                                    <span class="pull-down-icon down-icon"></span>
+                                    <span class="pull-down-msg">下拉刷新</span>
+                                    <span class="loading"></span>
+                                </div>
+                                <div class="record-expire">
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">已使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record4.png" alt="">
+                                                <span class="r-pic-status invilide">失效</span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">已使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record4.png" alt="">
+                                                <span class="r-pic-status invilide">失效</span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">已使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record4.png" alt="">
+                                                <span class="r-pic-status invilide">失效</span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">已使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record4.png" alt="">
+                                                <span class="r-pic-status invilide">失效</span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">已使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record4.png" alt="">
+                                                <span class="r-pic-status invilide">失效</span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">已使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record4.png" alt="">
+                                                <span class="r-pic-status invilide">失效</span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="record-item">
+                                        <div class="r-header">
+                                            <span class="r-name">幸运大转盘</span><span class="r-status">已使用</span>
+                                        </div>
+                                        <div class="r-body">
+                                            <div class="r-pic">
+                                                <img src="images/record4.png" alt="">
+                                                <span class="r-pic-status invilide">失效</span>
+                                            </div><div class="r-info">
+                                                <p class="r-title">现金优惠券20元</p>
+                                                <p class="r-date">2010-11-15 20:21:33</p>
+                                            </div><div class=""></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="scroller-pullUp">
+                                    <span class="pull-up-icon up-icon"></span>
+                                    <span class="pull-up-msg">上拉查看更多</span>
+                                    <span class="loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="js/swiper.js"></script>
+            <script>
+            var swiper = new Swiper('.tuwen-cont', {
+                slidesPerView: 1,
+                centeredSlides: true,
+                //loop: true,
+                onSlideNextStart: function(swiper){
+                    var i = $(".tuwen .swiper-slide-active").index();
+                    console.log(i);
+                    $('.tuwen-header .active').removeClass('active');
+                    $('.tuwen-header .txt-btn').eq(i).addClass('active');
+                },
+                onSlidePrevStart: function(swiper){
+                    var i = $(".tuwen .swiper-slide-active").index();
+                    console.log(i);
+                    $('.tuwen-header .active').removeClass('active');
+                    $('.tuwen-header .txt-btn').eq(i).addClass('active');
+                },
+                onSlideChangeEnd: function(swiper){
+                    console.log($(".tuwen .swiper-slide-active")[0]);
+                }
+            });
+            </script>
+        </div>
+    </article>
+    <script>
+        /*图文详情*/
+        $('.tuwen-header .txt-btn').on('tap',function(){
+            $('.tuwen-header .active').removeClass('active');
+            $(this).addClass('active');
+            swiper.slideTo($(this).index(),500,true);
+        });
+        $(".bg-layer").on("tap",function(e){
+            $(".share-area").removeClass('share-area-show');
+            $(".add-area").removeClass('add-area-show');
+            $(".set-recomm").removeClass('set-recomm-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+            $('.m-footer>a.share').find("span").removeClass('on');
+        });
+    </script>
+</body>
+</html>

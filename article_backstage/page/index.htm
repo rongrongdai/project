@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章后台首页</title>
+    <link rel="stylesheet" href="../sass/public.css"/>
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+
+<body>
+    <!--left-->
+        <div class="main_l l fl">
+            <ul class="expmenu" id="empmenu">
+                <li><img src="../images/log.png"> </li>
+                <li>
+                    <h2 class="active">
+                        <span class="l label icon1">首页</span>
+                    </h2>
+                </li>
+                <li>
+                    <h2 class="active">
+                        <span class="l label icon2">文章管理</span>
+                    </h2>
+                </li>
+                <li class="li_bgs">
+                    <h2>
+                        <span class="l label icon3">订单管理</span>
+                        <span class="r arrow down"></span>
+                    </h2>
+                    <ul class="menu">
+                        <li><a href="javascript:void(0);"><img src="../images/icon_list.png"> 订单列表</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="nav_user">
+            <div class="user_box fl">
+                <div class="user_photo fl">
+                    <img src="../images/icon_head_big.png">
+                </div>
+                <ul class="down_menu hide">
+                    <li>
+                        <a><i class="exit"></i>退出</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="arrow fl"></div>
+
+        </div>
+    <!--left-->
+    <!--left-end-->
+    <!--con-->
+    <div class="index">
+        <!--aside-->
+        <div class="user_infobox fl">
+            <div class="cover-img">
+                <div class="userinfo">
+                    <div class="user_photo"><img src="../images/icon_head_big.png"></div>
+                    <div class="text">
+                        <input class="signature" type="text" placeholder="请输入你的个性签名" />
+                        <p class="notice">限12个字以内</p>
+                    </div>
+                    <div class="btn_box">
+                        <input class="btn save" type="submit" value="保存">
+                        <input class="btn cancel" type="submit" value="取消">
+                    </div>
+                    <div class="article_num">
+                        <a href="#" class="all num fl">
+                            <b>2</b>
+                            <span>文章</span>
+                        </a>
+                        <a href="#" class="pass num fl">
+                            <b>4</b>
+                            <span>通过</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--aside-end-->
+        <!--/article_list-->
+        <div class="index_r fl">
+            <div class="box">
+                <div class="header">
+                    <ul class="tit_box">
+                        <li class="tit selected">最新文章</li>
+                    </ul>
+                    <div class="search_box fr">
+                        <input type="search" class="search" placeholder="搜索">
+                        <i class="search_icon"></i>
+                    </div>
+                </div>
+                <ul class="article_list">
+                    <li class="article_info">
+                        <a href="#" class="article_wrap">
+                            <div class="list_l fl">
+                                <p class="time_befo">1小时前</p>
+                                <P class="article_tit">如何区分各种家具的风格？</P>
+                                <div class="article_label">
+                                    <p class="label fl">专题精选/以木之名</p>
+                                    <p class="zan fl">赞：68</p>
+                                    <p class="eval fl">评论：68</p>
+                                </div>
+                            </div>
+                            <div class="list_r fr">
+                                <p class="name fr">不说话的猫</p>
+                                <div class="photo fr"><img src="../images/icon_head_big.png"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--分页-->
+            <div class="pagingA">
+                <p class="num_page">
+                    <a href="javascript:void(0);" class="arrow"><</a>
+                    <a href="javascript:void(0);" class="active">1</a>
+                    <a href="javascript:void(0);">2</a>
+                    <a href="javascript:void(0);">3</a><span class="dot">…</span>
+                    <a href="javascript:void(0);">6</a>
+                    <a href="javascript:void(0);" class="arrow">></a>
+                    <input type="text" class="page_box">
+                    <span>页</span>
+                    <input type="button" class="page_box page_btn" value="确定">
+                    <span> 共<i>235</i>条记录</span>
+                    <span> 共<i>7</i>页</span>
+                </p>
+            </div>
+        </div>
+        <!--/article_list-end-->
+
+    </div>
+</body>
+</html>

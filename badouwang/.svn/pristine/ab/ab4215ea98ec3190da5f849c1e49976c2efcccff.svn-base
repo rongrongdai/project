@@ -1,0 +1,7 @@
+<?php
+    define('APP_NAME','Api');
+    define('APP_PATH','./Api/');
+    define('BUILD_DIR_SECURE', false);
+    define('APP_DEBUG',TRUE);
+    require './core/ThinkPHP.php';
+?> 

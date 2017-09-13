@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#3f3f3f;}
+        /*iscroll*/
+        #wrapper {width:100%;overflow: hidden;position: absolute;bottom:0rem;top: 0rem;background-color:#fff;left:0;border-radius:0.06rem;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;border-radius:0.06rem;}
+        .invite-h1{font-size:0.36rem;text-align: center;    margin: 1.15rem auto 0.5rem auto;}
+        .invite-h2{font-size:0.22rem;text-align: center;}
+        .img-wrap{width:3.5rem;margin:1rem auto;}
+        .img-wrap>img{width:100%;}
+        .save-btn{font-size:0.3rem;width:2.02rem;height:0.6rem;line-height:0.6rem;color:#fff;background-color:#bdbdbd;border-radius:0.06rem;margin: 0 auto;text-align: center;}
+        
+        .saved-msg{width: 1.82rem;position: fixed;top: 4.1rem;background-color: rgba(0,0,0,.8);font-size: 0.22rem;text-align: center;color: #fff;z-index: 5;left: 50%;margin-left: -0.91rem;display:none;}
+        .saved-msg-show{display:block;}
+        .saved-msg>img{width: 1.2rem;margin: 0.2rem 0 0.3rem 0;}
+        .saved-msg>p{margin: 0 0 0.3rem 0;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <p class="invite-h1">邀请好友，一起来赚钱</p>
+                <p class="invite-h2">请好友通过扫描二维码成功注册成为我的下级</p>
+                <div class="img-wrap"><img src="images/my/code.png" alt=""></div>
+                <div class="save-btn">保存图片</div>
+            </div>
+        </div>
+    </article>
+    <div class="saved-msg">
+        <img src="images/saved.png" alt="">
+        <p>已保存到系统相册</p>
+    </div>
+    <script>
+        $('.save-btn').on('tap',function(){
+            $('.saved-msg').addClass('saved-msg-show');
+            setTimeout(function(){
+                $('.saved-msg').removeClass('saved-msg-show');
+            },2000);
+        });
+    </script>
+</body>
+</html>

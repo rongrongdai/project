@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>安徽B2B</title>
+<link href="../css/public.css" rel="stylesheet" type="text/css" />
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="../css/hbcss.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../js/public.js"></script>
+<style>
+    .hb_r_jbxx {height: auto;}
+    .hb_r_jbxx1 {height: auto;}
+    .sns-config .sns-nf p {
+    line-height: 25px;
+    padding-left: 6em;
+    position: relative;
+}
+ .bd {
+    min-height: 390px;
+}
+.bd {
+    border-top: 0 none;
+}
+.bd {
+    background-color: #fff;
+    padding: 10px;
+    position: relative;
+}
+.sns-nf p {
+    line-height: 25px;
+    padding-left: 6em;
+    position: relative;
+}
+.sns-nf p {
+    line-height: 25px;
+    margin-bottom: 10px;
+    min-height: 25px;
+}
+.sns-nf label {
+    display: block;
+    height: 26px;
+    left: 0;
+    line-height: 26px;
+    position: absolute;
+    vertical-align: middle;
+}
+.sns-nf .label, .sns-nf label {
+    color: #333;
+    display: inline-block;
+    vertical-align: top;
+    width: 6em;
+}
+.sns-nf label.except {
+    display: inline;
+    margin-right: 10px;
+    position: static;
+    width: auto;
+}
+.sns-nf p select {
+    color: #666;
+    font-size: 13px;
+}
+ .sns-nf sub {
+    bottom: 0;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+.sns-nf p sub {
+    bottom: -5px;
+    color: #989898;
+    font-size: 12px;
+    font-style: normal;
+    margin-left: 1em;
+    position: relative;
+}
+.sns-nf p {
+    line-height: 25px;
+}
+.sns-nf label em {
+    color: #999;
+    left: -12px;
+    position: absolute;
+    top: 4px;
+}
+ .parts {
+    border-bottom: 1px solid #dfdfdf;
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+ .act .btn {
+    
+}
+.btn a, .btn button {
+    border: 0 none;
+    cursor: pointer;
+    display: block;
+    line-height: 24px;
+    padding: 2px 11px;
+    margin-left: 6em;
+    background-color: #6ec884;
+    color: #fff;
+    border-radius: 4px;
+    height: 24px;
+}
+.btn a:hover, .btn button:hover {
+    background-color: #15c28b;
+    color: #fff;
+}
+.pf-avatar-box {
+    border: 3px solid #e6e6e6;
+    display: inline-block;
+    height: 80px;
+    position: relative;
+    width: 80px;
+}
+.pf-avatar-box .pf-avatar {
+    display: table-cell;
+    height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    width: 80px;
+}
+.pf-avatar img {
+    vertical-align: middle;
+}
+fieldset, img {
+    border: 0 none;
+}
+    .f-txt {border: 1px solid #c1cde1;padding: 5px;width: 280px;}
+</style>
+</head>
+
+<body>
+<!--top 开始-->
+<!--#include virtual="/include/top.html"-->
+<!--top 结束-->
+<div class="content">
+    <!--和包导航 开始-->
+	<!--#include virtual="/include/hb_top.html"-->    
+    <!--和包导航 结束-->
+    
+    <div class="hb_mbx">
+    	<a href="#">我的和包</a> > <a href="#">个人中心</a> > 个人资料
+    </div>
+    <div class="clear"></div>
+    
+    <div class="hb_cont">   
+        <div class="hb_cont_r">
+        	<div class="hb_r_jbxx">
+            	<div class="hb_r_jbxx1">
+                <div class="bd">
+                <div class="sns-nf">
+                <form class="infoForm" method="post" name="baseInfoForm" id="baseInfoForm">
+                    <div class="parts" id="main-profile">
+                        <p>
+                            <label>当前头像：</label>
+                            <span class="pf-avatar-box">
+                                <a class="pf-avatar">
+                                    <img src="">
+                                </a>
+                                <a class="pf-edit-avatar" href="//i.taobao.com/user/headset.htm" style="display: none;">编辑头像</a>
+                            </span>
+                        </p>
+                        <p>
+                            <label>昵称：<em>*</em></label>
+                            <input type="text" maxlength="25" value="" class="f-txt" id="J_uniqueName-mask">
+                        </p>
+                        <p>
+                            <label>真实姓名：</label>
+                            <input type="text" maxlength="6" value="" class="f-txt" id="J_realname-mask">
+                        </p>
+                        <p>
+                            <label>性别：<em>*</em></label>
+                            <label class="except" for="J_gender1"><input type="radio" value="0" name="_fm.b._0.g" id="J_gender1">男</label>
+                            <label class="except" for="J_gender2"><input type="radio" checked="checked" value="1" name="_fm.b._0.g" id="J_gender2">女</label>
+                        </p>
+                        <p>
+                            <label>生日：</label>
+                            <select name="_fm.b._0.y" id="J_Year">
+                                <option>年</option>
+                                <option value="1940">1940</option>
+                                <option value="1941">1941</option>
+                                <option value="1942">1942</option>
+                                <option value="1943">1943</option>
+                                <option value="1944">1944</option>
+                                <option value="1945">1945</option>
+                                <option value="1946">1946</option>
+                                <option value="1947">1947</option>
+                                <option value="1948">1948</option>
+                                <option value="1949">1949</option>
+                                <option value="1950">1950</option>
+                                <option value="1951">1951</option>
+                                <option value="1952">1952</option>
+                                <option value="1953">1953</option>
+                                <option value="1954">1954</option>
+                                <option value="1955">1955</option>
+                                <option value="1956">1956</option>
+                                <option value="1957">1957</option>
+                                <option value="1958">1958</option>
+                                <option value="1959">1959</option>
+                                <option value="1960">1960</option>
+                                <option value="1961">1961</option>
+                                <option value="1962">1962</option>
+                                <option value="1963">1963</option>
+                                <option value="1964">1964</option>
+                                <option value="1965">1965</option>
+                                <option value="1966">1966</option>
+                                <option value="1967">1967</option>
+                                <option value="1968">1968</option>
+                                <option value="1969">1969</option>
+                                <option value="1970">1970</option>
+                                <option value="1971">1971</option>
+                                <option value="1972">1972</option>
+                                <option value="1973">1973</option>
+                                <option value="1974">1974</option>
+                                <option value="1975">1975</option>
+                                <option value="1976">1976</option>
+                                <option value="1977">1977</option>
+                                <option value="1978">1978</option>
+                                <option value="1979">1979</option>
+                                <option value="1980">1980</option>
+                                <option value="1981">1981</option>
+                                <option value="1982">1982</option>
+                                <option value="1983">1983</option>
+                                <option value="1984">1984</option>
+                                <option value="1985">1985</option>
+                                <option value="1986">1986</option>
+                                <option value="1987">1987</option>
+                                <option value="1988">1988</option>
+                                <option value="1989">1989</option>
+                                <option value="1990">1990</option>
+                                <option value="1991">1991</option>
+                                <option value="1992">1992</option>
+                                <option value="1993">1993</option>
+                                <option value="1994">1994</option>
+                                <option value="1995">1995</option>
+                                <option value="1996">1996</option>
+                                <option value="1997">1997</option>
+                                <option value="1998">1998</option>
+                                <option value="1999">1999</option>
+                                <option value="2000">2000</option>
+                                <option value="2001">2001</option>
+                                <option value="2002">2002</option>
+                                <option value="2003">2003</option>
+                                <option value="2004">2004</option>
+                                <option value="2005">2005</option>
+                                <option value="2006">2006</option>
+                                <option value="2007">2007</option>
+                                <option value="2008">2008</option>
+                                <option value="2009">2009</option>
+                                <option value="2010">2010</option>
+                                <option value="2011">2011</option>
+                                <option value="2012">2012</option>
+                                <option value="2013">2013</option>
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                            </select>
+                            <select name="_fm.b._0.m" id="J_Month">
+                                <option>月</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <select name="_fm.b._0.d" id="J_Date">
+                                <option>日</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                            <sub>（出生年份为保密）</sub>
+                            <span>星座：</span>
+                            <select disabled="disabled" name="astro" id="astro">
+                                <option value="射手座">射手座</option>
+                            </select>
+                        </p>
+                        <div style="display:none;" id="J_birthdayTip" class="sns-msg">
+                        </div>
+                            <p>
+                                <label>居住地：</label>
+                                <select id="J_redstar_province" name="_fm.b._0.p">
+                                    <option value=""></option>
+                                    <option value="110000">北京</option>
+                                    <option value="120000">天津</option>
+                                    <option value="130000">河北省</option>
+                                    <option value="140000">山西省</option>
+                                    <option value="150000">内蒙古自治区</option>
+                                    <option value="210000">辽宁省</option>
+                                    <option value="220000">吉林省</option>
+                                    <option value="230000">黑龙江省</option>
+                                    <option value="310000">上海</option>
+                                    <option value="320000">江苏省</option>
+                                    <option value="330000">浙江省</option>
+                                    <option value="340000">安徽省</option>
+                                    <option value="350000">福建省</option>
+                                    <option value="360000">江西省</option>
+                                    <option value="370000">山东省</option>
+                                    <option value="410000">河南省</option>
+                                    <option value="420000">湖北省</option>
+                                    <option value="430000">湖南省</option>
+                                    <option value="440000">广东省</option>
+                                    <option value="450000">广西壮族自治区</option>
+                                    <option value="460000">海南省</option>
+                                    <option value="500000">重庆</option>
+                                    <option value="510000">四川省</option>
+                                    <option value="520000">贵州省</option>
+                                    <option value="530000">云南省</option>
+                                    <option value="540000">西藏自治区</option>
+                                    <option value="610000">陕西省</option>
+                                    <option value="620000">甘肃省</option>
+                                    <option value="630000">青海省</option>
+                                    <option value="640000">宁夏回族自治区</option>
+                                    <option value="650000">新疆维吾尔自治区</option>
+                                    <option value="710000">台湾省</option>
+                                    <option value="810000">香港特别行政区</option>
+                                    <option value="820000">澳门特别行政区</option>
+                                    <option value="990000">海外</option>
+                                </select>
+                                <select id="J_redstar_city" name="_fm.b._0.c">
+                                    <option value="120100">天津市</option>
+                                </select>
+                                <select id="J_redstar_area" name="_fm.b._0.a">
+                                    <option value=""></option>
+                                    <option value="120101">和平区</option>
+                                    <option value="120102">河东区</option>
+                                    <option value="120103">河西区</option>
+                                    <option value="120104">南开区</option>
+                                    <option value="120105">河北区</option>
+                                    <option value="120106">红桥区</option>
+                                    <option value="120107">塘沽区</option>
+                                    <option value="120108">汉沽区</option>
+                                    <option value="120109">大港区</option>
+                                    <option value="120110">东丽区</option>
+                                    <option value="120111">西青区</option>
+                                    <option value="120112">津南区</option>
+                                    <option value="120113">北辰区</option>
+                                    <option value="120114">武清区</option>
+                                    <option value="120115">宝坻区</option>
+                                    <option value="120116">滨海新区</option>
+                                    <option value="120221">宁河县</option>
+                                    <option value="120223">静海县</option>
+                                    <option value="120225">蓟县</option>
+                                    <option value="120226">其它区</option>
+                                </select>
+                            </p>
+                            <div style="display:none;" id="J_redstarTip" class="sns-msg">
+                                <p class="error">居住地所在的省市区为必填项！</p>
+                            </div>
+                            <p>
+                            <label>家乡：</label>
+                            <select name="_fm.b._0.ho" id="J_live_province">
+                                <option value=""></option>
+                                <option value="110000">北京</option>
+                                <option value="120000">天津</option>
+                                <option value="130000">河北省</option>
+                                <option value="140000">山西省</option>
+                                <option value="150000">内蒙古自治区</option>
+                                <option value="210000">辽宁省</option>
+                                <option value="220000">吉林省</option>
+                                <option value="230000">黑龙江省</option>
+                                <option value="310000">上海</option>
+                                <option value="320000">江苏省</option>
+                                <option value="330000">浙江省</option>
+                                <option value="340000">安徽省</option>
+                                <option value="350000">福建省</option>
+                                <option value="360000">江西省</option>
+                                <option value="370000">山东省</option>
+                                <option value="410000">河南省</option>
+                                <option value="420000">湖北省</option>
+                                <option value="430000">湖南省</option>
+                                <option value="440000">广东省</option>
+                                <option value="450000">广西壮族自治区</option>
+                                <option value="460000">海南省</option>
+                                <option value="500000">重庆</option>
+                                <option value="510000">四川省</option>
+                                <option value="520000">贵州省</option>
+                                <option value="530000">云南省</option>
+                                <option value="540000">西藏自治区</option>
+                                <option value="610000">陕西省</option>
+                                <option value="620000">甘肃省</option>
+                                <option value="630000">青海省</option>
+                                <option value="640000">宁夏回族自治区</option>
+                                <option value="650000">新疆维吾尔自治区</option>
+                                <option value="710000">台湾省</option>
+                                <option value="810000">香港特别行政区</option>
+                                <option value="820000">澳门特别行政区</option>
+                                <option value="990000">海外</option>
+                            </select>
+                            <select name="_fm.b._0.hom" id="J_live_city">
+                                <option value=""></option>
+                                <option value="420100">武汉市</option>
+                                <option value="420200">黄石市</option>
+                                <option value="420300">十堰市</option>
+                                <option value="420500">宜昌市</option>
+                                <option value="420600">襄阳市</option>
+                                <option value="420700">鄂州市</option>
+                                <option value="420800">荆门市</option>
+                                <option value="420900">孝感市</option>
+                                <option value="421000">荆州市</option>
+                                <option value="421100">黄冈市</option>
+                                <option value="421200">咸宁市</option>
+                                <option value="421300">随州市</option>
+                                <option value="422800">恩施土家族苗族自治州</option>
+                                <option value="429004">仙桃市</option>
+                                <option value="429005">潜江市</option>
+                                <option value="429006">天门市</option>
+                                <option value="429021">神农架林区</option>
+                            </select>
+                            <select name="_fm.b._0.home" id="J_live_area">
+                                <option value=""></option>
+                                <option value="421102">黄州区</option>
+                                <option value="421121">团风县</option>
+                                <option value="421122">红安县</option>
+                                <option value="421123">罗田县</option>
+                                <option value="421124">英山县</option>
+                                <option value="421125">浠水县</option>
+                                <option value="421126">蕲春县</option>
+                                <option value="421127">黄梅县</option>
+                                <option value="421181">麻城市</option>
+                                <option value="421182">武穴市</option>
+                                <option value="421183">其它区</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class="act skin-blue">
+                        <span class="btn n-btn">
+                            <button id="J_saveProfile" type="submit">保存</button>
+                            <div style="width:1px; height:1px; overflow:hidden; ">
+                                <input type="submit">
+                            </div>
+                        </span>
+                    </div>
+                </form>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

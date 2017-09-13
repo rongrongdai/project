@@ -1,0 +1,43 @@
+a{ text-decoration:none;}
+ul,ol {list-style:none;}
+p{ margin:0;}
+.yuek-all{ width:1200px; margin:0 auto;}
+.yuek-all .top{ height:34px; line-height:34px; font-size:12px; border-bottom:2px solid #009170; margin-bottom:15px;}
+.yuek-all .top a{color: #333333;}
+.yuek-all .top a:hover{ color:#00b38a;}
+
+.yuek-all .top-y{ border:1px #C0CFCB solid;}
+.yuek-all .top-y .ye{ border-bottom:1px solid #009170; padding:10px 20px; color:#333333; font-size:12px; margin-bottom:10px;}
+.yuek-all .top-y .top-ycen{ width:1090px; margin:0 auto;}
+.yuek-all .top-y .top-ycen .cey{ height:80px; border-bottom:1px solid #009170; margin-bottom:10px; }
+.yuek-all .top-y .top-ycen .cey .cer{ width:750px; float:left; border-right:1px #C0CFCB solid;}
+.yuek-all .top-y .top-ycen .cey .cer img{ width:65px; height:65px; border-radius:65px; float:left;}
+.yuek-all .top-y .top-ycen .cey .cer .cere{ float:left; font-size:12px; color:#333333; margin-left:5px; }
+.yuek-all .top-y .top-ycen .cey .cer .cere .py{font-size:14px; margin:5px 0px;}
+.yuek-all .top-y .top-ycen .cey .cer .cere .pe{ color:#FF3333; margin:5px 0px;}
+
+.yuek-all .top-y .top-ycen .cey .cesi{ float:right; width:330px; text-align:center; margin-top:20px; font-size:14px; color:#333333;}
+.yuek-all .top-y .top-ycen .cey .cesi span{ color:#FF3333;}
+.yuek-all .top-y .top-ycen .web{ margin-bottom:20px; height:620px;}
+.yuek-all .top-y .top-ycen .web .webons{ border:1px #C0CFCB solid; width:690px;  float:left;}
+.yuek-all .top-y .top-ycen .web .webons .cen{ background:#f9f9f9; padding:13px 15px; font-size:14px; color:#333333;  border-bottom:1px solid #C0CFCB;}
+.yuek-all .cen select{width:82px;margin-left:20px;}
+.yuek-all .top-y .top-ycen .web .webons .cen p ,.yuek-all .top-y .top-ycen .web .webons .cen input{ margin:10px 3px;}
+.yuek-all .top-y .top-ycen .web .webons .cen span{ margin-right:20px;}
+.yuek-all .top-y .top-ycen .web .webons .cen .any{ font-size:12px; border-radius:6px; line-height:25px; border:1px #C0CFCB solid; text-align:center; width:50px; padding:5px;}
+.yuek-all .top-y .top-ycen .web .webons .cen .any:hover{background:#fc9f31; color:#FFF; cursor:pointer;}
+.yuek-all .top-y .top-ycen .web .webons .kse{ margin:10px; border:1px solid #C0CFCB;}
+.kse .bdel{cursor:pointer;}
+.yuek-all .top-y .top-ycen .web .webons .kse .te{background:#f9f9f9; height:35px;}
+.yuek-all .top-y .top-ycen .web .webons .kse td{ width:130px; text-align:center; color:#333333; font-size:12px; line-height:30px;}
+.yuek-all .top-y .top-ycen .web .webons .kse table .bj{color:#0066FF;}
+.yuek-all .top-y .top-ycen .web .webons .time{ font-size:16px; color:#FF9900; margin-left:20px;}
+.yuek-all .top-y .top-ycen .web .webons .timey{ color:#333333;  font-size:12px; margin:14px 10px;}
+.yuek-all .top-y .top-ycen .web .webons textarea{resize:none; padding:4px; margin-bottom:10px; margin-left:15px;}
+.yuek-all .top-y .top-ycen .web .webons .ps{ margin-left:530px; color:#6699FF; font-size:14px;}
+.yuek-all .top-y .top-ycen .web .webons .anyw{ font-size:12px; border-radius:6px; line-height:25px; border:1px #C0CFCB solid; text-align:center; width:50px; padding:5px; margin-bottom:10px; margin-left:20px;}
+.yuek-all .top-y .top-ycen .web .webons .anyw:hover{background:#fc9f31; color:#FFF; cursor:pointer;}
+
+.yuek-all .top-y .top-ycen .web .cen-rith{ float:right; width:380px; }
+.yuek-all .top-y .top-ycen .web .cen-rith .cel{font-size:13px; color:#333333; text-align:center; margin:10px 0px;}
+.yuek-all .top-y .top-ycen .web .cen-rith .cen-ric{border:1px #C0CFCB solid; height:230px;}

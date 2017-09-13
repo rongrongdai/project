@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗-个人中心</title>
+<link href="css/Individualcenter.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <div class="Thehead">
+        <div class="Thehead-y">
+          <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="images/logo.png" />
+          <input type="text" id="theheadyi" placeholder="请输入你要搜索的搜索"/>
+          <div class="Thehead-yi">
+            <a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="images/sousuo.png" /></a>
+          </div>
+          <div class="Thehead-er">
+           <a href="#">首页</a>
+           <a href="#">家教</a>
+           <a href="#">培训</a>
+           <a href="#">在线考试</a>
+          </div>
+       </div>
+      
+       
+    </div>
+    
+    <div class="Contentall">
+        <div class="Contentone">
+           <div class="Contentoneyi">
+              <h3 class="wenyi"><a href="#">我的八斗网</a></h3>
+              <div class="wener">
+                <div class="weneryi"></div>
+                <div class="wenerer">
+                 <span>迷糊：</span>
+                 <input type="button" value="会员" />
+                </div>
+              </div>
+           </div>
+           
+           <div class="Contentoneer">
+               <div class="Contentoneeryi">
+                  <div class="wenall">
+                  <p class="spanyi">可用积分</p>
+                  <p class="spaner">10</p>
+                  <p class="spansan">
+	                 签到送积分
+                  </p>
+                  </div>
+               </div>
+               
+               <div class="Contentoneerer">
+                 <div class="wenall">
+                  <p class="spanyi">抵用券</p>
+                  <p class="spaner">10 张</p>
+                  <p class="spansan">
+	                 查看抵用券
+                  </p>
+                  </div>
+               </div>
+               <div class="Contentoneersan">
+                  <div class="wenall">
+                  <p class="spanyi">礼品卡</p>
+                  <p class="spaner">10 ￥</p>
+                  <p class="spansan">
+	                 查看礼品卡
+                  </p>
+                  </div>
+               </div>
+               <div class="Contentoneersi">
+                     <p class="spansi">账户安全：</p>
+                     <p class="spanwu">低：</p>
+                     <div class="upProgress"></div>
+                     <p class="spanliu"><a href="#">提升</a></p>
+               </div>
+           </div> 
+        </div>
+        
+        <div class="Contenttwo">
+             <dl>
+                <dt><i class="icon_img"></i>
+                <span class="tit_big">会员资料</span></dt>
+                <dd><a href="Personalsetting.html" target="ifrm">个人设置</a></dd>
+                <dd><a href="Changepassword.html" target="ifrm">修改密码</a></dd>
+                <dd><a href="#">预约报名</a></dd>
+                <dd><a href="#">我的勋章</a></dd>
+                <dd><a href="#">我的联名卡</a></dd>
+                <dd><a href="#">快捷支付管理</a></dd>
+                <dd>
+                    <hr size="1">
+                </dd>
+            </dl>
+        
+            <dl>
+                <dt><i class="icon_img"></i>
+                <span class="tit_big">交易中心</span></dt>
+                <dd><a href="#">我的订单</a></dd>
+                <dd><a href="#">评论商品</a></dd>
+                <dd><a href="#">以旧换新</a></dd>
+                <dd><a href="#">我的试用品</a></dd>
+                <dd><a href="#">我的赠品</a></dd>
+                <dd><a href="#">我的彩票</a></dd>
+                <dd>
+                    <hr size="1">
+                </dd>
+            </dl>
+       
+            <dl>
+                <dt><i class="icon_img"></i>
+                <span class="tit_big">我的资产</span></dt>
+                <dd><a href="#">我的积分</a></dd>
+                <dd><a href="#">我的抵用券</a></dd>
+                <dd><a href="#">我的礼品卡</a></dd>
+                <dd><a target="_blank" href="#">1金融</a></dd>
+                <dd><a href="#">账户余额</a></dd>
+                <dd>
+                    <hr size="1">
+                </dd>
+            </dl>
+  
+            <dl>
+                <dt><i class="icon_img"></i>
+                <span class="tit_big">在线客服</span></dt>
+                <dd><a href="#">在线投诉</a></dd>
+                <dd><a href="#">在线退换货</a></dd>
+                <dd><a href="#">发票中心</a></dd>
+                <dd><a href="#">我的消息</a></dd>
+                <dd>
+                    <hr size="1">
+                </dd>
+            </dl>
+                     
+        </div>
+      
+        <div class="Contentthree">
+         <iframe src="Personalsetting.html" name="ifrm" id="" scrolling="auto" frameborder="0" width="850px" height="850px" />
+        </div>
+      
+    </div>
+    
+</body>
+</html>

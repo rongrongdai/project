@@ -1,0 +1,87 @@
+<?php
+/**
+ * 
+ * @author fanbo
+ */
+class MapService {
+    private static $key='9f5703253d6926ecce6928a37c0e6a67';
+    private static $tableid='55a715c1e4b0a76fce24e3bd';
+    private static function init($table){
+        switch($table){
+            case 'user':
+                self::$tableid='55a715c1e4b0a76fce24e3bd';
+                break;
+            case 'teach':
+                self::$tableid='55a72f0ee4b0a76fce2529e6';
+                break;
+            case 'course':
+                self::$tableid='55a72f46e4b0a76fce252a0d';
+                break;
+        }
+    }
+    //初始化，建表
+    private static function dopost($data,$url){
+        $ch = curl_init();
+        $headers = array('Content-Type: application/x-www-form-urluncoded');
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, $headers);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return $output;
+    }
+    //初始化表
+    public static function inittable(){
+        $url='http://yuntuapi.amap.com/datamanage/table/create';
+        $param=array('key'=>self::$key,'name'=>'badoumap');
+        $res=self::dopost($param, $url);
+        if($res['status']==='1'){
+            return $res['tableid'];
+        }else{
+            return 'table_create_fail';
+        }
+    }
+    //创建单条数据
+    public static function createSingle($table,$param){
+        self::init($table);
+        $url='http://yuntuapi.amap.com/datamanage/data/create';
+        $para=array('loctype'=>2,'key'=>self::$key,'tableid'=>self::$tableid,'data'=>json_encode($param));
+        $str=self::dopost($para,$url);
+        $res=  substr($str, strpos($str, '{'));
+        return json_decode($res,TRUE);
+    }
+    //修改单条数据
+    public static function updateSingle($table,$oid,$param){
+        self::init($table);
+        $url='http://yuntuapi.amap.com/datamanage/data/update';
+        $para=array('tableid'=>self::$tableid,'oid'=>$oid,'loctype'=>'2','data'=>  json_encode($param));
+        $str=self::dopost($para,$url);
+        $res=  substr($str, strpos($str, '{'));
+        return json_decode($res,true);
+    }
+    //修改用户数据
+    public static function modifyUser(){
+            $uql="select user.type,fields.user_pic,fields.lab,user.gd_id,fields.rname,fields.address,fields.content,fields.sex from bd_user user left join bd_memberfields fields on fields.uid=user.uid where user.uid='$uid'";
+            $uda=M('User')->query($uql);
+            $par=array('_name'=>$uda[0]['rname'],'rname'=>$uda[0]['rname'],'_address'=>  str_replace('-','',$uda[0]['address']),'uid'=>$uid,'desp'=>$uda[0]['content'],'u_lab'=>$uda[0]['lab'],'user_pic'=>$uda[0]['user_pic'],'type'=>$uda[0]['type'],'sex'=>$uda[0]['sex']);
+            
+            if($uda[0]['gd_id']){
+                MapService::updateSingle('user', $uda[0]['gd_id'], $par);
+            }else{
+                $res=MapService::createSingle('user', $par);
+                if($res['_id']){
+                    M('User')->where("uid='$uid'")->setField('gd_id',$res['_id']);
+                }
+            }
+    }
+    //修改家教信息
+    public static function modifyTeach(){
+        $tsql="";
+    }
+    //修改培训信息
+    public static function modifyOrgan(){
+        
+    }
+}

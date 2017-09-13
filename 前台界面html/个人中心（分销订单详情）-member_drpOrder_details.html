@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {width: 100%;overflow: hidden;position:absolute;bottom:0;top:0;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width:100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        /*分销订单信息*/
+        .order-body{font-size:0.24rem;}
+        .order-body .o-no{line-height:0.68rem;background-color:#fff;padding: 0 0.24rem;margin: 0.2rem 0;}
+        .order-body .o-no .o-status{float:right;}
+        .order-body .o-info1{margin: 0.2rem 0;font-size:0.26rem;}
+        .order-body .o-info1>div{border-bottom:1px solid #eeeef1;background-color:#fff;padding: 0.2rem 0.24rem 0 0.24rem;}
+        .order-body .o-info1>div>p{padding:0 0 0.2rem 0;}
+        .order-body .o-info1>div>p>span:first-child{color:#6e6e6e;}
+        .order-body .o-info1>div>p>span:last-child{color:#b8b8b8;}
+        .order-body .o-goods{padding:0 0.24rem;box-sizing: border-box;-webkit-box-sizing: border-box;-ms-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;border-bottom:1px solid #eeeef1;background-color:#fff;margin: 0.2rem 0;}
+        .order-body .o-goods .o-good{border-bottom:1px solid #eeeef1;padding: 0.2rem 0;overflow:auto;}
+        .order-body .o-goods .o-good>div{float:left;}
+        .order-body .o-goods .o-good .o-img-wrap{width:1.6rem;height:1.6rem;}
+        .order-body .o-goods .o-good .o-img-wrap img{width:100%;height:100%;}
+        .order-body .o-goods .o-good .o-info{width: 70%;margin-left: 0.15rem;}
+        .order-body .o-goods .o-good .o-info>div:nth-child(2){margin-top:0.3rem;}
+        .order-body .o-goods .o-good .o-info>div:first-child{position:relative;font-size:0.2rem;}
+        .order-body .o-goods .o-good .o-info .o-title{display: inline-block;vertical-align:top;width: 70%;}
+        .order-body .o-goods .o-good .o-info .o-price{position:absolute;top:0;right:0;}
+        .order-body .o-goods .o-good .o-info .o-num{float:right;}
+        .order-body .o-goods .o-good .o-details{font-size:0.2rem;color:rgba(51,51,51,.5);}
+        .order-body .o-info2{text-align: right;width: 100%;}
+        .order-body .o-info2 .o-del{margin:0.04rem 0.24rem 0.24rem 0.24rem;width:1.28rem;line-height: 0.66rem;text-align: center;border: 1px solid #7f7f7f;display: inline-block;border-radius: 0.1rem;}
+
+        /*删除提示窗*/
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index: 3;position: fixed;display:none;}
+        .alert{width: 76.5625%;background: #fff;z-index: 4;position: fixed;font-size: 0.28rem;text-align: center;border-radius: 0.1rem;top: -100%;left: 11.71875%;-webkit-animation: animDialog .4s ease-out;animation: animDialog .4s ease-out;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 10ms;display:none;}
+        .alert-show{display:block;top: 22%;}
+        @-webkit-keyframes animDialog {
+         from{-webkit-transform: scale(.05);transform: scale(.05);}
+         to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        @keyframes animDialog {
+          from{-webkit-transform: scale(.05);transform: scale(.05);}
+          to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        .alert .a-info{padding:0.33rem 0.3rem 0.15rem 0.3rem;border-bottom: 1px solid #eeeef1;min-height: 0.7rem;}
+        .alert .a-btn>div{width: 50%;float: left;    height: 0.62rem;line-height: 0.62rem;color:#226bfb;}
+        .alert .a-btn .cancel{border-right: 1px solid #eeeef1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article  id="wrapper">
+        <div class="order-body" id="scroller">
+            <div class="o-no"><span>订单号：852155669966</span><span class="o-status">待发货</span></div>
+            <div class="o-goods">
+                <div class="o-good">
+                    <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                    <div class="o-info">
+                      <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                      <div><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                      <p class="o-details">适用人数：组合</p>
+                    </div>
+                </div>
+                <div class="o-good">
+                    <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                    <div class="o-info">
+                      <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                      <div><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                      <p class="o-details">适用人数：组合</p>
+                    </div>
+                </div>
+                <div class="o-good">
+                    <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                    <div class="o-info">
+                      <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                      <div><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                      <p class="o-details">适用人数：组合</p>
+                    </div>
+                </div>
+                <div class="o-good">
+                    <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                    <div class="o-info">
+                      <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                      <div><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                      <p class="o-details">适用人数：组合</p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="o-info1">
+                <div>
+                    <p><span>买家上级：</span><span>张三</span></p>
+                    <p><span>买家：</span><span>小7</span></p>
+                </div>
+                <div>
+                    <p><span>订单金额(含运费)：</span><span>￥9658.00</span></p>
+                    <p><span>订单可得佣金：</span><span>￥2.00</span></p>
+                </div>
+                <div>
+                    <p><span>下单时间：</span><span>2015/11/12  11:30:11</span></p>
+                    <p><span>付款时间：</span><span>2015/11/12  11:30:11</span></p>
+                </div>
+            </div>
+            <div class="o-info2"><span class="o-del">删除</span></div>
+        </div>
+    </article>
+    <div class="bg-layer"></div>
+    <div class="alert">
+        <div class="a-info">确定删除订单？</div>
+        <div class="a-btn">
+            <div class="cancel">取消</div>
+            <div>确认</div>
+        </div>
+    </div>
+    
+    <script>
+         /*删除提示窗*/
+        $('.o-del').on('tap',function(){
+            $('.bg-layer').css('display','block');
+            $('.alert').addClass('alert-show');
+        });
+        $('.bg-layer').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+        $('.alert .cancel').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+    </script>
+</body>
+</html>

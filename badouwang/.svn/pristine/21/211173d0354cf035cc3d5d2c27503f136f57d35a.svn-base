@@ -1,0 +1,345 @@
+<?php
+
+/**
+ * 网站配置
+ *
+ * @author 樊波
+ */
+class ImageHandler{
+    public  function handle($data){
+        if($data['imgname']){
+          
+            return substr($data['imgname'], strpos($data['imgname'], '/upload'));
+        }
+    }
+}
+class BasicConfigAction extends CommonAction{
+    //网站配置首页
+    private $model;
+    protected $config_name="webconfig";
+    protected $config_info="网站基本配置";
+    public function __construct() {
+        $this->model=new ConfigModel();
+        parent::__construct();
+    }
+    public function index(){
+        $position='<span><a>网站设置></a></span><span>网站设置</span>';
+        $config=$this->model->where("c_name='webconfig'")->field('c_key,c_value')->select();
+        foreach ($config as $key=>$val){
+            $this->assign($val['c_key'],$val['c_value']);
+        }
+        $this->assignData(array('mmenu'=>'webconfig','smenu'=>'w_config'), 'assign');
+        $this->assignData(array('position'=>$position,'token'=> md5('unique_salt'.time()),'timestamp'=>time()),'assign');
+        $this->display();
+    }
+    private function upImg($model,$res){
+         //上传图片
+        if($_FILES['web_img']['name']){
+                    import("Com.FileHelper");
+                    $pre=  substr(__DIR__,0,  strpos(__DIR__, 'admin'));
+                    $uploadfile=$pre.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'log.jpg';
+                    $val=  FileHelper::saveFile($uploadfile,'web_img', array('extension'=>array('jpg','png','gif'),'size'=>(int)C('IMG_LIMIT_SIZE')*1024), new ImageHandler());
+                    if($val===true){
+                        $data=array('c_name'=>$this->config_name,'c_info'=>$this->config_info,'timestamp'=>time(),'c_key'=>'web_img','c_value'=>$val);
+                        $res=$this->model->save($data);
+                        return true;
+                    }else{
+                        return $val;
+                    }
+                    
+                    
+                }
+    }
+    //保存网站配置
+    public function saveConfig(){
+        $afield=$this->model->query("select distinct c_key from bd_config where c_name='$this->config_name'");
+        if(!$afield){
+            $res=true;
+            foreach($_POST as $key=>$val){
+                $data=array('c_name'=>$this->config_name,'c_info'=>$this->config_info,'timestamp'=>time(),'c_key'=>$key,'c_value'=>$val);
+                $this->model->create($data);
+                if($this->model->create($data)){
+                   $res=$this->model->add($data);
+                }else{
+                    $res=false;
+                }
+                
+            }
+            
+           $this->upImg($this->model,$res);
+           $this->pagego('修改信息成功', '修改信息失败', $res, '');
+        }else{
+            $keys= array_keys($_POST);
+            $okeys=array();
+            foreach($afield as $key=>$val){
+                $okeys[]=$val['c_key'];
+            }
+            $nkeys=  array_diff($keys, $okeys);
+            $res=true;
+            if($nkeys){
+                foreach($nkeys as $key=>$val){
+                    $data=array('c_key'=>$val,'c_value'=>$_POST[$key]);
+                    if($this->model->create($data)){
+                         $res=$this->model->where("c_name='$val'")->add($data);
+                     }else{
+                         $res=false;
+                     }
+                }
+            
+            }else{
+                foreach($keys as $key=>$val){
+                    if($val!='timestamp' and $val!='token'){
+                            if($val!='timestamp' && $val!='token'){
+                            $data=array('c_key'=>$val,'c_value'=>$_POST[$val]);
+                            if($this->model->create($data)){
+                                $this->model->where("c_key='$val'")->save($data);
+                            }else{
+                                $res=false;
+
+                            }
+                        }
+                    }
+
+                }
+            }
+            //上传图片
+            $res=$this->upImg($this->model,$res);
+            if(strpos($res,DIRECTORY_SEPARATOR)){
+                 $this->success('修改信息成功', 'index');
+            }else{
+                $this->error($res.'，请重试！', 'index');
+                
+            }
+        }
+       
+    }
+    //查看当前配置
+    public function configView(){
+        $page=$_GET['page'];
+        if(!$page){
+            $page=1;
+        }
+        $position='<span><a>网站设置></a></span><span>配置管理</span>';
+        $configs=$this->model->query("select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name");
+        import("Com.PageHelper");
+        $sres=$this->model->query("select count(distinct c_name) sum from bd_config where c_name <> 'web_config'");
+        PageHelper::init(10, 5, $page, $sres[0]['sum'],'');
+        $pages=  PageHelper::getPageInfos();
+        $this->assignData(array('mmenu'=>'webconfig','smenu'=>'c_config','position'=>$position,'configs'=>$configs,'page'=>$pages), 'assign');
+        $this->display();
+    }
+    //查看某配置配置项
+    public function configDetail(){
+        $cid=$_GET['cid'];
+        if($cid){
+            $positon='网站设置 > 配置设置 > 配置详情';
+            $cname=$this->model->where("id='$cid'")->field('c_name')->find();
+            $configs=$this->model->where("c_name = '$cname[c_name]'")->field('c_key,c_value,c_info,id')->select();
+            $cres=$this->model->where("id='$cid'")->field('c_name,c_info')->find();
+            $c_name=trim($cres['c_name']);
+            $this->assignData(array('configs'=>$configs,'position'=>$positon,'mmenu'=>'webconfig','smenu'=>'c_config','cid'=>$cid,'c_name'=>"$c_name"),'assign');
+        }else{
+                 $this->error('非法访问！');
+            }
+        
+        $this->display();
+    }
+    //保存配置项
+    public function saveConfigItem(){
+         $sid=$_GET['cid'];
+            if($sid){
+                $val=$_GET['val'];
+                if($val){
+                    $data=array('c_value'=>$val);
+                    $res=$this->model->where("id='$sid'")->save($data);
+                    $url=$res?'configView':'';
+                    $this->pagego('保存配置项成功','配置项未修改', $res,$url);
+                }else{
+                    $this->pagego('', '请输入配置值', false, '');
+                }
+            }
+    }
+    //配置项
+    public function entity() {
+        $id=$_GET['cid'];
+        $positon='网站设置 > 分类设置';
+        $c_name=$_GET['c_name'];
+        $this->preEntity($id, $this->model,'配置', $positon,'saveConfigs',array('c_name'=>$c_name));
+        parent::entity();
+    }
+    //修改配置项
+    public function saveConfigs(){
+       $edit=$_POST['edit'];
+       $data=array();
+           foreach($_POST as $key=>$val){
+              if(in_array($key,array_keys($this->model->_form))){
+                  $data[$key]=$val;
+              }
+       }
+       if($eidt){
+           $res=true;
+           if($res=$this->model->create($data)){
+                $res=$this->model->save($data);
+           }  
+           $this->pagego('修改配置项成功','修改配置项失败',$res,'');
+       }else{
+           $res=true;
+           if($res=$this->model->create($data)){
+                $res=$this->model->add($data);
+           }
+          $this->pagego('添加配置成功','添加配置失败',$res,'');
+       }
+    }
+    //删除配置
+    public function delConfig(){
+        $cid=$_GET['cid'];
+        $cname=$this->model->where("id='$cid'")->field('c_name')->find();
+        $res=$this->model->where("c_name='$cname[c_name]'")->delete();
+        $this->pagego('删除配置项成功！','删除配置项失败', $res,'configView');
+    }
+    //城市相关操作
+    public function city(){
+        if($_POST){
+            $res=false;
+            foreach($_POST as $key=>$val){
+                if(intval($val)){
+                    if(M('city')->where("id='$key'")->count()){
+                        $res=M('city')->where("id='$key'")->setField('rank',$val);
+                    }elseif(M('District')->where("id='$key'")->count()){
+                        $res=M('District')->where("id='$key'")->setField('rank',$val);
+                    }
+                    
+                }else{
+                    $this->ajaxr(false,'','排序值不合法');
+                }
+                
+            }
+            $this->ajaxr($res,'修改排序成功！','修改排序失败');
+        }else{
+            $this->assignData(array('mmenu'=>'webconfig','smenu'=>'city'),'assign');
+            $sql="select city.id,city.name cname,city.isopen dname,city.rank,province.name pname from bd_city city left join bd_province province on city.provincei_d=province.id where isopen=1 union select district.id,city.name cname,district.name dname,district.rank,province.name from bd_district district left join bd_city city on district.city_id=city.id left join bd_province province on city.provincei_d=province.id where district.isopen=1";
+            $citys=M('City')->query($sql);
+            foreach ($citys as $key=>$val){
+                if(intval($val['dname'])){
+                    unset($citys[$key]['dname']);
+                }
+            }
+            $this->assign('citys',$citys);
+            $this->display();
+        }
+    }
+    public function close(){
+        $data=$this->getData(array('type','cid'),'get');
+        $res=true;
+        if($data['type']){
+            $res=M('City')->where("id='$data[cid]'")->setField('isopen',0);
+        }else{
+            $res=M('District')->where("id='$data[cid]'")->setField('isopen',0);
+        }
+        $this->pagego('关闭城市成功！','关闭城市失败', $res, 'city');
+    }
+    public function addCity(){
+        if($_POST){
+           $data=$this->getData(array('province','city','district','new'),'post');
+           if(!intval($data['district'])){
+               $res=M('City')->where("id='$data[city]'")->setField('isopen', 1);
+               $this->pagego('开放城市成功！','开放城市失败', $res,'city');
+               return;
+           }else{
+                $res=M('District')->where("id='$data[district]'")->setField('isopen', 1);
+                $this->pagego('开放城市成功！','开放城市失败', $res,'city');
+                return;
+           }
+           if($data['new']){
+               $data['city_id']=$data['city'];unset($data['city']);unset($data['province']);unset($data['new']);
+               $data['isopen']=1;$data['name']=$data['district'];unset($data['district']);
+               $res=M('District')->add($data);
+               $this->pagego('开放城市成功！','开放城市失败', $res,'city');
+               return;
+           }
+          
+        }else{
+          $this->assignData(array('mmenu'=>'webconfig','smenu'=>'city'),'assign');
+          $this->display();  
+        }
+    }
+
+    //友情链接或合作机构
+    public function link(){
+        $position = ' 网站设置 > 友情链接';
+        //樊波添加分类
+        $tarr=$this->getData(array('type'), 'get');
+        $page=$this->initPage();
+        import('Com.PageHelper');
+        $pagesize=10;
+        $sum=M('Friendlink')->where("type='$tarr[type]'")->count();
+        PageHelper::init($pagesize,10,$page['now'],$sum,'');
+        $data = M('Friendlink')->where("type='$tarr[type]'")->select();
+        foreach($data as $key=>$val){
+            switch($val['type']){
+                case '1':
+                    $data[$key]['type'] = '友情链接';
+                    break;
+                case '2':
+                    $data[$key]['type'] = '家教主页';
+                    break;
+                case '3':
+                    $data[$key]['type'] = '培训主页';
+                    break;   
+                default:
+                     $data[$key]['type'] = '友情链接';
+            }
+        }
+        if(!$tarr['type']){
+            $tarr['type']=1;
+        }
+        $this->assign(array('position'=>$position,'data'=>$data,'type'=>$tarr['type'],'pages'=>  PageHelper::getPageInfos()));
+        $this->display();
+    }
+
+    //添加友情链接或合作机构
+    public function addlink(){
+        $position = ' 网站设置 > 友情链接 > 添加链接';
+        if(!empty($_POST)){
+            $arr = $this->getData(array('type','name','url','city_id','descrip'),'post');
+            if($_FILES['logo']['name']!=""){
+                    $arr['logo']=$this->handUimg('logo');
+                }
+            if(!empty($_POST['mod'])){
+                $id = $_POST['mod'];
+                $arr['id'] = $id;
+                $arr['posttime'] = time();
+
+                $res = M('Friendlink')->where("id=$id")->data($arr)->save();
+                $this->pagego('修改成功','修改失败',$res,'link');
+            }else{
+                
+                $arr['posttime'] = time();
+
+                $res = M('Friendlink')->data($arr)->add();
+                $this->pagego('添加成功','添加失败',$res,'link');
+            }
+            
+
+        }else{
+            $arr = $this->getData(array('id'),'get');
+            $id = $arr['id'];
+            if(!empty($id)){
+                $res = M('Friendlink')->where("id=$id")->find();
+            }
+      
+            $timestamp = time();
+            $this->assign(array('position'=>$position,'data'=>$res,'token'=>md5('unique_salt'.$timestamp),'timestamp'=>$timestamp));
+            $this->display();
+        }
+    }
+
+    //删除友情链接
+    public function dellink(){
+        $arr = $this->getData(array('id'),'get');
+        $id = $arr['id'];
+        $res = M('Friendlink')->where("id=$id")->delete();
+        $this->pagego('删除成功','删除失败',$res,'link');
+    }
+   
+}

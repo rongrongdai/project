@@ -1,0 +1,10 @@
+<?php
+//城市控制器
+class CityAction extends CommonAction{
+    //获取已开通城市
+    public function getCitys(){
+        
+    }
+}
+
+

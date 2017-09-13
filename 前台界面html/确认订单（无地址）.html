@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>惠信联盟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom: 0.9rem;left: 0;width: 100%;overflow: hidden;background-color: #eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}        
+
+        /*底部*/
+        .m-footer{width:100%;position:fixed;bottom: -1px;z-index:2;height:0.9rem;line-height: 0.9rem;font-size:0.28rem;text-align:center;background-color:#fff;overflow: hidden;}
+        .m-footer .count{color:#000;float:right;margin-right: 0.18rem;}
+        .m-footer .buy{    background-color: #ff3c00;color: #fff;float: right;width: 1.64rem;height: 0.68rem;line-height: 0.68rem;margin: 0.11rem 0.12rem;border-radius: 0.06rem;}
+        .m-footer .sum{color:#ff3c00;}
+        /*订单*/
+        .order{font-size:0.24rem;}
+
+        .order .address{padding:0.12rem 0;background-color: #fff;text-align:center;font-size:0.26rem;}
+        .order .address>div{display:inline-block;vertical-align:middle;}
+        .order .address .position{width:10.9375%;height:0.35rem;background:url("images/order/position.png") no-repeat scroll center center / contain;}
+        .order .address .details{width:78.125%;text-align: left;}
+        .order .address .right-arrow{width:10.9375%;height:0.35rem;background:url("images/right-arrow.png") no-repeat scroll center center / contain;}
+        .order .address .user-info{}
+        .order .address .user-info .phone{margin-left:0.24rem;float:right;margin-right:0.3rem;}
+        .order .address .ad-info{font-size:0.22rem;}
+        .order .address .ad-info>span{display: inline-block;vertical-align:middle;}
+        .order .address-data{display:none;}
+        .order .address-no-data{}
+        .order .address-no-data .details{width:73.4375%;line-height:0.96rem;}
+        .order .address-no-data .position{width:15.625%;height:0.48rem;background:url("images/order/address-add.png") no-repeat scroll center center / contain;}
+
+        .order .shop{padding: 0.14rem 0.24rem;background-color: #fff;margin:0.2rem 0 0.02rem 0;}
+        .order .shop>span{display: inline-block;vertical-align:middle;}
+        .order .shop .logo{width: 0.61rem;height: 0.42rem;background:url("images/order/shop.png") no-repeat scroll center center / contain;}
+        .order .shop .name{margin:0 0.45rem 0 0.12rem;}
+        .order .shop .right-arrow{width: 0.12rem;height: 0.24rem;background:url("images/right-arrow.png") no-repeat scroll center center / contain;}
+        .order .good-info{padding: 0.24rem 0.24rem 0 0.24rem;background-color: #fff;margin:0.2rem 0 0.02rem 0;}
+        .order .good-info .good-d{font-size: 0.2rem;clear: both;overflow: auto;padding: 0.2rem 0;border-bottom: 1px solid #eeeef1;}
+        .order .good-info .good-d .img-wrap{width: 27%;height: 1.6rem;float: left;}
+        .order .good-info .good-d .img-wrap>img{width:100%;height:100%;}
+        .order .good-info .good-d .info-wrap{margin-left: 3%;position: relative;width: 70%;float: left;height: 1.6rem;}
+        .order .good-info .good-d .info-wrap .row2{position: absolute;bottom: 0.42rem;width: 100%;}
+        .order .good-info .good-d .info-wrap .good-price{color:#ff0000;}
+        .order .good-info .good-d .info-wrap .good-num{float:right;}
+        .order .good-info .o-row{min-height:0.7rem;line-height:0.7rem;border-top:1px solid #eeeef1;}
+        .order .good-info .o-row .save-n{float:right;}
+        .order .good-info .o-row .express{float:right;}
+        .order .good-info .o-row .express>span{display: inline-block;vertical-align:middle;}
+        .order .good-info .o-row .express .right-arrow{width: 0.12rem;height: 0.24rem;background:url("images/right-arrow.png") no-repeat scroll center center / contain;margin-left: 0.12rem;}
+        .order .good-info .o-row input{    height: 0.7rem;width: 75%;}
+        .order .good-info .row4{text-align:right;}
+        
+        .order .o-msg{background-color: #fff;margin: 0.2rem 0;padding: 0.08rem;width: 100%;box-sizing: border-box;}
+        .order .o-msg>div{position: relative;width: 96%;margin: 0 auto;border-radius: 0.06rem;border: 1px solid #cdcdcd;height: 0.5rem;}
+        .order .o-msg .o-msg-input{width:100%;height:0.5rem;padding: 0 0.44rem 0 0.04rem;box-sizing: border-box;color:#333;font-size:0.24rem;}
+        .order .o-msg .o-msg-clear{position: absolute;background:url("images/msg-clear-btn.png") no-repeat scroll center center / contain;display:none;width:0.34rem;height:0.34rem;right:0.1rem;top:50%;margin-top: -0.17rem;}
+        .order .o-msg .o-msg-clear-show{display:block;}
+
+        .o-save{font-size:0.24rem;background-color:#fff;}
+        .o-save .u-right{float: right;clear: both;}
+        .o-save span{display:inline-block;vertical-align:middle;}
+        .o-save .u-right .u-arrow{width: 0.12rem;height: 0.25rem;background: url("images/right-arrow.png") no-repeat scroll center center / contain;margin-left: 0.4rem;}
+        .o-save .u-right .u-box{width: 0.32rem;height: 0.32rem;background: url("images/select-box0.png") no-repeat scroll center center / contain;margin-left: 0.2rem;}
+        .o-save .active .u-box{background: url("images/select-box1.png") no-repeat scroll center center / contain;}
+        .o-save>div{margin: 0 0.22rem;height:0.6rem;line-height:0.6rem;}
+        .o-save>div:last-child{border-bottom: 1px solid #eeeef1;padding-bottom: 0.1rem;}
+
+        .order .sum{color:#ff0000;}
+        .order .o-count{background-color:#fff;padding: 0.2rem 0.24rem;}
+        .order .o-count>div{text-align:right;margin-top:0.18rem;}
+        .order .o-count>p{clear:both;overflow: auto;margin: 0.12rem auto;}
+        .order .o-count>p>span:first-child{float:left;}
+        .order .o-count>p>span:last-child{float:right;}
+        .order .o-count .num{margin-right:0.3rem;}
+
+        /*提示窗*/
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index: 3;position: fixed;display:none;}
+        .alert{width: 76.5625%;background: #fff;z-index: 4;position: fixed;font-size: 0.28rem;text-align: center;border-radius: 0.1rem;top: -100%;left: 11.71875%;-webkit-animation: animDialog .4s ease-out;animation: animDialog .4s ease-out;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 10ms;transform-style: preserve-3d;transition-duration: 10ms;display:none;}
+        .alert-show{display:block;top: 2.2rem;}
+        @-webkit-keyframes animDialog {
+         from{-webkit-transform: scale(.05);transform: scale(.05);}
+         to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        @keyframes animDialog {
+          from{-webkit-transform: scale(.05);transform: scale(.05);}
+          to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        /*支付提示窗*/
+        .pay-popup .a-title{height: 0.8rem;line-height: 0.8rem;border-bottom:1px solid #ff6519;}
+        .pay-popup .a-cont{}
+        .pay-popup .a-cont>p{margin:0.24rem 0;}
+        .pay-popup .a-cont .pay-way{height: 0.6rem;line-height: 0.6rem;border-bottom:1px solid #eeeef1;border-top:1px solid #eeeef1;}
+        .pay-popup .a-cont .pay-way>span{display:inline-block;vertical-align:middle;}
+        .pay-popup .a-cont .pay-way .bank-logo{width: 0.36rem;height: 0.36rem;background: url("images/bank-logo.png") no-repeat scroll center center / contain;margin-right: 0.2rem;}
+        .pay-popup .a-cont .pay-way .right-arrow{width: 0.12rem;height: 0.24rem;background:url("images/right-arrow.png") no-repeat scroll center center / contain;margin-left: 0.2rem;}
+        .pay-popup .a-btn{margin: 0.4rem auto;width: 93.8%;background-color: #ff6519;color:#fff;border-radius:0.1rem;height: 0.6rem;line-height: 0.6rem;}
+        .pay-popup .close-btn{width: 0.68rem;height: 0.68rem;background: url("images/close-s.png") no-repeat scroll center center / 30%;position: absolute;top: 0;left: 0;}
+        /*支付失败提示窗*/
+        .pay-fail-popup .a-info{padding:0.44rem 0.28rem 0.44rem 0.28rem;border-bottom: 1px solid #eeeef1;min-height: 0.7rem;}
+        .pay-fail-popup .a-btn>div{width: 50%;float: left;    height: 0.62rem;line-height: 0.62rem;color:#226bfb;}
+        .pay-fail-popup .a-btn .cancel{border-right: 1px solid #eeeef1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+        /*支付加载等待*/
+        .pay-loading{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index: 3;position: fixed;text-align: center;}
+        .pay-loading>div{display:inline-block;vertical-align:middle;width:0.35rem;height:0.35rem;background-color:rgba(255,255,255,.5);margin: 3.6rem 0 0 0;border-radius: 0.06rem;}
+        .pay-loading>div.active{background-color:rgba(255,255,255,.9);}
+
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var Scroll,skuScroller;
+        function loaded () {
+            Scroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <section class="order" >
+                <div class="address address-data">
+                    <div class="position"></div><div class="details">
+                        <div class="user-info"><span>收件人：</span><span>罗小姐</span><span class="phone">13266886888</span></div>
+                        <div class="ad-info"><span>广东省深圳市龙华新区龙华市场荣昌街哎呀呀龙华新区龙华 市场荣昌街</span></div>
+                    </div><div class="right-arrow"></div>
+                </div>
+                <div class="address address-no-data">
+                    <div class="position"></div><div class="details">
+                        添加收货地址
+                    </div><div class="right-arrow"></div>
+                </div>
+                <!--<div class="shop">
+                    <span class="logo"></span><span class="name">拉菲曼尼</span><span class="right-arrow"></span>
+                </div>-->
+                <div class="good-info">
+                    <div class="good-d">
+                        <div class="img-wrap"><img src="images/order/good.png" alt=""></div>
+                        <div class="info-wrap">
+                            <div><span>AOZZO/奥朵CL10113/24欧式壁灯吸顶灯卧室 灯书房灯饰水晶灯</span></div>
+                            <div class="row2"><span class="good-price">￥1600</span><span class="good-num">x1</span></div>
+                        </div>
+                    </div>
+                    <div class="good-d">
+                        <div class="img-wrap"><img src="images/order/good.png" alt=""></div>
+                        <div class="info-wrap">
+                            <div><span>AOZZO/奥朵CL10113/24欧式壁灯吸顶灯卧室 灯书房灯饰水晶灯</span></div>
+                            <div class="row2"><span class="good-price">￥1600</span><span class="good-num">x1</span></div>
+                        </div>
+                    </div>
+                    <!--<div class="o-row">
+                        <span>配送方式</span>
+                        <div  class="express">
+                            <span>免邮</span></span>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="o-msg"><div><input class="o-msg-input" type="text" placeholder="给企业留言："><span class="o-msg-clear"></span></div></div>
+                <div class="o-save" >
+                    <div><span>优惠券</span><span class="u-right"><span class="">3张</span><span class="u-arrow"></span></span></div>
+                    <div><span>我的积分（300分）</span><span class="u-right"><span class="">现金抵扣0.3元</span><span class="u-box"></span></span></div>
+                </div>
+                <div class="o-count">
+                    <p><span>商品金额</span><span>+1600元</span></p>
+                    <p><span>已节省</span><span>-30元</span></p>
+                    <p><span>运费</span><span>+0元</span></p>
+                    <p><span>专享福利</span><span>无</span></p>
+                    <!--<div class=""><span class="num">共1件商品</span>合计：<span class="sum">￥6800.00</span></div>-->
+                </div>
+            </section>
+        </div>
+    </article>
+    <footer class="m-footer">
+        <a class="buy" href="#" title="">确认</a>
+        <div class="count" title="">合计：<span class="sum">￥6800.00</span></div>
+    </footer>
+
+    <div class="bg-layer"></div>
+    <!--支付，弹窗-->
+    <div class="alert pay-popup">
+        <div class="a-title">支付</div>
+        <div class="a-cont">
+            <p>拉菲曼尼</p>
+            <p>￥1570.00</p>
+            <div class="pay-way">
+                <span class="bank-logo"></span><span>中国银行 信用卡（1822）</span><span class="right-arrow"></span>
+            </div>
+        </div>
+        <div class="a-btn">支付</div>
+        <div class="close-btn"></div>
+    </div>
+    <!--支付失败，弹窗-->
+    <div class="alert pay-fail-popup">
+        <div class="a-info">银行卡可用余额不足（如信用卡则为可透支额度不足），请核实后再试</div>
+        <div class="a-btn">
+            <div class="cancel">取消</div>
+            <div class="change-card">换卡支付</div>
+        </div>
+    </div>
+    <!--支付等待-->
+    <div class="pay-loading">
+        <div class="active"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    <script>
+        /*确认*/
+        $(".m-footer .buy").on("tap",function(e){
+            $('.bg-layer').css('display','block');
+            $('.pay-popup').addClass('alert-show');
+        });
+        /*支付*/
+        $(".pay-popup .a-btn").on("tap",function(e){
+            $('.pay-popup').removeClass('alert-show');
+            $('.pay-fail-popup').addClass('alert-show');
+        });
+        $(".pay-fail-popup .change-card").on("tap",function(e){
+            $('.pay-fail-popup').removeClass('alert-show');
+            $('.pay-popup').addClass('alert-show');
+        });
+        /*关闭弹窗*/
+        $(".bg-layer,.pay-popup .close-btn,.pay-fail-popup .cancel").on("tap",function(e){
+            $('.alert').removeClass('alert-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },200);
+        });
+        /*积分选中*/
+        $('.o-save .u-right').on('tap',function(){
+            $(this).toggleClass('active');
+        });
+        /*企业留言*/
+        $('.o-msg-input').on('focus',function(){
+            $(this).next('.o-msg-clear').addClass('o-msg-clear-show');
+        });
+        $('.o-msg-clear').on('tap',function(){
+            $(this).prev('.o-msg-input').val('');
+        });
+        /*加载动画*/
+        var autoChange=self.setInterval("loading()",400);
+        index = 0;
+        function loading(){
+          $('.pay-loading>div').each(function(){
+                if($(this).index()!=index%4){
+                    $(this).removeClass('active');
+                }else{
+                    $(this).addClass('active');
+                }
+            });
+          index++;
+        }
+        setTimeout(function(){
+            window.clearInterval(autoChange);
+            $('.pay-loading').css('display','none');
+        },5000);
+    </script>
+</body>
+</html>

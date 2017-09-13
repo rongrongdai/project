@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top:4.72rem;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        /*用户信息*/
+        .user-info{font-size:0.24rem;position:relative;color: #fff;}
+        .user-info .blur-bg{width:100%;height:3.2rem;position:absolute;top:0;left:0;z-index: -2;background: rgba(0,0,0,0) url("images/my/user.png") no-repeat center center/100%;filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */-webkit-filter: blur(10px); /* Chrome, Opera */-moz-filter: blur(10px);-ms-filter: blur(10px);    filter: blur(10px);filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */}
+        .user-info .layer-bg{width:100%;height:3.2rem;position:absolute;top:0;left:0;z-index: -1;background: rgba(0,0,0,.5);}
+        .user-info>div{display:inline-block;vertical-align:middle;}
+        .user-info .u-img-wrap{height: 1.68rem;width: 1.68rem;margin: 0.76rem 0.6rem 0.76rem 0.9rem;}
+        .user-info .u-img-wrap>img{width: 100%;}
+        .user-info .u-txt{}
+        .user-info .u-txt>p{margin: 0.14rem 0;}
+        .user-info .u-txt .crown{display:inline-block;vertical-align: bottom;margin-left: 0.15rem;width:0.24rem;height:0.24rem;background:url("images/my/crown.png") no-repeat scroll center center / contain;}
+        .user-info .u-txt .u-class{color:#ff6519;}
+        .user-property{padding: 0 0.24rem;background-color: #fff;font-size: 0.24rem;}
+        .user-property>div:first-child{border-bottom:1px solid #eeeef1;}
+        .user-property .func-line{height: 0.68rem;line-height: 0.68rem;margin-bottom: 0.02rem;}
+        .user-property .func-line>span{display: inline-block;vertical-align:middle;}
+        .user-property .func-line .f-arrow{width: 0.12rem;height: 0.25rem;float:right;margin:0.2rem 0.22rem;background: url("images/right-arrow.png") no-repeat scroll center center / contain;}
+        .user-property .func-line .all-yongjin{color:#ff3c00;}
+        .user-property .func-line .yongjin{color:#ff3c00;float:right;}
+
+        .order-header{font-size:0.24rem;background-color:#fff;text-align:center;margin: 0.2rem 0 0;position:relative;overflow:auto;}
+        .order-header>span{width:25%;float:left;line-height:0.68rem;}
+        .order-header>span.active{color:#ff3c00;}
+        .order-header .active-line{position:absolute;background-color:#e24355;height:1px;width:25%;bottom:0;left:0;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .order-body{font-size:0.24rem;}
+        .order-body .order-item{background-color:#fff;margin: 0.1rem 0;}
+        .order-body .o-info1{height:0.5rem;line-height:0.5rem;padding:0 0.24rem;border-bottom:1px solid #eeeef1;}
+        .order-body .o-info1 .o-status{float:right;}
+        .order-body .o-goods{padding:0 0.24rem;}
+        .order-body .o-goods .o-good{border-bottom:1px solid #eeeef1;padding: 0.2rem 0;overflow:auto;}
+        .order-body .o-goods .o-good>div{float:left;}
+        .order-body .o-goods .o-good .o-img-wrap{width:1.6rem;height:1.6rem;}
+        .order-body .o-goods .o-good .o-img-wrap img{width:100%;height:100%;}
+        .order-body .o-goods .o-good .o-info{width: 70%;margin-left: 0.15rem;}
+        .order-body .o-goods .o-good .o-info>div:nth-child(2){margin-top:0.3rem;}
+        .order-body .o-goods .o-good .o-info>div:first-child{position:relative;font-size:0.2rem;}
+        .order-body .o-goods .o-good .o-info .o-title{display: inline-block;vertical-align:top;width: 70%;}
+        .order-body .o-goods .o-good .o-info .o-price{position:absolute;top:0;right:0;}
+        .order-body .o-goods .o-good .o-info .o-num{float:right;}
+        .order-body .o-goods .o-good .o-details{font-size:0.2rem;color:rgba(51,51,51,.5);}
+        .order-body .o-info2{height:0.5rem;line-height:0.5rem;padding:0 0.24rem;}
+        .order-body .o-info2 .o-count{margin-left:0.3rem;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article>
+        <div>
+            <div class="user-info">
+                <div class="u-img-wrap"><img src="images/my/user.png" alt=""></div>
+                <div  class="u-txt">
+                    <p><span>[A_girl]</span><span class="crown"></span></p>
+                    <p>会员级别：<span class="u-class">普通会员</span></p>
+                </div>
+                <div class="layer-bg"></div>
+                <div class="blur-bg"></div>
+            </div>
+            <div class="user-property">
+                <!--<div class="func-line"><span>团队消费累计：</span><span class="all-yongjin">￥320.00</span><span class="f-arrow"></span></div>-->
+                <div class="func-line"></span><span>我的分销订单（单）</span><span class="yongjin">32单</span></div>
+            </div>
+            <div class="order-header">
+                <span class="active">全部</span><span>待收货（3）</span><span>售后（1）</span><span>已完成（22）</span>
+                <div class="active-line"></div>
+            </div>
+            <div class="order-body" id="wrapper">
+                <div id="scroller">
+                  <div class="order-item">
+                      <div class="o-info1"><span>订单号：852155669966</span><span class="o-status">待发货</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                  </div>
+                  <div class="order-item">
+                      <div class="o-info1"><span>订单号：852155669966</span><span class="o-status">待发货</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+    <script>
+        $('.order-header>span').on('tap',function(){
+            var that = this;
+            $('.order-header>span').each(function(){
+                if(this == that){
+                    $(this).addClass('active');
+                }else{
+                    $(this).removeClass('active');
+                }
+            });
+            var i = $(this).index();
+            var left = Number(i)?(Number(i)*25):0;
+            $('.order-header .active-line').css('left',left+'%');
+        });
+    </script>
+</body>
+</html>

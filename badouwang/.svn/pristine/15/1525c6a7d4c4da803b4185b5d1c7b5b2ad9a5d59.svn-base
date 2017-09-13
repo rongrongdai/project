@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>城市开通管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">城市开通管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab1" class="selected">开通管理</a></li> 
+                <li><a href="#tab2">城市排序</a></li> 
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab1" class="tabson">
+    
+    
+        <ul class="toolbar" style='margin-bottom:10px;'>
+             <li class="click"><span><img src="__ROOT__/public/images/admin/other/t01.png"></span><a href='./addCity' title="开通新城市">开通新城市</a></li>
+<!--             <li class="click"><span><img src="__ROOT__/public/images/admin/other/t02.png"></span>修改</li>
+             <li><span><img src="__ROOT__/public/images/admin/other/t03.png"></span>删除</li>
+             <li><span><img src="__ROOT__/public/images/admin/other/t04.png"></span>统计</li>-->
+         </ul>
+<!--    <td width="25%">区(县)</td><td width="25%">城市</td><td width="25%">省份</td><td>开通新城市<a href="./addCity" title="添加分类"><span class="icon" style="color:gray;" >&oplus;</span></a></td>-->
+    
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th>区(县)</th>
+        <th>城市</th>
+        <th>省份</th>
+        <th>开通新城市</th>
+        
+        </tr>
+        </thead>
+        <tbody>
+        <foreach name='citys' item='city'>
+                        <tr>
+                            <td width="25%"><if condition='$city.dname'><{$city.dname}></if></td><td width="25%"><{$city.cname}></td><td width="25%"><{$city.pname}></td> <td><span class="s_info"><a href="close?cid=<{$city.id}>" name='ccity'>关闭城市</a></span><span class="s_info"></td>
+                        </tr>
+        </foreach>
+    
+        </tbody>
+    </table>
+    
+   
+  
+    
+    </div> 
+    <div id="tab2" class="tabson">
+<!--            <ul class="toolbar" style='margin-bottom:10px;'>
+                 <li class="click"><span><img src="__ROOT__/public/images/admin/other/t01.png"></span><a href='./addCity' title="开通新城市">开通新城市</a></li>
+            </ul>-->
+           
+            <table  name="order" class="tablelist">
+                    <tr>
+                        <td width="100">区(县)</td><td width="100">城市</td><td width="100">省份</td><td width="150">排序值</td>
+                    </tr>
+                    <foreach name='citys' item='city'>
+                        <tr>
+                            <td id="<{$city.id}>"><if condition='$city.dname'><{$city.dname}></if></td><td ><{$city.cname}></td><td><{$city.pname}></td> <td ><input type="text" value="<{$city.rank}>" style="width:80px;height:20px;"></td>
+                        </tr>
+                    </foreach>
+               
+                </table>
+        <input type="button" name="btn" class="btn" value="保存排序"/>
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+          <script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script>
+    $("a[name=ccity]").click(function(){
+        if(!$(this).parent().parent().parent().find("td:first").text()){
+            $(this).attr('href', $(this).attr('href')+'&type=dis');
+        }
+    })
+    $(function(){
+        $(".hou-yi").find("li:first").addClass("active").css("color","#FFF");
+        $(".hou-yi").find("li").hover(function(){
+            $(".hou-yi").find("li").removeClass("active").css("color","#CCC");
+            $(this).addClass("active").css("color","white");
+        })
+        $("li[name=kt]").click(function(){
+            $("table[name=kt]").css("display","block");
+            $("table[name=order]").css("display","none");
+        });
+        $("li[name=od]").click(function(){
+            $("table[name=kt]").css("display","none");
+            $("table[name=order]").css("display","block");
+            $("button").css("display","block");
+        });
+        var rank=[];
+        $("table[name=order]").find("tr:not(:first)").each(function(){
+            rank[$(this).find("td:first").attr('id')]=$(this).find("input").val();
+        })
+        $("input[name=btn]").click(function(){
+           var nrank=[];
+           $("table[name=order]").find("tr:not(:first)").each(function(){
+                nrank[$(this).find("td:first").attr('id')]=$(this).find("input").val();
+           }) 
+           var condition='{';
+           for(i in nrank){
+               if(!rank[i]!==nrank[i]){
+                  condition+='"'+i+'"'+":"+'"'+nrank[i]+'",';
+               }
+           }
+           condition=condition.substr(0,condition.length-1)+"}";
+           condition=eval("("+condition+")");
+           $.post('',condition,function(data){
+               data=eval("("+data+")");
+               var type=data.code?1:2;
+               $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: type,msg: data.message}});
+           });
+        })
+       
+    })
+</script>
+
+    </div>
+</body>
+
+</html>
+

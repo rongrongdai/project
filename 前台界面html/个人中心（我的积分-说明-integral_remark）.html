@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {width: 100%;overflow: hidden;position: absolute;bottom:0;top:0;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;background-color:#fff;}
+
+        .instruction{font-size:0.26rem;margin:0 0.24rem;padding:0.3rem 0;}
+        .instruction>p{margin:0 0 0.18rem 0;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="instruction">
+                    <p>1、积分可以在结算的时候抵现金使用。</p>
+                    <p>2、积分最多只能抵用订单总金额的10%，不能抵  消运费</p>
+                    <p>3、积分获取方式  成功注</p>
+                    <p>成功注册获得500积分</p>
+                    <p>捷径一：可以参加每日签到</p>
+                    <p>捷径一：参加抽奖</p>
+                </div>
+            </div>
+        </div>
+    </article>
+</body>
+</html>

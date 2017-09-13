@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>商品列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/iscroll.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0.7rem;bottom: 0;left: 0;width: 100%;overflow: hidden;background: #eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .scroller-pullUp {background:none;}
+        /*筛选*/
+        .filter{font-size: 0.24rem;width: 100%;height: 0.68rem;line-height: 0.68rem;border-bottom: 1px solid #ddd;box-sizing: border-box;z-index: 6;position: relative;background-color: #fff;}
+        .filter .filter-con{width:29.27%;float: left;position:relative;text-align: center;}
+        .filter .filter-txt{position:relative;display:inline-block;text-align:center;vertical-align: top;}
+        .filter .filter-con:nth-child(2) .filter-txt{}
+        #sales .right-icon{display:inline-block;width:0.16rem;height:0.68rem;background: url("images/price-sort.png") no-repeat center center;background-size: contain;vertical-align: top;margin-left: 0.08rem;}
+        #sales.active{color:#ff3c00;}
+        #sales.active .right-icon{color:#ff3c00;background-image: url("images/price-sort-height.png");}
+        #sales.active .low.right-icon{color:#ff3c00;background-image: url("images/price-sort-low.png");}
+        .filter .filter-con span.f-arrow{background-position: center center;background-size: contain;background-repeat: no-repeat;position: absolute;width: 0.16rem;height: 0.16rem;background-image: url("images/index/arrow.png");top: 50%;margin-top: -0.08rem;margin-left: 0.1rem;}
+        .filter .active span.f-arrow{background-image: url("images/index/arrow-on.png");}
+        #com span.f-arrow{right:0.1rem;}
+        #com.active{color:#ff3c00;}
+        #filter span.f-arrow{right:0.35rem;}
+        .filter .style-btn{width:12.19%;float: left;height: 0.6rem;height: 0.68rem;border-left: 1px solid #eeeef1;box-sizing: border-box;position:relative;}
+        .filter .style-btn>i{width:0.36rem;height:0.36rem;background: url("images/index/style-btn.png") no-repeat scroll center center;background-size: contain;display:block;position:absolute;top:50%;left:50%;margin:-0.18rem 0 0 -0.18rem;}
+        /*商品列表*/
+        /*列表*/
+        .goods-list{font-size: 0.2rem;word-break: break-all;}
+        .goods-list .good-cont{width: 100%;padding: 2.7% 3.125% 2.7% 5%;position: relative;overflow: auto;margin:0 0 0.1rem 0;background-color: #fff;box-sizing: border-box;}
+        .goods-list .good-img{height:1.6rem;width:1.6rem;float: left;border: 1px solid #eeeef1;}
+        .goods-list .good-img>img{width:100%;height:100%;}
+        .goods-list .good-title{width: 64%;position: absolute;left: 32.65%;top:9;font-size:0.24rem;}
+        .goods-list .good-line3{position: absolute;left: 32.65%;bottom:30%;width: 64%;}
+        .goods-list .good-line3>span{display:inline-block;vertical-align:middle;}
+        .goods-list .good-line4{position: absolute;left: 32.65%;bottom:8%;width: 64%;font-size:0.24rem;color:#ff0000;}
+        .goods-list .good-line4>span{display:inline-block;vertical-align:middle;}
+        .goods-list .good-line4>span:last-child{float:right;}
+        .goods-list .good-price{font-size:0.22rem;color:#ff0000;}
+        .goods-list .good-price>span{font-size:0.28rem;}
+        .goods-list .good-discount{height: 0.28rem;line-height: 0.28rem;text-align: center;}
+        /*小图*/
+        .goods-small-pic{width:100%;overflow: auto;font-size: 0.2rem;word-break: break-all;}
+        .goods-small-pic>div{}
+        .goods-small-pic .good-cont{position:relative;overflow:auto;width:49.21875%;float:left;padding:0.1rem;box-sizing: border-box;background-color:#fff;margin-bottom:0.1rem;}
+        .goods-small-pic .good-cont:nth-child(even){margin-left:0.78125%;}
+        .goods-small-pic .good-cont:nth-child(odd){margin-right:0.78125%;}
+        .goods-small-pic .good-img{width:100%;}
+        .goods-small-pic .good-img>img{width:100%;height:100%;}
+        .goods-small-pic .good-title{font-size:0.24rem;}
+        .goods-small-pic .good-line3{margin-top: -0.32rem;float: right;clear: both;}
+        .goods-small-pic .good-line3>span{display:inline-block;vertical-align:middle;}
+        .goods-small-pic .good-line4{font-size:0.22rem;color:#ff0000;width: 100%;overflow: auto;}
+        .goods-small-pic .good-line4>span{}
+        .goods-small-pic .good-line4>span:last-child{float:right;}
+        .goods-small-pic .good-price{font-size:0.22rem;color:#ff0000;}
+        .goods-small-pic .good-price>span{font-size:0.24rem;}
+        .goods-small-pic .good-discount{float: left;}
+        
+        
+        /*综合排序*/
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index:6;position: fixed;display:none;}
+        .filter-lv1{font-size:0.24rem;background-color: #eeeef1;position: fixed;top: 0;bottom: 0;right:-100%;z-index:7;width:84.375%;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .filter-lv1-show{right:0;}
+        .filter-lv1 .f-lv1-wraper{position: absolute;z-index: 1;top:2.24rem;bottom: 0;left: 0;width: 100%;overflow: hidden;background-color:#fff;}
+        .filter-lv1 .f-lv1-scroller{position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .filter-lv1 .lv1-save{float:right;}
+        .filter-lv1 .f-price{height: 1.04rem;line-height: 1.04rem;text-align: center;background-color: #fff;margin-top: 0.2rem;overflow: auto;clear: both;}
+        .filter-lv1 .f-price>div{width: 20%;float: left;}
+        .filter-lv1 .f-price>div:last-child{width: 80%;}
+        .filter-lv1 .f-price>div:last-child>span{display:inline-block;vertical-align:top;font-size: 0.3rem;}
+        .filter-lv1 .f-price>div:last-child>input{display:inline-block;vertical-align:middle;height:0.42rem;width:1.46rem;border-radius:0.1rem;background-color:#eeeef1;}
+        .filter-lv2{font-size:0.24rem;background-color: #eeeef1;position: fixed;top: 0;bottom: 0;right:-100%;z-index:7;width:84.375%;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .filter-lv2-show{right:0;}
+        .filter-lv2 .f-lv2-wraper{position: absolute;z-index: 1;top:1rem;bottom: 0;left: 0;width: 100%;overflow: hidden;background-color: #fff;}
+        .filter-lv2 .f-lv2-scroller{position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .filter-lv .f-line{height: 0.8rem;border-bottom: 1px solid #eeeeef;width: 100%;padding: 0 5%;box-sizing: border-box;clear: both;}
+        .filter-lv .f-line.click{background-color:#c2c2c2;}
+        .filter-lv .f-header{display: block;height: 0.8rem;line-height: 0.8rem;border-bottom: 1px solid #eeeeef;background-color: #fff;text-align: center;clear: both;overflow: auto;}
+        .filter-lv .f-header>span{width: 20%;float: left;}
+        .filter-lv .f-header .lv-title{font-size: .24rem;width: 60%;height: 0.8rem;}
+        .filter-lv1 .on{color:#ff3c00;background-color:#c2c2c2;}
+        .filter-lv2 .on{color:#ff3c00;}
+        .filter-lv .on .txt{color:#ff3c00;}
+        .filter-lv .f-line-left{float: left;height: 0.78rem;line-height: 0.78rem;}
+        .filter-lv .con-txt{float: left;line-height: 0.78rem;}
+        .filter-lv .f-line-right{float:right;height: 0.78rem;line-height: 0.78rem;}
+        .filter-lv .f-line-right>span{display:inline-block;vertical-align:top;color:#adadad;}
+        .filter-lv .f-line-right .arrow{width: 0.12rem;height: 0.78rem;background: url("images/right-arrow.png") no-repeat scroll center center / contain;margin-left: 0.2rem;}
+        .filter-lv .on .con-icon{float: right;width:0.22rem;height:0.17rem;background:url("images/good-details/select.png") no-repeat scroll center center / contain;margin-top: 0.315rem;}
+
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var scroller,downIcon,upIcon,scrollerPullDown,scrollerPullUp,loading;
+        function loaded () {
+            scrollerPullDown = $("#wrapper .scroller-pullDown");
+            scrollerPullUp = $("#wrapper .scroller-pullUp");
+            var upLoading = $("#wrapper .scroller-pullUp .loading");
+            var downLoading = $("#wrapper .scroller-pullDown .loading");
+            downIcon = $("#wrapper .down-icon");
+            var pullDownMsg = $("#wrapper .pull-down-msg");
+            upIcon = $("#wrapper .up-icon");
+            var pullUpMsg = $("#wrapper .pull-up-msg");
+            scroller = new IScroll('#wrapper', {
+                probeType: 3,
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+            scroller.on("scroll",function(){
+                var y = this.y,
+                    maxY = this.maxScrollY - y,
+                    downHasClass = downIcon.hasClass("reverse_icon"),
+                    upHasClass = upIcon.hasClass("reverse_icon");
+                
+                if(y >= 40){
+                    !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松手开始更新');
+                    return "";
+                }else if(y < 40 && y > 0){
+                    downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉刷新');
+                    return "";
+                }
+                
+                if(maxY >= 40){
+                    !upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松手开始更新');
+                    return "";
+                }else if(maxY < 40 && maxY >=0){
+                    upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看更多');
+                    return "";
+                }
+            });
+            scroller.on("slideUp",function(){
+                if(this.maxScrollY - this.y > 40){
+                    //alert("slideUp");
+                    upIcon.css('display','none');
+                    pullUpMsg.css('display','none');
+                    upLoading.css('display','inline-block');
+                    setTimeout(function(){
+                        upIcon.css('display','inline-block');
+                        pullUpMsg.css('display','inline-block');
+                        upLoading.css('display','none'); 
+                        $('.goods-wrap').append('<div class="good-cont"><div class="good-img"><img src="images/index/good.png" alt="" /></div><div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div><div class="good-line3"><span class="good-price">￥<span>1600</span><i>.00</i></span></div><div class="good-line4"><span class="good-discount">7折起</span><span class="fenyong">分佣金额：￥20</span></div></div>');
+                        cutTitle('.goods-wrap');
+                        scroller.refresh();
+                    },3000);
+                    
+                }
+            });
+            scroller.on("slideDown",function(){
+                if(this.y > 40){
+                    //alert("slideDown");
+                    scrollerPullDown.css({'position':'relative','top':'0'});
+                    downIcon.css('display','none');
+                    pullDownMsg.css('display','none');
+                    downLoading.css('display','inline-block');
+                    setTimeout(function(){
+                        scrollerPullDown.css({'position':'absolute','top':'-40px'});
+                        downIcon.css('display','inline-block');
+                        pullDownMsg.css('display','inline-block');
+                        downLoading.css('display','none'); 
+                        $('.goods-wrap').prepend('<div class="good-cont"><div class="good-img"><img src="images/index/good.png" alt="" /></div><div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div><div class="good-line3"><span class="good-price">￥<span>1600</span><i>.00</i></span></div><div class="good-line4"><span class="good-discount">7折起</span><span class="fenyong">分佣金额：￥20</span></div></div>');
+                        cutTitle('.goods-wrap');
+                        scroller.refresh();
+                    },3000);
+                }
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <section class="filter">
+        <div class="filter-con " id="com">
+            <span class="filter-txt on">销量</span>
+            <!--<span class="f-arrow"></span>-->
+        </div>
+        <div class="filter-con" id="sales">
+            <span class="filter-txt">价格</span><span class="right-icon"></span>
+        </div>
+        <div class="filter-con" id="filter">
+            <span class="filter-txt">筛选</span>
+            <!--<span class="f-arrow"></span>-->
+        </div>
+        <div class="style-btn"><i></i></div>
+    </section>
+    <article id="wrapper">
+        <div id="scroller" class="">
+            <div class="scroller-pullDown">
+                <span class="pull-down-icon down-icon"></span>
+                <span class="pull-down-msg">下拉刷新</span>
+                <span class="loading"></span>
+            </div>
+            <section class="goods-wrap goods-list" >
+                <div class="good-cont">
+                    <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥<span>1600</span><i>.00</i></span></div>
+                    <div class="good-line4"><span class="good-discount">7折起</span><span class="fenyong">分佣金额：￥20</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥<span>1600</span><i>.00</i></span></div>
+                    <div class="good-line4"><span class="good-discount">7折起</span><span class="fenyong">分佣金额：￥20</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥<span>1600</span><i>.00</i></span></div>
+                    <div class="good-line4"><span class="good-discount">7折起</span><span class="fenyong">分佣金额：￥20</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥<span>1600</span><i>.00</i></span></div>
+                    <div class="good-line4"><span class="good-discount">7折起</span><span class="fenyong">分佣金额：￥20</span></div>
+                </div>                
+                <div class="good-cont">
+                    <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥<span>1600</span><i>.00</i></span></div>
+                    <div class="good-line4"><span class="good-discount">7折起</span><span class="fenyong">分佣金额：￥20</span></div>
+                </div>                
+                <div class="good-cont">
+                    <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥<span>1600</span><i>.00</i></span></div>
+                    <div class="good-line4"><span class="good-discount">7折起</span><span class="fenyong">分佣金额：￥20</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥<span>1600</span><i>.00</i></span></div>
+                    <div class="good-line4"><span class="good-discount">7折起</span><span class="fenyong">分佣金额：￥20</span></div>
+                </div>
+            </section>
+            <div class="scroller-pullUp">
+                <span class="pull-up-icon up-icon"></span>
+                <span class="pull-up-msg">上拉查看更多</span>
+                <span class="loading"></span>
+            </div>
+        </div>
+    </article>
+    <div class="bg-layer"></div>
+    <div class="filter-lv1 filter-lv">
+        <span class="f-header"><span class="cancel">取消</span><span class="lv-title"></span><span class="lv1-save">确定</span></span>
+        <div class="f-price">
+            <div>价格</div>
+            <div>
+                <input type="text">
+                <span>-</span>
+                <input type="text">
+            </div>
+        </div>
+        <div class="f-lv1-wraper">
+            <div class="f-lv1-scroller">
+                <div class="f-line">
+                    <div class="f-line-left">全部分类</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">品牌</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">颜色</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">类型</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">品牌</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">颜色</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">类型</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div><div class="f-line">
+                    <div class="f-line-left">品牌</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">颜色</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">类型</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div><div class="f-line">
+                    <div class="f-line-left">品牌</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">颜色</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">类型</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div><div class="f-line">
+                    <div class="f-line-left">品牌</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">颜色</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">类型</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div><div class="f-line">
+                    <div class="f-line-left">品牌</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">颜色</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">类型</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div><div class="f-line">
+                    <div class="f-line-left">品牌</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">颜色</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left">类型</div>
+                    <div class="f-line-right"><span class="txt">全部</span><span class="arrow"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="filter-lv2 filter-lv">
+        <span class="f-header"><span class="back">返回</span><span class="lv-title"></span><span class="lv2-save">确定</span></span>
+        <div class="f-lv2-wraper">
+            <div class="f-lv2-scroller">
+                <div class="f-line all">
+                    <div class="con-txt">全部</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">蓝色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">红色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">蓝色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">蓝色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">红色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">蓝色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">红色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">蓝色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">红色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">蓝色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">红色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">蓝色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">红色</div>
+                    <div class="con-icon"></div>
+                </div>
+                <div class="f-line">
+                    <div class="con-txt">蓝色</div>
+                    <div class="con-icon"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        function fLv1ScrollerInit(){
+            var fLvScroller = new IScroll('.f-lv1-wraper', {
+                probeType: 3,
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        } 
+        function fLv2ScrollerInit(){
+            var fLvScroller = new IScroll('.f-lv2-wraper', {
+                probeType: 3,
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        } 
+        document.addEventListener( "DOMContentLoaded", fLv1ScrollerInit, false );
+        document.addEventListener( "DOMContentLoaded", fLv2ScrollerInit, false );
+    </script>
+
+    
+    <script>
+        /*‘综合排序’、‘筛选’*/
+        $('#com').on('tap',function(){
+            $(this).toggleClass('active');
+        });
+        $('#sales').on('tap',function(){
+            $(this).addClass('active');
+            if($(this).hasClass('active')){
+                $(this).find('.right-icon').toggleClass('low');
+            }
+        });
+        $('#filter').on('tap',function(){
+            $(".bg-layer").css('display','block');
+            $('.filter-lv1').addClass('filter-lv1-show');
+        });
+        /*‘筛选’，弹出层1*/
+        $('.filter-lv1 .f-line').on('tap',function(){
+            $(this).addClass('click');
+            var _that = this;
+            setTimeout(function(){
+                $(_that).removeClass('click');
+            },100);
+
+            $(this).siblings('div').removeClass('on');
+            $(this).addClass('on');
+
+
+            $('.filter-lv2').addClass('filter-lv2-show');
+            $('.filter-lv2 .lv-title').text($(this).find('.f-line-left').text());
+        });
+        $(".filter-lv1 .cancel").on("tap",function(e){
+            $('.filter-lv1').removeClass('filter-lv1-show');
+            $(".bg-layer").css('display','none');
+        });
+        $(".filter-lv2 .back").on("tap",function(e){
+            $('.filter-lv2').removeClass('filter-lv2-show');
+        });
+        $(".filter-lv2 .f-line").on("tap",function(e){
+            $(this).addClass('click');
+            var _that = this;
+            setTimeout(function(){
+                $(_that).removeClass('click');
+            },100);
+
+            $(this).toggleClass('on');
+            if($(this).hasClass('all')){
+                $(this).siblings().removeClass('on');
+            }else{
+                $(this).siblings('.all').removeClass('on');
+            }
+        });
+        $(".filter-lv2 .lv2-save").on("tap",function(e){
+            $('.filter-lv2').removeClass('filter-lv2-show');
+            var lv2Filter = '';
+            $(".filter-lv2 .on").each(function(){
+                lv2Filter += $(this).find('.con-txt').text()+',';
+            });
+            lv2Filter = lv2Filter.substring(0,lv2Filter.length-1);
+            lv2Filter = lv2Filter.length<10?lv2Filter:(lv2Filter.substring(0,13)+'...');
+            $(".filter-lv1 .on").find('.txt').html(lv2Filter);
+        });
+        
+
+        /*列表、小图样式切换*/
+        $('.filter .style-btn').on('tap',function(){
+            var goodsWrap = $('.goods-wrap');
+            if(goodsWrap.hasClass('goods-list')){
+                $(this).find('i').css('background-image','url("images/index/style-btn-1.png")');
+                goodsWrap.addClass('goods-small-pic').removeClass('goods-list');
+                scroller.refresh();
+            }else{
+                $(this).find('i').css('background-image','url("images/index/style-btn.png")');
+                goodsWrap.addClass('goods-list').removeClass('goods-small-pic');
+                scroller.refresh();
+            }
+            cutTitle('.goods-wrap');
+        });
+        /*小图，商品名称截取*/
+        function cutTitle(goodsWrap){
+            if($(goodsWrap).hasClass('goods-small-pic')){
+                $(goodsWrap).find('.good-title').each(function(){
+                    var title = $(this).text();
+                    title = title.length>20?(title.substring(0,20)+'  ...'):title;
+                    $(this).text(title);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

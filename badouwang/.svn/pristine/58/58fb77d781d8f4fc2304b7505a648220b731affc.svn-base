@@ -1,0 +1,94 @@
+<include file="../../../Public/default/header" />
+<link href="__ROOT__/public/css/home/answerYm.css" type="text/css" rel="stylesheet" />
+
+
+
+<!--问答页面内容-->
+<div class="answeY-one">
+    <div class="hotnav">当前位置： <a href="__URL__" >学问主页</a> >  <a href="javascript:" >列表页</a></div>
+
+    <div class="anYe-cen-left">
+         <div class="any-ye">
+           <ul>
+            <a href='?cid=<{$cid}>'><li class="any-fl"><{$cname}>:</li></a>
+        <foreach name='classes' item='class'>
+                <a href='?cid=<{$cid}>&tid=<{$class.id}>'> <li class="any-fy"><{$class.name}></li></a>
+        </foreach>
+            </ul>
+          </div>
+        
+      <!--  <if condition="$questions">  
+        <foreach name='questions' item='question'>
+            <div class="any-ys">
+                <div class="anY-ysy"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<if condition="user.pic neq ''"><{$question.user_pic}><else/>public/images/home/nimg.png</if>" width="80" height="80"/></div>
+                   
+                <div class="anY-yse">
+                  <p><span class="anY-ysey"><{$question.aname}></span>  <span class="anY-ysee">普通用户</span></p>
+			          <p class="anY-yses"><a href="__ROOT__/index.php/Space/Question/answerdetail?tid=<{$question.id}>"><{$question.content}></a></p>    
+                    <p class="anY-ysew"><{$question.name}></p>
+                    <p class="anY-ysel" ><a href="__ROOT__/index.php/Space/Question/answerdetail?tid=<{$question.id}>"><{$question.acontent|strip_tags}></a><span><if condition="$question.vmoney gt 0"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/023.png" />￥<{$question.vmoney}></if></span></p>
+                    <p class="anY-yseq"><span class="ay-y1"></span> <span class="ay-y2"><if condition="$question.lnumber gt 0"><{$question.lnumber}><else/>0</if>人阅读</span></p>
+                    <p class="anY-yseba">答案（<if condition="$question.suma gt 0"><{$question.suma}><else/>0</if>） </p>
+                </div>
+                
+                
+                
+               
+            </div>
+        </foreach>
+        <else/>
+            <div  class="any-ys">
+            <span style="text-align:center;height:100px;line-height:60px;">抱歉！暂无相关内容</span></div>
+        </if> -->
+        
+        <if condition="$questions">  
+        <foreach name='questions' item='question'>
+            <div class="any-ysnew">
+                 <div class="any-gyd">
+                   <span class="span">问</span><a href="__ROOT__/index.php/Space/Question/answerdetail?tid=<{$question.id}>"><{$question.content|strip_tags}></a>
+<!--                   <img src="__ROOT__/public/images/home/xueba/023.png" class="imgs" /><span class="spany">￥25</span>-->
+                 </div>
+
+
+                 <div class="any-ger">
+                    <p> 答：<if condition='$question.suma gt 0'><{$question.answer}><else/>暂无相关回答！</if></p>
+                 </div>
+                 <if condition='$question.suma gt 0'>
+                    <div class="any-gsan">
+                        <img src="__ROOT__/public/images/home/xueba/017.gif" /> <span class="spnd">张祺</span> 
+                        <span class="sper"><{$question.atime}> 回答</span> 
+                        <span class="sper">响应时间：2小时</span>
+                        <span class="sper">答案数目：<if condition="$question.suma gt 0"><{$question.suma}><else/>0</if></span>
+                    </div> 
+                 </if>
+
+            </div>
+        </foreach>
+        <else/>
+            <div  class="any-ys">
+            <span style="text-align:center;height:100px;line-height:60px;">抱歉！暂无相关内容</span></div>
+        </if> 
+        
+         <div class='clear:both;'><{$link}></div>
+   
+    </div>
+
+<div class="anYe-cen-right">
+     <p class="pt-re" >热门问题</p>
+     <p class="pt-rs" ></p>
+    <foreach name="hotAsk" item="vo" key="i">
+        <div class="ahaw">
+            <span class="ye-sp"><{$i+1}></span>
+            <a href="__APP__/Space/Question/answerdetail?tid=<{$vo.id}>"><{$vo.content|strip_tags}></a>
+        </div>
+    </foreach>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+<include file="../../../Public/default/footer" />

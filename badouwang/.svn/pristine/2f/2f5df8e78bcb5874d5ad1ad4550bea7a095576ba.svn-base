@@ -1,0 +1,148 @@
+<?php
+
+class ExamAction extends CommonAction{
+    //获取某分类题库
+    public function getPapers(){
+        $param=$this->getData(array('cid','cpage','pagesize'), 'post');
+        if($param['cid']){
+            if(!$param['cpage']){
+                $param['cpage']=1;
+            }
+            if(!$param['pagesize']){
+                $param['pagesize']=6;
+            }
+            $limit=array(((int)$param['cpage']-1)*(int)$pagesize,(int)$param['pagesize']);
+            $papers=M('Ex_paper')->where("sid='$param[cid]'")->limit($limit[0],$limit[1])->select();
+            $this->ajaxr(true, '','',$papers);
+        }else{
+            $this->ajaxr(false, '', '参数cid不正确');
+        }
+    }
+    //获取单张试卷
+    public function getPaper(){
+        $param=$this->getData(array('pid'), 'get');
+        if($param['pid']){
+            $paper=M('Ex_paper')->where("id='$param[pid]'")->find();
+            if($paper){
+                $this->ajaxr(true, '', $paper);
+            }else{
+                 $this->ajaxr(false, '', '该试卷不存在');
+            }
+            
+        }else{
+            $this->ajaxr(false, '', '参数pid不正确');
+        }
+    }
+    //获取试题
+    public function getQuestion(){
+        $param=$this->getData(array('pid'), 'get');
+        if($param['pid']){
+            $questions=M('Ex_question')->where("sid=$param[pid]")->select();
+            if($questions){
+                return $this->ajaxr(true, '', '',$questions);
+            }else{
+                 $this->ajaxr(false, '', '该试卷不存在');
+            }
+            
+        }else{
+              $this->ajaxr(false, '', '参数pid不正确');
+        }
+    }
+    //获取试题评论
+   
+    
+    //提交试卷
+    public function endPaper(){
+                $res = $_POST['answer']; //用户提交的答案
+		foreach($res as $key=>$val){
+			if(is_array($val)){
+				$res[$key] = '';
+				foreach($val as $vo){
+					$res[$key] .=$vo;
+				}
+			}
+		}
+		//正确答案
+		$sid = $_POST['sid'];
+		$right = M('Ex_question')->where("sid=$sid")->field("id,right")->select();
+		$rit = array();
+		foreach($right as $k=>$v){
+			$rit[$v['id']] = $v['right'];
+		}
+		$total = count($right);//试卷题目数量
+		//计算单题分数
+		$fen = round($_POST['z_total']/$total,2);
+
+		$score = 0; $wrong = "";$shu = 0;
+		foreach($rit as $i=>$r){
+			if($res[$i] == $r ){
+				$score += $fen;
+			}else{
+				$score += 0;
+				$wrong .= $i.",";//统计错题
+				$shu += 1; //错题数
+			}
+		}
+		$wrong = rtrim($wrong,',');
+		$arr['uid'] = session('uid');
+		$arr['sid'] = $sid;
+		$arr['record'] = json_encode($res);
+		$arr['wrong'] = $wrong;
+		$arr['begin_time'] = $_POST['begin_time'];
+		$arr['end_time'] = time();
+		$arr['score'] = floor($score);
+		$arr['rate'] = round($shu/$total*100,2);
+		$arr['r_total'] = $total-$shu;
+		$sub = M('Ex_record')->data($arr)->add();
+		if($sub){//添加经验值
+			$arr = M('Ex_paper')->where("id=$sid")->Field('uid,ispay')->find();
+			$ispay = $arr['ispay'];
+			$fuid = $arr['uid'];
+
+			$key = $ispay>0?'ex_sf':'ex_mf';
+			$uid = session('uid');
+			$c_value = $this->setCredit('经验',$key,$uid);
+			//试卷提供者获得积分
+			$this->setCredit('经验','ex_kscs',$fuid);
+
+			if($key === 'ex_sf'){
+				M('Memberfields')->where("uid=$uid")->setInc('vmoney',-$ispay);
+				$arr = array();
+				$arr = array('uid'=>$uid,'type'=>'学豆','name'=>'考试花费','val'=>-$ispay,'ctime'=>time());
+                                M('Credit_log')->data($arr)->add();
+				$msg = "<font color='green'>+".$c_value."积分,-".$ispay."学豆</font>";
+			}else{
+				$msg = "<font color='green'>+".$c_value."积分</font>";
+			}
+		}
+		$this->ajaxr($sub,'交卷成功! '.$msg,'交卷失败');
+    }
+    //查看结果
+    public function getRes(){
+        $param=$this->getData(array('uid','pid'), 'get');
+        if($param['uid'] && $param['pid']){
+            $res=M('Ex_record')->where("uid=$param[uid] and sid='$param[pid]'")->find();
+            $this->ajaxr($res,'' ,$res);
+        }else{
+            $this->errorkey($param);
+        }
+    }
+    //我的题库
+    public function getMpapers(){
+        $param=$this->getData(array('uid','cpage','pagesize'), 'post');
+        if($param['cid']){
+            if(!$param['cpage']){
+                $param['cpage']=1;
+            }
+            if(!$param['pagesize']){
+                $param['pagesize']=6;
+            }
+            $limit=array(((int)$param['cpage']-1)*(int)$param['pagesize'],(int)$param['pagesize']);
+            $papers=M('Ex_paper')->where("uid='$param[uid]'")->limit($limit[0],$limit[1])->select();
+            $this->ajaxr(true, '','',$papers);
+        }else{
+            $this->ajaxr(false, '', '参数cid不正确');
+        }
+    }
+}
+

@@ -1,0 +1,201 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的钱包</title>
+<style type="text/css">
+p{ margin:0; padding:0;}
+ul,ol {list-style:none;}
+a{ text-decoration:none;}
+img{border:0}
+.qianball{ width:900px;}
+
+.qianball .qianb-coney{ width:900px;}
+.qianball .qianb-coney .qia-left{ width:510px; border:1px #dddedd solid; float:left; height:120px;}
+.qianball .qianb-coney .qia-left p{ font-weight:bolder; margin-bottom:15px;}
+.qianball .qianb-coney .qia-left p ,.qianball .qianb-coney .qia-left span{ margin-left:20px; margin-top:15px; margin-right:20px;}
+.qianball .qianb-coney .qia-left a{ width:75px; height:30px; background:#f8f8f8; border:1px #CCC solid; padding:7px; color:#656666; border-radius:5px; font-size:14px;}
+.qianball .qianb-coney .qia-left a:hover{ background:#ff9d3a; color:#FFF; border:1px #ff9d3a solid;}
+.qianball .qianb-coney .qia-left strong{ color:#feba94; font-size:22px; margin-right:5px;}
+
+
+.qianball .qianb-coney .qia-riht{width:350px; border:1px #dddedd solid; float:right; height:120px;}
+.qianball .qianb-coney .qia-riht .qht-l,.qianball .qianb-coney .qia-riht .qht-r{ margin-top:15px;}
+.qianball .qianb-coney .qia-riht .qht-l{ width:100px; float:left; margin-left:20px;  font-weight:bolder;}
+.qianball .qianb-coney .qia-riht .qht-r{ width:200px; float:right;}
+.qianball .qianb-coney .qia-riht .qht-r img{ margin-right:7px;}
+.qianball .qianb-coney .qia-riht .qht-r p{ line-height:30px; font-size:14px;}
+.qianball .qianb-coney .qia-riht .qht-r span{ margin-left:4px; margin-right:4px; color:#fb2d0f;}
+.qianball .qianb-coney .qia-riht .qht-r a{ color:#136ec3;}
+.qianball .qianb-coney .qia-riht .qht-r a:hover{ text-decoration:underline; color:#ff9d3a;}
+
+.qianball .qianb-coner{width:900px;  border:1px #dddedd solid; float:left; margin-top:20px;}
+.qianball .qianb-coner .pn{ line-height:45px; margin:15px 0px 0px 25px; font-weight:bolder;}
+.qianball .qianb-coner table{width:840px;  margin-left:21px;}
+.qianball .qianb-coner table .anl{ background:#effbeb; line-height:30px; font-weight:bolder;}
+.qianball .qianb-coner table .ane{ background:#EEE; line-height:30px;}
+.qianball .qianb-coner table td{ width:160px; text-align:center; font-size:14px; }
+.qianball .qianb-coner .jlu{ text-align:center; line-height:30px; font-size:14px;}
+.hint{color:red;font-size:12px;}
+.qianball .qianb-coner .anyg{width:900px; text-align:center; margin-top:20px; margin-bottom:20px;}
+</style>
+</head>
+
+<body>
+   <div class="qianball">
+     <img src="__ROOT__/public/images/home/qiany.jpg" style="margin-left:-70px;margin-bottom:20px;margin-top:10px;"/>
+     
+     <div  class="qianb-coney">
+         <div class="qia-left">
+           <p>账户余额：</p>
+				<span><strong><?php if($uinfo["money"] > 0): echo ($uinfo["money"]); else: ?>0.00<?php endif; ?></strong>元 </span>
+                <a class="bdpay" href="__APP__/Consume/Consume/charge">充值</a>
+                <a class="bdwith" href="javascript:;">提现</a> <span style="font-size:10px;">最低可提现金额不能低于<span style="color:orange;margin:3px;"><?php if($plimit > 0): echo ($plimit); else: ?>50<?php endif; ?></span>元</span>
+<!--            <a href="javascript:">超级账号</a>-->
+         </div>
+        
+        <div class="qia-riht">
+             <div class="qht-l">我的资产</div>
+             <div class="qht-r">
+             <p><img src="__ROOT__/public/images/home/qian1.png" />学豆
+             	<span><?php if($uinfo["vmoney"] > 0): echo ($uinfo["vmoney"]); else: ?>0.00<?php endif; ?></span>
+                <span style='cursor: pointer'><a href='__APP__/Consume/Consume/posit'>兑换</a></span>
+             </p>
+             <p><img src="__ROOT__/public/images/home/qian2.png" />支付宝账号<span><?php if(count($acount) > 0): echo (count($acount)); else: ?>0<?php endif; ?></span><a class="bdbind" style='cursor: pointer;padding-left:5px'>绑定</a></p>
+<!--             <p><img src="__ROOT__/public/images/home/qian3.jpg" />百宝劵<span>0</span>张</p>-->
+             </div>
+        </div> 
+     </div>
+     
+     <div  class="qianb-coner">
+         <p class="pn">账户记录：</p>
+         <table>
+            <tr class="anl">
+              <td>订单ID</td>
+              <td>充值金额</td>
+              <td>时间</td>
+              <td>订单状态</td>
+              <td>备注消息</td>
+            </tr>
+             <?php if(is_array($orders)): foreach($orders as $key=>$order): ?><tr class="ane">
+                  <td><?php echo ($order["order_num"]); ?></td>
+                  <td><?php echo ($order["money"]); ?></td>
+                  <td><?php echo (date("Y-m-d H:i",$order["bm_time"])); ?></td>
+                  <td><?php if($order["ispay"] > 0): ?>已支付<?php else: ?><a href="javascript:pay('<?php echo ($order["money"]); ?>','<?php echo ($order["order_num"]); ?>');">待支付</a><?php endif; ?></td>
+                  <td><?php echo ($order["msg"]); ?></td>
+                </tr><?php endforeach; endif; ?>
+         </table>
+          <div id="pay"></div>
+         <?php if($pages): ?><div class="anyg"><?php echo ($pages); ?></div><?php else: ?><p class="jlu">暂无充值记录</p><?php endif; ?>
+         
+         
+     </div>
+   </div>
+
+
+
+<!---------------------------------------->
+<div class="popup">
+	<div class="back"></div><!--共用遮挡DIV-->
+    <div class="tent bind"><!--绑定帐号-->
+    	<div class="title">绑定帐号<span>X</span></div>
+        <div class="line"><div class="left">支付宝帐号：</div><input name="acount" placeholder="支付宝帐号" /></div>
+        <div class="line"><div class="left">确认帐号：</div><input name="c_acount" placeholder="确认支付宝帐号" /> </div>
+        <div class="line"><div class="left">收款人：</div><input name="cname" placeholder="收款人真实姓名" /> </div>
+         <div class="line" style="height:0px;"><div class="hint" style="margin-left:100px;"></div> </div>
+        <div class="line"><input class="sub" type="submit"  value="提交保存" name="alicount"/></div>
+    </div>
+	
+	<div class="tent with"><!--提现-->
+    	<div class="title">余额提现<span>X</span></div>
+        <div class="line"><div class="left">可提现金额：</div><input name="max" class="mis_wit" readonly="readonly" value="￥<?php if($uinfo["money"] > 0): echo ($uinfo["money"]); else: ?>0<?php endif; ?>" /></div>
+        <div class="line"><div class="left">提现金额：</div><input name="money" placeholder="提现金额" /></div>
+        <div class="line"> <div class="left">收款帐号：</div><select name="ali_count" style="width:120px;height:26px;">
+                <?php if(is_array($acount)): foreach($acount as $key=>$count): ?><option acount='<?php echo ($count["cname"]); ?>' value='<?php if($count["buyer_email"] != ''): echo ($count["buyer_email"]); else: echo ($count["acount"]); endif; ?>'><?php if($count["buyer_email"] != ''): echo ($count["buyer_email"]); ?>g<?php else: echo ($count["acount"]); endif; ?></option><?php endforeach; endif; ?>
+                </select></div>
+        <div class="line"><input class="sub" type="submit" name="charge" value="提交" /></div>
+    </div>
+</div>
+<!---------------------------------------->
+<style>
+.popup{font-family:"微软雅黑";}
+.popup .back{background:url(__ROOT__/public/images/home/bg.png); position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:1;display:none;}
+.popup .tent{width:500px;height:300px;background:#FFF;position:absolute;top:25%;left:25%;z-index:2;border-radius:4px;box-shadow:0 0 15px #333;display:none;}
+.popup .tent .title{height:40px;line-height:40px;font-weight:bold;font-size:16px;text-indent:10px;border-bottom:1px solid #ccc;}
+.popup .tent .title span{float:right;margin-right:15px;font-weight:normal;cursor:pointer;}
+.popup .tent .title span:hover{color:#F93;}
+.popup .tent .line{width:300px;height:30px;margin:20px auto;}
+.popup .tent .line .left{float:left;width:100px;font-size:14px;line-height:30px;}
+.popup .tent .line input{float:left;height:20px;margin:0;padding:3px 5px;color:#555;outline:none;}
+.popup .tent .line .sub{width:100px;height:30px;background:#00b38a;border:none;color:#FFF;padding:0;margin:20px 0 0 100px;cursor:pointer;border-radius:4px;}
+.popup .tent .line .sub:hover{color:#f93;}
+.popup .with .line .mis_wit{border:none;height:30px;padding:0;color:#F93;}
+</style>
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+ <script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script>
+function   shar_Shut(content){	$('.popup .back').hide();$('.tent.' + content).hide();	}
+function   shar_Open(content){	$('.popup .back').show();$('.tent.' + content).show();	}
+var blimit="<?php echo ($plimit); ?>";
+
+$('.bdbind').click(function(){	shar_Open('bind')	})
+//$('.bdpay').click(function(){	shar_Open('pay')	})
+$('.bdwith').click(function(){
+   
+    if(parseFloat($(".qia-left span strong").text())>parseFloat(blimit)){
+        shar_Open('with');
+    }else{
+        $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 3,msg: '不满足提现条件!'}});
+    }
+    	
+})
+
+$('.bind .title span').click(function(){	shar_Shut('bind')	})
+$('.pay .title span').click(function(){		shar_Shut('pay')	})
+$('.with .title span').click(function(){	shar_Shut('with')	})
+$(function(){
+    $("input[name=alicount]").click(function(){
+        if($(".bind").find("input[name=acount]").val() && $(".bind").find("input[name=acount]").val()===$(".bind").find("input[name=c_acount]").val()){
+             if($(".bind").find("input[name=cname]").val() && $(".bind").find("input[name=cname]").val().match(/^[\u4E00-\u9FA5\uF900-\uFA2D]*/)){
+                  $(".bind").wrap("<form method='post' action='__APP__/Consume/Consume/bind'></form>");
+             }else{
+                  $(".bind").find(".hint").text("收款人格式不正确！");
+             }
+            
+             
+        }else{
+            $(".bind").find(".hint").text("两次账号不一致！");
+        }
+    })
+    $("input[name=charge]").click(function(){
+           var money=parseFloat($(".with").find("input[name=money]").val());
+            if(money && $(".with").find("select[name]").val()){
+                var max=parseFloat($(".with input[name=max]").val().substr(1));
+                
+                if(money<=max){
+                    var rname='';
+                    $("option").each(function(){
+                        if($(this).val()===$("select[name=ali_count]").val()){
+                            rname=$(this).attr("acount");
+                        }
+                    })
+                    $(".with").append("<input type='hidden' name='rname' value='"+rname+"'>");
+                    $(".with").wrap("<form method='post' action='__APP__/Consume/Consume/depoit' id='dataform'></form>");
+                }else{
+                    $(".with").find(".hint").text("提现金额超过限度！");
+                }
+            }else{
+                $(".with").find(".hint").text("请正确填写提现金额！");
+            }
+        
+    })
+})
+
+function pay(money,num){
+    $("#pay").html('<input type="hidden" name="order_num" value="'+num+'" /><input type="hidden" name="money" value="'+money+'"/><input type="hidden" name="ordsubject" value="八斗充值" />').wrap('<form action="__APP__/Pay/Pay/doalipay" method="post"></form>');$("#pay").parent("form").submit();
+}
+
+</script>
+<!---------------------------------------->
+</body>
+</html>

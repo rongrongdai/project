@@ -1,0 +1,474 @@
+<include file="../../../Public/default/header" />
+<link href="__ROOT__/public/css/home/forit.css" type="text/css" rel="stylesheet" />   
+
+<!--学吧-轮播图-->
+<div id="playBox">
+    <div class="pre"></div>
+    <div class="next"></div>
+    <div class="smalltitle hcenter">
+      <ul>
+        <li class="thistitle"></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <ul class="oUlplay">
+       <li><a href="javascript:;" target="_blank"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/banner1-xb.jpg"/></a></li>
+       <li><a href="javascript:;" target="_blank"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/banner2-xb.jpg"/></a></li>
+       <li><a href="javascript:;" target="_blank"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/banner3-xb.jpg"/></a></li>
+    </ul>
+</div>
+
+<!--wrap-->
+<div class="train-two">
+  <!--公告-->
+  <div class="con_a">
+  	<div class="con"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/tb3.png" /></div>
+  	<div class="con"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/tb2.png" /></div>
+  	<div class="con"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/tb1.png" /></div>
+  	<div class="con" style="margin:0;border:none;">
+  		<div class="title">
+        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/gong.png" /><div>最新需求信息</div>
+      </div>
+        <div class="link">
+            <foreach name="notices" item="notice">
+                <a href="<{$notice.link}>"><div name="left"><li><{$notice.ntext}></li></div><span name="right"><{$spred.atime|date="y-m-d",###}></span></a>
+            </foreach>
+        </div>
+    </div>
+  </div>
+
+
+
+  <!--内容container-->
+  <div class="fort-there"> 
+      <div class="forit-ty">
+
+        <div class="fit-ayi">
+          <ul>
+            <li class="fi-rm">热门老师</li>
+            <li class="fi-ry fot" onclick="change('文')">语文</li>
+            <li class="fi-ry" onclick="change('数学')">数学</li>
+            <li class="fi-ry" onclick="change('英语')">英语</li>
+            <li class="fi-ry" onclick="change('音乐')">文艺</li>
+          </ul>
+        </div>
+
+
+              
+<!--隐藏一-->   
+<div class="fit-aer">
+<div class="paddt20 home-wkt">
+<div class="paddt20 dir_wrap" id="kta">
+
+<!-- -------------------------------------------->
+<for start="0" end="5" name="i" step="2">
+    <if condition="$i eq 0"><div class="dir dir_a"><elseif condition="$i eq 2" /><div class="dir dir_b"><else /><div class="dir dir_c"></if>
+        <a style="float:left">
+          <h4><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$hotch[$i].c_img}>" /></h4>
+          <h5><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$hotch[$i+1].c_img}>" /></h5>
+        </a>
+        <a class="pimg"></a>
+
+        <b>
+          <div class="d1">
+                      <span class="a_jj">介绍：</span>
+              		  <{$hotch[$i].introduce}>
+          </div>
+          <div class="d2">
+            <div class="vtitley">
+                <div class="vtitleyi">
+                  <p class="hay">好评</p>
+                  <p class="hae">10分</p>
+                </div>
+                <div class="vtitleer">
+                  <p class="has">服务费</p>
+                  <p class="haw"><{$hotch[$i].price}>/小时</p>
+                </div>
+            </div>
+            <a href="__APP__/Space/Space/space?uid=<{$hotch[$i].uid}>"><p class="vtitlesa">查看详情</p></a>
+          </div>
+        </b>
+
+        <i>
+          <div class="d1">
+                      <span class="a_jj">介绍：</span>
+                      <{$hotch[$i+1].introduce}>
+          </div>
+
+          <div class="d2">
+            <div class="vtitley">
+              <div class="vtitleyi">
+                  <p class="hay">好评</p>
+                  <p class="hae">10分</p>
+              </div>
+              <div class="vtitleer">
+                  <p class="has">服务费</p>
+                  <p class="haw"><{$hotch[$i+1].price}>/小时</p>
+              </div>
+            </div>
+            <a href="__APP__/Space/Space/space?uid=<{$hotch[$i+1].uid}>"><p class="vtitlesa">查看详情</p></a>
+          </div>
+        </i>
+
+    </div>
+</for>
+<!-- -------------------------------------------->
+    </div>
+  </div>
+
+<!--隐藏结束-->    
+              
+              
+              
+        <div class="fit-asan"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/02.gif" /><span class="tl">最新热门讨论</span></div>
+ 			<ul class="ul_none">
+            <foreach name="hdynimics" item="vo" key="i">
+             
+                <li>
+                    <div class="fit-asi" onclick="hit(<{$vo.id}>)">
+                          <div class="f_left"><{$vo.content}><span class="fi-h"><{$vo.readnumber}>人阅读</span><span class="fi-j">精</span></div>  
+                          <div class="f_right"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/05.png" /><{$vo.rname}></div>
+                    </div>
+                </li>
+              
+            </foreach>  
+            </ul>
+           
+              
+              <div class="fit-awu">
+              		<ul>
+                     <li class="fi-rm">热门学生</li>
+                     <li class="fi-ry fot" onclick="student('学霸')">学霸</li>
+                     <li class="fi-ry" onclick="student('奋青')">奋青</li>
+                     <li class="fi-ry" onclick="student('女神')">女神</li>
+                     <li class="fi-ry" onclick="student('萌妹子')">萌妹子</li>
+                     </ul>
+                    
+              </div>
+              
+              <!--隐藏学生--> 
+        <div class="left">      
+              <div class="fit-aliu">
+                  <div class="ft-liuy">
+
+                    <foreach name="hotstud" item="vo" key="i">
+                      <if condition="$vo['user_pic']">  
+                        <div class="ft-uyi">
+                          <a href="__APP__/Space/Space/space?uid=<{$vo.uid}>">
+                          	<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  class="ft_u_img" src='<if condition="!strpos($vo['user_pic'],'ttp')">__ROOT__/<{$vo.user_pic}><else/><{$vo.user_pic}></if>' />
+                          	<div class="ft-uer"><{$vo.rname}></div>
+                          </a>
+
+                        </div>
+                      </if>
+                    </foreach>  
+
+                  </div>
+                   
+                   <div class="ft-liuer">
+                      <p class="ft-ue ury"></p>
+                      <p class="ft-ue"></p>
+                      <p class="ft-ue"></p>
+                   </div>
+                   
+              </div>
+                      
+              <!--隐藏学生结束-->  
+        
+
+        	<div class="fit-asan"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/03.gif" /><span class="tl">学吧动态</span></div>
+
+                    
+
+            <foreach name='ddynimics' item='dynamic'>  
+              <div class="fit-aqi">
+                       <div class="fit-aqi-y">
+                           <a href="__APP__/Space/Space/space?uid=<{$dynamic.uid}>"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$dynamic.user_pic}>" class="f-im"/></a>
+                       <div class="fit-qi">
+                         <a href="#" class="qi_title"><{$dynamic.rname}></a>
+                         <p><{$dynamic.publisttime|date='Y-m-d H时i分',###}>    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/014.png" /> 浏览（<{$dynamic.readnumber}>）</p>
+                        </div>
+                        </div>
+                  <php>
+                  </php>
+                  <p class="fit-aqi-e"><{$dynamic.content}></p>
+                 <!-- <div class="fit-aqi-s">
+                      <p class="fit-pinl">
+                      <a class="f_link" href="#" style="background-image:url(__ROOT__/public/images/home/xueba/09.gif)">评论</a><span class="gang">|</span>
+                      <a class="f_link" href="#" style="background-image:url(__ROOT__/public/images/home/xueba/010.gif)">转发</a><span class="gang">|</span>
+                      <a class="f_link" href="#" style="background-image:url(__ROOT__/public/images/home/xueba/011.png)">收藏</a><span class="gang">|</span>
+                      <a class="f_link" href="#" style="background-image:url(__ROOT__/public/images/home/xueba/012.gif)">赞</a><span class="gang">|</span>
+					  <span class="f_genduo">...</span>
+                      </p>
+                      
+                      <p class="fit-ab">
+                        <textarea placeholder="我也说一句"></textarea>
+                      </p>
+                  </div>-->
+
+              </div>
+            </foreach>  
+            <div id="chakg" style="width:800px;padding:30px 0;"><input type="button" value="查看更多" class="chaokg" onclick="more(17)"></div>
+      
+</div>  
+              </div></div></div>
+<!--老师学吧-->      
+<div class="forit-te">
+     <p class="pt-re" >老师学吧</p>
+     <p class="pt-rs"></p>
+
+    <foreach name="tbar" item="vo" key="i"> 
+      <a href="__APP__/Space/Space/space?uid=<{$vo.uid}>"><div class="fot-teo">
+              
+              <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src='<if condition="!strpos($vo['user_pic'],'ttp')">__ROOT__/<{$vo.user_pic}><else/><{$vo.user_pic}></if>' class="fot-one" />
+        <div class="fot-tw" >
+          <p class="fo-ai"><{$vo.rname}><span class="fo-ae">语文老师</span></p>
+          <p class="fo-ast">一个人拥有什么样的性格,就拥有什么样的世界.</p>
+          <p class="fo-as">浏览：<span class="fo-aw">2528</span>人  粉丝：<span class="fo-aw">1121</span>人</p>
+        </div>
+      </div></a>
+    </foreach>
+     <p class="pt-re" >学生学吧</p>
+     <p class="pt-rs" ></p>
+     
+     <foreach name="sbar" item="vo" key="i">
+        <a href="__APP__/Space/Space/space?uid=<{$vo.uid}>"><div class="fot-thsw">
+          <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  class="fo-wy" src="<if condition="!strpos($vo['user_pic'],'ttp')">__ROOT__/<{$vo.user_pic}><else/><{$vo.user_pic}></if>" />
+          <p class="fo-we"><{$vo.rname}></p>
+          <p class="fo-ws"><{$vo.lab}></p>
+          <p class="fo-ww">粉丝：<span>1023</span>人</p>
+       </div></a>
+     </foreach>
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+<script>
+    //文字滚动
+    function scroll_news(){
+    $(function(){
+    $('.link a').eq(0).fadeOut('slow',function(){
+    //   alert($(this).clone().html());
+    //克隆:不用克隆的话，remove()就没了。
+    $(this).clone().appendTo($(this).parent()).fadeIn('slow');
+    $(this).remove();
+    });
+    });
+    }
+    setInterval('scroll_news()',1500);
+    </script>
+
+
+
+
+<script type="text/javascript">
+
+		 function getStyle(obj,name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name]
+	}
+	else
+	{
+		return getComputedStyle(obj,false)[name]
+	}
+}
+		function getByClass(oParent,nClass)
+{
+	var eLe = oParent.getElementsByTagName('*');
+	var aRrent  = [];
+	for(var i=0; i<eLe.length; i++)
+	{
+		if(eLe[i].className == nClass)
+		{
+			aRrent.push(eLe[i]);
+		}
+	}
+	return aRrent;
+}
+
+function startMove(obj,att,add)
+{
+	clearInterval(obj.timer)
+	obj.timer = setInterval(function(){
+	   var cutt = 0 ;
+	   if(att=='opacity')
+	   {
+		   cutt = Math.round(parseFloat(getStyle(obj,att)));
+	   }
+	   else
+	   {
+		   cutt = Math.round(parseInt(getStyle(obj,att)));
+	   }
+	   var speed = (add-cutt)/4;
+	   speed = speed>0?Math.ceil(speed):Math.floor(speed);
+	   if(cutt==add)
+	   {
+		   clearInterval(obj.timer)
+	   }
+	   else
+	   {
+		   if(att=='opacity')
+		   {
+			   obj.style.opacity = (cutt+speed)/100;
+			   obj.style.filter = 'alpha(opacity:'+(cutt+speed)+')';
+		   }
+		   else
+		   {
+			   obj.style[att] = cutt+speed+'px';
+		   }
+	   }
+	   
+	},30)
+}
+
+  window.onload = function()
+  {
+	  var oDiv = document.getElementById('playBox');
+	  var oPre = getByClass(oDiv,'pre')[0];
+	  var oNext = getByClass(oDiv,'next')[0];
+	  var oUlBig = getByClass(oDiv,'oUlplay')[0];
+	  var aBigLi = oUlBig.getElementsByTagName('li');
+	  var oDivSmall = getByClass(oDiv,'smalltitle')[0]
+          var aLiSmall=$(".smalltitle").find("li");
+	  function tab()
+	  {
+	     for(var i=0; i<aLiSmall.length; i++)
+	     {
+		    aLiSmall[i].className = '';
+	     }
+	     aLiSmall[now].className = 'thistitle'
+	     startMove(oUlBig,'left',-(now*aBigLi[0].offsetWidth))
+	  }
+	  var now = 0;
+	  for(var i=0; i<aLiSmall.length; i++)
+	  {
+		  aLiSmall[i].index = i;
+		  aLiSmall[i].onclick = function()
+		  {
+			  now = this.index;
+			  tab();
+		  }
+	 }
+	  oPre.onclick = function()
+	  {
+		  now--
+		  if(now ==-1)
+		  {
+			  now = aBigLi.length;
+		  }
+		   tab();
+	  }
+	   oNext.onclick = function()
+	  {
+		   now++
+		  if(now ==aBigLi.length)
+		  {
+			  now = 0;
+		  }
+		  tab();
+	  }
+	  var timer = setInterval(oNext.onclick,5000) //滚动间隔时间设置
+	  oDiv.onmouseover = function()
+	  {
+		  clearInterval(timer)
+	  }
+	   oDiv.onmouseout = function()
+	  {
+		  timer = setInterval(oNext.onclick,5000) //滚动间隔时间设置
+	  }
+  }
+
+//切换或搜索热门老师
+function change(name){
+/*  if(!name){ name = $("#tch").val(); }
+*/  if(name){
+    $.post("__APP__/Ajax/AjaxStudyCenter/hotch",{'kwd':name},function(data){
+      if(data){
+        $("#kta").html("");
+        for(var i=0;i<data.length;i+=2){
+          var node = '<a class="a_dir"><h4><img src="__ROOT__'+data[i].c_img+'" width="105px" height="105px"/></h4><h5><img  src="__ROOT__'+data[i+1].c_img+'" width="105px" height="105px" /></h5></a><a class="pimg"></a><b><div class="d1"><span class="a_jj">介绍：</span>'+data[i].introduce+'</div><div class="d2"><div class="vtitley"><div class="vtitleyi"><p class="hay">好评</p><p class="hae">10分</p></div><div class="vtitleer"><p class="has">服务费</p><p class="haw">'+data[i].price+'/小时</p></div></div><a href="__APP__/Space/Space/space?uid='+data[i].uid+'"><p class="vtitlesa">查看详情</p></a></div></b><i><div class="d1"><span class="a_jj">介绍：</span>'+data[i+1].introduce+'</div><div class="d2"><div class="vtitley"><div class="vtitleyi"><p class="hay">好评</p><p class="hae">10分</p></div><div class="vtitleer"><p class="has">服务费</p><p class="haw">'+data[i+1].price+'/小时</p></div></div><a href="__APP__/Space/Space/space?uid='+data[i+1].uid+'"><p class="vtitlesa">查看详情</p></a></div></i>';
+        if(i == 0){
+            $('<div class="dir dir_a">'+node+'</div>').appendTo('#kta');
+        }
+        if(i == 2){
+            $('<div class="dir dir_b">'+node+'</div>').appendTo('#kta');
+        }
+        if(i == 4){
+            $('<div class="dir dir_c">'+node+'</div>').appendTo('#kta');
+        }
+
+
+
+
+        }
+
+      }
+    },'json');
+  }
+}
+
+//热门学生
+function student(lab){
+    $.post("__APP__/Ajax/AjaxStudyCenter/student",{'lab':lab},function(data){
+      $(".ft-liuy").html("");
+      if(data){
+          for(var i=0;i<data.length;i++){  
+              var node = '<div class="ft-uyi"><img src="__ROOT__/'+data[i].user_pic+'" width="139px" height="140px"/><a href="__APP__/Space/Space/space?uid='+data[i].uid+'"><div class="ft-uer"><p>'+data[i].rname+'</p></div></a></div>';
+              $(node).appendTo(".ft-liuy");
+          }
+      }else{
+         $("<span>抱歉！暂无信息</span>").fadeIn(300).appendTo(".ft-liuy");
+      }
+    },'json')
+}
+
+function hit(id){
+    $.get("__APP__/Ajax/AjaxTeach/hit?tid="+id,function(){
+       window.location.href = "__APP__/Teach/Teach/agentdetail?id="+id;
+    });
+}
+
+
+
+function Mli(t,th){
+		if(t=='ue'){
+			$('.ft-' + t).removeClass('ury')
+			$(th).addClass('ury');			}
+		else{
+			$('.fit-' + t + ' .fi-ry').removeClass('fot')
+			$(th).addClass('fot');
+			}
+	}
+function Mh(b,i,th){
+        $('.home-wkt .dir ' + b ).addClass('pblock').removeClass('pnone');  
+        $('.home-wkt .dir ' + i ).addClass('pnone').removeClass('pblock');
+        if(th=='.d1'){  $('.home-wkt .dir .pimg').css({  backgroundPosition:'0 -157px'  });   }
+        if(th=='.d2'){  $('.home-wkt .dir .pimg').css({  backgroundPosition:'0 -16px'  })  }
+        }
+function Ma(b,i,th){
+        $(th).animate({width:'434px'});
+        $('.home-wkt .dir_' + b).animate({width:'200px'});
+        $('.home-wkt .dir_' + i).animate({width:'200px'});
+        }
+$('.fit-awu li').click(function(){	Mli('awu',this)	})
+$('.fit-ayi li').click(function(){	Mli('ayi',this)	})
+$('.ft-liuer .ft-ue').click(function(){	Mli('ue',this)	})
+$('.home-wkt .dir_a').live('mouseenter',function(){   Ma('b', 'c', this) })
+$('.home-wkt .dir_b').live('mouseenter',function(){   Ma('a', 'c', this) })
+$('.home-wkt .dir_c').live('mouseenter',function(){   Ma('a', 'b', this) })
+$('.home-wkt .dir h4').live('mouseenter',function(){  Mh('b', 'i', '.d1')       })
+$('.home-wkt .dir h5').live('mouseenter',function(){  Mh('i', 'b', '.d2')       })
+Ma('a', 'b', '.dir_c');Mh('b', 'i', '.d1')//默认哪个展开
+
+</script>
+
+<include file="../../../Public/default/footer" />

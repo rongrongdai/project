@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>优惠券</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/iscroll.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeeef;}
+        .scroller-pullUp{background:none;}
+        .tuwen{height:100%;width:100%;text-align: center;position: fixed;top:0;bottom:0;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .tuwen .scroller{position:absolute;width:100%;}
+        .tuwen>div{    position: absolute;width: 100%;top: 0;bottom: 0;left: 0;}
+        .tuwen .tuwen-header{width: 5.92rem;height: 0.6rem;position: relative;margin: 0.2rem auto;border-radius: 0.1rem;box-shadow: 0 0 20px #ddd;}
+        .tuwen .tuwen-header .txt-btn{font-size: 0.24rem;color: #282828;text-align: center;line-height: 0.6rem;float: left;width:1.96rem;box-sizing: border-box;margin-right:0.02rem;background-color: #fff;}
+        .tuwen .tuwen-header .txt-btn:last-child{margin-right:0;}
+        .tuwen .tuwen-header .servive{border-top-right-radius:0.1rem;border-bottom-right-radius:0.1rem;}
+        .tuwen .tuwen-header .good-d{border-top-left-radius:0.1rem;border-bottom-left-radius:0.1rem;}
+        .tuwen .tuwen-header .param{}
+        .tuwen .tuwen-header .active{background-color:#ff3c00;color:#fff;}
+        .tuwen .tuwen-cont{width:100%;position: absolute;top: 1rem;bottom:0;left:0;border-top: 1px solid #cbcbcb;text-align: left;}
+        .tuwen .tuwen-cont .swiper-wrapper{}
+        .tuwen .tuwen-cont .swiper-slide{}
+        .tuwen .tuwen-cont .swiper-slide img{width:100%;}
+        .tuwen .tuwen-cont .swiper-slide>div{font-size: 0.24rem;position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;width: 100%;overflow: hidden;}
+        
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;height: 100%;z-index: 3;position: fixed;display:none;}
+
+        .coupons-un-use{}
+        .coupons-un-use .coupon-item{width:5.92rem;height:1.3rem;margin:0.2rem auto 0 auto;background:url(images/coupon.png) no-repeat center center / contain;font-size:0.22rem;padding:0 0.2rem 0 0.3rem;box-sizing: border-box;}
+        .coupons-un-use .coupon-item>div{display:inline-block;vertical-align:middle;}
+        .coupons-un-use .coupon-item .c-left{width: 3.8rem;height:1.3rem;}
+        .coupons-un-use .coupon-item .c-right{width:1.62rem;height:1.3rem;padding-left: 0.26rem;box-sizing: border-box;color:#fff;}
+        .coupons-un-use .coupon-item .c-right .c-value>span{display:inline-block;vertical-align:top;}
+        .coupons-un-use .coupon-item .c-right .c-value{font-size:0.3rem;margin-top: 0.18rem;}
+        .coupons-un-use .coupon-item .c-title{font-size:0.3rem;margin-top: 0.18rem;}
+        .coupons-un-use .coupon-item .icon{line-height: 0.31rem;}
+        .coupons-un-use .coupon-item .num{font-size:0.5rem;line-height: 0.41rem;}
+        .coupons-un-use .coupon-item .c-info{margin-top: 0.18rem;}
+        .coupons-un-use .coupon-item .c-date{margin-top: 0.16rem;}
+        .coupons-used{}
+        .coupons-used .coupon-item{width:5.92rem;height:1.3rem;margin:0.2rem auto 0 auto;background:url(images/coupon0.png) no-repeat center center / contain;font-size:0.22rem;padding:0 0.2rem;box-sizing: border-box;position:relative;}
+        .coupons-used .coupon-item>div{display:inline-block;vertical-align:middle;}
+        .coupons-used .coupon-item .c-left{width: 3.9rem;height:1.3rem;}
+        .coupons-used .coupon-item .c-right{width:1.62rem;height:1.3rem;padding-left: 0.26rem;box-sizing: border-box;color:#fff;}
+        .coupons-used .coupon-item .c-right .c-value>span{display:inline-block;vertical-align:top;}
+        .coupons-used .coupon-item .c-right .c-value{font-size:0.3rem;margin-top: 0.18rem;}
+        .coupons-used .coupon-item .c-title{font-size:0.3rem;margin-top: 0.18rem;}
+        .coupons-used .coupon-item .icon{line-height: 0.31rem;}
+        .coupons-used .coupon-item .num{font-size:0.5rem;line-height: 0.41rem;}
+        .coupons-used .coupon-item .c-info{margin-top: 0.18rem;}
+        .coupons-used .coupon-item .c-date{margin-top: 0.16rem;}
+        .coupons-used .coupon-item .used-icon{position:absolute;top:0;right:0;background:url(images/used.png) no-repeat center center/contain;display:block;width:1.34rem;height:1.15rem;}
+        .coupons-expire{}
+        .coupons-expire .coupon-item{width:5.92rem;height:1.3rem;margin:0.2rem auto 0 auto;background:url(images/coupon0.png) no-repeat center center / contain;font-size:0.22rem;padding:0 0.2rem;box-sizing: border-box;position:relative;}
+        .coupons-expire .coupon-item>div{display:inline-block;vertical-align:middle;}
+        .coupons-expire .coupon-item .c-left{width: 3.9rem;height:1.3rem;}
+        .coupons-expire .coupon-item .c-right{width:1.62rem;height:1.3rem;padding-left: 0.26rem;box-sizing: border-box;color:#fff;}
+        .coupons-expire .coupon-item .c-right .c-value>span{display:inline-block;vertical-align:top;}
+        .coupons-expire .coupon-item .c-right .c-value{font-size:0.3rem;margin-top: 0.18rem;}
+        .coupons-expire .coupon-item .c-title{font-size:0.3rem;margin-top: 0.18rem;}
+        .coupons-expire .coupon-item .icon{line-height: 0.31rem;}
+        .coupons-expire .coupon-item .num{font-size:0.5rem;line-height: 0.41rem;}
+        .coupons-expire .coupon-item .c-info{margin-top: 0.18rem;}
+        .coupons-expire .coupon-item .c-date{margin-top: 0.16rem;}
+        .coupons-expire .coupon-item .expire-icon{position:absolute;top:0;right:0;background:url(images/expired.png) no-repeat center center/contain;display:block;width:1.34rem;height:1.15rem;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        function loaded () {
+            
+            function initTuWenScroll(str){
+                var downIcon,upIcon,scrollerPullDown,scrollerPullUp,pullUpMsg,upLoading,downLoading,pullDownMsg; 
+                downIcon = $("."+str+" .down-icon");
+                pullDownMsg = $("."+str+" .pull-down-msg");
+                scrollerPullDown = $("."+str+" .scroller-pullDown");
+                scrollerPullUp = $("."+str+" .scroller-pullUp");
+                upLoading = $("."+str+" .scroller-pullUp .loading");
+                downLoading = $("."+str+" .scroller-pullDown .loading");
+                upIcon = $("."+str+" .up-icon");
+                pullUpMsg = $("."+str+" .pull-up-msg");
+
+                var tuwenScroller = new IScroll('.'+str, {
+                    probeType: 3,
+                    scrollbars: true,
+                    mouseWheel: true,
+                    interactiveScrollbars: true,
+                    shrinkScrollbars: 'scale',
+                    fadeScrollbars: true
+                });
+                tuwenScroller.on("scroll",function(){
+                    var y = this.y,
+                        maxY = this.maxScrollY - y,
+                        downHasClass = downIcon.hasClass("reverse_icon"),
+                        upHasClass = upIcon.hasClass("reverse_icon");
+                    
+                    if(y >= 40){
+                        !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松手开始更新');
+                        return "";
+                    }else if(y < 40 && y > 0){
+                        downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉刷新');
+                        return "";
+                    }
+                    
+                    if(maxY >= 40){
+                        !upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松手开始更新');
+                        return "";
+                    }else if(maxY < 40 && maxY >=0){
+                        upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看更多');
+                        return "";
+                    }
+                });
+                tuwenScroller.on("slideUp",function(){
+                    if(this.maxScrollY - this.y > 40){
+                        //alert("slideUp");
+                        upIcon.css('display','none');
+                        pullUpMsg.css('display','none');
+                        upLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            upIcon.css('display','inline-block');
+                            pullUpMsg.css('display','inline-block');
+                            upLoading.css('display','none'); 
+                            $('.goods-wrap').append('');
+                            tuwenScroller.refresh();
+                        },3000);
+                        
+                    }
+                });
+                tuwenScroller.on("slideDown",function(){
+                    if(this.y > 40){
+                        //alert("slideDown");
+                        scrollerPullDown.css({'position':'relative','top':'0'});
+                        downIcon.css('display','none');
+                        pullDownMsg.css('display','none');
+                        downLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            scrollerPullDown.css({'position':'absolute','top':'-0.7rem'});
+                            downIcon.css('display','inline-block');
+                            pullDownMsg.css('display','inline-block');
+                            downLoading.css('display','none'); 
+                            $('.goods-wrap').prepend('');
+                            tuwenScroller.refresh();
+                        },3000);
+                    }
+                });
+            }
+            initTuWenScroll('tuwen1');
+            initTuWenScroll('tuwen2');
+            initTuWenScroll('tuwen3');
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="bg-layer"></div>
+    <article class="tuwen">
+        <div>
+            <div class="tuwen-header">
+                <div class="good-d txt-btn active">未使用(5)</div>
+                <div class="param txt-btn">已使用(5)</div>
+                <div class="servive txt-btn">已过期(5)</div>
+            </div>
+            <div class="tuwen-cont">
+                <div class="swiper-wrapper">
+                   <div class="swiper-slide">
+                        <div class="tuwen1">
+                            <div class="scroller">
+                                <div class="scroller-pullDown">
+                                    <span class="pull-down-icon down-icon"></span>
+                                    <span class="pull-down-msg">下拉刷新</span>
+                                    <span class="loading"></span>
+                                </div>
+                                <div class="coupons-un-use">
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="scroller-pullUp">
+                                    <span class="pull-up-icon up-icon"></span>
+                                    <span class="pull-up-msg">上拉查看更多</span>
+                                    <span class="loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tuwen2">
+                            <div class="scroller">
+                                <div class="scroller-pullDown">
+                                    <span class="pull-down-icon down-icon"></span>
+                                    <span class="pull-down-msg">下拉刷新</span>
+                                    <span class="loading"></span>
+                                </div>
+                                <div class="coupons-used">
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="used-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="used-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="used-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="used-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="used-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="used-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="used-icon"></span>
+                                    </div>
+                                </div>
+                                <div class="scroller-pullUp">
+                                    <span class="pull-up-icon up-icon"></span>
+                                    <span class="pull-up-msg">上拉查看更多</span>
+                                    <span class="loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tuwen3">
+                            <div class="scroller">
+                                <div class="scroller-pullDown">
+                                    <span class="pull-down-icon down-icon"></span>
+                                    <span class="pull-down-msg">下拉刷新</span>
+                                    <span class="loading"></span>
+                                </div>
+                                <div class="coupons-expire">
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="expire-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="expire-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="expire-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="expire-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="expire-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="expire-icon"></span>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="c-left">
+                                            <div class="c-title">糖衣炮诞</div>
+                                            <div class="c-date">有效期：2015.12.23-2015.12.26</div>
+                                        </div><div class="c-right">
+                                            <div class="c-value"><span class="icon">￥</span><span class="num">10</span></div>
+                                            <div class="c-info">满459元可用</div>
+                                        </div>
+                                        <span class="expire-icon"></span>
+                                    </div>
+                                </div>
+                                <div class="scroller-pullUp">
+                                    <span class="pull-up-icon up-icon"></span>
+                                    <span class="pull-up-msg">上拉查看更多</span>
+                                    <span class="loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="js/swiper.js"></script>
+            <script>
+            var swiper = new Swiper('.tuwen-cont', {
+                slidesPerView: 1,
+                centeredSlides: true,
+                //loop: true,
+                onSlideNextStart: function(swiper){
+                    var i = $(".tuwen .swiper-slide-active").index();
+                    console.log(i);
+                    $('.tuwen-header .active').removeClass('active');
+                    $('.tuwen-header .txt-btn').eq(i).addClass('active');
+                },
+                onSlidePrevStart: function(swiper){
+                    var i = $(".tuwen .swiper-slide-active").index();
+                    console.log(i);
+                    $('.tuwen-header .active').removeClass('active');
+                    $('.tuwen-header .txt-btn').eq(i).addClass('active');
+                },
+                onSlideChangeEnd: function(swiper){
+                    console.log($(".tuwen .swiper-slide-active")[0]);
+                }
+            });
+            </script>
+        </div>
+    </article>
+    <script>
+        /*图文详情*/
+        $('.tuwen-header .txt-btn').on('tap',function(){
+            $('.tuwen-header .active').removeClass('active');
+            $(this).addClass('active');
+            swiper.slideTo($(this).index(),500,true);
+        });
+        $(".bg-layer").on("tap",function(e){
+            $(".share-area").removeClass('share-area-show');
+            $(".add-area").removeClass('add-area-show');
+            $(".set-recomm").removeClass('set-recomm-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+            $('.m-footer>a.share').find("span").removeClass('on');
+        });
+    </script>
+</body>
+</html>

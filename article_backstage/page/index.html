@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>纯js实现图片上传预览功能实现，兼容PC及手机浏览器，IE滚球...!</title>
+</head>
+<body>
+<input type="file" autocomplete="off" onchange="preView(this)">
+<img src="" alt="这里预览图片" id="js_preview">
+
+<script type="text/javascript">
+function preView(e){
+	console.warn(e);
+	var f = e.files[0];
+	var FR = new FileReader();
+	FR.readAsDataURL(f);
+	FR.onload = function(f){
+		
+		var canvas = document.createElement('canvas');
+		var img = new Image();
+			img.src = this.result;
+			img.onload = function(){ 
+				var ctx = canvas.getContext("2d"); 
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				canvas.width = img.width;
+				canvas.height = img.height;
+				ctx.drawImage(img, 0, 0, img.width, img.height);
+				var src = canvas.toDataURL("image/jpeg");
+				document.getElementById("js_preview").setAttribute("src",src);
+			};
+	};
+}
+</script>
+</body>
+</html>

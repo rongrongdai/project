@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——预约报名</title>
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<link href="__ROOT__/public/css/home/bootstrap.min.css"  type="text/css" rel="stylesheet"/>
+<style type="text/css">
+a{ text-decoration:none;}
+.z-cenog{ width:900px;}
+.z-cenog .zc-one{ margin:15px; border-bottom:1px #9DE1BD solid; height:40px;}
+.z-cenog .zc-one .ddan{ width:470px; float:left; color:#42bab1; font-size:14px;}
+.z-cenog .zc-one .ddae{ width:390px; float:right; color:#2d2a35; font-size:14px;}
+.z-cenog .zc-one .ddae span{ color:#42bab1;}
+.z-cenog  .ddaho{ color:#727274; margin:30px 0px 10px 15px;font-size: 16px;}
+.z-cenog  .ddaho a{ color:#fc7718; margin-left:20px;}
+.z-cenog  .ddaho a:hover{ color:#42bab1;}
+.z-cenog  .zc-two{  margin:15px; border:1px #9DE1BD solid; height:135px;}
+
+.z-cenog  .zc-two .zc-tyi{ width:290px; border-right:1px #9DE1BD solid; height:135px; float:left;}
+.z-cenog  .zc-two .zc-tyi img{ width:100px; height:100px; margin:15px; float:left;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef{ float:left;margin-top:10px;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef p{color:#727274; font-size:12px; line-height:20px;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef .cq{  line-height:25px; font-weight:bolder;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef .cz{ margin-top:30px;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef .cs{color:#42bab1;}
+.z-cenog  .zc-two .zc-ter{ width:180px; height:135px; float:left;  border-right:1px #9DE1BD solid;padding-top:10px;}
+.z-cenog  .zc-two .zc-ter p{ color:#727274; font-size:12px; line-height:27px; text-align:center;}
+.z-cenog  .zc-two .zc-ter .yuad{ color:#fc7718;}
+.z-cenog  .zc-two .zc-tsan{ width:210px; height:135px; float:left;  border-right:1px #9DE1BD solid;padding-top:10px;}
+.z-cenog  .zc-two .zc-tsan p{color:#727274; font-size:12px; line-height:27px; text-align:center;}
+.z-cenog  .zc-two .zc-tsan span{ color:#fc7718;}
+.z-cenog  .zc-two .zc-tsi{ float:left; width:130px;padding-top:10px;}
+.z-cenog  .zc-two .zc-tsi p{ color:#727274; font-size:12px; line-height:27px; text-align:center;}
+.z-cenog  .zc-two .zc-tsi a{ color:#fc7718;}
+.z-cenog  .zc-two .zc-tsi a:hover{ color:#42bab1;}
+</style>
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+</head>
+
+<body style="margin:8px;">
+
+
+
+<div class="per">
+   <div class="per-make">
+      <div class="make ymk aclick">我的订单</div>
+   </div>
+      
+
+    <div class="z-cenog">
+        <div class="zc-one">
+            <p class="ddan">我的订单</p>
+            <p class="ddae"><span>全部(22) </span>| 待支付(11) | 执行中(13) | 已结束(12) </p>
+        </div>
+
+    <foreach name="data" item="vo">    
+        <p class="ddaho">订单号：<{$vo.order_num}>  | <{$vo.bm_time|date=("Y年m月d日 H:i"),###}>  <a href="javascript:">待付款</a></p>
+        <div class="zc-two">
+      
+            <div class="zc-tyi">
+                <img src="__ROOT__<{$vo.self_img}>" />
+                <div class="zc-tlef">
+                  <p class="cq"><{$vo.real_name}></p><p class="cz"><{$vo.course}></p><p class="cs"><{$vo.place}></p>
+                </div>
+            </div>
+         
+            <div class="zc-ter">
+                <p class="yuad">￥100.00元/小时</p><p>已购买：<{$vo.hour}>小时</p><p>已完成0.0/3小时</p>
+            </div>
+         
+            <div class="zc-tsan">
+                <p>订单金额：<span>￥<{$vo.money}></span>元</p><p>支付金额：<span>￥<{$vo.money}></span>元</p>
+            </div>
+
+            <div  class="zc-tsi">
+                <p><a href="javascript:">查看详情</a></p>
+                <p><a href="javascript:">取消订单</a></p>
+                <p><a href="javascript:">支付订单</a></p>
+            </div>
+        </div>
+    </foreach>
+        <div style="text-align:center;margin:20px;"><{$link}></div> 
+    </div>
+
+   
+
+</div>
+
+    <script src="__ROOT__/public/js/home/jquery.mousewheel.js"></script>
+    <script src="__ROOT__/public/js/home/nicescroll.js"></script>
+    <script src="__ROOT__/public/js/home/noscroll.js"></script>
+<script src="__ROOT__/public/js/home/common.js"></script>
+
+
+</body>
+</html>

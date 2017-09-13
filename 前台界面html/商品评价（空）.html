@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>商品评价</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script type="text/javascript" src="js/fx.js"></script>
+    <script type="text/javascript" src="js/imgEnlarge.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeeef;}
+        /*iscroll*/
+        .scroller-pullUp{background:none;}
+        .evaluation{width:100%;text-align: center;position: fixed;top:0.78rem;bottom:0.68rem;z-index:1;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .evaluation .scroller{position:absolute;width:100%;}
+        .evaluation .swiper-wrapper{}
+        .evaluation .swiper-slide{}
+        .evaluation .swiper-slide img{width:100%;}
+        .evaluation .swiper-slide>div{font-size: 0.24rem;position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;width: 100%;overflow: hidden;}         
+        /*头部*/
+        .m-header{width:100%;position:fixed;top: 0;z-index:2;height:0.68rem;border-bottom: 1px solid #eeeeef;background-color: #fff;}
+        .m-header .all{}
+        .m-header .pic{}
+        .m-header .txt-btn{font-size:0.24rem;color:#282828;text-align:center;line-height: 0.68rem;float:left;width:50%;}
+        .m-header .red-line{position: absolute;height: 1px;width: 50%;bottom: -1px;background-color: #fb4d00;left: 0;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        /*底部*/
+        .m-footer{width:100%;position:fixed;bottom:-1px;z-index:2;height:0.68rem;overflow: hidden;}
+        .m-footer .car{background-color:#ff6600;}
+        .m-footer .buy{background-color:#ff0000;}
+        .m-footer .txt-btn{font-size:0.24rem;color:#fff;text-align:center;line-height: 0.68rem;float:left;width:50%;}
+        
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index: 3;position: fixed;display:none;}
+        /*商品评价*/
+        .ev-body{padding:.12rem 5%;font-size:0.18rem;background-color: #fff;text-align: left;}
+        .ev-body .ev-title{margin-bottom: 0.1rem;}
+        .ev-body .ev-cont{overflow: auto;}
+        .ev-body .ev-cont .ev-info{}
+        .ev-body .ev-cont .ev-info>div{display:inline-block;vertical-align: middle;}
+        .ev-body .ev-cont .ev-info .ev-img img{width:0.28rem;}
+        .ev-body .ev-cont .ev-info .ev-id{margin: 0 0.04rem 0 0.06rem;}
+        .ev-body .ev-cont .ev-info .ev-icon img{width:0.23rem;}
+        .ev-body .ev-cont .ev-info .ev-date{float:right;color:#a3a3a3;}
+        .ev-body .ev-cont .ev-txt{color:#a3a3a3;margin:0.2rem 0;}
+        .ev-body .ev-cont .ev-pic{height:0.84rem;}
+        .ev-body .ev-cont .ev-pic>img{width: 0.84rem;float: left;margin:0 0.12rem 0.12rem 0;}
+        .e-pic{}
+        .ev-body .all{width: 20.486111%;margin: 0 auto 0.14rem;height: 3.75%;font-size: 0.16rem;border: 1px solid #ff3c00;border-radius: 0.08rem;text-align: center;}
+        .ev-body .seprate{width: 120%;height: 1px;background-color: #eeeeef;margin-left: -10%;margin: 0.1rem 0 0.1rem -10%;clear:both;}
+        .up-more{font-size: 0.14rem;text-align: center;height: 1px;width: 96.25%;margin: 0.2rem auto;background-color: #dededf;position:relative;}
+        .up-more span{    display: block;position: absolute;left: 50%;margin-left: -17.5%;top: -0.08rem;background-color: #eeeeef;width: 35%;}
+
+        /*添加购物车*/
+        .add-area{background-color: #fff;position: fixed;bottom: -100%;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .add-area-show {bottom: 0 !important;}
+        .add-area .sku{width:100%;margin: 0 auto;overflow: hidden;height:6rem;max-height: 600px;position:relative;color:#515151;padding: 0 5%;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;-ms-box-sizing: border-box;}
+        #sku-scroller {-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .add-area .all-title{font-size:0.24rem;}
+        .add-area .all-list{font-size:0.2rem;}
+        .add-area .all-list>div.on{background-color: #ff6519;color: #fff;}
+        .add-area .all-list>div{height: 0.38rem;line-height: 0.38rem;float: left;background-color: #eeeeef;border-radius: 3px;margin: 0.2rem 0.08rem 0 0;padding: 0 0.12rem;}
+        .add-area .good-info{font-size:0.22rem;position: relative;height: 1.78rem;width: 92.5%;margin: 0 auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-info .good-img{position: absolute;width: 31.4%;top: -0.32rem;height: 1.84rem;}
+        .add-area .good-info .good-img img{width: 100%;height:100%;}
+        .add-area .good-info .good-s{position: absolute;left: 35%;top: 0.55rem;color:#a3a3a3;}
+        .add-area .good-info .good-price{color:#ff3c00;font-size:0.24rem;}
+        .add-area .good-info .good-store{margin:0.1rem 0;}
+        .add-area .good-info .add-close-btn{position:absolute;height:.52rem;width:.52rem;right: -0.2rem;background:url("images/good-details/add-close.png") no-repeat center center / 50%;}
+        .add-area .good-color{padding: 0.2rem 0;overflow: auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-size{clear:both;padding: 0.2rem 0;overflow: auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-structure{clear:both;padding: 0.2rem 0;overflow: auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-num{clear:both;padding: 0.2rem 0;overflow: auto;border-bottom: 1px solid #eeeeef;}
+        .add-area .good-num .n-title{float:left;}
+        .add-area .good-num .n-title .sub{font-size:0.2rem;color:#a3a3a3;}
+        .add-area .good-num .n-zoom{font-size:0.18rem;float:right;margin-right: 0.35rem;}
+        .add-area .good-num .n-zoom>span{display:inline-block;vertical-align:middle;width:0.56rem;line-height:0.48rem;text-align:center;border-radius:2px;font-size:0.24rem;}
+        .add-area .good-num .n-zoom .add{background-color:#e4e3e3;color:rgba(0,0,0,.5);font-size:0.3rem;}
+        .add-area .good-num .n-zoom .minus{background-color:#eeeef1;color:rgba(0,0,0,.5);font-size:0.3rem;}
+        .add-area .good-num .n-zoom .num{background-color:#e1e1e3;}
+        .add-area .save-btn{background-color:#ff3c00;color:#fff;text-align:center;font-size:0.28rem;height: 0.68rem;line-height: 0.68rem;margin-top:0.3rem;}
+        @media only screen and (max-height:512px){
+            .add-area .sku{
+                height: 5rem;
+            }
+            .add-area{
+                bottom: -110%;
+            }
+        }
+        /*头像放大，背景色*/
+        #enlarge-Carousel .pic-swipe {background-color:#000;}
+        
+        .no-data{text-align: center;}
+        .no-data .img-wrap{width: 1.5rem;height: 1.5rem;border-radius: 100%;margin: 2rem auto 0 auto;background-color: #fff;line-height: 1.5rem;}
+        .no-data .img-wrap img{width:100%;}
+        .no-data .msg{font-size:0.3rem;margin: 0.62rem 0 0.3rem 0;color:#7f7f7f;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var Scroll,skuScroller;
+        function loaded () {
+            Scroll = new IScroll('#evaluation', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+            skuScroller = new IScroll('.sku', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <header class="m-header">
+        <div class="all txt-btn">全部（<span>1366</span>）</div>
+        <div class="pic txt-btn">有图（<span>166</span>）</div>
+        <div class="red-line"></div>
+    </header>
+    <article id="evaluation">
+        <div id="swiper-wrapper">
+            <div class="no-data"> 
+                <div class="img-wrap">
+                  <img src="images/comment-empty.png" alt="">
+                </div>
+                <p class="msg">暂无评论！~</p>
+            </div>
+        </div>
+    </article>
+    <footer class="m-footer">
+        <div class="car txt-btn" title="添加购物车">添加购物车</div>
+        <div class="buy txt-btn" title="立即购买">立即购买</div>
+    </footer>
+    <!--图片放大轮播-->
+    <div id="enlarge-Carousel"></div>
+
+    <div class="bg-layer"></div>
+    <article class="add-area">
+        <div class="good-info">
+            <div class="good-img"><img src="images/good-details/good-sm.png" alt=""></div>
+            <div class="good-s">
+                <div class="good-price">￥1150-6550</div>
+                <div class="good-store">库存900件</div>
+                <div>请选择  颜色分类  家具结构</div>
+            </div>
+            <div class="add-close-btn"></div>
+        </div>
+        <div class="sku" id="sku-wrapper">
+            <div id="sku-scroller">
+                <div class="good-color">
+                    <div class="c-title all-title">颜色分类</div>
+                    <div class="c-list all-list">
+                        <div>双人床+0.8妆台+妆凳+床头柜+送床垫</div>
+                        <div>法式床+0.8妆台+妆凳+床垫</div>
+                        <div>法式床+推拉门衣柜+送床垫</div>
+                        <div>法式床+推拉门衣柜+送床垫</div>
+                        <div>进口皮月光白-描银</div>
+                        <div>进口皮月光白-描银</div>
+                        <div>进口皮月光白-描银</div>
+                        <div>进口布富贵紫艺-描银</div>
+                    </div>
+                </div>
+                <div class="good-size">
+                    <div class="s-title all-title">尺寸</div>
+                    <div class="s-list all-list">
+                        <div>1800mm*2000mm</div>
+                        <div>1600mm*2000mm</div>
+                    </div>
+                </div>
+                <div class="good-structure">
+                    <div class="st-title all-title">家具结构</div>
+                    <div class="st-list all-list">
+                        <div>箱框结构</div>
+                        <div>框架结构</div>
+                    </div>
+                </div>
+                <div class="good-num">
+                    <div class="n-title all-title">购买数量<span class="sub">（每人限购5件）</span></div>
+                    <div class="n-zoom">
+                        <span class="minus">-</span>
+                        <span class="num">0</span>
+                        <span class="add">+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="save-btn">确定</div>
+    </article>
+    
+    <script type="text/javascript" src="js/swiper.js"></script>
+    <script>
+        /*header action*/
+        $(".m-header .txt-btn").on("tap",function(e){
+            if($(this).hasClass('all')){
+                $('.m-header .red-line').css('left','0');
+            }
+            if($(this).hasClass('pic')){
+                $('.m-header .red-line').css('left','50%');
+            }
+            var index = $(this).index();
+            $('section.evaluation').each(function(e){
+                if($(this).index()==index){
+                    $(this).css('display','block');
+                }else{
+                    $(this).css('display','none');
+                }
+            });
+            Scroll.refresh();
+        });
+        /*footer action*/
+        $(".m-footer .txt-btn").on("tap",function(e){
+            if($(this).hasClass('car')){
+                $('.bg-layer').css('display',"block");
+                $(".add-area").addClass('add-area-show');
+            }
+        });
+        $(".bg-layer").on("tap",function(e){
+            $(".share-area").removeClass('share-area-show');
+            $(".add-area").removeClass('add-area-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+            $('.m-footer>a.share').find("span").removeClass('on');
+        });
+        $(".add-area .save-btn").on("tap",function(e){
+            $(".add-area").removeClass('add-area-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+        });
+        $(".add-area .add-close-btn").on("tap",function(e){
+            $(".add-area").removeClass('add-area-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+        });
+        $(".add-area .minus").on("tap",function(e){
+            var nunObj = $(".add-area .num");
+            var num = nunObj.text();
+            if(Number(num)>0){
+                nunObj.text(Number(num)-1);
+            }
+        });
+        $(".add-area .add").on("tap",function(e){
+            var nunObj = $(".add-area .num");
+            var num = nunObj.text();
+            if(Number(num)>=0){
+                nunObj.text(Number(num)+1);
+            }
+        });
+        $(".add-area .all-list>div").on("tap",function(){
+            $(this).toggleClass('on');
+            $(this).siblings('div').removeClass('on');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——个人设置</title>
+
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+</head>
+
+<body>
+<div class="per">
+    <div class="per-top">
+         <img src="__ROOT__/public/images/home/scsj1.jpg" />
+         <p class="set-up">试卷添加 <span style="margin-left:100px;color:#666;font-size:12px;">免费发布收费内容机会：<?php echo ($sum); ?>次</span></p>
+    </div>
+            
+    <div class="per-form">
+      <form action="__URL__/addPaper" method="post" enctype="multipart/form-data" name="set" id="addpaper">
+
+          <div class="pheig"><div class="pflat1">试卷分类</div>
+              <div id="tclass" class="pflat2 pflat2tx"></div>
+              <span class="prompt"></span>
+          </div>
+
+          <div class="pheig"><div class="pflat1">试卷名称</div>
+              <div class="pflat2 pflat2tx">
+                <input type="text" name="name" id="name" />
+              </div>
+              <span class="prompt"></span>
+          </div>
+
+          <div class="pheig"><div class="pflat1">试卷总分数</div>
+              <div class="pflat2 pflat2tx">
+                <input type="text" name="total" id="total" />
+              </div>
+              <span class="prompt"></span>
+          </div>
+
+          <div class="pheig"><div class="pflat1">作答时间</div>
+              <div class="pflat2 pflat2tx">
+                <input type="text" name="time" id="time" />
+              </div>
+              <span class="prompt"></span>
+          </div>
+
+          <div class="pheig"><div class="pflat1">需要学豆</div>
+              <div class="pflat2 pflat2tx">
+                <input type="text" name="ispay" id="ispay" /><span class="prompt">若免费请输入0</span>
+              </div>
+              <span class="prompt"></span>
+          </div>
+
+          <div class="pheig"><div class="pflat1">题型介绍</div>
+              <div class="pflat2 pflat2tx">
+                <textarea rows="2" cols="80" name="content" id="content" style="resize:none;" ></textarea>
+              </div>
+              <span class="prompt"></span>
+          </div>
+
+          <div class="pheig"><div class="pflat1">上传试卷</div>
+              <div class="pflat2 pflat2tx">
+
+                <input type="file" name="xls" id="xls" /><span  class="prompt">试卷必须是表格文件(.xls) </span><span style="color:#00b38a;cursor:pointer;" id="exam_xls">[查看文件格式]</span><span><a href="__ROOT__/public/images/home/exam/exam.xls">[下载文件格式]</a></span>
+
+              </div>
+              <span class="prompt"></span>
+              <span id="demo" style="display:none;"><img src="__ROOT__/public/images/home/exam/exam_xls.png" width="900px" /></span>
+          </div>
+
+
+
+          <div class="pheig psub">
+              <div class="pflat2 pflat2tx">
+                <input type="submit" value="确认提交" class="subinput" />
+          </div></div>
+          <input type="hidden" name="sum" value="<?php echo ($sum); ?>" />
+
+      </form>
+    </div>
+</div>
+
+
+<script src="__ROOT__/public/js/home/common.js"></script>
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script src="__ROOT__/public/js/validater.js"></script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+
+<script>
+getTclass('在线考试');//获取在线考试分类
+
+$("#addpaper").submit(function(){
+    var nullcheck=new Array('name','total','time','ispay','content','xls');
+    var nullinfo=new Array('试卷名称','总分数','答题时间','学豆','题型介绍','试卷文档');
+    var res=null_check(nullcheck,nullinfo);
+    if(res){
+      $("#"+res[0]).parent().parent().find(".prompt").text(res[1]).css("color","red");
+      return false;
+    }else{
+        if($("#fid").val() == '0'){
+          $("#fid").parent().parent().find(".prompt").text("试卷分类不能为空").css("color","red");
+          return false;
+        }
+        if($("#gid").val() != '0'){
+          var sf = "<?php echo ($sf); ?>",vmoney = "<?php echo ($vmoney); ?>";
+          if(vmoney >= sf){
+              return true;
+          }else{
+              layer.confirm('你的学豆不足，立刻充值', function(){
+                  window.location.href = "__APP__/User/User/index";
+              },function(){
+                  layer.msg('取消成功',1,-1);
+              });
+          }
+          return false;
+        }else{
+          $("#gid").parent().parent().find(".prompt").text("试卷分类不能为空").css("color","red");
+          return false;
+        }
+
+    }
+
+  return false;
+})
+
+$("#exam_xls").hover(function(){
+  $("#demo").toggle();
+});
+
+</script>
+</body>
+</html>

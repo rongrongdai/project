@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册 - 八斗网</title>
+<link type="text/css" href="__ROOT__/public/css/home/style.css" rel="stylesheet" />
+<link href="__ROOT__/public/images/home/2.ico" type="image/x-icon" rel="shortcut icon">
+<script src="__ROOT__/public/js/jquery-min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="enroll-top">
+        <img src="__ROOT__/public/images/home/fheader.gif"/>
+
+        <div class="enroll-cen">
+            <div class="waxs">请完善资料</div>
+            <div class="nc">昵称:<input type="text" class="nchen" name="rname"><span class="msg1"></span></div>
+            <div class="nc"><span class="ses">性别:</span>
+              <input name="sex" type="radio" value="1"/>男  
+              <input name="sex" type="radio" value="2" />女  
+              <input name="sex" type="radio" value="0" />保密<span class="msg2"></span>
+            </div>
+             
+            <div class="nc"><span class="ses">地区:</span>
+              <select id="s_province" name="s_province" ></select>
+              <select id="s_city" name="s_city" ></select>
+              <select id="s_county" name="s_county" ></select><span class="msg3"></span>
+            </div>
+            <div class="qdin">下一步</div>
+        </div>
+
+    </div>
+
+<script src="__ROOT__/public/js/home/area.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var opt0 = ["请选择省","请选择市","请选择县"];_init_area();
+    $(".enroll-cen").wrap("<form id='enroll' action='' method='post'></form>");
+    $(".qdin").click(function(){
+        var rname = $(".nchen").val(),sex = $("input:checked").val(),addr = $("#s_county").val();
+        if(rname.length<2 || rname.length>8){$(".msg1").html("昵称字数在2~8个之间"); return false;} 
+        if(typeof sex == 'undefined'){ $(".msg2").html("请选择性别"); return false; }
+        if(addr !== '请选择县'){
+          $("#enroll").submit();
+        }else{
+          $(".msg3").html("请选择城市");
+          return false;
+        }
+        return false;
+    });
+</script>
+
+
+</body>
+</html>

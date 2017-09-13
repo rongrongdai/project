@@ -1,0 +1,26 @@
+<include file="../../Public/header" />
+<include file="../../Public/naviter" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/public/css/admin/table.css" />
+<div class="p_position"><span>当前位置></span><{$position}></div>
+<section class="content" >
+    <section class="widget">
+        <div class="widget-container"> 
+
+
+
+
+        </div>
+<div class="content cycle">
+	<div id="flot-example-2" class=""></div>
+	<div id="flot-example-1" class=""></div>
+</div>
+</div>
+    </section>
+    <div class="footinfo">
+        <div style="height:80px">
+		Copyright(c)2013 badoue.com 深圳百士兴科技有限公司版权所有 All Rights Reserved 粤ICP备13084511号-2
+        </div>            
+    </div>
+</section>
+
+<include file="../../Public/footer" />

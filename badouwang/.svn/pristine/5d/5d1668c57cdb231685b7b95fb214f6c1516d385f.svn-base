@@ -1,0 +1,175 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/Space.css" />
+<link type="text/css"  rel="stylesheet" href="__ROOT__/public/css/home/index.css"/>
+<include file="../../../Public/default/sheader" />
+ <div class="sp-er">
+            <include file="../../../Public/default/sleft" />
+    <div class="sp-er-center">
+          <div class="spxz-one">
+              <ul>
+               <li class="spxz-yi look" name="lab">标签</li>
+               <li class="spxz-yi" name="set">设置</li>
+             </ul>
+          </div>
+
+
+          <div class="spxz-two" style="display:block;" name="spone">
+              <!-- <p>我的爱好：<a href="#"><span>预览</span></a></p>-->
+               <div class="spxz-ty">
+                     <p class="xhualj">先从你喜欢的东西开始，让别人了解你：</p> 
+                     <p class="spxz-li">通过单击以下标签进行选择：<a href="javascrpt:;" name="change"><span>换一下</span></a></p>
+                     <div class="spxz-ei">
+                         
+                     </div>  
+
+                     <p class="spxz-li">已选择标签：</p>
+                     <input type="text" class="sbiaoq"  value="<{$labs['lab']}>" placeholder="请输入你属于你的独特标签" readonly name="lval"/><br />
+                     <input type="button" value="保存" class="spbaoc" name="sl"/>
+               </div>
+
+          </div>
+
+
+
+           <div class="spxz-two" style="display:none;" name="sptwo">
+                 <!--<p>我的空间：<a href="#"><span>预览</span></a></p>-->
+                 <div class="spxz-ty">
+                  <p class="xhualj">空间访问权限：</p> 
+                      <div class="spdax">
+                      <input name="qbu" type="radio" value="all" />全部
+                      <input name="qbu" type="radio" value="self"/>仅自己
+                      <input name="qbu" type="radio" value="friend"/>关注好友
+                      </div>
+                      <input type="button" value="保存" class="spbaoc" name="sp"/>
+                 </div>
+
+           </div>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+    </div>   
+            <script>
+                var priv="<{$priv}>";
+                var lable="";
+                var selLable="<{$labs['lab']}>";
+                var lables=[];
+                var page=1;
+                var hobs=[];
+                $(".spxz-one").find("li").click(function(){
+                    $(".spxz-one").find("li").removeClass("look");
+                    $(this).addClass("look");
+                })
+                function rc(){
+                    $(".spxz-ei").find("a").click(function(){
+                                $(this).find("p").addClass('sp_active');
+                                var val=$(this).find("p").text();
+                                if(($("input[name=lval]").val().indexOf(val))===-1){
+                                    if(!hobs[val]){
+                                        hobs[val]=val;
+                                        if($("input[name=lval]").val()){
+                                           $("input[name=lval]").val($("input[name=lval]").val()+'，'+val);
+                                        }else{
+                                            $("input[name=lval]").val(val);
+                                        }
+                                   }
+                                }else{
+                                     $(this).find("p").removeClass("sp_active");
+                                     if($("input[name=lval]").val().indexOf('，'+val)!==-1){
+                                          nval=$("input[name=lval]").val().replace("，"+val,'');
+                                     }else if($("input[name=lval]").val().indexOf(val.substr(1))){
+                                         nval=$("input[name=lval]").val().replace(val+'，','');
+                                     }
+                                     hobs[val]='';
+                                     $("input[name=lval]").val(nval);
+                                }
+                                
+                         })
+                }
+                $("a[name=change]").click(function(){
+                    page++;
+                    if((page-1)*10>lables.length){
+                        page=0;
+                       $("a[name=change]").click();
+                    }
+                    if((page*10)>lables.length){
+                        $(".spxz-ei").find("a").remove();
+                        for(var i=(page-1)*10;i<lables.length;i++){
+                            var item='<a href="javascript:;"><div class="spxz-si"><p>'+lables[i]+'</p></div></a>';
+                            $(".spxz-ei").append(item);
+                        }
+                    }else{
+                        $(".spxz-ei").find("a").remove();
+                        for(var i=(page-1)*10;i<page*10;i++){
+                                var item='<a href="javascript:;"><div class="spxz-si"><p>'+lables[i]+'</p></div></a>';
+                                $(".spxz-ei").append(item);
+                                
+                            }
+                        }
+                        if(selLable){
+                                nlables=selLable.split("，");
+                                for(var i in nlables){
+                                    $(".spxz-ei").find("a").find("p").each(function(){
+                                        if($(this).text()===nlables[i]){
+                                            $(this).addClass("sp_active");
+                                        }
+                                    })
+                                }
+                        }
+                       rc();
+                })
+                
+                $(function(){
+                    $("input[name=qbu]").each(function(){
+                        if($(this).val()===priv){
+                            $(this).attr("checked","checked");
+                        }
+                    })
+                    $.getJSON('__ROOT__/index.php/Ajax/AjaxConfig/getConfig',{'type':'用户配置','key':'u_label'},function(data){
+                        lable=data.labs;
+                        lables=lable.split("，");
+                        for(i=0;i<10;i++){
+                            var item='<a href="javascript:;"><div class="spxz-si"><p>'+lables[i]+'</p></div></a>';
+                            $(".spxz-ei").append(item);
+                        }
+                        if(selLable){
+                                nlables=selLable.split("，");
+                                for(var i in nlables){
+                                    $(".spxz-ei").find("a").find("p").each(function(){
+                                        if($(this).text()===nlables[i]){
+                                            $(this).addClass("sp_active");
+                                        }
+                                    })
+                                }
+                        }
+                         rc();
+                        
+                    });
+                   $("input[name=sl]").click(function(){
+                            if($("input[name=lval]").val()){
+                                $.getJSON('__ROOT__/index.php/Ajax/AjaxConfig/saveLab',{'lable':$("input[name=lval]").val()},function(data){
+                                    var type=data.code===1?1:2;
+                                    $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: type,msg:data.message}});
+                                });
+                            }else{
+                                $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 2,msg: '请选择个性标签！'}});
+                            }
+                        })
+                        
+                    $("li[name=set]").click(function(){
+                        $("div[name=spone]").hide();
+                        $("div[name=sptwo]").show();
+                       
+                    })
+                    $("li[name=lab]").click(function(){
+                        $("div[name=sptwo]").hide();
+                        $("div[name=spone]").show();
+                    })
+                    $("input[name=sp]").click(function(){
+                        $.getJSON("__ROOT__/index.php/Ajax/AjaxConfig/savePrivleges",{'type':$("input[name=qbu]:checked").val()},function(data){
+                           var type=data.code===1?1:2;
+                           $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: type,msg: data.message}});
+                        });
+                    })
+                })
+            </script> 
+ </div>
+
+<include file="../../../Public/default/footer" />

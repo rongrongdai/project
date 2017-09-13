@@ -1,0 +1,90 @@
+/*考试结果页*/
+
+body{margin:0;}
+.pwidth{width:1200px; margin:0 auto;}
+.pwidth .top{padding:20px;overflow:hidden;border:1px solid #ddd;}
+.pwidth .top .title{text-align:center;border-bottom:1px #ccc dotted;font-size:24px;padding:0 0 20px 0;font-weight:bold;}
+.pwidth .top .padd {padding:10px 50px 0 50px;overflow:hidden;}
+.pwidth .top .jgtim{padding:20px 0; font-size:16px; font-weight:bold;}
+.pwidth .top .scor{width:240px;height:140px;margin:0 24px 0 0;padding:30px;float:left;border:1px solid #ddd;border-radius:6px;}
+.pwidth .top .scor .sc{font-size:16px;color:#333;}
+.pwidth .top .scor .sf{height:85px;line-height:85px; text-align:center;border-bottom:3px solid #ddd;margin:0 0 8px 0; font-weight:bold; font-size:26px; color:#009170;}
+.pwidth .top .scor .sf span{font-size:14px;padding:0 6px 0 3px;}
+.pwidth .top .scor .sp{color:#888;}
+.pwidth .top .lxt{ clear:both;padding:30px 0;font-size:16px;}
+.pwidth .top .dant{color:#888;clear:both;}
+.pwidth .top .dana a{display:block;margin:25px 3px;width:26px;height:26px;line-height:24px;color:#333;text-align:center;float:left;border:1px solid #ddd;background:#EEE;}
+.pwidth .coner{border:1px solid #f93;overflow:auto;height:600px;}
+.pwidth .coner .thele{padding:15px 0;overflow:hidden;background:#F93; text-align:center;font-weight:bold;border-bottom:1px solid #ddd; color:#FFF}
+.pwidth .coner .thele .tm{float:left;width:700px;}
+.pwidth .coner .thele .nd{float:left;width:120px;}
+.pwidth .coner .thele .zd{float:left;width:120px;}
+.pwidth .coner .theline{overflow:hidden;border-bottom:1px solid #ddd;}
+.pwidth .coner .theline .tm-top{cursor:pointer; overflow:hidden;}
+.pwidth .coner .theline .tm-top:hover{background:#eee;}
+.pwidth .coner .theline .daan{display:none;width:942px;margin:0 auto;border-top:1px dotted #ccc;padding:10px 0;}
+.pwidth .coner .theline .daan a{display:block;height:26px;line-height:26px;text-indent:30px; color:#333;}
+.pwidth .coner .theline .daan a span{padding:0 0 0 10px;}
+.pwidth .coner .theline .tm{float:left;width:700px;text-indent:10px;padding:0 10px;margin:20px 0;height:20px;line-height:24px;overflow:hidden; color:#333; transition:height ease .6s}
+.pwidth .coner .theline .nd{float:left;width:120px;text-align:center;font-size:30px;line-height:65px;}
+.pwidth .coner .theline .zd{float:left;width:120px;text-align:center;font-size:16px;line-height:65px;}
+
+.pwidth .leave{background:#F1F1F1;overflow:hidden;border:1px solid #ccc;margin:30px 0 0 0;}
+.pwidth .leave .tet-wyfs{color:#CCC;padding:0 0 10px 0;padding:30px 30px 10px 30px;}
+.pwidth .leave .confom{overflow:hidden;padding:10px 30px;}
+.pwidth .leave .confom textarea{height:80px;line-height:20px;padding:5px;width:1126px;outline:none;border-radius:4px;border:1px solid #bbb;margin:0 0 10px 0;color:#555;resize:none;}
+.pwidth .leave .confom .tetlr{float:left; background-repeat:no-repeat;font-size:14px; text-indent:30px;}
+.pwidth .leave .confom .submit {cursor:pointer;float:right;display:block;padding:6px 34px;background:#00B38B; color:#FFF; font-family:"微软雅黑"}
+.pwidth .leave .latest{height:40px;border-top:1px solid #ccc;padding:0 30px;}
+.pwidth .leave .latest .resh{float:left;margin:7px 30px;padding:4px 15px; text-indent:15px;border:1px solid #ccc;font-size:14px; cursor:pointer;}
+.pwidth .leave .latest .pl{float:left;line-height:40px;}
+.pwidth .coners{padding:10px 0px 10px 30px;overflow:hidden;border:1px solid #ccc; border-top:none;}
+.pwidth .coners .titimg{float:left;width:45px height:45px;}
+.pwidth .coners .titimg a{display:block;border-radius:8px;}
+.pwidth .coners .titimg div{ text-align:center;background:#009170;padding:5px 0;color:#FFF;}
+.pwidth .coners .con{float:left;width:1000px;height:70px;padding:0 0 0 10px;}
+.pwidth .coners .con .titname{height:26px;line-height:22px;color:#000;font-weight:bold;}
+.pwidth .coners .con .contet{height:30px;color:#555;font-size:14px;}
+.pwidth .coners .con .rname{color:#999;font-size:12px;}
+.pwidth .coners .right{float:left;width:100px;padding:30px 0 0 0;}
+.pwidth .coners .right img{float:left;}
+.pwidth .coners .right div{float:left;font-size:12px;color:#999;padding:2px 0 0 0;}
+.pwidth .andmoer{ clear:both;border:1px solid #ccc;margin:10px 0;padding:10px 0; text-align:center;background:#EEE;font-size:14px; color:#555;}
+.pwidth .andmoer span{cursor:pointer;}
+.pwidth .andmoer span:hover{color:#00b38a;}
+
+#praise{cursor:pointer;}
+#info{display:none;width:180px;height:60px;background:white;text-align:center;line-height:60px;color:green;font-weight:700;font-size:15px;border:3px solid #ccc;position:absolute;top:0;left:0;z-index:999;}
+
+
+
+/*试卷分类列表页*/
+
+
+.pwid .hotnav{height:45px;line-height: 45px; font-size: 12px;border-bottom: 2px #00b38a solid;margin-bottom:10px;}
+.pwid .hotnav a{ color: #666;}
+.pwid .hotnav a:hover{ color:#00b38a;}
+
+.pwid {width:1200px;margin:0 auto; }
+.pwid .line{ position:relative;border-bottom:1px solid #ddd;}
+.pwid .line a{ text-decoration:none;padding:6px 8px;color:#333;height:40px;line-height:40px;font-size:14px;font-weight:bold;}
+.pwid .line .aclick{background:#00B489;color:#FFF; }
+.pwid .line .nonea{float:left;margin:0 0 0 92px;display:none; position:absolute;z-index:3;}
+
+.pwid .list{overflow:hidden;border:1px solid #ddd;margin:35px 0 0 0;}
+.pwid .list .lineb{height:94px;border-bottom:1px solid #ddd;cursor:pointer;}
+.pwid .list .lineb:hover .titlea{color:#F93;}
+.pwid .list .lineb:hover .cent{background:#F93;color:#FFF; border-color:#F93;}
+.pwid .list .cimg{padding:20px;width:50px;float:left;}
+.pwid .list .cten{padding:10px 0;width:650px;float:left;}
+.pwid .list .cten .titlea{height:40px;width:650px;overflow:hidden;line-height:40px;font-size:14px;}
+.pwid .list .cten .munder{font-size:12px;color:#555;}
+.pwid .list .ctim{width:240px;height:94px;line-height:90px;float:left;font-size:12px;color:#555; text-align:center;}
+.pwid .list .cent{float:left;margin:32px 0 0 0;display:block;padding:7px 11px;background:#ddd;color:#555;cursor:pointer;border:1px solid #aaa;font-size:12px;}
+
+.pwid .page{padding:30px;}
+.pwid .page a{text-align:center;text-decoration:none;border:1px solid #ccc;padding:4px 8px;color:#555;font-size:14px;}
+.pwid .page a:hover{background:#eee;}
+.pwid .page form{display:inline;}
+.pwid .page form input{ outline:none; background:none;border:1px solid #ccc;padding:4px 8px;color:#555;font-size:14px;margin:0 15px 0 0;}
+

@@ -1,0 +1,8 @@
+<?php
+//消息控制器
+class MessageAction extends CommonAction{
+    //发送消息（普通消息，群消息）
+    //接收好友消息
+    //接收群消息
+}
+

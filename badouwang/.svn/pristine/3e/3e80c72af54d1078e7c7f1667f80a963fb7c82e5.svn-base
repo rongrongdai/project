@@ -1,0 +1,8 @@
+<?php
+//分组控制器
+class GroupAction extends CommonAction{
+    //获取分组列表
+    //创建分租
+    //获取分租成员
+}
+

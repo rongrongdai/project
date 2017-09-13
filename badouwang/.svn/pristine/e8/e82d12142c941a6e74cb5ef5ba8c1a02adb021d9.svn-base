@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * Description of AjaxComment
+ *
+ * @author fanbo
+ */
+class AjaxComment extends CommonAction{
+    //put your code here
+    //星级计算
+    private function setStar($s_star,$aid,$uid){
+        $cpin=M();
+    }
+    //好评率计算
+    private function setRate($aid,$uid,$type){
+        $cpin=M('Comment')->where("uid='$uid' and type =$type and p_start=0 and aid='$aid'")->count();
+        if($type === '2'){
+            $opin=M('Teach')-where("id='$aid")->field('pin_rate')->find();
+        }else if($type==='3'){
+            $opin=M('Organ_spred')-where("id='$aid")->field('pin_rate')->find();
+        }
+        if($cpin >0){
+             
+        }else{
+            if((floatval($opin['pin_rate']))>=1){
+                $nrate=1;
+            }else{
+                $nrate=$opin['pin_rate']+=0.5;
+            }
+            $orate=M('Organ_spred')->setField('pin_rate',0.05);
+        }
+       
+       
+    }
+    public function comment(){
+        $data=$this->getData(array('aid','type','star','content'), 'post');
+        if($data['aid'] && $data['star'] && $data['content']){
+            $uid=session('uid');
+            $data['com_timestamp']=time();$data['uid']=$uid;
+            $res=M('Comment')->add($data);
+            if($res){
+                
+            }
+        }else{
+            $this->ajaxr(false, '', '参数不正确！');
+        }
+    }
+}

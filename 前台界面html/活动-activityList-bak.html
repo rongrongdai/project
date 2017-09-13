@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>活动</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/iscroll.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom: 1rem;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .scroller-pullUp{background:none;}
+       
+        /*底部*/
+        .m-footer{width: 100%;position: fixed;bottom: 0;z-index: 9;height: 1rem;background: rgba(0,0,0,0.9);clear: both;overflow: auto;}
+        .m-footer a{display: block;text-align: center;color: #fff;font-size: 0.2rem;text-align: center;box-sizing: border-box;width: 25%;float: left;}
+        .m-footer a span{display:block; width:0.68rem; height:0.48rem; margin:0.1rem auto;position:relative;}
+        .m-footer span.on+p{color:#f90016;}
+        .m-footer a.home span{background:url(images/index/footer-1.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.all-prize span{background:url(images/index/footer-2.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.cart span{background:url(images/index/footer-3.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.my span{background:url(images/index/footer-4.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.home span.on{background:url(images/index/footer-1-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.all-prize span.on{background:url(images/index/footer-2-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.cart span.on{background:url(images/index/footer-3-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.my span.on{background:url(images/index/footer-4-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.home p{font-size:0.2rem; padding-bottom:0.1rem;}
+        .m-footer .cart-count{position: absolute; top: 0.04rem; right:0.12rem;display: inline-block; padding: 1px 3px; line-height: 9px; font-size: 0.18rem; font-weight: normal; color: #fff; background: #f25613; border-radius:20px;}
+       
+       .activity-wrap{font-size:0.24rem;color:#ff3c00;}
+       .activity-wrap .activity-item{background:url(images/activity-bg.png) no-repeat center center/100% 100%;width:5.67rem;height:2.07rem;margin:0.4rem auto;}
+       .activity-wrap .activity-item .a-img-wrap{display: inline-block;vertical-align: middle;width: 0.95rem;height: 1.9rem;margin: 0 0 0 0.5rem;}
+       .activity-wrap .activity-item .a-img-wrap>img{width: 100%;margin-top: 0.5rem;}
+       .activity-wrap .activity-item .a-info{display:inline-block;vertical-align:middle;width: 3.8rem;text-align: center;}
+       .activity-wrap .activity-item .a-info .a-title{font-size:0.36rem;margin:0 0 0.5rem 0;}
+       .activity-wrap .activity-item .a-info .a-dete{}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        function loaded () {
+            
+            function initTuWenScroll(str){
+                var downIcon,upIcon,scrollerPullDown,scrollerPullUp,pullUpMsg,upLoading,downLoading,pullDownMsg; 
+                downIcon = $("."+str+" .down-icon");
+                pullDownMsg = $("."+str+" .pull-down-msg");
+                scrollerPullDown = $("."+str+" .scroller-pullDown");
+                scrollerPullUp = $("."+str+" .scroller-pullUp");
+                upLoading = $("."+str+" .scroller-pullUp .loading");
+                downLoading = $("."+str+" .scroller-pullDown .loading");
+                upIcon = $("."+str+" .up-icon");
+                pullUpMsg = $("."+str+" .pull-up-msg");
+
+                var tuwenScroller = new IScroll('.'+str, {
+                    probeType: 3,
+                    scrollbars: true,
+                    mouseWheel: true,
+                    interactiveScrollbars: true,
+                    shrinkScrollbars: 'scale',
+                    fadeScrollbars: true
+                });
+                tuwenScroller.on("scroll",function(){
+                    var y = this.y,
+                        maxY = this.maxScrollY - y,
+                        downHasClass = downIcon.hasClass("reverse_icon"),
+                        upHasClass = upIcon.hasClass("reverse_icon");
+                    
+                    if(y >= 40){
+                        !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松手开始更新');
+                        return "";
+                    }else if(y < 40 && y > 0){
+                        downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉刷新');
+                        return "";
+                    }
+                    
+                    if(maxY >= 40){
+                        !upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松手开始更新');
+                        return "";
+                    }else if(maxY < 40 && maxY >=0){
+                        upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看更多');
+                        return "";
+                    }
+                });
+                tuwenScroller.on("slideUp",function(){
+                    if(this.maxScrollY - this.y > 40){
+                        //alert("slideUp");
+                        upIcon.css('display','none');
+                        pullUpMsg.css('display','none');
+                        upLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            upIcon.css('display','inline-block');
+                            pullUpMsg.css('display','inline-block');
+                            upLoading.css('display','none'); 
+                            $('.goods-wrap').append('');
+                            tuwenScroller.refresh();
+                        },3000);
+                        
+                    }
+                });
+                tuwenScroller.on("slideDown",function(){
+                    if(this.y > 40){
+                        //alert("slideDown");
+                        scrollerPullDown.css({'position':'relative','top':'0'});
+                        downIcon.css('display','none');
+                        pullDownMsg.css('display','none');
+                        downLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            scrollerPullDown.css({'position':'absolute','top':'-0.7rem'});
+                            downIcon.css('display','inline-block');
+                            pullDownMsg.css('display','inline-block');
+                            downLoading.css('display','none'); 
+                            $('.goods-wrap').prepend('');
+                            tuwenScroller.refresh();
+                        },3000);
+                    }
+                });
+            }
+            initTuWenScroll('scroller-wrap');
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper" class="scroller-wrap">
+        <div id="scroller">
+            <div class="scroller-pullDown">
+                <span class="pull-down-icon down-icon"></span>
+                <span class="pull-down-msg">下拉刷新</span>
+                <span class="loading"></span>
+            </div>
+            <div class="activity-wrap">
+              <div class="activity-item">
+                <div class="a-img-wrap">
+                  <img src="images/activity2.png" alt="">
+                </div>
+                <div class="a-info">
+                  <p class="a-title">50元优惠券</p>
+                  <p class="a-dete">2015.11.11—2015.12.31</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="a-img-wrap">
+                  <img src="images/activity1.png" alt="">
+                </div>
+                <div class="a-info">
+                  <p class="a-title">幸运大转盘</p>
+                  <p class="a-dete">2015.11.11—2015.12.31</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="a-img-wrap">
+                  <img src="images/activity2.png" alt="">
+                </div>
+                <div class="a-info">
+                  <p class="a-title">50元优惠券</p>
+                  <p class="a-dete">2015.11.11—2015.12.31</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="a-img-wrap">
+                  <img src="images/activity2.png" alt="">
+                </div>
+                <div class="a-info">
+                  <p class="a-title">50元优惠券</p>
+                  <p class="a-dete">2015.11.11—2015.12.31</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="a-img-wrap">
+                  <img src="images/activity2.png" alt="">
+                </div>
+                <div class="a-info">
+                  <p class="a-title">50元优惠券</p>
+                  <p class="a-dete">2015.11.11—2015.12.31</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="a-img-wrap">
+                  <img src="images/activity2.png" alt="">
+                </div>
+                <div class="a-info">
+                  <p class="a-title">50元优惠券</p>
+                  <p class="a-dete">2015.11.11—2015.12.31</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="a-img-wrap">
+                  <img src="images/activity2.png" alt="">
+                </div>
+                <div class="a-info">
+                  <p class="a-title">50元优惠券</p>
+                  <p class="a-dete">2015.11.11—2015.12.31</p>
+                </div>
+              </div>
+            </div>
+            <div class="scroller-pullUp">
+                <span class="pull-up-icon up-icon"></span>
+                <span class="pull-up-msg">上拉查看更多</span>
+                <span class="loading"></span>
+            </div>
+        </div>
+    </article>
+    <footer class="m-footer">
+        <a class="home" href="#" title="首页"><span></span><p>首页</p></a>
+        <a class="all-prize" href="#" title="活动"><span class="on"></span><p>活动</p></a>
+        <a class="cart" href="#" title="购物车"><span></span><p>购物车</p></a>
+        <a class="my" href="#" title="我的"><span ></span><p>我的</p></a>
+    </footer>
+    
+    <script>
+        /*footer action*/
+        $(".m-footer>a").on("tap",function(e){
+            var activeSpan = $(this).find("span")[0];
+            $(".m-footer>a>span").each(function(index, el) {
+                if(activeSpan!==this){
+                    if($(this).hasClass('on')){
+                        $(this).removeClass('on');
+                    }
+                }else{
+                    $(this).addClass('on');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

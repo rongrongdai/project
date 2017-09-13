@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>行业资讯-详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeeef;}
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .news-pic{width:5.8rem;height:3.46rem;margin:0.3rem auto 0 auto;}
+        .news-pic>img{width:100%;}
+        .news-title{font-size:0.44rem;color:#000;width:5.8rem;margin:0.4rem auto 0.25rem auto;}
+        .news-date{font-size:0.22rem;color:#8e8e8e;margin:0 auto;width:5.8rem;}
+        .news-info2{font-size:0.3rem;color:#333;margin:0 auto;width:5.8rem;}
+        .news-info2>p{margin:0.4rem 0;line-height:0.48rem;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+          <div class="news-pic"><img src="images/news/news0.png" alt=""></div>  
+          <p class="news-title">70银行网银转账免费不免费银行将被央行收费</p>
+          <p class="news-date">2015年12月28日</p>
+          <div class="news-info2">
+              <p>央行上周五发文鼓励银行对存款人通过网上银行、手机银行办理的一定金额以下的转账汇款业务免收手续费。据中国电子银行网统计，目前，共</p>
+              <p>央行上周五发布《关于改进个人银行账户服务加强账户管理的通知》，要求商业银行进一步改进银行账户服务，应针对不同的业务处理渠道，制</p>
+              <p>西集于2015年2月开始进行封测和内测，2015年4月正式上线。项目首期已获得千万级美元的天使投资，为全球化的团队建设和采购体</p>
+              <p>虽说是鼓励银行实施，但央行此次态度较为坚决。央行支付结算司司长谢众表示，将从明年4月1日起，央行对还未实施落实减免手续费的银行 </p>
+          </div>
+        </div>
+    </article>
+    <script>
+    </script>
+</body>
+</html>

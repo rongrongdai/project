@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>文章管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">文章管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul id='nav'> 
+                <foreach name="classfiy" item="vo" key="i">
+                    <li><a href="?id=<{$vo.id}>" <if condition='$i eq 0'> class='selected'</if> id='<{$vo.id}>'><{$vo.name}>  </a></li>
+		</foreach>
+		<li><a href="./addArticle">添加文章  </a></li>
+                
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+         <th>序号</th><th>文章标题</th><th>分类名称</th><th>发布者</th><th>时间</th><th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <foreach name="data" item="vv" key="k">
+			<tr>
+				<td><{$k+1+$count}></td>
+				<td><a href="__ROOT__/index.php/Index/Index/helpcenter?aid=<{$vv.id}>" target="_new"><{$vv.title}></a></td>
+				<td><{$vv.name}></td>
+				<td><{$vv.admin}></td>
+				<td><{$vv.mtime|date="Y-m-d H:i:s",###}></td>
+				<td><a href="javascript:mod(<{$vv.id}>)">编辑</a> | <a href="javascript:del(<{$vv.id}>)">删除</a></td>
+			</tr>
+        </foreach>
+        
+        
+    
+        </tbody>
+    </table>
+     <{$link}>
+   
+  
+    
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+        $(function(){
+            var url=location.href;
+            var id='';
+            if(url.indexOf('id')){
+                id=url.substr(url.indexOf('=')+1,url.length);
+                if(id.indexOf("&")!==-1){
+                    id=id.substr(0,id.indexOf("&"));
+                }
+            }
+            $("#nav").find("a").each(function(){
+                if(parseInt(id)){
+                   $(this).removeClass("selected");  
+                }
+                if($(this).attr("id")===id){
+                    $(this).addClass("selected");
+                }
+            })
+            $(".page").find("a").click(function(){
+                if($(this).attr('href').indexOf('id')===-1){
+                    if($(this).attr("href").indexOf('?')){
+                        $(this).attr("href",$(this).attr('href')+"?id="+id);
+                    }else{
+                        $(this).attr("href",$(this).attr('href')+"&id="+id);
+                    }
+                }
+                
+            })
+        })
+    </script>
+  
+    </div>
+</body>
+
+</html>
+
+<script>
+    function mod(id){
+        if(confirm('您确认要编辑该文章吗？')){
+            window.location.href="__URL__/addArticle?id="+id;
+        }
+    }
+    function del(id){
+        if(confirm('您确认要编辑该篇文章吗？')){
+            window.location.href="__URL__/delArticle?id="+id;
+        }
+    }    
+</script>

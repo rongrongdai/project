@@ -1,0 +1,136 @@
+<include file="../../../Public/default/header" />
+<link href="__ROOT__/public/css/home/forlby.css" type="text/css" rel="stylesheet" /> 
+<div class="for-lby-one">
+    <div class="for-lby-oy">
+       <p class="f-wd">有问题来八斗学问</p>
+       <p>已帮助的人数</p>
+       <p class="f-wde">111236</p>
+       <a href="__APP__/Space/Space/qcenter"><div class="f-wq">我要提问</div></a>
+       
+    </div>  
+</div>
+<div class="for-lby-two">
+    <div class="ft-rit">
+
+        <div class="ft-rone fd">
+            <p>全部</p>
+            <div class="sjx fs"></div>
+        </div>
+        <foreach name="ask" item="vo">  
+         <div class="ft-rone"> <a href="__URL__/qlist?cid=<{$vo.id}>">
+            <p><{$vo.name}></p>
+            <div class="sjx"></div></a>
+          </div>
+        </foreach>
+
+    </div>
+     
+     <div class="ft-cen">
+          <div class="ft-cey">
+             <div class="rm rou">热门</div>
+             <div class="rm">零回答</div>
+          </div>
+      <div id="hot">    
+      <foreach name="questions" item="vo">   
+         <div class="ft-ceei">
+              <div class="ft-ceei-r"><p>问</p></div>
+              <div class="ft-ceei-l">
+                 <p class="dz"><{$vo.content|strip_tags}></p>
+                 <p class="xz"><{$vo.asw}>...   <a href="__APP__/Space/Question/answerdetail?tid=<{$vo.id}>" class="au">[详情]</a> </p>
+              </div>
+         </div>
+      </foreach>
+      </div>
+      <div id="noasw" style="display:none;">    
+      <foreach name="noanswer" item="vo">   
+         <div class="ft-ceei">
+              <div class="ft-ceei-r"><p>问</p></div>
+              <div class="ft-ceei-l">
+                 <p class="dz"><{$vo.content}>......</p>
+                 <p class="xz"><a href="__APP__/Space/Question/answerdetail?tid=<{$vo.id}>" class="au">[我要抢答]</a> </p>
+              </div>
+         </div>
+      </foreach>
+      </div>
+
+     </div> 
+     
+     <div class="ft-lft">
+          <div class="ft-lfyi">
+           <p>大家都在搜</p>
+          </div>
+          
+          <div class="ft-lfer">
+             <a class="zk" href="javascript:">中考</a>
+             <a class="zb" href="javascript:">中考那家家教强？</a>
+          </div>
+          
+           <div class="ft-lfer">
+             <a class="zk" href="javascript:">中考</a>
+             <a class="zb" href="javascript:">中考那家家教强？</a>
+          </div>
+          
+           <div class="ft-lfer">
+             <a class="zk" href="javascript:">中考</a>
+             <a class="zb" href="javascript:">中考那家家教强？</a>
+          </div>
+          
+           <div class="ft-lfer">
+             <a class="zk" href="javascript:">中考</a>
+             <a class="zb" href="javascript:">中考那家家教强？</a>
+          </div>
+          
+          <div class="ft-lfsar">
+             <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/015.gif" class="imgsw"/>
+    
+                  <div class="ft-ls">
+                     <p class="phb">排行榜</p>
+                     <p class="phh">回答     采纳率</p>
+                  </div>
+              
+                 <div class="ft-lsy">
+                     <foreach name="rqes" item="qes">
+                         <div class="phb">
+                            <p class="oe"><{$key+1}></p>
+                            <p class="osw"><a href="javasccript:"><{$qes.content|strip_tags|mb_substr="0","8","utf-8"}>...</a></p>
+                        </div>
+                         <php>
+                             $rate=ceil($qes['aswnum']/$qes['suma']*100);
+                         </php>
+                        <p class="phh" ><span style='margin-right: 20px;margin-left:0px;'><if condition="$qes.aswnum gt 0"><{$qes.aswnum}><else/>0 </if>&nbsp;</span><if condition="$qus.aswnum"><{$rate}><else/>0</if>%</p>
+                     </foreach>
+                   
+                </div>
+              
+               
+              
+          </div>
+          </div>
+     </div>
+
+ 
+  
+  
+  
+<script>
+/*$('.ft-rone').click(function(){	
+	$('.ft-rone').removeClass('fd');
+	$(this).addClass('fd');
+	$('.sjx').removeClass('fs');
+	$(this).find('.sjx').addClass('fs')
+})
+	
+$('.rm').click(function(){	
+    $('.rm').removeClass('rou');
+    $(this).addClass('rou');
+    if($(this).text()==='热门'){
+      $("#hot").show();$("#noasw").hide();
+    }else{
+      $("#hot").hide();$("#noasw").show();
+    }
+})	
+*/			
+</script> 
+<include file="../../../Public/default/footer" />
+</body>
+</html>

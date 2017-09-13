@@ -1,0 +1,143 @@
+<?php
+
+/**
+ * 消费记录
+ *
+ * @author fanbo
+ */
+class ConsumeAction extends CommonAction{
+    //消费详情
+    public function echarge(){
+        $this->display();
+    }
+
+
+    //提现记录
+    public function deposit(){
+       $uid=session('uid');
+       $uinfo=M('Memberfields')->where("uid='$uid'")->field('vmoney,ali_count,money')->find();
+       //$a_log=M();
+       $acount=M();
+       $this->assign('uinfo',$uinfo);
+       $this->display();
+    }
+    private function init($number,$type){
+        $data['count']=$number;$data['uid']=session('uid');$data['info']='体现'.$number.'学豆';$data['timestamp']=time();
+        $data['type']=$type;
+        return $data;
+    }
+    //提现
+    public function posit(){
+        if($_POST){
+            $number=$this->getData(array('number','type'),'post');
+            $rf=$this->f_check('token');
+            $uid=session('uid');
+            if($rf){
+                $model=D('User/Consume');
+                if($number['type']){
+                    $money=((int)$number['number'])*0.1;
+                    $mmodel=M('Memberfields');
+                    $cmoney=$mmodel->where("uid='$uid'")->field('money,vmoney')->find();
+                    if($cmoney['money']<$money){
+                        $this->error('当前余额不足，请先充值！','charge');
+                    }else{
+                        $model->startTrans();
+                        $data=$this->init($number['number'],'2');
+                        $data['info']='购买'.$number['number'].'学豆';
+                        $res=true;
+                        if($model->create($data)){
+                            $res=$model->add($data);
+                            if($res){
+                                $data=$this->init(-$money,1);
+                                $data['info']='购买'.$number['number'].'学豆，花费'.$money.'元';
+                                $res=true;
+                                if($model->create($data)){
+                                    $res=$model->add($data);
+                                    if($res){
+                                        $res=$mmodel->where("uid='$uid'")->save(array('money'=>$cmoney['money']+(-$money),'vmoney'=>$number['number']));
+                                        if($res){
+                                            $this->success('购买成功','charge');
+                                            $model->commit();
+                                        }else{
+                                            $model->rollback();
+                                            $this->error($mmodel->getError());
+                                        }
+                                    }else{
+                                        $model->rollback();
+                                        $this->error($model->getError());
+                                    }
+                                }else {
+                                    $model->rollback();
+                                    $this->error($model->getError());
+                                }
+                            }
+                        }else{
+                            $model->rollback();
+                            $this->error($model->getError());
+                        }
+                    }
+                    return;
+                }
+                $fields=M('Memberfields')->where("uid='$uid'")->field('money,vmoney')->find();
+                if($number['number']>$fields['vmoney']){
+                    $this->error('提现数量超过您当前余额，请重试！');
+                    return;
+                }
+                $data=$this->init(-$number['number'],2);
+                $data['info']='体现'.$number.'学豆';
+                if($model->create($data)){
+                    $model->startTrans();
+                    $res=$model->add($data);
+                    $count=0;
+                    if($res){
+                       $count=((int)$number['number'])*0.1;
+                       $data=$this->init($count, 1);
+                       $data['info']='提现'.$number['number'].'学豆,获取现金'.$count.'元';
+                       if($model->create($data)){
+                           $res=$model->add($data);
+                       }
+                       //更新memberfilds
+                       if($res){
+                           $data=array('money'=>$fields['money']+$count,'vmoney'=>$fields['vmoney']-$number);
+                           $res=$model->where("uid='$uid'").save($data);
+                       }else{
+                           $model->rollback();
+                       }
+                       if($res){
+                           $model->commit();
+                           $this->success('体现成功！');
+                       }else{
+                           $model->rollback();
+                           $this->success('体现失败！');
+                       }
+                    }else{
+                        $model->rollback();
+                    }
+                }else{
+                    $this->error($model->getError());
+                }
+            }else{
+                $this->error('请不要重复提交表单！');
+            }
+        }else{
+            $token=md5(time());
+            $uid=session('uid');
+            $this->assignData(array('token'=>$token,'timestamp'=>time(),'cmoney'=>M('Memberfields')->where("uid='$uid'")->field('vmoney')->find()),'assign');
+            session('ftoken',$token);
+            $type=$_GET['type'];
+            if($type){
+                $this->assign('type',$type);
+            }
+            $this->display();
+        }
+        
+    }
+    //充值
+    public function  charge(){
+        $this->display();
+    }
+
+
+    
+
+}

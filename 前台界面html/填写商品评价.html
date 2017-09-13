@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>填写商品评价</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script type="text/javascript" src="js/fx.js"></script>
+    <script type="text/javascript" src="js/imgEnlarge.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        /*底部*/
+        .m-footer{width: 92.5%;position: fixed;bottom: 0.1rem;z-index: 2;font-size: 0.28rem;text-align: center;background-color: #fff;line-height: 0.68rem;left: 3.75%;border-radius: 0.06rem;overflow: hidden;}
+        .m-footer .m-line1{float:left;margin-left: 0.24rem;}
+        .m-footer .m-line2{float:right;width:1.6rem;background-color:#ff3c00;color:#fff;border-radius: 0.06rem;}
+        .m-footer span{display:inline-block;vertical-align:middle;}
+        .m-footer .m-line1 .anonymous{height: 0.3rem;width: 0.3rem;border: 1px solid #777778;margin-right:0.15rem;}
+        .m-footer .m-line1 .active {background: url("images/select.png") no-repeat scroll center center / 80%;border: 1px solid #ff6519;}
+       
+        .order-body{font-size:0.24rem;}
+        .order-body .order-item{background-color:#fff;}
+        .order-body .o-goods{padding:0 0.24rem;}
+        .order-body .o-goods .o-good{border-bottom:1px solid #eeeef1;padding: 0.2rem 0;overflow:auto;}
+        .order-body .o-goods .o-good>div{float:left;}
+        .order-body .o-goods .o-good .o-img-wrap{width:1.6rem;height:1.6rem;}
+        .order-body .o-goods .o-good .o-img-wrap img{width:100%;height:100%;}
+        .order-body .o-goods .o-good .o-info{width: 70%;margin-left: 0.15rem;}
+        .order-body .o-goods .o-good .o-info>div:first-child{position:relative;font-size:0.2rem;}
+        .order-body .o-goods .o-good .o-info .o-title{display: inline-block;vertical-align:top;width: 70%;}
+        .order-body .o-goods .o-good .o-info .o-price{position:absolute;top:0;right:0;}
+        .order-body .o-goods .o-good .o-info .o-num{float:right;}
+        .order-body .o-goods .o-good .o-line0{margin:0.15rem 0 0.05rem 0;}
+        .order-body .o-goods .o-good .o-details{font-size:0.2rem;color:rgba(0,0,0,.5);}
+        .order-body .o-goods .ev-icon{}
+        .order-body .o-goods .ev-icon>img{width:0.35rem;margin-top:0.2rem;}
+        .order-body .o-goods .o-line1{line-height: 0.8rem;}
+        .order-body .o-goods .o-line1>span{display:inline-block;vertical-align:middle;margin-left: 0.18rem;}
+        .order-body .o-goods .o-line1 input{font-size:0.22rem;height:0.5rem;}
+        .order-body .o-goods .o-line2{padding:0.45rem 0 0.2rem 0;overflow: auto;border-bottom: 1px solid #eeeef1;}
+        .order-body .o-goods .o-line2 .o-tip{color:#7f7f7f;}
+        .order-body .o-goods .o-line2 p{margin-left: 0.18rem;}
+        .order-body .o-goods .o-line2 img{width:1rem;height:1rem;float:left;margin:0.2rem 0.2rem 0 0;}
+        .order-body .o-goods .o-line2 .plus-icon{color: #adadb0;vertical-align: middle;cursor: pointer;font: 400 1rem/1 arial;text-align: center;width: 1rem;background-color: #eeeef1;float: left;margin-top: 0.2rem;}
+        .order-body .o-goods .o-line3{border: 1px solid #eeeef1;}
+        .order-body .o-goods .o-line3 span{margin: 0.3rem 0 0 0.18rem;display: inline-block;vertical-align: top;}
+        .order-body .o-goods .o-line3 textarea{height: 1.44rem;padding-top: 0.3rem;font-size: 0.2rem;color: #a3a3a3;width: 4.5rem;}
+        
+        /*删除提示窗*/
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index: 3;position: fixed;display:none;}
+        .alert{width: 76.5625%;background: #fff;z-index: 4;position: fixed;font-size: 0.28rem;text-align: center;border-radius: 0.1rem;top: -100%;left: 11.71875%;-webkit-animation: animDialog .4s ease-out;animation: animDialog .4s ease-out;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 10ms;display:none;}
+        .alert-show{display:block;top: 22%;}
+        @-webkit-keyframes animDialog {
+         from{-webkit-transform: scale(.05);transform: scale(.05);}
+         to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        @keyframes animDialog {
+          from{-webkit-transform: scale(.05);transform: scale(.05);}
+          to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        .alert .a-info{padding:0.33rem 0.3rem 0.15rem 0.3rem;border-bottom: 1px solid #eeeef1;min-height: 0.7rem;}
+        .alert .a-btn>div{width: 50%;float: left;    height: 0.62rem;line-height: 0.62rem;color:#226bfb;}
+        .alert .a-btn .cancel{border-right: 1px solid #eeeef1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article>
+        <div>
+            <div class="order-body" id="wrapper">
+                <div id="scroller">
+                  <div class="order-item">
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line0"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-line1">
+                            <span>总体评价：</span>
+                            <span class="ev-icon">
+                              <img src="images/good-details/heart-0.png" alt="">
+                              <img src="images/good-details/heart-0.png" alt="">
+                              <img src="images/good-details/heart-0.png" alt="">
+                              <img src="images/good-details/heart-0.png" alt="">
+                              <img src="images/good-details/heart-0.png" alt="">
+                            </span>
+                        </div>
+                        <div class="o-line3"><span>评价内容：</span><textarea name="" id="" class="o-mag-area" placeholder="评价内容至少10个字"></textarea></div>
+                        <div class="o-line2">
+                            <p>晒图<span class="o-tip">（最多5张）</span></p>
+                            <div class="o-img-wrap">
+                              <img src="images/good-details/ev-pic0.png" alt="">
+                              <img src="images/good-details/ev-pic1.png" alt="">
+                              <img src="images/good-details/ev-pic2.png" alt="">
+                              <span class="plus-icon">+</span>
+                              <input type="file" style="visibility:hidden">
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer class="m-footer">
+        <span class="m-line1"><span class="anonymous"></span><span>匿名评价</span></span>
+        <span class="m-line2">确定</span>
+    </footer>
+    <!--删除，弹窗-->
+    <div class="bg-layer"></div>
+    <div class="alert del-popup">
+        <div class="a-info">一旦删除就无法恢复，请确认是否删除？</div>
+        <div class="a-btn">
+            <div class="cancel">取消</div>
+            <div>确认</div>
+        </div>
+    </div>
+    <!--图片放大轮播-->
+    <div id="enlarge-Carousel"></div>
+    
+    <script type="text/javascript" src="js/swiper.js"></script>
+    <script>
+         /*提示窗,删除、退换货申请*/
+        $('.order-item .del-btn').on('tap',function(){
+            $('.bg-layer').css('display','block');
+            $('.del-popup').addClass('alert-show');
+        });
+        $('.bg-layer').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+        $('.alert .cancel').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+        /*匿名评价，checkbox*/
+        $('.m-footer .m-line1').on('tap',function(){
+            $(this).find('.anonymous').toggleClass('active');
+        });
+        /*心形评价*/
+        $('.order-item .ev-icon>img').on('tap',function(){
+          if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $(this).attr('src','images/good-details/heart-0.png');
+          }else{
+            $(this).addClass('active');
+            $(this).attr('src','images/good-details/heart-1.png');
+          }
+          var index = $(this).index();
+          $('.order-item .ev-icon>img').each(function(){
+            if($(this).index()<index){
+              $(this).addClass('active');
+              $(this).attr('src','images/good-details/heart-1.png');
+            }else if($(this).index()>index){
+              $(this).removeClass('active');
+              $(this).attr('src','images/good-details/heart-0.png');
+            }
+          });
+        });
+        /*添加照片*/
+        $('.order-item .plus-icon').on('tap',function(){
+            $(this).next('input').click();
+        });
+        /*图片放大 轮播*/
+       enlargeCarousel.createEnlargeCarousel('.order-item .o-img-wrap img',true);
+    </script>
+</body>
+</html>

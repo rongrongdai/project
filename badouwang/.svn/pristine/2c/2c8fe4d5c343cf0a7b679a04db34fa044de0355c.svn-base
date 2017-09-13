@@ -1,0 +1,113 @@
+<include file="../../../Public/default/header" />
+<script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+<link href="__ROOT__/public/css/home/yueke.css" type="text/css" rel="stylesheet" />
+
+   <div class="yuek-all">
+       <div class="top">
+       当前位置：<a href="javascript:"> 平台教师 </a> > <a href="javascript:">约课</a>
+       </div>
+       <div class="top-y">
+          <p class="ye">我要约课</p>
+          <div class="top-ycen">
+            <div class="cey">
+              <div class="cer">
+                <img src="__ROOT__<{$data.id_front}>" width="65px" height="65px" />
+                <div class="cere">
+                  <p class="py"><{$data.real_name}></p>
+                  <p><{$data.course}>　　订单课时为: <{$data.hour}>课时 <{$data.place}></p>
+                  <p class="pe">请联系老师确认上课时间、地点后，再向老师发起约课</p>
+                </div>
+              </div>
+              <div class="cesi">
+                <P>待预约课时为: <span><{$k_sum}> 课时</span></P>
+              </div>
+            </div>
+             
+            <div class="web">
+              <div class="webons">
+                <div class="cen">
+                  <!-- <p>请选择上课次数</p>
+                  <input type="radio" />只上一次  <input type="radio" />每天都上  <input type="radio" />每周都上 -->
+                  <p><span>请选择开始日期</span>  <span>设置开始时间</span>  <span>设置时长</span></p>
+                  <input name="k_date" id="k_date" style="width:92px;" placeholder="请选择" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}'})" />
+
+                  <select name="k_time" id="k_time">
+                    <option value="0">请选择</option>
+                    <for start="7" end="21"><option value="<{$i}>"><{$i}>:00</option></for>
+                  </select>
+         
+                  <select name="k_hour" id="k_hour">
+                    <option value="0">请选择</option>
+                    <for start="1" end="9"><option value="<{$i}>"><{$i}></option></for>
+                  </select>
+                  <span id="msg" style="color:#FF3333;font-size:10px;"></span>
+                <p class="any" onclick="addCourse()">添加课程</p> 
+                </div>
+                  
+                <div class="kse">
+                  <table>
+                    <thead><tr class="te">
+                      <td>日期</td><td>时间</td><td>次数</td>
+                      <td>时长</td><td>操作</td>
+                    </tr></thead>
+                    <tbody class="add_kse">
+                      <tr class="uncourse">
+                        <td colspan="5">你还没有添加课程</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <input type="hidden" name="kid" value="<{$data.id}>" />
+                  <input type="hidden" name="tuid" value="<{$data.tuid}>" />
+
+                </div>
+                  
+                <p class="time">共0小时</p>
+                <p class="timey">课程地址: <input type="text" name="k_addr" value="<{$data.address}>" /></p>
+                <p class="timey">留言：</p>
+                <textarea rows="6" cols="85" name="k_msg"></textarea>
+                <p class="ps">还可以输入99字</p>
+                <p class="anyw">提交预约</p>
+              </div>
+               
+              <div class="cen-rith">
+                <div class="cen-ric"><{$calendar.table}></div>
+                <p class="cel">当天你没有课程安排哦~~</p>
+                <p class="cel">当天曾老师没有课程安排哦~</p>
+              </div>
+
+           </div>
+
+     
+      </div>
+   </div>
+</div>
+<script type="text/javascript">
+var zkshi = 0,dkshi = "<{$k_sum}>";
+function addCourse(){
+  var date = $("#k_date").val(),time = $("#k_time").val(),hour = $("#k_hour").val(),cis = $(".add_kse").find("tr").index()+1;
+  if(!date||time==0||hour==0){
+    $("#msg").html("请选择完整的上课时间");
+  }else{
+    var tNode = $(".add_kse").find("input[value='"+date+"']"),tDate = tNode.val(),tTime = parseInt(tNode.parent().parent().find("#bta").val()),tHour = tNode.parent().parent().find("#bha").val();
+
+    $(".kse").find(".uncourse").html("");$("#msg").html("");
+    var cNode = '<tr><td><input type="hidden" name="date['+cis+']" value="'+date+'" />'+date+'</td><td><input type="hidden" id="bta" name="begin_time['+cis+']" value="'+time+':00" />'+time+':00</td><td id="bci">'+cis+'次</td><td><input type="hidden" id="bha" name="classhour['+cis+']" value="'+hour+'" />'+hour+'</td><td><span class="bdel" onclick="delCourse('+cis+')">删除</span></td></tr>';
+    var HTime = tTime+parseInt(tHour);if(tDate&&time<HTime){$("#msg").html("当天时间安排冲突，请向后调整");}else{if(tNode.size()>1){$("#msg").html("同一天约课不能超过两次");}else{zkshi += parseInt(hour);if(zkshi > dkshi){zkshi -= parseInt(hour);$("#msg").html("约课总课时不能超过待预约课时");}else{$(cNode).appendTo(".add_kse");$(".time").html("共"+zkshi+"小时")}}}
+  }
+}
+function delCourse(id){
+  $(".add_kse").find("tr:eq("+id+")").remove();var blen = $(".add_kse").find("tr").index();if(blen==0){$('<td colspan="5">你还没有添加课程</td>').appendTo(".uncourse");}else{var slen = $(".add_kse").find("tr").index();for(var i=1;i<=slen;i++){$(".add_kse").find("tr:eq("+i+")").find("#bci").html(i+"次");$(".add_kse").find("tr:eq("+i+")").find(".bdel").attr('onclick','delCourse('+i+')');}}
+}
+$(".anyw").click(function(){
+  if($(".add_kse").find(".bdel").size()>0){
+    $(".webons").wrap("<form id='doCourse' action='' method='post'></form>");
+    $("#doCourse").submit();
+  }else{
+    $("#msg").html("你还没有添加课程");
+  }
+
+});
+
+</script>
+
+<include file="../../../Public/default/footer" />

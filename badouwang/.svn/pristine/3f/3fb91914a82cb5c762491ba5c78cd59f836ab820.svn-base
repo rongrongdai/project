@@ -1,0 +1,11 @@
+<?php
+//订单控制器
+class OrderAction extends CommonAction{
+    //获取订单列表
+    //支付订单
+    //获取订单数
+    //订单评价
+    //取消订单
+    
+}
+

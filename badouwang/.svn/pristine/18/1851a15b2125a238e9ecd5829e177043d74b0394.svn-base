@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——我的订单</title>
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<link href="__ROOT__/public/css/home/bootstrap.min.css"  type="text/css" rel="stylesheet"/>
+<style type="text/css">
+a{ text-decoration:none;}
+.z-cenog{ width:900px;}
+.z-cenog .zc-one{ margin:15px; border-bottom:1px #9DE1BD solid; height:40px;}
+.z-cenog .zc-one .ddan{ width:470px; float:left; color:#42bab1; font-size:14px;}
+.z-cenog .zc-one .ddae{ width:390px; float:right; color:#2d2a35; font-size:14px;}
+.z-cenog .zc-one .ddae span{ cursor:pointer;}
+.z-cenog .zc-one .ddae .aclick{ color:#42bab1;}
+.z-cenog  .ddaho{ color:#727274; margin:30px 0px 10px 15px;font-size: 16px;}
+.z-cenog  .ddaho span{ color:#fc7718; margin-left:20px;}
+
+.z-cenog  .zc-two{  margin:15px; border:1px #9DE1BD solid; height:135px;}
+
+.z-cenog  .zc-two .zc-tyi{ width:290px; border-right:1px #9DE1BD solid; height:135px; float:left;}
+.z-cenog  .zc-two .zc-tyi img{ width:100px; height:100px; margin:15px; float:left;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef{ float:left;margin-top:10px;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef p{color:#727274; font-size:12px; line-height:20px;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef .cq{  line-height:25px; font-weight:bolder;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef .cz{ margin-top:30px;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef .cs{color:#42bab1;}
+.z-cenog  .zc-two .zc-ter{ width:180px; height:135px; float:left;  border-right:1px #9DE1BD solid;padding-top:10px;}
+.z-cenog  .zc-two .zc-ter p{ color:#727274; font-size:12px; line-height:27px; text-align:center;}
+.z-cenog  .zc-two .zc-ter .yuad{ color:#fc7718;}
+.z-cenog  .zc-two .zc-tsan{ width:210px; height:135px; float:left;  border-right:1px #9DE1BD solid;padding-top:10px;}
+.z-cenog  .zc-two .zc-tsan p{color:#727274; font-size:12px; line-height:27px; text-align:center;}
+.z-cenog  .zc-two .zc-tsan span{ color:#fc7718;}
+.z-cenog  .zc-two .zc-tsi{ float:left; width:130px;padding-top:10px;}
+.z-cenog  .zc-two .zc-tsi p{ color:#727274; font-size:12px; line-height:27px; text-align:center;}
+.z-cenog  .zc-two .zc-tsi a{ color:#fc7718;}
+.z-cenog  .zc-two .zc-tsi a:hover{ color:#42bab1;}
+</style>
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+</head>
+
+<body style="margin:8px;">
+<div class="per">
+   <div class="per-make">
+      <div class="make ymk aclick">我的订单</div>
+   </div>
+      
+
+    <div class="z-cenog">
+        <div class="zc-one">
+            <!--<p class="ddan">我的订单</p>-->
+            <p class="ddae"><span class="aclick" name="all">全部(<{$all}>) </span>| <span name="pay">待支付(<{$ispay}>)</span> | <span name="do">执行中(<{$do}>)</span> | <span name="end">已结束(<{$end}>)</span> </p>
+        </div>
+    <if condition="$data">
+    <foreach name="data" item="vo">    
+        <p class="ddaho">订单号：<{$vo.order_num}>  | <{$vo.bm_time|date=("Y年m月d日 H:i"),###}>  <span><if condition="$vo['ispay'] eq 0">待付款<else/>已支付</if></span></p>
+        <div class="zc-two">
+      
+            <div class="zc-tyi">
+                <img src="__ROOT__<{$vo.self_img}>" />
+                <div class="zc-tlef">
+                  <p class="cq"><{$vo.real_name}></p><p class="cz"><{$vo.course}></p><p class="cs"><{$vo.place}></p>
+                </div>
+            </div>
+         
+            <div class="zc-ter">
+                <php>$danjiao = $vo['money']/$vo['hour']</php>
+                <p class="yuad">￥100.00元/小时</p><p>已购买：<{$vo.hour}>小时</p><p><if condition="$vo['status'] eq 0">已完成0/<{$vo.hour}>小时<else/>已结束</if></p>
+            </div>
+         
+            <div class="zc-tsan">
+                <p>订单金额：<span>￥<{$vo.money}></span>元</p><p>支付金额：<span>￥<{$vo.money}></span>元</p>
+            </div>
+
+            <div  class="zc-tsi">
+                <p><a href="javascript:">查看详情</a></p>
+                <if condition="$vo['ispay'] eq 0">
+                    <if condition='$vo.status neq 1'><p><a href="__APP__/User/User/orderList?cancel=<{$vo.id}>">取消订单</a></p></if>
+                    <if condition='$vo.status neq 1'><p><a href="__APP__/Teach/Teach/orderDetail?id=<{$vo.order_num}>" target="_new">支付订单</a></p></if>
+                </if>
+                <if condition='$vo.status eq 1'><p><a href="javascript:;" type='<{$vo.type}>' id='<{$vo.id}>' name='comment'>评价</a></p></if>
+            </div>
+        </div>
+    </foreach>
+    <else/>
+        <div class="zc-two"><div style="text-align:center;margin-top:50px;">暂无相关内容</div></div>
+    </if>
+        <div style="text-align:center;margin:20px;"><{$link}></div> 
+    </div>
+
+   
+
+</div>
+
+    <script src="__ROOT__/public/js/home/jquery.mousewheel.js"></script>
+    <script src="__ROOT__/public/js/home/nicescroll.js"></script>
+    <script src="__ROOT__/public/js/home/noscroll.js"></script>
+<script src="__ROOT__/public/js/home/common.js"></script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script type="text/javascript">
+    var name="<{$name}>";
+    $(".ddae").find("span").click(function(){
+        var type = $(this).attr('name');
+        window.location.href = "__APP__/User/User/orderList?name="+type;
+    });
+    var type = "<{$type}>";
+    $(".ddae").find("span").removeClass('aclick');
+    var node = $(".ddae").find("span[name="+type+"]").addClass('aclick');
+    switch(type){case 'all':node;break;case 'pay':node;break;case 'do':node;break;case 'end':node;break;
+    }
+    $(function(){
+        $("a[name=comment]").click(function(){
+            $.layer({
+            type: 2,
+            shadeClose: true,
+            title: false,
+            closeBtn: [0, false],
+            shade: [0.8, '#000'],
+            border: [0],
+            offset: ['20px',''],
+            area: ['468px', '400px'],
+            iframe: {src: '__ROOT__/index.php/User/User/commment'}
+           }); 
+        })
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>邀请会员</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        .img-wrap{width:94.53125%;margin:0 auto;}
+        .img-wrap>img{width:100%;}
+        .share{color:#1e8fd4;border:1px solid #1e8fd4;border-radius:1rem;width:5.38rem;margin:0.4rem auto;}
+        .share>p{margin:0.2rem 0;}
+        .share>p:first-child{font-size:.5rem;text-align: center;}
+        .share>p:last-child{font-size:.3rem;    padding: 0 .5rem;text-indent: 0.5rem;}
+        .qrcode{color:#ff3c00;border:1px solid #ff3c00;border-radius:1rem;width:5.38rem;margin:0 auto;}
+        .qrcode>p{margin:0.2rem 0;}
+        .qrcode>p:first-child{font-size:.5rem;text-align: center;}
+        .qrcode>p:last-child{font-size:.3rem;    padding: 0 .5rem;text-indent: 0.5rem;}
+
+    /*分享*/
+        .share-area{width:100%;text-align: center;position: fixed;bottom: -100%;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .share-area-show{bottom: 0;}
+        .share-area .share-cont{font-size: 0.18rem;overflow: auto;background-color:#fff;width: 5.92rem;margin: 0 auto;border-radius: 0.06rem;padding: 0.1rem 0 .8rem 0;}
+        .share-area .share-cont .share-title{font-size:0.24rem;margin: 0.24rem auto;}
+        .share-area .share-cont .way2{clear: both;overflow: auto;}
+        .share-area .share-cont .way2>div{    width: 25%;float: left;}
+        .share-area .share-cont .way2>div img{    width: 70%;margin: 0 auto;}
+        .share-area .share-cont .way2>div span{display:block;}
+        .share-area .chare-cancel{    font-size: 0.24rem;height: 0.68rem;line-height: 0.68rem;background-color: #fff;width: 5.92rem;margin: 0.1rem auto 0.2rem auto;border-radius: 0.06rem;}
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top: 0;bottom: 0;z-index: 3;position: fixed;display:none;}
+    </style>
+</head>
+<body>
+    <article>
+        <div class="img-wrap">
+            <img src="images/invite.png" alt="">
+        </div>
+        <div class="share">
+            <p>分享</p>
+            <p>分享给好友注册链接，注册成功即 可成为我的下级</p>
+        </div>
+        <div class="qrcode">
+            <p>扫描二维码</p>
+            <p>请好友通过扫描二维码成功注册成 为我的下级</p>
+        </div>
+    </article>
+    <div class="bg-layer"></div>
+    <article class="share-area">
+        <div class="share-cont">
+            <div class="share-title">分享</div>
+            <div class="way2">
+                <div>
+                    <img src="images/good-details/wechat.png" alt="">
+                    <span>微信好友</span>
+                </div>
+                <div>
+                    <img src="images/good-details/wechat-zone.png" alt="">
+                    <span>微信朋友圈</span>
+                </div>
+                <div>
+                    <img src="images/good-details/qq.png" alt="">
+                    <span>QQ</span>
+                </div>
+                <div>
+                    <img src="images/good-details/qq-zone.png" alt="">
+                    <span>QQ空间</span>
+                </div>
+            </div>
+        </div>
+        <div class="chare-cancel">取消</div>
+    </article>
+    <script>
+        $('.share').on('tap',function(){
+            $('.bg-layer').css('display',"block");
+            $('.share-area').addClass('share-area-show');
+        });
+        $('.chare-cancel').on('tap',function(){
+            $('.bg-layer').css('display',"none");
+            $('.share-area').removeClass('share-area-show');
+        });
+    </script>
+</body>
+</html>

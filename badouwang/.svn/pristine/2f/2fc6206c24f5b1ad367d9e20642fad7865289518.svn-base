@@ -1,0 +1,57 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/Space.css" />
+<include file="../../../Public/default/sheader" />
+<div class="sp-er">
+   <include file="../../../Public/default/sleft" />
+<!--我的培训-->
+ <div class="sp-er-center">
+           <div class="mtrain-centeyi">
+               
+              <div class="mtra-ce-yi">
+                 <p>我的考试记录</p>
+                 <div class="mtsjx"></div>
+              </div>
+           </div>
+ 
+        <div class="mtrain-centeer">
+        	<table style="width:100%;border-collapse:collapse;">
+        		<tr class="tr-tit"><td>序号</td><td>试卷名称</td><td>考试日期</td><td>得分</td><td>查看</td></tr>
+	            <foreach name='data' item='vo' key="i">
+	            	<tr>
+		        		<td><{$i+1+$p_count}></td>
+		        		<td><{$vo.name}></td>
+		        		<td><{$vo.end_time|date="Y-m-d",###}></td>
+		        		<td><{$vo.score}></td>
+		        		<td><span onclick="see(<{$vo.id}>)">查看详情<span></td>
+	        		</tr>
+	            </foreach>
+            </table>
+            <div class="tr-page"><{$link}></div>
+        </div>
+ </div>
+ 
+<!--热门培训课程-->
+ <div class="sp-er-righty">
+      <div class="ma-rty"><span>热门试题</span></div>
+      	<ul class="exam-hot">
+	        <foreach name="hot" item="vo">
+	            <li onclick="look(<{$vo.id}>)"><{$vo.name}></li>
+	        </foreach>
+        </ul> 
+ </div>
+
+<div style='clear:both'></div>
+</div>
+
+
+
+<include file="../../../Public/default/footer" />
+
+<script>
+	function look(id){
+		window.location.href = "__APP__/Exam/Exam/detail?id="+id;
+	}
+	function see(id){
+		window.location.href = "__APP__/Exam/Exam/examrecord?sid="+id;
+	}
+</script>

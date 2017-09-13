@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——个人设置</title>
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+</head>
+<body>
+
+<div class="per">
+     <div class="per-top">
+         <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xiaotu.gif" />
+         <p class="set-up">编辑信息</p>
+     </div>
+     <div class="per-form">
+         <form action="__URL__/domod" method="post" enctype="multipart/form-data" id="dataform">
+           <div class="pheig">
+              <div class="pflat1">标题：</div>
+              <div class="pflat2"><input type="text"  class="inputcs"  name="title" id="title" value="<{$res.title}>" disabled /></div>
+              <span class="hint"></span>
+           </div>  
+                             
+           <div class="pheig">
+              <div class="pflat1">教育分类：</div>
+              <div class="pflat2"><input type="text" value="<{$fidn}>" disabled /><input type="text" value="<{$midn}>" disabled /></div>
+              <span class="hint"></span>
+           </div>
+
+            <div class="pheig">
+              <div class="pflat1">所在区域：</div>
+              <div class="pflat2"><input type="text" value="<{$cityn}>" disabled /><input type="text" value="<{$districtn}>" disabled /></div>
+                <span class="hint"></span>
+           </div>
+           <div class="pheig">
+              <div class="pflat1">图片上传:</div>
+              <div class="pflat2 pflat2tx"><input type="file"  name="c_img" /></div>
+              <span class="hint">若不更改图片，请留空</span>
+           </div>    
+           <div class="pheig">
+              <div class="pflat1">上课时间段:</div>
+              <div class="pflat2"><select name="dtime" id="dtime"><option>请选择</option><option value="周末全天">周末全天</option><option value="晚上(限工作日)">晚上(限工作日)</option></select></div>
+              <span class="hint"></span>
+           </div> 
+
+           <div class="pheig">
+              <div class="pflat1">价格:</div>
+              <div class="pflat2"><input type="text"  class="inputcs" name="price" id="price" value="<{$res.price}>" /></div>
+              <span class="hint"></span>
+           </div>
+                             
+           <div class="pheigtet">
+              <div class="pflat1">招生简介：</div>
+              <div class="pflat2"><textarea rows="5" cols="60" name="introduce"><{$res.introduce}></textarea></div>
+           </div> 
+
+           <div class="pheig">
+              <div class="pflat1">招生详情：</div>
+              <div class="pflat2"><{$txt}></div>
+           </div> 
+
+
+           <div class="pheig psub">
+              <input type="submit" class="subinput" name="submit" value="确认提交"  id="perqreng"/>
+              <input type="hidden" name='mid' value="<{$res.id}>" />
+              <input type="hidden" name="token" value="<{$token}>"/>
+              <input type="hidden" name="timestamp" value="<{$timestamp}>"/>
+           </div> 
+    </form>   
+     </div>
+</div>
+
+</body>
+</html>
+
+    <script src="__ROOT__/public/js/home/jquery.mousewheel.js"></script>
+    <script src="__ROOT__/public/js/home/nicescroll.js"></script>
+    <script src="__ROOT__/public/js/home/noscroll.js"></script>
+<script src="__ROOT__/public/js/validater.js"></script>
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script>
+
+window.onload = function(){
+    //initClass('class','家教分类');
+    getTclass('家教分类');//获取家教分类
+    getCity();
+    $("#content").text("<{$res.content}>");
+    var option = "<{$res.dtime}>";
+    $("#dtime [value="+option+"]").attr('selected',true);
+
+    $("#dataform").submit(function(){
+        var narr=new Array('title','price');
+        var ninfo=new Array('家教标题','家教价格');
+        var res=null_check(narr,ninfo);
+        if(!res){
+            if($("#dtime").val()!=='请选择'){
+              return true;
+            }else{
+                $("#dtime").parent().parent().find(".hint").text('请选择上课时间段').css("color",'red');
+              return false;
+            }
+            
+        }else{
+            $("#"+res[0]).parent().parent().find('.hint').text(res[1]).css("color",'red');
+            return false;
+        }
+        
+        return false; 
+    })
+
+    
+}
+
+  var he = $(window).height()+200;  //父页面获取框架高度自动调整  
+  function ifram(){ $(window.parent.document).find("#irm").load(function(){ $(this).height(he);});}
+  $(window).resize(function(){ifram();})// 改变浏览器可视窗口宽度与高度
+  ifram();//运行
+
+</script>

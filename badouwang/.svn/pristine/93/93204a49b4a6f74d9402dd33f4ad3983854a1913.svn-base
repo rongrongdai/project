@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新广告</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">添加广告</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab2" class="selected">广告</a></li> 
+                 
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    
+    
+    <ul class="seachform">
+    
+    <li><span>请选择城市：</span><span id='getcityonly' style="margin-left:0px;"></span></li>
+   
+    
+    
+    </ul>
+    
+    
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        
+         <th>序号</th><th>广告页面</th><th>页面位置</th><th>可投放量</th><th>使用量</th><th>价格</th><th>操作</th>
+       
+        </tr>
+        </thead>
+        <tbody>
+           <foreach name='data' item='vo' key="i">
+                    <tr>
+                        <td><{$i+1+$limit}></td>
+                        <td><{$vo.fname}></td>
+                        <td><{$vo.pname}></td>
+                        <td><{$vo.ad_sum}></td>
+                        <td><{$vo.use}></td>
+                        <td><{$vo.price}></td>
+                        <td><if condition="$vo['ad_sum'] elt $vo['use']"><span style="color:#f90;font-size:12px;">无广告位</span><else /><a href="javascript:add(<{$vo.id}>);">添加广告</a></if></td>
+                    </tr>
+            </foreach>
+        </tbody>
+    </table>
+     <{$linik}>
+   
+  
+    
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+  
+    </div>
+</body>
+
+</html>
+
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script>
+getCityOnly();
+
+var city_id = "<{$city_id}>";
+$("#getcityonly").find("option[value="+city_id+"]").attr('selected',true);
+
+$("#city_id").change(function(){
+	city_id = $(this).val();
+	if(city_id != '0'){
+		window.location.href = "__URL__/areaList?city_id="+city_id;
+	}
+});
+
+
+function add(id){
+	window.location.href="__URL__/addAd?aid="+id;
+}
+</script>
+
+
+

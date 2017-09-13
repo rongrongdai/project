@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>八斗网-我的课表</title>
+  <link type="text/css" rel="stylesheet" href="__ROOT__/public/css/home/kebiao.css" />
+  <script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+  <script src="__ROOT__/public/js/jquery-min.js" type="text/javascript"></script>
+</head>
+
+<body>
+   <div class="keb-all">
+        <p class="pck">我的课表</p>
+
+             <div class="k-cent-y">
+                <ul>
+                 <li class="kecy cw" id="kcdjy">课程日历</li>
+                 <li class="kecy" id="kcdje">待确定约课 <span><{$sum.un}></span></li>
+                 <li class="kecy" id="kcdjs">待上课 <span><{$sum.w}></span></li>
+                 <li class="kecy" id="kcdjw">待确定酬劳 <span><{$sum.con}></span></li>
+                 </ul>
+             </div>
+        
+      <!-- 课程日历-->     
+          <div class="k-cent" style="display:block;">
+           <div class="k-cent-e">
+                <div class="k-ct-y">
+                  <{$calendar.table}>
+                </div>
+                <div class="k-ct-e">
+                  <div class="k_date">
+                    <span class="current" id="prev"><</span>
+                    <span class="date"></span>
+                    <span class="current" id="next">></span>
+                  </div>
+                  <div class="k_day"></div>
+                </div>
+           </div>
+
+          <div id="sched">
+            <if condition="$data">
+              <foreach name="data" item="vo">
+              <div class="k-wan">
+                <p class="k-wp"><{$vo.bm_time|date="Y-m-d",###}>  <span>约课单号：<{$vo.order_num}></span>  <span><if condition="$_GET['from']">学生<else/>老师</if>：<{$vo.real_name}></span> </p>
+                <div class="k-w-al">
+                  <div class="k-w-ay">
+                    <img src="__ROOT__<{$vo.id_front}>" />
+                    <div class="k-w-alf">
+                       <p class="bt"><{$vo.course}></p>
+                       <p><{$vo.place}></p>
+                    </div>
+                  </div>
+                  
+                  <div class="k-w-ae">
+                    <?php $b_date=strtotime($vo['date']);$end_time=(int)$vo['begin_time']+$vo['classhour']?>
+                    <p><{$b_date|date="m月d日",###}></p>
+                    <p><{$vo.begin_time}>-<{$end_time}>:00</p>
+                    <p><{$vo.classhour}> 小时</p>
+                  </div>
+                  
+                  <div class="k-w-as">
+                    <if condition="$vo.k_confirm eq '0'">
+                      <if condition="$vo.cuid eq session('uid')"><p>待<if condition="$_GET['from']">学生<else/>老师</if>确定</p><else/><p>发起时间</p><p><{$vo.ctime|date="m月d日 H:i",###}></p></if>
+                    <else/>
+                      <php>$now = time()</php>
+                      <if condition="$vo.end_time gt $now"><p>等待上课</p><else/><p>待确定课酬</p></if>
+                    </if>   
+<p id="clock"></p>
+                  </div>
+                  
+                  <div class="k-w-aw">
+                    <php>$end_time=strtotime($vo['date'].$vo['begin_time']); $now = time()</php>
+                  <if condition="$vo.k_confirm eq '0' && $end_time lt $now"><p>已过期</p><else/>
+                      <if condition="$vo.cuid neq session('uid') && $vo.k_confirm eq '0'"><p><a href="javascript:confirmCourse(<{$vo.yid}>)" style="color:#0C941E;">确定约课</a></p></if>
+
+                    <if condition="$vo.end_time lt $now">
+                      <if condition="$vo.stid eq session('uid')">
+                        <p><a href="javascript:surePay(<{$vo.yid}>)">确定课酬</a></p>
+                      <else/>
+                        <p><a href="javascript:">等待学生确认</a></p>
+                      </if>
+                    <else/>
+                      <p><a href="javascript:modCourse(<{$vo.yid}>)">修改时间</a></p>
+                      <p><a href="javascript:cancelCourse(<{$vo.yid}>)">取消约课</a></p>
+                    </if>
+
+                  </if>  
+                  </div>
+                </div>
+                <p class="k-ph">上课地址：<{$vo.k_addr}></p>
+                <p class="k-ps"><span>备注：</span><{$vo.k_msg}></p>
+             </div>
+          </foreach>
+          <else/><div class="k_uncontent">没有相关课程哦~~</div></if>
+        </div>
+
+        </div>
+
+    </div>
+<!-- 确定约课 -->
+<div class="skey-back"></div>
+<div class="skey-all">
+  <p class="cg-y">确定约课</p><p class="yke">是否确定这次约课？</p>
+  <div class="ceh"><p id="confirm">确定</p><p id="cancel">取消</p></div>
+  <input type="hidden" id="yid" name="yid" value="" />
+</div>
+
+<!-- 修改时间 -->
+<div class="xga-all">
+   <div class="cen-xg">
+     <p class="cg-y">修改上课时间</p>
+     <p class="cg-e"><a href="javascript:closeXga()">×</a></p>
+   </div>
+   
+   <div class="cen-zl">
+       <div class="ce-ony"><img src="" /></div>
+       <div class="ce-one">
+       <p><if condition="$_GET['from']">学生<else/>老师</if>：<span class="tname"></span></p>
+       <p>课程名称：<span class="cname"></span></p>
+       <p>最大修改时长：<span class="mtime"></span>小时</p>
+       </div>
+       
+       <div class="ce-ons">
+       <p>约课时段：</p>
+       <p>上午 (06:00-13:00)</p>
+       <p>下午 (13:00-19:00)</p>
+       <p>晚上 (19:00-24:00)</p>
+       </div>
+   </div>
+   
+   <div class="cen-xzs">
+      <p>选择上课日期</p>
+      <input type="text" name="date" value="" placeholder="请选择" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}'})" />
+   </div>
+   
+   <div class="cen-rq">
+      <div class="cey">
+        <p>设置开始的时间</p>
+         <select class="xlk" name="begin_time">
+            <option value="0">请选择授课时间</option>
+            <for start="7" end="21"><option value="<{$i}>:00"><{$i}>:00</option></for>
+       </select>
+      </div>
+      <div class="cee">
+        <p>至</p>
+      </div>
+      <div class="ces">
+        <p>设置结束的时间</p>
+         <select class="xlk" name="endtm">
+            <option value="0">请选择时间</option>
+       </select>
+      </div>
+   </div>
+   
+   <div class="cen-jsh">
+    <p>本次约课总计小时数：<span>1</span>小时</p>
+    <div class="ceh">
+      <p id="sub_mod">提交修改</p>
+      <p onclick="closeXga()">取消</p>
+      <input type="hidden" id="mid" name="mid" value="" />
+      <input type="hidden" id="mid_hour" name="classhour" value="" />
+    </div>
+    <p>注意：修改约课时间提交后，请联系对方在系统中重新确认约课哦~</p>
+   </div>
+</div>
+
+<!-- 取消约课 -->
+<div class="qxs-all">
+   <div class="cen-xg">
+       <p class="cg-y">取消课程</p>
+       <p class="cg-e"><a href="javascript:closeQxs()">×</a></p>
+     </div>
+    <div class="qx-cen">
+      <p class="pt">温馨提醒:您确定取消该课程么？课程取消后，将不能恢复。</p>
+      <p class="pm"><span>*</span>取消原因：
+       <select class="xlk">
+              <option selected="" value="0">请选择取消原因</option>
+              <option value="1">自己不想上课</option>
+              <option value="2">自己的原因</option>
+              <option value="3">老师的原因</option>
+         </select></p>
+         
+       <textarea rows="6" cols="44" placeholder="请填写你取消订单的原因?"></textarea>
+       <p class="ps">还可以输入99字</p>
+       <div class="ceh">
+        <p id="sub_cancel">确定提交</p>
+        <p onclick="closeQxs()">取消</p>
+        <input type="hidden" id="cid" name="cid" value="" />
+      </div>
+    </div>
+</div>
+
+<!-- 确定支付 -->
+<div class="fzo-all">
+    <div class="cen-xg">
+     <p class="cg-y">支付成功</p>
+     <p class="cg-e"><a href="javascript:closeFzo()">×</a></p>
+   </div>
+   <p class="zf">支付成功，顺便给老师来个评价吧</p>
+   <div class="ceny">
+      <div class="cyi">
+         <div id="imgs" class="imgs"></div>
+         <p>一般</p>
+      </div>
+      
+      <div class="cer">
+          <div id="imgs" class="imgs"></div>
+          <p>满意</p>
+      </div>
+      
+      <div class="csan">
+           <div id="imgs" class="imgs"></div>
+           <p>非常满意</p>
+      </div>
+      
+      <div class="ceh">
+      <p onclick="closeFzo()">确定</p>
+      <p onclick="closeFzo()">拒绝</p>
+     </div>
+      
+   </div>
+</div>
+
+
+<script type="text/javascript">
+var c_tag = "<{$Think.get.status}>"?"<{$Think.get.status}>":1;
+if(c_tag=='1'){ $(".k-cent-e").css('display','block'); }else{ $(".k-cent-e").css('display','none'); } var c_ind = parseInt(c_tag)-1; $('.kecy').removeClass("cw"); $(".kecy:eq("+c_ind+")").addClass('cw');
+
+/*插入圆点*/
+if("<{$schedule}>"){
+  var schedule = eval(<?php echo json_encode($schedule)?>),len = schedule.length;
+  for(var i=0;i<len;i++){
+    var node = $(".getCalendar[data-value="+schedule[i].date+"]");
+    node.html(node.text()+"<i class='icon'>·</i>").css({'cursor':'pointer','padding-left':'13px','width':'62px'});}
+}
+
+$('.kecy').click(function(){
+  var cw = $(this).attr("id"),status = "";
+  switch(cw){ case 'kcdjy': status=1;break; case 'kcdje': status=2;break; case 'kcdjs': status=3;break; case 'kcdjw': status=4;break; }
+  location.href = "<{$Think.get.from}>"?"?from=teacher&status="+status:"?status="+status;
+})
+
+/*日历事件--begin--*/
+$(".k-cent").attr({'onselectstart':"return false"});
+$(".k_date>.date").html("<{$calendar.date}>");
+var day = "",data_day = new Array(),cY = parseInt($(".bd_today").attr("data-year")),cM = parseInt($(".bd_today").attr("data-month")),from = "<{$Think.get.from}>";
+data_day = ['周日','周一','周二','周三','周四','周五','周六'];
+$(".k_day").html("<span style='font-size:7em;color:#777;'>"+$(".bd_today").attr("data-date")+"</span>"+data_day[$(".bd_today").attr("data-day")]);
+
+function setDate(ns){ var tt = ns.substr(5,5).replace(/-/,'月')+'日';return tt;}
+$(".getCalendar").live('click',function(){
+  day = $(this).attr('data-day'); $(".getCalendar").removeClass('aclick'); $(this).addClass('aclick'); $(".k_day").html("<span style='font-size:7em;color:#777;'>"+$(this).attr("data-date")+"</span>"+data_day[day]); $("#sched").html("");
+  /*返回当天的课程*/
+  if($(this).find("i").attr("class") === "icon"){
+    var xdate = $(this).attr("data-value"),now=eval(<?php echo json_encode(time())?>);
+    $.post("__APP__/Ajax/AjaxUser/schedule",{xdate:xdate,from:from},function(data){
+        if(data){
+          var toUser = ""; toUser = from?"学生：":"老师：";
+          for(var i=0;i<data.length;i++){
+            var end_time = parseInt(data[i].begin_time)+parseInt(data[i].classhour),zt,cz;
+            /*指定日期的约课状态*/
+            if(data[i].k_status==1){zt = "完成";cz = "<p>已支付</p>";}else{if(data[i].end_time<=now){zt = "等待支付";cz = "<p>等待支付</p>";}else{zt = "等待上课";cz = '<p><a href="javascript:modCourse('+data[i].yid+')">修改时间</a></p><p><a href="javascript:cancelCourse('+data[i].yid+')">取消约课</a></p>'; }
+            }
+            var node = '<div class="k-wan"><p class="k-wp">'+hTime(data[i].bm_time)+' <span>约课单号：'+data[i].order_num+'</span>  <span>'+toUser+data[i].real_name+'</span> </p><div class="k-w-al"><div class="k-w-ay"><img src="__ROOT__'+data[i].id_front+'" /><div class="k-w-alf"><p class="bt">'+data[i].course+'</p><p>'+data[i].place+'</p></div></div><div class="k-w-ae"><p>'+setDate(data[i].date)+'</p><p>'+data[i].begin_time+'-'+end_time+'：00</p><p>'+data[i].classhour+' 小时</p></div>  <div class="k-w-as"><p>'+zt+'</p></div>  <div class="k-w-aw">'+cz+'</div></div>  <p class="k-ph">上课地址：'+data[i].address+'</p><p class="k-ps"><span>备注：</span>'+data[i].msg+'</p></div>';
+
+            $(node).appendTo("#sched");
+          }
+       }
+    },'json');
+  }
+});
+
+//$.ajaxSetup({async:false});
+$(".current").click(function(){
+  var id = $(this).attr("id"); if(id === "prev"){cM--;if(cM<1){cM = 12;cY--;}}else if(id === "next"){cM++;if(cM>12){cM = 1;cY++;}} $("#sched").html("");
+  $.post("__APP__/Ajax/AjaxUser/Calendar",{cy:cY,cm:cM,from:from},function(data){
+    if(data){ $(".k-ct-y").html(data.calendar.table); $(".k_date>.date").html(data.calendar.date); $(".k_day").html("");}
+    if(data.schedule){ var lens = data.schedule.length;
+      for(var i=0;i<lens;i++){ var node = $(".getCalendar[data-value="+data.schedule[i].date+"]"); node.html(node.text()+"<i class='icon'>·</i>").css({'cursor':'pointer','padding-left':'13px','width':'62px'});}}
+  },'json');
+});
+/*日历事件--end--*/
+
+/*确定约课*/
+$("#yid").wrap('<form id="sub_yid" action="__URL__/kebiao" method="post"></from>');
+$(".xga-all").wrap('<form id="sub_mid" action="__URL__/kebiao" method="post"></from>');
+$(".qxs-all").wrap('<form id="sub_cid" action="__URL__/kebiao" method="post"></from>');
+function confirmCourse(id){
+  var mLoc = boxLocation(".skey-all");
+  $(".skey-back").css('height',$(document).height()+'px').show();$(".skey-all").css({'top':mLoc.top,'left':mLoc.left}).show(); $("#cancel").click(function(){$(".skey-back").hide();$(".skey-all").hide();});$("#confirm").click(function(){$("#yid").attr("value",id);$("#sub_yid").submit();});
+}
+function boxLocation(id){
+  var pageW = $(window).width(), pageH = $(window).height(), boxW = $(id).outerWidth(),boxH = $(id).outerHeight(),scrollH = $(window).scrollTop(),Loc = ({'top':(pageH/2-boxH/2+scrollH)+'px','left':(pageW/2-boxW/2)+'px'});return Loc;
+}
+/*修改时间*/
+$.ajaxSetup({async: false });
+function modCourse(id){
+  $.post("__APP__/Ajax/AjaxUser/modCourse",{id:id,from:from},function(data){
+    if(data){
+      $(".tname").html(data.real_name);$(".cname").html(data.course);$(".mtime").html(data.classhour);$(".ce-ony").find("img").attr('src','__ROOT__'+data.id_front);
+      $(".cen-xzs").find("input").attr('value',data.date);$(".cey").find("option[value='"+data.begin_time+"']").attr('selected',true);var endtm = parseInt(data.begin_time)+parseInt(data.classhour);clsh = data.classhour;$(".ces").find("option").html(endtm+':00');$(".cen-jsh").find("span").html(data.classhour); }
+  },'json');
+  var mLoc = boxLocation(".xga-all");
+  $(".skey-back").css('height',$(document).height()+'px').show();$(".xga-all").css({'top':mLoc.top,'left':mLoc.left}).show();
+  $(".cey").find("select").change(function(){ var et = parseInt($(this).val())+parseInt(clsh);$(".ces").find("option").html(et+':00'); });
+  $("#sub_mod").click(function(){$("#mid").attr('value',id);$("#sub_mid").submit();});
+}
+function closeXga(){$(".skey-back").hide();$(".xga-all").hide();}
+
+/*取消约课*/
+function cancelCourse(id){
+   var mLoc = boxLocation(".qxs-all");
+   $(".skey-back").css('height',$(document).height()+'px').show();$(".qxs-all").css({'top':mLoc.top,'left':mLoc.left}).show();
+   $("#sub_cancel").click(function(){$("#cid").attr('value',id);$("#sub_cid").submit();});
+}
+function closeQxs(){$(".skey-back").hide();$(".qxs-all").hide();}
+
+function hTime(unix) {
+  var now = new Date(parseInt(unix)*1000).toLocaleString().replace(/\//g,"-");
+  var pos = now.indexOf(' '); return now.substr(0,pos);
+}
+
+function surePay(id){
+  var mLoc = boxLocation(".fzo-all");
+  $.post("__APP__/Ajax/AjaxUser/surePay",{id:id},function(data){
+    if(data){
+      $(".fzo-all").css({'top':mLoc.top,'left':mLoc.left}).show();
+    }
+  },'json');
+}
+function closeFzo(){  $('.fzo-all').hide(); }
+
+window.onload = function(){
+  if("<{$Think.get.status}>"==="4"){
+    var data,n,s,y,len;data = eval(<?php echo json_encode($data)?>);n = eval(<?php echo json_encode(time())?>);len = data.length;
+    for(var i=0;i<len;i++){
+      s = parseInt(data[i].end_time)+3600*24*3-n;y = data[i].yid;
+      countdownClock(s,i,y);
+    }
+  }
+} 
+function countdownClock(unix,id,yid){
+  var d,h,m,s;d = parseInt(unix/(3600*24));h = parseInt(unix/3600)-d*24;m = parseInt(unix/60)-(d*24+h)*60;s = unix-(d*24*3600+h*3600+m*60); h=addZero(h);m=addZero(m);s=addZero(s);
+  var node = $("#sched").find(".k-wan:eq("+id+")").find("#clock").html(d+"天"+h+"小时"+m+"分"+s+"秒");
+  if(unix<0){
+    setTimeout(function(){node;unix--;countdownClock(unix,id);},1000);
+  }else{
+    $.post("__APP__/Ajax/AjaxUser/surePay",{id:yid,type:2},function(data){if(data){window.location.reload();}});
+  }
+}
+function addZero(i){ if(i<10){ i = "0"+i; } return i;}
+
+
+</script>
+
+</body>
+</html>

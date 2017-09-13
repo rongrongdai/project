@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,p,blockquote,form ,
+    ul,ol {list-style:none;}a{ text-decoration:none;} img{border:0} 
+	ul{ margin:0px;} ul{ padding:0px;}
+
+
+.houone{  border:1px #CCC solid; border-radius:10px; width:1040px;}
+
+.hou-er{ width:940px;  margin:30px 0px 20px 50px; }
+.houe-yi{ width:940px;  border:1px #CCC solid; background:#f5f5f5; border-top:2px #333 solid; margin-bottom:30px;  }
+.houe-yi p{ font-size:16px; color:#000; padding-left:15px; font-weight:bold;}
+.houe-yi td{ font-size:14px; color:#666; padding-left:15px; padding-bottom:15px;}
+
+
+.houe-er{ width:100%;  border:1px #CCC solid; margin-bottom:30px; }
+.houe-er td{ padding:10px 15px 3px 20px; text-align:center; font-size:14px; color:#666;}
+
+.houe-er .bti{ font-size:16px; color:#000; font-weight:bold;}
+
+.houe-san{ width:100%;}
+.houe-san .shy-ye{ margin-left:180px;}
+
+.housa-yi p, .housa-er p{ text-align:center; line-height:10px; font-size:16px; color:#666; }

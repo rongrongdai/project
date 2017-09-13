@@ -1,0 +1,203 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/exam.css"/>
+
+
+<div class="pwid">
+	<div class="hotnav">当前位置：<a href="javascript:history.go(-4)">  题库</a> >  <a href="javascript:history.go(-3)"> 列表页</a> > <a href="javascript:history.back()"> 详情页</a> > <a href="javascript:"> 考试页</a></div>
+</div>
+
+<div class="ptop">
+	<div class="title">
+    	<{$res.name}>
+    </div>
+    
+
+    
+<div class="titname">
+<!--    	<a class="aclick">单项选择题</a>
+    	<a>多项选择题</a>-->
+    	
+        	<span>本卷为1大题 <{$res.count}>小题</span>
+            <span>试卷来源：<{$res.real_name}></span>
+       
+    </div>
+</div>
+
+<div class="pcon">
+
+	<form action="./subPaper" name="" method="post">
+		<div class="left">
+        <foreach name="data" item="vo" key="i">
+
+    <if condition="$vo.type eq 1">
+    	<a name="<{$i}>"></a>
+        <div class="fomcon">
+    		<div class="title">
+        		<div class="dig"><{$i+1}></div>
+            	<div class="con"><{$vo.question}>(单选题)</div>
+        	</div>
+    		<div class="contet">
+        		<div class="tet"><span><{$vo.aanswer}></span></div>
+        		<div class="tet"><span><{$vo.banswer}></span></div>
+        		<div class="tet"><span><{$vo.canswer}></span></div>
+        		<div class="tet"><span><{$vo.danswer}></span></div>
+
+           		<div class="lab">
+                	<label class="lbel Rad<{$i}>"><input type="radio" name="answer[<{$vo.id}>]" value="A" id="Rad1_0"><span>A</span></label>
+           			<label class="lbel Rad<{$i}>"><input type="radio" name="answer[<{$vo.id}>]" value="B" id="Rad1_1"><span>B</span></label>
+           			<label class="lbel Rad<{$i}>"><input type="radio" name="answer[<{$vo.id}>]" value="C" id="Rad1_2"><span>C</span></label>
+           			<label class="lbel Rad<{$i}>"><input type="radio" name="answer[<{$vo.id}>]" value="D" id="Rad1_3"><span>D</span></label>
+            	</div>
+        	</div>
+        </div>
+    <elseif condition="$vo.type eq 2" />
+    	<a name="<{$i}>"></a>
+    	<div class="fomcon">
+    		<div class="title">
+        		<div class="dig"><{$i+1}></div>
+            	<div class="con"><{$vo.question}>(多选题)</div>
+        	</div>
+    		<div class="contet">
+        		<div class="tet"><span><{$vo.aanswer}></span></div>
+        		<div class="tet"><span><{$vo.banswer}></span></div>
+        		<div class="tet"><span><{$vo.canswer}></span></div>
+        		<div class="tet"><span><{$vo.danswer}></span></div>
+
+           		<div class="lab">
+  					<label class="lbel Chec<{$i}>"><input type="checkbox" name="answer[<{$vo.id}>][a]" value="A" id="Chec1_0"><span>A</span></label>
+           			<label class="lbel Chec<{$i}>"><input type="checkbox" name="answer[<{$vo.id}>][b]" value="B" id="Chec1_1"><span>B</span></label>
+           			<label class="lbel Chec<{$i}>"><input type="checkbox" name="answer[<{$vo.id}>][c]" value="C" id="Chec1_2"><span>C</span></label>
+           			<label class="lbel Chec<{$i}>"><input type="checkbox" name="answer[<{$vo.id}>][d]" value="D" id="Chec1_3"><span>D</span></label>
+           	  </div>
+        	</div>
+        </div>
+    </if>
+        </foreach>
+        <input type="hidden" name="sid" value="<{$res.id}>">
+        <input type="hidden" name="z_total" value="<{$res.total}>">
+        <input type="hidden" name="begin_time" value="<{$begin_time}>">
+        <input type="submit" class="tjpdgs" value="我要交卷" />
+    </div>
+
+    </form>
+<!---------------------------------------------------------------------------->
+
+
+
+
+    <div class="right" id="rightname">
+    	<div class="topn">
+    		<div class="top">
+        	<div class="r-left" style="background-image:url()">剩余时间：<span id="min"><{$res.time}></span><span>分</span><span id="sec">00</span><span>秒</span></div>
+            	<div class="r-right" id="r-right">暂停</div>
+        	</div>
+        	<div class="tent">
+        		<a style="background-image:url()">返回列表</a>
+            	<a style="background-image:url();margin-left:10px">计算器</a>
+        	</div>
+        </div>
+        <div class="tom">
+        	<div class="top">答题卡 <span>0/<{$res.count}></span></div>
+            <div class="tit"><{$res.name}>考试 每题5分 共<{$res.count}>题</div>
+        	<div class="dig">
+                <for start="0" end="$res.count" step="1"><a href="#<{$i}>"><{$i+1}></a></for>
+        	</div>        
+        </div>  
+    </div>
+</div>
+
+<div id="continue" style="z-index: 3000;">继续答题</div>
+<div id="backghidd" style="position:absolute; z-index:99; background:#999; top:0px; bottom:0px;"></div>
+
+<script>
+$('.left .lab label').click(function(){
+    $('.lbel.' + $(this).attr('class').replace(/lbel /,'')).removeClass('aclick')
+    $(this).addClass('aclick')
+    })
+$('.left-more .lab .lbel').click(function(){
+    $(this).toggleClass('aclick')
+    })
+
+$('.titname a').click(function(){
+    $('.titname a').removeClass('aclick');
+    $(this).addClass('aclick');
+    })
+
+
+
+/*
+window.onscroll = function(){ 
+    var t = document.documentElement.scrollTop || document.body.scrollTop;  
+    var the = document.getElementById( "rightname" ).style; 
+    if( t >= 420 ) { 
+        the.position = "fixed"; 
+        the.marginLeft="880px"
+        the.top="50px"
+    } else { 
+        the.position = "relative"; 
+        the.marginLeft="0px"
+        the.top="0px"
+    } 
+}
+*/
+
+var sec = document.getElementById("sec");
+var min = document.getElementById("min");
+var stopBtn = document.getElementById("r-right");
+    t = setInterval(function(){
+        var s = parseInt(sec.innerHTML);
+        if(s<1){
+            sec.innerHTML = 59;
+            min.innerHTML = parseInt(min.innerHTML)-1;
+        }else{
+            sec.innerHTML = s-1;
+        }           
+    },1000);
+
+    stopBtn.onclick = function(){
+        clearInterval(t);
+		
+		/* 2015-06-23 16:35* /
+		var vtext = $(this).text();
+		if(vtext=='暂停'){stopBtn.innerHTML = '计时';clearInterval(t);}
+		if(vtext=='计时'){stopBtn.innerHTML = '暂停';
+			t = setInterval(function(){
+				var s = parseInt(sec.innerHTML);
+				if(s<1){
+					sec.innerHTML = 59;
+					min.innerHTML = parseInt(min.innerHTML)-1;
+				}else{
+					sec.innerHTML = s-1;
+				}           
+			},1000);
+		}
+		/*-2015-06-23 16:35 end*/
+       
+		var pageW = $(window).width(), pageH = $(window).height(), boxW = $("#continue").outerWidth(),boxH = $("#continue").outerHeight(),scrollH = $(window).scrollTop();
+        $("#continue").css({'display':"block",'top':(pageH/2-boxH/2+scrollH)+'px','left':(pageW/2-boxW/2)+"px"});
+        $('#backghidd').css({"opacity" : "0.6","filter" : 'Alpha(Opacity = 60)',height : $(document).height(),width : $(window).width()
+        }).fadeIn();
+
+        document.body.style.overflow='hidden'; 
+    }
+    $("#continue").click(function(){
+        t = setInterval(function(){
+            var s = parseInt(sec.innerHTML);
+            if(s<1){
+                sec.innerHTML = 59;
+                min.innerHTML = parseInt(min.innerHTML)-1;
+            }else{
+                sec.innerHTML = s-1;
+            }           
+        },1000);
+
+        $("#continue").css({display:"none"});
+        $("#backghidd").fadeOut()
+        document.body.style.overflow='';
+    })
+	
+
+</script>
+
+
+<include file="../../../Public/default/footer" />

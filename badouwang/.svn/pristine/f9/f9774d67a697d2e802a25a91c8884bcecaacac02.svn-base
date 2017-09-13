@@ -1,0 +1,444 @@
+<?php
+
+class ExamAction extends CommonAction{
+	//在线考试主页
+	public function index(){
+		//获取分类
+		import('Com.ClassfiyHelper');
+		$data1 = ClassfiyHelper::getClassesByName('在线考试',1,M('Classfiy'));
+		$data1s = array();
+		for($i=0;$i<9;$i++){//主页只显示九大类
+			$data1s[] = $data1[$i];
+		}
+		//默认打开的二级分类
+		$name = $data1[0]['name'];
+		$data2 = ClassfiyHelper::getClassesByName($name,1,M('Classfiy'));
+                $cid=cookie('cid');
+                $notices=M('Notice')->where("type='3' and cid='$cid'")->limit(1,6)->select();
+		$this->assign(array('classfiy'=>$data1s,'data2'=>$data2,'notices'=>$notices),'assign');
+		$this->display();
+	}
+
+	//在线考试列表页
+	public function examlist(){
+		$did = $this->getData(array('fid','page'),'get');
+		$id = $did['fid'];
+		//获取第三级分类
+		cookie('examid',$id,3600);
+		$id = cookie('examid');
+		if($id){
+			import('Com.ClassfiyHelper');
+			$name = ClassfiyHelper::selfInfo('在线考试',M('Classfiy'),$id);
+			$fl = ClassfiyHelper::getClassesByName($name['name'],1,M('Classfiy'),'','','在线考试');
+		}
+
+        $page = $did['page'];
+        $page = $page<=1?1:$page;
+        //加载分页类
+        import('Com.PageHelper');
+        $total = M('Ex_paper')->count();
+        $pagesize = 10;
+        PageHelper::init($pagesize,10,$page,$total,'');
+        $link = PageHelper::getPageInfos();
+        $limit = PageHelper::getLimit();
+        $limit = $limit['min'];
+
+        $condition = $id?"sid=$id":"";
+		$res = M('Ex_paper')->where($condition)->limit($limit,$pagesize)->select();
+		foreach($res as $key=>$val){
+			$fid = $val['sid'];
+			$sid = $val['id'];
+			$res[$key]['tishu'] = M('Ex_question')->where("kid=$fid and sid=$sid")->count();
+			$res[$key]['ren'] = M('Ex_record')->where("sid=$sid")->count();
+			$max = M('Ex_record')->where("sid=$sid")->max('score');
+			$res[$key]['max'] = $max?$max:0;
+		}
+
+		$this->assign(array('data'=>$res,'data1'=>$fl,'link'=>$link),'assign');
+		$this->display();
+	}
+
+	//试卷详情页
+	public function detail(){
+		$id = $this->getData(array('id'),'get');
+		$sid = $id['id'];
+		$sql = "SELECT p.*,a.rname,a.user_pic FROM bd_ex_paper p JOIN bd_memberfields a ON a.uid=p.uid WHERE p.id=$sid";
+		$res = M()->query($sql);
+		$res = $res[0]; $res['accept'] = $res['total']*0.6;
+
+		//获取留言信息
+		$sql1 = "SELECT m.*,u.rname,u.user_pic,u.address FROM bd_ex_message m JOIN bd_memberfields u ON m.uid=u.uid WHERE m.sid=$sid ORDER BY m.ctime DESC LIMIT 10";
+		$res1 = M()->query($sql1);
+
+		//判断是否收藏
+		$uid = session('uid');
+		if($uid){
+			$collect = M('Collection')->where("uid=$uid and aid=$sid and type=3")->find();
+		}
+
+		$this->assign(array('data'=>$res,'message'=>$res1,'collect'=>$collect));
+		$this->display();
+	}
+
+	//考试卷页面
+	public function exampaper(){
+		$id = $this->getData(array('sid'),'get');
+		$sid = $id['sid'];
+		if($sid){
+			//查看试卷信息
+			$sql = "SELECT p.id,p.name,p.total,p.time,a.real_name,count(q.id) count FROM bd_ex_paper p JOIN bd_authentication a ON a.uid=p.uid JOIN bd_ex_question q ON p.id=q.sid WHERE p.id=$sid";
+			$res = M()->query($sql);$res = $res[0];
+			//获取试题
+			$data = M('Ex_question')->where("sid=$sid")->select();
+		}
+
+		$this->assign(array('data'=>$data,'res'=>$res,'begin_time'=>time()),'assign');
+		$this->display();
+	}
+
+	//提交试卷
+	public function subPaper(){
+		$res = $_POST['answer']; //用户提交的答案
+		foreach($res as $key=>$val){
+			if(is_array($val)){
+				$res[$key] = '';
+				foreach($val as $vo){
+					$res[$key] .=$vo;
+				}
+			}
+		}
+
+		//正确答案
+		$sid = $_POST['sid'];
+		$right = M('Ex_question')->where("sid=$sid")->field("id,right")->select();
+		$rit = array();
+		foreach($right as $k=>$v){
+			$rit[$v['id']] = $v['right'];
+		}
+		$total = count($right);//试卷题目数量
+		//计算单题分数
+		$fen = round($_POST['z_total']/$total,2);
+
+		$score = 0; $wrong = "";$shu = 0;
+		foreach($rit as $i=>$r){
+			if($res[$i] == $r ){
+				$score += $fen;
+			}else{
+				$score += 0;
+				$wrong .= $i.",";//统计错题
+				$shu += 1; //错题数
+			}
+		}
+		$wrong = rtrim($wrong,',');
+
+		$arr['uid'] = session('uid');
+		$arr['sid'] = $sid;
+		$arr['record'] = json_encode($res);
+		$arr['wrong'] = $wrong;
+		$arr['begin_time'] = $_POST['begin_time'];
+		$arr['end_time'] = time();
+		$arr['score'] = floor($score);
+		$arr['rate'] = round($shu/$total*100,2);
+		$arr['r_total'] = $total-$shu;
+
+		$sub = M('Ex_record')->data($arr)->add();
+		if($sub){//添加经验值
+			$arr = M('Ex_paper')->where("id=$sid")->Field('uid,ispay')->find();
+			$ispay = $arr['ispay'];
+			$fuid = $arr['uid'];
+
+			$key = $ispay>0?'ex_sf':'ex_mf';
+			$uid = session('uid');
+			$c_value = $this->setCredit('经验',$key,$uid);
+			//试卷提供者获得积分
+			$this->setCredit('经验','ex_kscs',$fuid);
+
+			if($key === 'ex_sf'){
+				M('Memberfields')->where("uid=$uid")->setInc('vmoney',-$ispay);
+				$arr = array();
+				$arr = array('uid'=>$uid,'type'=>'学豆','name'=>'考试花费','val'=>-$ispay,'ctime'=>time());
+                                M('Credit_log')->data($arr)->add();
+				$msg = "<font color='green'>+".$c_value."积分,-".$ispay."学豆</font>";
+			}else{
+				$msg = "<font color='green'>+".$c_value."积分</font>";
+			}
+		}
+		$this->pagego('交卷成功! '.$msg,'交卷失败',$sub,"./examrecord?sid=$sub");
+
+	}
+
+	//考试结果页
+	public function examRecord(){
+		$id = $this->getData(array('sid'),'get');
+		$id = $id['sid'];
+		//获取答题记录
+		$sql = "SELECT r.*,p.name,p.time,p.total FROM bd_ex_record r JOIN bd_ex_paper p ON r.sid=p.id WHERE r.id=$id";
+		$data = M()->query($sql);
+		$data = $data[0];
+		$sec = $data['end_time']-$data['begin_time'];
+		$min = floor($sec/60);$s = $sec-$min*60;
+		$data['min'] = $min;
+		$data['s'] = $s;
+		//处理答题记录
+		$pid = $data['sid'];
+		$data1 = M('Ex_question')->where("sid=$pid")->select();
+		$answer = json_decode($data['record'],true);
+		//排名
+		$score = $data['score'];
+		$sid = $data['sid'];
+		$pmi = M('Ex_record')->where("sid=$sid and score>$score")->count();
+
+		//获取留言信息
+		$sql1 = "SELECT m.*,u.rname,u.user_pic,u.address FROM bd_ex_message m JOIN bd_memberfields u ON m.uid=u.uid WHERE m.sid=$sid ORDER BY m.ctime DESC LIMIT 10";
+		$msg = M()->query($sql1);
+
+		$this->assign(array('data'=>$data,'msg'=>$msg,'pmi'=>$pmi,'zshu'=>count($data1),'data1'=>$data1,'answer'=>$answer),'assign');
+		$this->display();
+	}
+
+	public function uploadpaper(){
+		//收费内容免费发布10次
+		$uid = session('uid');
+		if(!empty($uid)){
+			$count = M('Ex_paper')->where("uid=$uid and ispay>0")->count();
+			$sum = 10-$count;
+		}else{
+			$sum = null;
+		}
+		$vmoney = M('Memberfields')->where("uid=$uid")->getField('vmoney');
+		$ex_sjscsf = M('Config')->where("c_name='学豆' and c_key='ex_sjscsf'")->getField('c_value');
+
+		$this->assign(array('sum'=>$sum,'vmoney'=>$vmoney,'sf'=>abs($ex_sjscsf)));
+		$this->display();
+	}
+
+	//添加试卷试题
+	public function addPaper(){
+		$arr = $this->getData(array('fid','gid','name','total','time','ispay','content'),'post');
+		$arr['sid'] = $arr['gid'];
+		$arr['ctime'] = time();
+		$arr['uid'] = session('uid');
+
+		//处理.xls文件上传
+		$xlsname = $_FILES['xls']['name']; $xlssize = $_FILES['xls']['size']; 
+        if ($xlsname != "") {
+            if($xlssize > 1024*1024*2){  
+                echo '文件大小不能超过2M'; exit;
+            }  
+            $type = substr($xlsname,strrpos($xlsname,'.')); 
+            if($type != ".xls") {  
+                echo '文件格式不对！'; exit;  
+            }  
+            $rand = rand(100, 999);  $xls = time().$rand.$type;//文件名
+            //上传路径
+            import('Com.FileHelper');
+            $dirs = FileHelper::getUploadFileDir();
+            $xls_path = "$dirs/".$xls;//绝对路径
+            $pos = strpos($xls_path,'/upload');
+            $xls_path1 = substr($xls_path,$pos);//相对路径
+            $res = move_uploaded_file($_FILES['xls']['tmp_name'], $xls_path);
+            if($res){//上传成功
+            	$arr['xls'] = $xls_path1;
+            	$res1 = M('Ex_paper')->data($arr)->add();
+            	if($res1){
+            		import('Com.ExcelHelper');
+	                $datas=  ExcelHelper::redPaper($xls_path,$arr['sid'],$res1);
+	                //dump($datas);exit;
+	                $res2=true;
+	                foreach($datas as $key=>$val){
+	                    $res2=M('Ex_question')->add($val);
+	                }
+                    //添加资料列表
+                    $rdata=array('rid'=>$res2,'atime'=>time(),'uid'=>$arr['uid'],'cid'=>$arr['sid']);
+                    $rs=M('Resource')->add($rdata);
+
+                    $uid = session('uid');
+                    $sum = $_POST['sum'];//免费次数
+                    $u_credit = $this->setCredit('经验','ex_sjsc',$uid);
+                    if($arr['ispay']>0 && $sum<=0){
+                    	$vmoney = $this->setCredit('学豆','ex_sjscsf',$uid);
+                    	$msg = "<font color='green'>+".$u_credit."积分,".$vmoney."学豆</font>";
+                    }else{
+                    	$msg = "<font color='green'>+".$u_credit."积分</font>";
+                    }
+
+	                $this->pagego('上传成功! '.$msg,'上传失败',$rs,U('Source/Source/source'));
+            	}		
+            }
+        }    
+
+	}
+
+	//会员中心试卷收藏列表
+	public function collectlist(){
+		$uid = session('uid');
+
+		$pagesize = 2;
+		$sum = M('Collection')->where("uid=$uid and type=3")->count();
+		$sql = "SELECT c.*,p.name,p.ispay FROM bd_collection c JOIN bd_ex_paper p ON c.aid=p.id WHERE c.uid=$uid AND c.type=3";
+		$res = $this->setPage($pagesize,$sum,$sql);
+
+		$this->assign(array('data'=>$res['data'],'link'=>$res['link'],'limit'=>$res['limit']));
+		$this->display();
+	}
+
+
+
+
+
+
+
+
+
+
+	//==============================================================
+	public function quest(){
+		
+		$this->display();
+	}
+	public function doadd(){
+		$model = M('Ex_question');
+		$_POST['uid']=session('uid');
+		$_POST['c_timestamp']=time();
+		if($model->create()){
+			$res = $model->add();
+			$this->pagego('添加成功','添加失败',$res,'quest');
+		}
+	}
+
+	public function exam(){
+		$sql = "SELECT type,COUNT(id) total FROM bd_ex_question GROUP BY type";
+		$res = M()->query($sql);//各题型总数
+		$sql1 = "SELECT COUNT(id) total,COUNT(DISTINCT sid) sid FROM bd_ex_question";
+		$res1 = M()->query($sql1);//有多少套试题
+
+		$this->assign(array('res'=>$res,'res1'=>$res1));
+		$this->display();
+	}
+	//选考题
+	public function paper(){
+		$arr = ltrim($_GET['tid'],'[');$arr = rtrim($arr,']');//随机抽取的id
+		if($arr){
+			$res = M('Ex_question')->where("id in($arr)")->select();
+		}else{
+			$res = M('Ex_question')->where("sid=2")->select();
+		}
+		if($res){
+			foreach($res as $key=>$val){
+				$res[$key]['answer'] = html_entity_decode($val['answer']);
+			}
+		}
+		$this->assign(array('datas'=>$res,'begin_time'=>time()),'assign');
+		$this->display();
+	}
+
+	//提交试卷
+	public function dopaper(){
+		$model = M('ex_record');
+		$_POST['uid'] = session('uid');
+		$_POST['sid'] = 1;
+		$right = $_POST['right']; $record = $_POST['record'];
+
+		$len = count($right);
+		$score = 0; $wrong = "";
+		foreach($right as $key=>$val){
+			if($right[$key] == $record[$key]){
+				$score += 10;
+			}else{
+				$score += 0;
+				$wrong .= $key.",";//统计错题 
+			}
+		}
+
+		$_POST['score'] = $score;
+		$_POST['record'] = json_encode($record);
+		$_POST['wrong'] = rtrim($wrong,',');
+		$_POST['end_time'] = time();
+
+		$b = $_POST['begin_time'];$e = $_POST['end_time'];$t=$e-$b;$f=floor($t/60);$m=$t-$f*60;
+		if($model->create()){
+			$res = $model->add();
+			$this->pagego('交卷成功','交卷失败',$res,'recordlist');
+			//header("Content-Type:text/html;charset=utf-8");
+			//echo "恭喜您！考试完毕，获得<font color='red'>$score</font>分；花费时间：$f 分钟 $m 秒";
+		}
+	}
+
+	//考试记录列表
+	public function recordlist(){
+		$uid = session('uid');
+		$data = M('Ex_record')->where("uid=$uid")->select();
+		$this->assign('datas',$data);
+		$this->display();
+	}
+
+	//查看某个考试记录
+	public function record(){
+		$id = $this->_param('id');
+		$res2 = M('Ex_record')->where("id=$id")->find();
+		$record = json_decode($res2['record'],true);
+		if($record){
+			$str = "";
+			foreach($record as $key=>$val){
+				$str .= $key.',';
+			}
+			$str = rtrim($str,',');
+		}
+
+		$res = M('Ex_question')->where("id in($str)")->select();
+		$len = count($res)-1;
+		foreach($res as $key=>$val){
+			$id = $val['id'];
+			$res[$key]['record'] = $record[$id];
+		}
+		$this->assign(array('datas'=>$res),'assign');
+		$this->display('examdetail');
+
+	}
+
+	//删除考试记录
+	public function del(){
+		$id = $this->_param('id');
+		$res = M('Ex_record')->where("id=$id")->delete();
+		$this->pagego('删除成功','删除失败' ,$res,'examrecord');
+	}
+
+	//错题本
+	public function examwrong(){
+		$uid = session('uid');
+		$res = M('Ex_record')->where("uid=$uid")->select();
+		if($res){
+			$total = "";
+			foreach($res as $key=>$val){
+				if($val['wrong'] != null){
+					$total .= $val['wrong'].',';
+				}
+			}
+			$arr = explode(',',trim($total,','));
+			$arr = array_flip(array_flip($arr));
+			$arr = implode(',',$arr);
+			$res2 = M('Ex_question')->where("id in($arr)")->select();
+		}
+
+		$totals = $arr?count(explode(',',$arr)):0;
+		$this->assign(array('datas'=>$res2,'totals'=>$totals),'assign');
+		$this->display();
+	}
+
+	//试题收藏
+	public function examcollect(){
+		$uid = session('uid');
+		$res = M('Ex_collect')->where("uid=$uid")->select();
+		$total = count($res);
+		if($res){
+			$tids = "";
+			foreach($res as $key=>$val){
+				$tids .= $val['tid'].',';
+			}
+			$tids = rtrim($tids,',');
+			$res2 = M('Ex_question')->where("id in($tids)")->select();
+		}
+		$this->assign(array('datas'=>$res2,'total'=>$total),'assign');
+		$this->display();
+	}
+}

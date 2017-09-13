@@ -1,0 +1,45 @@
+table{width:700px;padding-top:10px;margin:0 auto;}
+table tbody tr{ height:40px;line-height: 40px;}
+td{border:1px gray solid;border-collapse: collapse;}
+
+.page{margin:20px 0;text-align:center;font-size:14px;}
+
+.s_info,.t_l,.t_pages{margin-left:20px;}
+.t_page{margin-left:15px;}
+
+.t_user{height:40px;font-size:20px;color:#3B3E40;}
+.t_user th,td{vertical-align:middle;}
+.even td{background:#F8F8F8;}
+.odd td{background:white;}
+.city tr td select{width:120px;height: 30px;margin-top:20px;margin-left: 20px;}
+.city tr .right{text-align: left}
+.p_pos{margin-left:500px;line-height: 45px;font-size:22px;color:#5daced;}
+
+
+/*用户管理--认证*/
+#cht{height:45px;margin-left:50px;}
+#cht span{cursor:pointer;width: 150px;margin-left: 10px;float: left;text-align: center;line-height: 45px;border: 1px #CCC solid;border-top:none;color: #999;font-size: 16px;}
+.active{background:#00b38a;}
+.search{height:40px;margin:10px;width:600px;margin-left:300px}
+.search input{display: inline;width:100px;height: 30px;}
+.search select{border: 1px solid lightgrey;width:80px;height:30px;margin-left:20px;}
+.search button{width:60px; height:30px;padding:0 10px;background:#00b38a;}
+
+/*友情链接*/
+.addlink{margin:30px;}
+.addlink span{text-align:center;font-size:16px;color:#5daced;margin: 10px;}
+.addlink .pos{color:#00b38a; font-size:12px;}
+.addlink input{width:200px;height:30px;margin:10px;padding:5px 0 0;}
+.addlink select{height:30px;margin:10px;}
+.addlink img{margin-left:200px;}
+.addlink textarea{width:60%;margin-bottom:-30px;resize:none;}
+.addlink button{height:30px;margin:50px 0 0 300px;padding:0 10px;background:#00b38a;}
+
+
+/*广告位管理*/
+.ad_area{margin:30px;}
+.ad_area span{text-align:center;font-size:16px;color:#5daced;margin: 10px;}
+.ad_area span b{font-size:12px;}
+.ad_area input{width:60px;height:24px;margin:0 10px;padding:5px 0 0;}
+.ad_area select{height:24px;margin:10px;}
+.ad_area button{height:24px;padding:0 10px;background:#00b38a;}

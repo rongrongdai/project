@@ -1,0 +1,1472 @@
+[ 2015-06-06T09:36:28+08:00 ] 127.0.0.1 /badouwang/admin.php/Index/Index/login
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.031250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.031250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062500s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.093750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.093750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.093750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.093750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.093750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:36:28+08:00 ] 127.0.0.1 /badouwang/admin.php/Index/Index/logImg
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:37:00+08:00 ] 127.0.0.1 /badouwang/admin.php/Index/Index/login
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.015625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.015625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.015625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.015625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.015625s ]
+
+[ 2015-06-06T09:37:11+08:00 ] 127.0.0.1 /badouwang/admin.php/Index/Index/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: mmenu E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\Index\6c9ff7f23232f153d8dc179def551f14.php 第 80 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.046875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.046875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.046875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.046875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.046875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:37:11+08:00 ] 127.0.0.1 /badouwang/admin.php/Index/Index/icontent
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.078125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.078125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.109375s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.109375s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.109375s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.109375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.109375s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:37:19+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configView
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 105 行.
+SQL: select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name [ RunTime:0.015625s ]
+SQL: select count(distinct c_name) sum from bd_config where c_name <> 'web_config' [ RunTime:0.062500s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.250000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.250000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.250000s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.250000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.265625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.265625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.265625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:37:21+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT `c_key`,`c_value` FROM `bd_config` WHERE c_name='webconfig'  [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.218750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.218750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.218750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.218750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.218750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:37:50+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configView
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 105 行.
+SQL: select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name [ RunTime:0.046875s ]
+SQL: select count(distinct c_name) sum from bd_config where c_name <> 'web_config' [ RunTime:0.062500s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.484375s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.484375s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.500000s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.500000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.500000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.500000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.500000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:37:54+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT `c_key`,`c_value` FROM `bd_config` WHERE c_name='webconfig'  [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.218750s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.218750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.218750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.218750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.218750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.218750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:38:01+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configView
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 105 行.
+SQL: select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name [ RunTime:0.015625s ]
+SQL: select count(distinct c_name) sum from bd_config where c_name <> 'web_config' [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.171875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.171875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.171875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.171875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.171875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:38:03+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT `c_key`,`c_value` FROM `bd_config` WHERE c_name='webconfig'  [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.593750s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.593750s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.609375s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.609375s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.609375s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.609375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.609375s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:38:06+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/city
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name cname,city.isopen dname,city.rank,province.name pname from bd_city city left join bd_province province on city.provincei_d=province.id where isopen=1 union select district.id,city.name cname,district.name dname,district.rank,province.name from bd_district district left join bd_city city on district.city_id=city.id left join bd_province province on city.provincei_d=province.id where district.isopen=1 [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.187500s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: position E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 20 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Undefined index: dname E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Undefined index: dname E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Undefined variable: page E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 53 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.187500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.203125s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.203125s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.218750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.218750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.218750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:38:14+08:00 ] 127.0.0.1 /badouwang/admin.php/Content/Course/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_teach` [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_teach` LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\CommonAction.class.php 第 155 行.
+SQL: SELECT t.*,c.name cname,u.uname uname,f.name fname FROM bd_teach t JOIN bd_city c ON t.city=c.id JOIN bd_user u ON t.uid=u.uid JOIN bd_classfiy f ON t.fid=f.id limit 0,12 [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.312500s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.312500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.312500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.312500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.328125s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.328125s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.328125s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:38:15+08:00 ] 127.0.0.1 /badouwang/admin.php/Ajax/AjaxTeach/tclass
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: gid E:\wamp\wamp\www\badouwang\admin\Lib\Action\CommonAction.class.php 第 151 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\admin\Lib\Action\Ajax\AjaxTeachAction.class.php on line 13 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 60 行.
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 83 行.
+SQL: select name,cimg,ctextbrand from bd_classfiy where lev=2 [ RunTime:0.015625s ]
+
+[ 2015-06-06T09:38:16+08:00 ] ERR: (ThinkException) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `bd_article` WHERE fid= LIMIT 1  
+[ 2015-06-06T09:38:18+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:20+08:00 ] 127.0.0.1 /badouwang/admin.php/Content/Exam/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT p.*,c.name cname,m.rname uname FROM bd_ex_paper p JOIN bd_classfiy c ON p.sid=c.id JOIN bd_memberfields m ON p.uid=m.uid [ RunTime:0.078125s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.906250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.906250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.921875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.921875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.921875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.921875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.921875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:38:24+08:00 ] ERR: (ThinkException) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `bd_article` WHERE fid= LIMIT 1  
+[ 2015-06-06T09:38:25+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:26+08:00 ] 127.0.0.1 /badouwang/admin.php/Content/Exam/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT p.*,c.name cname,m.rname uname FROM bd_ex_paper p JOIN bd_classfiy c ON p.sid=c.id JOIN bd_memberfields m ON p.uid=m.uid [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.171875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.171875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.171875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.171875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.171875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:38:27+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:28+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:29+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:30+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:31+08:00 ] ERR: (ThinkException) 非法操作:blog-new
+[ 2015-06-06T09:38:32+08:00 ] ERR: (ThinkException) 非法操作:blog-table
+[ 2015-06-06T09:38:32+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:33+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:35+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:35+08:00 ] ERR: (ThinkException) 非法操作:blog-table
+[ 2015-06-06T09:38:36+08:00 ] ERR: (ThinkException) 非法操作:blog-new
+[ 2015-06-06T09:38:37+08:00 ] ERR: (ThinkException) 非法操作:blog-new
+[ 2015-06-06T09:38:38+08:00 ] ERR: (ThinkException) 非法操作:blog-table
+[ 2015-06-06T09:38:39+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:39+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:40+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:41+08:00 ] ERR: (ThinkException) 非法操作:blog-new
+[ 2015-06-06T09:38:41+08:00 ] ERR: (ThinkException) 非法操作:blog-table
+[ 2015-06-06T09:38:42+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:42+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:43+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:44+08:00 ] 127.0.0.1 /badouwang/admin.php/Content/Course/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_teach` [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_teach` LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\CommonAction.class.php 第 155 行.
+SQL: SELECT t.*,c.name cname,u.uname uname,f.name fname FROM bd_teach t JOIN bd_city c ON t.city=c.id JOIN bd_user u ON t.uid=u.uid JOIN bd_classfiy f ON t.fid=f.id limit 0,12 [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.234375s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.234375s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.250000s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.250000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.250000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.250000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.250000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:38:45+08:00 ] 127.0.0.1 /badouwang/admin.php/Ajax/AjaxTeach/tclass
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: gid E:\wamp\wamp\www\badouwang\admin\Lib\Action\CommonAction.class.php 第 151 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\admin\Lib\Action\Ajax\AjaxTeachAction.class.php on line 13 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 60 行.
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 83 行.
+SQL: select name,cimg,ctextbrand from bd_classfiy where lev=2 [ RunTime:0.015625s ]
+
+[ 2015-06-06T09:38:45+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:46+08:00 ] ERR: (ThinkException) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `bd_article` WHERE fid= LIMIT 1  
+[ 2015-06-06T09:38:47+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:38:49+08:00 ] 127.0.0.1 /badouwang/admin.php/User/User/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\CommonAction.class.php 第 155 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_user` LIMIT 0,4   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant uid - assumed 'uid' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Use of undefined constant uid - assumed 'uid' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Use of undefined constant uid - assumed 'uid' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Use of undefined constant uid - assumed 'uid' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.234375s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.234375s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.234375s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.234375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.234375s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:39:03+08:00 ] 127.0.0.1 /badouwang/admin.php/User/User/index?page=2
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_user` LIMIT 4,4   [ RunTime:0.031250s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.250000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant uid - assumed 'uid' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.250000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.265625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.265625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.265625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.265625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.265625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:39:29+08:00 ] 127.0.0.1 /badouwang/admin.php/User/User/index?page=1
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_user` LIMIT 0,4   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant uid - assumed 'uid' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Use of undefined constant uid - assumed 'uid' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Use of undefined constant uid - assumed 'uid' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Use of undefined constant uid - assumed 'uid' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\User\98ec02c249246b1493f473f2862dc6d4.php 第 28 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.218750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.218750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.218750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.218750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.218750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:17+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configView
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 105 行.
+SQL: select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name [ RunTime:0.015625s ]
+SQL: select count(distinct c_name) sum from bd_config where c_name <> 'web_config' [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.171875s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.171875s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.187500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.187500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.187500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.187500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.187500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:22+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/entity
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: cid E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 149 行.
+NOTIC: [8] Undefined index: c_name E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 151 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.031250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: token E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\0b923e0d5b8da4d7c5cec08c27f85fbf.php 第 148 行.
+NOTIC: [8] Undefined variable: timestamp E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\0b923e0d5b8da4d7c5cec08c27f85fbf.php 第 149 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.031250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.062500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.062500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.062500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.062500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.062500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:32+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configView
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 105 行.
+SQL: select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name [ RunTime:0.015625s ]
+SQL: select count(distinct c_name) sum from bd_config where c_name <> 'web_config' [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.171875s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.171875s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.187500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.187500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.187500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.187500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.187500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:35+08:00 ] ERR: (ThinkException) 非法操作:page-timeline
+[ 2015-06-06T09:40:37+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/city
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name cname,city.isopen dname,city.rank,province.name pname from bd_city city left join bd_province province on city.provincei_d=province.id where isopen=1 union select district.id,city.name cname,district.name dname,district.rank,province.name from bd_district district left join bd_city city on district.city_id=city.id left join bd_province province on city.provincei_d=province.id where district.isopen=1 [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.218750s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: position E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 20 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Undefined index: dname E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Undefined index: dname E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Undefined variable: page E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 53 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.218750s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.234375s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.234375s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.234375s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.234375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.234375s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:37+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/Classfiy/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.031250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.031250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.046875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.046875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.046875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.046875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.046875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:38+08:00 ] 127.0.0.1 /badouwang/admin.php/Ajax/AjaxClassfiy/getClassesByParent
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: cname E:\wamp\wamp\www\badouwang\admin\Lib\Action\Ajax\AjaxClassfiyAction.class.php 第 11 行.
+SQL: select name,id from bd_classfiy where lev=2 [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:38+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT `c_key`,`c_value` FROM `bd_config` WHERE c_name='webconfig'  [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.156250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.156250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.156250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.156250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.171875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:39+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/city
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name cname,city.isopen dname,city.rank,province.name pname from bd_city city left join bd_province province on city.provincei_d=province.id where isopen=1 union select district.id,city.name cname,district.name dname,district.rank,province.name from bd_district district left join bd_city city on district.city_id=city.id left join bd_province province on city.provincei_d=province.id where district.isopen=1 [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: position E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 20 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Undefined index: dname E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Undefined index: dname E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Undefined variable: page E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 53 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.171875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.171875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.171875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.171875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.171875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:41+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/Classfiy/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.031250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.031250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.031250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.031250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.031250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:41+08:00 ] 127.0.0.1 /badouwang/admin.php/Ajax/AjaxClassfiy/getClassesByParent
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: cname E:\wamp\wamp\www\badouwang\admin\Lib\Action\Ajax\AjaxClassfiyAction.class.php 第 11 行.
+SQL: select name,id from bd_classfiy where lev=2 [ RunTime:0.015625s ]
+
+[ 2015-06-06T09:40:46+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/Classfiy/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.015625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.015625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.031250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.031250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:46+08:00 ] 127.0.0.1 /badouwang/admin.php/Ajax/AjaxClassfiy/getClassesByParent
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: cname E:\wamp\wamp\www\badouwang\admin\Lib\Action\Ajax\AjaxClassfiyAction.class.php 第 11 行.
+SQL: select name,id from bd_classfiy where lev=2 [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:47+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/city
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name cname,city.isopen dname,city.rank,province.name pname from bd_city city left join bd_province province on city.provincei_d=province.id where isopen=1 union select district.id,city.name cname,district.name dname,district.rank,province.name from bd_district district left join bd_city city on district.city_id=city.id left join bd_province province on city.provincei_d=province.id where district.isopen=1 [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: position E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 20 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Undefined index: dname E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 39 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Undefined index: dname E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Use of undefined constant dname - assumed 'dname' E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Array to string conversion E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 48 行.
+NOTIC: [8] Undefined variable: page E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\71d8a12e54f4da639a47058943f087e3.php 第 53 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.171875s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.171875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.171875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.187500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.187500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.187500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:40:49+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT `c_key`,`c_value` FROM `bd_config` WHERE c_name='webconfig'  [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.140625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.140625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.156250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.156250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.156250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.156250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.156250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:41:07+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configView
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 105 行.
+SQL: select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name [ RunTime:0.000000s ]
+SQL: select count(distinct c_name) sum from bd_config where c_name <> 'web_config' [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.156250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.156250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.171875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.171875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.171875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:41:13+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configDetail?cid=38
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.015625s ]
+INFO: [ route_check ] --END-- [ RunTime:0.015625s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT `c_name` FROM `bd_config` WHERE id='38' LIMIT 1   [ RunTime:0.390625s ]
+SQL: SELECT `c_key`,`c_value`,`c_info`,`id` FROM `bd_config` WHERE c_name = '用户配置'  [ RunTime:0.015625s ]
+SQL: SELECT `c_name`,`c_info` FROM `bd_config` WHERE id='38' LIMIT 1   [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-1.078125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: action E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\9513a7f02f02bc3cf91229bff2b7a0f4.php 第 25 行.
+NOTIC: [8] Undefined variable: edit E:\wamp\wamp\www\badouwang\admin\Runtime\Cache\WebConfig\9513a7f02f02bc3cf91229bff2b7a0f4.php 第 36 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-1.078125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-1.093750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-1.093750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-1.093750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-1.093750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-1.093750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:43:35+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:43:36+08:00 ] ERR: (ThinkException) 非法操作:comments-timeline
+[ 2015-06-06T09:43:37+08:00 ] ERR: (ThinkException) 非法操作:blog-table
+[ 2015-06-06T09:43:38+08:00 ] ERR: (ThinkException) 非法操作:blog-new
+[ 2015-06-06T09:43:41+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configView
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 105 行.
+SQL: select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name [ RunTime:0.015625s ]
+SQL: select count(distinct c_name) sum from bd_config where c_name <> 'web_config' [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.640625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.640625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.656250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.656250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.656250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.656250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.656250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:43:43+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT `c_key`,`c_value` FROM `bd_config` WHERE c_name='webconfig'  [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.171875s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.171875s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.171875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.187500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.187500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.187500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.187500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:43:44+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configView
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 105 行.
+SQL: select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name [ RunTime:0.000000s ]
+SQL: select count(distinct c_name) sum from bd_config where c_name <> 'web_config' [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.203125s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.203125s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.203125s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.203125s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.218750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:43:44+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT `c_key`,`c_value` FROM `bd_config` WHERE c_name='webconfig'  [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.187500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.187500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.187500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.187500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.187500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:43:45+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/Classfiy/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.015625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.015625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.015625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.015625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.015625s ]
+
+[ 2015-06-06T09:43:45+08:00 ] 127.0.0.1 /badouwang/admin.php/Ajax/AjaxClassfiy/getClassesByParent
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: cname E:\wamp\wamp\www\badouwang\admin\Lib\Action\Ajax\AjaxClassfiyAction.class.php 第 11 行.
+SQL: select name,id from bd_classfiy where lev=2 [ RunTime:0.015625s ]
+
+[ 2015-06-06T09:47:08+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/configView
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\WebConfig\BasicConfigAction.class.php 第 105 行.
+SQL: select  c_name,c_info,id from bd_config where c_name <> 'webconfig' group by c_name [ RunTime:0.000000s ]
+SQL: select count(distinct c_name) sum from bd_config where c_name <> 'web_config' [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.640625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.640625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.640625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.656250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.656250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.656250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.656250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:47:08+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/BasicConfig/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.015625s ]
+INFO: [ route_check ] --END-- [ RunTime:0.015625s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SELECT `c_key`,`c_value` FROM `bd_config` WHERE c_name='webconfig'  [ RunTime:0.031250s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.125000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.125000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.140625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.140625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.140625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.140625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.140625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:47:09+08:00 ] 127.0.0.1 /badouwang/admin.php/WebConfig/Classfiy/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.031250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.031250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.031250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.031250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.031250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:47:09+08:00 ] 127.0.0.1 /badouwang/admin.php/Ajax/AjaxClassfiy/getClassesByParent
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: cname E:\wamp\wamp\www\badouwang\admin\Lib\Action\Ajax\AjaxClassfiyAction.class.php 第 11 行.
+SQL: select name,id from bd_classfiy where lev=2 [ RunTime:0.015625s ]
+
+[ 2015-06-06T09:47:15+08:00 ] 127.0.0.1 /badouwang/admin.php/Content/Course/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.015625s ]
+INFO: [ route_check ] --END-- [ RunTime:0.015625s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_teach` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_teach` LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\CommonAction.class.php 第 155 行.
+SQL: SELECT t.*,c.name cname,u.uname uname,f.name fname FROM bd_teach t JOIN bd_city c ON t.city=c.id JOIN bd_user u ON t.uid=u.uid JOIN bd_classfiy f ON t.fid=f.id limit 0,12 [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.109375s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.109375s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.125000s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.125000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.125000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.125000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.125000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:47:15+08:00 ] 127.0.0.1 /badouwang/admin.php/Ajax/AjaxTeach/tclass
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: gid E:\wamp\wamp\www\badouwang\admin\Lib\Action\CommonAction.class.php 第 151 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\admin\Lib\Action\Ajax\AjaxTeachAction.class.php on line 13 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 60 行.
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 83 行.
+SQL: select name,cimg,ctextbrand from bd_classfiy where lev=2 [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:47:16+08:00 ] ERR: (ThinkException) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `bd_article` WHERE fid= LIMIT 1  
+[ 2015-06-06T09:47:17+08:00 ] ERR: (ThinkException) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `bd_article` WHERE fid= LIMIT 1  
+[ 2015-06-06T09:47:18+08:00 ] 127.0.0.1 /badouwang/admin.php/Content/Course/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_teach` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_teach` LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\admin\Lib\Action\CommonAction.class.php 第 155 行.
+SQL: SELECT t.*,c.name cname,u.uname uname,f.name fname FROM bd_teach t JOIN bd_city c ON t.city=c.id JOIN bd_user u ON t.uid=u.uid JOIN bd_classfiy f ON t.fid=f.id limit 0,12 [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.140625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.140625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.156250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.156250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.156250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.156250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.156250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-06-06T09:47:18+08:00 ] 127.0.0.1 /badouwang/admin.php/Ajax/AjaxTeach/tclass
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 47 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 58 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 24 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 29 行.
+NOTIC: [8] Undefined index: gid E:\wamp\wamp\www\badouwang\admin\Lib\Action\CommonAction.class.php 第 151 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\admin\Lib\Action\Ajax\AjaxTeachAction.class.php on line 13 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 60 行.
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 83 行.
+SQL: select name,cimg,ctextbrand from bd_classfiy where lev=2 [ RunTime:0.000000s ]
+

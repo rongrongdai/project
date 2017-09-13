@@ -1,0 +1,195 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/exam_re.css"/>
+
+<div class="pwid">
+	<div class="hotnav">当前位置：<a href="javascript:history.go(-6)">  题库</a> >  <a href="javascript:history.go(-5)"> 列表页</a> > <a href="javascript:history.go(-3)"> 详情页</a> > <a href="javascript:"> 结果页</a></div>
+</div>
+<div class="pwidth">
+   	<div class="top">
+       	<div class="title"><{$data.name}></div>
+        <div class="padd">
+        	<div class="jgtim">交卷时间：<{$data.end_time|date="Y年m月d日",###}></div>
+        	<div class="scor">
+            	<div class="sc">试卷得分</div>
+                <div class="sf" style="color:#EF6000"><{$data.score}></div>
+                <div class="sp">总分<{$data.total}> 排名<{$pmi+1}></div>
+            </div>
+        	<div class="scor">
+            	<div class="sc">作答时间</div>
+                <div class="sf"><{$data.min}><span>分</span><{$data.s}><span>秒</span></div>
+                <div class="sp">总时长：<{$data.time}>分钟</div>
+            </div>            
+        	<div class="scor">
+            	<div class="sc">你答对了</div>
+                <div class="sf"><{$data.r_total}><span>道题</span></div>
+                <div class="sp">错误率：<{$data.rate}>%</div>
+            </div>            
+            <div class="lxt">本次练习<{$zshu}>道题</div>
+            <div class="dant">单项选择题</div>
+            <div class="dana">
+            	<foreach name="data1" item="dx" key="dd">
+            		<if condition="$dx.type eq 1">
+            			<a href="#<{$dd}>"><{$dd+1}></a>
+            		</if>
+            	</foreach>
+            </div>
+            <div class="dant">多项选择题</div>
+            <div class="dana">
+            	<foreach name="data1" item="duo" key="du">
+            		<if condition="$duo.type eq 2">
+            			<a href="#<{$du}>"><{$du+1}></a>
+            		</if>
+            	</foreach>            	
+            </div>
+        </div>
+
+        <div class="padd">
+        	<div class="coner">
+            	<div class="thele">
+                	<div class="tm">试卷题目</div>
+                	<div class="nd">您的答案</div>
+                	<div class="zd">正确答案</div>
+                </div>
+
+            <foreach name="data1" item="vo" key="i">    
+            	<php>$k=$vo['id'];</php>
+            	<a name="<{$i}>"></a>
+                <div class="theline vid<{$i}>">
+                	<div class="tm-top">
+                		<div class="tm"><{$i+1}>.<{$vo.question}></div>
+                	<if condition="$answer[$k]">
+                		<if condition="$answer[$k] eq $vo['right']">
+                			<div class="zd" style="color:#009170"><{$answer.$k}></div>
+                		<else/>
+                			<div class="zd" style="color:#F00"><{$answer.$k}></div>
+                		</if>	
+                	<else/>
+                		<div class="zd" style="color:#F00">空</div>
+                	</if>	
+                		<div class="zd" style="color:#009170"><{$vo.right}></div>
+                    </div>
+                    <div class="daan vid<{$i}>">
+                    	<a><span><{$vo.aanswer}></span></a>
+                    	<a><span><{$vo.banswer}></span></a>
+                    	<a><span><{$vo.canswer}></span></a>
+                    	<a><span><{$vo.danswer}></span></a>
+                    </div>
+                </div>
+            </foreach>
+
+            </div>	
+        </div>
+    </div>
+  
+    <div class="leave">
+    	<div class="tet-wyfs">我有话说</div>
+    	<div class="confom">
+            <textarea id="pub" name="content" rows="4"></textarea>
+       	    <div class="tetlr" style="background-image:url()">欢迎您！( <{$Think.session.uname}> )</div>
+            <a class="submit" onclick="pub(<{$data.sid}>)">发表</a>
+        </div>
+    	<div class="latest">
+        	<div class="pl">最新评论</div>
+            <div class="resh" style="background-image:url()">刷新</div>
+        </div>
+    </div>
+
+        <!------------------------------------>
+    <if condition="$msg">
+        <div id="more">
+        <foreach name="msg" item="vo" key="i">
+   		    <div class="coners">
+        		<div class="titimg">
+            		<a><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.user_pic}>" width="40" height="40" /></a>
+                	<div >求助</div>
+            	</div>
+            	<div class="con">
+                	<div class="titname"><{$vo.rname}></div>
+            		<div class="contet"><{$vo.content}></div>
+                	<div class="rname"><{$vo.ctime|date="Y-m-d H:i",###}> [ 来自<{$vo.address}>]</div>
+            	</div>
+            	<div class="right">
+                	<div id="praise" onclick="praise(<{$vo.id}>)" ><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/exam/dj03.jpg" width="24" height="19"><div id="shu<{$vo.id}>">(<{$vo.praise}>)</div></div>
+                </div>
+		    </div>
+        </foreach>
+        </div>
+            <div id="move"><div class="andmoer"><span onclick="more(<{$vo.sid}>,1)">点击加载更多评论</span></div></div>
+    <else/>    
+            <div class="coners" style="text-align:center;margin-bottom:30px;">暂无评论</div>
+        </if>
+</div>
+
+<div id="info"></div>
+<script>
+$('.theline').click(function(){
+    var Css = $(this).attr('class').replace(/theline /,'.daan.');
+    var Tm  = $(this).attr('class').replace(/theline /,'.theline.') + ' .tm';
+    $('.daan').slideUp();  
+    $('.tm').css({height:'20px'});
+    if($(Css).css('display')=='block'){ 
+            $(Css).slideUp();
+            $(Tm).css({height:'20px'}); 
+       }else{
+            $(Css).slideDown();
+            $(Tm).css({height:'inherit'})  
+            };  
+    })
+
+    function pub(id){
+        var content = $("#pub").val();
+        var pattern = (/\S/).exec(content);
+        if(!pattern){
+            show('内容不能为空');
+            return false;
+        }
+        $.post("__ROOT__/index.php/Ajax/AjaxExam/publish",{'sid':id,'content':content},function(json){
+            if(json.code == 'success'){
+                var node = '<div class="coners"><div class="titimg"><a><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/'+json.data.img+'" width="40" height="40" /></a><div >求助</div></div><div class="con"><div class="titname">'+json.data.uname+'</div><div class="contet">'+json.data.content+'</div><div class="rname">'+json.data.ctime+'[ 来自'+json.data.address+']</div></div><div class="right"><div id="praise" onclick="praise('+json.data.id+')" ><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/exam/dj03.jpg" width="24" height="19"><div id="shu'+json.data.id+'">('+json.data.praise+')</div></div></div></div>';
+
+                $(node).insertAfter(".leave");    
+                show('发表成功');
+                $("#pub").val("");
+            }else if(json.code == 'quick'){
+                show('亲！你先休息一会儿吧');
+            }
+        },'json');
+    }
+
+    var cht = 1;
+    function more(sid,id){
+        $("#move").html("");
+        $.post("__APP__/Ajax/AjaxExam/more",{'sid':id,'id':id},function(data){
+            if(data){
+                for(var i=0;i<data.length;i++){
+                    var node = '<div class="coners"><div class="titimg"><a><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/'+data[i].user_pic+'" width="40" height="40" /></a><div >求助</div></div><div class="con"><div class="titname">'+data[i].rname+'</div><div class="contet">'+data[i].content+'</div><div class="rname">'+data[i].ctime+'[ 来自'+data[i].address+']</div></div><div class="right"><div id="praise" onclick="praise('+data[i].id+')" ><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/exam/dj03.jpg" width="24" height="19"><div id="shu'+data[i].id+'">('+data[i].praise+')</div></div></div></div>';
+                    $(node).appendTo("#more");
+                }
+                cht++;
+                $('<div id="move"><div class="andmoer"><span onclick="more(<{$vo.sid}>,'+cht+')">点击加载更多评论</span></div></div>').appendTo("#more");
+            }else{
+                $('<div id="move"><div class="andmoer">暂无更多评论</div></div>').appendTo("#more");
+            }
+        },'json');
+    }
+    
+    function praise(id){
+        $.post("__ROOT__/index.php/Ajax/AjaxExam/praise",{'id':id},function(data){
+            if(data){
+                $("#shu"+id).html("");
+                $("<span>("+data+")</span>").appendTo("#shu"+id);
+            }else{
+                show('您已点赞啦');
+            }   
+        },'json');
+    }
+    function show(text){
+        var pageW = $(window).width(), pageH = $(window).height(), boxW = $("#info").outerWidth(),boxH = $("#info").outerHeight(),scrollH = $(window).scrollTop();
+        $("#info").html(text).css({'top':(pageH/2-boxH/2+scrollH)+'px','left':(pageW/2-boxW/2)+"px"}).fadeIn(1000).delay(500).fadeOut(1000);
+    }
+    
+
+</script>
+
+
+<include file="../../../Public/default/footer" />

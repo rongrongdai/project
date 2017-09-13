@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* CSS Document */
+body,blockquote,form {margin:0; padding:0;}
+ul,ol {list-style:none; }
+a{ text-decoration:none;}
+img{border:0}
+p{ margin:0;}
+ 
+.texs-top{ width:100%; height:400px; background:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/banner.jpg);}
+.texs-ceny{ width:1200px; margin:20px auto;}
+.texs-ceny .tex-y{ width:288px;  height:120px; margin-right:10px; padding-top:40px; border:1px solid #e5e5e5; background-color:#f7f7f6;
+transition:0.2s; -webkit-transition:0.2s; float:left; }
+
+.texs-ceny .tex-y p{padding-left:28px; line-height:26px; }
+.texs-ceny .tex-y a {color: #969696; font-size:14px;}
+.texs-ceny .tex-y p span{ color:#42cdc8;}
+
+
+.texs-ceny .ony{background:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/erw2.jpg); background-repeat:no-repeat;}
+.texs-ceny .one{background:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/erw4.jpg); background-repeat:no-repeat;}
+.texs-ceny .ons{background:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/erw3.jpg); background-repeat:no-repeat;}
+.texs-ceny .onsi{background:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/erw1.jpg); background-repeat:no-repeat;}
+
+.texs-ceny .tex-er{ width:100%; float:left; margin-top:20px;}
+
+.texs-ceny .tex-er .tut-yi{ border-left:4px #00b38a solid; text-indent:14px; font-size:18px; float:left; width:80px; line-height:25px;}
+.texs-ceny .tex-er .tut-er{ float:left; margin-left:15px; margin-right:10px; font-size:14px;  line-height:25px;}
+.texs-ceny .tex-er .tut-er a{ color:#969696;}
+.texs-ceny .tex-er .tut-er a:hover{ color:#00b38a; text-decoration:underline; }
+
+
+.texs-ceny .tex-san{ width:100%; background-color:#f5f5f5;float:left; cursor:pointer;}
+
+.texs-ceny .tex-san .tex-s-y{ float:left; width:230px; background:#fff; position:relative; text-align:center; padding:22px 0 16px; margin-top:10px;  margin:10px 5px 10px 5px;}
+
+.texs-ceny .tex-san .tex-s-y .imgt{ width:120px; height:120px; border-radius:60px; position:relative; z-index:2;}
+
+
+.texs-ceny .tex-san .tex-s-y .li{color:#6d6d6d; font-size:14px; line-height:30px;}
+.texs-ceny .tex-san .tex-s-y strong{font-size:20px; color:#3d3d3d; line-height:30px;}
+
+.texs-ceny .tex-san .tex-s-y .jaiol{ margin-left:10px; display:inline-block; color:#fff; padding:4px 12px 3px; text-align:center; font-size:12px; background-color: #6287d5; margin-top:8px; margin-bottom:8px; }
+
+
+
+.texs-ceny .tex-san .tex-s-y .gbian{position: absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:0; filter: alpha(opacity=0); display:none;
+-webkit-animation: teacherMaskShow .5s;
+-moz-animation: teacherMaskShow .5s;
+-ms-animation: teacherMaskShow .5s;
+-o-animation: teacherMaskShow .5;
+animation: teacherMaskShow .5s;
+opacity:.8;
+filter: alpha(opacity=80);
+}
+.texs-ceny .tex-san .tex-s-y .gbian p{ font-size:14px; color:#fff; text-align:left; font-size:13px; height:106px; position:relative; top:170px; padding: 0 16px;}
+
+.texs-ceny .pintlc{ font-size:24px; text-align:center; color:#969696; line-height:55px;}
+.texs-ceny .pilcer{ background: #f7f7f6; overflow:hidden; padding-bottom:30px; text-align:center;}
+
+.texs-ceny .pilcer ul{ border-top:2px solid #7bdad6; margin-top:50px;}
+
+.texs-ceny .pilcer li{float:left; width:20%; margin:0px 2.5%; position:relative;}
+
+.texs-ceny .pilcer li .imgda { width:63px; height:63px; overflow:hidden; background-repeat: no-repeat; background-position:center; position:absolute; top:-33px; left:83px;}
+
+.texs-ceny .pilcer li .loaon {background:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/req1.png);}
+.texs-ceny .pilcer li .loay{background:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/req2.png);}
+.texs-ceny .pilcer li .loae{background:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/req3.png);}
+.texs-ceny .pilcer li .loas{background:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/req4.png);}
+
+
+.texs-ceny .pilcer li .imgxia{ position: absolute; top:35px; width:100%; height:10px; background-repeat: no-repeat; background-position: center bottom;
+background-image:url(file:///C|/Documents%20and%20Settings/Administrator/%E6%A1%8C%E9%9D%A2/badou/images/pic_shanj.png);}
+.texs-ceny .pilcer li .cone{position:relative; top:45px; background:#FFF; padding:15px; text-align:left; height:100px; margin-bottom:45px;}
+.texs-ceny .pilcer li .cone .nane{color: #40cec9; font-size:16px; text-align:center; margin-bottom:8px;}
+.texs-ceny .pilcer li .cone .text{ font-size:14px; color:#969696; line-height:25px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

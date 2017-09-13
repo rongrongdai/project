@@ -1,0 +1,373 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>关于我们</title>
+<link href="__ROOT__/public/css/home/ChMer.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="cherall">
+
+<!--导航条-->
+     <div class="nav-one"></div>
+     <div class="nav-two"></div>
+     <div class="nav-there">
+         <div class="nav-yi"><a href="index"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/logoq.jpg"></a></div>
+         <div class="nav-er">
+             <ul>
+                <a href="about"><li>关于我们</li></a>
+                <a href="tuser"><li>用户协议</li></a>
+                <a href="renc"><li>人才招聘</li></a>
+                <a href="busition"><li>商务合作</li></a>
+                <a href="cmer"><li class="guan">招商加盟</li></a>
+                <a href="helpcenter" ><li>帮助中心</li>
+                <a href="http://www.weibo.com/badoue" target="_blank"><li class="zhu">关注我们<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/xinlang.png" /></li></a>
+              </ul>
+         </div>            
+     </div>
+     
+<!--内容-->
+   <div class="cher-one">
+      <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/zshz.gif" />
+   </div>
+
+   <div class="cher-two">
+         <div class="chert-y">
+                  <div class="chert-yi">
+                      <div class="ertyi"><p>项目介绍</p></div>
+                      <div class="erter"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/zshzy.gif" /></div>
+                  </div>
+            
+                  <div class="chert-er">
+                   <p>八斗网(badoue.com)是由深圳市百士兴科技有限公司投资运营在线教育网，现面向全国火热招募地方运营代理商。八斗网是整合线上信
+                   息和线下传统教育资源，开放式在线教育平台。主要提供： 家教培训分类信息，在线考试，教辅材料等资源，并开发了学习问答应用——学
+                  吧，是一种创新的在线学习模式，汇聚优质教育资源，使学生提高学习效率，让全国精英教师在线上广泛式的教学并获得人气和收益。</p>
+                  </div>
+         </div>
+       
+   </div>
+   
+   
+   
+   <div class="cher-there">
+        <div class="chthe-y">
+         <span class="xinlc">在线教育引领互联网经济新浪潮</span><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/3wd.gif" />
+         <p class="lojiao">在线教育作为一种未来教学新模式，已经成星火燎原之势，相比传统行业，属于高增长，高利润，高门槛的行业，与国家的教育发展
+            方略完全契合，市场前景极为广阔，被公认为互联网经济的下一个爆发点，多数行业专家认为在线教育未来将对中国学生现有学习模式造
+            成颠覆性改变。</p>
+        </div>
+   
+   </div>
+   
+   
+   
+   <div class="cher-four">
+                <div class="chf-yi">
+                  <div class="chert-yi">
+                      <div class="ertyi"><p>为什么在线教育被大家普遍看好？</p></div>
+                      <div class="erter"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/wjxi.gif" /></div>
+                  </div>
+                  
+                  <div class="chf-ei">
+                      <div class="chf-huiy">
+                           <div class="ch-shic"> 
+                             <p class="cer-shi">市场大</p>
+                             <p>学习人口多</p>
+                             <p>教育机构规模大</p>
+                             <p>千亿级消费市场</p>
+                           </div>   
+                           <div class="ch-shier"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/tb.png" /></div>
+                      </div>
+                      
+                      <div class="chf-huiy">
+                           <div class="ch-shic"> 
+                             <p class="cer-shi">利润高</p>
+                             <p>教育行业本身高利润</p>
+                             <p>在线教育具有成本优势</p>
+                             <p>依附传统教育</p>
+                           </div>   
+                           <div class="ch-shier"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/zli.png" /></div>
+                      </div>
+                      
+                      <div class="chf-huiy">
+                           <div class="ch-shic"> 
+                             <p class="cer-shi">消费比重大</p>
+                             <p>硬性消费</p>
+                             <p>需求空间大</p>
+                             <p>逐年高增长</p>
+                           </div>   
+                           <div class="ch-shier"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/zhd.png" /></div>
+                      </div>
+                      
+                      <div class="chf-huiy">
+                         <div class="ch-shic"> 
+                             <p class="cer-shi">教育改革</p>
+                             <p>传统教育自身改革</p>
+                             <p>教育重视度提高</p>
+                             <p>网络信息时代潮流</p>
+                           </div>   
+                           <div class="ch-shier"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/w2.png"/></div>
+                      </div>
+                      
+                  </div>
+                  
+                 </div>
+   
+   </div>
+   
+   
+   
+   <div class="cher-five">
+              <div class="chf-yi">
+                  <div class="chert-yi">
+                      <div class="ertyi"><p>在线教育特点与类别？</p></div>
+                      <div class="erter"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/tupy.gif" /></div>
+               </div>
+               
+               <div  class="chfiv-er">
+                     <div class="fiv-yi">
+                     <p class="o1">01</p>
+                     <p class="o2">突破时间和空间限制</p>
+                     <p>利用网络终端，随时随地在线学习；</p>
+                     <p>在大数据中搜索学习资源；</p>
+                     <p>把自己的学习资料保存在云端；</p>
+                     <p>提高学习效率。</p>
+                     </div>
+                     
+                     <div class="fiv-er">
+                        <div class="five-y"><p>02</p></div>
+                        <div class="five-e">
+                         <p class="zy">打破教育资源分配不平等</p>
+                         <p>跨越因地域，师资力量等造成的资源不均，共享教育资源；</p>
+                         <p>翻盖面广，减低获得学习机会的门槛。</p>
+                        </div>
+                     </div>
+                     
+                     <div class="fiv-san">
+                        <p class="os1">03</p>
+                        <p>学习智能化</p>
+                        <p>增强自我学习能力；</p>
+                        <p>记录学习经历和评估学习效果；</p>
+                        <p>智能引导学习不断升级。</p>
+                     </div>
+                </div>
+   
+            <div class="sh-six">
+            <div class="ertyi"><p>地方运营商的业务范围</p></div>
+            <div class="erter"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/toux.png" /></div>
+            </div>
+            
+   </div>
+   </div>
+   
+   
+   
+   <div class="cher-six">
+              <div class="csix-yi">
+              
+                  <div class="csix-y">
+                  <div class="csix-e">
+                  <div class="csix-s">
+                  <p class="six-y">01</p>
+                  <p class="six-e">STEP</p>
+                  <p>家教培训分类   信息排名</p>
+                  </div>
+                  </div>
+                  </div>
+        
+                  <div class="csix-y">
+                  <div class="csix-e">
+                  <div class="csix-s">
+                  <p class="six-y">02</p>
+                  <p class="six-e">STEP</p>
+                  <p>地方广告业务</p>
+                  </div>
+                  </div>
+                  </div>
+        
+                  <div class="csix-y">
+                  <div class="csix-e">
+                  <div class="csix-s">
+                  <p class="six-y">03</p>
+                  <p class="six-e">STEP</p>
+                  <p>与家教培训机构合作招生 </p>
+                  </div>
+                  </div>
+                  </div>
+        
+                  <div class="csix-y">
+                  <div class="csix-e">
+                  <div class="csix-s">
+                  <p class="six-y">04</p>
+                  <p class="six-e">STEP</p>
+                  <p>在线视频课程制作与销售</p>
+                  </div>
+                  </div>
+                  </div>
+        
+                  <div class="csix-y">
+                  <div class="csix-e">
+                  <div class="csix-s">
+                  <p class="six-y">05</p>
+                  <p class="six-e">STEP</p>
+                  <p>学习用品渠道销售  </p>
+                  </div>
+                  </div>
+                  </div>
+        
+            </div>
+            
+            <div class="csix-er">
+              <p class="cwesyi">联系家教培训机构</p>
+              <p class="cweser">签订合作招生协议</p>
+              <p class="cwessan">招生信息投放主页</p>
+              <p class="cwessi">招生完成获得佣金</p>
+            </div>
+            
+            <div class="csix-san">
+            
+              <div class="csan-y">
+              <p>扩大市场营销范围，快速招</p>
+              <p>降低招生成本；</p>
+              <p>在线口碑评价，有利品牌建设。</p>
+              </div>
+              
+              <div class="csan-e">
+              <p>在线即时咨询教师机构，了解招生信息；</p>
+              <p>价格透明，减少学习费用；</p>
+              <p>参考评级，选择适合自己的教师机构。</p>
+              </div>
+            
+            </div>
+   </div>
+   
+   
+   <div class="cher-Seven">
+             <div class="chert-y">
+                  <div class="chert-yi">
+                      <div class="ertyi"><p>八斗平台未来发展方向</p></div>
+                      <div class="erter"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/sjz.gif" /></div>
+                  </div>
+            
+                  <div class="chert-er">
+                   <p>在线教育的未来前景毫无疑问是广阔的，各种各样的模式将不断涌现。根据市场和教育特性，我们给八斗网的定位是教育资源整合和
+                      搜索平台，但是八斗的未来将更注重数据分析，根据每个人在平台搜索资料和学习的记录，分析用户学习需求，测评学习效果，引导学习
+                      方法，培养学习习惯，提高学习效率。</p>
+                  </div>
+                  
+                  
+                  <div class="sev-otn">
+                      <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/xiaor.gif" />
+                      <div class="sevn-one">
+                           <div class="sevn-yi">
+                               <div class="sev-sjx"><p>数据分析</p></div>
+                               <div class="sev-weny">
+                                 <p>用户数据</p>
+                                 <p>.搜索过的数据</p>
+                                 <p>.学习过的数据</p>
+                                 <p>.学习的时间</p>
+                                 <p>.学习计划</p>
+                                 <p>.提问解答</p>
+                               </div>
+                               <div class="sev-wene">
+                                 <p>.学习能力评分</p>
+                                 <p>.知识等级</p>
+                                 <p>.需要提升的知识</p>
+                               </div>
+                           </div>
+                           
+                           <p class="wlais">未来的学习将是智能化的自学模式—— 八斗是这样认为的，也正在努力中.........</p>
+                            
+                            <div class="sevn-yi">
+                               <div class="sev-sjxe"><p>智能引导</p></div>
+                               <div class="sev-weny">
+                                 <p>推荐学习</p>
+                                 <p>.与你相关学习资料</p>
+                                 <p>.你可能需要的视频课程</p>
+                                 <p>.优秀老师推荐</p>
+                                 <p>.引导学习计划</p>
+                                 <p>.分享他人快速学习的方法</p>
+                               </div>
+                               
+                           </div>
+                           
+                           
+                      </div>
+                  </div>
+                  
+                  
+                  
+                   <div class="chert-yi">
+                      <div class="ertyiy"><p>地方运营项目优势</p></div>
+                      <div class="ertery"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/zans.gif" /></div>
+                  </div>
+                  
+                  
+                  <div class="sevn-two">
+                     <div class="sevn-ty">
+                       <p> .投资资金不大，启动项目门槛低；</p>
+                       <p> .人才要求不高，团队组建快速而且灵活；</p>
+                       <p> .纯业务型公司，经营成本低；</p>
+                       <p> .不属于周期型行业，能可持续经营；</p>
+                       <p> .业务开展难度不大，而且业务有延续性；</p>
+                       <p> .行业正处发展初期，市场规模大；</p>
+                       <p> .竞争小，利润高。</p>
+                     </div>
+                     <div class="sevn-te">
+                       <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/jtous3.gif" />
+                     </div>
+                  </div>
+                  
+                  
+                  <div class="chert-yi">
+                      <div class="ertyiy"><p>地方运营项目优势</p></div>
+                      <div class="ertery"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/dhua.gif" /></div>
+                  </div>
+                  
+                  
+                  <div class="sevn-ther">
+                    <p>深圳市百士兴科技有限公司真诚邀请志同道合者，加入八斗平台的地方运营!</p>
+                    <div class="sev-tup">
+                      <div class="sev-bup">
+                          <p>如果你想创业目前找不到项目？</p>
+                          <p>如果你是牛叉老师？</p>
+                          <p>如果你是互联网的专业精英？</p>
+                          <p>如果你是个市场开拓的高手？</p>
+                          <p>请你联系</p>
+                      </div>
+                      <p class="sexins">舒成佰  18929322711   QQ: 397595720 </p> 
+                    </div>
+                  </div>
+         </div>
+         
+         
+         
+   
+   </div>
+   
+   
+   <div class="cher-eight">
+           <p>八斗网，为您提供专业学习服务</p>
+           <div class="CSeiht-yi">
+             <span>开启学习之旅</span>
+             <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fuzhuye/sjswe.png" />
+           </div>
+   </div>
+   
+   
+   <!--尾部-->    
+<div class="weibu">
+        <p class="Ceigt-yi"><a href="abount">关于八斗</a>|<a href="tuser">用户协议|<a href="renc">人才招聘</a>|<a href="busition">商务合作</a>|<a href="cmer">招商加盟</a>|<a href="helpcenter">帮助中心</a></p>
+        <p class="Ceigt-er">Copyright(c)2013 badoue.com 深圳百士兴科技有限公司版权所有 All Rights Reserved 粤ICP备13084511号-2</p>
+        <p class="Ceigt-sa">服务热线：0755-29494667 QQ:397595720 邮箱：kefu@bsxkj.com</p>
+</div>
+   
+   
+   
+
+</div>
+
+</body>
+</html>

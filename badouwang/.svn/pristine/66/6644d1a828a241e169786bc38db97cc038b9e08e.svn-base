@@ -1,0 +1,75 @@
+<include file="../../Public/header1" />
+<style>
+    .promot{
+        color:red;
+        margin-left:5px;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="__ROOT__/public/css/admin/table.css" />
+<div class="p_position"><span>当前位置></span><{$position}></div>
+<section class="content" >
+    <section class="widget">
+        <div class="widget-container"> 
+
+            <div class="addlink">
+                <span>通知分类：<select name="type"><option value="0">请选择</option><option value="1">家教首页</option><option value="2">培训首页</option><option value="3">题库首页</option><option value="4">学吧首页</option></select><span class="promot"></span><br/>
+                    <span>通知文字：</span><input style="margin-left:-2px;" type="name" id="ntext" name="ntext" value="<{$data.name}>"/><span class="promot"></span><br/>
+                <span>链接地址：</span><input style="margin-left:-3px;" type="text" name="link" id="link" value="<{$data.url}>" /><span class="promot"></span><br/>
+                <span>城市：</span><span id='getcityonly' style="margin-left:20px;"></span><br/>
+                <button>确认提交</button>
+                 
+                <input type="hidden" name="mod" value="<{$data.id}>" />
+                <input type="hidden" name="token" value="<{$token}>"/>
+              	<input type="hidden" name="timestamp" value="<{$timestamp}>"/>
+
+
+            </div>
+
+        </div>
+
+    </section>
+    <div class="footinfo">
+        <div style="height:80px">
+		Copyright(c)2013 badoue.com 深圳百士兴科技有限公司版权所有 All Rights Reserved 粤ICP备13084511号-2
+        </div>
+                    
+    </div>
+    
+</section>
+
+
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script src="__ROOT__/public/js/validater.js"></script>
+<script>
+getCityOnly();
+
+$(function(){
+	
+})
+
+$('button').click(function(){
+	$(".addlink").wrap("<form action='addNotice' method='post' enctype='multipart/form-data'></form>");
+        var field=['ntext','link'];
+        var null_info=['通知文字','链接地址'];
+        var res=null_check(field,null_info);
+        if(res){
+            $("#"+res[0]).next(".promot").text(res[1]);
+            return false;
+        }else{
+            res=true;
+            $("select").each(function(){
+                if($(this).val()==='0'){
+                    $(this).next(".promot").text("请选择后提交！");
+                    res=false;
+                }
+            })
+            return res;
+        }
+        return false;
+});
+
+</script>
+
+
+<include file="../../Public/footer" />
+

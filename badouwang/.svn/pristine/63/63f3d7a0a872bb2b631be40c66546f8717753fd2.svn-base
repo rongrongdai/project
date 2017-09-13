@@ -1,0 +1,69 @@
+<include file="../../Public/header1" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/public/css/admin/table.css" />
+<import type='js' file='js/validater' />
+<script src="__ROOT__public/js/validater.js"></script>
+<div class="p_position"><span>当前位置></span><{$position}></div>
+<section class="content" >
+    <section class="widget">
+        <div class="widget-container">
+                <table>
+                    <if condition="$type eq 'organization'">
+                        <tr>
+                            <td width="30%">执照</td><td width="70%"><img src="1.jpg" width="200" /></td>
+                       </tr>
+                    </if>
+                    <if condition="($type eq 'teacher') or ($type eq 'proxyer')">
+                       <tr>
+                          <td width="30%">课程范围</td><td width="70%"><{$data.course}></td> 
+                       </tr>
+                       <tr>
+                          <td width="30%">服务范围</td><td width="70%"><{$data.grade}></td> 
+                       </tr>
+                       </if>
+                       <tr>
+                            <td width="30%">身份证正面<td width="70%"><{$data.id_front}></td>
+                       </tr>
+                       <tr>
+                            <td width="30%">身份证反面</td><td width="70%"><{$data.id_back}></td>
+                       </tr>
+                       
+                       <tr>
+                          <td width="30%">联系方式</td><td width="70%"><{$data.telephone}></td> 
+                       </tr>
+                       <tr>
+                          <td width="30%">真实姓名</td><td width="70%"><{$data.real_name}></td> 
+                       </tr>
+                       <tr>
+                             <td width="30%">拒绝理由</td><td width="70%"><textarea id="fail"></textarea></td>  
+                       </tr>
+                </table>
+            <button name="sucess" class="button blue" hid="<{$data.id}>" style="margin-left:500px;margin-top:30px;width:100px;" id="s_data">通过认证</button><button class="button blue" name="fail" hid="<{$data.id}>" style="margin-left:10px;margin-top:30px;width:100px;">认证失败</button>
+        </div>
+        <div class="content cycle">
+			<div id="flot-example-2" class=""></div>
+			<div id="flot-example-1" class=""></div>
+		</div>
+        </div>
+    </section>
+    <div class="footinfo">
+        <div style="height:80px">
+		Copyright(c)2013 badoue.com 深圳百士兴科技有限公司版权所有 All Rights Reserved 粤ICP备13084511号-2
+        </div>
+                    
+    </div>
+    
+</section>
+<script>
+    $(function(){
+        $("button[name=sucess]").click(function(){
+            var id=$(this).attr("hid");
+            location.href='verify?sid='+id+'&type='+"<{$type}>"+'&uid='+"<{$uid}>";
+        })
+        $("button[name=fail]").click(function(){
+            var id=$(this).attr("hid");
+            location.href='verify?fid='+id+"&reson="+$("#fail").val()+'&type='+"<{$type}>";
+        })
+    })
+</script>
+<import file="js_lib/upload/jquery-uploadify"/>
+<include file="../../Public/footer" />

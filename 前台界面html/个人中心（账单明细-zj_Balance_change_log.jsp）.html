@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/iscroll.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeeef;}
+        
+        .tuwen{height:100%;width:100%;position: fixed;top:0;bottom:0;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .tuwen .scroller{position:absolute;width:100%;}
+        .tuwen>div{    position: absolute;width: 100%;top: 0;bottom: 0;left: 0;}
+        .tuwen .tuwen-header{width: 5.92rem;height: 0.6rem;position: relative;background-color: #fff;margin: 0.2rem auto;border-radius: 0.1rem;}
+        .tuwen .tuwen-header>div{border-right:1px solid #969696;box-sizing: border-box;border: 1px solid #969696;margin-left: -1px;}
+        .tuwen .tuwen-header .txt-btn{font-size: 0.24rem;color: #282828;text-align: center;line-height: 0.6rem;float: left;width: 33.33%;}
+        .tuwen .tuwen-header .servive{border-top-right-radius:0.1rem;border-bottom-right-radius:0.1rem;}
+        .tuwen .tuwen-header .good-d{border-top-left-radius:0.1rem;border-bottom-left-radius:0.1rem;}
+        .tuwen .tuwen-header .param{}
+        .tuwen .tuwen-header .active{background-color:#969696;color:#fff;}
+        .tuwen .tuwen-cont{width:100%;position: absolute;top:1.62rem;bottom:0;left:0;border-top: 1px solid #cbcbcb;}
+        .tuwen .tuwen-cont .swiper-wrapper{}
+        .tuwen .tuwen-cont .swiper-slide{}
+        .tuwen .tuwen-cont .swiper-slide img{width:100%;}
+        .tuwen .tuwen-cont .swiper-slide>div{font-size: 0.24rem;position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;width: 100%;overflow: hidden;background-color: #eeeef1;}
+        
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;height: 100%;z-index: 3;position: fixed;display:none;}
+
+        .purse-header{font-size:0.28rem;background-color:#fff;margin-bottom: 0.1rem;height:1rem;line-height:1rem;}
+        .purse-header>div>span{display:inline-block;vertical-align:middle;}
+        .purse-header .m-icon{width:0.32rem;height:0.32rem;background:url("images/my/money.png") no-repeat scroll center center / contain;margin:0 0.12rem 0 0.25rem;}
+        .purse-header .m-num{margin:0 0 0 0.2rem;}
+        .purse-item{background-color:#fff;border-bottom:1px solid #eeeef1;padding:0.2rem 0.21rem 0.18rem 0.25rem;}
+        .purse-item>div>span:last-child{float:right;}
+        .purse-item .p-line1{font-size:0.24rem;}
+        .purse-item .p-line1 .p-title{}
+        .purse-item .p-line1 .p-num-plus{color:#ff3c00;}
+        .purse-item .p-line1 .p-num-minus{color:#0273ff;}
+        .purse-item .p-line2{font-size:0.2rem;margin:0.18rem 0;color:rgba(0,0,0,.5);}
+        .purse-item .p-line3{font-size:0.2rem;color:rgba(0,0,0,.5);}
+
+        .team-header{font-size:0.24rem;background-color:#fff;text-align:center;margin: 0.1rem 0;position:relative;height:0.5rem;}
+        .team-header>span{width:33.33%;float:left;line-height:0.5rem;}
+        .team-header .active-line{position:absolute;background-color:#e24355;height:1px;width:33.33%;bottom:-1px;left:0;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        function loaded () {
+            
+            function initTuWenScroll(str){
+                var downIcon,upIcon,scrollerPullDown,scrollerPullUp,pullUpMsg,upLoading,downLoading,pullDownMsg; 
+                downIcon = $("."+str+" .down-icon");
+                pullDownMsg = $("."+str+" .pull-down-msg");
+                scrollerPullDown = $("."+str+" .scroller-pullDown");
+                scrollerPullUp = $("."+str+" .scroller-pullUp");
+                upLoading = $("."+str+" .scroller-pullUp .loading");
+                downLoading = $("."+str+" .scroller-pullDown .loading");
+                upIcon = $("."+str+" .up-icon");
+                pullUpMsg = $("."+str+" .pull-up-msg");
+
+                var tuwenScroller = new IScroll('.'+str, {
+                    probeType: 3,
+                    scrollbars: true,
+                    mouseWheel: true,
+                    interactiveScrollbars: true,
+                    shrinkScrollbars: 'scale',
+                    fadeScrollbars: true
+                });
+                tuwenScroller.on("scroll",function(){
+                    var y = this.y,
+                        maxY = this.maxScrollY - y,
+                        downHasClass = downIcon.hasClass("reverse_icon"),
+                        upHasClass = upIcon.hasClass("reverse_icon");
+                    
+                    if(y >= 40){
+                        !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松手开始更新');
+                        return "";
+                    }else if(y < 40 && y > 0){
+                        downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉刷新');
+                        return "";
+                    }
+                    
+                    if(maxY >= 40){
+                        !upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松手开始更新');
+                        return "";
+                    }else if(maxY < 40 && maxY >=0){
+                        upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看更多');
+                        return "";
+                    }
+                });
+                tuwenScroller.on("slideUp",function(){
+                    if(this.maxScrollY - this.y > 40){
+                        //alert("slideUp");
+                        upIcon.css('display','none');
+                        pullUpMsg.css('display','none');
+                        upLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            upIcon.css('display','inline-block');
+                            pullUpMsg.css('display','inline-block');
+                            upLoading.css('display','none'); 
+                            $('.goods-wrap').append('');
+                            tuwenScroller.refresh();
+                        },3000);
+                        
+                    }
+                });
+                tuwenScroller.on("slideDown",function(){
+                    if(this.y > 40){
+                        //alert("slideDown");
+                        scrollerPullDown.css({'position':'relative','top':'0'});
+                        downIcon.css('display','none');
+                        pullDownMsg.css('display','none');
+                        downLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            scrollerPullDown.css({'position':'absolute','top':'-0.7rem'});
+                            downIcon.css('display','inline-block');
+                            pullDownMsg.css('display','inline-block');
+                            downLoading.css('display','none'); 
+                            $('.goods-wrap').prepend('');
+                            tuwenScroller.refresh();
+                        },3000);
+                    }
+                });
+            }
+            initTuWenScroll('tuwen1');
+            initTuWenScroll('tuwen2');
+            initTuWenScroll('tuwen3');
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="bg-layer"></div>
+    <article class="tuwen">
+        <div>
+            <div class="purse-header">
+            <div><span class="m-icon"></span><span class="">余额</span><span class="m-num">￥200.00</span></div>
+        </div>
+        <div class="team-header">
+            <span>全部</span><span>收入</span><span>支出</span>
+            <div class="active-line"></div>
+        </div>
+            <div class="tuwen-cont">
+                <div class="swiper-wrapper">
+                   <div class="swiper-slide">
+                        <div class="tuwen1">
+                            <div class="scroller">
+                                <div class="scroller-pullDown">
+                                    <span class="pull-down-icon down-icon"></span>
+                                    <span class="pull-down-msg">下拉刷新</span>
+                                    <span class="loading"></span>
+                                </div>
+                                <div class="record-all">
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-minus">-￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-minus">-￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                </div>
+                                <div class="scroller-pullUp">
+                                    <span class="pull-up-icon up-icon"></span>
+                                    <span class="pull-up-msg">上拉查看更多</span>
+                                    <span class="loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tuwen2">
+                            <div class="scroller">
+                                <div class="scroller-pullDown">
+                                    <span class="pull-down-icon down-icon"></span>
+                                    <span class="pull-down-msg">下拉刷新</span>
+                                    <span class="loading"></span>
+                                </div>
+                                <div class="record-used">
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-minus">-￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-minus">-￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                </div>
+                                <div class="scroller-pullUp">
+                                    <span class="pull-up-icon up-icon"></span>
+                                    <span class="pull-up-msg">上拉查看更多</span>
+                                    <span class="loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tuwen3">
+                            <div class="scroller">
+                                <div class="scroller-pullDown">
+                                    <span class="pull-down-icon down-icon"></span>
+                                    <span class="pull-down-msg">下拉刷新</span>
+                                    <span class="loading"></span>
+                                </div>
+                                <div class="record-expire">
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-minus">-￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-minus">-￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">返现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">分佣金</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                    <div class="purse-item">
+                                        <div class="p-line1"><span class="p-title">提现</span><span class="p-num-plus">+￥5.00</span></div>
+                                        <div class="p-line2"><span class="">银行卡：212666555511005</span><span class="">余额：￥200</span></div>
+                                        <div class="p-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                                    </div>
+                                </div>
+                                <div class="scroller-pullUp">
+                                    <span class="pull-up-icon up-icon"></span>
+                                    <span class="pull-up-msg">上拉查看更多</span>
+                                    <span class="loading"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="js/swiper.js"></script>
+            <script>
+            var swiper = new Swiper('.tuwen-cont', {
+                slidesPerView: 1,
+                centeredSlides: true,
+                //loop: true,
+                onSlideNextStart: function(swiper){
+                    var i = $(".tuwen .swiper-slide-active").index();
+                    console.log(i);
+                    var left = Number(i)?(Number(i)*33.33):0;
+                    $('.team-header .active-line').css('left',left+'%');
+                },
+                onSlidePrevStart: function(swiper){
+                    var i = $(".tuwen .swiper-slide-active").index();
+                    console.log(i);
+                    var left = Number(i)?(Number(i)*33.33):0;
+                    $('.team-header .active-line').css('left',left+'%');
+                },
+                onSlideChangeEnd: function(swiper){
+                    console.log($(".tuwen .swiper-slide-active")[0]);
+                }
+            });
+            </script>
+        </div>
+    </article>
+    <script>
+        /*头部*/
+        $('.team-header>span').on('tap',function(){
+            var i = $(this).index();
+            var left = Number(i)?(Number(i)*33.33):0;
+            $('.team-header .active-line').css('left',left+'%');
+            swiper.slideTo($(this).index(),500,true);
+        });
+        $(".bg-layer").on("tap",function(e){
+            $(".share-area").removeClass('share-area-show');
+            $(".add-area").removeClass('add-area-show');
+            $(".set-recomm").removeClass('set-recomm-show');
+            setTimeout(function(){
+                $(".bg-layer").css("display","none");
+            },300);
+            $('.m-footer>a.share').find("span").removeClass('on');
+        });
+    </script>
+</body>
+</html>

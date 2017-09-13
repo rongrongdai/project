@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的钱包</title>
+<style type="text/css">
+p{ margin:0; padding:0;}
+ul,ol {list-style:none;}
+a{ text-decoration:none;}
+img{border:0}
+.qianball{ width:900px;}
+
+.qianball .qianb-coney{ width:900px;}
+.qianball .qianb-coney .qia-left{ width:510px; border:1px #dddedd solid; float:left; height:120px;}
+.qianball .qianb-coney .qia-left p{ font-weight:bolder; margin-bottom:15px;}
+.qianball .qianb-coney .qia-left p ,.qianball .qianb-coney .qia-left span{ margin-left:20px; margin-top:15px; margin-right:20px;}
+.qianball .qianb-coney .qia-left a{ width:75px; height:30px; background:#f8f8f8; border:1px #CCC solid; padding:7px; color:#656666; border-radius:5px; font-size:14px;}
+.qianball .qianb-coney .qia-left a:hover{ background:#ff9d3a; color:#FFF; border:1px #ff9d3a solid;}
+.qianball .qianb-coney .qia-left strong{ color:#feba94; font-size:22px; margin-right:5px;}
+
+
+.qianball .qianb-coney .qia-riht{width:350px; border:1px #dddedd solid; float:right; height:120px;}
+.qianball .qianb-coney .qia-riht .qht-l,.qianball .qianb-coney .qia-riht .qht-r{ margin-top:15px;}
+.qianball .qianb-coney .qia-riht .qht-l{ width:100px; float:left; margin-left:20px;  font-weight:bolder;}
+.qianball .qianb-coney .qia-riht .qht-r{ width:200px; float:right;}
+.qianball .qianb-coney .qia-riht .qht-r img{ margin-right:7px;}
+.qianball .qianb-coney .qia-riht .qht-r p{ line-height:30px; font-size:14px;}
+.qianball .qianb-coney .qia-riht .qht-r span{ margin-left:4px; margin-right:4px; color:#fb2d0f;}
+.qianball .qianb-coney .qia-riht .qht-r a{ color:#136ec3;}
+.qianball .qianb-coney .qia-riht .qht-r a:hover{ text-decoration:underline; color:#ff9d3a;}
+
+.qianball .qianb-coner{width:900px;  border:1px #dddedd solid; float:left; margin-top:20px;}
+.qianball .qianb-coner .pn{ line-height:45px; margin:15px 0px 0px 25px; font-weight:bolder;}
+.qianball .qianb-coner table{width:840px;  margin-left:21px;}
+.qianball .qianb-coner table .anl{ background:#effbeb; line-height:30px; font-weight:bolder;}
+.qianball .qianb-coner table .ane{ background:#EEE; line-height:30px;}
+.qianball .qianb-coner table td{ width:160px; text-align:center; font-size:14px; }
+.qianball .qianb-coner .jlu{ text-align:center; line-height:30px; font-size:14px;}
+
+.qianball .qianb-coner .anyg{width:900px; text-align:center; margin-top:20px; margin-bottom:20px;}
+</style>
+</head>
+
+<body>
+   <div class="qianball">
+     <img src="__ROOT__/public/images/home/qiany.jpg" style="margin-left:-70px;margin-bottom:20px;margin-top:10px;"/>
+     
+     <div  class="qianb-coney">
+         <div class="qia-left">
+           <p>账户余额：</p>
+				<span><strong><if condition='$uinfo.money gt 0'><{$uinfo.money}><else/>0.00</if></strong>元 </span>
+                <a class="bdpay" href="javascript:;">充值</a>
+                <a class="bdwith" href="javascript:;">提现</a>
+<!--            <a href="javascript:">超级账号</a>-->
+         </div>
+        
+        <div class="qia-riht">
+             <div class="qht-l">我的资产</div>
+             <div class="qht-r">
+             <p><img src="__ROOT__/public/images/home/qian1.png" />学豆
+             	<span><if condition='$uinfo.vmoney gt 0'><{$uinfo.vmoney}><else/>0.00</if></span>
+                <span style='cursor: pointer'><a href='__APP__/Consume/Consume/posit'>兑换</a></span>
+             </p>
+             <p><img src="__ROOT__/public/images/home/qian2.png" />支付宝账号<span>0</span><a class="bdbind" style='cursor: pointer;padding-left:5px'>绑定</a></p>
+<!--             <p><img src="__ROOT__/public/images/home/qian3.jpg" />百宝劵<span>0</span>张</p>-->
+             </div>
+        </div> 
+     </div>
+     
+     <div  class="qianb-coner">
+         <p class="pn">账户记录：</p>
+         <table>
+            <tr class="anl">
+              <td>时间</td>
+              <td>类型</td>
+              <td>充值金额</td>
+              <td>消费金额</td>
+              <td>订单ID</td>
+            </tr>
+            <tr class="ane">
+              <td>20:00</td>
+              <td>支付宝</td>
+              <td>200元</td>
+              <td>129元</td>
+              <td>9320</td>
+            </tr>
+            <tr class="ane">
+              <td>20:00</td>
+              <td>支付宝</td>
+              <td>200元</td>
+              <td>129元</td>
+              <td>9320</td>
+            </tr>
+         </table>
+         <p class="jlu">没有记录</p>
+         <div class="anyg">
+               <input type="button" value="上一页" />
+               <input type="button" value="1" />
+               <input type="button" value="2" />
+               <input type="button" value="3" />
+               <input type="button" value="4" />
+               <input type="button" value="5" />
+               <input type="button" value="6" />
+               <input type="button" value="7" />
+               <input type="button" value="8" />
+               <input type="button" value="9" />
+               <input type="button" value="下一页" />
+               <input type="button" value="尾页" />
+               共10页，当前第2页
+         </div>
+     </div>
+   </div>
+
+
+
+<!----------------------------------------->
+<div class="popup">
+	<div class="back"></div><!--共用遮挡DIV-->
+    <div class="tent bind"><!--绑定帐号-->
+    	<div class="title">绑定帐号<span>X</span></div>
+        <div class="line"><div class="left">支付宝帐号：</div><input name="" placeholder="支付宝帐号" /></div>
+        <div class="line"><div class="left">确认帐号：</div><input name="" placeholder="确认支付宝帐号" /></div>
+        <div class="line"><input class="sub" type="submit" name="" value="提交保存" /></div>
+    </div>
+	<div class="tent pay"><!--充值-->
+    	<div class="title">帐户充值<span>X</span></div>
+        <div class="line"><div class="left">充值金额：</div><input name="" placeholder="充值金额" /></div>
+        <div class="line"><input class="sub" type="submit" name="" value="前往充值" /></div>
+    </div>
+	<div class="tent with"><!--提现-->
+    	<div class="title">余额提现<span>X</span></div>
+        <div class="line"><div class="left">可提现金额：</div><input name="" class="mis_wit" readonly="readonly" value="￥999" /></div>
+        <div class="line"><div class="left">提现金额：</div><input name="" placeholder="提现金额" /></div>
+        <div class="line"><div class="left">收款帐号：</div><input name="" placeholder="收款支付宝帐号" /></div>
+        <div class="line"><input class="sub" type="submit" name="" value="提交" /></div>
+    </div>
+</div>
+<!----------------------------------------->
+<style>
+.popup{font-family:"微软雅黑";}
+.popup .back{background:url(__ROOT__/public/images/home/bg.png); position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:1;display:none;}
+.popup .tent{width:500px;height:300px;background:#FFF;position:absolute;top:25%;left:25%;z-index:2;border-radius:4px;box-shadow:0 0 15px #333;display:none;}
+.popup .tent .title{height:40px;line-height:40px;font-weight:bold;font-size:16px;text-indent:10px;border-bottom:1px solid #ccc;}
+.popup .tent .title span{float:right;margin-right:15px;font-weight:normal;cursor:pointer;}
+.popup .tent .title span:hover{color:#F93;}
+.popup .tent .line{width:300px;height:30px;margin:20px auto;}
+.popup .tent .line .left{float:left;width:100px;font-size:14px;line-height:30px;}
+.popup .tent .line input{float:left;height:20px;margin:0;padding:3px 5px;color:#555;outline:none;}
+.popup .tent .line .sub{width:100px;height:30px;background:#00b38a;border:none;color:#FFF;padding:0;margin:20px 0 0 100px;cursor:pointer;border-radius:4px;}
+.popup .tent .line .sub:hover{color:#f93;}
+.popup .with .line .mis_wit{border:none;height:30px;padding:0;color:#F93;}
+</style>
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+<script>
+function   shar_Shut(content){	$('.popup .back').hide();$('.tent.' + content).hide();	}
+function   shar_Open(content){	$('.popup .back').show();$('.tent.' + content).show();	}
+
+$('.bdbind').click(function(){	shar_Open('bind')	})
+$('.bdpay').click(function(){	shar_Open('pay')	})
+$('.bdwith').click(function(){	shar_Open('with')	})
+
+$('.bind .title span').click(function(){	shar_Shut('bind')	})
+$('.pay .title span').click(function(){		shar_Shut('pay')	})
+$('.with .title span').click(function(){	shar_Shut('with')	})
+
+
+</script>
+<!----------------------------------------->
+</body>
+</html>

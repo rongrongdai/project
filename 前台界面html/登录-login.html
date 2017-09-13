@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    
+    <style>
+        body{background-color:#fff;}
+        /*iscroll*/
+        #wrapper {    width: 100%;overflow: hidden;position: absolute;bottom: 0rem;top:0;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        
+        .account-savety{font-size:0.24rem;width:100%;}
+        .user-info{margin: 0.24rem 0 1.36rem 0;background-color:#fff;}
+        .user-info>div{height:0.88rem;line-height:0.88rem;}
+        .user-info .u-right{float: right;clear: both;}
+        .user-info span{display: inline-block;font-size:0.3rem;vertical-align: middle;width: 1.5rem;padding-left: 0.24rem;box-sizing: border-box;}
+        .user-info .u-right .u-arrow{width: 0.12rem;height: 0.25rem;background: url("images/right-arrow.png") no-repeat scroll center center / contain;margin-left: 0.2rem;}
+        .u-line2>div{border-bottom: 1px solid #eeeef1;}
+        .u-line2>div input{height:0.5rem;display: inline-block;font-size:0.3rem;vertical-align: middle;color:#333;}
+        .u-line2>div .pw-eye{width:0.52rem;height:100%;background: url("images/pw-eye0.png") no-repeat scroll center center / contain;margin-left: 0.2rem;}
+        .u-line2>div .pw-eye-see{background: url("images/pw-eye1.png") no-repeat scroll center center / contain;}
+        .account-savety p{margin:0.25rem 0;}
+        .account-savety .a-save-btn{height:0.88rem;line-height:0.88rem;text-align:center;width:92.5%;font-size:0.3rem;border-radius:0.06rem;margin:0 auto 0.1rem auto;background-color:#a3a3a3;color:#fff;display: block;}
+        .account-savety .a-save-btn.active{background-color:#ff3c00;}
+        .account-savety .a-tips{color:#ff3c00;float: right;margin-right:3.75%;}
+        /*校验
+        .account-savety input{box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;border-radius:2px;padding: 0 30px 0 3px;width:3.4rem;}       
+        .account-savety input:required:required {background: #fff url(images/red_asterisk.png) no-repeat 98% center;}
+        .account-savety input:required:valid{background: #fff url(images/valid.png) no-repeat 98% center;box-shadow: 0 0 5px #5cd053;}
+        .account-savety input:focus:invalid{background: #fff url(images/invalid.png) no-repeat 98% center;box-shadow: 0 0 5px #d45252;}
+
+        .account-savety input{border-radius:2px;padding: 0 30px 0 3px;width:3.4rem;}       
+        .account-savety input:required:required {background: #fff url(images/red_asterisk.png) no-repeat 98% center;}
+        .account-savety input:required:valid{background: #fff url(images/valid.png) no-repeat 98% center;}
+        .account-savety input:focus:invalid{background: #fff url(images/invalid.png) no-repeat 98% center;}*/
+        .alter-wrap{width:3rem;height:0.02rem;margin:0 auto;}
+        .social {-webkit-transform-origin: 50% 0;transform-origin: 50% 0;-webkit-transform: scale(0) translateY(-1.9rem);transform: scale(0) translateY(-1.9rem);opacity: 0;-webkit-transition: all .4s ease;transition: all .4s ease;width:3rem;line-height:0.6rem;color:#fff;border-radius:0.06rem;text-align:center;background:rgba(0, 0, 0, 0.4);letter-spacing:1px;}
+        .social.active.top {-webkit-transform: scale(1) translateY(-0.9rem);transform: scale(1) translateY(-0.9rem);}
+        .social.active {opacity: 1;-webkit-transition: all .4s ease;transition: all .4s ease;}
+
+        /*.material-design {position: relative;}
+        .material-design canvas {opacity: 0.25;position: absolute;top: 0;left: 0;}*/
+
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click:true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="account-savety">
+                    <form class="contact_form" action="注册-register.html" method="">
+                        <div class="user-info u-line2" >
+                            <div><span>手机号：</span><input type="text" placeholder="请输入手机号" required maxlength="11" pattern="[0-9]*"></div>
+                            <div><span>密码：</span><input type="password" placeholder="(8-20)位" class="password" required maxlength="20" minlength="8"><span class="pw-eye"></span></div>
+                        </div>
+                        <div class="alter-wrap">
+                            <div class="social top">用户名或密码错误!</div>
+                        </div>
+                        <div class="a-save-btn material-design" data-color="#2f5398" disabled="true" >登录</div>
+                    </form>
+                    <span class="a-tips">忘记密码</span>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--<script src="js/ripple.js"></script>-->
+    <script>
+        $('.pw-eye').on('tap',function(){
+            $(this).toggleClass('pw-eye-see');
+            if($(this).hasClass('pw-eye-see')){
+                $(this).parent().find('.password').attr('type','text');
+            }else{
+                $(this).parent().find('.password').attr('type','password'); 
+            }
+        });
+        function validate(obj){
+            var form = $(obj).parents('form');
+            var tel = form.find('input[type="tel"]');
+            var pw = form.find('input[type="password"]');
+            var text = form.find('input[type="text"]');
+            var pass = true,
+                focus = true,
+                patt;
+            
+            if(tel[0]){
+                /*手机号*/
+                patt = /^[1]([3][0-9]{1}|59|58|88|89)[0-9]{8}$/;
+                if(tel.val()=='' || !patt.test(tel.val())){
+                    if(focus){
+                       tel.focus(); 
+                       focus = false;
+                    }
+                    pass = false;
+                }else{
+                    pass = true;
+                }
+            }
+            if(pw[0]){
+                /*密码，字母开头，字母数字下划线组合8-20位*/
+                patt = /^[a-zA-Z]\w{7,19}$/;
+                if(pw.val()=='' || !patt.test(pw.val())){
+                    if(focus){
+                       pw.focus(); 
+                       focus = false;
+                    }
+                    pass = false;
+                }else{
+                    pass = true;
+                }
+            }
+            
+            if(text.size()>0){
+                text.each(function(){
+                    if($(this).hasClass('password')){
+                        /*密码，字母开头，字母数字下划线组合8-20位*/
+                        patt = /^[a-zA-Z]\w{7,19}$/;   
+                    }else if($(this).hasClass('ID_Number')){
+                        /*身份证号码*/
+                        patt = /\d{15}|\d{17}[0-9Xx]/;
+                    }else{
+                        /*普通文本框，字母数字下划线组合8-20位*/
+                        patt = /\w{8,20}$/;
+                    }
+                    if($(this).val()==''|| !patt.test($(this).val())){
+                        if(focus){
+                           $(this).focus(); 
+                           focus = false;
+                        }
+                        pass = false;
+                    }else{
+                        pass = true;
+                    }
+                });
+            }
+            if(pass){
+                form.submit();
+            }
+        }
+        $('.user-info input').on('input',function(){
+            var required = true;
+            $('.user-info input').each(function(){
+                if($(this).val()==''){
+                    required = false;
+                }
+            });
+            if(required){
+                $('.a-save-btn').addClass('active');
+                var one = false;
+                if($('.a-save-btn').attr('disabled')=='true'){
+                    $('.a-save-btn').attr('disabled','false');
+                    $('.a-save-btn').on('tap',function(){
+                        console.log(0);
+                        if(one)return;
+                        $('.social').addClass('active');
+                        one = true;
+                        setTimeout(function(){
+                            $('.social').removeClass('active');
+                            one = false;
+                        },1000);
+                    });
+                }
+                
+            }else{
+                $('.a-save-btn').removeClass('active');
+                $('.a-save-btn').off('tap');
+                $('.a-save-btn').attr('disabled','true');
+            }
+        });
+    </script>
+</body>
+</html>

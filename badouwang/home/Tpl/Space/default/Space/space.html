@@ -1,0 +1,364 @@
+<include file="../../../Public/default/header" />
+<style>
+    .tent_con{width:620px;padding:10px 20px;margin:0 auto;margin-top:10px;border:1px solid #ccc;overflow:hidden;font-family:"微软雅黑";}
+    .tent_con .top{height:28px;}
+    .tent_con .top div{float:left;line-height:28px;margin-left:5px; color:#636363;}
+    .tent_con .top img{float:left;width:20px; height:20px;margin-top:5px }
+    .tent_con .con{height:60px;padding:10px 0;}
+    .tent_con .con textarea{width:610px;height:52px;border:1px solid #CCC;outline:none;padding:4px 5px;color:#555; resize:none;}
+    .tent_con .bot{height:35px;}
+    .tent_con .bot .beft{float:left;margin-right:15px;height:25px;padding:5px 0;cursor:pointer;}
+    .tent_con .bot .beft .tet{float:left;line-height:28px;font-size:14px; color:#636363; }
+    .tent_con .bot .beft div.img{float:left;background-image:url(__ROOT__/public/images/home/space/icon2.png);width:28px;height:28px;}
+    .tent_con .bot .beft div.img.v1{ background-position:-25px 6px;}
+    .tent_con .bot .beft div.img.v2{ background-position:-25px -27px;}
+    .tent_con .bot .beft:hover div.img.v1{ background-position:6px 6px;}
+    .tent_con .bot .beft:hover div.img.v2{ background-position:6px -27px;}
+    .tent_con .bot .beft:hover .tet{color:#F93;}
+    .tent_con .bot .release{float:right;width:85px;height:35px;background:#00b38a;line-height:35px;text-align:center;border-radius:4px;color:#FFF;cursor:pointer;}
+    .tent_con .bot .release:hover{background:#009500;}
+
+    .addons .layer-content{
+            background:#fff;
+            padding:10px;
+            -moz-border-radius-bottomleft:4px;
+            -moz-border-radius-bottomright:4px;
+            -webkit-border-bottom-left-radius:4px;
+            -webkit-border-bottom-right-radius:4px;
+            border-bottom-left-radius:4px;
+            border-bottom-right-radius:4px
+    }
+    .addons .layer-content .emotions li{
+            border:1px solid #e8e8e8;
+            cursor:pointer;
+            float:left;
+            width:26px;
+            overflow:hidden;
+            padding:4px 2px;
+            text-align:center;
+            margin:0
+    }
+    .addons .layer-content .emotions li:hover{
+            border:1px solid #0095cd;
+            background:#fff9ec
+    }
+    .tent_reply{width:615px;padding:10px 20px;margin:30px auto;border:1px solid #ccc;overflow:hidden;font-family:"微软雅黑";}
+    .tent_reply .con{height:60px;padding:10px 0;}
+    .tent_reply .con textarea{width:600px;height:52px;border:1px solid #CCC;outline:none;padding:4px 5px;color:#555; resize: none;}
+    .tent_reply .bot{height:35px;}
+    .tent_reply .bot .beft{float:left;margin-right:15px;height:25px;padding:5px 0;cursor:pointer;}
+    .tent_reply .bot .beft div.tet{float:left;line-height:28px;font-size:14px; color:#636363;}
+    .tent_reply .bot .beft div.img{float:left;background-image:url(__ROOT__/public/images/home/space/icon2.png);width:28px;height:28px;}
+    .tent_reply .bot .beft div.img.v1{ background-position:-25px 6px;}
+    .tent_reply .bot .beft:hover div.img.v1{ background-position:6px 6px;}
+    .tent_reply .bot .beft:hover div.tet{color:#F93;}
+    .tent_reply .bot .release{float:right;width:85px;height:35px;background:#00b38a;line-height:35px;text-align:center;border-radius:4px;color:#FFF;cursor:pointer;}
+    .tent_reply .bot .release:hover{background:#00b38a;}
+    .tent_reply .bot .rig_con{float:right;font-size:14px;line-height:35px;margin-right:20px; color:#636363;}
+</style>
+<link rel="stylesheet" href="__ROOT__/public/css/home/Space.css" />
+<link type="text/css"  rel="stylesheet" href="__ROOT__/public/css/home/index.css"/>
+<include file="../../../Public/default/sheader" />
+ <div class="sp-er">
+            <include file="../../../Public/default/sleft" />
+            <div class="sp-er-center">
+                    <span class="cone">有什么新的学习窍门，来跟大家一起分享</span>
+                   
+                    <if condition='!$other'>
+                         <form method="post" id="dataform" action="" enctype="multipart/form-data">
+                            <div class="tent_con">
+                            <div class="top"><img  src="__ROOT__/public/images/home/space/icon1.png" /><div>发布分享</div></div>
+                            <div class="con"><textarea  placeholder="分享内容..." id='content' name='content' ></textarea></div>
+                            <div class="bot">
+                                <div class="beft"><div class="img v1"></div><div class="tet" name='face'>表情</div></div>
+                                <div class="beft"><div class="img v2"></div><a href="javascript:;"> <span class="tet" id="simg">图片</span><input type="file" name="simg" style="display:none"/></a></div>
+                                <div class="release" name='spred'>发布</div>
+                                <div id="show"></div>
+                            </div>
+                            </div>
+                              <input type="hidden" name="token" value="<{$token}>"/>
+                              <input type="hidden" name="timestamp" value="<{$timestamp}>"/>
+                         </form>
+                    </if>
+                        
+                    <div class="scenter-san" style='margin-top:20px;'>
+                        <if condition='!$other'><div class="center-yi <if condition="$type eq 'all'">cw</if>" name="all" > 所有动态(<{$sum}>)</div></if>
+                        <div class="center-yi <if condition="($type eq 'self') OR ($other)">cw</if>" name="self">我的动态(<span id="mdy"><{$ssum}></span>)</div>
+                    
+                    </div>
+                    <div style="clear:both;"></div>
+                    <foreach name="dymics" item="dymic">
+                    <div class="cent-yincy">
+                       
+                               <div class="centw-ere" style="font-size:14px;">
+                                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png'"  src="<if condition="$user.user_pic neq '' "><if condition="strpos($user['user_pic'],'ttp')"><{$user.user_pic}><else/>__ROOT__/<{$user.user_pic}></if><else/>__ROOT__/public/images/home/uimg.png</if>"' width="60px" height="60px" align="center" style="margin-right:5px;"><{$dymic.content|strip_tags}>
+                                </div>
+                          <if condition="$dymic.contentpic neq '' ">
+                              <div class="centw-ery"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$dymic.contentpic}>"  /></div>
+                          </if>
+                         <div class="centw-san">
+                                   <div class="centw-sy">
+                                     <a href="javascript:;"><span>折叠<{$dymic.id}></span><div class="sy-yi"></div></a>
+                                    </div>
+                                    <div class="centw-se">
+                                    <span>发表于：<{$dymic.publisttime}></span>  
+                                    <span><a href="javascript:;">来自:<if condition="$nickname"><{$nickname}><else/><{$Think.session.uname}></if></a></span>     
+                                    <span><a href="#">转发</a></span>
+                                    <span><{$dymic.readnumber}> 人阅读</span>        
+                                    <span><a href="javascript:;" name="gcomment" number="<{$key}>">
+                                    	<img onerror="javascript:this.src=__'ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/shuo.gif" /> 
+                                    	<span name="goodnumber"><{$dymic.goodnumber}></span></a>
+                                    </span>        
+                                    <a class="centw-s-y" name="comment" href="javascript:;">我要评论</a>
+                                    </div>                           
+                         </div> 
+                         <div class="centw-si">
+                                 <if condition="true">
+                                    <a href="javascript:;" name='comment' number='<{$key}>'></a> 
+                                    
+                                    <div class="tent_reply" style="display:none">
+                                        <div class="con"><textarea name="content<{$key}>" placeholder="您的评论！" id='content<{$key}>' value=""></textarea></div>
+                                        <div class="bot">
+                                            <div class="beft"><div class="img v1"></div><div class="tet" name="face">表情</div></div>
+                                            <div class="release" name="reply">回复</div>
+                                            <div class="rig_con">还可以输入140个字符</div>
+                                        </div>
+                                    </div>
+                                </if>
+                                
+                        </div> 
+                    </div>
+                    
+                      <div class="pingren" >
+                      
+                           <foreach name="dymic.comment" item="comment">
+                            <div class="pinnnnn">
+                                <div class="pren-yi">
+                                    <div class="pinimg"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="<if condition="$comment.3 neq ''"><if condition="strpos($comment[3],'ttp')"><{$comment.3}><else/>__ROOT__/<{$comment.3}></if><else/>__ROOT__/public/images/home/nimg.png</if>"  width="40px" height="40px"/> </div>
+                                    <div style='float:left;margin-left: 12px;'>
+                                        <span><{$comment.2}> 回复:</span><span name="comment" style="margin-left:6px;"><{$comment[1]}></span><br/><span style='line-height: 30px;'><{$comment.0}></span>
+                                    </div>
+                                </div> 
+                                <div style="clear:both;"></div> 
+                            </div>
+                            
+                           </foreach>
+                           
+                          
+                      </div>
+                        
+                </foreach>
+            </div>
+    <include file="../../../Public/default/sright" />
+
+</div>
+<script id="comment" type="text/html">
+     <div class="pinnnnn">
+        <div class="pren-yi">
+            <div class="pinimg"><img align="center" onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/{{# if(!d.img){d.img="public/images/home/nimg.png"}}}{{d.img}}"  width="40px" height="40px"/> </div>
+            <div style='float:left;margin-left: 12px;'>
+                <span>{{d.rname}} 回复:</span><span name="cc">{{d.content}}</span><br/><span style='line-height: 30px;'>{{d.time}}</span>
+            </div>
+            </div> 
+        <div style="clear:both;"></div> 
+    </div>
+</script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script src="__ROOT__/public/js/laytpl.js"></script>
+<script src="__ROOT__/public/js/layer/extend/layer.ext.js"></script>
+<script src="__ROOT__/public/js/home/manhuaHtmlArea.1.0.js"></script>
+<script src='__ROOT__/public/js/jquery.form.js'></script>
+<script>
+$('.center-yi').click(function(){
+		 $('.center-yi').removeClass('cw');
+		   $(this).addClass('cw')
+})
+ function initpic(){
+        $(".centw-ery").find("img").each(function(){
+            if($(this).width()>300){
+                $(this).css('width',"300");
+            }
+            
+        })
+    }
+
+$(function(){
+    initpic();
+    $(".centw-ery").find("img").error(function(){
+        $(this).css('width',"300");
+    })
+    var upic="__ROOT__<{$user.user_pic}>";
+   
+    $("a[name=comment]").click(function(){
+       // $(this).parent().siblings('div.tent_reply').toggle();//有多个tent_reply   CSS名时
+       //$('.tent_reply').toggle();//没有多个tent_reply   CSS名时
+        if($(this).parent().parent().next(".tent_reply").css("display")==='block'){
+            $(this).parent().parent().next(".tent_reply").hide();
+        }else{
+            $(this).parent().parent().next(".tent_reply").show();
+        }
+    })
+    $("span[name=comment]").find("img").attr("align","center");
+    $("div[name=face]").click(function(){
+       var did=$(this).parent().parent().parent().find("textarea").attr("id");
+        $(this).manhuaHtmlArea({
+		Event : "click",
+		Left : -22,
+		Top : 23,			
+		id : did
+	});
+    })
+    
+    $(".centw-ere").find("p").each(function(){
+        if($(this).find("img").size()){
+           $(this).css("float","left").css("margin-top","-10px").css("margin-left","35px");  
+        }else{
+           $(this).css("float","left").css("margin-top","20px").css("margin-left","35px");
+        }
+        
+    })
+    $(".pinimg").each(function(){
+            $(this).next("div:first").each(function(){
+                $(this).find("span").find("p").each(function(){
+                    var obj=$(this);
+                    if($(this).find("img").size()){
+                        $(obj).css("margin-top","-12px");
+                    }
+                });
+            })
+    })
+    var uid="<{$Think.session.uid}>";
+    $("a[name=concern]").click(function(){
+       $.get("__ROOT__/index.php/Space/Space/concern",{"uid":uid},function(data){
+           data=eval("("+data+")");
+           if(data){
+               $(".yingy").text(parseInt( $(".yingy").text())+1);
+           }
+           $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 2,msg: data.message}});
+       });
+    })
+       
+    
+    
+    $("div[name=reply]").click(function(){
+        var cval= $(this).parent().parent().find("textarea").val();
+        var id=$(this).parent().parent().find("textarea").attr("id").substr($(this).parent().parent().find("textarea").attr("id").lastIndexOf('t')+1);
+        $(this).parent().parent().find("textarea").replaceContent(cval);
+        var content=$(this).parent().parent().find("textarea").val();
+        var pobj=$(this).parent().parent();
+        if(content && content!=='您的评论！'){
+            $.get('__ROOT__/index.php/Space/Space/comment',{'id':id,'content':content},function(data){
+                data=eval("("+data+")");
+                if(data.code===1){
+                   var gettpl = document.getElementById('comment').innerHTML;
+                   laytpl(gettpl).render(data.res, function(html){
+                        $(".pingren").append(html);
+                   });
+                   $("span[name=cc] img").attr('align','center');
+                    $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 1,msg:'评论成功！'}});
+                    pobj.find("textarea").val('');
+                    pobj.hidden();
+                }else{
+                    $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 3,msg:data.message}});
+                }
+            })
+        }else{
+             $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 3,msg: '请输入评论内容！'}});
+         }
+    })
+    $("a[name=gcomment]").click(function(){
+        var obj=$(this);
+        $.get('__ROOT__/index.php/Space/Space/gcomment',{'id':$(this).attr('number')},function(data){
+            data=eval('('+data+')');
+            if(data.code==1){
+                var gn="span[name=goodnumber"+$(obj).attr('number')+"]";
+                $(obj).find("span[name=goodnumber]").text(parseInt($(obj).find("span[name=goodnumber]").text())+1);
+            }
+            $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 2,msg: data.message}});
+        });
+    })
+    $("#tabHeads").find("span").hide();
+    $("#simg").click(function(){
+        $("input[name=simg]").click();
+    });
+    function initc(type){
+        var url=location.href;
+         url=url.substr(0,url.indexOf("?"));
+         location.href=url+"?type="+type;
+    }
+    $("div[name=all]").click(function(){
+         initc('all');
+    })
+    $("div[name=self]").click(function(){
+         initc('self');
+    })
+    
+    $("div[name=spred]").click(function(){
+        $("#content").replaceContent($("#content").val());
+        if($("#content").val()!==''){
+             var options = {
+                            type:'post',
+                            url:'__ROOT__/index.php/Space/Space/space',
+                            success: function (data) {
+                                data=eval('('+data+')');
+                                if(data.code==1){
+                                    var comment='<div class="cent-yincy">';
+                                    comment+='<div class="centw-ere">'+'<img onerror="javascript:this.src='+"'"+"__ROOT__/public/images/home/n_pic.png';"+'"  src="'+upic+'"'+' width="60px" height="60px" style="float:left;">'+
+                                    data.content+'</div>';
+                                    if(data.type===1){
+                                            comment=comment+
+                                            "<div class='centw-ery'><img align='center' src='__ROOT__/"+data.img+'" /></div>';
+                                    }
+                                    comment+='<div class="centw-san">'+
+                                                  '<div class="centw-sy">'+
+                                                   ' <a href="javascript:;"><span>展开</span><div class="sy-yi"></div></a>'+
+                                                   '</div>'+
+                                                  ' <div class="centw-se">'+
+                                                    '<span>刚刚</span>'+
+                                                    '<span><a href="javascript:;">来自:<{$Think.session.uname}></a></span>'+    
+                                                    '<span><a href="javascript:;">转发</a></span>'+     
+                                                    '<span>0 人阅读</span>'+        
+                                                    "<span><a href='#'><img onerror='javascript:this.src="+'"'+'__ROOT__/public/images/home/n_pic.png'+'"'+"'"+'src="__ROOT__/public/images/home/space/shuo.gif" />0</a></span>'+        
+                                                    ' <a class="centw-s-y" name="comment" href="javascript:;">我要评论</a>'+
+                                                   '</div>'; 
+                                          
+                                    $(".cent-yincy:first").before(comment);
+                                    initpic();
+                                    $("#mdy").text(parseInt($("#mdy").text())+1);
+                                    
+                                }
+                                $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 2,msg: data.message}});
+                            }
+                        };
+                        
+           $("#dataform").ajaxSubmit(options);
+           $("#content").val('');
+        }else{
+            $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 2,msg: '请输入分享内容！'}});
+        }
+    })
+  
+})	
+
+$('.centw-sy').click(function(){
+     $(this).find("span").size();
+	 var Cssname = $(this).find("div").attr('class');
+	 if( Cssname == 'sy-yi'){
+             $(this).find("div").addClass('sy-now').removeClass(Cssname);
+         }else{	
+             $(this).find("div").addClass('sy-yi').removeClass(Cssname);
+         }
+     $(this).parent().parent().next('.pingren').toggle();
+})
+$("span[name=pmessage]").click(function(){
+    var id=$(this).attr("mid");
+     layer.prompt({title: '请输入私信内容？'}, function(name){
+                $.getJSON('__ROOT__/index.php/Ajax/AjaxMessage/sendMessage',{'to':id,'content':name},function(data){
+                    var type=data.code==='1'?1:2;
+                    $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: type,msg: data.message}});
+                });
+          });
+})
+</script>
+<div style="clear:both;"><{$pages}></div>
+<include file="../../../Public/default/footer" />

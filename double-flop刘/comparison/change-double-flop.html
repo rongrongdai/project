@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>翻倍吧，红包君</title>
+		<meta charset="UTF-8">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<!--<link rel="stylesheet" href="https://static0s.lingqianduobao.net/duobao-activity/2017/double-flop/1.1.3/css/double-flop.css" />-->
+		<link rel="stylesheet" href="css/double-flop.css" />
+	</head>
+
+	<body>
+		<div v-cloak id="app">
+			<div class="container" :class="{'changeTop':activity.status==='not_start'}">
+				<header>
+					<img src="images/banner.jpg" />
+				</header>
+				<section class="rule">
+					<article v-if="dialog=='rule'">
+						<p>活动规则：</p>
+						<p>1.活动时间：2017年6月18日</p>
+						<p>2.参与此活动需要在活动页面领取活动资格，未领取活动资格的用户即使消费满1888也无法参与红包翻倍活动，亲们记得领取活动资格噢~</p>
+						<p>3.活动期间，累计消费每满1888即可获得系统随机赠送的10/50/500大红包，赠送获得的红包可以选择原额抱走或者挑战翻倍，每个红包有50%的概率可以翻至2倍，若翻倍失败，获得的红包则清零，不再发放</p>
+						<p>4.若获得活动资格的用户消费满1888获得的红包没对本活动进行任何操作，视为放弃参与该活动</p>
+						<p>5.所有红包抵扣额度不计算在该活动消费的1888元内</p>
+						<p>6.获得的红包适用于全场商品，红包自生效日起有效期为5天，请尽快使用！</p>
+						<div>最终活动解释权归零钱夺宝所有</div>
+					</article>
+					<button @click="showRule" class="ruleBtn"></button>
+				</section>
+				<section class="countdown" v-if="activity.status==='not_start'">
+					<span class="title">距离活动开始</span>
+					<span class="time">{{countdown.hours}}</span>:<span class="time">{{countdown.min}}</span>:<span class="time">{{countdown.sec}}</span>
+				</section>
+				<section class="flop">
+					<div class="consume" v-if="activity.status==='running'&&token">
+						<p>{{chanceTip}}</p>
+					</div>
+					<div class="category">
+						<div class="imgSroll">
+							<div v-show="flopData.status==='flopping'||flopData.status==='claimingDouble'">
+								<ul>
+									<li class="flopImg" v-for="item in categories"><img :src="item.img_url"></li>
+								</ul>
+							</div>
+							<!--抽中红包-->
+							<div class="flopImg" v-if="flopData.status==='flopped'">
+								<img :src="flopData.flopped.imgUrl">
+							</div>
+							<!--等待开奖-->
+							<div class="flopImg" v-if="flopData.status==='waiting'">
+								<img src="images/waiting.png">
+							</div>
+						</div>
+					</div>
+					<div v-if="activity.status==='not_start'" class="btnCon">
+						<button class="btn btn_disable">活动未开启</button>
+					</div>
+					<div v-if="activity.status==='running'" class="btnCon">
+						<div v-if="!token">
+							<button @click="alertLogin" class="btn btn_long">我要去夺宝</button>
+						</div>
+						<div v-else>
+							<div class="flex" v-if="flopData.status==='flopped'">
+								<button @click="claimOrigin" class="btn btn_normal">原额领取</button>
+								<button @click="claimDouble" class="btn btn_normal">我要翻倍</button>
+							</div>
+							<div class="alignCenter" v-if="flopData.status==='waiting'">
+								<!--<button @click="flop" class="btn btn_long">{{flopButtonTip}}</button>-->
+								<button @click="flop(5)" class="btn btn_long btn_normal_disable" id="btn">翻五次</button>
+								<button @click="flop(1)" class="btn btn_long">翻一次</button>
+							</div>
+						</div>
+					</div>
+					<div v-if="activity.status==='ended'" class="btnCon">
+						<button class="btn btn_disable">活动已结束</button>
+					</div>
+					<div class="myRecordsBtn">
+						<a @click="showMyRecords">我的记录&gt;&gt;</a>
+					</div>
+				</section>
+				<!--all-luckydraw-records-->
+				<section class="winners">
+					<div class="head">
+						<img src="images/winners_top.png" />
+					</div>
+					<div class="winners_title">
+						<img class="winners_titleImg" src="images/winners_title.png" />
+						<div class="winners_main">
+							<div class="box">
+								<p v-if="activity.status==='not_start'" class="lucky_list_msg">活动未开启，敬请期待~</p>
+								<div v-else>
+									<p v-if="latestRecords.length===0" class="lucky_list_msg">暂无数据</p>
+									<ul v-else>
+										<li v-for="item in latestRecords">
+											{{item.note}}
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="claim">
+					<div v-if="activity.status==='not_start'||activity.status==='running'">
+						<div class="claim_btn btn_result flex" v-if="claimQualificationTime">
+							<div class="result">
+								已领取 {{claimQualificationTime}}
+							</div>
+							<div class="goIndexPage" @click="goToClientIndex">
+								去夺宝
+							</div>
+						</div>
+						<div class="claim_btn btn_yellow" @click="claimQualification" v-else>
+							领取活动资格
+						</div>
+					</div>
+					<div class="claim_btn btn_yellow" v-if="activity.status==='ended'">
+						活动已结束
+					</div>
+				</section>
+				<!--dialog:my-records-->
+				<dialogs v-show="dialog=='myRecords'">
+					<div class="dialog-title flex">
+						<p><img src="images/dialogTitle_myRecords.png"></p>
+					</div>
+					<div class="dialog-content">
+						<div v-if="activity.status==='not_start'" class="noData">
+							活动未开启，敬请期待~
+						</div>
+						<div class="dialogPadding" v-else>
+							<div id="wrapper">
+								<div class="myRecordsCon">
+									<div class="noData" v-if="myRecords.items.length == 0">暂无数据</div>
+									<ul v-else>
+										<li v-for="item in myRecords.items" class="flex">
+											<span>{{item.create_time}}</span>
+											<span>{{item.note}}</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div id="pullUp"
+								 :class="{'flip':myRecords.status==='gonnaLoad'}"
+								 :class="{'loading':myRecords.status==='loading'}">
+								<div v-if="myRecords.status==='init'"></div>
+								<div v-else>
+									<span class="pullUpIcon" v-if="myRecords.status==='standby'||myRecords.status==='gonnaLoad'"></span>
+									<span class="pullUpLabel">{{myRecordsStatusText}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</dialogs>
+				<!-- 对话框 - 领取结果 -->
+				<dialogs v-show="dialog==='result'">
+					<div class="flex">
+						<div class="flower" v-if="flopData.claimed.success">
+							<img src="images/flower.png" />
+						</div>
+						<div>
+							<div class="dialog-title flex">
+								<p>
+									<img v-if="flopData.claimed.success" src="images/dialog_success.png">
+									<img v-else src="images/dialog_fail.png">
+								</p>
+							</div>
+							<div class="dialog-content">
+								<p class="congratulations">{{flopData.claimed.tip}}</p>
+								<p>获得￥<span class="coin">{{flopData.claimed.name}}</span></p>
+								<div v-if="flopData.claimed.success" class="view">可去【我的红包】查看</div>
+							</div>
+							<div class="dialog-btn flex">
+								<button @click="confirmResult">确定</button>
+							</div>
+						</div>
+						<div class="flower" v-if="flopData.claimed.success">
+							<img class="right" src="images/flower.png" />
+						</div>
+					</div>
+				</dialogs>
+				<!--dialog:红包详情 翻五个红包-result-->
+				<dialogs v-show="dialog==='categoriesInfo'">
+					<div class="flex categoriesInfo">
+						<div>
+							<div class="dialog-title flex">
+								<p>
+									<img src="images/popup_hbxq.png">
+								</p>
+							</div>
+							<!--五个红包列表-->
+							<ul>
+								<li class="flopImg" v-for="item in imgList "><img :src="item.origin_img_url"></li>
+							</ul>
+							<div class="dialog-btn flex">
+								<button @click="claimOrigin">原额领取</button>
+								<button @click="claimDouble">全部翻倍</button>
+							</div>
+						</div>
+
+					</div>
+				</dialogs>
+				<!--dialog:翻倍详情 翻五个红包-result-->
+				<dialogs v-show="dialog==='fiveCategories'">
+					<div class="flex categoriesInfo">
+						<div>
+							<div class="dialog-title flex">
+								<p>
+									<img src="images/popup_fbxq.png">
+								</p>
+							</div>
+							<!--五个红包列表-->
+							<img style="display: none" src="images/xhb_g_0.png" id="failedImg">
+							<ul>
+								<li class="flopImg" v-for="item in imgList "><img :src="item.double_img_url"></li>
+							</ul>
+							<div class="dialog-btn flex">
+								<button @click="confirmResult">确定</button>
+							</div>
+						</div>
+
+					</div>
+				</dialogs>
+				<div class="mask" v-if="isShowMask" @click="onMaskClick"></div>
+			</div>
+		</div>
+		<template id="dialog">
+			<section class="dialog lottery_pop">
+				<slot></slot>
+			</section>
+		</template>
+		<script src="https://static0s.lingqianduobao.net/resource/js/flexible-0.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://static0s.lingqianduobao.net/resource/js/lqlib-0.0.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://static0s.lingqianduobao.net/resource/js/vue-2.1.10.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://static0s.lingqianduobao.net/resource/js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/iscroll.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/double-flop.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>大V</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {width: 100%;overflow: hidden;position: absolute;bottom:0;top:0;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;background-color:#fff;}
+
+        .rank{font-size:0.26rem;padding: 0.5rem 0.3rem;}
+        .rank .rank-item{margin-bottom: 0.2rem;width:5.8rem;height:2.84rem;position:relative;}
+        .rank .r-lv1{background-color:#ffb3a7;}
+        .rank .r-lv2{background-color:#c93756;}
+        .rank .r-lv3{background-color:#ed5736;}
+        .rank .rank-item .r-title{font-size:0.4rem;color:#fff;text-align:center;padding: 0.6rem 0.4rem 0 0.4rem;}
+        .rank .rank-item .r-title>p{letter-spacing:2px;}
+        .rank .rank-item .r-info{font-size:0.36rem;text-align:left;line-height:0.7rem;background-color:rgba(255,255,255,0.5);position:absolute;left:0;bottom:0;width:100%;padding-left:0.46rem;letter-spacing:2px;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="rank">
+                    <div class="rank-item r-lv1">
+                        <div class="r-title"><p>大V获得产品佣金的20%</p></div>
+                        <div class="r-info">一级分佣</div>
+                    </div>
+                    <div class="rank-item r-lv2">
+                        <div class="r-title"><p>消费者上级的上级获得产品佣金的30%</p></div>
+                        <div class="r-info">二级分佣</div>
+                    </div>
+                    <div class="rank-item  r-lv3">
+                        <div class="r-title"><p>消费者上级获得产品佣金的50%</p></div>
+                        <div class="r-info">三级分佣</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</body>
+</html>

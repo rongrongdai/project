@@ -1,0 +1,186 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/Space.css" />
+<link type="text/css"  rel="stylesheet" href="__ROOT__/public/css/home/index.css"/>
+<include file="../../../Public/default/sheader" />
+<div class="sp-er">
+<include file="../../../Public/default/sleft" />
+<!--我的培训-->
+ <div class="sp-er-center">
+           <div class="mtrain-centeyi">
+              <div class="mtra-ce-yi mtrp">
+                 <p>发布的培训</p>
+                 <div class="mtsjx dshan"></div>
+              </div>
+              
+              <div class="mtra-ce-yi">
+                 <p>我的收藏</p>
+                 <div class="mtsjx"></div>
+              </div>
+           </div>
+ 
+         <div class="mtrain-centeer">
+             <foreach name='datas' item='course'>
+               <div class="matr-ce-two">
+                   <div class="matr-y"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="<if condition="$course.c_img neq ''">__ROOT__<{$course.c_img}><else/>__ROOT__/public/images/home/n_pic.png</if>" width='131'/></div>
+                        <div class="matr-er">
+                           <div class="matr-e">
+                               <p><if condition="$course.aname neq ''"><{$course.aname}><else/><{$course.cname}></if></p>
+                               <span>
+                                   <{$course.descript|html_entity_decode}>
+                               </span>
+                           </div>
+                            <div class="map-bj"><p><a href='__ROOT__/index.php/Organ/Organ/odetail?id=<{$course.id}><if condition="$course.type eq 2">&type=2<else/>&type=1</if>'>查看详情</a></p></div>
+                       </div>
+               </div>
+               </foreach>
+         </div>
+         <div class="padd" style='display:none'>
+             <div class="ts-tit">共<span name="sum"></span>条记录，当前第<span name="cpage"></span>/<span name="pages">10</span>页,每页<span name='ppage'>10</span>条记录</div>
+                <div class="ts-but"> 
+                <input type="button" name="submit" id="submit1" value="第一页" />
+                <input type="button" name="submit" id="submit2" value="上一页" />
+                <input type="button" name="submit" id="submit3" value="下一页" />
+                <input type="button" name="submit" id="submit4" value="最后一页" />  
+             </div>
+         </div>
+ </div>
+ 
+<!--热门培训课程-->
+ <div class="sp-er-righty">
+      <div class="ma-rty"><span>热门培训课程</span></div>
+      
+      <div class="ma-rter">
+          <foreach name='hdatas' item='course'>
+         <div class="ma-rter-yi">
+             <if condition='course.c_img neq ""'><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$course.c_img}>" width="259"/></if>
+             <div class="ma-yic" style="display:none;">
+              <p></p>
+              <p class="mapyi">
+              
+              </p>
+              <p class="macha"></p>
+             </div>
+             
+             <div class="ma-yice"> <span><{$course.aname}></span></div>
+         </div>
+              </foreach>
+      </div>
+      
+ </div>
+<script id="courses" type="text/html">
+    <div class="matr-ce-two">
+                   <div class="matr-y"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__{{d.c_img}}" width='100'/></div>
+                        <div class="matr-er">
+                           <div class="matr-e">
+                               <p>{{d.aname}}</p>
+                               <span>
+                               {{d.introduce}}
+                               </span>
+                           </div>
+                            <div class="map-bj"><p><a href='__ROOT__/index.php/Organ/Organ/odetail?id={{d.id}}'>查看详情</a></p></div>
+                       </div>
+               </div>
+</script>
+<script id="no_course" type="text/html">
+    
+                   <div class="baocts" style="margin:20px;">
+                            <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/baoc.png" /><p>亲，你目前还未收藏培训课程呢!!</p>
+                   </div>
+               
+</script>
+
+<div style='clear:both'><{$pages}></div>
+</div>
+<script src="__ROOT__/public/js/laytpl.js"></script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script>
+    $(function(){
+            var course=$(".mtrain-centeer").find(".matr-ce-two");
+            var collection='';
+            var page=1;
+            $(".mtra-ce-yi").click(function(){
+             $(".mtra-ce-yi").removeClass("mtrp");
+             $(".mtra-ce-yi").find(".mtsjx").removeClass("dshan");
+             $(this).find(".mtsjx").addClass("dshan");
+             $(".matr-ce-two").remove();
+             $(this).addClass("mtrp");
+             var ltext=$(this).find("p").text();
+             if(ltext==="我的收藏"){
+                 loadData(page);
+             }else{
+                 console.log(course);
+                 $(".mtrain-centeer").append(course);
+             }
+        }) 
+         function loadData(page){
+                    var loadi = layer.load('加载中…');
+                    $(".mtrain-centeer").find(".matr-ce-two").remove();
+                    if(collection){
+                        layer.close(loadi);
+                        $('.mtrain-centeer').html(collection);
+                    }else{
+                        $.getJSON("__ROOT__/index.php/Ajax/AjaxCourse/getCollect",{'page':page},function(data){
+                           layer.close(loadi);
+                           $("span[name=sum]").text(data.sum);
+                           $("span[name=pages]").text(data.pages);
+                           $("span[name=cpage]").text(page);
+                           $("span[name=ppage]").text(data.ppage);
+                           $(".padd").show();
+                           if(data.entities){
+                              for(var i in data.entities){
+                               var gettpl = document.getElementById('courses').innerHTML;
+                               laytpl(gettpl).render(data.entities[i], function(html){
+                                     collection+=html;
+                                     $('.mtrain-centeer').append(html);
+                               });
+                            } 
+                           }else{
+                             var res = document.getElementById('no_course').innerHTML;
+                             $('.mtrain-centeer').append(res);  
+                           }
+                           
+                       })
+                    }
+                 }
+                 $(".ts-but").find("input[name=submit]").click(function(){
+                     if(page!=1){
+                        collection=''; 
+                     }
+                 })
+        function reload(page){
+            $("tr[name=item]").remove();
+            loadData(page);
+        }
+        
+        $("#submit1").click(function(){
+            reload(1);
+        })
+        $("#submit2").click(function(){
+             var cpage=parseInt($("span[name=cpage]").text());
+            if(cpage-1<=0){
+                    page=1;
+            }else{
+                    page=cpage-1;
+             }
+                         
+                         reload(page);
+        })
+        $("#submit3").click(function(){
+             var cpage=parseInt($("span[name=cpage]").text());
+             var sum=parseInt($("span[name=pages]").text());
+             if(cpage+1>=sum){
+                page=sum;
+                }else{
+                        page=cpage+1;
+                    }
+                       
+            reload(page);
+        })
+        $("#submit4").click(function(){
+             var sum=parseInt($("span[name=pages]").text());
+             reload(sum);
+        })
+    })
+    
+</script>
+<include file="../../../Public/default/footer" />

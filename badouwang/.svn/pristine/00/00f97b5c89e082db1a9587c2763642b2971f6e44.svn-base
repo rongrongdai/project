@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * Description of CommonModel
+ *
+ * @author fanbo
+ */
+class CommonModel extends Model{
+    //事物查询
+    public function transQuery($sqls){
+        $this->startTrans();
+        $res=true;
+        foreach($sqls as $key=>$val){
+          // echo $val.'<br/>';
+             $this->execute($val);
+            if($this->getError()){
+                $this->rollback();
+                $res=false;
+            }
+        }
+        if($res){
+            $this->commit();
+        }
+        return $res;
+    }
+    public function consume($type,$tname){
+        import('Com.Config');
+        $c_val=(int)Config::getConfig($tname,$type);
+        $uid=session('uid');
+        $aname=$c_val>0?'获取':'消耗';
+        if($c_val){
+            $res=M('Credit_log')->add(array('uid'=>$uid,'type'=>'经验','name'=>'提出问题,'.$aname.'经验'.abs($c_val),'val'=>$c_val,'ctime'=>time()));
+            if($res){
+                $res=M('Memberfields')->where("uid='$uid'")->setInc('u_credit',$c_val);
+                return array('res'=>$res,'count'=>$c_val,'tname'=>$tname);
+            }else{
+                return 'cerror';
+            }
+            
+        }else{
+            return 'typeerr';
+        }
+    }
+    //经验消费
+    public function setCredit($type){
+        return $this->consume($type, '经验');
+    }
+    //学豆消费
+    public function setVmoney($type){
+         return $this->consume($type, '学豆');
+    } 
+    
+}

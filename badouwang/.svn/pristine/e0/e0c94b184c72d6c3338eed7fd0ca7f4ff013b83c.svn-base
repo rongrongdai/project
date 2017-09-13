@@ -1,0 +1,31 @@
+<?php
+
+
+class StudyCenterAction extends CommonAction{
+    //put your code here
+    public function index(){
+    	//热门老师
+    	$hotch = M('Teach')->order("hit desc")->limit(6)->select();
+        foreach($hotch as $key=>$val){
+            $hotch[$key]['introduce'] = mb_substr($val['introduce'],0,50,'utf-8').' · · ·';
+        }
+
+    	//最新家教信息
+    	$sql = "SELECT t.title,t.id,t.hit,a.rname FROM bd_teach t JOIN bd_memberfields a ON t.uid=a.uid ORDER BY t.atime LIMIT 10";
+    	$msg = M()->query($sql);
+
+    	//热门学生
+    	$hotstud = M('Memberfields')->limit(12)->select();
+
+    	//老师学吧
+    	$tbar = M('Memberfields')->limit(8)->select();
+
+    	//学生学吧
+    	$sbar = M('Memberfields')->limit(10)->select();
+        //学吧动态
+        $cid=cookie('cid');
+        $notices=M('Notice')->where("type='4' and cid='$cid'")->limit(1,6)->select();
+    	$this->assign(array('hotch'=>$hotch,'hotstud'=>$hotstud,'msg'=>$msg,'tbar'=>$tbar,'sbar'=>$sbar,'notices'=>$notices),'assign');
+        $this->display();
+    }
+}

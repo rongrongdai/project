@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——我的订单</title>
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<link href="__ROOT__/public/css/home/bootstrap.min.css"  type="text/css" rel="stylesheet"/>
+<style type="text/css">
+a{ text-decoration:none;}
+.z-cenog{ width:900px;}
+.z-cenog .zc-one{ margin:15px; border-bottom:1px #9DE1BD solid; height:40px;}
+.z-cenog .zc-one .ddan{ width:470px; float:left; color:#42bab1; font-size:14px;}
+.z-cenog .zc-one .ddae{ width:390px; float:right; color:#2d2a35; font-size:14px;}
+.z-cenog .zc-one .ddae span{ cursor:pointer;}
+.z-cenog .zc-one .ddae .aclick{ color:#42bab1;}
+.z-cenog  .ddaho{ color:#727274; margin:30px 0px 10px 15px;font-size: 16px;}
+.z-cenog  .ddaho span{ color:#fc7718; margin-left:20px;}
+
+.z-cenog  .zc-two{  margin:15px; border:1px #9DE1BD solid; height:135px;}
+
+.z-cenog  .zc-two .zc-tyi{ width:290px; border-right:1px #9DE1BD solid; height:135px; float:left;}
+.z-cenog  .zc-two .zc-tyi img{ width:100px; height:100px; margin:15px; float:left;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef{ float:left;margin-top:10px;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef p{color:#727274; font-size:12px; line-height:20px;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef .cq{  line-height:25px; font-weight:bolder;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef .cz{ margin-top:30px;}
+.z-cenog  .zc-two .zc-tyi .zc-tlef .cs{color:#42bab1;}
+.z-cenog  .zc-two .zc-ter{ width:180px; height:135px; float:left;  border-right:1px #9DE1BD solid;}
+.z-cenog  .zc-two .zc-ter p{ color:#727274; font-size:12px; line-height:27px; text-align:center;}
+.z-cenog  .zc-two .zc-ter .yuad{ color:#fc7718;margin-top:10px;}
+.z-cenog  .zc-two .zc-tsan{ width:210px; height:135px; float:left;  border-right:1px #9DE1BD solid;}
+.z-cenog  .zc-two .zc-tsan p{color:#727274; font-size:12px; line-height:27px; text-align:center;margin-top:10px;}
+.z-cenog  .zc-two .zc-tsan span{ color:#fc7718;}
+.z-cenog  .zc-two .zc-tsi{ float:left; width:130px;padding-top:10px;}
+.z-cenog  .zc-two .zc-tsi p{ color:#727274; font-size:12px; line-height:27px; text-align:center;}
+.z-cenog  .zc-two .zc-tsi a{ color:#fc7718;}
+.z-cenog  .zc-two .zc-tsi a:hover{ color:#42bab1;}
+
+.popup .back{background:url(__ROOT__/public/images/home/bg.png); position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:1;display:none;}
+.popup .tent{width:350px;height:200px;background:#FFF;position:absolute;top:25%;left:25%;z-index:2;border-radius:4px;box-shadow:0 0 15px #333;display:none;}
+.popup .tent .title{height:40px;line-height:40px;font-weight:bold;font-size:16px;text-indent:10px;border-bottom:1px solid #ccc;}
+.popup .tent .title span{float:right;margin-right:15px;font-weight:normal;cursor:pointer;}
+.popup .tent .title span:hover{color:#F93;}
+.popup .tent .line{width:300px;height:30px;margin:10px auto;}
+.popup .tent .line .left{float:left;width:80px;font-size:14px;line-height:30px;}
+.popup .tent .line input{float:left;width:60px;height:20px;margin:0;padding-left:5px;color:#555;outline:none;}
+.popup .tent .line span{line-height: 30px;margin-left: 5px;}
+.popup .tent .line #tclass{padding-top:3px;}
+.popup .tent .line .sub{width:100px;height:30px;background:#00b38a;border:none;color:#FFF;padding:0;margin:10px 0 0 100px;cursor:pointer;border-radius:4px;}
+.popup .tent .line .sub:hover{color:#f93;}
+</style>
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+</head>
+
+<body style="margin:8px;">
+<div class="per">
+   <div class="per-make">
+      <div class="make ymk aclick">我的订单</div>
+   </div>
+      
+
+    <div class="z-cenog">
+        <div class="zc-one" id="od">
+            <!--<p class="ddan">我的订单</p>-->
+            <p class="ddae"><span class="aclick" name="all">全部(<{$all}>) </span>| <span name="pay">待支付(<{$ispay}>)</span> | <span name="do">执行中(<{$do}>)</span> | <span name="end">已结束(<{$end}>)</span> </p>
+        </div>
+    <if condition="$data">
+    <foreach name="data" item="vo" key="i">    
+        <p class="ddaho">订单号：<{$vo.order_num}>  | <{$vo.bm_time|date=("Y年m月d日 H:i"),###}>  <span><if condition="$vo['ispay'] eq 0">待付款<else/>已支付</if></span></p>
+        <div class="zc-two" <if condition="$i%2==1">style="background:#F7FAF7;"</if>>
+      
+            <div class="zc-tyi">
+                <img src="<if condition='$vo.type eq 1'>__ROOT__<{$vo.self_img}><else/>__ROOT__/<{$vo.timg}></if>" />
+                <div class="zc-tlef">
+                  <p class="cq"><{$vo.real_name}></p><p class="cz"><{$vo.course}></p><p class="cs"><{$vo.place}></p>
+                </div>
+            </div>
+         
+            <div class="zc-ter">
+                <php>$danjiao = $vo['money']/$vo['hour'];$vo['classhour']=$vo['classhour']?$vo['classhour']:0;</php>
+                <if condition="$vo.type eq 1"><p class="yuad"><{$danjiao}>.00/小时</p><else/><p class="yuad">课程价格:<{$danjiao}></p></if><if condition='$vo.type eq 1'><p>已购买：<{$vo.hour}>小时</p><p><if condition="$vo['status'] eq 0">已完成：<{$vo.classhour}>/<{$vo.hour}>小时<else/>已结束</if><else/><p>开始时间：<{$vo.s_time|date="Y-m-d",###}></p><p>结束时间：<{$vo.e_time|date="Y-m-d",###}></p></if></p>
+            </div>
+         
+            <div class="zc-tsan">
+                <p>订单金额：<span>￥<{$vo.money}></span>元</p><p>支付金额：<span>￥<{$vo.money}></span>元</p>
+            </div>
+
+            <div  class="zc-tsi">
+                <p><a href="<if condition='$vo.type eq 1'>__APP__/Teach/Teach/teachDetail?pid=<{$vo.course_id}><else/>__APP__/Organ/Organ/odetail?id=<{$vo.course_id}></if>" target="_new">查看详情</a></p>
+                <if condition="$vo['ispay'] eq 0">
+                    <if condition='$vo.status neq 1'><p><a href="__APP__/User/User/orderList?cancel=<{$vo.id}>">取消订单</a></p></if>
+                    <if condition='$vo.status neq 1'><p><a href="__APP__/Teach/Teach/orderDetail?id=<{$vo.order_num}>" target="_new">支付订单</a></p></if>
+                </if>
+                <if condition='$vo.status eq 1'><p><a href="javascript:;" type='<{$vo.type}>' id='<{$vo.id}>' <if condition="$vo.sum lt 1">name='comment'</if>><if condition="$vo.sum gt 0">已</if>评价</a></p></if>
+                <if condition="$vo.k_status heq '0'"><p><a style="color:#0C941E;" href="javascript:classHour(<{$vo.id}>)">课时确认</a></p></if>
+
+            </div>
+        </div>
+    </foreach>
+    <else/>
+        <div class="zc-two"><div style="text-align:center;margin-top:50px;">暂无相关内容</div></div>
+    </if>
+        <div style="text-align:center;margin:20px;"><{$link}></div> 
+    </div>
+
+   
+</div>
+  <!-- 弹窗 -->
+<div class="popup">
+  <div class="back"></div>
+    <div class="tent bind">
+      <div class="title">课时确认<span>X</span></div>
+        <div class="line"><div class="left">上课日期：</div><input type="text" name="date" readOnly style="width:120px;" /></div>
+        <div class="line"><div class="left">完成课时：</div><input type="text" name="classhour" readOnly /><span>小时</span></div>
+
+        <input type="hidden" name="kid" value="" />
+        <div class="line" style="height:0px;"><div class="hint"></div></div>
+        <div class="line"><input class="sub" type="submit" value='确定' /></div>
+    </div>
+</div>    
+  <!-- 弹窗end -->  
+
+    <script src="__ROOT__/public/js/home/jquery.mousewheel.js"></script>
+    <script src="__ROOT__/public/js/home/nicescroll.js"></script>
+    <script src="__ROOT__/public/js/home/noscroll.js"></script>
+<script src="__ROOT__/public/js/home/common.js"></script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script type="text/javascript">
+$(".ddae").find("span").click(function(){
+    var type = $(this).attr('name');
+    window.location.href = "__APP__/User/User/orderList?name="+type;
+});
+var type = "<{$type}>";
+$(".ddae").find("span").removeClass('aclick');
+var node = $(".ddae").find("span[name="+type+"]").addClass('aclick');
+switch(type){case 'all':node;break;case 'pay':node;break;case 'do':node;break;case 'end':node;break;
+}
+function classHour(id){
+ $.post("__APP__/Ajax/AjaxUser/classHour",{kid:id},function(data){
+    if(data){
+        $(".back").show();$(".tent").show();$("input[name='kid']").val(id);
+        $("input[name='date']").val(data.date);$("input[name='classhour']").val(data.classhour);
+    } },'json');
+}
+$(".title span").click(function(){  $(".back").hide() ;$(".tent").hide(); });
+$(".line .sub").click(function(){
+    $(".bind").wrap("<form action='__URL__/classHour' method='post'></form>");
+});
+
+</script>
+<script>
+     $(function(){
+        
+       $("a[name=comment]").click(function(){
+            var id=$(this).attr("id");
+            var type=$(this).attr("type");
+            $.layer({
+            type: 2,
+            shadeClose: true,
+            title: false,
+            closeBtn: [0, true],
+            shade: [0.8, '#000'],
+            border: [0],
+            offset: ['20px',''],
+            area: ['468px', '400px'],
+            iframe: {src: '__ROOT__/index.php/User/User/commment?type='+type+'&id='+id}
+           }); 
+        })
+    })           
+</script>
+</body>
+</html>

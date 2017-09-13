@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>大转盘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <style>
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom:-0.6rem;;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .turn-table-wrap{padding:1.84rem 0 1.7rem 0;background-image:url(images/activity/activity-bg.png);background-size: 100% 100%;background-position: top;background-repeat:no-repeat;}
+        .turn-table-wrap .turn-table{position: relative;margin: 0 auto 0.5rem auto;width: 5.2rem;}
+        .turn-table-wrap .turn-table .t-pointer{width: 1.52rem;height: 1.86rem;position: absolute;top: 50%;margin-top: -1.1rem;left: 50%;margin-left: -0.78rem;z-index: 1;}
+        .turn-table-wrap .turn-table .t-pointer>img{width:100%;}
+        .turn-table-wrap .turn-table .t-rotate{width:5.2rem;height:5.2rem;margin:0 auto;border-radius: 100%;background-image:url(images/activity/turntable.png);background-size: 100% 100%;background-position: center center;background-repeat:no-repeat;}
+        .turn-table-wrap .turn-table .t-rotate>ul{font-size:0.2rem;color:#fff;width:100%;height:100%;position:relative;}
+        .turn-table-wrap .turn-table .t-rotate>ul li{position:absolute;box-sizing: border-box;text-align:center;}
+        .turn-table-wrap .turn-table-info{color:#fff;}
+        .turn-table-wrap .turn-table-info .t-t1{font-size:0.36rem;text-align:center;margin: 0.5rem 0 0.4rem 0;}
+        .turn-table-wrap .turn-table-info .t-t2{font-size:0.3rem;text-align:left;margin-left: 0.6rem;margin-right: 0.5rem;}
+        .turn-table-wrap .turn-table-info .t-t2>p{margin:0.12rem 0;}
+        .turn-table-wrap .turn-table-info .t-t2 ol{list-style-type:none;counter-reset:sectioncounter;}  
+        .turn-table-wrap .turn-table-info .t-t2 ol li{list-style-position:outside;margin:0.12rem 0;} 
+        .turn-table-wrap .turn-table-info .t-t2 ol li:before {content:counter(sectioncounter) "、"; counter-increment:sectioncounter;display: inline-block;vertical-align: top;} 
+        .turn-table-wrap .turn-table-info .t-t2 ol li>p{width:4.8rem;display:inline-block;} 
+
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index: 3;position: fixed;display:none;}
+        .award-result{font-size: 0.24rem;color: #fff;background-image:url(images/activity/result-bg.png);background-size:100% auto;background-position: top;background-repeat:no-repeat;position: fixed;top:-100%;z-index: 3;width:6rem;left:50%;margin-left:-3rem;height:5.4rem;text-align: center;-webkit-animation: animDialog .4s ease-out;animation: animDialog .4s ease-out;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 10ms;display:none;}
+        .award-result-show{display:block;top:1rem;}
+        @-webkit-keyframes animDialog {
+         from{-webkit-transform: scale(.05);transform: scale(.05);}
+         to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        @keyframes animDialog {
+          from{-webkit-transform: scale(.05);transform: scale(.05);}
+          to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        .award-result .a-s-header{position: absolute;width: 2rem;height: 0.6rem;top: 20%;left: 50%;background-image:url(images/activity/award.png);background-size:100% 100%;background-repeat:no-repeat;background-position: center center;margin-left: -1rem;}
+        .award-result .a-s-msg{font-size:0.36rem;margin-top:2.8rem;}
+        .award-result .a-s-name{display: block;margin: 0.2rem 0 0.35rem 0;height: 0.32rem;}
+        .award-result .a-s-btn{font-size: 0.46rem;width: 3.96rem;line-height: 0.96rem;border-radius: 0.1rem;background-color: #ffea77;color: #e2050e;margin: 0 auto;}
+        .award-result .a-s-close{position:absolute;width:0.64rem;height:0.64rem;top:20%;right:-0.18rem;background-image:url(images/activity/close-btn.png);background-size:100% 100%;background-repeat:no-repeat;}
+
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <div class="turn-table-wrap">
+              <div class="turn-table">
+                <div class="t-pointer"><img src="images/activity/pointer.png" alt=""/></div>
+                <div class="t-rotate" id="rotate">
+                    <ul>
+                        <li>15积分</li>
+                        <li>50元现金优惠券</li>
+                        <li>谢谢参与</li>
+                        <li>10积分</li>
+                        <li>10元现金优惠券</li>
+                        <li>15积分</li>
+                        <li>谢谢参与</li>
+                        <li>iPhone6S Plus</li>
+                        <li>10元现金优惠券</li>
+                        <li>50元现金优惠券</li>
+                        <li>15积分</li>
+                        <li>谢谢参与</li>
+                    </ul>
+                    <script>
+                        var num = 12;
+                        var r = $('.t-rotate').width()/2;
+                        var li_Width = ($('.t-rotate').width()-$('.t-pointer').width())/2;
+                        var li_Height = 2 * Math.PI * r/num;
+                        $('.t-rotate ul').css('transform','rotate('+(180/12-1)+'deg)');
+                        $('.t-rotate ul li').each(function(){
+                            var c_angle = 2*Math.PI/360*(360/num)*$(this).index();
+                            var r_angle = 360/num*($(this).index())+90;
+                            var top = (1-Math.cos(c_angle)*7/12)*r;
+                            var left = (1+Math.sin(c_angle)*7/12)*r;
+                            $(this).css({
+                                'width': li_Width+'px',
+                                'height': li_Height+'px',
+                                //'line-height': (li_Height+8)+'px',
+                                'line-height': (li_Height)+'px',
+                                'top': top+'px',
+                                'left': left+'px',
+                                'margin-top':((0-1)*li_Height/2)+'px',
+                                'margin-left':((0-1)*li_Width/2)+'px',
+                                'transform': 'rotate('+r_angle+'deg)'
+                            });
+                        });
+                    </script>
+                </div>
+              </div>
+              <div class="turn-table-info">
+                <div class="t-t1">活动说明</div>
+                <div class="t-t2">
+                  <ol>
+                    <li><p>一人一天只能参与一次;</p></li>
+                    <li><p>每参与一次扣除5个积分(积分不足者不能参与活动);</p></li>
+                    <li><p>活动奖励设置</p></li>
+                  </ol>
+                </div>
+              </div>
+              <div class="turn-table-info">
+                <div class="t-t1">奖品设置</div>
+                <div class="t-t2">
+                  <p>一等奖: 手机一部</p>
+                  <p>二等奖: 赠送现金优惠券1张</p>
+                  <p>三等奖: 赠送积分优惠券1张</p>
+                  <p>普通奖: 赠送积分3分</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </article>
+    <div class="bg-layer"></div>
+    <div class="award-result">
+      <p class="a-s-msg"></p>
+      <span class="a-s-name"></span>
+      <div  class="a-s-btn"></div>
+      <div class="a-s-close"></div>
+      <div class="a-s-header"></div>
+    </div>
+    <script>
+        $(function (){
+            var rotateTimeOut = function (){
+                $('#rotate').rotate({
+                    angle:0,
+                    animateTo:2160,
+                    duration:4000,
+                    callback:function (){
+                        alert('网络超时，请检查您的网络设置！');
+                    }
+                });
+            };
+            var bRotate = false;
+
+            var rotateFn = function (awards, angles, txt){
+                bRotate = !bRotate;
+                $('#rotate').stopRotate();
+                $('#rotate').rotate({
+                    angle:0,
+                    animateTo:angles+1800,
+                    duration:4000,
+                    callback:function (){
+                        bRotate = !bRotate;
+                        console.log(txt);
+                        showAwardResult(txt);
+                    }
+                })
+            };
+            $('.t-pointer').on('tap',function (){
+                if(bRotate)return;
+                var item = rnd(0,7);
+
+                switch (item) {
+                    case 0:
+                        rotateFn(0, 345, '5,15积分');
+                        break;
+                    case 1:
+                        rotateFn(1, 315, '4,50元现金优惠券');
+                        break;
+                    case 2:
+                        rotateFn(2, 285, '0,谢谢参与');
+                        break;
+                    case 3:
+                        rotateFn(3, 255, '6,10积分');
+                        break;
+                    case 4:
+                        rotateFn(4, 225, '3,10元现金优惠券');
+                        break;
+                    case 5:
+                        rotateFn(5, 195, '5,15积分');
+                        break;
+                    case 6:
+                        rotateFn(6, 165, '0,谢谢参与');
+                        break;
+                    case 7:
+                        rotateFn(7, 135, '1,iPhone6S Plus');
+                        break;
+                    case 8:
+                        rotateFn(8, 105, '3,10元现金优惠券');
+                        break;
+                    case 9:
+                        rotateFn(9, 75, '4,50元现金优惠券');
+                        break;
+                    case 10:
+                        rotateFn(10, 45, '5,15积分');
+                        break;
+                    case 11:
+                        rotateFn(11, 15, '0,谢谢参与');
+                        break;
+
+                }
+                console.log(item);
+            });
+        });
+        function rnd(n, m){
+            return Math.floor(Math.random()*(m-n+1)+n);
+        }
+
+        function showAwardResult(str){
+          var obj = $('.award-result');
+          var result = str.split(',');
+          var lv = '';
+          var nextBtnTxt = '领取奖品';
+          switch (result[0]) {
+                    case '0':
+                        lv = '很遗憾没能中奖！';
+                        nextBtnTxt = '再玩一次';
+                        break;
+                    case '1':
+                        lv = '恭喜您中了一等奖哦！';
+                        break;
+                    case '2':
+                        lv = '恭喜您中了二等奖哦！';
+                        break;
+                    case '3':
+                        lv = '恭喜您中了三等奖哦！';
+                        break;
+                    case '4':
+                        lv = '恭喜您中了四等奖哦！';
+                        break;
+                    case '5':
+                        lv = '恭喜您中了五等奖哦！';
+                        break;
+                    case '6':
+                        lv = '恭喜您中了五等奖哦！';
+                        break;
+                }
+          obj.find('.a-s-msg').text(lv);
+          obj.find('.a-s-name').text('('+result[1]+')');
+          obj.find('.a-s-btn').text(nextBtnTxt);
+          if(result[0]=='0'){
+            obj.find('.a-s-header').css('background-image','url(images/activity/sorry.png)');
+          }else{
+            obj.find('.a-s-header').css('background-image','url(images/activity/award.png)');
+          }
+          $('.bg-layer').css('display','block');
+          obj.addClass('award-result-show');
+        }
+        $('.award-result .a-s-close').on('tap',function(){
+          $('.bg-layer').css('display','none');
+          $(this).parents('.award-result').removeClass('award-result-show');
+        });
+    </script>
+</body>
+</html>

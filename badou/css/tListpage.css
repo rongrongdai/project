@@ -1,0 +1,177 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,p,blockquote,form {margin:0; padding:0;}
+ul,ol {list-style:none; }
+a{ text-decoration:none;}
+img{border:0}
+ 
+/*导航条*/
+    .indexone{ background-color:#eeeeee; height:30px; width:100%;}
+    .indexone-y{ height:30px; position:absolute; left:73%; width:380px; }
+	.indexone-y a{ color:#60ba6a; font-size:12px; line-height:30px;  margin:0px 5px 0px 5px;}
+	.indexone-y a:hover{ color:#ea5a3d;}
+	
+	.indextwo{ width:100%; height:85px; background-color:#00b38a;}
+	.indextwo-y{ width:380px; height:85px; float:left;}
+	.indextwo-y img{ margin:5px 0px 0px 30px;}
+	.indextwo-y .mgimg { position:absolute; top:32px; left:64px;}
+	.indextwo-e{  width:105px; height:85px;  float:left;}
+	.indextwo-e p{ margin:33px 10px 0px 10px;}
+	
+	#idy-diply{ width:300px; height:400px;  position:absolute; top:120px; left:300px; display:none; border:1px red solid;}
+	
+	.indextwo-s{ width:350px; height:85px; float:left;}
+	
+	.indextwo-s #indexte{ width:270px; height:35px; margin:23px 0px 0px 0px; padding:0px 0px 0px 10px;}
+	
+    .indextwo-syi{ margin:-38px 0px 0px 280px; width:50px; height:38px; background-color:#007258;}
+	
+	.indextwo-syi img{ margin:6px 0px 0px 13px;}
+	
+	.indextwo-si{ width:520px; height:85px;  float:left;  position:absolute; left:60%;}
+	
+	.indextwo-si li{ width:90px; height:85px; float:left; position:relative; top:-16px; right:40px; line-height:85px; text-align:center;}
+	
+	.indextwo-si a{ color:#FFF; font-size:20px; }
+	
+	.indextwo-si li:hover{ background-color:#007258; }
+	
+	.indextwo-si .idebud{ margin:12px 0px 0px 10px;  height:65px;}
+	
+	.indextwo-si .idebud:hover{ background-color:#00b38a; }
+	
+    .indextwo-si .mgyi{ position:relative; top:-20px; right:10px;}
+	
+    .indextwo-si span{ position:relative; top:-23px; right:22px; color:#00b38a; font-size:20px;}
+
+/*列表页内容*/
+.Lpage-one{ width:100%;}
+/*.Lpone-yi{ width:860px; float:left; margin:15px 0px 0px 95px;}*/
+
+/*.Lpyi-one{ width:100%; border:1px #e5e5e5 solid;}*/
+.Lpyi-one{ width:1230px; border:1px #e5e5e5 solid; margin:0 auto;}
+
+.Lpyi-yi{ width:100%; height:25px; border-bottom:2px solid #00b38a;}
+.Lpyi-yi P ,.Lpyi-yi a{ font-size:12px; line-height:25px; color:#4c4c4c;}
+.Lpyi-er td{  height:45px; font-size:12px; color:#333333; line-height:25px; padding-left:15px; letter-spacing:2px;}
+.Lpyi-er a{ color:#333333;}
+.Lpyi-er a:hover{ color:#00b38a;}
+
+.buxin{ background:#00b38a; height:30px; text-align:center; line-height:30px; color:#FFF;}
+.Lpyi-er .tup{ position:relative; top:11px; left:10px; }
+.Lpyi-er .kmu{ position:relative; top:-16px; left:20px;}
+
+
+/*.Lpyi-two{ width:100%;height:80px;}*/
+.Lpyi-two{ width:1230px; height:80px; margin:0 auto;}
+
+.Lpyi-tyi{ width:80px; height:35px; border:1px #e5e5e5 solid; position:relative; left:730px; background:#eeeeee; top:-73px; }
+.Lpyi-ter{ width:80px; height:35px; border:1px #e5e5e5 solid; position:relative; left:820px;  background:#eeeeee; top:-109px;}
+.Lpyi-tyi p,.Lpyi-ter p ,.Lpyi-tsi p{ font-size:12px; color:#585858; text-align:center; line-height:35px; cursor:pointer; }
+.Lpyi-tsan{  height:35px; font-size:12px; color:#585858;  line-height:35px;  }
+
+.Lpyi-tsi{ width:80px; height:35px; border:1px #e5e5e5 solid; position:relative; left:640px; background:#eeeeee; top:-35px; }
+
+
+/*.Lpyi-there{ width:100%; border:1px #e5e5e5 solid; background:#fafafa; }*/
+.Lpyi-there{ width:1230px; margin:0 auto; /*border:1px #e5e5e5 solid; background:#fafafa;*/}
+
+/*.Lpyi-thyi{ width:100%; height:35px; border:1px #dcdcdc solid; background:#eeeeee; }*/
+/*.Lpyi-thyi .ch{ width:70px; height:35px;  background-color:#00b38a; float:left; border-right:1px  #dcdcdc solid; color:#FFF;}
+.Lity{ width:70px; height:35px;  float:left; border-right:1px  #dcdcdc solid; }
+.Lity p{ font-size:12px; text-align:center; line-height:35px;}*/
+
+.Lpyi-hqr{ height:60px;}
+.Lpyi-hqr p{ font-size:18px; color:#000; line-height:60px; font-weight:900;}
+.Lpyi-hqr span{ color:#ea5a3d;}
+
+.Lpyi-ther{  width:886px;  float:left;}
+/*.Lpyi-ther{ width:100%;}*/
+/*.Lp-xqy{ width:100%; height:147px; border:1px #dcdcdc solid; margin-top:20px; background:#eeeeee;  }*/
+.Lp-xqy{ width:886px; height:167px;  margin-top:20px; /*background:#eeeeee;*//* border:1px #00b38a solid;*/ border:1px #CCC solid;}
+.Lp-xqy:hover{ border:1px #00b38a solid; background:#eeeeee; cursor:pointer;  }
+.Lp-xqyi{ width:180px; float:left; }
+.Lp-xqyi img{z-index:-1; margin:10px 10px 10px 10px;}
+.Lp-xqer{ width:466px; float:left; margin-top:15px;}
+.Lp-xqer p{ font-size:16px; color:#1a1a1a; line-height:35px;}
+.Lp-xqer span{ color:#808080; font-size:12px; line-height:20px;}
+
+
+.Lp-xqer .hui{ background:#ff7701; color:#FFF; font-size:16px; }
+.Lp-xqer .youhui{ font-size:16px; color:#F00;}
+.Lp-xqer .cjiao{ width:40px; height:2px; background:#666; position:relative; top:-23px; left:50px;}
+
+
+
+.Lp-xqsan{ width:160px;  float:left; margin-left:50px; margin-top:20px;}
+.Lp-xqsan p{ width:110px; height:30px; background:#00b38a; margin-top:85px; margin-left:65px; font-size:16px; color:#FFF; text-align:center; line-height:30px;}
+.jgnew{ width:140px; position:relative; top:-90px; left:760px; color:#d85202; font-size:22px;}
+.yrzhe{ position:relative; top:-180px; left:810px;}
+
+
+.Lp-xqsi{ width:160px; height:144px; background:#000; opacity: 0.45;  filter:alpha(opacity=55);-moz-opacity:0.45;}
+.ckan{ width:72px; height:30px; background:#ea5a3d; position:relative; top:55px; left:38px;}
+.ckan p{  position:relative; top:-143px; color:#FFF; font-size:12px; font-weight:bold; left:10px;}
+
+
+
+.Lpyi-thsan{ width:110px; height:35px; background:#e5e5e5; margin:10px 0px 15px 350px;}
+.Lpyi-thsan p{ font-size:18px; color:#333333; text-align:center; line-height:40px;}
+
+
+/*展开*/
+.zhankaiyi{ z-index:200; position:absolute; top:200px; left:520px; background:#FFF; border:1px solid #CCC;}
+.z-al{ width:480px;}
+.z-yi{ width:85px; float:left;}
+.z-yi p{ text-align:center;  font-size:16px; color:#333; line-height:35px;}
+
+.z-er{ width:390px;  float:left;}
+.z-er li{  float:left;  font-size:12px; color:#999; line-height:35px; margin-left:10px;}
+
+.zhankai{ z-index:100; position:absolute; top:260px; left:520px; background:#FFF; border:1px solid #CCC;}
+
+
+/*.zhankai td ,.zhankaiyi td{  height:35px; font-size:12px; color:#999; line-height:25px; font-family:微软雅黑; padding-left:20px; padding-right:10px;}
+.zhankai .diming , .zhankaier .diming { font-size:16px; color:#333;}
+
+
+.zhankaier{ z-index:400; position:absolute; top:330px; left:620px; background:#FFF; border:1px solid #CCC; }
+.zhankaier td{ height:35px; font-size:12px; color:#999; line-height:25px; font-family:微软雅黑; width:40px;}*/
+
+
+.baocts{ z-index:400; position:relative;  top:10px; left:30px; background:#FFF; border:1px solid #CCC; width:630px; height:300px; }
+.baocts img{ margin:35px 0px 0px 10px;}
+.baocts p{ margin:-60px 0px 0px 175px; color:#808080; font-size:18px; font-family:微软雅黑;}
+.baocts span{ color:#ff0000; }
+
+
+/*推荐机构*/
+.Lpone-er{ width:270px; height:1390px;/* border:1px #dddddd solid;*/ float:left; margin:20px 0px 0px 70px;}
+
+.Lpreyi{ height:40px;  width:230px; border-left:4px solid #00b38a; margin-left:20px;}
+
+.Lpreyi p{ color:#494949; font-size:28px; line-height:45px; border-bottom:1px #dddddd solid; margin-left:-5px;}
+.Lpreer{ width:230px; margin-left:20px;}
+.jg-yi{ width:230px; border-bottom:1px  #dbdbdb solid; margin-top:20px;}
+.jg-yi p{ font-size:14px; line-height:30px; font-weight:900;}
+.jg-yi .yishe{ color:#ff9a57;}
+
+
+
+/*关注学校*/
+.Lpage-two{ width:1200px; height:200px;  float:left;   margin:20px 0px 0px 95px;}
+.Lp-twg{ height:40px; border-bottom:1px #dddddd solid; border-top:1px #dddddd solid;}
+.Lp-twg .yesheng{ width:4px; height:30px; background:#00b38a; margin-top:5px;}
+.Lp-twg .guanzhu{ margin:-25px 0px 0px 20px; font-size:20px; color:#4c4c4c;}
+
+.Lp-twer{ height:130px; border-bottom:1px #dddddd solid; }
+.Lp-twer img{ margin:25px 35px 0px 0px;}
+
+
+/*尾部*/
+.weibu{ width:100%; float:left; background:#f5f5f4;}
+.weibu p{ color:#6d6a6a; font-size:14px;}
+.weibu .Ceigt-yi{ margin:60px 0px 0px 490px;}
+.weibu .Ceigt-er{ margin:20px 0px 0px 410px;}
+.weibu .Ceigt-sa{ margin:20px 0px 50px 480px;}

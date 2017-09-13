@@ -1,0 +1,906 @@
+[ 2015-05-16T09:11:16+08:00 ] 127.0.0.1 /badouwang/index.php/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.015625s ]
+INFO: [ route_check ] --END-- [ RunTime:0.015625s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.156250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.062500s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 15 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.218750s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.343750s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.562500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.562500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.609375s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.609375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.046875s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.609375s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T09:11:38+08:00 ] 127.0.0.1 /badouwang/index.php/Teach/Teach/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: select a.real_name rname,a.telephone phone,a.cid,a.address,c.name course,t.title,t.id,t.c_img,t.price,t.hit,t.pay from bd_teach t join bd_authentication a on a.uid=t.uid join bd_classfiy c on c.id=a.cid order by atime desc limit 4 [ RunTime:0.312500s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.078125s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Teach\TeachAction.class.php on line 18 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 60 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='家教分类' LIMIT 1   [ RunTime:0.078125s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 68 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'2' and rft<'13]' and lev-2=1 [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_authentication` [ RunTime:0.093750s ]
+SQL: SELECT * FROM `bd_authentication` WHERE type=1 LIMIT 10   [ RunTime:0.250000s ]
+SQL: SHOW COLUMNS FROM `bd_teach` [ RunTime:0.140625s ]
+SQL: SELECT * FROM `bd_teach`  [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-2.656250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Teach\d3f857edb7da8af2f3efc118fef52929.php 第 15 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-2.656250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046875s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-2.703125s ]
+INFO: Run TokenBuild Behavior [ RunTime:-2.703125s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-2.703125s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-2.703125s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-2.703125s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T09:11:38+08:00 ] 127.0.0.1 /badouwang/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 15 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.015625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.015625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.015625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.031250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T09:11:44+08:00 ] 127.0.0.1 /badouwang/index.php/Organ/Organ/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.031250s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.062500s ]
+SQL: select name from bd_classfiy where lrf>'16' and rft<'75]' and lev-2=1 [ RunTime:0.062500s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.109375s ]
+SQL: select course.aname,spred.timestamp from bd_organ_spred spred left join bd_course course on spred.cid=course.id order by spred.timestamp limit 0,6 [ RunTime:0.437500s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-1.515625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.062500s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 15 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-1.578125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062500s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-1.640625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-1.640625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-1.640625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-1.640625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-1.640625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T09:11:45+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxClassfiy/getChild?cname=%E4%B8%93%E4%B8%9A%E8%80%83%E8%AF%81&ishot=1
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: lev E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 66 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.093750s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='专业考证' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'17' and rft<'46]' and lev-3=1 and ishot=1 [ RunTime:0.109375s ]
+
+[ 2015-05-16T11:35:41+08:00 ] 127.0.0.1 /badouwang/index.php/Organ/Organ/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] mysql_connect():  E:\wamp\wamp\www\badouwang\core\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-21.078125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 15 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-21.078125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-21.093750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-21.093750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-21.093750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-21.093750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-21.093750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:35:45+08:00 ] 127.0.0.1 /badouwang/index.php/Organ/Organ/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.093750s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'16' and rft<'75]' and lev-2=1 [ RunTime:0.078125s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.031250s ]
+SQL: select course.aname,spred.timestamp from bd_organ_spred spred left join bd_course course on spred.cid=course.id order by spred.timestamp limit 0,6 [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-19.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 15 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-19.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-19.015625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-19.015625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-19.015625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-19.015625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-19.015625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:35:46+08:00 ] 127.0.0.1 /badouwang/index.php/User/User/login
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-2.765625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.046875s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-2.812500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062500s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-2.875000s ]
+INFO: Run TokenBuild Behavior [ RunTime:-2.875000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-2.875000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-2.875000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-2.875000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:35:49+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vuser?uname=qiyunfanbo%40126.com
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' LIMIT 1   [ RunTime:0.015625s ]
+
+[ 2015-05-16T11:35:53+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vpass?uname=qiyunfanbo%40126.com&password=654321
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.031250s ]
+NOTIC: [2] md5() expects parameter 1 to be string, array given E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 66 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 77 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 88 行.
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' and password='13d986e951294e328b607007337f17e6' LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:35:53+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vuser?uname=qiyunfanbo%40126.com
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:35:55+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vpass?uname=qiyunfanbo%40126.com&password=654321
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+NOTIC: [2] md5() expects parameter 1 to be string, array given E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 66 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 77 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 88 行.
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' and password='13d986e951294e328b607007337f17e6' LIMIT 1   [ RunTime:0.015625s ]
+
+[ 2015-05-16T11:35:55+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vuser?uname=qiyunfanbo%40126.com
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:35:55+08:00 ] 127.0.0.1 /badouwang/index.php/index/index/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.015625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.015625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.015625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.015625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:36:00+08:00 ] 127.0.0.1 /badouwang/index.php/Organ/Organ/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'16' and rft<'75]' and lev-2=1 [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.015625s ]
+SQL: select course.aname,spred.timestamp from bd_organ_spred spred left join bd_course course on spred.cid=course.id order by spred.timestamp limit 0,6 [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.250000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.250000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.265625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.265625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.265625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.265625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.265625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:36:01+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxClassfiy/getChild?cname=%E4%B8%93%E4%B8%9A%E8%80%83%E8%AF%81&ishot=1
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: lev E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 66 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.031250s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='专业考证' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'17' and rft<'46]' and lev-3=1 and ishot=1 [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:59:27+08:00 ] 127.0.0.1 /badouwang/index.php/Organ/Organ/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'16' and rft<'75]' and lev-2=1 [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.015625s ]
+SQL: select course.aname,spred.timestamp from bd_organ_spred spred left join bd_course course on spred.cid=course.id order by spred.timestamp limit 0,6 [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.250000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.250000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.265625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.265625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.265625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.265625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.281250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:59:28+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxClassfiy/getChild?cname=%E4%B8%93%E4%B8%9A%E8%80%83%E8%AF%81&ishot=1
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: lev E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 66 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.031250s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='专业考证' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'17' and rft<'46]' and lev-3=1 and ishot=1 [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:59:29+08:00 ] 127.0.0.1 /badouwang/index.php/Organ/Organ/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'16' and rft<'75]' and lev-2=1 [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.015625s ]
+SQL: select course.aname,spred.timestamp from bd_organ_spred spred left join bd_course course on spred.cid=course.id order by spred.timestamp limit 0,6 [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.234375s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.234375s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.250000s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.250000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.250000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.250000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.250000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T11:59:29+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxClassfiy/getChild?cname=%E4%B8%93%E4%B8%9A%E8%80%83%E8%AF%81&ishot=1
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: lev E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 66 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='专业考证' LIMIT 1   [ RunTime:0.015625s ]
+SQL: select name from bd_classfiy where lrf>'17' and rft<'46]' and lev-3=1 and ishot=1 [ RunTime:0.000000s ]
+
+[ 2015-05-16T17:36:04+08:00 ] 127.0.0.1 /badouwang/index.php/Organ/Organ/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [2] mysql_connect():  E:\wamp\wamp\www\badouwang\core\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-21.031250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-21.031250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-21.062500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-21.062500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-21.062500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-21.062500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-21.062500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T17:36:46+08:00 ] 127.0.0.1 /badouwang/index.php/Index/Index/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-20.140625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-20.140625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-20.156250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-20.156250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-20.156250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-20.156250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-20.156250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.015625s ]
+
+[ 2015-05-16T17:37:29+08:00 ] 127.0.0.1 /badouwang/index.php/Index/Index/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.031250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.031250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.031250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.031250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.031250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T17:37:33+08:00 ] 127.0.0.1 /badouwang/index.php/Index/Index/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.015625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.015625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.015625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.015625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.015625s ]
+
+[ 2015-05-16T17:38:48+08:00 ] 127.0.0.1 /badouwang/index.php/User/User/login
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.171875s ]
+INFO: [ view_template ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.187500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.187500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.187500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.187500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.187500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.187500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T17:38:51+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vuser?uname=qiyunfanbo%40126.com
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' LIMIT 1   [ RunTime:0.015625s ]
+
+[ 2015-05-16T17:39:18+08:00 ] ERR: (ThinkException) �������ӷ���һ��ʱ���û����ȷ�𸴻����ӵ�����û�з�Ӧ�����ӳ���ʧ�ܡ�
+
+[ 2015-05-16T18:00:58+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vpass?uname=qiyunfanbo%40126.com&password=654321
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+NOTIC: [2] md5() expects parameter 1 to be string, array given E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 66 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 77 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 88 行.
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' and password='13d986e951294e328b607007337f17e6' LIMIT 1   [ RunTime:0.015625s ]
+
+[ 2015-05-16T18:00:58+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vuser?uname=qiyunfanbo%40126.com
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.015625s ]
+INFO: [ route_check ] --END-- [ RunTime:0.015625s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:00:58+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vpass?uname=qiyunfanbo%40126.com&password=654321
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+NOTIC: [2] md5() expects parameter 1 to be string, array given E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 66 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 77 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 88 行.
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' and password='13d986e951294e328b607007337f17e6' LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:00:59+08:00 ] 127.0.0.1 /badouwang/index.php/index/index/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.031250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.031250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.031250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.031250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.031250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:01:07+08:00 ] 127.0.0.1 /badouwang/index.php/Space/Space/space
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 82 行.
+SQL: SHOW COLUMNS FROM `bd_dynamic` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_dynamic` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.031250s ]
+SQL: select user.uname,fields.rname,user.type,fields.address,fields.visitnumber,fields.visitednumber,fields.comstomer from bd_user user left join bd_memberfields fields on fields.uid=user.uid [ RunTime:0.000000s ]
+SQL: select c.com_timestamp,c.content ccontent,d.* from bd_comment c right join (select * from bd_dynamic where uid='11' order by publisttime desc limit 0,10 ) d on d.id=c.aid and d.uid=11 order by com_timestamp desc [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_dynamic` WHERE uid='11' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_dynamic` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.234375s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.234375s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.078125s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.312500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.312500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.312500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.312500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.312500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:06:05+08:00 ] 127.0.0.1 /badouwang/index.php/Index/Index/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.015625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.031250s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.031250s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.031250s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.031250s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.031250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:06:09+08:00 ] 127.0.0.1 /badouwang/index.php/Space/Space/space
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 82 行.
+SQL: SHOW COLUMNS FROM `bd_dynamic` [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_dynamic` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: select user.uname,fields.rname,user.type,fields.address,fields.visitnumber,fields.visitednumber,fields.comstomer from bd_user user left join bd_memberfields fields on fields.uid=user.uid [ RunTime:0.015625s ]
+SQL: select c.com_timestamp,c.content ccontent,d.* from bd_comment c right join (select * from bd_dynamic where uid='11' order by publisttime desc limit 0,10 ) d on d.id=c.aid and d.uid=11 order by com_timestamp desc [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_dynamic` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_dynamic` WHERE uid='11' LIMIT 1   [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.265625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+NOTIC: [8] Undefined index: contentpic E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 301 行.
+NOTIC: [8] Undefined variable: nickname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 312 行.
+NOTIC: [8] Undefined index: comment E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\55678784f0ca7c11e2183c92d4e3e928.php 第 334 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.265625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.296875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.296875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.296875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.296875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.296875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:06:20+08:00 ] 127.0.0.1 /badouwang/index.php/Space/Space/qcenter
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 132 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 132 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 132 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 132 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 137 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 137 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 137 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 137 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 144 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 148 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 148 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\0ea21b57bf1915eea3588c0929ced425.php 第 153 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046875s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.046875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.046875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.046875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.046875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.046875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:06:22+08:00 ] 127.0.0.1 /badouwang/index.php/Space/Space/teach
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_teach` [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 82 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_teach` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_teach` WHERE uid='11' ORDER BY atime desc LIMIT 0,10   [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_teach` WHERE ishot=1 ORDER BY atime desc LIMIT 0,5   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.187500s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 132 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 132 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 132 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 132 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 137 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 137 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 137 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 137 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 144 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 148 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 148 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 153 行.
+NOTIC: [8] Undefined index: img E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\8c9d108ba3761282557e7c5a3485e3e1.php 第 302 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.187500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031250s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.218750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.218750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.218750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.218750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.234375s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:06:22+08:00 ] 127.0.0.1 /badouwang/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.015625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.015625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.015625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.015625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:06:24+08:00 ] 127.0.0.1 /badouwang/index.php/Space/Space/course
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.031250s ]
+NOTIC: [8] Undefined index: page E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 82 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_organ_spred` WHERE uid='11' LIMIT 1   [ RunTime:0.015625s ]
+SQL: select spred.*,course.aname,course.c_img from bd_organ_spred spred left join bd_course course on spred.cid=course.id where spred.uid='11' order by spred.timestamp desc limit 0,10 [ RunTime:0.062500s ]
+SQL: select spred.*,course.aname,course.c_img from bd_organ_spred spred left join bd_course course on spred.cid=course.id where spred.ishot=1 order by spred.timestamp desc limit 0,10 [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.296875s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 133 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 133 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 133 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 133 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 138 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 138 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 138 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 138 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 145 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 149 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 149 行.
+NOTIC: [8] Undefined variable: user E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 154 行.
+NOTIC: [8] Use of undefined constant course - assumed 'course' E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 304 行.
+NOTIC: [8] Use of undefined constant c_img - assumed 'c_img' E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 304 行.
+NOTIC: [8] Use of undefined constant course - assumed 'course' E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 304 行.
+NOTIC: [8] Use of undefined constant c_img - assumed 'c_img' E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fd355ab11203d769341ffd6315b65a2e.php 第 304 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.296875s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046875s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.343750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.343750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.343750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.343750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.343750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-16T18:06:28+08:00 ] 127.0.0.1 /badouwang/index.php/Organ/Organ/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'16' and rft<'75]' and lev-2=1 [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.031250s ]
+SQL: select course.aname,spred.timestamp from bd_organ_spred spred left join bd_course course on spred.cid=course.id order by spred.timestamp limit 0,6 [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.218750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.218750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.218750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.218750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.218750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.015625s ]
+
+[ 2015-05-16T18:06:29+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxClassfiy/getChild?cname=%E4%B8%93%E4%B8%9A%E8%80%83%E8%AF%81&ishot=1
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: lev E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 82 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='专业考证' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'17' and rft<'46]' and lev-3=1 and ishot=1 [ RunTime:0.015625s ]
+

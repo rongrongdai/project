@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>课程管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">答题详情</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab2" class="selected">详情</a></li> 
+                 
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th>序号</th><th>用户</th><th>所在城市</th><th>得分</th><th>作答时间</th>
+        </tr>
+        </thead>
+        <tbody>
+         <foreach name="data" item="vo" key="i">
+            <tr class="<if condition='$i%2==1'>odd<else/>even</if>">
+                <td><{$limit+$i+1}></td>
+                <td><{$vo.rname}></td>
+                <td><{$vo.address}></td>
+                <td><{$vo.score}></td>
+                <td><{$vo.end_time|date="Y-m-d H:i:s",###}></td>
+            </tr>
+        </foreach>
+        
+        
+    
+        </tbody>
+    </table>
+     <{$link}>
+   
+  
+    
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+  
+    </div>
+</body>
+
+</html>

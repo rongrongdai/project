@@ -1,0 +1,29 @@
+<!--尾部 Tail-->
+   <div class="tailall">
+        <div class="tailal-one">
+            <ul>
+             <li><a href="__ROOT__/index.php/Index/Index/about">关于八斗</a></li>
+             <li><a href="__ROOT__/index.php/Index/Index/renc">人才招聘</a></li>
+             <li><a href="__ROOT__/index.php/Index/Index/busition">商务合作</a></li>
+             <li><a href="__ROOT__/index.php/Index/Index/cmer">招商加盟</a></li>
+             <li><a href="__ROOT__/index.php/User/User/ucenter">用户中心</a></li>
+             <li><a href="__ROOT__/index.php/Index/Index/helpcenter">帮助中心</a></li>
+           </ul>
+           <p class="one-y">Copyright(c)2013 badoue.com 深圳百士兴科技有限公司版权所有 </p>
+           <p class="one-yi"> All Rights Reserved 粤ICP备13084511号-2</p>
+        </div>
+   </div>
+   
+ <script>
+    $(function(){
+        $(".hcenter").each(function(){
+            var swidth=$(this).width();
+            var pwidth=$(this).parent().width();
+            $(this).css("margin-left",(pwidth-swidth)/2);
+        })
+    })
+    
+ </script>
+</body>
+
+</html>

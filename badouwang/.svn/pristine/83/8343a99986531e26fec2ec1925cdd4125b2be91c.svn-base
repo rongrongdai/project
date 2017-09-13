@@ -1,0 +1,137 @@
+<?php
+
+/**
+ *教师管理
+ * @author fanbo
+ */
+class  AuthenticationAction extends CommonAction{
+    private $model;
+    public function __construct() {
+        $this->model=new AuthenticationModel();
+        parent::__construct();
+    }
+
+    //认证管理
+    public  function index(){
+      $position='会员管理 >认证管理';
+      $arr = $this->getData(array('type'),'get');
+      //$verified = 3;
+      switch($arr['type']){
+          case '已经审核':
+              $verified = 1;
+              break;
+          case '待审核':
+              $verified = 3;
+              break;
+          default;
+              $verified=1;
+              $arr['type']='已经审核';
+      }
+      $condition = "verified=$verified and type!=4";
+      $condition1 = "a.verified=$verified and a.type!=4";
+      $pagesize = 10;
+      $sum = M('Authentication')->where($condition)->count();
+      $sql = "SELECT u.uname,c.name,a.* FROM bd_authentication a JOIN bd_user u ON a.uid=u.uid JOIN bd_city c ON c.id=a.city WHERE $condition1";
+      $res = $this->setPage($pagesize,$sum,$sql);
+      $this->assign(array('datas'=>$res['data'],'link'=>$res['link'],'limit'=>$res['limit'],'identity'=>C("IDENTITY"),'position'=>$position,'type'=>$arr['type']));
+      $this->display();
+    }
+
+    //认证详情
+    public function detail(){
+        $tid=$this->getData(array('id','type','uid'),'get');
+        $position='会员管理 > 认证管理 >审核申请';
+        $menu=array('mmenu'=>'user');
+        $this->assignData(array('mmenu'=>$menu['mmenu'],'type'=>$tid['type'],'uid'=>$tid['uid'],'smenu'=>$menu['smenu'],'position'=>$position,'data'=>$this->model->where("id='$tid[id]'")->find()), 'assign');
+        $this->display();
+    }
+
+    //认证
+    public  function verify(){
+        $idarr=$this->getData(array('fid','sid','reson','type','uid'),'get');
+        if($idarr['sid']){
+            $res=$this->model->where("id='$idarr[sid]'")->setField(array('reason'=>$idarr['reson'],'verified'=>1,'vtime'=>time()));
+            if($res){//更新身份
+                $uid = $idarr['uid'];
+                $type_id = $this->model->where("uid=$uid")->getField('type');
+                $type_id = $type_id==5?$type_id:$type_id + 1;
+              M('User')->where("uid=$uid")->setField('type',$type_id);
+            }
+            $this->pagego('认证成功', '认证失败，请重试！', $res, 'index',$idarr['type']);
+        }
+        if($idarr['fid']){
+            $data=array('verified'=>2);
+            if($idarr['reson']){
+                $data['reason']=$idarr['reson'];
+            }
+            $res=$this->model->where("id='$idarr[fid]'")->save($data);
+            $this->pagego('拒绝认证成功', '拒绝认证失败，请重试！', $res, $idarr['type']);
+            
+        }
+    }
+
+    /*//程序初始化
+    private function init($search,$bsql,$position,$type){
+        $page=0;
+        $pagesize=10;
+        $condition='';
+        foreach($search as $key=>$val){
+            if($search[$key] && $key!='grade'){
+                $condition.=" $key='$val' and ";
+            }else{
+                if($key=='verified'){
+                    $condition.='verified = 0 and ';
+                }
+            }
+        }
+        if($condition){
+            $condition= substr($condition, 0,  strlen($condition)-4);
+        }
+
+        if($search['grade']){
+            $condition.=" ,grade like '$search[grade]'";
+        }
+        $sum=$this->model->where($condition)->count();
+        if($condition){
+            foreach($search as $key=>$val){
+                $condition=  str_replace($key,"$type.$key", $condition);
+
+            }
+            $bsql.=" and $condition";
+        }
+         if($sum>$pagesize){
+           $page=$this->initPage();
+           import("Com.PageHelper");
+           PageHelper::init($pagesize,10, page, $sum,'');
+           $limit=  PageHelper::getLimit();
+           $bsql.="limit $limit[min],$limit[max]";
+           $pageinfo=  PageHelper::getPageInfos();
+           $this->assign('page',$pageinfo);
+       }
+       
+       $this->assignData(array('mmenu'=>'user','smenu'=>'teacher','position'=>$position,'datas'=>$this->model->query($bsql)), 'assign');
+    }
+    //代理商管理
+    public function proxyer(){
+       $position=' 用户管理 > 代理商管理';
+       $search=$this->getData(array('real_name','grade','city','verified'),'get');
+       $bsql="select proxyer.id,proxyer.real_name,proxyer.cid,proxyer.grade,proxyer.reason,user.uname,verified,user.city,proxyer.telephone,proxyer.company from bd_user user right join bd_authentication proxyer on proxyer.uid=user.uid where proxyer.type=4";
+       $this->init($search, $bsql, $position,'proxyer');
+       $this->assignData(array('mmenu'=>'user','smenu'=>'proxyer','position'=>$position), 'assign');
+       $this->display();
+    }
+    //代理商管理
+    public function organization(){
+       $position='用户管理 > 机构管理';
+       $search=$this->getData(array('real_name','grade','city','verified'),'get');
+       $bsql="select organizition.id,organizition.real_name,organizition.cid,organizition.grade,organizition.reason,user.uname,verified,user.city,organizition.telephone,organizition.company from bd_user user right join bd_authentication organizition on organizition.uid=user.uid where organizition.type=3";
+       $this->init($search, $bsql, $position,'organizition');
+       $this->assignData(array('mmenu'=>'user','smenu'=>'organization','position'=>$position,), 'assign');
+       $this->display();
+    }*/
+
+
+
+
+
+}

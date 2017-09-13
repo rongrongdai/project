@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>课程管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">课程管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab2" class="selected">课程</a></li> 
+                 
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th >序号<i class="sort"><img src="__ROOT__/public/images/admin/px.gif" /></i></th><th>城市</th><th>标题</th><th>科目</th><th>发布者</th><th>元/小时</th><th>报名人次</th><th>发布日期</th><th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+         <foreach name="data" item="vo" key="i">
+		<tr>
+			<td><{$i+1+$limit}></td>
+			<td><{$vo.cname}></td>
+			<td><{$vo.title}></td>
+			<td><{$vo.fname}></td>
+			<td><{$vo.uname}></td>
+			<td><{$vo.price}></td>
+			<td><{$vo.hit}></td>
+			<td><{$vo.atime|date="Y-m-d",###}></td>
+			<td><a href='__ROOT__/index.php/Teach/Teach/agentdetail?<if condition="$vo['type'] eq 1">id<else />pid</if>=<{$vo.id}>' target="parent">查看</a></td>
+		</tr>
+	</foreach>
+        
+        
+    
+        </tbody>
+    </table>
+     <{$link}>
+   
+  
+    
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+  
+    </div>
+</body>
+
+</html>
+

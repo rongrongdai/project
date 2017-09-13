@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        /*绑定微信公众号*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#fff;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+       
+       /*绑定微信公众号*/
+       .wechat{font-size:0.24rem;color:rgba(51,51,51,.5);width:92.1875%;margin:0 auto;}
+       .wechat tr{}
+       .wechat tr td{height: 0.9rem;border-bottom: 1px solid #eeeef1;}
+       .wechat tr td.w-title{width:1.2rem;padding-left: 0.14rem;font-size:0.28rem;}
+       .wechat tr td.w-input{}
+       .wechat tr td.w-input>input{height: 0.5rem;border:none;font-size:0.28rem;color:rgba(51,51,51,.5)}
+       .s-save-btn{text-align:center;font-size:0.28rem;color:#fff;width:92.1875%;margin:1.7rem auto 0.16rem auto;line-height:0.68rem;border-radius:0.06rem;background-color:#ff3c00;}
+       .s-instruction{text-align:center;font-size:0.2rem;color:#333;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <table class="wechat" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="w-title">名称：</td>
+                <td class="w-input"><input type="text"></td>
+              </tr>
+              <tr>
+                <td class="w-title">原始ID：</td>
+                <td class="w-input"><input type="text"></td>
+              </tr>
+              <tr>
+                <td class="w-title">微信号：</td>
+                <td class="w-input"><input type="text"></td>
+              </tr>
+              <tr>
+                <td class="w-title">Token：</td>
+                <td class="w-input"><input type="text" placeholder="公众号的全局唯一票据"></td>
+              </tr>
+              <tr>
+                <td class="w-title">AppId：</td>
+                <td class="w-input"><input type="text" placeholder="第三方用户唯一凭证"></td>
+              </tr>
+              <tr>
+                <td class="w-title">secret：</td>
+                <td class="w-input"><input type="text" placeholder="第三方用户唯一凭证密钥"></td>
+              </tr>
+            </table>
+            <div class="s-save-btn">确定</div>
+            <p class="s-instruction">一个店铺只能绑定一个公众号，绑定后不支持解除</p>
+        </div>
+    </article>
+    
+    
+    <script>
+        
+    </script>
+</body>
+</html>

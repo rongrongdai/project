@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>优惠券</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script type="text/javascript" src="js/fx.js"></script>
+    <script type="text/javascript" src="js/imgEnlarge.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {width: 100%;overflow: hidden;position: absolute;bottom: 0;top:0;background:url(images/coupon-bg.png) no-repeat center center / 100% 100%;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        .coupon-item{width:5.7rem;height:2.65rem;margin:0.2rem auto;background:url(images/coupon-details.png) no-repeat center center / contain;font-size:0.22rem;color:#fff;text-align: center;}
+        .coupon-item>p{float:left;width:100%;}
+        .coupon-item .c-title{font-size:0.36rem;margin-top:0.4rem;}
+        .coupon-item .c-title .num{font-size:0.72rem;}
+        .coupon-item .c-info{margin-top:0.2rem;}
+        .coupon-item .c-date{margin-top:0.15rem;}
+        .info{overflow:auto;}
+        .info>p{font-size:0.26rem;margin:0.36rem 0 0 0.5rem;float:left;clear:both;letter-spacing: 1px;}
+        .receive{font-size:0.36rem;width:1.86rem;line-height:0.52rem;border-radius:0.26rem;background-color:#ff3c00;color:#fff;text-align:center;margin: 0.66rem auto;}
+        .tap-able:active{background-color:#cc3102;}
+        .get-tips{width:3.1rem;line-height:1.04rem;border-radius: 0.06rem;background: rgba(0,0,0,.5);color: #fff;font-size: 0.3rem;text-align: center;position: fixed;z-index: 4;top:40%;margin-top: -0.52rem;left: 50%;margin-left: -1.55rem;display:none;transition: all ease-in 500ms;}
+        .get-tips-show{display: block;}
+        .get-tips-fadeout{opacity: 0;}
+        .get-tips-fadein{opacity: 1;}
+    </style>
+
+    <script type="text/javascript">
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body>
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="coupon-item">
+                    <p class="c-title">糖衣炮诞<span>￥</span><span class="num">10</span></p>
+                    <p class="c-info">无门槛使用</p>
+                    <p class="c-date">有效期：2015.12.23-2015.12.26</p>
+                </div>
+                <div class="info">
+                    <p>1、领取方式：免费领取、或积分兑换</p>
+                    <p>2、使用说明：单笔订单购满459元可用</p>
+                    <p>3、使用期限：2015-10-10 ~ 2015-12-12</p>
+                </div>
+                <div class="receive tap-able">领取</div>
+            </div>
+        </div>
+    </article>
+    <div class="get-tips"></div>
+    <script>
+        $('.receive').on('tap',function(){
+            $('.get-tips').addClass('get-tips-show');
+            $(this).off('tap');
+            setTimeout(function(){
+                $('.receive').removeClass('tap-able');
+            },500);
+            commonTips('get-tips','优惠券领取成功',500);
+        });
+        //通用提示
+        function commonTips(className,msg,time){
+            var _obj = $('.'+className);
+            _obj.text(msg);
+            _obj.addClass(className+'-show');
+            setTimeout(function(){
+                _obj.addClass(className+'-fadeout');
+            },time);
+            setTimeout(function(){
+                _obj.addClass(className+'-fadein');
+                _obj.removeClass(className+'-show');
+            },time*2);
+        }
+    </script>
+</body>
+</html>

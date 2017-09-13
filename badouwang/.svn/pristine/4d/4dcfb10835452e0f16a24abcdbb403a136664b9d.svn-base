@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>投诉</title>
+<style>
+body{margin:0; font-family:"微软雅黑";}
+.content{width:468px;height:400px;margin:0 auto;}
+.rel{color:#F33;padding:20px 40px;font-size:26px;font-weight:bold;}
+.ctent{overflow:hidden;padding:16px 20px;}
+.left{float:left;width:100px; text-align:right;}
+.right{float:left;}
+.right input, .right textarea{ outline:none;border:1px solid #ccc;border-radius:6px;}
+.right input{height:20px;padding:2px 5px;}
+.right textarea{height:100px;width:300px;padding:2px 5px;line-height:22px;color:#555;}
+.content .firm{width:120px;height:36px;margin-left:160px;border:none;font-size:14px;line-height:36px;background:#F33;color:#FFF;border-radius:16px; text-align:center;cursor:pointer;outline:none;}
+.content .firm:hover{background:#F63}
+</style>
+</head>
+<body>
+<div class="content">
+<form name="" method="post">
+
+    <div class="rel">投诉</div>
+    <div class="ctent">
+        <div class="left">课程名称：</div>
+        <div class="right"><input name="" type="text" style="width:300px" /></div>
+    </div>
+    <div class="ctent">
+        <div class="left">发布人：</div>
+        <div class="right"><input name="" type="text" style="width:120px" /></div>
+    </div>
+    <div class="ctent">
+        <div class="left">投诉内容：</div>
+        <div class="right"><textarea name="" placeholder="写下您遇到的情况，我们会尽快的回复您！"></textarea></div>
+    </div>
+    <input type="submit" name="" class="firm" value="确认评价"></input>
+</form>
+</div>
+</body>
+</html>
+

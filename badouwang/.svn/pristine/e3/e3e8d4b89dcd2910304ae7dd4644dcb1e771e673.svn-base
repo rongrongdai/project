@@ -1,0 +1,202 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/Detailspage.css"/>
+
+     <div class="texs-top"></div>
+     <div class="texs-ceny">
+          <div class="tex-y ony">
+             <p><a href="javascript:">找到好老师</a></p>
+             <p><a href="javascript:">当然请他教</a></p>
+             <p><a href="javascript:"><span>了解家长端</span></a></p>
+          </div>
+          <div class="tex-y one">
+             <p><a href="javascript:">让老师成为</a></p>
+             <p><a href="javascript:">自由职业者</a></p>
+             <p><a href="javascript:"><span>了解老师端</span></a></p>
+          </div>
+          <div class="tex-y ons">
+             <p><a href="javascript:">用O2O重构</a></p>
+             <p><a href="javascript:">课外辅导价格链</a></p>
+             <p><a href="javascript:"><span>了解平台流程</span></a></p>
+          </div>
+          <div class="tex-y onsi">
+             <p><a href="javascript:">基于移动互联</a></p>
+             <p><a href="javascript:">随时随地对接需求</a></p>
+             <p><a href="javascript:"><span>了解手机客户端</span></a></p>
+          </div>
+          
+          <div class="tex-er huan">
+              <div class="tut-yi">小学</div>
+              <div class="tut-er tou"><a href="javascript:" class="xiaox">语文</a></div>
+              <div class="tut-er"><a href="javascript:"  class="xiaox">数学</a></div>
+              <div class="tut-er"><a href="javascript:" class="xiaox">英语</a></div>
+              <div class="tut-er"><a href="__URL__/listsnew"  class="xiaox-si">更多</a></div>
+          </div>
+
+         <div  class="tex-san">   
+            <foreach name="data1" item="v1">
+              <a href="__APP__/Teach/Teach/teachDetail?pid=<{$v1.id}>">   
+                <div class="tex-s-y">
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$v1.c_img}>" class="imgt" />
+                   <p class="li"><{$v1.real_name}></p>
+                   <strong>小学<{$gname1}></strong><br />
+                   <p class="jaiol">15年的教龄</p>
+                   <p class="li"><{$v1.address}></p>
+                   <div class="gbian">
+                     <p><{$v1.info}></p>
+                   </div>
+                </div>
+              </a>  
+            </foreach>    
+         </div>
+          
+          
+          
+        <div class="tex-er huan">
+            <div class="tut-yi">初中</div>
+            <div class="tut-er tou"><a href="javascript:" class="xiaox">语文</a></div>
+            <div class="tut-er"><a href="javascript:"  class="xiaox">数学</a></div>
+            <div class="tut-er"><a href="javascript:" class="xiaox">英语</a></div>
+            <div class="tut-er"><a href="javascript:"  class="xiaox">物理</a></div>
+            <div class="tut-er"><a href="__URL__/listsnew"  class="xiaox-si">更多</a></div>
+        </div>
+          
+          
+         <div  class="tex-san">   
+            <foreach name="data2" item="v2">
+              <a href="__APP__/Teach/Teach/teachDetail?pid=<{$v2.id}>">  
+                <div class="tex-s-y">
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$v2.c_img}>" class="imgt" />
+                   <p class="li"><{$v2.real_name}></p>
+                   <strong>小学<{$gname2}></strong><br />
+                   <p class="jaiol">15年的教龄</p>
+                   <p class="li"><{$v2.address}></p>
+                   <div class="gbian">
+                     <p><{$v2.info}></p>
+                   </div>
+                </div>
+              </a>  
+            </foreach>    
+         </div>
+
+
+        <div class="tex-er huan">
+            <div class="tut-yi">高中</div>
+            <div class="tut-er tou"><a href="javascript:" class="xiaox">语文</a></div>
+            <div class="tut-er"><a href="javascript:"  class="xiaox">数学</a></div>
+            <div class="tut-er"><a href="javascript:" class="xiaox">英语</a></div>
+            <div class="tut-er"><a href="javascript:"  class="xiaox">物理</a></div>
+            <div class="tut-er"><a href="__URL__/listsnew"  class="xiaox-si">更多</a></div>
+        </div>
+          
+          
+         <div  class="tex-san">   
+            <foreach name="data3" item="v3">
+              <a href="__APP__/Teach/Teach/teachDetail?pid=<{$v3.id}>">   
+                <div class="tex-s-y">
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$v3.c_img}>" class="imgt" />
+                   <p class="li"><{$v3.real_name}></p>
+                   <strong>高中<{$fname3}></strong><br />
+                   <p class="jaiol">15年的教龄</p>
+                   <p class="li"><{$v3.address}></p>
+                   <div class="gbian">
+                     <p><{$v3.info}></p>
+                   </div>
+                </div>
+              </a>  
+            </foreach>    
+         </div> 
+         
+         
+         
+          <div class="tex-er huan">
+                <div class="tut-yi">艺体</div>
+                <div class="tut-er tou"><a href="javascript:" class="xiaox">舞蹈</a></div>
+                <div class="tut-er"><a href="javascript:"  class="xiaox">绘画</a></div>
+                <div class="tut-er"><a href="javascript:" class="xiaox">书法</a></div>
+                <div class="tut-er"><a href="javascript:"  class="xiaox">声乐</a></div>
+                <div class="tut-er"><a href="javascript:"  class="xiaox">乐趣</a></div>
+                <div class="tut-er"><a href="__URL__/listsnew"  class="xiaox-si">更多</a></div>
+          </div>
+         
+          <div  class="tex-san">   
+            <foreach name="data4" item="v4">    
+              <a href="__APP__/Teach/Teach/teachDetail?pid=<{$v4.id}>">
+                <div class="tex-s-y">
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$v4.c_img}>" class="imgt" />
+                   <p class="li"><{$v4.real_name}></p>
+                   <strong><{$gname4}></strong><br />
+                   <p class="jaiol">15年的教龄</p>
+                   <p class="li"><{$v4.address}></p>
+                   <div class="gbian">
+                     <p><{$v4.info}></p>
+                   </div>
+                </div>
+              </a>
+            </foreach>    
+         </div>
+         
+         
+         
+         <div class="pintlc">平台流程</div>
+         <div class="pilcer">
+            <ul>
+              <li>
+                 <div class="imgda loaon"></div>
+                 <div class="imgxia"></div>
+                 <div class="cone">
+                 <p class="nane">1.搜索老师</p>
+                 <p class="text">通过网页或客户端登入平台查找所需老师，查看详细资料，选择心仪老师。</p>
+              </div>
+              </li>
+              <li>
+                  <div class="imgda loay"></div>
+                  <div class="imgxia"></div>
+                  <div class="cone">
+                  <p class="nane">2、双方沟通</p>
+                  <p class="text">在老师主页与老师在线进行沟通交流，达成共识即可进行约课。</p>
+                 </div>
+              </li>
+              <li>
+                 <div class="imgda loae"></div>
+                  <div class="imgxia"></div>
+                  <div class="cone">
+                  <p class="nane">3、下单约课</p>
+                  <p class="text">双方沟通完成后，填写约课订单并完成支付，课酬将由平台担保。</p>
+                 </div>
+              </li>
+              <li>
+                   <div class="imgda loas"></div>
+                   <div class="imgxia"></div>
+                  <div class="cone">
+                  <p class="nane">4、约定上课</p>
+                  <p class="text">在约定时间和地点，老师对学生进行授课 ，授课完成后，双方相互评价。</p>
+                 </div>
+              </li>
+            </ul>
+         </div>
+          
+          
+     </div>
+     
+<script>
+  $('.tex-s-y').hover(function(){
+      $(this).find('.gbian').toggle();
+  });
+
+  $(".huan").find(".xiaox").click(function(){
+      var jd = $(this).parent().parent().find(".tut-yi").text(),val = $(this).text(),chuan = "",tp = $(document).scrollTop();
+      switch(jd){case '小学':chuan = "?fname1="+val;break;case '初中':chuan = "?fname2="+val;break;case '高中':chuan = "?fname3="+val;break;case '艺体':chuan = "?gname4="+val;break;}
+      window.location.href = "__APP__/Teach/Teach/teachList"+chuan+"&tp="+tp;
+  });
+  var tps = "<{$tp}>";$(document).scrollTop(tps);
+	
+</script>
+     
+<include file="../../../Public/default/footer" />
+</body>
+</html>
+
+
+
+
+

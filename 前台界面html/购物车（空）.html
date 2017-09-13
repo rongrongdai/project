@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>推广产品</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top:0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#f2f2f2;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+       .no-data{text-align: center;}
+       .no-data .img-wrap{width: 1.5rem;height: 1.5rem;border-radius: 100%;margin: 2.7rem auto 0 auto;background-color: #fff;line-height: 1.5rem;}
+       .no-data .img-wrap img{width:100%;}
+       .no-data .msg{font-size:0.3rem;margin: 0.62rem 0 0.3rem 0;color:#7f7f7f;}
+       .no-data .index-btn{font-size:0.26rem;width:1.7rem;line-height:0.48rem;border-radius:0.02rem;color:#fff;background-color:#ff3c00;margin: 0 auto;}
+
+       
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <div class="no-data">
+              <div class="img-wrap">
+                <img src="images/car.png" alt="">
+              </div>
+              <p class="msg">购物车还空着呢，快去挑选商品吧！</p>
+              <div class="index-btn">去逛逛</div>
+            </div>
+        </div>
+    </article>
+    <script>
+
+    </script>
+</body>
+</html>

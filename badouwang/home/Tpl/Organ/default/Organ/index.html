@@ -1,0 +1,590 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/Train.css" />
+<script src="__ROOT__/public/js/jquery.vticker-min.js"></script>
+<!--培训内容-->
+<div id="playBox">
+ <div class="pre"></div>
+    <div class="next"></div>
+    <div class="smalltitle hcenter">
+      <ul>
+        <li class="thistitle"></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <ul class="oUlplay">
+       <li><a href="javascript:;" target="_blank"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/banner1.jpg"/></a></li>
+       <li><a href="javascript:;" target="_blank"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/banner2.jpg"/></a></li>
+       <li><a href="javascript:;" target="_blank"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/banner3.jpg"/></a></li>
+    </ul>
+  </div>
+
+
+<div class="con_a">
+	<div class="con"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/pic_px_01.png" onerror="javascript:this.src='__ROOT__/public/images/home/pxu/pic_px_01.png';"/></div>
+	<div class="con"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/pic_px_02.png" /></div>
+	<div class="con"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/pic_px_03.png" /></div>
+	<div class="con" style="margin:0;border:none;">
+		<div class="title"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/gong.png" /><div>最新需求信息</div></div>
+        <div class="link">
+             <foreach name="notices" item="spred">
+                 <a href="<{$spred.link}>"><div name="left"><li><{$spred.ntext}></li></div><span name="right"><{$spred.atime|date="y-m-d",###}></span></a>
+             </foreach>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="train-two ">
+
+   <div class="trtwo-er-oy">优惠课程</div>
+    <div class="psyour">
+            <div class="roll">
+                <div class="prev"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/zuo.png" width="20" height="20"></div>
+                    <div id='roll'>
+                        <foreach name="ccourses" item="course">
+                        <a href="__ROOT__/index.php/Organ/Organ/odetail?id=<{$course.id}>">
+                            <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$course.timg}>" width="100%" height="140" />
+                            <div class="tixq"><{$course.aname|mb_substr=0,29}></div>
+                            <div class="vnone"><span>查看详情</span></div>
+                        </a>
+                        </foreach>
+                    </div>
+                
+                <div class="next"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/you.png" width="20" height="20"></div>
+            </div>
+    </div>
+    
+    
+    
+<!--培训课程-->
+   <div class="trtwo-san">
+       <div class="trt-syi">
+          <div class="tyi-y"><p>培训课程</p></div>
+               <p class="tcjiy"><span  style="margin-left:32px;">共有 <if condition="$csum"> <{$csum}> <else/> 0 </if>门课程</span> </p>
+               <foreach name="courses" item="course">
+                    <div class='ter-er <if condition="$key eq '0'" >cw</if>'name="courses"><p><{$course.name}></p></div>
+               </foreach>
+       </div>
+       <div class="trt-ser">
+         <div class="tser-yi">
+           <ul>
+<!--        <a href="javascript:;"><li class="rmen">热门</li></a>
+            <a href="javascript:;"><li name='more'>更多</li></a>
+            -->
+		    <span><a class="rmen Ts">热门</a></span>
+            <span><li name='more'><a href='__ROOT__/index.php/Organ/Organ/organList'>更多</a></li></span>
+                      
+           </ul>
+         </div>
+         
+         
+         <!--更多-->
+              <div class="trgegduo" name='cclass' style='display:none;'>
+              </div>
+         <!--更多结束-->
+          <!--隐藏对象-->
+          <div class="tser-san">
+          
+          </div>
+
+
+
+       </div>
+
+ </div>
+   
+<!--合作招生-->
+	<div class="trtwo-si" class="hui">
+       <div class="trtw-sy"><p>合作招生</p></div>
+       <div class="trtw-ser">
+<div class="paddt20 home-wkt">
+
+<div class="paddt20 dir_wrap" id="kta">	
+<!-- --------------------------------------------->
+	<div class="dir dir_a">
+		<a>
+        	
+                <volist name="links" id="link" offset="0" length="2">
+                    <h<if condition="$key eq 0">4<else />5</if>><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$link.logo}>" /></h<if condition="$key eq 0">4<else />5</if>>
+                </volist>
+		</a>
+                <a class="pimg"></a>
+                  <volist name="links" id="link" offset="0" length="2">
+                      
+                 <<if condition="$key eq 0">b<else />i</if>>
+                        <div class="d<if condition="$key eq 0">1<else />2</if>">
+                            <div class="vtitle"><{$link.name}></div>
+                            <div class="vdiv"><{$link.descrip}></div>
+                        </div>
+                    <div class="d2">
+                        <div class="vdiv"><a class="wtzs" href="http://<{$link.url}>">进入官网</a></div>
+                    </div>
+                    </<if condition="$key eq 0">b<else />i</if>>
+                    
+                  </volist>
+                    
+	</div>
+<!-- --------------------------------------------->
+    <div class="dir dir_b">
+		<a>
+                   <volist name="links" id="link" offset="2" length="2">
+                        <h<if condition="$key eq 2">4<else />5</if>><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$link.logo}>" /></h<if condition="$key eq 2">4<else />5</if>>
+                   </volist>
+		</a>
+        <a class="pimg"></a>
+		
+                <volist name="links" id="link" offset="2" length="2">
+                    <<if condition="$key eq 2">b<else />i</if>>
+                        <div class="d<if condition="$key eq 2">1<else />2</if>">
+                            <div class="vtitle"><{$link.name}></div>
+                            <div class="vdiv"><{$link.descrip}></div>
+                        </div>
+                    <div class="d2">
+                        <div class="vdiv"><a class="wtzs" href="http://<{$link.url}>">进入官网</a></div>
+                    </div>
+                    </<if condition="$key eq 2">b<else />i</if>>
+                    </volist>
+                    
+                   
+	</div>
+
+<!-- --------------------------------------------->
+    <div class="dir dir_c">
+		<a>
+                    <volist name="links" id="link" offset="4" length="2">
+                        <h<if condition="$key eq 4">4<else />5</if>><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$link.logo}>" /></h<if condition="$key eq 4">4<else />5</if>>
+                   </volist>
+		</a>
+                <a class="pimg"></a>
+		 <volist name="links" id="link" offset="4" length="2">
+                     
+                     <<if condition="$key eq 4">b<else />i</if>>
+                        <div class="d<if condition="$key eq 4">1<else />2</if>">
+                            <div class="vtitle"><{$link.name}></div>
+                            <div class="vdiv"><{$link.descrip}></div>
+                        </div>
+                     <div class="d2">
+                            <div class="vdiv"><a class="wtzs" href="http://<{$link.url}>">进入官网</a></div>
+                    </div>
+                    </<if condition="$key eq 4">b<else />i</if>>
+                    
+                    </volist>
+                    
+                    
+	</div>
+
+<!-- --------------------------------------------->
+</div>
+</div>
+
+       </div>
+    </div>
+</div>
+
+</div>
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script id="c_course" type="text/html">
+     <div class="mtrt-san">
+            <a href="javascript:;"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$course.timg}>" class="matrecsim"/></a>
+            <p><{$course.aname|mb_substr=0,29}>...</p>
+            <div class="mtrt-si" style="display:block;">
+                <div class="mtrt-s-ye"><a href="__ROOT__/index.php/Organ/Organ/odetail?id=<{$course.id}>"><p>查看课程</p></a></div> 
+            </div>
+    </div>
+</script>
+<script>
+    //文字滚动
+    function scroll_news(){
+    $(function(){
+    $('.link a').eq(0).fadeOut('slow',function(){
+    //   alert($(this).clone().html());
+    //克隆:不用克隆的话，remove()就没了。
+    $(this).clone().appendTo($(this).parent()).fadeIn('slow');
+    $(this).remove();
+    });
+    });
+    }
+    setInterval('scroll_news()',1500);
+    </script>
+<script>
+    var isget=false;
+    $(function(){
+        var cpage=1;
+        var pagedata=[];
+        pagedata[cpage]=$(".mtrt-san");
+        $("div[name=cclass]").mouseleave(function(){
+            $(this).hide();
+        })
+        function initm(){
+            $(".mtrt-san").hover(function(){
+                $(".mtrt-s-ye").hide();
+                $(this).find(".mtrt-s-ye").show();
+                $(this).find(".mtrt-si").css("opacity",0.65);
+            })
+            $(".mtrt-san").mouseleave(function(){
+                $(".mtrt-s-ye").hide();
+                $(this).find(".mtrt-si").css("opacity",0);
+            })
+        }
+        initm();
+        $(".mtrt-er").click(function(){
+            if(pagedata[cpage].length>5){
+                $(".mtrt-san").remove();
+                cpage++;
+                if(pagedata[cpage]){
+                    for(var i in pagedata[cpage]){
+                        $(this).after(pagedata[cpage][i]);
+                    }
+                }else{
+                    $.getJSON('__ROOT__/index.php/Organ/Organ/getMCourse',{'page':cpage},function(data){
+                    if(data.courses.length>0){
+                        var gettpl = document.getElementById('c_course').innerHTML;
+                        for(var i in data.entities){
+                         laytpl(gettpl).render(data.courses[i], function(html){
+                                     collection+=html;
+                                     $('.mtrt-er').after(html);
+                                     pagedata[cpage][i]=$(html);
+                               });
+                        }
+                        initm();
+                    }else{
+                       // $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type:2,msg:'暂无更多课程'}}); 
+                    }
+                  });
+                }
+                
+            }
+        })
+        $(".mtrt-wu").click(function(){
+            if(pagedata[cpage].length>5 && cpage>1){
+                $(".mtrt-san").remove();
+                cpage--;
+                 for(var i in pagedata[cpage]){
+                        $(this).after(pagedata[cpage][i]);
+                 }
+            }
+        })
+    })
+   
+    function adata(arr){
+        console.log(arr);
+        $(".tser-san").find(".tser-sany").remove();
+        for(i in arr){
+                      var img=arr[i].timg?"__ROOT__"+arr[i].timg:'__ROOT__/public/images/home/pxu/shu.gif';
+                      var hui=arr[i].blnumber>0?'<span class="hui">&nbsp;惠&nbsp; </span>':'';
+                      var tpl='<div class="tser-sany">'+
+                        "<img  src='"+img+"' />"+
+                        '<p class="title"><span class="diq">'+arr[i].p_address+'</span>'+' ' +arr[i].aname+hui+'</p>'+
+                        '<div class="cent"><div class="qian">￥'+arr[i].d_price+'起</div> <div class="pinl"> 3条评论</div>  <div class="geng" id="'+arr[i].id+'" type="'+arr[i].type+'">更多详情</div></div>'+
+                        '<p class="wenx">上课地点：'+arr[i].address+'</p>'+
+                        '<p class="wenx">开课时间：'+arr[i].s_time+'</p>'+
+                     '</div>';
+                     
+                     $(".tser-san").append(tpl);
+                  }
+        $(".hui").click(function(){
+            //location.href="__ROOT__/index.php/Organ/Bonus";
+        })
+    }
+     function res(res){
+           var type=$(res).text();
+           $.getJSON("__ROOT__/index.php/Ajax/AjaxCourse/getOspred",{"type":type},function(data){
+              $(".tser-san").find(".tser-sany").remove();
+              if(data.code===1){
+                  adata(data.course);
+                  $(".geng").click(function(){
+                      if($(".geng").attr("type")==='1'){
+                          location.href="__ROOT__/index.php/Organ/Organ/odetail?type=1&id="+$(this).attr("id");
+                      }else{
+                          location.href="__ROOT__/index.php/Organ/Organ/odetail?id="+$(this).attr("id");
+                      }
+                      
+                  });
+              }
+           });
+     }
+    $(function(){
+        //隐藏科目
+        var first=true;
+        var width=$("#playBox").innerWidth();
+        var rate=width/1440;
+        $("#playBox").height($("#playBox").height()*rate);
+        $(".oUlplay").find("img").width(width);
+        $(".trw-biali").css("position",'relative').css("left","25px");
+        $(".trw-biali").find("li").each(function(){
+            var lt=$(this).find("a").find("span[name=left]").text();
+           if(lt.length>4){
+               $(this).find("a").find("span[name=left]").text(lt.substr(0,4)+"..");
+           };
+        })
+        $(".trw-biali").vTicker({
+                speed: 500,
+                pause: 3000,
+                showItems: 4,
+                animation: 'fade',
+                mousePause: false,
+                height: 180,
+                direction: 'up'
+            });
+        var carr=[];
+        var aclass=[];
+        $("div[name=courses]").click(function(){
+            if(!first){
+                var loadi = layer.load('努力加载中…');
+            }
+            first=false;
+            $("div[name=cclass]").css("display","none");
+            $(".tser-yi").find("a[name=hotclass]").remove();
+            var c=$(this).find("p").text();
+            if(c){
+                 //var child='<a href="javascript:;" name="hotclass" onclick="res(this)"><li>cname</li></a>';
+                 var child='<a href="javascript:;" name="hotclass" onclick="res(this);'+	"Mty('a',this)"		+'">cname</a>';
+                 getChidClass(c,carr,child,$('.rmen.Ts'));
+                 $.getJSON('__ROOT__/index.php/Ajax/AjaxCourse/getChildCourse',{'type':c},function(data){
+                    if(!first){
+                        layer.close(loadi);
+                    }
+                     adata(data.datas);
+                      $(".geng").click(function(){
+                         if($(this).attr("type")==='1'){
+                                location.href="__ROOT__/index.php/Organ/Organ/odetail?type=1&id="+$(this).attr("id");
+                            }else{
+                                location.href="__ROOT__/index.php/Organ/Organ/odetail?id="+$(this).attr("id");
+                            }
+                      });
+                }); 
+            }
+            
+            $("div[name=courses]").removeClass("cw");
+            $(this).addClass("cw");
+        });
+        
+        function handc(data){
+            var items='';
+            for(i in data.classes){
+                             var item='<div class="z-al">';
+                             item+= '<div class="z-yi"><p>'+i+'</p></div>'+'<div class="z-er">';
+                             for(j in data.classes[i]){
+                                 item+= '<a id="'+data.classes[i][j].id+'">'+data.classes[i][j].name+'</a>';
+                             }
+                             item+= '</div></div>';
+                             items+=item;
+            }
+            $("div[name=cclass]").append(items);
+            $("div[name=cclass]").find(".z-al").each(function(k){
+                if(k>3){
+                    $(this).hide();
+                }
+            });
+            /*if($("span[name=more]").size()<=0){
+                $("div[name=cclass]").append("<span name=more><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src='__ROOT__/public/images/home/more.png' style='margin-left:230px;margin-bottom:10px;cursor:pointer'/></span>");
+            }
+            $("span[name=more]").click(function(){
+                $(this).remove();
+                $("div[name=cclass]").find(".z-al").show();
+            })*/
+            $(".z-er").find("li").click(function(){
+                location.href="__ROOT__/index.php/Organ/Organ/organList?cid="+$(this).attr('id');
+            });
+        }
+        $("div[name=courses]:first").click();
+        /*$("li[name=more]").click(function(e){
+            if($("div[name=cclass]").css("display")==="none"){
+                if(!isget){
+                    var type=$(".cw").find("p").text();
+                    if(aclass[type]){
+                        var data=aclass[type];
+                        handc(data);
+                    }else{
+                            $.getJSON('__ROOT__/index.php/Ajax/AjaxClassfiy/getOclass',{type:type},function(data){
+                            aclass[type]=data;
+                            handc(data);
+                            $(".z-yi").click(function(){ 		})
+                        });  
+                    }
+                    isget=true;
+                    var x=e.pageX;
+                    var y=e.pageY;
+                    $("div[name=cclass]").css("display","block").css("display","relative").css("left",x-160).css("top",y+22);
+                    
+                }else{
+                    $("div[name=cclass]").css("display","block");
+                }
+            }else{
+                $("div[name=cclass]").css("display","none");
+            }
+            
+        });*/
+    })
+	
+	
+	
+	
+	
+	 $
+		function getStyle(obj,name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name]
+	}
+	else
+	{
+		return getComputedStyle(obj,false)[name]
+	}
+}
+
+function getByClass(oParent,nClass)
+{
+	var eLe = oParent.getElementsByTagName('*');
+	var aRrent  = [];
+	for(var i=0; i<eLe.length; i++)
+	{
+		if(eLe[i].className == nClass)
+		{
+			aRrent.push(eLe[i]);
+		}
+	}
+	return aRrent;
+}
+
+function startMove(obj,att,add)
+{
+	clearInterval(obj.timer)
+	obj.timer = setInterval(function(){
+	   var cutt = 0 ;
+	   if(att=='opacity')
+	   {
+		   cutt = Math.round(parseFloat(getStyle(obj,att)));
+	   }
+	   else
+	   {
+		   cutt = Math.round(parseInt(getStyle(obj,att)));
+	   }
+	   var speed = (add-cutt)/4;
+	   speed = speed>0?Math.ceil(speed):Math.floor(speed);
+	   if(cutt==add)
+	   {
+		   clearInterval(obj.timer)
+	   }
+	   else
+	   {
+		   if(att=='opacity')
+		   {
+			   obj.style.opacity = (cutt+speed)/100;
+			   obj.style.filter = 'alpha(opacity:'+(cutt+speed)+')';
+		   }
+		   else
+		   {
+			   obj.style[att] = cutt+speed+'px';
+		   }
+	   }
+	   
+	},30)
+}
+
+  window.onload = function()
+  {
+	  var oDiv = document.getElementById('playBox');
+	  var oPre = getByClass(oDiv,'pre')[0];
+	  var oNext = getByClass(oDiv,'next')[0];
+	  var oUlBig = getByClass(oDiv,'oUlplay')[0];
+	  var aBigLi = oUlBig.getElementsByTagName('li');
+	  var oDivSmall = getByClass(oDiv,'smalltitle')[0];
+          var aLiSmall=$(".smalltitle").find("li");
+	  function tab()
+	  {
+	     for(var i=0; i<aLiSmall.length; i++)
+	     {
+		    aLiSmall[i].className = '';
+	     }
+	     aLiSmall[now].className = 'thistitle'
+	     startMove(oUlBig,'left',-(now*aBigLi[0].offsetWidth))
+	  }
+	  var now = 0;
+	  for(var i=0; i<aLiSmall.length; i++)
+	  {
+		  aLiSmall[i].index = i;
+		  aLiSmall[i].onclick = function()
+		  {
+			  now = this.index;
+			  tab();
+		  }
+	 }
+	  oPre.onclick = function()
+	  {
+		  now--
+		  if(now ==-1)
+		  {
+			  now = aBigLi.length;
+		  }
+		   tab();
+	  }
+	   oNext.onclick = function()
+	  {
+		   now++
+		  if(now ==aBigLi.length)
+		  {
+			  now = 0;
+		  }
+		  tab();
+	  }
+	  var timer = setInterval(oNext.onclick,5000) //滚动间隔时间设置
+	  oDiv.onmouseover = function()
+	  {
+		  clearInterval(timer)
+	  }
+	   oDiv.onmouseout = function()
+	  {
+		  timer = setInterval(oNext.onclick,5000) //滚动间隔时间设置
+	  }
+          }
+ 
+ 
+
+
+
+//////////////////////////////////////////////tser-yi
+function Mty(b,th){$('.tser-yi ' + b).removeClass('Ts');$(th).addClass('Ts');	}
+function Mh(b,i,th){
+        $('.home-wkt .dir ' + b ).addClass('pblock').removeClass('pnone');  
+        $('.home-wkt .dir ' + i ).addClass('pnone').removeClass('pblock');
+        if(th=='.d1'){  $('.home-wkt .dir .pimg').css({  backgroundPosition:'0 -157px'  });   }
+        if(th=='.d2'){  $('.home-wkt .dir .pimg').css({  backgroundPosition:'0 -16px'  })  }
+
+        }
+function Ma(b,i,th){
+        $(th).animate({width:'570px'});
+        $('.home-wkt .dir_' + b).animate({width:'213px'});
+        $('.home-wkt .dir_' + i).animate({width:'213px'});
+        }
+$('.home-wkt .dir_a').mouseenter(function(){   Ma('b', 'c', this) })
+$('.home-wkt .dir_b').mouseenter(function(){   Ma('a', 'c', this) })
+$('.home-wkt .dir_c').mouseenter(function(){   Ma('a', 'b', this) })
+$('.home-wkt .dir h4').mouseenter(function(){  Mh('b', 'i', '.d1')       })
+$('.home-wkt .dir h5').mouseenter(function(){  Mh('i', 'b', '.d2')       })
+$('.tser-yi a').click(function(){	Mty('a',this)	;			})
+
+Ma('a', 'b', '.dir_c');Mh('b', 'i', '.d1')//默认哪个展开
+function set(a){
+	var vb = $('#roll').find('a');
+	var Tvb = vb[a].innerHTML; 
+	var Hvb = vb[a].href; 
+	if(a==0){	$(vb[a]).remove();	document.getElementById('roll').innerHTML = document.getElementById('roll').innerHTML + '<a href="'+ Hvb + '">'+ Tvb +'</a>'	}
+	if(a==9){	$(vb[a]).remove();	document.getElementById('roll').innerHTML = '<a href="'+ Hvb + '">'+ Tvb +'</a>' + document.getElementById('roll').innerHTML  	}
+}
+$('.next').click(function(){ set(0);	})
+$('.prev').click(function(){ set(9);	})
+
+
+	
+</script>
+<include file="../../../Public/default/footer" />

@@ -1,0 +1,99 @@
+<?php
+
+//课程控制器
+class CourseAction extends CommonAction{
+    //获取课程列表
+    public function getCourse(){
+            $data=$this->getData(array('cpage','pagesize','hot','price','ctype','price','ct','keyword','cid','discount'),'get');
+            if(!$data['pagesize']){
+                $data['pagesize']=6;
+            }
+            if(!$data['cpage']){
+               $data['cpage']=1; 
+            }
+            if(count($data)){
+                    $page=$this->initPage();
+                    $this->assign('cid',$data['cid']);
+                    $cid=$data['cid'];
+                    $ssql="select spred.s_time,ifnull(courses.aid,prox.oid) oid,ifnull(courses.introduce,prox.tintroduce)introduce,ifnull(courses.cid,prox.cid) cid,spred.number,ifnull(courses.uid,prox.pid)uid,spred.type,spred.timestamp,spred.id,ifnull(spred.d_price,spred.price)price,courses.descript desp,ifnull(courses.aname,prox.cname) aname,ifnull(courses.c_img,prox.timg)img from bd_organ_spred spred left join (select uid,aname,introduce,descript,id,cid,aid,c_img from bd_course";
+                    $ssql.=") courses on courses.id=spred.cid  left join bd_proxyermanage prox on prox.id=spred.cid";
+                    $ssql="select acourse.*,auth.p_address,auth.real_name from ($ssql) acourse left join bd_authentication auth on auth.id=acourse.oid";
+                    if($cid){
+                      $ssql.=" where acourse.cid = '$cid'";
+                    }else{
+                        $ssql.=" where 1 = 1";
+                    }
+                    if($data['ct']){
+                        $ssql.=" and auth.p_address like '%$data[ct]%'";
+                    }
+                    //价格查找
+                    if($data['lprice'] && $data['hprice'] && ($data['lprice']<$data['hprice'])){
+                        $ssql.=" and price >='$data[lprice]' && 'pirce<$data[lprice]'";
+                    }
+                    //关键词搜索
+                    if($data['keyword']){
+                        $keyword=$data['keyword'];
+                        $ssql.=" and spred.descript like '%$keyword%' or auth.address like '%$keyword%' or courses.descript like '%$keyword%' or course.aname like '%$keyword%'";
+                    }
+                    import('Com.PageHelper');
+                    $pagesize=10;
+                    $sumsql="select count(id) sum from (".$ssql.") res where res.aname <> ''";
+                    $sum=M('Organ_spred')->query($sumsql);
+                    PageHelper::init($data['pagesize'],10,$page['cpage'],$sum[0]['sum'],'');
+                    $limit=  PageHelper::getLimit();
+                    $ssql="select * from (".$ssql.") res where res.aname <> '' order by res.type desc ,res.timestamp desc limit $limit[min],$pagesize";
+                    $this->ajaxr(true, '', '',M('Organ_spred')->query($ssql));
+                }
+            
+     }
+    //收藏课程
+    public function addCollect(){
+       $param=$this->getData(array('cid','uid'),'get'); 
+       if($param['cid'] && $param['uid']){
+           $param['type']=2;$param['aid']=$param['cid'];$param['c_timestamp']=time();unset($param['cid']);
+           $res=M('Collect')->add($param);
+           $this->ajaxr($res, '收藏成功','收藏失败');
+       }else{
+           $this->errorkey($param);
+       }
+    }
+    //分享课程
+    //获取最新发布
+    public function getLastCourse(){
+        $param=$this->getData(array('cpage','pagesize'), 'get');
+        if(!$param['cpage']){
+            $param['cpage']=1;
+        }
+        if(!$param['pagesize']){
+            $param['pagesize']=6;
+        }
+        $min=((int)$param['cpage']-1)*(int)$param['pagesize'];
+        $this->ajaxr(true, '', '',M('Organ_spred')->where("type=2")->order('timestamp desc')->limit($min,(int)$param['pagesize']));
+    }
+    //获取推荐列表
+    public function getRecommend(){
+        $param=$this->getData(array('cpage','pagesize'), 'get');
+        if(!$param['cpage']){
+            $param['cpage']=1;
+        }
+        if(!$param['pagesize']){
+            $param['pagesize']=6;
+        }
+        $min=((int)$param['cpage']-1)*(int)$param['pagesize'];
+        $this->ajaxr(true, '', '',M('Organ_spred')->where("ic_comment=1")->limit($min,(int)$param['pagesize']));
+    }
+    //优惠课程
+    public function getDcourse(){
+        $param=$this->getData(array('cpage','pagesize'), 'get');
+        if(!$param['cpage']){
+            $param['cpage']=1;
+        }
+        if(!$param['pagesize']){
+            $param['pagesize']=6;
+        }
+        $min=((int)$param['cpage']-1)*(int)$param['pagesize'];
+        $this->ajaxr(true, '', '',M('Organ_spred')->where("d_price>0 and dprice<price")->limit($min,(int)$param['pagesize']));
+    }
+    
+}
+

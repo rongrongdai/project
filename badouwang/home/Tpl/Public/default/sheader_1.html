@@ -1,0 +1,56 @@
+<div class="sp-yi">
+      <div class="sp-yiapp"> 
+         <div class="sp-yiayi"> 
+             <div class="ayi-s">
+                 <div class="ayi-syi"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/uimg.png"></div>
+                 <a href="#"><div class="ayi-ser"><span>ONLINE</span></div></a>
+                 <a href="#"><p>当前<if condition="$user.type eq 1">用户<elseif condition="$user.type eq 2" />教师<elseif condition="$user.type eq 3" />培训机构<elseif condition="$user.type eq 4" />代理商</if>在线</p></a>
+                
+             </div>
+             <div class="ayi-y">
+                <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/guanz.png" />
+                <if condition="$concerend eq '1'"><span>已关注</span><else/><a href='javascrpt:;' name='concern'><span>关注该<if condition="$user.type eq 1">用户<elseif condition="$user.type eq 2" />教师<elseif condition="$user.type eq 3" />培训机构<elseif condition="$user.type eq 4" />代理商</if></span></a></if>
+             </div>  
+         </div>
+         
+
+         
+         <div class="sp-yiaer">
+             <if condition="$user.type eq 2"><p><span class="spwyi"><if condition="$user.nickname"></if></span>   <span class="spwer">中级教师</span></p>
+             <p><span class="spwsan"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/jigou.png" />所在机构：世纪证券</span></if>
+                <span class="spwsan"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/diz.png" />所在地：天津市-市辖区</span>
+             </p>
+            <if condition="($user.type eq 2) OR ($user.type eq 3)"> <p><span class="spwsi">简介</span>：<span class="spwwu">国家注册黄金分析师，证券投资咨询，期货从业资格。多年的市场实战经验，开创了自
+               己独特的分析技术方法，善于通过三位一体发现机会，把握时机上堪称一绝，倾向于中短线投资，
+               在趋势中，获得最大的收益。著有《超级翻倍》《实战交易密码》战绩辉煌。</span></p></if>
+         </div>
+         
+          <if condition="$user.type eq 2">
+         <div class="sp-yiasan">
+                    <div class="san-y">
+                          <div class="san-yi">
+                              <p class="sp-hui">回答问题数</p>
+                              <p class="sp-dai">360</p>
+                          </div>
+                          <div class="san-yi">
+                              <p class="sp-hui">用户满意度</p>
+                              <p class="sp-dai">98%</p>
+                          </div>
+                          <div class="san-yi">
+                              <p class="sp-hui">平均响应时间</p>
+                              <p class="sp-dai">4小时</p>
+                          </div>
+                   </div>
+                  <div class="san-e">
+                       <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/huihua.png" /><span>向TA提问（100）</span>
+                  </div>
+                   <div class="san-s">
+                       <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/shijian.png" /><span>最近回答时间：30分钟前</span>
+                   </div>
+         </div>
+              </if>
+      </div>
+    
+ 
+ </div>
+ </div>

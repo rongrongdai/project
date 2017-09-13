@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——站内消息</title>
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<link href="__ROOT__/public/css/home/bootstrap.min.css"  type="text/css" rel="stylesheet"/>
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+</head>
+<body style="margin:8px;">
+<div class="per">
+    <div class="per-top">
+       <img src="__ROOT__/public/images/home/jjxxgl1.jpg" />
+       <div class="set-up">平台老师</div>
+  	</div>
+  	<div class="per-make">
+        <div class="make" onclick="kms('0',this)">累计上课</div>
+        <div class="make" onclick="kms('1',this)">等待上课</div>
+        <div class="make" onclick="kms('2',this)">家教订单</div>
+    </div>
+
+    <div class="padd">
+	    <table width="100%" name='entities'>
+	    <switch name="status">
+
+	    <case value="0">	
+	        <tr class="td-title">
+	          <td width="8%">序号</td>
+	          <td>老师</td>
+	          <td>科目</td>
+	          <td>电话</td>
+	          <td>地址</td>
+	          <td>累计课时</td>
+	          <td>累计收入</td>
+	          <td>查看</td>
+	        </tr>
+	        <foreach name="data" item="vo" key="i">
+	        <tr>
+	          <td><{$i+1+$limit}></td>
+	          <td><{$vo.real_name}></td>
+	          <td><{$vo.cname}>-<{$vo.bname}></td>
+	          <td><{$vo.telephone}></td>
+	          <td><{$vo.address}></td>
+	          <td><if condition="$vo['sum_hour']"><{$vo.sum_hour}><else/>0</if></td>
+	          <td><if condition="$vo['sum_pay']"><{$vo.sum_pay}><else/>0</if></td>
+	          <td>详情</td>
+	        </tr>
+	        </foreach>
+	    </case>
+	    
+	    <case value="1">	
+	        <tr class="td-title">
+	          <td width="8%">序号</td>
+	          <td>老师</td>
+	          <td>科目</td>
+	          <td>学生</td>
+	          <td>上课方式</td>
+	          <td>开始时间</td>
+	          <td>课时</td>
+	        </tr>
+	        <foreach name="data" item="vo" key="i">
+	        <tr>
+	          <td><{$i+1+$limit}></td>
+	          <td><{$vo.real_name}></td>
+	          <td><{$vo.course}></td>
+	          <td><{$vo.stu_name}></td>
+	          <td><{$vo.place}></td>
+	          <td><{$vo.date}> <{$vo.begin_time}></td>
+	          <td><{$vo.classhour}></td>
+	        </tr>
+	        </foreach>
+	    </case>
+	    
+	    <case value="2">	
+	        <tr class="td-title">
+	          <td width="8%">序号</td>
+	          <td>老师</td>
+	          <td>科目</td>
+	          <td>学生</td>
+	          <td>总课时</td>
+	          <td>金额</td>
+	          <td>状态</td>
+	        </tr>
+	        <foreach name="data" item="vo" key="i">
+	        <tr>
+	          <td><{$i+1+$limit}></td>
+	          <td><{$vo.real_name}></td>
+	          <td><{$vo.course}></td>
+	          <td><{$vo.stu_name}></td>
+	          <td><{$vo.hour}></td>
+	          <td><{$vo.money}></td>
+	          <td><if condition="$vo['status']">完成<else/>执行中</if></td>
+	        </tr>
+	        </foreach>
+	    </case>
+	    <default/>
+	        
+	    </switch>  
+	    </table>
+	    <div style="text-align:center;margin-top:20px;"><{$link}></div>
+    </div>
+
+     
+
+</div>
+<script type="text/javascript">
+var status = "<{$Think.get.status}>"?"<{$Think.get.status}>":"0";
+$(".make:eq("+status+")").addClass('aclick');
+function kms(kw,id){ location.href = "?status="+kw; }
+
+
+</script>
+
+</body>
+</html>

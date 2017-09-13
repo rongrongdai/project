@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>销售统计</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/iscroll.css">
+    <link rel="stylesheet" href="css/mobiscroll.custom-2.17.0.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        
+        .tuwen{height:100%;background-color: #fff;width:100%;text-align: center;position: fixed;top:0;bottom:0;z-index: 4;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .tuwen .scroller{position:absolute;width:100%;}
+        .tuwen>div{position: absolute;width: 100%;top: 0;bottom: 0;left: 0;}
+        .tuwen .tuwen-header{width: 6rem;height: 0.68rem;position: relative;background-color: #fff;margin:0.3rem auto 0 auto;border-radius: 0.1rem;}
+        .tuwen .tuwen-header>div{}
+        .tuwen .tuwen-header .txt-btn{font-size: 0.3rem;text-align: center;line-height: 0.68rem;float: left;width: 50%;background-color:#eeeef1;color:#a3a3a3;}
+        .tuwen .tuwen-header .txt-btn>span{display:inline-block;vertical-align:top;height:0.6rem;letter-spacing:1px;}
+        .tuwen .tuwen-header .txt-btn>span:last-child{background:url(images/down-arrow0.png) no-repeat center center;background-size:contain;width:0.2rem;margin-left:0.3rem;}
+        .tuwen .tuwen-header .servive{border-top-right-radius:0.34rem;border-bottom-right-radius:0.34rem;}
+        .tuwen .tuwen-header .good-d{border-top-left-radius:0.34rem;border-bottom-left-radius:0.34rem;}
+        .tuwen .tuwen-header .param{border-top-right-radius:0.34rem;border-bottom-right-radius:0.34rem;}
+        .tuwen .tuwen-header .active{background-color:#ff3c00;color:#fff;}
+        .tuwen .tuwen-header .active>span:last-child{background-image:url(images/down-arrow1.png);}
+        .tuwen .tuwen-cont{width:100%;position: absolute;top:0.98rem;bottom:0;left:0;}
+        .tuwen .tuwen-cont .tuwen1{font-size: 0.24rem;position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;width: 100%;overflow: hidden;}
+        
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;height: 100%;z-index: 3;position: fixed;display:none;}
+
+        .record-item{width: 6rem;margin:0.4rem auto 0.5rem auto;background-color: #ffebe5;font-size: 0.28rem;padding:0.09rem 0.24rem;box-sizing: border-box;border-radius:0.12rem;}
+        .record-item>div{overflow:auto;}
+        .record-item>div>span:first-child{float:left;line-height: 0.42rem;}
+        .record-item>div>span:last-child{float:right;color:#dc3c38;line-height: 0.42rem;}
+        /*年月份选择*/
+        .dwl{display:none;}
+        .dwcc{text-align:center;}
+        .dwb1{float: left;}
+        .dwb0{float: right;}
+        .mbsc-ios .dwb{}
+        .mbsc-ios .dwb-s .dwb{background:url(images/mobiscroll-save.png) no-repeat center center;background-size:contain;text-indent: -999px;margin-right: 0.2rem;}
+        .mbsc-ios .dwb-c .dwb{background:url(images/mobiscroll-close.png) no-repeat center center;background-size:contain;text-indent: -999px;margin-left: 0.2rem;}
+        .mbsc-ios .dwbc{border:none;}
+        .mbsc-ios .dw-li{text-align:center;font-size:0.4rem;}
+        .mbsc-ios .dwwc{padding:0.5em .833333em .833333em .833333em;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        function loaded () {
+            
+            function initTuWenScroll(str){
+                var downIcon,upIcon,scrollerPullDown,scrollerPullUp,pullUpMsg,upLoading,downLoading,pullDownMsg; 
+                downIcon = $("."+str+" .down-icon");
+                pullDownMsg = $("."+str+" .pull-down-msg");
+                scrollerPullDown = $("."+str+" .scroller-pullDown");
+                scrollerPullUp = $("."+str+" .scroller-pullUp");
+                upLoading = $("."+str+" .scroller-pullUp .loading");
+                downLoading = $("."+str+" .scroller-pullDown .loading");
+                upIcon = $("."+str+" .up-icon");
+                pullUpMsg = $("."+str+" .pull-up-msg");
+
+                var tuwenScroller = new IScroll('.'+str, {
+                    probeType: 3,
+                    scrollbars: true,
+                    mouseWheel: true,
+                    interactiveScrollbars: true,
+                    shrinkScrollbars: 'scale',
+                    fadeScrollbars: true,click:true
+                });
+                tuwenScroller.on("scroll",function(){
+                    var y = this.y,
+                        maxY = this.maxScrollY - y,
+                        downHasClass = downIcon.hasClass("reverse_icon"),
+                        upHasClass = upIcon.hasClass("reverse_icon");
+                    
+                    if(y >= 40){
+                        !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松手开始更新');
+                        return "";
+                    }else if(y < 40 && y > 0){
+                        downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉刷新');
+                        return "";
+                    }
+                    
+                    if(maxY >= 40){
+                        !upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松手开始更新');
+                        return "";
+                    }else if(maxY < 40 && maxY >=0){
+                        upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看更多');
+                        return "";
+                    }
+                });
+                tuwenScroller.on("slideUp",function(){
+                    if(this.maxScrollY - this.y > 40){
+                        //alert("slideUp");
+                        upIcon.css('display','none');
+                        pullUpMsg.css('display','none');
+                        upLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            upIcon.css('display','inline-block');
+                            pullUpMsg.css('display','inline-block');
+                            upLoading.css('display','none'); 
+                            $('.goods-wrap').append('');
+                            tuwenScroller.refresh();
+                        },3000);
+                        
+                    }
+                });
+                tuwenScroller.on("slideDown",function(){
+                    if(this.y > 40){
+                        //alert("slideDown");
+                        scrollerPullDown.css({'position':'relative','top':'0'});
+                        downIcon.css('display','none');
+                        pullDownMsg.css('display','none');
+                        downLoading.css('display','inline-block');
+                        setTimeout(function(){
+                            scrollerPullDown.css({'position':'absolute','top':'-0.7rem'});
+                            downIcon.css('display','inline-block');
+                            pullDownMsg.css('display','inline-block');
+                            downLoading.css('display','none'); 
+                            $('.goods-wrap').prepend('');
+                            tuwenScroller.refresh();
+                        },3000);
+                    }
+                });
+            }
+            initTuWenScroll('tuwen1');
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="bg-layer"></div>
+    <article class="tuwen">
+        <div>
+            <div class="tuwen-header">
+                <div class="good-d txt-btn active"><span class="filter-txt">2015年</span><span></span></div>
+                <div class="param txt-btn"><span class="filter-txt">2015年12月</span><span></span></div>
+            </div>
+            <div class="tuwen-cont">
+                <div class="tuwen1">
+                    <div class="scroller">
+                        <div class="scroller-pullDown">
+                            <span class="pull-down-icon down-icon"></span>
+                            <span class="pull-down-msg">下拉刷新</span>
+                            <span class="loading"></span>
+                        </div>
+                        <div class="record-all">
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                            <div class="record-item">
+                                <div><span>2015-07-07</span><span>￥1307.00</span></div>
+                            </div>
+                        </div>
+                        <div class="scroller-pullUp">
+                            <span class="pull-up-icon up-icon"></span>
+                            <span class="pull-up-msg">上拉查看更多</span>
+                            <span class="loading"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <ul class="index_nameList" id="indexNameList"></ul>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/mobiscroll.custom-2.17.0.min.js"></script>
+    <script>
+        /*图文详情*/
+        $('.tuwen-header .txt-btn').on('click',function(){
+            $('.tuwen-header .active').removeClass('active');
+            $(this).addClass('active');
+            //alert(this);
+            var dateList;
+            if($(this).hasClass('param')){
+                dateList = [
+                    { "reason": "2015","children":
+                        [
+                            {"reason": "12"},
+                            {"reason": "11"},
+                            {"reason": "10"},
+                            {"reason": "9"},
+                            {"reason": "8"},
+                            {"reason": "7"}
+                        ]
+                    },
+                    { "reason": "2014","children":
+                        [
+                            {"reason": "12"},
+                            {"reason": "11"},
+                            {"reason": "10"},
+                            {"reason": "9"},
+                            {"reason": "8"},
+                            {"reason": "7"}
+                        ]
+                    },
+                    { "reason": "2013","children":
+                        [
+                            {"reason": "12"},
+                            {"reason": "11"},
+                            {"reason": "10"},
+                            {"reason": "9"},
+                            {"reason": "8"},
+                            {"reason": "7"}
+                        ]
+                    },
+                    { "reason": "2012","children":
+                        [
+                            {"reason": "12"},
+                            {"reason": "11"},
+                            {"reason": "10"},
+                            {"reason": "9"},
+                            {"reason": "8"},
+                            {"reason": "7"}
+                        ]
+                    },
+                    { "reason": "2011","children":
+                        [
+                            {"reason": "12"},
+                            {"reason": "11"},
+                            {"reason": "10"},
+                            {"reason": "9"},
+                            {"reason": "8"},
+                            {"reason": "7"}
+                        ]
+                    }
+                ];
+            }else if($(this).hasClass('good-d')){
+                dateList = [
+                    { "reason": "2015" },
+                    { "reason": "2014" },
+                    { "reason": "2013" },
+                    { "reason": "2012" },
+                    { "reason": "2011" },
+                    { "reason": "2010" }
+                ];
+            }
+            creatDateBoard(dateList,$(this).find('.filter-txt'));
+            //$('.param .filter-txt').text($('#indexNameList').children().size());
+            $('#indexNameList').mobiscroll("show"); 
+        });
+        
+        /*年月份选择*/
+        function creatDateBoard(dateList,obj){
+            var dateListData = listTree(dateList);
+
+            $("#indexNameList").empty().append(dateListData);
+            $('#indexNameList').mobiscroll().treelist({
+                theme: 'ios jiang',
+                lang: 'zh',
+                mode: 'scroller',
+                display: 'bottom',
+                fixedWidth: 200,
+                height: $("html").css("font-size").replace(/[^0-9\.]/g, "") * 0.7,
+                rows: 4,
+                //labels: ['原因'],
+                onSelect: function (valueText, inst) {
+                    var area = valueText.split(' ');
+                    var txt = area[0]?(area[0]+'年'):'';
+                    txt = area[1]?(txt+area[1]+'月'):txt;
+                    obj.text(txt);
+                },
+                onChange:function(valueText, inst){
+                    //console.log(valueText);
+                }
+            });
+        }
+        //递归添加数据
+        function listTree(dataTemp) {
+            var temp = "";
+            $.each(dataTemp, function (i, item) {
+                temp += "<li data-val='" + item.reason + "'>" + item.reason;
+                if (item.children) {
+                    var temp2 = "<ul>";
+                    temp2 += listTree(item.children);
+                    temp2 += "</ul>";
+                    temp += temp2;
+                }
+                temp += "</li>";
+            });
+            return temp;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top:4.82rem;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        /*用户信息*/
+        .user-info{font-size:0.24rem;position:relative;color: #fff;}
+        .user-info .blur-bg{width:100%;height:3.2rem;position:absolute;top:0;left:0;z-index: -2;background: rgba(0,0,0,0) url("images/my/user.png") no-repeat center center/100%;filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */-webkit-filter: blur(10px); /* Chrome, Opera */-moz-filter: blur(10px);-ms-filter: blur(10px);    filter: blur(10px);filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */}
+        .user-info .layer-bg{width:100%;height:3.2rem;position:absolute;top:0;left:0;z-index: -1;background: rgba(0,0,0,.5);}
+        .user-info>div{display:inline-block;vertical-align:middle;}
+        .user-info .u-img-wrap{height: 1.68rem;width: 1.68rem;margin: 0.76rem 0.6rem 0.76rem 0.9rem;}
+        .user-info .u-img-wrap>img{width: 100%;}
+        .user-info .u-txt{}
+        .user-info .u-txt>p{margin: 0.14rem 0;}
+        .user-info .u-txt .crown{display:inline-block;vertical-align: bottom;margin-left: 0.15rem;width:0.24rem;height:0.24rem;background:url("images/my/crown.png") no-repeat scroll center center / contain;}
+        .user-info .u-txt .u-class{color:#ff6519;}
+        .user-property{padding: 0 0.24rem;background-color: #fff;font-size: 0.24rem;}
+        .user-property>div:first-child{border-bottom:1px solid #eeeef1;}
+        .user-property .func-line{height: 0.68rem;line-height: 0.68rem;margin-bottom: 0.02rem;}
+        .user-property .func-line>span{display: inline-block;vertical-align:middle;}
+        .user-property .func-line .f-arrow{width: 0.12rem;height: 0.25rem;float:right;margin:0.2rem 0;background: url("images/right-arrow.png") no-repeat scroll center center / contain;}
+        .user-property .func-line .all-yongjin{}
+        .user-property .func-line .yongjin{color:#e24355;float:right;}
+
+        .team-header{font-size:0.24rem;background-color:#fff;text-align:center;margin: 0.2rem 0 0.1rem 0;position:relative;height:0.68rem;}
+        .team-header>span{width:33.33%;float:left;line-height:0.68rem;}
+        .team-header .active-line{position:absolute;background-color:#e24355;height:1px;width:33.33%;bottom:-1px;left:0;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .team-body{font-size:0.24rem;}
+        .team-body .team-item{background-color:#fff;}
+        .team-body .t-info1{height:0.5rem;line-height:0.5rem;padding:0 0.24rem;border-bottom:1px solid #eeeef1;}
+        .team-body .t-info1 .t-status{float:right;color:#ff6519;}
+        .team-body .t-members{padding:0 0.24rem;}
+        .team-body .t-members .t-member{border-bottom:1px solid #eeeef1;padding: 0.2rem 0;overflow:auto;}
+        .team-body .t-members .t-member>div{float:left;}
+        .team-body .t-members .t-member .t-info>div{margin-bottom: 0.1rem;}
+        .team-body .t-members .t-member .t-img-wrap{margin: 0 0.45rem;font-size:0.2rem;text-align:center;}
+        .team-body .t-members .t-member .t-img-wrap img{width:0.9rem;}
+        .team-body .t-members .t-member .crown{display:inline-block;vertical-align: bottom;margin-left: 0.15rem;width:0.24rem;height:0.24rem;background:url("images/my/crown.png") no-repeat scroll center center / contain;}
+        .team-body .t-members .t-member .t-details{font-size:0.2rem;color:#a3a3a3;}
+        .team-body .t-info2{height:0.5rem;line-height:0.5rem;padding:0 0.24rem;}
+        .team-body .t-info2 .t-count{margin-left:0.3rem;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article>
+        <div>
+            <div class="user-info">
+                <div class="u-img-wrap"><img src="images/my/user.png" alt=""></div>
+                <div  class="u-txt">
+                    <p><span>[A_girl]</span><span class="crown"></span></p>
+                    <p>会员级别：<span class="u-class">普通会员</span></p>
+                </div>
+                <div class="layer-bg"></div>
+                <div class="blur-bg"></div>
+            </div>
+            <div class="user-property">
+                <div class="func-line"><span>直接邀请人数：</span><span class="all-yongjin">1人</span><span class="f-arrow"></span></div>
+                <div class="func-line"></span><span>我的团队（人）</span><span class="yongjin">12人</span></div>
+            </div>
+            <!--<div class="team-header">
+                <span>全部</span><span>团队人数</span><span>消费金额</span>
+                <div class="active-line"></div>
+            </div>-->
+            <div class="team-body" id="wrapper">
+                <div id="scroller">
+                  <div class="team-item">
+                      <div class="t-members">
+                        <div class="t-member">
+                            <div class="t-img-wrap">
+                                <img src="images/my/team-user.png" alt="">
+                                <p><span>张大大</span><span class="crown"></span></p>
+                            </div>
+                            <div class="t-info">
+                              <div><span class="t-title">团队：5人 </span></div>
+                              <div><span class="">团队消费金额：1000元</span></div>
+                              <div class="t-details">推荐人：小7    来源：抽奖活动</div>
+                              <div class="t-details">注册时间：2015/10/21</div>
+                            </div>
+                        </div>
+                        <div class="t-member">
+                            <div class="t-img-wrap">
+                                <img src="images/my/team-user.png" alt="">
+                                <p><span>张大大</span><span class="crown"></span></p>
+                            </div>
+                            <div class="t-info">
+                              <div><span class="t-title">团队：5人 </span></div>
+                              <div><span class="">团队消费金额：1000元</span></div>
+                              <div class="t-details">推荐人：小7    来源：抽奖活动</div>
+                              <div class="t-details">注册时间：2015/10/21</div>
+                            </div>
+                        </div>
+                        <div class="t-member">
+                            <div class="t-img-wrap">
+                                <img src="images/my/team-user.png" alt="">
+                                <p><span>张大大</span><span class="crown"></span></p>
+                            </div>
+                            <div class="t-info">
+                              <div><span class="t-title">团队：5人 </span></div>
+                              <div><span class="">团队消费金额：1000元</span></div>
+                              <div class="t-details">推荐人：小7    来源：抽奖活动</div>
+                              <div class="t-details">注册时间：2015/10/21</div>
+                            </div>
+                        </div>
+                        <div class="t-member">
+                            <div class="t-img-wrap">
+                                <img src="images/my/team-user.png" alt="">
+                                <p><span>张大大</span><span class="crown"></span></p>
+                            </div>
+                            <div class="t-info">
+                              <div><span class="t-title">团队：5人 </span></div>
+                              <div><span class="">团队消费金额：1000元</span></div>
+                              <div class="t-details">推荐人：小7    来源：抽奖活动</div>
+                              <div class="t-details">注册时间：2015/10/21</div>
+                            </div>
+                        </div>
+                        <div class="t-member">
+                            <div class="t-img-wrap">
+                                <img src="images/my/team-user.png" alt="">
+                                <p><span>张大大</span><span class="crown"></span></p>
+                            </div>
+                            <div class="t-info">
+                              <div><span class="t-title">团队：5人 </span></div>
+                              <div><span class="">团队消费金额：1000元</span></div>
+                              <div class="t-details">推荐人：小7    来源：抽奖活动</div>
+                              <div class="t-details">注册时间：2015/10/21</div>
+                            </div>
+                        </div>
+                        <div class="t-member">
+                            <div class="t-img-wrap">
+                                <img src="images/my/team-user.png" alt="">
+                                <p><span>张大大</span><span class="crown"></span></p>
+                            </div>
+                            <div class="t-info">
+                              <div><span class="t-title">团队：5人 </span></div>
+                              <div><span class="">团队消费金额：1000元</span></div>
+                              <div class="t-details">推荐人：小7    来源：抽奖活动</div>
+                              <div class="t-details">注册时间：2015/10/21</div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+    <script>
+        /*$('.team-header>span').on('tap',function(){
+            var i = $(this).index();
+            var left = Number(i)?(Number(i)*33.33):0;
+            $('.team-header .active-line').css('left',left+'%');
+        });*/
+    </script>
+</body>
+</html>

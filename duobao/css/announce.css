@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*CSS public 2016.1.7*/
+
+/* 往期揭晓页*/ 
+body{
+	background-color: #fff;
+}
+.announ_content{
+        border: 1px #e6e6e6 solid;
+        width: 96%;
+        margin:0.2rem auto;
+       
+}
+.announ_content .conta{
+      background-color: #ececec;
+}
+.announ_content .conta p{
+	margin-left: 0.2rem;
+	line-height: 1rem;
+	color: #323232;
+	font-size: 0.4rem;
+}
+.announ_content .conta p span{ margin-left: 0.2rem; color: #323232; font-size: 0.4rem; }
+
+.announ_content .contb{
+	 background-color: #fff;
+}
+.announ_content .contb:after{
+    content: ".";
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+
+.contb .con_left{
+	width: 20%;
+	height: 2rem;
+	margin:0.3rem 0.2rem;
+}
+.contb .con_left .contimg{ width: 100%; height: 100%; }
+
+
+.contb .con_right{
+   margin:0.2rem 0.1rem;
+}
+.contb .con_right p{
+	line-height: 0.6rem;
+	color: #323232;
+	font-size: 0.34rem;
+}
+.contb .con_right p span{ margin-left: 0.2rem; font-size: 0.34rem; }
+.contb .con_right p em{  font-size: 0.34rem;  }
+.contb .con_right .colr1{ color: #119fff; }
+.contb .con_right .colr2 ,.contb .con_right .colr2 span{ color: #9bcc2b;}
+.contb .con_right .colr4{ color: red; }
+

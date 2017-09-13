@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,p,blockquote,form ,
+    ul,ol {list-style:none;}a{ text-decoration:none;} img{border:0} 
+	ul{ margin:0px;} ul{ padding:0px;}
+
+.houone{border-bottom: none};
+.houone{ width:1200px; margin:0px auto; border:1px #CCC solid; border-radius:10px;}
+.hou-yi{ width:100%; }
+.hou-yi ul{   height:45px;}
+.hou-yi li{ width:150px;margin-left:10px;float:left; text-align:center; line-height:45px;border-bottom:1px #CCC solid; border-right:1px #CCC solid;border-left:1px #CCC solid; color:#999; font-size:16px;}
+
+.hou-er{ width:940px;  margin:30px 0px 20px 50px; }
+.houe-yi{ width:100%;  border:1px #CCC solid; background:#f5f5f5; border-top:2px #333 solid; margin-bottom:30px;  }
+.houe-yi p{ font-size:16px; color:#000; padding-left:15px; font-weight:bold;}
+.houe-yi td{ font-size:14px; color:#666; padding-left:15px; padding-bottom:15px;}
+.active{background:#00b38a;}
+.houe-er{ width:100%;  border:1px #CCC solid; margin-bottom:30px; }
+.houe-er td{ padding:10px 15px 3px 20px; text-align:center; font-size:14px; color:#666;}
+
+.houe-er .bti{ font-size:16px; color:#000; font-weight:bold;}
+
+.houe-san{ width:100%;}
+.housa-yi{ width:100px;  border:1px #999 solid; position:relative; left:710px; background:#f5f5f5; border-radius:6px;}
+.housa-er{ width:100px; border:1px #999 solid; margin:-45px 0px 0px 838px; background:#f5f5f5; border-radius:6px;}
+
+.housa-yi p, .housa-er p{ text-align:center; line-height:10px; font-size:16px; color:#666; }

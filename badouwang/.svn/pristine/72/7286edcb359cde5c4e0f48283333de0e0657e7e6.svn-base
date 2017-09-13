@@ -1,0 +1,42 @@
+*{
+    margin:10px;
+}
+table{
+    width:75%;margin:0 auto;border:1px solid gray;
+}
+ tr{
+     border:1px solid gray;
+}
+table tr{
+    text-align: left;
+}
+ td{
+     border:1px solid gray;
+}
+.save{
+    width:20%;margin-left:300px;height: 40px;color:white;
+}
+table select{
+    width:120px;height: 26px;
+}
+table input{
+    width:30%;height: 26px;margin:10px;
+}
+.left{
+    width:20%;
+    text-align: left;
+    line-height: 20%;
+   
+}
+.new{
+    margin-top:20px;
+}
+#cimg{
+    width:20%; text-align: center;margin-left:10px;padding:10px;margin-top:10px;margin-bottom:10px;
+}
+form tr .left{
+    text-align: center;
+    line-height: 80px;
+}
+
+

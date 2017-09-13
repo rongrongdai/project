@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>店铺详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeeef;}
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+       .record-item{width:100%;background-color: #fff;font-size: 0.22rem;padding:0.18rem 0.2rem;box-sizing: border-box;}
+        .record-item .r-body{text-align: left;}
+        .record-item .r-body .r-pic{width:1.8rem;height:1.6rem;display: inline-block;vertical-align: bottom;margin:0 0.2rem 0 0;position:relative;}
+        .record-item .r-body .r-pic>img{width:100%;height:100%;}
+        .record-item .r-body .r-info{display: inline-block;vertical-align: bottom;width:4rem;text-align:left;font-size: 0.24rem;}
+        .record-item .r-body .r-info .r-name{font-size: 0.3rem;color:#000;}
+        .record-item .r-body .r-info .r-title{margin: 0.12rem 0;color:#666;}
+        .record-item .r-body .r-info .r-title>span:first-child{color:#1a1a1a;}
+        .record-item .r-body .r-info .r-date{color:#999;}
+        .record-item .r-body .r-info .r-date>span:first-child{color:#1a1a1a;}
+
+        .shop-info1{margin:0.2rem 0;font-size:0.28rem;background-color:#fff;}
+        .shop-info1>p{color:#1a1a1a;line-height:0.9rem;border-bottom:1px solid #d9d9d9;margin: 0 0.2rem;}
+        .shop-info1>p:last-child{border:none;}
+        .shop-info1>p>span:first-child{color:#666;}
+        .shop-info1 .s-right-arrow{width: 0.21rem;height: 0.38rem;background: url("images/right-arrow.png") no-repeat scroll center center / contain;float: right;margin: 0.29rem 0 0 0;}
+        .shop-info2{font-size:0.28rem;color:#1a1a1a;background-color:#fff;padding: 0 0.2rem;}
+        .shop-info2 .s-line1{font-size:0.26rem;color:#aaa;line-height:0.7rem;border-bottom:1px dashed #d9d9d9;}
+        .shop-info2 .s-line2{padding-bottom:0.3rem;}
+        .shop-info2 .s-line2>p{margin:0.3rem 0;line-height:0.48rem;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click:true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+          <div class="record-item">
+            <div class="r-body">
+                <div class="r-pic">
+                    <img src="images/shop/shop1.png" alt="">
+                </div><div class="r-info">
+                    <p class="r-name">店铺名称</p>
+                    <p class="r-title"><span>商铺地址：</span><span>广东深深圳市</span></p>
+                    <p class="r-date"><span>联系电话：</span><span><a href="tel:0755-2323232356">0755-2323232356</a></span></p>
+                </div>
+            </div>
+          </div>
+          <div class="shop-info1">
+            <p><span>商铺商品：</span><span>100个</span><span class="s-right-arrow"></span></p>
+            <p><span>商铺地址：</span><span>广东省深圳市</span></p>
+            <p><span>联系人：</span><span>张先生</span></p>
+          </div>
+          <div class="shop-info2">
+            <div class="s-line1">店铺简介：</div>
+            <div class="s-line2">
+              <p>西集（www.xiji.com）是一家专注于为中国消费者提供优质、优价进口商品的跨境电商自营平台。西集网隶属于北京众嘉禾励科技</p>
+              <p>西集在全球包括美国、日本等国家拥有全资子公司，对接当地优质渠道，直接向国际品牌产品供应商批量采购以确保提供保真且丰富的产品线，</p>
+              <p>西集于2015年2月开始进行封测和内测，2015年4月正式上线。项目首期已获得千万级美元的天使投资，为全球化的团队建设和采购体</p>
+              <p>西集立志打造国内最好的海外商品购物平台，为国内消费者提供安全放心的海外购物体验！ </p>
+            </div>
+          </div>
+        </div>
+    </article>
+    <script>
+        $('.r-date a').on('tap',function(){
+
+        });
+    </script>
+</body>
+</html>

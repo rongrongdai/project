@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>修改昵称</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        .pay-pw{font-size:0.24rem;}
+        .pay-pw .save-btn{height:0.68rem;line-height:0.68rem;text-align:center;width:92.5%;font-size:0.26rem;border-radius:0.06rem;margin:2.2rem auto 0.2rem auto;background-color:#ff3c00;color:#fff;}
+        .card-info{font-size:0.24rem;background-color:#fff;margin-top: 0.32rem;border-top:1px solid #dcdcdc;border-bottom:1px solid #dcdcdc;}
+        .card-info>div{margin: 0 0.24rem;height:0.68rem;line-height:0.68rem;position:relative;}
+        .c-line2>div>input{font-size:0.24rem;height:0.4rem;width:100%;}
+        .c-line2 .clear-btn{position: absolute;width: 0.34rem;height: 0.68rem;background: url('images/clear.png') no-repeat center center/contain;right: 0;top: 0;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <div class="pay-pw">
+                <div class="card-info c-line2" >
+                    <div><input id="username" type="text" placeholder=""><span class="clear-btn"></span></div>
+                </div>
+                <div class="save-btn">保存</div>
+            </div>
+        </div>
+    </article>
+    <script>
+        $('.c-line2 .clear-btn').on('tap',function(){
+            $('#username').val('');
+        });
+    </script>
+</body>
+</html>

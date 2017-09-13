@@ -1,0 +1,322 @@
+<?php
+
+class AjaxTeachAction extends CommonAction{
+	//获取家教分类
+	public function tclass(){
+		$fid = $this->getData(array('fid','gid'),'post');
+		$aname=$fid['fid']; $gid = $fid['gid'];
+		import('Com.ClassfiyHelper');
+		$ids = M('Classfiy')->where("name='{$aname}'")->find();
+		$id = $gid?$gid:$ids['id'];
+		$name = ClassfiyHelper::selfInfo($aname,M('Classfiy'),$id);
+		$res = ClassfiyHelper::getClassesByName($name['name'],1,M('Classfiy'));
+		echo json_encode($res);
+	}
+
+	//获取分类信息
+	public function index(){
+		$fid = $this->getData(array('fid'),'post'); $id=$fid['fid'];
+		$sql = "select a.real_name rname,a.telephone phone,a.cid,a.address,c.name course,t.title,t.id,t.c_img,t.price,t.hit,t.pay from bd_teach t join bd_authentication a on a.uid=t.uid join bd_classfiy c on c.id=t.fid where t.fid=$id order by atime desc limit 4";
+		$data = M()->query($sql);
+		echo json_encode($data);
+	}
+
+	//统计浏览人数
+	public function hit(){
+		$tid = $this->getData(array('tid'),'get');$id=$tid['tid'];
+		$model = M('Teach');
+		$res = $model->where("id=$id")->setInc('hit');
+		if($res){
+			$hits = $model->where("id=$id")->getField('hit');
+			echo ($hits);
+		}
+	}
+
+	//主页发布我要找老师
+	public function hunt(){
+		$content = $this->getData(array('content'),'post');
+		$arr = array();
+		$arr['content'] = $content['content'];
+		$arr['user_ip'] = $_SERVER['REMOTE_ADDR'];
+		$arr['ctime'] = $_SERVER['REQUEST_TIME'];
+		if(session('uid')){
+			$uid = session('uid');
+			$arr['uid'] = $uid;
+			$imgg = M('Memberfields')->where("uid=$uid")->field('user_pic','rname')->find();
+			$img = $imgg['user_pic']?$imgg['user_pic']:"public/images/home/nimg.png";
+		}else{
+			$img = "public/images/home/youke.png";
+			$imgg['rname'] = "游客";
+		}
+
+		$res = M('Teacher_hunt')->data($arr)->add();
+		if($res){
+			$content = $arr['content'];
+			$len = mb_strlen($content,'utf-8');
+			if($len>70){
+				$contxt = mb_substr($content,0,70,'utf-8');
+				$txtmore = mb_substr($content,70,$len-7,'utf-8');
+				$content = $contxt;
+			}
+			$data = array('img'=>$img,'rname'=>$imgg['rname'],'content'=>$content,'txtmore'=>$txtmore,'btime'=>'刚刚');
+			echo json_encode($data);
+		}
+	}
+
+	//查看更多最新信息
+	public function more(){
+		$id = $this->getData(array('id'),'post'); $id=$id['id'];
+		$move = M('Teacher_hunt')->where("id >= $id")->order("ctime desc")->count();
+		
+		$sql = "SELECT h.*,m.user_pic FROM bd_teacher_hunt h LEFT JOIN bd_memberfields m ON h.uid=m.uid ORDER BY ctime DESC LIMIT $move,4";
+		$arr = M()->query($sql);
+		foreach($arr as $key=>$val){
+			$sec = ceil(($_SERVER['REQUEST_TIME']-$val['ctime'])/60);
+			$arr[$key]['btime'] = $this->beforeDate($sec,$val['ctime']);
+			if(empty($val['uid'])){
+				$arr[$key]['user_pic'] = "public/images/home/youke.png";
+				$arr[$key]['rname'] = '游客';
+			}else if(!empty($val['uid']) && empty($val['user_pic'])){
+				$arr[$key]['user_pic'] = "public/images/home/nimg.png";
+			}
+
+
+			$len = mb_strlen($val['content'],'utf-8');
+			if($len>70){
+				$arr[$key]['content'] = mb_substr($val['content'],0,70,'utf-8');
+				$arr[$key]['txtmore'] = mb_substr($val['content'],70,$len-70,'utf-8');
+			}
+
+
+		}
+
+		if(count($arr) == 4){
+			echo json_encode($arr);
+		}
+
+	}
+
+	//家教主页推荐老师
+	public function getHot(){
+		$arr = $this->getData(array('id'),'post');
+		$name = $arr['id'];
+		$id = M('Classfiy')->where("name='{$name}'")->getField('id');
+		$sql = "SELECT t.*,a.real_name,a.address,a.self_info FROM bd_teach t JOIN bd_authentication a ON t.teacher_id=a.id WHERE t.fid = $id and t.type = 2 limit 4";
+		$data = M('Teach')->query($sql);
+		foreach($data as $key=>$val){
+            $data[$key]['title'] = mb_substr($val['title'],0,9,'utf-8');
+        }
+		//$data = M('Proxyermanage')->where("cid = $id")->limit(4)->select();
+		echo json_encode($data);
+
+	}
+
+	//获取区域的代理商
+	public function harea(){
+		$arr = $this->getData(array('id'),'post');
+		$district = $arr['id'];
+		$data = M('Authentication')->where("district=$district")->select();
+		echo json_encode($data);
+	}
+
+	//获取家教代理商列表页的老师
+	public function looking(){
+		$uid = $this->getData(array('id'),'post');
+		$pid = $uid['id'];
+
+		$sql = "SELECT a.*,t.price,t.id tid FROM bd_authentication a JOIN bd_teach t ON a.id=t.teacher_id WHERE a.uid=$pid and a.type=4 LIMIT 5";
+		$data = M()->query($sql);
+		//$data = M('Authentication')->where("uid=$pid and type=4")->limit(5)->select();
+		echo json_encode($data);
+
+	}
+
+	//家教详细页--收藏
+	public function collect(){
+		$arr = $this->getData(array('aid'),'get');
+		$arr['uid'] = session('uid');
+		$arr['type'] = 1;
+		$arr['c_timestamp'] = time();
+		if(!empty($arr['uid'])){
+			$res = M('Collection')->data($arr)->add();
+			if($res){
+				echo json_encode("收藏成功");
+			}
+		}else{
+			echo json_encode("请先登录");
+		}
+		
+	}
+
+
+	//家教(老师)列表页
+	public function teacher(){
+		$arr = $this->getData(array('action','txt1','txt2','txt3','pages','price'),'post');
+		$action = $arr['action'];
+		$fid = $arr['txt1'];
+		$gid = $arr['txt2'];
+		$city_id = 200; //模拟城市为深圳
+		$district = $arr['txt3'];
+		$price = $arr['price'];
+		
+		$condition = "";
+		$condition .= $district?"district=$district":"city=$city_id";
+		$condition .= $fid?" and fid=$fid":"";
+		$condition .= $gid?" and gid=$gid":"";
+
+		if($price==='up'){
+			$condition .= " order by price asc";
+		}else if($price==='down'){
+			$condition .= " order by price desc";
+		}
+
+		$pageNow = $arr['pages']?(int)$arr['pages']:1;
+		$pageSize = 10;
+		$sum = M('Teach')->where("$condition")->count();
+		if($sum>$pageSize){
+			$limit = ($pageNow-1)*$pageSize;
+			$condition .= " limit $limit,$pageSize";
+			$page = $this->ajaxPage($sum,$pageSize,$pageNow);
+		}
+
+		$res = M('Teach')->where("$condition")->select();
+		foreach($res as $key=>$val){
+			$sec = ceil(($_SERVER['REQUEST_TIME']-$val['atime'])/60);
+			$res[$key]['btime'] = $this->beforeDate($sec,$val['atime']);
+		}
+
+		//获取科目下的阶段分类
+		if($action == 'txt1'){
+			if($fid){
+				$data = M('Classfiy')->where("id=$fid")->field('lrf,rft')->find();
+				$lrf = $data['lrf']; $rft = $data['rft'];
+				$grade = M('Classfiy')->where("lrf>$lrf and rft<$rft")->field('id,name')->select();	
+			}else{
+				$grade = array(array('id'=>'0','name'=>'小学'),array('id'=>'0','name'=>'初中'),array('id'=>'0','name'=>'高中'));
+			}
+		}
+
+		$res = array('res'=>$res,'gid'=>$grade,'page'=>$page,'sum'=>$sum);
+		echo json_encode($res);
+
+	}
+
+	//未签约老师列表
+	public function nosign(){
+		$arr = $this->getData(array('fid','id'),'post');
+		$fid = $arr['fid'];
+		//家教信息
+		$sql = "select t.*,c.real_name name from bd_teach t join bd_authentication c on t.uid=c.uid where t.fid=$fid";
+		$res = M()->query($sql);
+		echo json_encode($res);
+	}
+
+	//对家教信息评论
+	public function message(){
+		$uid = session('uid');
+		if($uid){
+			$_POST['uid'] = $uid;
+			$_POST['ctime'] = $_SERVER['REQUEST_TIME'];
+			$res = M('Teach_comment')->data($_POST)->add();
+			$res1 = M('Memberfields')->where("uid=$uid")->getField('user_pic');
+			$img = $res1 ? $res1 : "public/images/home/uimg.png";
+			$data = array(
+				'code'=>'success',
+				'data'=>array(
+					'id'=>$res,
+					'uname'=>session('uname'),
+					'content'=>$_POST['content'],
+					'ctime'=>date('Y-m-d H:i:s',$_POST['ctime']),
+					'img'=>$img
+				)
+			);
+		}else{
+			$data = array('code'=>'error','data'=>null);
+		}
+		echo json_encode($data);
+	}
+
+	//获取教师|机构免费发布次数
+	public function total(){
+		$id = $this->getData(array('id'),'post');
+		$uid = $id['id'];
+		$total = M('Teach')->where("uid=$uid")->count();
+		if($total<3){
+			echo json_encode('vmoney');
+		}else{
+			$res = M('Memberfields')->where("uid=$uid")->getField('vmoney');
+			if($res>10){
+				echo json_encode('vmoney');				
+			}else{
+				echo json_encode('noVmoney');
+			}
+		}
+		
+	}
+
+	//ajaxPage
+	public function ajaxPage($sum,$pageSize,$pageNow){
+		$pageCount = ceil($sum/$pageSize);
+		$head = 1;
+		$foot = $pageCount;
+		$prev = $pageNow-1;
+		$next = $pageNow+1;
+		if($prev<=$head){
+			$prev = $head;
+		}
+		if($next>=$pageCount){
+			$next = $pageCount;
+		}
+		
+		$str = "";
+		$str = "<style>.pos{height:80px;margin:30px 0 30px 300px;} .pos a{color:#666;} .pos a:hover,.pos b{color:#00b38a;}</style><div class='pos'><a href='#pos' id='page' onclick='(km(".$head.",this.id))'>首页</a><a href='#pos' id='page' onclick='(km(".$prev.",this.id))'> 上一页</a><a href='#pos' id='page' onclick='(km(".$next.",this.id))'> 下一页</a><a href='#pos' id='page' onclick='(km(".$pageCount.",this.id))'> 尾页</a><a> /当前第<b> ".$pageNow." </b>页，共".$pageCount."页</a></div>";
+		return $str;
+	}
+
+	//添加认证老师验证码
+	public function addCode(){
+		$uid = session('uid');
+		$code = $this->setCode();
+		//未使用状态最多5个
+		$sum = M('Teacher_invite')->where("uid=$uid and status=1")->count();
+		if($sum<5){
+			M('Teacher_invite')->data(array('uid'=>$uid,'code'=>$code))->add();
+			$msg = "success";
+		}else{
+			$msg = "你有多邀请码未使用，不可继续添加";
+		}
+		echo json_encode($msg);
+	}
+	static public function setCode(){
+		$str = "0123456789";
+		$str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		$code = '';
+		for($i=0;$i<3;$i++){
+			$code .= substr(str_shuffle($str),0,1);
+			$code .= substr(str_shuffle($str1),0,1);
+		}
+		//获取唯一邀请码
+		$res = M('Teacher_invite')->where("code='{$code}'")->find();
+		if($res){
+			self::setCode();
+		}else{
+			return $code;
+		}
+	}
+
+	//验证邀请码
+	public function verifyCode(){
+		$arr = $this->getData(array('code'),'post');
+		$code = $arr['code'];
+		$res = M('Teacher_invite')->where("code='{$code}' and status=1")->find();
+		if($res){
+			$msg = "success";
+		}else{
+			$msg = "邀请码无效";
+		}
+		echo json_encode($msg);
+	}
+
+
+
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单列表</title>
+    <link rel="stylesheet" href="../sass/public.css"/>
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+<body>
+<!--left-->
+<div class="main_l l fl">
+    <ul class="expmenu" id="empmenu">
+        <li><img src="../images/log.png"> </li>
+        <li>
+            <h2 class="active">
+                <span class="l label icon1">首页</span>
+            </h2>
+        </li>
+        <li>
+            <h2 class="active">
+                <span class="l label icon2">文章管理</span>
+            </h2>
+        </li>
+        <li class="li_bgs">
+            <h2>
+                <span class="l label icon3">订单管理</span>
+                <span class="r arrow down"></span>
+            </h2>
+            <ul class="menu">
+                <li><a href="javascript:void(0);"><img src="../images/icon_list.png"> 订单列表</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="nav_user">
+    <div class="user_box fl">
+        <div class="user_photo fl">
+            <img src="../images/icon_head_big.png">
+        </div>
+        <ul class="down_menu hide">
+            <li>
+                <a><i class="exit"></i>退出</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="arrow fl"></div>
+
+</div>
+<!--/left-->
+<div class="index">
+    <!--right-->
+    <div class="or_right">
+        <div class="box">
+            <div class="or_h">
+            <h3>收货信息及交易详情</h3>
+            </div>
+            <table class="tb_all1 tb_tsu" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr class="tb_ord1">
+                    <td><img class="img1" src="../images/icon_n.png"> 订单编号:3232652521354 </td>
+                    <td colspan="4"><img src="../images/icon_time.png"> 创建时间:2016/09/20 </td>
+                </tr>
+
+                <tr class="tb_ord2">
+                    <td>商品图</td>
+                    <td>商品名称</td>
+                    <td>规格</td>
+                    <td>条形码</td>
+                    <td>购买数量</td>
+                </tr>
+
+                <tr class="tb_ord3">
+                    <td><img src="../images/imgs_g.png"></td>
+                    <td>成美玻尿酸集中补水面膜</td>
+                    <td>20ml*4（一盒4片）</td>
+                    <td>413574534312</td>
+                    <td>1</td>
+                </tr>
+
+                </thead>
+            </table>
+            <table class="tb_all1" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr class="tb_ord1">
+                    <td colspan="5"><img class="img1" src="../images/icon_buyer.png">买家收货人信息</td>
+                </tr>
+
+                <tr class="tb_ord3">
+                    <td><img src="../images/icon_r.png"> 收货人信息</td>
+                    <td>马云</td>
+                    <td><img src="../images/icon_iph.png"> 手机号码</td>
+                    <td>1325656565</td>
+                </tr>
+
+                <tr class="tb_ord3">
+                    <td><img src="../images/icon_pos.png"> 收货人地址</td>
+                    <td>广东省南山市科技园大冲商务中心A座2201</td>
+                    <td><img src="../images/icon_mess.png"> 买家备注</td>
+                    <td>加急，今天发货。</td>
+                </tr>
+
+                </thead>
+            </table>
+
+
+
+            <p class="or_deliver">发货</p>
+            <div class="or_shipping ">
+                <div class="shpLeft"><img src="../images/icon_fa.png"> 配送快递：<input type="text" /></div>
+                <div  class="shpMiddle"><img src="../images/icon_number.png"> 订单编号：<input type="text" value="1234664646" /></div>
+                <div  class="shpRight"><a><img src="../images/icon_sure.png">确认发货</a></div>
+                <p class="or_deliver"></p>
+            </div>
+        </div>
+
+    </div>
+    <!--/right-->
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/newslist.css"/>
+
+
+<!---------------------------->
+
+<div id="news">
+	<div class="ad_new"><a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/banner2.jpg" /></a></div>
+	
+	<div class="t-content">
+		<div class="left">
+			<div class="newslist-bar">最新资讯 <span style="color:#f93;">News</span></div>
+			<hr size='1' color='#393' />
+
+			<div id="newslist">
+			<foreach name="data" item="vo" key="i">
+				<div class="new">
+					<a href="javascript:hit(<{$vo.id}>);"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.logo}>" width="150" height="94" /></a>
+					<div class="new-right">
+						<h3><a href="javascript:hit(<{$vo.id}>);"><{$vo.title}></a></h3>
+						<p>总编 <{$vo.mtime|date="m-d",###}></p>
+						<span><{$vo.content}>....<a href="javascript:hit(<{$vo.id}>);">详情</a></span>
+					</div>
+				</div>
+			</foreach>	
+			</div>
+
+			<div class="loading"><span onclick="more(<{$i+1}>)">更多新闻</span></div>
+		</div>
+		<div class="right">
+			<div class="leftbt">热门文章</div>
+			<div>
+			<foreach name="hotnews" item="vo">
+				<a href="javascript:hit(<{$vo.id}>);"><{$vo.title}></a>
+			</foreach>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+<!---------------------------->
+
+
+<include file="../../../Public/default/footer" />
+
+
+<script>
+function hit(id){
+    $.get("__APP__/Ajax/AjaxIndex/hit",{'id':id},function(data){
+    	window.location.href="__APP__/Index/Index/news?id="+id;
+    });
+}
+
+var num = 1;
+function more(id){
+	$(".loading").html("<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src='__ROOT__/public/images/home/jiazai.gif'/>");
+	$.get("__APP__/Ajax/AjaxIndex/loadnews",{'id':id},function(data){
+		if(data){
+			num++;
+			for(var i=0;i<data.length;i++){
+				var node = '<div class="new"><a href="javascript:hit('+data[i].id+');"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/'+data[i].logo+'" width="150" height="94" /></a><div class="new-right"><h3><a href="javascript:hit('+data[i].id+');">'+data[i].title+'</a></h3><p>总编 '+getTime(data[i].mtime)+'</p><span>'+data[i].content+'....<a href="javascript:hit('+data[i].id+');">详情</a></span></div></div>';
+				$(node).appendTo("#newslist");
+				var mid = num*(i+1);
+			}
+			$(".loading").html("<span onclick='more("+mid+")'>更多新闻</span>");
+		}else{
+			$(".loading").html("抱歉！暂无更多内容");
+		}
+	},'json');
+}
+
+function getTime(nS) { 
+	return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " "); 
+} 
+
+
+
+</script>
+

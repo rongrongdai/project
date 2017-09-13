@@ -1,0 +1,11 @@
+<?php
+//问题控制器
+class QuestionAction extends CommonAction{
+    //获取问题列表(热门问题，零回答)
+    //获取某分类问题
+    //获取问题回答
+    //提取提问人信息
+    //提问
+    //我的学问
+}
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——个人设置</title>
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+<script src="__ROOT__/public/js/validater.js"></script>
+</head>
+<body>
+<div class="per">
+     <div class="per-top">
+          <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/zjkc1.jpg" />
+          <div class="set-up"><if condition="$hand">修改<else />添加</if>课程</div>
+     </div>
+
+     <div class="per-form">
+          <form action="" method="post" enctype="multipart/form-data" id="dataform">
+                    <div class="pheig">
+              		<div class="pflat1">课程名称：</div>
+              		<div class="pflat2">
+                            <input type="text" class="inputcs"  name="cname" id='cname' value="<{$data.cname}>" />
+                            
+              		</div>
+                        <span class="prompt">课程名称，中英文均可， 不超过20字符</span>
+                    </div> 
+
+		    <div class="pheig">
+              		<div class="pflat1">课程log:</div>
+              		<div class="pflat2">
+                           <input type="file" id="timg"  name="timg" />
+                           <if condition="$data.timg neq ''"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$data.timg}>" style="width:40px;"/></if>
+                	 </div>
+                        <span class="prompt">课程简介，中英文均可，不超过100字符</span>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="pheig">
+              		<div class="pflat1">课程分类:</div>
+              		<div class="pflat2" id="cid">
+              		</div>
+                        <span class="prompt"></span>
+                    </div> 
+                    <div class="pheig">
+              		<div class="pflat1">培训机构：</div>
+              		<div class="pflat2">
+                            <select name="oid" id="oid">
+                                <option value="0">请选择</option>
+                                <foreach name="organs" item="org">
+                                <option value="<{$org.id}>" id="<{$org.id}>"><{$org.oname}></option>
+                                </foreach>
+                            </select>
+                            
+              		</div>
+                        <span class="prompt">课程简介，中英文均可，不超过100字符</span>
+                    </div> 
+                
+		    <div class="pheigtet">
+              		<div class="pflat1">课程简介:</div>
+              		<div class="pflat2">
+                            <textarea name="tintroduce" id="tintroduce" class="pregrjj"/><{$data.tintroduce}></textarea>
+                         </div>
+                        <span class="prompt">课程简介，不超过100字符</span>
+                    </div> 
+                
+                    <div class="pheigtet">
+              		<div class="pflat1">课程详情:</div>
+              		<div class="pflat2">
+ 				<textarea name="c_descript" id="c_descript" class="pregrjj"/><{$data.c_descript}></textarea>
+                		<span class="prompt">课程详情，不超过400字符</span>
+              		</div>
+                    </div> 
+
+				<div class="pheig psub">
+					<input type="submit" class="subinput" value="确认<if condition='$hand'>修改<else/>添加</if>"  id="perqreng"/>
+                    <input type="hidden" name="id" value="<{$id}>">
+                    <input type="hidden" name="token" value="<{$token}>"/>
+                    <input type="hidden" name="cid" value="" /> 
+                    <input type="hidden" name="timestamp" value="<{$timestamp}>"/>                    
+            	</div> 
+          </form>   
+     </div>
+</div>
+
+
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script src="__ROOT__/public/js/home/common.js"></script>
+<script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+<script>
+            $("#dataform").submit(function(){
+                var nullcheck=new Array('cname','tintroduce','oid','c_descript');
+                var nullinfo=new Array('课程名称','课程简介','培训机构','课程详情');
+                var res=null_check(nullcheck,nullinfo);
+                  if(res){
+                      $("#"+res[0]).parent().find(".prompt").text(res[1]).css("color","red");
+                      return false;
+                  }else{
+                     var cid='';
+                     $("#cid").find("select").each(function(){
+                           cid=$(this).val();
+                     })
+                     if(cid!=='请选择分类' && cid){
+                       $("input[name=cid]").val(cid);
+                       return true;  
+                     }
+                     $("#cid").parent().find(".prompt").text('请选择分类').css("color","red");
+                     return false;
+                  }
+                  return false;
+            });
+            $(function(){
+                var id="<{$data.oid}>";
+                $("#"+id).attr("selected","selected");
+            })	
+            $(function(){
+                var cid="<{$data.cid}>";
+                initclass('cid','培训分类','','',cid);
+            })
+           
+</script>
+</body>
+</html>

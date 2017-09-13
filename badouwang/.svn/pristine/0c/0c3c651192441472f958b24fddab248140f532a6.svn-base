@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——个人设置</title>
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+<script src="__ROOT__/public/js/validater.js"></script>
+  <style type="text/css">
+    .per{font-size: 14px;color:#666;}
+    .plat {padding: 10px 0;margin-right: 60px; height: 30px;line-height: 30px;border-bottom: 1px solid #e5e5e5;}
+    .plat .tianx {float: left; width:835px; font-family: 'Microsoft YaHei';font-size: 14px;color: #00b38a;}
+    .plat .tianx .btian:hover{color:#B38100;cursor:pointer;}
+    .plat .tianj {float:right;margin-right: 10px;color:#B38100; cursor:pointer;}
+    .plat .tianj:hover{color:#00b38a;} 
+    .sjian{ width:835px; text-align: center;padding:20px 50px;}
+    .sjian tr{background:#f1f1f1; cursor:pointer;}
+    .sjian td{width:100px;height:30px;font-size: 14px;border:1px solid #fff;}
+    .sjian td input{ display:none;}
+    .sjian .ske {background:#00b38a; color:#fff; cursor:auto;}
+    .sjian .gou {border-radius: 6px;background: #07b09a;color: #FFF;font-weight: bold;text-align: center;line-height: 25px;padding: 3px;}
+
+    .kmo{ width:835px;}
+    .kmo li{border:1px solid #e5e5e5;padding:20px 10px;margin-bottom: 20px; position: relative;}
+    .kmo li:hover{border:1px solid #E8CBAF;background:#F6F7ED;}
+    .kmo .grade{margin-bottom:10px;color:#000;font-weight:bolder;}
+    .kmo .mode-info {float: left;margin:16px 10px 0 0;}
+    .kmo .mode-info .price {color: #ff7100;}
+    .kmo .mode-md{position: absolute;right: 10px;top: 5px; }
+    .kmo .mode-md span{color:#00b38a;cursor:pointer;}
+    .kmo .mode-md span:hover{color:#B38100;}
+
+    .popup .back{background:url(__ROOT__/public/images/home/bg.png); position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:1;display:none;}
+    .popup .tent{width:500px;height:300px;background:#FFF;position:absolute;top:25%;left:25%;z-index:2;border-radius:4px;box-shadow:0 0 15px #333;display:none;}
+    .popup .tent .title{height:40px;line-height:40px;font-weight:bold;font-size:16px;text-indent:10px;border-bottom:1px solid #ccc;}
+    .popup .tent .title span{float:right;margin-right:15px;font-weight:normal;cursor:pointer;}
+    .popup .tent .title span:hover{color:#F93;}
+    .popup .tent .line{width:300px;height:30px;margin:10px auto;}
+    .popup .tent .line .left{float:left;width:80px;font-size:14px;line-height:30px;}
+    .popup .tent .line input{float:left;width:60px;height:20px;margin:0;padding-left:5px;color:#555;outline:none;}
+    .popup .tent .line span{line-height: 30px;margin-left: 5px;}
+    .popup .tent .line #tclass{padding-top:3px;}
+    .popup .tent .line .sub{width:100px;height:30px;background:#00b38a;border:none;color:#FFF;padding:0;margin:10px 0 0 100px;cursor:pointer;border-radius:4px;}
+    .popup .tent .line .sub:hover{color:#f93;}
+  </style>
+</head>
+<body>
+
+<div class="per">
+
+      <div class="per-top">
+          <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/hy3.gif" />
+          <p class="set-up">平台老师，需完善以下信息</p>
+      </div>
+
+      <div class="per-form">
+
+        <form action="__URL__/applyTeacher" method="post" id="rzform">
+          <div class="plat">
+              <div class="tianx">
+                  <span  class="btian">授课科目(必填)：</span>
+                  <span class="tianj" id="tjkm">添加科目</span>
+              </div>
+          </div>
+
+          <div class="kmo" style="display:block;">
+            <ul style="list-style:none;">
+              <if condition="$data">
+                <foreach name="data" item="km">
+                  <li>
+                      <div class="grade"><{$km.gname}></div>
+                      <div><{$km.fname}>/<{$km.gname}></div>
+                      <div>
+                          <div class="mode-info">老师上门 <span class="price">￥<{$km.price1}>/小时</span></div>
+                          <div class="mode-info">学生上门 <span class="price">￥<{$km.price2}>/小时</span></div>
+                          <div class="mode-info">协商地点 <span class="price">￥<{$km.price3}>/小时</span></div>
+                          <div style="clear:both;"></div>
+                      </div>
+                      <div class="mode-md">
+                          <span onclick="mod(<{$km.id}>)">修改</span>|<span onclick="del(<{$km.id}>)">删除</span>
+                      </div>
+                  </li>
+                </foreach>
+              </if>
+            </ul>
+          </div>
+
+          <div class="pheig">
+              <div id="name" class="pflat1">我的教龄：</div>
+              <div class="pflat2">
+                  <select name="t_age">
+                    <option value="0">请选择</option>
+                    <for start="1" end="30"><option value="<{$i}>年"><{$i}>年</option></for>
+                  </select>
+                <span class="hint t_age"></span>
+              </div>
+          </div>
+
+          <div class="pheig">
+              <div id="name" class="pflat1">我的身份：</div>
+              <div class="pflat2">
+                  <select name="t_prof">
+                    <option value="0">请选择</option>
+                    <option value="在职教师">在职教师</option>
+                    <option value="在校大学生">在校大学生</option>
+                  </select>
+                <span class="hint t_prof"></span>
+              </div>
+          </div>
+
+          <div class="plat">
+              <div class="tianx">
+                  <span>授课时段(必填)：</span><span class="hint t_time"></span>
+                  <span class="tianj" id="bjsd">编辑时段</span>
+              </div>
+          </div>
+          <div class="sjian" style="display:none;">
+            <table style="border-collapse: collapse;">
+              <tr class="ske">
+                 <td>周一</td><td>周二</td><td>周三</td><td>周四</td>
+                 <td>周五</td><td>周六</td><td>周天</td>
+              </tr>
+              <tr id="l1">
+                <td><span>上</span><input type="checkbox" name="teach_time[]" value="1.1" /></td>
+                <for start="0" end="6"><td><span class="gou">√</span><input type="checkbox" name="teach_time[]" value="1.<{$i+2}>" checked /></td></for>
+              </tr>
+              <tr id="l2">
+                <td><span>下</span><input type="checkbox" name="teach_time[]" value="2.1" /></td>
+                <for start="0" end="6"><td><span class="gou">√</span><input type="checkbox" name="teach_time[]" value="2.<{$i+2}>" checked /></td></for> 
+              </tr>
+              <tr id="l3">
+                <for start="0" end="6"><td><span class="gou">√</span><input type="checkbox" name="teach_time[]" value="3.<{$i+1}>" checked /></td></for> 
+                <td><span>晚</span><input type="checkbox" name="teach_time[]" value="3.7" /></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="pheig psub">
+				    <input type="submit" class="subinput" value="确认提交"  id="perqreng"/>
+          </div>
+
+        </form> 
+
+      </div> 
+  <!-- 弹窗 -->
+<div class="popup">
+  <div class="back"></div>
+    <div class="tent bind">
+      <div class="title">添加科目<span>X</span></div>
+        <div class="line"><div class="left">选择科目：</div><div id='tclass'></div></div>
+        <div class="line"><div class="left">老师上门：</div><input type="text" name="price1" value="<{$res.price1}>" /><span>元/小时</span></div>
+        <div class="line"><div class="left">学生上门：</div><input type="text" name="price2" value="<{$res.price2}>" /><span>元/小时</span></div>
+        <div class="line"><div class="left">商议地点：</div><input type="text" name="price3" value="<{$res.price3}>" /><span>元/小时</span></div>
+
+        <input type="hidden" name="kid" value="<{$res.id}>" />
+         <div class="line" style="height:0px;"><div class="hint" style="text-align:center;font-size:12px;color:red;height:12px;"></div> </div>
+        <div class="line"><input class="sub" type="submit" value='<if condition="$res">修改<else/>确认添加</if>' /></div>
+    </div>
+</div>    
+  <!-- 弹窗end -->   
+</div>
+
+    <script src="__ROOT__/public/js/home/jquery.mousewheel.js"></script>
+    <script src="__ROOT__/public/js/home/nicescroll.js"></script>
+    <script src="__ROOT__/public/js/home/noscroll.js"></script>
+<script src="__ROOT__/public/js/home/common.js"></script>
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script>
+$.ajaxSetup({async: false });getTclass('家教分类');
+$("#rzform").submit(function(){
+  var age = $("select[name='t_age']").find("option:selected").val(), prof = $("select[name='t_prof']").find("option:selected").val(), t_time = $("input[type='checkbox']:checked").val();
+  if(age == '0'){$(".t_age").html("请选择教龄").css('color','red');return false;}
+  if(prof == '0'){$(".t_prof").html("请选择职业").css('color','red');return false;}
+  if(!t_time){
+    $(".t_time").html("授课时段不能空").css('color','red');
+    return false; }else{ return true;} return false;
+})
+
+$(".sjian").find("td").click(function(){
+  if($(this).css("cursor")==="pointer"){
+    if($(this).find("span").attr("class")==="gou"){
+      var lno = $(this).parent().attr("id"),lvo = "";
+      switch(lno){case 'l1':lvo="上";break;case 'l2':lvo="下";break;case 'l3':lvo="晚";break;}
+      $(this).find("span").html(lvo).attr('class','');$(this).find("input").attr('checked',false);
+    }else{
+      $(this).find("span").html('√').attr('class','gou');$(this).find("input").attr('checked',true);
+    }
+  }
+});
+
+
+$(".btian").click(function(){ $(".kmo").toggle(); });
+$("#bjsd").click(function(){ $(".sjian").show(); });      
+$("#tjkm").click(function(){ $(".back").show() ;$(".tent").show(); });
+$(".title span").click(function(){  $(".back").hide() ;$(".tent").hide(); window.location.href = "__URL__/applyTeacher"; });
+
+$(".line .sub").click(function(){
+  var gid = $("#gid").val(),pc1 = $("input[name='price1']").val(),pc2 = $("input[name='price2']").val(),pc3 = $("input[name='price3']").val();
+  if(gid==0||!gid){
+    $(".line .hint").html("科目不能空");
+    return false;
+  }
+  if (!(/(^[1-9]\d*$)/.test(pc1))){ $(".line .hint").html("价格不能空，且为正整数");return false;}
+  if (!(/(^[1-9]\d*$)/.test(pc2))){ $(".line .hint").html("价格不能空，且为正整数");return false;}
+  if (!(/(^[1-9]\d*$)/.test(pc3))){ $(".line .hint").html("价格不能空，且为正整数");return false;}else{$(".tent").wrap('<form action="__URL__/addKmo" method="post"></form>');}
+});
+
+function mod(id){ window.location.href = "__URL__/applyTeacher?kid="+id;}
+function del(id){ if(confirm('确定删除？删除不可恢复')){ window.location.href = "__URL__/delKmo?kid="+id; }}
+window.onload = function(){
+  if("<{$Think.get.kid}>"){
+     $(".back").show() ;$(".tent").show();
+     $("#fid").find('option[value="<{$res.fid}>"]').attr('selected',true);
+     $("#fid").change();$("#gid").find('option[value="<{$res.gid}>"]').attr('selected',true);
+  }
+  if("<{$rest.t_age}>"){
+     $("select[name='t_age']").find("option[value='<{$rest.t_age}>']").attr('selected',true);
+     $("select[name='t_prof']").find("option[value='<{$rest.t_prof}>']").attr('selected',true);
+    var tt = eval('<?php echo $rest['teach_time'];?>');$("table").find("span:lt(21)").html('晚').attr('class','');$("table").find("span:lt(14)").html('下').attr('class','');$("table").find("span:lt(7)").html('上').attr('class','');$("table").find("input").attr('checked',false);
+    for(var i=0;i<tt.length;i++){$("table").find("input[value='"+tt[i]+"']").attr('checked',true);$("table").find("input[value='"+tt[i]+"']").parent().find("span").html('√').attr('class','gou');}
+  } 
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<?php
+
+//分类控制器
+class ClassfiyAction extends CommonAction{
+    //获取家教分类
+    //获取培训推荐分类
+    //获取题库分类
+    //获取学问分类
+    
+}
+
+

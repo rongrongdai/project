@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——找回密码</title>
+<link rel="stylesheet" href="__ROOT__/public/css/home/style.css" />
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+</head>
+<body>
+<div id="allba">
+     <div id="thehead">
+        <div class="theheadone">
+             <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/fheader.gif" />
+        </div>
+       <div class="theheadtwo">
+              <div class="retrievpasdwd">
+                  <div class="retrievpasdwdyuan"></div>
+                 <p class="yuanwen">1</p>
+                 <div class="retrievpasdwdzhengfxyi"></div>
+                 <div class="retrievpasdwdyuanyiyi"></div>
+                 <p class="yuanwenyi">2</p>
+                 <div class="retrizhengfxer"></div>
+                 <div class="retrievpasdwdyuaner"></div>
+                 <p class="yuanwener">3</p>
+                <div class="repaemill">输入邮箱地址</div>
+                <div class="repaemillone">邮箱验证</div>
+                <div class="repaemilltwo">重置密码</div>
+              </div>
+              
+              <div class="retrczmimm">密码重置邮件已发送至你的邮箱:&nbsp;<span ><{$email}></span></div>
+              <div class="retrczmimmyi">请在24小时内登录你的邮箱接收邮件，链接激活后可重置密码。</div>
+              <div class="retrdengluyoux">
+                <input type="submit"  value="登录邮箱查看"> 
+               </div>
+      </div>
+ </div>
+ </div>
+    <script>
+       $(function(){
+           $("input[type=submit]").click(function(){
+               var url="<{$url}>";
+               location.href=url;
+           })
+       })
+    </script>
+</body>
+</html>

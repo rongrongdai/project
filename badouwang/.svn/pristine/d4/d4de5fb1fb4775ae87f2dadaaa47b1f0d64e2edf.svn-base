@@ -1,0 +1,142 @@
+<include file="../../../Public/default/header" />
+<link type="text/css" rel="stylesheet" href="__ROOT__/public/css/home/answerxq.css" />
+<!--问答详情内容-->
+<div class="hotnav">当前位置： <a href="__URL__" >学问主页</a> >  <a href="__URL__/qlist" >列表页</a> >  <a href="javascript:" >详情页</a></div>
+<div class="answe-ceny">
+    
+    <div class="answe-cen-left">
+          <div class="answ-wy"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/020.png"/><{$answers.0.qcontent|strip_tags}></div>
+          <p class="answ-we">时间：<{$answers.0.atime|date="Y-m-d",###}></p>
+          <p class="answ-ws">阅读：<{$answers.0.lnumber}></p>
+          <p class="answ-ww"></p>
+          <p class="tjiaansy">回答问题赚学豆。快来答吧！</p>
+          <form method="post" id='dataform' >
+           <textarea rows="12" class="tjiaanse" cols="33" placeholder="请输入您的回答" name="content"></textarea>
+            <p class="tjiaanssi">
+             <label><input type="radio" class="gender_radio" name="free" id="male" value="1"><span>免费</span></label>
+	         <label><input type="radio" class="gender_radio" name="free" id="female" value="2"><span>付费</span></label>
+             <input type="text" id="srxued" placeholder="输入学豆" name="v_money" style="display:none"/>
+             <input type="submit" value="提交答案" class="anytjt" />
+          </p>
+          </form>
+         
+          <div class="ace-lefy">
+                     <p class="pt-re" >答案</p>
+                     <p class="pt-rs" ></p>
+                     <foreach name="answers" item="answer">
+                         <div name="answer">
+                            <div class="ace-lefyi">
+                                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/021.png" class="ace-im" />
+                                    <p class="answ-wl"><span><{$answer.aname}></span> 采纳率：<span>30%</span>  响应时间：<{$answer.resp}> </p>
+                                    <span class="answ-wq"></span>
+                                    <p class="answ-wb"><{$answer.content|strip_tags|mb_substr='0','20','utf-8'}><if condition='strlen($answer.content) gt 30'>...</if></p>
+                                    <p class="answ-wqi" >查看答案</p>
+                            </div>
+                            <div class="ace-lefer" style="display:none" name="lock">
+                                <div class="ace-lefer-fu" style="display:none">
+                                       <{$answer.content}>
+                                </div>
+                                <if condition="$answer.qid neq 1">
+                                    <if condition="!$answer.v_money gt 0">
+                                        <div class="ace-lefer-fu">
+                                           <{$answer.acontent}><php></php>
+                                        </div>
+                                    <else/>
+                                        <div class="ace-fer-yuany" aid="<{$answer.id}>">
+                                            <p>解锁单条答案</p>
+                                            <span><{$answer.v_money}>学豆</span>
+                                        </div>
+                                    </if>
+                                <else />
+                                     <div class="ace-lefer-fu">
+                                           <{$answer.acontent}><php></php>
+                                     </div>
+                                </if>
+                            </div>
+                        </div>
+                    </foreach>
+         </div>
+          
+    
+ </div>
+    
+   <div class="answe-cen-right">
+      <div class="answ-rity">
+            <div class="answ-rityi">
+            <a href="javascript:"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/022.gif" class="rit-im" /></a>
+            <p class="rit-imy"><a href="javascript:"><{$user.0.rname}></a></p>
+            <p class="rit-imj" style="margin-top:10px;"><if condition='$user.content neq ""'><{$user.content}><else/>暂未设置！</if></p>
+            </div>
+            <p class="rit-imer"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/022.png" /><span>标签</span>
+            <{$user.0.lab}></p>
+            <p class="rit-imsa"></p>
+            <p class="rit-imsi"><a href="javascript:">他的学吧</a></p>
+            <p class="rit-imwu">最近提问时间：</p>
+            <span class="rit-imli"><{$user.0.max|date="Y-m-d",###}></span>
+      </div>
+      
+       <p class="pt-re" >类似提问</p>
+       <p class="pt-rs" ></p>
+
+    <foreach name="rques" item="qestion">   
+       <div class="rit-dfg">
+         <p class="rit-imqu"></p>
+         <a class="rit-imba" href="javasrcipt:;">
+         	<span class="wenru">问：</span><{$qestion.content|strip_tags|mb_substr="0","10","utf-8"}><if condition="$qestion.content">  <span class="rit-imqiu" styel="float:right">[回答:<if condition="$qestion.aswnum gt 0"><{$qestion.aswnum}>]<else/>0</if></span>
+         </a>
+       </div>
+    </foreach>   
+
+   </div>
+
+   
+</div>
+ <script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script>
+    $(function(){
+        $(".ace-lefer").hide();
+        $(".answ-wqi").click(function(){
+            if($(this).parent().parent().find(".ace-lefer").css("display")==="block"){
+                $(this).parent().parent().find(".ace-lefer").hide();
+            }else{
+                $(this).parent().parent().find(".ace-lefer").show();
+            }
+        })
+        $(".ace-fer-yuany").click(function(){
+            var qid=$(this).attr('aid');
+            var obj=$(this);
+            $.getJSON("__ROOT__/index.php/Ajax/AjaxUser/unlock_question",{"qid":qid},function(data){
+                obj.parent().find(".ace-lefer-fu").css("display","block");
+                obj.parent().find(".answ-wshi").hide();
+                obj.parent().find(".answ-wshy").hide();
+                obj.remove();
+                var type=data.code==='1'?1:2;
+                $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: type,msg: data.message}});
+            });
+        })
+        $("input[name=free]").click(function(){
+            
+            if($(this).val()==='1'){
+                $("input[name=v_money]").hide();
+            }else{
+                $("input[name=v_money]").show();
+            }
+        })
+        $("#dataform").submit(function(){
+            if($("input[name=v_money]").css("display")!=='none'){
+                if($("textarea[name=content]").val().length<60){
+                    $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 3,msg:'付费回答字数不能低于60字'}});
+                    return false;
+                };
+                if(!parseInt($("input[name=v_money]").val())){
+                    $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 3,msg:'请输入正确学豆数目！'}});
+                    return false;
+                }
+            }
+            
+        })
+    })
+</script>
+</div>
+
+<include file="../../../Public/default/footer" />

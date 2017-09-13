@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>配置管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+    .s_info{margin-left:20px;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">配置管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab2" class="selected">网站配置</a></li> 
+                 
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    <ul class="toolbar" style="margin-bottom:10px;">
+             <li class="click"><span><img src="__ROOT__/public/images/admin/other/t01.png"></span><a href="./entity" title="添加分类">添加配置</a></li>
+<!--             <li class="click"><span><img src="/badouwang/public/images/admin/other/t02.png"></span>修改</li>
+             <li><span><img src="/badouwang/public/images/admin/other/t03.png"></span>删除</li>
+             <li><span><img src="/badouwang/public/images/admin/other/t04.png"></span>统计</li>-->
+         </ul>
+    
+<!--    <ul class="seachform">
+    
+    <li><label>会员名</label><input name="" type="text" class="scinput" /></li>
+    </li>
+    <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+    
+    </ul>-->
+    
+    
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th width="20%">配置项</th><th width="50%">配置说明</th><th>操作<a href="./entity" title="添加分类"><span class="icon" style="color:gray;font-size:18px;margin-left:10px;" >&oplus;</span></a></th>
+        
+       
+        </tr>
+        </thead>
+        <tbody>
+         <foreach name='configs' item='config'>
+                    <tr>
+                        <td width="20%"><{$config.c_name}></td><td width="50%"><{$config.c_info}></td><td><span class="s_info"><a href="configDetail?cid=<{$config.id}>">查看详情</a></span><span class="s_info"><a href="delConfig?cid=<{$config.id}>">删除该配置</a></span></td>
+                    </tr>
+        </foreach>
+        
+        
+    
+        </tbody>
+    </table>
+     <{$page}>
+   
+  
+    
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+  
+    </div>
+</body>
+
+</html>
+
+
+

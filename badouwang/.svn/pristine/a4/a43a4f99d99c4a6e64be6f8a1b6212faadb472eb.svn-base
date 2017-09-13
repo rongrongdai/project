@@ -1,0 +1,135 @@
+<?php
+/**
+ * 消费记录表
+ *
+ * @author fanbo
+ */
+class AjaxConsumeAction extends CommonAction{
+    private $res;
+    private function transType($i,$type,&$data){
+        switch($type){
+                case '1':
+                   $data[$i]['type']='现金';
+                    break;
+                case '2':
+                    $data[$i]['type']='学豆';
+                    break;
+                case '3':
+                    $data[$i]['type']='积分';
+                    break;
+                case '4':
+                    $data[$i]['type']='经验值';
+                    break;
+            }
+    }
+    public function getClog(){
+        $type=$this->getData(array('type'), 'get');
+        if($type['type']){
+            $page=$this->initPage();
+            $page['page']=(int)$page['page'];
+            $uid=session('uid');
+            $asql="select depoit.money count,s_timestamp timestamp,fields.money current,depoit.info,depoit.status from bd_depoit depoit left join bd_consume consume on consume.did=depoit.id left join bd_memberfields fields on fields.uid=depoit.uid where depoit.uid='$uid'";
+            $this->res=$this->getPageData(M('Depoit'),"uid='$uid'", $asql,$page);
+            foreach($this->res['entities'] as $key=>$val){
+                if($val['status']==='0'){
+                    if(!$val['info']){
+                        $val['info']='审核中...';
+                    }
+                }else if($val['status']==='1'){
+                    if(!$val['info']){
+                        $val['info']='提现成功，请查询支付宝账号！';
+                    }
+                }else if($val['status']==='2'){
+                    $val['info']='提现失败，请填写完成信息';
+                }
+                $this->res['entities'][$key]['info']=$val['info'];
+                
+            }
+            
+        }else{
+            $this->res=array('code'=>1,'message'=>'类型不存在！');
+        }
+        echo json_encode($this->res);
+    }
+    //获取优惠劵
+    public function getBonds(){
+        $page=$this->initPage();
+        $page['page']=(int)$page['page'];
+        $uid=session('uid');
+        $sql="select id,name,price,number,descript,curnumber,bac_img from bd_bond where uid='$uid'";
+        $res=$this->getPageData(M('Bond'),'', $sql,$page);
+        echo json_encode($res);
+    } 
+    //获取优惠券张数
+    public function getBnumber(){
+        $uid=session('uid');
+        $bid=$this->getData(array('bid'), 'get');
+        if($uid && $bid['bid']){
+            $res=array('code'=>1,'bond'=>M('Bond')->where("id='$bid[bid]'")->field('curnumber')->find());
+        }else{
+            
+            $res=array('code'=>0,'message'=>'优惠券不存在！');
+        }
+        
+        echo json_encode($res);
+    }
+
+    //获取消费详情
+    public function ajaxGetData(){
+        $arr = $this->getData(array('kwd','pages'),'post');
+        $kwd = $arr['kwd']=='积分'?'经验':$arr['kwd'];
+        $uid = session('uid');
+        $pageNow = $arr['pages']?(int)$arr['pages']:1;
+        $pageSize = 8;
+        if($kwd==='现金'){
+            $sum=M('Consume')->where("type=1 and uid='$uid'")->count();
+            if($sum>$pageSize){
+            $limit = ($pageNow-1)*$pageSize;
+            $condition .= " limit $limit,$pageSize";
+            $page = $this->ajaxPage($sum,$pageSize,$pageNow);
+            }
+            $data = M('Consume')->where("type=1 and uid='$uid'")->select();
+            foreach($data as $key=>$val){
+                $data[$key]['ctime'] = date('Y-m-d H:i',$val['ctime']);
+            }
+            echo json_encode(array('res'=>$data,'page'=>$page,'limit'=>$limit));
+        }else{
+            $condition = "";
+            $condition .= " uid=$uid and type='{$kwd}'";
+            $condition .= " ORDER BY ctime DESC";
+            $sum = M('Credit_log')->where("$condition")->count();
+            if($sum>$pageSize){
+                $limit = ($pageNow-1)*$pageSize;
+                $condition .= " limit $limit,$pageSize";
+                $page = $this->ajaxPage($sum,$pageSize,$pageNow);
+            }
+
+            $data = M('Credit_log')->where("$condition")->select();
+            foreach($data as $key=>$val){
+                $data[$key]['ctime'] = date('Y-m-d H:i',$val['ctime']);
+            }
+            echo json_encode(array('res'=>$data,'page'=>$page,'limit'=>$limit));
+        }
+        
+    }
+
+    //ajaxPage
+    public function ajaxPage($sum,$pageSize,$pageNow){
+        $pageCount = ceil($sum/$pageSize);
+        $head = 1;
+        $foot = $pageCount;
+        $prev = $pageNow-1;
+        $next = $pageNow+1;
+        if($prev<=$head){
+            $prev = $head;
+        }
+        if($next>=$pageCount){
+            $next = $pageCount;
+        }
+        
+        $str = "";
+        $str = "<style>.pos{margin:20px 0 30px 300px;} .pos a{color:#666;text-decoration:none;} .pos a:hover,.pos b{color:#00b38a;}</style><div class='pos'><a href='#pos' id='page' onclick='(km(".$head.",this.id))'>首页</a><a href='#pos' id='page' onclick='(km(".$prev.",this.id))'> 上一页</a><a href='#pos' id='page' onclick='(km(".$next.",this.id))'> 下一页</a><a href='#pos' id='page' onclick='(km(".$pageCount.",this.id))'> 尾页</a><a> /当前第<b> ".$pageNow." </b>页，共".$pageCount."页</a></div>";
+        return $str;
+    }
+
+}

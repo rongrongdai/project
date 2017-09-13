@@ -1,0 +1,495 @@
+<include file="../../../Public/default/header" />
+<link type="text/css"  rel="stylesheet" href="__ROOT__/public/css/home/index.css"/>
+ <div class="indexthere">
+     <div class="indegai">
+        <div class="indexthere-y" >
+           <ul class="lcs_wallone">
+        <foreach name="teacher" item="vo" key="i">     
+          <a href="__APP__/Space/Space/space?uid=<{$vo.uid}>" target="blank">
+          <li class="lcs_walloneyi">
+            <p><{$vo.dname}></p>
+            <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vo.id_front}>" width="63px" height="63px" />   
+            <span class="name"><{$vo.real_name}></span><br />
+            <span class="names"><{$vo.cname}>老师</span><br />
+            <span class="namee"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/liulanliang.png" class="iggd"/><{$vo.visitednumber}></span><br />
+          </li>
+          </a>
+        </foreach>
+
+
+        <foreach name="teacher" item="vo" key="i">     
+          <a href="__APP__/Space/Space/space?uid=<{$vo.uid}>" target="blank">
+          <li class="lcs_walloneyi">
+            <p><{$vo.dname}></p>
+            <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vo.id_front}>" width="63px" height="63px" />   
+            <span class="name"><{$vo.real_name}></span><br />
+            <span class="names"><{$vo.cname}>老师</span><br />
+            <span class="namee"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/liulanliang.png" class="iggd"/><{$vo.visitednumber}></span><br />
+          </li>
+          </a>
+        </foreach>
+        <foreach name="teacher" item="vo" key="i">     
+          <a href="__APP__/Space/Space/space?uid=<{$vo.uid}>" target="blank">
+          <li class="lcs_walloneyi">
+            <p><{$vo.dname}></p>
+            <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vo.id_front}>" width="63px" height="63px" />   
+            <span class="name"><{$vo.real_name}></span><br />
+            <span class="names"><{$vo.cname}>老师</span><br />
+            <span class="namee"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/liulanliang.png" class="iggd"/><{$vo.visitednumber}></span><br />
+          </li>
+          </a>
+        </foreach>
+        </ul>
+
+        </div>
+
+
+        <div class="indexthere-e" >
+            <div class="indexthere-e-y" ><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/jjpxsbd.png" /></div>
+            <a href="__APP__/User/User/register"><div class="indexthere-e-s">我要注册</div></a>
+            <div class="indexthere-e-w">
+             <p><a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/gou.png" /></a>已累计注册人数 <span class="wenyi"><{$num}></span> 名</p>
+             <p><a><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/xiazai.png" /></a><a>下载手机八斗网 随时随地报名找家教</a></p>
+             <p class="tishi"><a></a></p>
+             <p class="erweima"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/erweima.jpg" /></p>
+            </div>    
+       </div> 
+    
+   
+  </div>                     
+</div>
+
+<div class="indexfour">
+    <div class="indexfour-y">
+          <div class="fovwayi"><a href="__APP__/Teach/Teach/lists"> <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/tubiao1.png" /><span>海量名师</span></a></div>
+          <div class="fovwayi"><a href="__APP__/Organ/Organ/organList"> <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/tubiao2.png" /><span>优质培训</span></a></div>
+          <div class="fovwayi"><a href="__APP__/Space/Question"> <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/tubiao3.png" /><span>学习互动</span></a></div>
+          <div class="fovwayi"><a href="__APP__/Exam/Exam/examlist"> <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/tubiao4.png" /><span>训练真题</span></a></div>
+    </div> 
+
+
+<!------------焦点新闻-------------->
+	<div class="news">
+		<div class="n_title">
+        <div class="left">新闻热点</div>
+        <a class="right" href="__APP__/Index/Index/newslist">更多</a>
+    </div>
+		<div class="n_con">
+        <div class="left">
+            <div class="ent_top">
+
+            <foreach name="news1" item="vo" key="i">
+              <if condition="$i eq 0">          
+                <div class="vtent the0" style="display:block">
+                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.logo}>" class="img"/>
+                    <div class="con">
+                        <a class="title" href="javascript:hit(<{$vo.id}>)"><{$vo.title}></a>
+                        <a class="inter">　　<{$vo.content}></a><a class="more" href="javascript:hit(<{$vo.id}>)">···详情</a>
+                    </div>
+                </div>
+					    <else /> 
+                <div class="vtent the<{$i}>">
+                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.logo}>" class="img" width="200" height="170" />
+                      <div class="con">
+                        <a class="title" href="javascript:hit(<{$vo.id}>)"><{$vo.title}></a>
+                        <a class="inter">　　<{$vo.content}></a><a class="more" href="javascript:hit(<{$vo.id}>)">···详情</a>
+                      </div>
+                </div>
+              </if>  
+            </foreach>
+
+            </div>
+          <!--------> 
+            <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  class="n_img" src="__ROOT__/public/images/home/index/pic_shanj.png" />  
+                <div class="ent_bot">
+                    <foreach name="news1" item="vo" key="i">
+                      <a class="ent_shar ent_v<{$i}>" href="javascript:hib(<{$i}>);"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.logo}>" width="100px" height="60px" /></a>
+                    </foreach> 
+                </div>
+            </div>
+
+            <div class="right">
+            	<foreach name="news2" item="vo">
+              		<a href="javascript:hit(<{$vo.id}>);"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.logo}>" class="tuse"/></a>
+            	</foreach>
+            </div>
+        </div>
+	</div>
+<!------------焦点新闻------------>
+
+<!--indexfour-s--begin-->
+        <div id="indexfour-s">
+            <div class="indexfour-s-yi" >
+                <div class="foursyi"><p>八斗家教</p></div>
+                <a href="__APP__/Teach/Teach/agentlist"><div class="indwen-er">更多</div></a>
+            </div>
+
+            <div class="indexfour-s-er">
+              <foreach name="bd_teach" item="vo">
+                <div class="s-eryi"> 
+                  <div class="s-eryi-y">
+                    <a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vo.lincence}>" width="50px" height="50px" /></a>
+                    <p><a href="__APP__/Teach/Teach/agentlist"><{$vo.real_name}></a></p>
+                    <span>服务区域：<{$vo.address}></span>
+                  </div>
+                  <div class="s-eryi-e">
+                    <div class="s-eryi-ey"><p>教师人数</p><span class="haopy"><{$vo.count}></span></div>
+                    <div class="s-eryi-ey"><p>服务好评</p><span class="haop"> 50%</span></div>
+                    <div class="s-eryi-ey  sw"><p>预约次数</p><span class="haope"><{$vo.yuyue}></span></div>
+                  </div>
+                </div>
+              </foreach>
+            </div>
+              
+               
+            <div class="indexwen">
+                 <div class="indexwen-y">培训招生</div>
+                 <div class="indexwen-yi">
+                     <span><a href="#">会计</a></span>
+                     <span><a href="#">英语</a></span>
+                     <span><a href="#">金融</a></span>
+                     <span><a href="#">软侧</a></span>
+                 </div>
+                 <div class="i_gd">更多</div>
+            </div>
+            <div class="yingchangy">
+            
+            <div class="indexwenyi">
+                <div class="indexwenyi-y">
+                  <div class="s-eryiwen-y">
+                   <a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/laoshier.gif" /></a>
+                   <p><a href="#">游戏开发</a><a href="#" class="pieo">￥9999</a></p>
+                    <span>培训机构：火星时代</span>
+                    <span>地址：深圳</span>
+                    </div>
+                    <div class="s-eryi-e">
+                         <div class="s-eryi-ey"><p>招生人数</p><span class="haopy">50</span></div>
+                         <div class="s-eryi-ey"><p>时间</p><span class="haop"> 50%</span></div>
+                         <div class="s-eryi-ey  sw"><p>好评</p><span class="haope">1354</span></div>
+                    </div>
+                </div>
+                    
+                  <div class="indexwenyi-y">
+                   <div class="s-eryiwen-y">
+                   <a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/laoshier.gif" /></a>
+                   <p><a href="#">游戏开发</a><a href="#" class="pieo">￥9999</a></p>
+                    <span>培训机构：火星时代</span>
+                    <span>地址：深圳</span>
+                    </div>
+                    <div class="s-eryi-e">
+                         <div class="s-eryi-ey"><p>招生人数</p><span class="haopy">50</span></div>
+                         <div class="s-eryi-ey"><p>时间</p><span class="haop"> 50%</span></div>
+                         <div class="s-eryi-ey  sw"><p>好评</p><span class="haope">1354</span></div>
+                    </div>
+                </div>
+                
+                
+                <div class="indexwenyi-y">
+                  <div class="s-eryiwen-y">
+                   <a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/laoshier.gif" /></a>
+                   <p><a href="#">游戏开发</a><a href="#" class="pieo">￥9999</a></p>
+                    <span>培训机构：火星时代</span>
+                    <span>地址：深圳</span>
+                    </div>
+                    <div class="s-eryi-e">
+                         <div class="s-eryi-ey"><p>招生人数</p><span class="haopy">50</span></div>
+                         <div class="s-eryi-ey"><p>时间</p><span class="haop"> 50%</span></div>
+                         <div class="s-eryi-ey  sw"><p>好评</p><span class="haope">1354</span></div>
+                    </div>
+                </div>  
+            </div>
+          <div class="indexwener">
+                   <div class="indexwenyi-y">
+                  <div class="s-eryiwen-y">
+                   <a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/laoshier.gif" /></a>
+                   <p><a href="#">游戏开发</a><a href="#" class="pieo">￥9999</a></p>
+                    <span>培训机构：火星时代</span>
+                    <span>地址：深圳</span>
+                    </div>
+                    <div class="s-eryi-e">
+                         <div class="s-eryi-ey"><p>招生人数</p><span class="haopy">50</span></div>
+                         <div class="s-eryi-ey"><p>时间</p><span class="haop"> 50%</span></div>
+                         <div class="s-eryi-ey  sw"><p>好评</p><span class="haope">1354</span></div>
+                    </div>
+                </div>
+                    
+                  <div class="indexwenyi-y">
+                   <div class="s-eryiwen-y">
+                   <a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/laoshier.gif" /></a>
+                   <p><a href="#">游戏开发</a><a href="#" class="pieo">￥9999</a></p>
+                    <span>培训机构：火星时代</span>
+                    <span>地址：深圳</span>
+                    </div>
+                    <div class="s-eryi-e">
+                         <div class="s-eryi-ey"><p>招生人数</p><span class="haopy">50</span></div>
+                         <div class="s-eryi-ey"><p>时间</p><span class="haop"> 50%</span></div>
+                         <div class="s-eryi-ey  sw"><p>好评</p><span class="haope">1354</span></div>
+                    </div>
+                </div>
+                
+                
+                <div class="indexwenyi-y">
+                  <div class="s-eryiwen-y">
+                   <a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/laoshier.gif" /></a>
+                   <p><a href="#">游戏开发</a><a href="#" class="pieo">￥9999</a></p>
+                    <span>培训机构：火星时代</span>
+                    <span>地址：深圳</span>
+                    </div>
+                    <div class="s-eryi-e">
+                         <div class="s-eryi-ey"><p>招生人数</p><span class="haopy">50</span></div>
+                         <div class="s-eryi-ey"><p>时间</p><span class="haop"> 50%</span></div>
+                         <div class="s-eryi-ey  sw"><p>好评</p><span class="haope">1354</span></div>
+                    </div>
+                </div>  
+           </div>
+           
+           </div>
+
+
+
+<!--热门考题---begin-->
+    <div class="indexwensan">
+        <div class="indexwensan-y">热门考题</div>
+        <a href="__APP__/Exam/Exam/examlist"><div class="indwen-er">更多</div></a>
+    </div>
+
+<div class="con_b">
+	<div class="conent">
+		<foreach name="classfiy" item="vo" key="i">
+			<if condition="$i heq 0">
+				<div class="tent"><div class="cus img1 vimg1" onclick="getExam(<{$vo.id}>,1)"></div><div class="tet"><{$vo.name}></div></div>
+			<else />
+				<div class="tent"><div class="cus img<{$i+1}>" onclick="getExam(<{$vo.id}>,<{$i+1}>)"></div><div class="tet"><{$vo.name}></div></div>
+			</if>
+		</foreach>
+  </div>
+  <div class="tran"><span></span></div>
+	<div id="img1" class="coner img1" style="display:block">
+		<if condition="$data2">
+			<foreach name="data2" item="vo" key="i">
+				<div class="imgaes">
+	        <a href="__APP__/Exam/Exam/detail?id=<{$vo.id}>"><div class="dsyesa"><{$vo.name}></div></a>  
+	      </div>
+			</foreach>
+		<else/>
+			<div style="text-align:center;height:100px;line-height:100px;">
+	    		抱歉！暂时没有相关试题
+	    	</div>
+		</if>
+	</div>
+
+<!--	<div id="img2" class="coner img2"></div>
+	<div id="img3" class="coner img3"></div>
+	<div id="img4" class="coner img4"></div>
+	<div id="img5" class="coner img5"></div>
+	<div id="img6" class="coner img6"></div>
+	<div id="img7" class="coner img7"></div>-->
+
+</div>
+<!--热门考题---end-->           
+
+</div> 
+<!--indexfour-s--end-->
+
+
+ 
+          <div class="indexfour-w">
+              <div class="indexfour-w-y"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/guangay.gif" class="mgyfoim"/></div>
+              <div class="indexfour-w-e">
+                 <div class="indexfouryi"><p>热门学吧</p></div>
+              </div>
+              
+            <foreach name="sbar" item="vo" key="i">  
+              <div class="ind-foyw">
+                <a href="__APP__/Space/Space/space?uid=<{$vo.uid}>"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.user_pic}>" class="foying" /></a>
+                <div class="foyiner">
+                  <a href="__APP__/Space/Space/space?uid=<{$vo.uid}>"><p class="foywie"><{$vo.rname}></p></a>
+                  <p class="biaoqh">美女 学霸</p>
+                  <p>6级  1010粉丝</p>
+                </div>
+              </div>
+            </foreach>  
+              
+              <div class="indexfour-w-e">
+                 <div class="indexfouryi"><p>热门学问</p></div>
+              </div>
+
+              
+              <div class="indexfour-w-w">
+<!--                  <div class="four-w-wy"><a href="#"><p>一年级</p></a></div>
+                  <div class="four-w-wy"><a href="#"><p>一年级</p></a></div>
+                  <div class="four-w-wy"><a href="#"><p>一年级</p></a></div>
+                  <div class="four-w-wy"><a href="#"><p>一年级</p></a></div>-->
+              </div>
+              
+              <div class="indexfour-w-lu" >
+                   <ul>
+                       <foreach name="questions" item='question'>
+                           <li><a href="javascript:"><{$question.content|strip_tags|mb_substr="1","10","utf-8"}> <span class="uyjai"><{$question.lnumber}></span></a></li>
+                       </foreach>
+                    
+                  </ul>
+              </div>
+          </div>
+         
+         
+          
+          <div class="indexfver">
+               <div class="indexfver-y">
+               <div class="indexfver-yi"><p>优惠课程</p></div>
+               
+               <div class="indwen-er"><p>更多</p></div>   
+               </div>
+              
+               <div class="indexfver-e">
+                   <foreach name="courses" item="course">
+                        <div class="indpxyit"> 
+                            <div class="inft-jge"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$course.timg}>" /></div>
+                            <div class="inft-pge"><a href="javascript:"><{$course.aname|mb_substr="1","20","utf-8"}>...</a></div>
+                            <div class="inft-pgy">
+                                <php>
+                                    if($course['d_price']){
+                                         $discount=((float)$course['d_price'])/((float)$course['price']);
+                                         $discount=number_format($discount, 2, '.', '')*10;
+                                    }else{
+                                         $discount='该课程没有折扣!';
+                                    }
+                           
+                                </php>
+                             <p><span class="dzxh">¥<{$course.d_price}></span> <span class="dzxhe">¥<{$course.price}></span> <{$discount}>折</p>
+                            </div>
+                        </div>
+                     </foreach>
+                    
+                     
+               </div>
+          </div>
+         
+         <div class="indexsix">
+             <div class="indexsix-y">
+                <div class="indexsix-yi"><p>最受关注的学校</p></div>
+             </div>
+             <div class="indexsix-e">
+                  <div class="schooly"><a href="http://www.gedu.org" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s1.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.xdf.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s2.png" /></a></div>
+                  <div class="schooly"><a href="http://www.bdqn.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s3.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.bond520.com" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s4.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.tedu.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s5.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.21edu.com" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s6.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.ef.com.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s7.jpg" /></a></div>
+             </div>
+         </div>
+            
+      </div>
+    <div class="indexsever">
+               <div class="indexsever-og">
+                  <div class="indexsever-y"></div>
+                      <div class="indexsever-e">
+                           <div class="ind-sy">
+                             <p class="zhuti"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/dianh.png" />客服电话（9:00-18:00）</p>
+                             <p class="zhutiy">0755-29494667（咨询电话）</p>
+                             <p class="zhutiy">652575798（咨询QQ）</p>
+                             <p class="zhutiy">1031133564（咨询QQ）</p>
+                           </div>
+                           <div class="ind-se">
+                             <p class="zhuti"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/xinliao.png" />微博:</p>
+                             <p class="zhutiyt">@八斗</p>
+                             <p class="zhuti"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/youjian.png" />联系邮箱:</p>
+                             <p class="zhutiyty">kefu@bsxkj.com</p>
+                           </div>
+                           <div class="ind-sh">
+                             <p class="zhuti"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/weixin.png" />微信:</p>
+                             <p class="zhutiyter">关注新浪八斗</p>
+                           </div>  
+                   </div>
+             </div>
+    </div>
+   
+     
+     
+
+       
+<include file="../../../Public/default/footer" />
+
+<script>
+window.onload = function(){		$('.ent_v0').addClass('hover')	}
+  function hit(id){
+    $.get("__APP__/Ajax/AjaxIndex/hit",{'id':id},function(data){
+      window.location.href="__APP__/Index/Index/news?id="+id;
+    });
+  }
+ // hib(id);
+  function hib(id){
+    $.get("__APP__/Ajax/AjaxIndex/hit",{'id':id},function(data){
+		$('.ent_shar').removeClass('hover');
+		$('.ent_shar.ent_v' + id).addClass('hover')
+		$('.vtent').hide();
+		$('.vtent.the' + id).show();
+		if(id=='0'){$('.n_img').css({top:'185px',left:'43px'})} 
+		else if(id=='1'){$('.n_img').css({top:'185px',left:'165px'})}
+		else if(id=='2'){$('.n_img').css({top:'185px',left:'280px'})}
+		else if(id=='3'){$('.n_img').css({top:'185px',left:'395px'})}
+		else if(id=='4'){$('.n_img').css({top:'185px',left:'510px'})}
+		
+    });
+  }
+
+  $(".tishi").find("a").click(function(){
+      $(".tishi").css({'display':'none'});
+      $(".erweima").toggle();
+  });
+  $(".erweima").click(function(){
+      $(".erweima").css({'display':'none'});
+      $(".tishi").toggle();
+  });
+
+  
+function vs(){	for(i=1;i<12;i++){		$('.cus').removeClass('vimg'+i)		}	}
+$('.conent .cus').click(function(){
+	var css = $(this).attr('class').replace(/cus /,'');
+	if(css=='img1'){		$('.tran span').css({left:'35px'});vs();$('.cus.'+css).addClass('vimg1');}
+	else if(css=='img2'){   $('.tran span').css({left:'155px'});vs();$('.cus.'+css).addClass('vimg2') }
+	else if(css=='img3'){   $('.tran span').css({left:'280px'});vs();$('.cus.'+css).addClass('vimg3') }
+	else if(css=='img4'){   $('.tran span').css({left:'400px'});vs();$('.cus.'+css).addClass('vimg4') }
+	else if(css=='img5'){   $('.tran span').css({left:'525px'});vs();$('.cus.'+css).addClass('vimg5') }
+	else if(css=='img6'){   $('.tran span').css({left:'650px'});vs();$('.cus.'+css).addClass('vimg6') }
+	else if(css=='img7'){   $('.tran span').css({left:'770px'});vs();$('.cus.'+css).addClass('vimg7') }
+	else{}
+
+	//$('.coner').hide();
+	//$('.coner.' + css).show();
+	})
+
+	//获取二级分类
+	function getExam(fid,id){
+    $("#img1").html("");  
+    var load = '<div class="load"><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"  src="__ROOT__/public/images/home/jiazai.gif" width="30px" /></div>';
+    $("#img1").html(load);
+    
+		$.post("__ROOT__/index.php/Ajax/AjaxIndex/getExam",{'fid':fid},function(data){
+			if(data != null){
+        $("#img1").html("");  
+				for(var i=0;i<data.length;i++){
+					var node = '<div class="imgaes"><a href="__APP__/Exam/Exam/detail?id='+data[i].id+'"><div class="dsyesa">'+data[i].name+'</div></a></div>';
+					$(node).appendTo("#img1");
+				}
+			}else{
+				var node = '<div class="sorry">抱歉！暂时没有相关试题</div>';
+        $("#img1").fadeIn(300).html(node);
+			}
+		},'json');
+	}
+
+
+  function hesoh(){
+	     var str="{$vo.name}".length;
+		 var s = str;
+		   if(str.length>10){
+			   s=str.substring(0,10)+"...";
+			   }
+	     alert(s);
+	  }
+  
+  		
+
+</script>

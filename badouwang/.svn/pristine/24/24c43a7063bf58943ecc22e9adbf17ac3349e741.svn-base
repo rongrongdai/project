@@ -1,0 +1,87 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/teach_detail.css"/>
+
+
+<div class="pwid">
+	<div class="hotnav">当前位置：<a href="javascript:"> 预定平台老师</a></div>
+</div>
+<style>
+    .order_wrap{width: 800px;border: 1px solid #00b38a;border-radius: 6px;margin:20px auto;}
+    .order_wrap .nav{border-bottom: 1px solid #00b38a;font-size: 18px;padding: 8px 0;text-align: center; font-family:"微软雅黑";}
+    .order_wrap .tname{float:left;margin-left:20px; font-family:"微软雅黑";}
+    .order_wrap .tname p{margin:5px 0;font-size:16px;}
+    .order_wrap .tname span{font-size:14px; color:#f93;}
+    .order_wrap select{width:173px;}
+    .order_wrap ul{margin: 20px 100px; list-style-type:none;}
+    .order_wrap ul li{font-family:"微软雅黑";font-size:14px;padding:10px 0;}
+	.order_wrap ul li input{height:20px;border:1px solid #00b38a;border-radius:4px;padding:2px 5px;color:#555;outline:none;}
+	.order_wrap ul li select{height:26px;border:1px solid #00b38a;border-radius:4px;padding:2px 5px;color:#555;outline:none;}
+    .order_wrap .pay{text-align:right;}
+    .order_wrap .pay span{font-size:20px;color:#f90;}
+    .order_wrap .pay .sub{background-color:#F80;color:white;text-align:center;margin-left:450px;cursor:pointer;border-radius:4px;/*padding:0;width:150px;height:20px;line-height:20px;*/}
+    .order_wrap .pay .sub:hover{background-color:#363;}
+    .order_wrap .time input{width:15px; padding:1px 10px;text-align:center;}
+    .order_wrap .time button{margin:0 5px; border:1px solid #00b38a;border-radius:4px;height:24px;padding:2px 10px;cursor:pointer;}
+    .order_wrap .time button:hover{border-color:#f90;}
+</style>
+
+<div class="content">
+    <div class="order_wrap">
+        <div class="nav">选择上课信息</div>
+        <ul>
+            <li>
+                <img style="float:left;" onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$data.c_img}>" width="70px" height="70px" />
+                <div class="tname"><p><{$data.real_name}></p><span id="price"><{$data.price}></span>元/课时</div>
+            </li>
+            <div style="clear:both;"></div>
+            <li><span>教学科目及上课方式：</span> <input name="course" value="<{$data.gname}><{$data.fname}>" readOnly />
+            	<select name="place">
+            		<option value="老师上门">老师上门</option>
+                    <option value="学生上门">学生上门</option>
+                    <option value="协商地点">协商地点</option>
+                </select>
+            </li>            <li class="time">自定义课时<button id="minus">-</button><input name="hour" id="time" value="1" readOnly /><button id="plus">+</button></li>    
+            <li>学生姓名： <input name="stu_name" value="<{$Think.session.uname}>" /></li>
+            <li>上课地址： <input name="address" value="<{$data.address}>" /></li>  
+            <li>备注信息： <input name="msg" value="" /></li>     
+        </ul> 
+
+
+        <div class="nav"></div> 
+        <ul class="pay">
+            <li>订单金额：<span>￥</span><span id="pay"><{$data.price}></span><span>.00</span></li>
+            <input type="hidden" name="money" value="<{$data.price}>" />
+            <input type="hidden" name="course_id" value="<{$data.id}>" />
+            <input type="hidden" name="tuid" value="<{$data.teacher_id}>" />
+            <input type="hidden" name="type" value="1" />
+            <li class="sub">提交订单</li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<include file="../../../Public/default/footer" />
+
+<script type="text/javascript">
+    var num = $("#time").val(),pay = parseInt($("#price").text());
+    $("#minus").click(function(){
+        num--;var payD = parseInt($("#pay").text());
+        payD -= pay;if(num<=1) num=1,payD = pay;
+        $("#time").val(num);$("#pay").html(payD);
+        $("input[name='money']").attr('value',payD);
+    });
+    $("#plus").click(function(){
+        num++;var payD = parseInt($("#pay").text());
+        payD += pay;if(num>=20) num=20,payD = pay*20;
+        $("#time").val(num);$("#pay").html(payD);
+        $("input[name='money']").attr('value',payD);
+    });
+    $(".sub").click(function(){
+        $(".order_wrap").wrap("<form name='order' action='' method='post'></form");
+        $('form[name="order"]').submit();
+    });
+
+
+</script>

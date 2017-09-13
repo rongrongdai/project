@@ -1,0 +1,95 @@
+<include file="../../Public/header" />
+<nav>
+	<ul id="nav">
+                <li name="mmemu">
+			<a href="javascript:;"><span class="icon">&#59171;</span>网站设置</a>
+			<ul class="submenu" >
+				<li ><a href="__ROOT__/admin.php/WebConfig/BasicConfig/configView" target="ifrm">配置管理 </a></li>
+				<li ><a href="__ROOT__/admin.php/WebConfig/BasicConfig/index" target="ifrm">网站设置</a></li>
+                                <li ><a href="__ROOT__/admin.php/WebConfig/Classfiy/index" target="ifrm">分类管理</a></li>
+                        <li><a href="__ROOT__/admin.php/WebConfig/BasicConfig/city" target="ifrm">城市管理</a></li>
+                        <li><a href="__ROOT__/admin.php/WebConfig/BasicConfig/link" target="ifrm">友情链接</a></li>
+<!--                                <li><a href="page-timeline.html" target="ifrm">seo管理</a></li>-->
+			</ul>	
+		</li>
+		
+		<li name="mmemu">
+			<a href="javascript:;"><span class="icon">&#59160;</span> 用户管理 </a><!--<span class="pip">12</span>-->
+			<ul class="submenu" <if condition="$mmenu eq 'user'" target="ifrm"> style="display:block"</if>>
+				<li><a href="__ROOT__/admin.php/User/User/index"  target="ifrm">会员管理</a></li>
+				<li><a  href="__ROOT__/admin.php/User/Admin/index" target="ifrm">管理员管理</a></li>
+				<li><a  href="__ROOT__/admin.php/User/Authentication/index" target="ifrm">认证管理</a></li>
+                                <li><a  href="__ROOT__/admin.php/User/Admin/chpwd" target="ifrm">密码修改</a></li>
+			</ul>
+		</li>
+                <li name="mmemu" >
+			<a href="javascript:;"><span class="icon">&#59160;</span> 内容管理 </a>
+			<ul class="submenu">
+				<li><a href="__ROOT__/admin.php/Content/Course/index"  target="ifrm">课程管理</a></li>
+				<li><a href="__APP__/Content/Article/index" target="ifrm">文章管理</a></li>
+                                <li><a href="__ROOT__/admin.php/Content/Exam/index" target="ifrm">在线考试管理</a></li>
+			</ul>
+		</li>
+
+
+    <li name="mmemu">
+		<a href="javascript:;"><span class="icon">&#59160;</span> 广告位管理 </a>
+		<ul class="submenu">
+			<li><a href="__APP__/Ad/Ad/addArea" target="ifrm">配置广告位</a></li>
+			<li><a href="__APP__/Ad/Ad/areaList" target="ifrm">添加广告</a></li>
+			<li><a href="__APP__/Ad/Ad/index" target="ifrm">广告管理</a></li>
+		</ul>
+	</li>
+
+
+                <li name="mmemu">
+			<a href="javascript:;"><span class="icon">&#59160;</span> 推荐管理 </a>
+			<ul class="submenu">
+				<li><a href="__ROOT__/admin.php/Recommend/Classfiy/" target="ifrm">课程推荐管理</a></li>
+				<li><a href="__ROOT__/admin.php/Recommend/Classfiy/teach" target="ifrm">家教推荐管理</a></li>
+                                <li><a href="__ROOT__/admin.php/Recommend/Classfiy/classfiy" target="ifrm">分类推荐管理</a></li>
+			</ul>
+		</li>
+                <li name="mmemu">
+			<a href="javascript:;"><span class="icon">&#59160;</span> 财务管理 </a>
+			<ul class="submenu">
+				<li><a href="blog-new.html" target="ifrm">报表查看</a></li>
+				<li><a href="blog-table.html" target="ifrm">收益状况</a></li>
+				<li><a href="comments-timeline.html" target="ifrm">统计报表</a></li>
+			</ul>
+		</li>
+                 
+                 
+               
+                
+                
+	</ul>
+</nav>
+<section class="content">
+    <iframe src="__APP__/Index/Index/icontent" name="ifrm" id="irm" scrolling="no" frameborder="0" width="80%" onLoad="iFrameHeight('irm')">
+        
+    </iframe>
+</section>
+<script type="text/javascript" language="javascript">
+    function iFrameHeight(ele) { 
+        var ifm= document.getElementById(ele);
+        var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument; 
+        if(ifm != null && subWeb != null) { 
+            ifm.height = subWeb.body.scrollHeight;
+        } 
+    } 
+    $(function(){
+        $("li[name=mmemu]").find("li").click(function(){
+                $("li[name=mmemu]").find("li").css('background','rgb(59, 62, 64)');
+                $(this).mouseleave(function(){
+                     $(this).css("background","#262626");  
+                })
+                $(this).css("background","#262626");
+        });
+         $("li[name=mmemu]").find("li").mouseleave(function(){
+              $("li[name=mmemu]").find("li").css('background','rgb(59, 62, 64)');
+              $(this).css("background","#262626");  
+         })
+    })
+</script> 
+<include file="../../Public/footer" />

@@ -1,0 +1,110 @@
+/*---------家教列表页----------*/
+.body{margin:0;}
+.pwid{width:1200px;margin:0 auto;}
+.pwid .hotnav{height:30px;line-height:30px;border-bottom:2px solid #009170;color:#333;font-size:12px;margin-top: 2px;}
+.pwid .hotnav a{color:#666;}
+.pwid .hotnav a:hover{ color:#00b38a;}
+.p---------------------p{}
+.pwid .ction{padding-top: 15px;}
+.pwid .ction .content{padding:6px 0;overflow:hidden;}
+/*.pwid .ction .content .way{float:left;color:#111;font-weight:normal;line-height:27px; font-size:14px;}*/
+.pwid .ction .content .way{float:left; color:#6d6d6d; font-weight:normal;line-height:27px; font-size:12px;}
+
+.pwid .ction .content .pui{float:left; font-style:normal;}
+/*.pwid .ction .content .pui a{cursor:pointer;float:left;padding:6px 10px;font-size:12px;color:#111; text-decoration:none;}*/
+.pwid .ction .content .pui a{cursor:pointer;float:left;padding:6px 10px;font-size:12px; color:#6d6d6d; text-decoration:none;}
+
+/*.pwid .ction .content .pui a:hover{color:#F30;text-decoration:underline;}*/
+.pwid .ction .content .pui a:hover{color:#f90;/*text-decoration:underline;*/}
+
+
+
+/*.pwid .ction .content .pui .all{color:#F30;text-decoration:underline; font-weight:bold;padding:6px 9px;}*/
+.pwid .ction .content .pui .all{ border:1px solid #6187dc; color:#6187dc; line-height:1; padding:6px 9px; border-radius:2px;}
+
+
+
+
+
+
+
+.pwid .ction .content .pui #gid{float:left;display:block;}
+.p---------------------p{}
+.pwid .roll{height:130px;padding:15px 0;position:relative;background:#eee;margin-top: 15px;}
+.pwid .roll a{float:left;display:block;width:200px;height:130px;color:#333; overflow:hidden; position:relative; text-decoration:none;margin:0 6px;}
+.pwid .roll a .ptli{width:100%;	height:100%;	background:url(../../images/home/bg.png);	color:#00b38a; position:absolute;top:130px;transition:top ease-in-out .4s;}
+.pwid .roll a .ptli .tixq{margin:10px auto;border-radius:3px;padding:6px 10px;background:#009170; color:#FFF;width: 70px;font-size: 12px;text-align: center;}
+.pwid .roll a .ptli .tils{margin:30px auto 0px auto; text-align:center;color:#FFF;font-weight:bold; font-size:14px;}
+.pwid .roll a:hover .ptli{top:0;left:0;}
+.pwid .roll .prev{width:40px;height:40px;float:left;cursor:pointer;margin:35px 5px 0 15px; background:url(../../images/home/arrw.png) 5px 5px;}
+.pwid .roll .next{width:40px;height:40px;float:right;cursor:pointer;margin:35px 5px 0 15px; background:url(../../images/home/arrw.png) 35px 5px;}
+.pwid .roll .prev:hover{background:url(../../images/home/arrw.png) 5px -27px; }
+.pwid .roll .next:hover{background:url(../../images/home/arrw.png) 35px -27px; }
+
+.pwid .roll #roll{margin-left:7px;overflow:hidden;width:1060px;height:130px;float:left;}
+
+.p---------------------p{}
+.pwid .list{width:870px;float:left;margin-top:10px;}
+.pwid .list .sous{font-family: "微软雅黑";border-left: 4px solid #009170;text-indent: 10px;margin: 15px 0;overflow:hidden;font-size:16px; color:#333;}
+.pwid .list .souswy{ border-bottom:1px solid #ddd;}
+.pwid .list .sous .sz{color:#F03;}
+.pwid .list .sous .jg{float:right; color:#333;}
+.pwid .list .sous .jg img{float:right;cursor:pointer;}
+.pwid .list .tent {padding:25px 0;border-bottom:1px dashed #ddd;overflow:hidden;}
+.ydio{ color:#F93;}
+.pwid .list .tent .page {}
+.pwid .list .tent .page a{color:#666;padding:3px 10px;}
+.pwid .list .tent .page a:hover{color:#00b38a}
+
+
+.pwid .list .tent:hover{ background:#EEE !important; cursor:pointer;}
+/*.pwid .list .tent .tentimg{float:left;padding-right:10px; width:80px; height:80px;}*/
+.pwid .list .tent .tentimg{width:96px; height:96px; border-radius:50%; float:left; margin-right:10px;}
+.pwid .list .tent .ent{float:left;width:340px;margin-left:10px;}
+.pwid .list .tent .ent p{ color:#969696; font-size:14px; line-height:25px; overflow:hidden;}
+.pwid .list .tent .ent .yax{ font-size:18px; margin-right:30px; color:#333;}
+.pwid .list .tent .ent .py{ margin-top:5px; margin-bottom:5px; color:#333; font-size:14px;}
+.pwid .list .tent .ent .imd { width:14px; height:14px; margin-right:5px;}
+.pwid .list .tent .ent .hed{ margin-top:10px;}
+.pwid .list .tent .ent .hed span{ padding:3px 5px; border:1px solid #e5e5e5; margin-right:5px; border-radius:2px; color:#ff8b33;}
+
+.pwid .list .tent .enty{ width:180px; float:left; margin-left:60px;}
+.pwid .list .tent .enty p ,.pwid .list .tent .ente p{ color:#969696; font-size:14px; line-height:25px;}
+.pwid .list .tent .enty .price{color:#ff7100; font-size:18px; }
+.pwid .list .tent .enty .sc{text-decoration:line-through;}
+
+.pwid .list .tent .ente{ width:100px; float:right;}
+.pwid .list .tent .ente img{ margin-right:5px; width:22px; height:22px;}
+
+
+
+/*要改的*/
+/*.pwid .list .tent .ent{float:left;width:640px;}
+.pwid .list .tent .ent .contitle{font-size:14px;font-weight:bold;display:block;cursor:pointer; margin-bottom:8px;color:#555;}
+.pwid .list .tent .ent .contitle:hover{color:#F93;}
+.pwid .list .tent .ent .content{color:#555;font-size:12px;line-height:20px;height:40px;}
+.pwid .list .tent .ent .time{font-size:12px; line-height:20px;}
+.pwid .list .tent .right{float:right;}
+.pwid .list .tent .right .xs{color:#F03;font-size:14px; text-align:center;padding:5px 0; margin-bottom:10px;}
+.pwid .list .tent .right .xx{padding:6px 8px;background:#009170;color:#FFF;border-radius:3px; font-size:12px; text-align:center; display:block;}
+.pwid .list .tent .right .xx:hover{background:#6c6;}
+.pwid .list .tent .right .rd{color:#555;font-size:14px; text-align:center;padding:5px 0;}*/
+/*要改的*/
+
+
+
+.p---------------------p{}
+.pwid .tising{float:right;width:285px;margin-top:10px;}
+.pwid .tising .tisle{margin:12px 10px 12px 0;border-left:4px solid #009170;font-size:16px; font-family:"微软雅黑";text-indent:10px;}
+.pwid .tising .tisbor{border-top:1px solid #ddd;}
+.pwid .tising .tisgao{padding:15px 20px;}
+.pwid .tising .tisgao .bot{padding:5px 0;color:#555;width:245px;height:16px;overflow:hidden;}
+.pwid .tising .tisgao .tom{padding:5px 0;color:#f03;width:245px;height:16px;overflow:hidden;}
+
+
+.pwid .tising .tisero{ width:245px; height:60px;  margin-left:30px; margin-bottom:30px;}
+.pwid .tising .tisero .img{ width:60px; height:60px; float:left;}
+.pwid .tising .tisero .yeo{ float:right; width:170px;}
+.pwid .tising .tisero  .yeo a{ font-size:14px; font-weight:bold; color:#646464; margin-right:10px;}
+.pwid .tising .tisero  .yeo a:hover{ color:#ff7100;}
+.pwid .tising .tisero  .yeo p{ color:#969696; font-size:14px; line-height:35px;}

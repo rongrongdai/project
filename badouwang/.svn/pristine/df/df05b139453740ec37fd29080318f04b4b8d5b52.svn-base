@@ -1,0 +1,8 @@
+<?php
+//学问控制器
+class StudyAction extends CommonAction{
+    //学问达人
+    //热门问题
+    //
+}
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>惠信联盟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom: 0.68rem;left: 0;width: 100%;overflow: hidden;background-color: #eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}        
+
+        /*重新加载*/
+        .reload{width: 100%;top:0;bottom:0;z-index: 3;position: fixed;text-align: center;}
+        .reload .r-loading{}
+        .reload .r-loading>div{display:inline-block;vertical-align:middle;width:0.35rem;height:0.35rem;background-color:#d6d6d7;margin: 3.6rem 0 0 0;border-radius: 0.06rem;}
+        .reload .r-loading>div.active{background-color:#8f8f90;}
+        .reload .reload-btn{width:2.16rem;line-height:0.52rem;border:1px solid #888;border-radius:0.1rem;font-size:0.26rem;text-align:center;margin:0.45rem auto;}
+    </style>
+</head>
+<body>
+    <!--重新加载-->
+    <div class="reload">
+        <div class="r-loading">
+            <div class="active"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="reload-btn">重新加载</div>
+    </div>
+    <script>
+        var autoChange=self.setInterval("loading()",400);
+        index = 0;
+        function loading(){
+          $('.reload .r-loading>div').each(function(){
+                if($(this).index()!=index%4){
+                    $(this).removeClass('active');
+                }else{
+                    $(this).addClass('active');
+                }
+            });
+          index++;
+        }
+        setTimeout(function(){
+            //window.clearInterval(autoChange);
+        },5000);
+    </script>
+</body>
+</html>

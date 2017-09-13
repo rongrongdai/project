@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/*CSS public 2016.1.7*/
+
+/*页面*/
+.talent {
+    background: #fff;
+}
+.fr{
+   float: right;
+}
+
+
+.order_lga{
+	height: 0.3rem;
+}
+
+
+
+.head_content{
+	text-align: center;
+}
+
+.head_content .head_format{
+	font-size: 13px
+}
+
+.head_content .title_img{
+	width: 61%;
+    margin-top: 0.75rem;
+}
+.font_size{
+	visibility: collapse;
+}
+.text_underline{
+	text-decoration: underline;
+}
+.content{
+	font-size: 14px;
+    margin: 0px 0.3rem;
+    margin-top: 0.72rem;
+    margin-bottom:0.9rem;
+}
+
+.content .first_format{
+    font-size: 16px;
+    color: #1b96fe;
+    margin:0.45rem 0px;
+}
+.content .second_format{
+    font-size: inherit;
+    margin:0.45rem 0px;
+}
+.content .third_format{
+    font-size: inherit;
+
+}

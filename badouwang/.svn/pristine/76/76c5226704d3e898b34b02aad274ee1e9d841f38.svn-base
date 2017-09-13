@@ -1,0 +1,12 @@
+<?php
+//动态控制器
+class DynamicAction extends CommonAction{
+    //获取我的动态
+    //获取好友动态
+    //发布动态
+    //评论动态
+    //赞动态
+    //分享动态
+    
+}
+

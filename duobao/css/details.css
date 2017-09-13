@@ -1,0 +1,167 @@
+@charset "UTF-8";
+/*CSS public 2016.1.7*/
+
+/* 商品详情*/ 
+.fl {
+    float: left;
+}
+.fr{
+   float: right;
+}
+.detali_bl{ position: relative;  height: 5.5rem;}
+.deta_bg{ position: absolute; height: 0.82rem; background-color: black; top:5.68rem; width: 100%; opacity: 0.2;   text-align: center; line-height: 0.82rem;}
+.deta_bg span{  color: #ffffff;  font-size: 0.36rem;}
+
+.detali_con1{ background-color: #ffffff;  border-bottom: 1px solid #c1c0bd;  margin-top: -0.1rem; }
+
+.detali_cons{ width: 96%; margin:0 auto; }
+.detali_cons:after{ visibility: hidden; display: block; font-size: 0; content: " ";   clear: both;  }
+
+
+.detali_cons .con_left{ width: 85%;  border-right: 1px solid #c1c0bd;  margin:0.2rem 0;}
+
+.detali_cons .con_left .bar{  
+   
+    height: 0.14rem;
+    background: #ffc77f;
+    border-radius: 0.5rem;
+    margin: 0.1rem 0.5rem 0.1rem 0;
+}
+.detali_cons .con_left .bar_bg{
+    background: #ff9000;
+    height: 0.14rem;
+    border-radius: 0.5rem;
+    display: block;
+}
+.detali_cons .con_left .tesu{  margin-right: 0.5rem;}
+.detali_cons .con_left  .contsu{
+    font-size: 0.2rem;
+    background-color: #1b96fe;
+    display: inline-block;
+    width: 1.2rem;
+    text-align: center;
+    border-radius: 0.1rem;
+    color: #ffffff;
+}
+.detali_cons .con_left .tesu span{ color: #1b96fe; }
+
+.detali_cons .con_right{ width: 11%; text-align: center; }
+
+.detali_cons .con_right img{ width: 0.6rem; height: 0.6rem; margin-top: 0.5rem;}
+
+
+
+.detali_con2{ background-color: #ffffff;  border-bottom: 1px solid #c1c0bd;  text-align: center; }
+.detali_con2 p{ color: #666666; line-height: 1rem; font-size: 0.38rem; }
+
+.page_link{background: #fff;
+    border-top: 1px solid #ccc;}
+
+.page_link a {
+    padding: 0 0.36rem;
+    display: block;
+    border-bottom: 1px solid #ccc;
+    height: 1.16rem;
+    line-height: 1.16rem;
+    font-size: 0.36rem;
+    color: #323232;
+}
+.page_link .arrow {
+    float: right;
+    width: 0.2rem;
+    height: 0.44rem;
+    font-size: 0.4rem;
+    color: #666;
+}
+
+
+
+.detail_con3{  background-color: #ffffff;    text-align: center;  margin-top: 0.28rem; }
+.detail_con3 p{  color: #323232; line-height: 1rem; font-size: 0.38rem; }
+.detail_con3 img{ text-align: left; width: 100%; }
+
+
+
+.tail_anu{
+    border-top: 1px #e6e6e6 solid;
+    height: 1.48rem;
+    border-bottom: 1px #e6e6e6 solid;
+    position: fixed;
+    bottom: 0;
+    z-index: 1001;
+    width: 100%;
+    background: #f9f9f9;
+}
+
+.tail_anu .tail_but2 {
+    width: 30%;
+    background: #1b96fe;
+    height: 0.90rem;
+    color: white;
+    font-size: 0.36rem;
+    text-align: center;
+    border-radius: 0.1rem;
+    position: relative;
+    z-index: 99;
+    line-height: 0.9rem;
+    cursor: pointer;
+    margin-top: 0.25rem;
+    margin-right: 0.3rem;
+}
+
+
+.detali_part{}
+.detali_part p{
+    line-height: 0.4rem;
+    margin:0.2rem 0 0.2rem 0.3rem;
+}
+.detali_part .ys{
+    color: red;
+}
+
+.detali_part .part span{
+    margin-left: 0.4rem;
+}
+
+
+.tail_anu .tail_but{
+    width: 35%;
+    border: 1px #e6e6e6 solid;
+    border-radius: 0.1rem;
+    margin-top: 0.25rem;
+    height: 0.90rem;
+    line-height: 0.9rem;
+    margin-left: 0.2rem;
+}
+.tail_but .p1 {
+    float: left;
+    text-align: center;
+    line-height: 0.9rem;
+    border-radius: 10px;
+    width: 30%;
+    height: 0.9rem;
+}
+.tail_but .p2 {
+    float: left;
+    text-align: center;
+    line-height: 0.9rem;
+    border-radius: 10px;
+    width: 40%;
+    height: 0.9rem;
+}
+
+
+.tail_but  .ipnt{ width: 100%;     border-left: 1px #e6e6e6 solid;  border-right: 1px #e6e6e6 solid;  height: 0.89rem; text-align: center; font-size: 0.22rem;}
+.tail_but   span{ font-size: 0.56rem;}
+
+
+.tail_anu .tail_middle{
+     width: 13%;
+     border: 1px #e6e6e6 solid;
+     border-radius: 0.1rem;
+     margin-top: 0.25rem;
+    line-height: 0.9rem;
+    margin-left: 0.3rem;
+    text-align: center;
+}
+.tail_anu .tail_middle  span{ font-size: 0.38rem;}

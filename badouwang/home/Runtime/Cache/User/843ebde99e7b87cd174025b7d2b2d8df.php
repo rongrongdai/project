@@ -1,0 +1,126 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——修改密码</title>
+<link rel="stylesheet" href="__ROOT__/public/css/home/Individualcenter.css" />
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+
+</head>
+<body>
+
+<div class="per">
+          <div class="per-make">
+               <div class="make ymk <?php if(!$type): ?>aclick<?php endif; ?>" style="border-right:none;">修改密码</div>
+               <div class="make nmk <?php if($type != ''): ?>aclick<?php endif; ?>">密保问题</div>
+            </div>
+          
+       <div class="per-form" name="cp" <?php if($type != ''): ?>style="display:none;"<?php endif; ?>>
+              <p class="pro-p">密码由字母，数字，符号组成，6-15个字符，区分大小写</p>
+              <form action="" method="post" id='formdata'>
+                    <div class="pheig">
+                    	<div class="pflat1">旧密码:</div>
+                        <div class="pflat2"><input type="text" class="inputcs"  class="pwd"  name="pwd" id='pwd'/><span class="hint"></span></div>
+                    </div>
+                    <div class="pheig">
+                    	<div class="pflat1">新密码:</div>
+                        <div class="pflat2"><input type="text" class="npwd inputcs" name="npwd" id='npwd' /><span class="hint"></span></div>
+                    </div>
+                    <div class="pheig">
+                    	<div class="pflat1">确认密码:</div>
+                        <div class="pflat2"><input type="text" class="ncpwd inputcs" name="ncpwd" id='ncpwd' /><span class="hint"></span></div>
+                    </div>                    
+                    <div class="pheig  psub">
+						<input type="submit" value="确认修改"  class="subinput"/>
+                    </div>                                          
+
+                  <input type='hidden' name='ftoken' value='<?php echo ($ftoken); ?>'/>
+                </form>
+          </div>
+    <div class="per-form" style="display:<?php if($type != ''): ?>block<?php else: ?>none<?php endif; ?>" name="pro" >
+              <form action="" method="post" id='formdata'>
+                    <div class="pheig">
+                    	<div class="pflat1"><?php if($type == next): ?>新<?php endif; ?>密保问题:</div>
+                        <div class="pflat2"><select name='p_question'><option value=''>请选择</option>
+                                <?php if(is_array($questions)): foreach($questions as $key=>$question): ?><option value='<?php echo ($question); ?>' <?php if($upro["p_question"] == $question): ?>selected<?php endif; ?>><?php echo ($question); ?></option><?php endforeach; endif; ?>
+                            </select> <span class="prompt">设置后，可通过密保找回密码！</span></div>
+                    </div>    
+                     <div class="pheig">
+                    	<div class="pflat1">密保答案:</div>
+                        <div class="pflat2"><input type="text" class="inputcs"   name="p_awswer" value="<?php if($upro["p_awswer"] != ""): ?>*****<?php endif; ?>" <?php if($upro["p_awswer"] != ""): ?>readonly<?php endif; ?>/> <a class="prompt" href="javascript:;" style="color:red;cursor:pointer" name="fpro">修改密保</a></div>
+                    </div> 
+                  
+                  <div class="pheig  psub">
+						<input type="submit" value="确认密保"  class="subinput"/>
+                    </div> 
+                  <input type='hidden' name='type' value='cp'/>  
+                  <input type='hidden' name='ftoken' value='<?php echo ($ftoken); ?>'/>
+                </form>
+          </div>
+            <script src='__ROOT__/public/js/validater.js' /></script>
+            <script src="__ROOT__/public/js/layer/layer-min.js"></script>
+             <script>
+                 $(function(){
+                     $(".make").click(function(){
+                         $(".make").removeClass("aclick");
+                         $(this).addClass("aclick");
+                         if($(this).hasClass('ymk')){
+                             $("div[name=cp]").show();
+                             $("div[name=pro]").hide();
+                         }else{
+                             $("div[name=cp]").hide();
+                             $("div[name=pro]").show(); 
+                         }
+                        
+                     })
+                     $("a[name=fpro]").click(function(){
+                         if($(this).text()===("忘记密保")){
+                             var loadi = layer.load('邮件发送中…');
+                             $.getJSON('__APP__/Ajax/AjaxUser/pfind',"",function(data){
+                                 var type=data.code===1?1:2;
+                                 $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: type,msg: data.message}});
+                             });
+                             return;
+                         }
+                         $("input[name=p_awswer]").attr("readonly",false);
+                         $("a[name=fpro]").text('忘记密保');
+                         $("input[name=p_awswer]").val("");
+                         $(".subinput").val("下一步");
+                         var qes=$("select[name=p_question]").val();
+                         $("select[name=p_question]").replaceWith("<input style='height:30px;width:178px' name='p_question' type='text' readonly value='"+qes+"' />");
+                         $("input[name=type]").val('next');
+                     })
+                     $("#formdata").submit(function(){
+                         var nullcheck=new Array('pwd','npwd','ncpwd');
+                         var null_info=new Array('旧密码','新密码','确认密码');
+                         var chr=null_check(nullcheck,null_info);
+                         var res=compare('pwd','npwd');
+                         if(!chr){
+                             if(res){
+                                 $("#npwd").parent().find(".hint").text("新密码不能瑜原密码一致！").css("color","red");
+                                 return false;
+                             }else{
+                                 res=compare('npwd','ncpwd');
+                                 if(!res){
+                                      $("#ncpwd").parent().find(".hint").text("确认密码与新密码不一致！").css("color","red");
+                                      return false;
+                                 }
+                             }
+                            }else{
+                                 $("#"+chr[0]).parent().find(".hint").text(chr[1]).css("color","red");
+                                return false;
+                            }
+                         })
+                        //父页面获取框架高度自动调整
+                        ifram()   //运行
+                        var he = $(document).height();
+                        function ifram(){	$(window.parent.document).find("#irm").load(function(){	$(this).height(he);	}) 		}
+                        $(window).resize(function () { ifram()  })// 改变浏览器可视窗口宽度与高度
+                 })
+				 
+
+
+             </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/teach_detail.css"/>
+
+
+<div class="pwidth">
+    <div class="hotnav">当前位置：<a href="javascript:history.back()"> 家教</a> > <a href="javascript:">列表页</a></div>
+</div>
+<div class="pwidth">
+
+    <!------------------------------------>
+    <div class="left">
+    	<div class="area">
+            <div class="are">区域：</div>
+            <div class="region click"><a href="?id">全部</a></div>
+            <foreach name="area" item="vo" key="i">
+            	<div class="region"><a href="?id=<{$vo.id}>"><{$vo.name}></a></div>
+            </foreach>    
+    	</div>
+
+    	
+        <div class="listcs" id="listid">
+
+        <foreach name="agent" item="vo" key="i">
+            <div class='list'>
+
+                        <div class="mtop">
+                            <div class='list-left'>
+                                <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src='__ROOT__<{$vo.lincence}>'  class="l_img" />
+                            </div>
+                            <div class='list-cent'>
+                                <h1><{$vo.real_name}></h1>
+                                <div class='listtet'>所在地：<{$vo.address}></div>
+                                <div class='listtet'>评级：</div>
+                            </div>
+                            <div class='list-right'>
+                                <div class="tet3">
+                                    <div class="pname">
+                                        <div class="">老师数量</div>
+                                        <div class="rom"><{$vo.count_t}></div>
+                                    </div>
+                                    <div class="pname">
+                                        <div class="">学生评价</div>
+                                        <div class="rom">9分</div>
+                                    </div>
+                                    <div class="pname" style="border:none;">
+                                        <div class="">报务学生</div>
+                                        <div class="rom">100名</div>
+                                    </div>
+                                </div>
+                                <a class='tails pbor v<{$i}>'>查看详情</a>
+                            </div>            
+                        </div>
+
+                        <div class='drop v<{$i}>'>
+                            <div class='drop-top'>
+                                <div class='drop-lr yw activ'>   语文 <span class='d-sp'>  </span>         </div>
+                                <div class='drop-lr sx '>        数学 <span class='d-sp'>  </span>         </div>
+                                <div class='drop-lr yy '>        英语 <span class='d-sp'>  </span>         </div>
+                                <div class='drop-lr wy '>        文艺 <span class='d-sp'>  </span>         </div>
+                                <div class='drop-kong '></div>
+                            </div>
+                            <div class='drop-bottom'>
+                                <!-------------------------------->
+                                <div class='bottom-yw botdis' style="display:block;">
+
+                                <?php $yuwen = $vo['yuwen'];?>
+                                <if condition="$yuwen">
+                                <foreach name="yuwen" item='yw' key="i">     
+                                    <a href="__URL__/teachDetail?pid=<{$yw.id}>"><div class="d_content">
+                                        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$yw.self_img}>" class='bot_img' />
+                                        <div class="cher"><{$yw.real_name}></div>
+                                        <div class="totor">语文家教	<span><{$yw.price}>/小时</span></div>
+                                    </div></a>
+                                </foreach>
+                                <else /><div class="d_no">抱歉！暂无信息</div>
+                                </if>
+
+                                </div>
+                                <!-------------------------->
+                                <div class='bottom-sx botdis'>
+
+                                <?php $shuxue = $vo['shuxue'];?>
+                                <if condition="$shuxue">
+                                <foreach name="shuxue" item='sx' key="i">    
+                                    <a href="__URL__/teachDetail?pid=<{$sx.id}>"><div class="d_content">
+                                        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$sx.self_img}>" class='bot_img' />
+                                        <div class="cher"><{$sx.real_name}></div>
+                                        <div class="totor">数学家教	<span><{$sx.price}>/小时</span></div>
+                                    </div></a>
+                                </foreach>
+                                <else /><div class="d_no">抱歉！暂无信息</div>
+                                </if>    
+                                </div>
+                                <!------------------------>
+                                <div class='bottom-yy botdis'>
+
+                                <?php $yinyu = $vo['yinyu'];?>
+                                <if condition="$yinyu">
+                                <foreach name="yinyu" item='yy' key="i">    
+                                    <a href="__URL__/teachDetail?pid=<{$yy.id}>"><div class="d_content">
+                                        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$yy.self_img}>" class='bot_img' />
+                                        <div class="cher"><{$yy.real_name}></div>
+                                        <div class="totor">英语家教 <span><{$yy.price}>/小时</span></div>
+                                    </div></a>
+                                </foreach>
+                                <else /><div class="d_no">抱歉！暂无信息</div>
+                                </if>    
+                                </div>
+                                <!------------------------------>
+                                <div class='bottom-wy botdis'>
+
+                                <?php $wenyi = $vo['wenyi'];?>
+                                <if condition="$wenyi">
+                                <foreach name="wenyi" item='wy' key="i">    
+                                    <a href="__URL__/teachDetail?pid=<{$wy.id}>"><div class="d_content">
+                                        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$wy.self_img}>" class='bot_img' />
+                                        <div class="cher"><{$wy.real_name}></div>
+                                        <div class="totor">文艺家教 <span><{$wy.price}>/小时</span></div>
+                                    </div></a>
+                                </foreach>
+                                <else /><div class="d_no">抱歉！暂无信息</div>
+                                </if>   
+                                </div>
+                                <!-------------------------->
+                            </div>
+                        </div>
+                    </div>
+        </foreach>
+
+
+        </div>
+       
+        
+        
+    </div>	
+    <!------------------------------------>
+	<div class="right">
+    	<div class="rtitle">八斗网代理</div>
+        <div class="rcon">
+        	<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="#" width="100%" height="130" />
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+$('.list .tails').click(function(){	//获取点击的  全局 FID -CSS名。
+	vfid = '.drop.' + $(this).attr('class').replace(/tails pbor /,'');	
+	$('.drop').slideUp();   //所有drop都收起来
+	if($(vfid).css('display')=='block'){
+    	$(vfid).slideUp();
+    }else{
+    	$(vfid).slideDown();
+    };//(当前)点击的drop下拉
+});
+$('.region').click(function(){
+	$('.region').removeClass('click');
+	$(this).addClass('click');
+	})
+$('.drop .drop-top .drop-lr').click(function(){	
+	var Cname = $(this).parents('.drop').attr('class').replace(/drop /,'');
+	var vname = $(this).attr('class').replace(/drop-lr /,'').replace(/ activ/,'');   //获取当前点击的CSS名在过滤;
+	$('.botdis').hide();
+	$('.bottom-' + vname).show();  //获取 全局 FID下列表的css名显示出来
+	$('.drop.'+ Cname + ' .drop-lr').removeClass("activ");	$(this).addClass('activ')	;	//删除css:drop-lr同级CSS名activ;给当前点击的CSS附加CSS
+});
+
+
+</script>
+
+
+<include file="../../../Public/default/footer" />

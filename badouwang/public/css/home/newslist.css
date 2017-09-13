@@ -1,0 +1,34 @@
+.ad_new {border: 1px solid #ccc;height:123px;text-align: center;width:1200px;margin:10px auto;}
+.result-bar {border-bottom: 1px solid #393;color: #666;height: 50px;line-height: 50px;width: 1200px;margin:0 auto;}
+.result-bar span{font-size: 20px;font-weight: bold;margin: 0 20px 0 0;}
+.result-bar span>a{font-size:16px;font-weight:normal;color:#f90;}
+.result-bar span>a:hover{color:#6c0;}
+.t-content{width:1200px;margin: 0 auto;padding: 0 0 20px 0;clear: both;overflow: hidden;}
+.t-content .left {width:820px;float: left;padding: 5px 0 10px 0;}
+.t-content .left .hh{font-size: 22px;height: 46px;line-height: 46px;margin: 8px 0 2px 0;text-align: center;font-weight: bold;}
+.t-content .left .other{color: #333;font-size: 12px;height: 30px;line-height: 30px;text-align: center;}
+.t-content .left .text{color: #666;font-size: 14px;line-height: 22px;}
+.t-content .left .bottom {line-height: 30px;height: 30px;margin: 20px auto 0;width: 630px; font-size:12px;color:#6c0;}
+.t-content .left .bottom a{color:#393;}
+.t-content .left .bottom a:hover{color:#f90;}
+.t-content .left .nav-xw{float: right;height: 30px;width: 300px;line-height: 30px;}
+.t-content .left .loading{font-size:12px;text-align:center;margin:30px auto 0;cursor:pointer;}
+.t-content .left .loading span:hover{color:#393;}
+
+.t-content .right {padding: 10px 0 0 0;width: 240px;float: right;}
+.t-content .right .leftbt,.newslist-bar {height: 40px;line-height: 40px;color: #666;font-size: 16px;font-weight: bold;letter-spacing: 2px;margin: 15px 0 0 0;padding-left: 15px;background: url(../../../public/images/home/index/bt_ico.jpg) no-repeat left center;clear: both;}
+.t-content .right a{overflow: hidden;padding: 0 10px 0 0;height: 24px;text-indent: 30px;display: block;line-height: 23px;font-size: 12px;color:#666;text-decoration: none;background: url(../../../public/images/home/index/xfk.jpg) no-repeat 15px center;}
+.t-content .right a:hover{color:#6c0;}
+
+/*新闻列表*/
+#newslist{font-size:12px;}
+#newslist a{color:#333;}
+#newslist .new{border-bottom: 1px dashed #ccc;margin: 0 0 0 20px;width: 700px;overflow: hidden;color: #666;}
+#newslist .new img {border: 1px solid #ccc;float: left;margin: 10px 0 10px 0;}
+#newslist .new img:hover{border: 1px solid #393;}
+#newslist .new .new-right {width: 510px;float: left;margin:10px 0 10px 10px;}
+#newslist .new h3 {color:#333;font-size: 16px;margin: 0;overflow: hidden;width: 510px;height: 18px;}
+#newslist .new h3 :hover {color:#6c0;}
+#newslist .new p {color: #999;font-size: 12px;line-height: 25px;margin: 0;}
+#newslist .new span a {color: #F93;font-size: 12px;line-height: 20px;padding: 0 20px 0 0;}
+#newslist .new span a:hover{color: #6c0;}

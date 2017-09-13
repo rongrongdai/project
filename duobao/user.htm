@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>个人中心</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <link type="text/css" rel="stylesheet" href="css/user_center.css">
+      <!-- 阿里适配js -->
+  <script type="text/javascript">
+    !function(a,b){function c(){var b=f.getBoundingClientRect().width;b/i>540&&(b=540*i);var c=b/10;f.style.fontSize=c+"px",k.rem=a.rem=c}var d,e=a.document,f=e.documentElement,g=e.querySelector('meta[name="viewport"]'),h=e.querySelector('meta[name="flexible"]'),i=0,j=0,k=b.flexible||(b.flexible={});if(g){console.warn("欢迎来到全球蛙！");var l=g.getAttribute("content").match(/initial\-scale=([\d\.]+)/);l&&(j=parseFloat(l[1]),i=parseInt(1/j))}else if(h){var m=h.getAttribute("content");if(m){var n=m.match(/initial\-dpr=([\d\.]+)/),o=m.match(/maximum\-dpr=([\d\.]+)/);n&&(i=parseFloat(n[1]),j=parseFloat((1/i).toFixed(2))),o&&(i=parseFloat(o[1]),j=parseFloat((1/i).toFixed(2)))}}if(!i&&!j){var p=a.navigator.userAgent,q=(!!p.match(/android/gi),!!p.match(/iphone/gi)),r=q&&!!p.match(/OS 9_3/),s=a.devicePixelRatio;i=q&&!r?s>=3&&(!i||i>=3)?3:s>=2&&(!i||i>=2)?2:1:1,j=1/i}if(f.setAttribute("data-dpr",i),!g)if(g=e.createElement("meta"),g.setAttribute("name","viewport"),g.setAttribute("content","initial-scale="+j+", maximum-scale="+j+", minimum-scale="+j+", user-scalable=no"),f.firstElementChild)f.firstElementChild.appendChild(g);else{var t=e.createElement("div");t.appendChild(g),e.write(t.innerHTML)}a.addEventListener("resize",function(){clearTimeout(d),d=setTimeout(c,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(d),d=setTimeout(c,300))},!1),"complete"===e.readyState?e.body.style.fontSize=12*i+"px":e.addEventListener("DOMContentLoaded",function(){e.body.style.fontSize=12*i+"px"},!1),c(),k.dpr=a.dpr=i,k.refreshRem=c,k.rem2px=function(a){var b=parseFloat(a)*this.rem;return"string"==typeof a&&a.match(/rem$/)&&(b+="px"),b},k.px2rem=function(a){var b=parseFloat(a)/this.rem;return"string"==typeof a&&a.match(/px$/)&&(b+="rem"),b}}(window,window.lib||(window.lib={}));
+  </script>
+</head>
+<body >
+<!--顶部导航-->
+  <header>
+      <div class="top_nav top_nav1">我<span class="header_right"></span></div>
+  </header>
+  <div class="user_box">
+      <div class="user_info">
+              <div class="user_con">
+                      <div class="user_face">
+                              <img src="img/moren.png">
+                              <div class="user_name"><span class="namebox">出生茅庐</span></div>
+                      </div>
+                      <div class="con_box">
+                          <p class="user_phone">12234344545</p>
+                          <p class="user_id">唯一ID:<span class="id">2234545</span></p>
+                      </div>
+              </div>
+              <a class="cz_btn">充值</a>
+      </div>
+      <div class="page_link">
+                <a href="#"><span class="order_icon icon"></span>下单记录<span class="arrow">></span></a>
+                <a href="#"><span class="dizhi_icon icon"></span>我的收货地址<span class="arrow">></span></a>
+                <a href="#"><span class="kefu_icon icon"></span>联系客服<span class="arrow">></span></a>
+      </div>
+  </div>
+<!--底部菜单-->
+<nav class="homepage-qqw-menu">
+    <a class="homepage-qqw-menu-item qqw-menu-1" href="/mobile-main"><span class="hqm-img"></span>一元云购</a> 
+    <a class="homepage-qqw-menu-item qqw-menu-4" href="/mobile-user-cart/list"><div class="num_box">2</div><span class="hqm-img"></span>清单</a> 
+    <a class="homepage-qqw-menu-item qqw-menu-5 qqw-menu--active" href="/mobile-user-main"><span class="hqm-img"></span>我</a>
+</nav>
+<!--底部菜单-->
+</body>
+</html>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript" src="js/zepto.min.js"></script> 

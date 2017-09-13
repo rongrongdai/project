@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>推广产品</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top:0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#f2f2f2;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+       .un-login{text-align: center;}
+       .un-login .msg{font-size:0.3rem;margin:3.8rem 0 0.3rem 0;color:#7f7f7f;}
+       .un-login .index-btn{font-size:0.26rem;width:1.7rem;line-height:0.48rem;border-radius:0.02rem;color:#fff;background-color:#ff3c00;margin: 0 auto;}
+
+       
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <div class="un-login">
+              <p class="msg"><span>温馨提示:</span>您还未登录，请前往登录</p>
+              <div class="index-btn">登录</div>
+            </div>
+        </div>
+    </article>
+    <script>
+
+    </script>
+</body>
+</html>

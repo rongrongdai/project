@@ -1,0 +1,50 @@
+<?php
+//分组控制器
+class GroupAction extends CommonAction{
+    //获取分组列表
+    public function getGroup(){
+        $param=$this->getData(array('cpage','pagesize','uid'), 'get');
+        $where='';
+        if($param['uid']){
+            $where="cuid='$param[uid]'";
+        }
+        $limit=$this->initLimit($param);
+        $this->ajaxr(true,'', '',M('User_group')->where($where)->limit($limit[0],$limit[1]));
+    }
+    //获取附近分组
+    public function getAround(){
+        
+    }
+    //创建分租
+    public function addGroup(){
+        $param=$this->getData(array('gname','uid','desc','city','address','cuid'), 'post');
+        if($param['gname'] && $param['uid'] && $param['desc'] && $param['city'] && $param['address'] && $param['uid']){
+            import('Com.config');
+            $glimit=  Config::getConfig('常规配置', 'group_limit');
+            $fnumber=M('User_follow')->where("fid='$param[uid]'")->count();
+            if($fnumber>$glimit){
+                $this->ajaxr(false, '', '好友数低于'.$glimit).'，建群失败';
+            }else{
+                $param['atime']=time();
+                $res=M('User_group')->add($param);
+                $this->ajaxr($res,'建群成功','建群失败');
+            }
+        }else{
+            $this->errorkey($param);
+        }
+        
+        
+    }
+    //获取分组成员
+    public function getMembers(){
+        $param=$this->getData(array('gid','cpage','pagesize'), 'get');
+        if($param['gid']){
+            $limit=$this->initLimit($param);
+            $usql="select fi.rname,fi.user_pic,user.groupid from bd_user user left join bd_memberfields fi on fi.uid=user.uid where fi.groupid like '%$param[gid]%' limit $limit[0],$limit[1]";
+            $this->ajaxr(true, '', '',M()->query($usql));
+        }else{
+            $this->errorkey($param);
+        }
+    }
+}
+

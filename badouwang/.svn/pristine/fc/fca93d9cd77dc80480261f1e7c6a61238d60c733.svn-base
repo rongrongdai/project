@@ -1,0 +1,12 @@
+<?php
+
+class ExamAction extends CommonAction{
+    //获取某分类题库
+    //获取试卷
+    //获取试题评论
+    //答题
+    //提交试卷
+    //查看结果
+    //我的题库
+}
+

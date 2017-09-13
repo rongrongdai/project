@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>支付订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#fff;}
+        /*iscroll*/
+        #wrapper {    width: 100%;overflow: hidden;position: absolute;bottom: 0rem;top:0;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        
+        .pay-order{font-size:0.26rem;width:100%;}
+        .pay-order .pay-line1{line-height: 0.9rem;padding: 0 0.26rem;background-color: #fff;}
+        .pay-order .pay-line1>span:first-child{margin-right:0.24rem;}
+        .pay-order .pay-line2{padding: 0.1rem 0.26rem;font-size:0.22rem;}
+        .pay-order .pay-line3{height: 0.9rem;padding: 0 0.26rem;background-color: #fff;margin-bottom:0.1rem;}
+        
+        .pay-order .pay-line4{height: 0.9rem;padding: 0 0.26rem;background-color: #fff;}
+        .pay-order .pay-line5{height: 0.9rem;padding: 0 0.26rem;background-color: #fff;}
+        .pay-order .pay-way-wrap{position:relative;border-bottom: 1px solid #eeeef1;}
+        .pay-order .pay-way-wrap.click{background-color:#eeeef1;}
+        .pay-order .pay-way-wrap>div{display:inline-block;vertical-align:middle;}
+        .pay-order .pay-way-wrap>div{}
+        .pay-order .pay-way-wrap .pre-icon{width:0.4rem;height:0.4rem;margin-right:0.26rem;}
+        .pay-order .pay-line3 .pre-icon{margin-right:0.2rem;}
+        .pay-order .pay-way-wrap .pre-icon>img{width:100%;height:100%;}
+        .pay-order .pay-way-wrap .pay-way{line-height: 0.9rem;}
+        .pay-order .pay-way-wrap .pay-way>span:first-child{margin-right:0.24rem;}
+        .pay-order .pay-way-wrap .pay-checkbox{position:absolute;right:0.26rem;height:0.4rem;width:0.4rem;background:url('images/pay/un-check.png') no-repeat center center / contain;top: 50%;margin-top: -0.2rem;}
+        .pay-order .pay-way-wrap .pay-checkbox.active{background-image:url('images/pay/check.png');}
+        .a-save-btn{height:0.68rem;line-height:0.68rem;text-align:center;width:92.5%;font-size:0.28rem;border-radius:0.1rem;margin:4rem auto 0.1rem auto;background-color:#ff3c00;color:#fff;}
+        .pay-order .reg-pro{margin:0.26rem;}
+        .pay-order .reg-pro .accept-icon{width:0.3rem;height:0.3rem;background: url("images/accept-icon1.png") no-repeat scroll center center / 140%;margin-right: 0.06rem;}
+        .pay-order .reg-pro a{color:#00a0e9;}
+        .pay-order .reg-pro span,.pay-order .reg-pro a{display:inline-block;vertical-align:middle;}
+        
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="pay-order">
+                    <div class="pay-line1"><span>支付金额</span><span>￥255.00</span></div>
+                    <div class="pay-line2">选择支付渠道</div>
+                    <div class="pay-line3 pay-way-wrap">
+                        <div class="pre-icon"><img src="images/pay/balance.png" alt=""></div><div class="pay-way"><span>账户余额:</span><span>￥200.00</span></div><div class="pay-checkbox active"></div>
+                    </div>
+                    <div class="pay-line4 pay-way-wrap">
+                        <div class="pre-icon"><img src="images/pay/icon_alipay.png" alt=""></div><div class="pay-way"><span>支付宝支付</span><span></span></div><div class="pay-checkbox"></div>
+                    </div>
+                    <div class="pay-line5 pay-way-wrap">
+                        <div class="pre-icon"><img src="images/pay/icon_wechat.png" alt=""></div><div class="pay-way"><span>微信支付</span><span></span></div><div class="pay-checkbox"></div>
+                    </div>
+                    <p class="reg-pro"><span class="accept-icon"></span><span>我已阅读并接受</span><a href="#">《支付协议》</a></p>
+                </div>
+                <div class="a-save-btn">确认支付</div>
+            </div>
+        </div>
+    </article>
+    <!-- 输密码面板 -->
+    <div id="enterPsw"></div>
+    <!-- 为设置密码提示 -->
+    <div id="confirmWin"></div>
+    <script>
+        //初始化输密码界面
+        var enterPsw = enterPsw($('#enterPsw'),{
+            title:'支付金额',
+            amount:'20',
+            faliedUrl:'www.baidu.com',
+            pay:function(){
+                console.log(1234);
+                enterPsw.close();
+                enterPsw.payFailedshow();
+            }
+        });
+        //初始化输设置支付密码弹窗
+        var confirmWin = confirmWin($('#confirmWin'),{
+            title:'未设置支付密码，是否立即支付',
+            leftBtnText:'取消',
+            rightBtnText:'设置',
+            cancel:function(){
+                confirmWin.close();
+            },
+            confirm:function(){
+                console.log(123);
+                return;
+            }
+        });
+        /*确认支付*/
+        $('.a-save-btn').on('tap',function(){
+            enterPsw.show();
+            //confirmWin.show();
+        });
+
+        $('.pay-way-wrap').on('tap',function(){
+
+            $(this).addClass('click');
+            var _that = this;
+            setTimeout(function(){
+                $(_that).removeClass('click');
+            },100);
+
+            $('.pay-way-wrap').find('.pay-checkbox').removeClass('active');
+            $(this).find('.pay-checkbox').addClass('active');
+        });
+        
+    </script>
+</body>
+</html>

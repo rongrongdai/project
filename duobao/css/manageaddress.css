@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/*CSS public 2016.1.7*/
+
+/*页面*/
+.talent {
+    background: #fff;
+}
+.fr{
+   float: right;
+}
+
+.fl{
+    float: left;
+}
+
+.managall { border-bottom: 1px solid #c1c0bd;  margin-top: 0.2rem;}
+.managcont { margin:0.2rem auto;  width: 90%; }
+.managcont:after{ visibility: hidden; display: block; font-size: 0; content: " ";   clear: both;  }
+.managcont .mang_left{
+     width: 20%;
+}
+.mang_left p{
+    line-height: 0.6rem;
+}
+.mang_left .p2{
+        width: 0.9rem;
+    border: 1px #1b96fe solid;
+    text-align: center;
+    border-radius: 0.1rem;
+    color: #1b96fe;
+}
+.mang_middle{   
+     width: 70%;
+ }
+.mang_middle p{
+    line-height: 0.6rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.mang_middle .p1{ color: #323232; }
+.mang_middle .p2{ color: #666666; }
+
+.mang_right img{
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-top: 0.4rem;
+}
+
+
+
+
+.w_all{
+    height: 1.48rem;
+    line-height: 1.48rem;  
+    position: fixed;
+    bottom: 1rem;
+    z-index: 1001;
+    width: 90%;
+    border: 1px #1b96fe solid;
+    left: 5%;
+    text-align: center;
+    border-radius: 0.1rem;
+}
+
+.w_all .addj{
+    width: 1.0rem;
+    height: 0.48rem;
+    background-size: 0.48rem 0.48rem !important;
+    display:inline-block;
+     background:url("../img/icon_add@2x.png") no-repeat center center;  
+}
+
+.w_all p{
+    font-size: 0.48rem;
+    color: #1b96fe;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

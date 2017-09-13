@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>申请为分销商</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{
+          -webkit-overflow-scrolling:touch;
+        }
+        /*绑定微信公众号*/
+        #wrapper {z-index: 1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#fff;}
+        #scroller {z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+       
+       /*申请为大V*/
+       .V-info{text-align:center;}
+       .V-info .V-header{font-size:0.26rem;height:0.76rem;line-height:0.76rem;}
+       .V-info .V-details{font-size:0.2rem;padding:0.3rem 0.24rem;background-color: #eeeef1;box-shadow:0 2px 5px #d1d1d2 inset,0 -2px 5px #d1d1d2 inset;}
+       .V-info .V-details table{}
+       .V-info .V-details table thead{background-color:#d9d9d9;}
+       .V-info .V-details table thead td{height:0.6rem;border-right: 1px solid #acacad;}
+       .V-info .V-details table thead td+td+td{text-align:center;border:none;}
+       .V-info .V-details table tbody td{height:0.7rem;border-right: 1px solid #acacad;border-bottom: 1px solid #acacad;width:25.4%;}
+       .V-info .V-details table td+td{width:14.6%;}
+       .V-info .V-details table td+td+td{width:60%;text-align: left;padding: 0.1rem 0.2rem;padding: 0 0.18rem;}
+       .V-info .V-details table tr td:last-child{border-right:none;}
+       .V-info .V-details>div{text-align:left;}
+       .V-info .V-details>div>p:first-child{margin:0.3rem 0;}
+       .V-info .V-level{font-size:0.24rem;text-align:left;margin:0.4rem 0.25rem 0 0.25rem;border-bottom: 1px solid #eeeef1;overflow:auto;}
+       .V-info .V-level .V-level-item{font-size:0.2rem;width:1.76rem;height:0.6rem;line-height:0.6rem;text-align:center;background-color:#eeeef1;border-radius:0.1rem;margin:0.2rem 0.1rem;float: left;}
+       .V-info .V-level .V-level-item>span{display:inline-block;vertical-align:middle;}
+       .V-info .V-level .V-level-item .crown {margin: 0 0.15rem;width: 0.24rem;height: 0.24rem;background: url("images/my/crown.png") no-repeat scroll center center / contain;}
+       .V-info .V-level .active{color:#fff;background-color:#ff3c00;}
+       .V-info .V-reason{font-size:0.24rem;text-align:left;margin:0.1rem 0.25rem 0 0.25rem;}
+       .V-info .V-reason input{font-size:0.24rem;text-align:left;height: 0.5rem;}
+       .V-info .V-save-btn{text-align:center;font-size:0.28rem;color:#fff;width:92.1875%;margin:0.6rem auto 0.14rem auto;height:0.68rem;line-height:0.68rem;border-radius:0.06rem;background-color:#ff3c00;}
+    </style>
+    <script type="text/javascript">
+        //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body>
+    <article id="wrapper">
+        <div id="scroller" class="V-info">
+            <div class="V-header">三级分销佣金计算说明</div>
+            <div class="V-details">
+              <table>
+                <thead>
+                  <tr>
+                    <td>等级</td><td>比例</td><td>说明</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>返利</td><td>1%</td><td>消费者购买，获得返利产品金额的比例;产品金额*1%</td></tr>
+                  <tr><td>三级分销商</td><td>50%</td><td>消费者推荐链中最接近的三级分销商,获得产品佣金的50%</td></tr>
+                  <tr><td>二级分销商</td><td>30%</td><td>消费者推荐链中最接近的一级分销商获得产品佣金的20%</td></tr>
+                  <tr><td>一级分销商</td><td>20%</td><td>大V获得产品佣金的20%%%</td></tr>
+                </tbody>
+              </table>
+              <div>
+                <p>申请条件：</p>
+                <p>1、三级分销商：有微博粉丝5万以上或5万人论坛主； </p>
+                <p>2、二级分销商：有微博粉丝10万以上或10万人论坛主；</p>
+                <p>3、一级分销商：有微博粉丝15万以上或15万人论坛主；</p>
+              </div>
+            </div>
+            <div class="V-level">
+              <div class="">申请等级：</div>
+              
+              <div class="V-level-item active"><span class="crown"></span><span>一级分销商</span></div>
+              <div class="V-level-item"><span class="crown"></span><span>二级分销商</span></div>
+              <div class="V-level-item"><span class="crown"></span><span>三级分销商</span></div>
+            </div>
+            <div class="V-reason">
+                <div class="">申请理由：<input type="text"></div>
+            </div>
+            <div class="V-save-btn">确定申请</div>
+        </div>
+    </article>
+    
+    
+    <script>
+        $('.V-level-item ').on('tap',function(){
+          $('.V-level-item ').removeClass('active');
+          $(this).addClass('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Document */
+*{ padding:0; margin:0; }
+body{ /*font-family:"微软雅黑";*/ sans-serif;font-size:12px;}
+ul,li{ list-style:none;}
+a{ text-decoration:none;}
+.clear{ clear:both; width:100%; height:0; overflow:hidden;}
+img{ border:none;}
+
+
+
+/*导航条*/
+.nav-one{ width:100%; height:25px; background-color:#00b38a; }
+.nav-two{ width:100%; height:5px; background-color:#ec9f73;}
+
+.nav-there{ width:1200px; margin:0 auto;}
+.nav-yi{ float:left; }
+.nav-yi img{ margin:15px 0px 10px 0px;}
+.nav-er{ float:left; width:1025px; }
+.nav-er li{ width:100px; height:90px; float:left; margin-left:35px;  line-height:85px; color:#000;  font-size:18px; text-align:center; font-weight:800; }
+.nav-er .guan{ border-bottom:3px #00b38a solid;  color:#00b38a;}
+.nav-er .zhu{ background-color:#e5e4e4; width:150px; height:93px; padding-right:30px;}
+
+
+/*内容*/
+.help-one{ float:left; height:12px; width:100%; background:#00b38a;}
+.help-two{ width:100%; float:left;}
+
+.help-twy{width:1312px; margin-left:45px;}
+
+.hepl-ton{height:795px; width:250px; background:#f5f5f5;  overflow:auto; float:left; margin-bottom:40px;}
+.xishou{ margin:20px 0px 5px 20px; font-size:16px; color:#000;}
+.xishou img{ margin-right:10px;}
+.help-y{ width:220px; height:30px; line-height:30px; color:#a7a7a7; font-size:12px;}
+.help-y:hover{ border-left:2px #00b38a solid; color:#00b38a; background:#e5e5e5; }
+.help-y span{ margin-left:60px;}
+
+
+
+
+
+
+
+.hepl-totw{ width:1000px; float:left;margin:30px;overflow:hidden;}
+
+
+
+
+/*尾部*/
+.weibu{ width:100%; float:left;}
+.weibu p{ color:#6d6a6a; font-size:14px;}
+.weibu a{  color:#6d6a6a;}
+.weibu .Ceigt-yi{ margin:60px 0px 0px 490px;}
+.weibu .Ceigt-er{ margin:20px 0px 0px 410px;}
+.weibu .Ceigt-sa{ margin:20px 0px 50px 480px;}
+

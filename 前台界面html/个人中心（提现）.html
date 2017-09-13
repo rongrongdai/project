@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/mobiscroll.custom-2.17.0.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0.3rem;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        /*用户信息*/
+        
+        .tixian{padding: 0 0.24rem;background-color: #fff;font-size: 0.24rem;}
+        .tixian>div:first-child{border-bottom:1px solid #eeeef1;}
+        .tixian .func-line{height: 0.8rem;line-height: 0.8rem;}
+        .tixian .func-line>span{display: inline-block;vertical-align:top;}
+        .tixian .func-line>span:first-child{width:1.6rem;}
+        .tixian .func-line>input{display: inline-block;vertical-align:middle;height: 0.68rem;line-height: 0.68rem;font-size:0.24rem;color:#adadad;}
+        .tixian .func-line .f-arrow{width: 0.12rem;height: 0.25rem;float:right;margin:0.2rem 0.22rem;background: url("images/right-arrow.png") no-repeat scroll center center / contain;}
+        .tixian .func-line .all-yongjin{color:#e24355;}
+        .tixian .func-line .yongjin{color:#e24355;float:right;}
+        .bank{}
+        .wechat{display:none;}
+        .tixian-header{font-size:0.24rem;background-color:#fff;text-align:center;margin: 0 0 0.02rem 0 ;position:relative;height:0.8rem;}
+        .tixian-header>span{width:50%;float:left;line-height:0.8rem;}
+        .tixian-header .active-line{position:absolute;background-color:#e24355;height:1px;width:50%;bottom:-1px;left:0;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .tixian-btn{height:0.68rem;line-height:0.68rem;text-align:center;width:92.5%;margin:0 auto;font-size:0.26rem;border-radius:0.06rem;margin:1.4rem auto 0.2rem auto;background-color:#ff3c00;color:#fff;}
+
+        /*银行卡列表*/
+        .dwl{display:none;}
+        .dwcc{text-align:center;}
+        .dwb1{float: left;}
+        .dwb0{float: right;}
+        .mbsc-ios .dwb{color: #ff3c00;font-size: 0.24rem;margin: 0.15rem 0.25rem;}
+        .mbsc-ios .dwbc{border:none;}
+        .mbsc-ios .dw-li{text-align:center;font-size:0.26rem;}
+        .mbsc-ios .dwwc{padding:0.5em .833333em .833333em .833333em;}
+        
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <div class="tixian-header">
+                <span>转到银行卡</span><span>转到微信红包</span>
+                <div class="active-line"></div>
+            </div>
+            <div class="tixian bank">
+                <div class="func-line"><span>储蓄卡：</span><span class="bank-name">中国银行（1822）</span><span class="f-arrow"></span></div>
+                <div class="func-line"></span><span>金额（元）</span><input type="text" placeholder="本次最多可提现200元"><span class="f-arrow"></span></div>
+            </div>
+            <div class="tixian wechat">
+                <div class="func-line"><span>我的微信号：</span><span class="">A _girl</span><span class="f-arrow"></span></div>
+                <div class="func-line"></span><span>金额（元）</span><input type="text" placeholder="本次最多可提现200元"><span class="f-arrow"></span></div>
+            </div>
+            <div class="tixian-btn">确认申请</div>
+        </div>
+    </article>
+    <div id="enterPsw"></div>
+    
+    
+    <!--银行卡列表-->
+    <ul class="index_nameList" id="indexNameList"></ul>
+    
+
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/mobiscroll.custom-2.17.0.min.js"></script>
+    <script>
+        /*提现方式切换*/
+        $('.tixian-header>span').on('tap',function(){
+            var i = $(this).index();
+            var left = Number(i)?(Number(i)*50):0;
+            $('.tixian-header .active-line').css('left',left+'%');
+            $('.tixian').each(function(){
+                if($(this).index()-1==i){
+                    $(this).css('display','block');   
+                }else{
+                    $(this).css('display','none');  
+                }
+            });
+        });
+        /*选银行卡*/
+        $('.tixian').each(function(){
+            if($(this).hasClass('bank')){
+                $(this).find('div').eq(0).on('tap',function(){
+                    $('#indexNameList').mobiscroll("show"); 
+                });
+            }
+        });
+        //初始化输密码界面
+        var enterPsw = enterPsw($('#enterPsw'),{
+            title:'提现',
+            amount:'150',
+            pay:function(){
+                console.log($('#enterPsw').find('.psw').val());
+                enterPsw.close();
+                enterPsw.payFailedshow('密码错误！');
+            }
+        });
+        /*确认申请*/
+        $('.tixian-btn').on('tap',function(){
+            enterPsw.show();
+        });
+
+        /*银行卡列表*/
+        var cardList = [
+            { "reason": "建设银行（0735）" },
+            { "reason": "建设银行（07351）" },
+            { "reason": "建设银行（07352）" },
+            { "reason": "建设银行（07353）" },
+            { "reason": "新增银行卡" }
+        ];
+        var CardListData = listTree(cardList);
+        $("#indexNameList").empty().append(CardListData);
+        $('#indexNameList').mobiscroll().treelist({
+            theme: 'ios jiang',
+            lang: 'zh',
+            mode: 'scroller',
+            display: 'bottom',
+            fixedWidth: 200,
+            height: $("html").css("font-size").replace(/[^0-9\.]/g, "") * 0.7,
+            rows: 4,
+            labels: ['原因'],
+            onSelect: function (valueText, inst) {
+                $('.bank .bank-name').text(valueText);
+            },
+            onChange:function(valueText, inst){
+                //console.log(valueText);
+            }
+        });
+        //递归添加数据
+        function listTree(dataTemp) {
+            var temp = "";
+            $.each(dataTemp, function (i, item) {
+                temp += "<li data-val='" + item.reason + "'>" + item.reason;
+                if (item.children) {
+                    var temp2 = "<ul>";
+                    temp2 += listTree(item.children);
+                    temp2 += "</ul>";
+                    temp += temp2;
+                }
+                temp += "</li>";
+            });
+            return temp;
+        }
+    </script>
+</body>
+</html>

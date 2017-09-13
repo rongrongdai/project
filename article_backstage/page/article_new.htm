@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新建文章</title>
+    <link rel="stylesheet" type="text/css" href="../sass/public.css">
+    <link rel="stylesheet" type="text/css" href="../sass/preview_article.css">
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/quanqiuwa.public.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../js/swiper-3.3.1.jquery.min.js"></script>
+    <script type="text/javascript" src="../js/alert_1.0.1.js"></script>
+    <script type="text/javascript" src="../kindeditor/kindeditor.js"></script>
+    <script type="text/javascript" src="../kindeditor/lang/zh_CN.js"></script>
+    <script>
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id');
+        });
+        /*** 点击弹出订单列表*/
+        $(function() {
+            $(".addBut").click(function(){
+                $('#mask').petrus_alert({
+                    $el: $('#mask')
+                });
+            });
+        });
+    </script>
+</head>
+<body class="talent">
+<div class="articleLists">
+    <!---头像的位置--->
+    <div class="nav_user">
+        <div class="user_box fl">
+            <div class="user_photo fl">
+                <img src="../images/icon_head_big.png">
+            </div>
+            <ul class="down_menu hide">
+                <li>
+                    <a><i class="exit"></i>退出</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="arrow fl"></div>
+    </div>
+
+    <!--left-->
+    <div class="leftA">
+        <ul>
+            <li class="li_one"><img src="../images/logt2.png"></li>
+            <li class="li_te"><img src="../images/icon_art.png"></li>
+            <li><img src="../images/icon_order.png"> </li>
+        </ul>
+    </div>
+    <!--left-->
+
+    <!--right-->
+    <div class="rightContAll">
+        <div class="rit_top"></div>
+        <div class="rit_cont">
+
+            <div class="rit_ctLf">
+                <div class="content1">
+                    <div class="c1_left"><a href=""><img src="../images/icon_column.png" ></a>栏目列表</div>
+                    <div class="c1_right"><a class="addLm"><img src="../images/icon_add.png"></a> 添加栏目</div>
+                </div>
+                <div class="content2 tes">
+                    <p class="p1"><img src="../images/icon_art.png"> 以木之名</p>
+                    <p>文章：3</p>
+                </div>
+                <div class="content2 jix">
+                    <p class="p1"><img src="../images/icon_na_02.png"> 一物</p>
+                    <p>文章：3</p>
+                </div>
+                <div class="columnA">
+                    <div class="bit">请选择你要选择的栏目</div>
+                    <div class="rid">
+                        <p><input class="col" type="radio" name="card" value="0"> 一物</p>
+                        <p><input class="col" type="radio" name="card" value="0">一木之名</p>
+                        <p><input class="col" type="radio" name="card" value="0">性冷淡家居</p>
+                        <p><input class="col" type="radio" name="card" value="0">小户型在线</p>
+                        <p><input class="col" type="radio" name="card" value="0">有家研究所</p>
+                    </div>
+                    <div class="butA">
+                        <input class="but_cancel" type="button" value="取消">
+                        <input class="but_confirm" type="button" value="确认">
+                    </div>
+                </div>
+
+                <div class="rit_ctRit">
+                    <img class="tes cut" src="../images/bg_big.png">
+                    <img src="../images/bg_big.png">
+                    <img src="../images/bg_big.png">
+                    <img src="../images/bg_big.png">
+                    <img src="../images/bg_big.png">
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="rit_ctRitAll">
+                <input class="bit_bt" type="text" value="输入文章标题">
+                <div class="addImg">
+                    <img class="img" src="../images/icon_image.png">
+                    <p><img src="../images/icon_+.png">添加封面图片<span>(建议图片大小：宽1020X高540）</span></p>
+                </div>
+                <div class="editors">
+                    <div id="editor_id"></div>
+                </div>
+
+                <div class="introduce">
+                    <div class="in_left"><img src="../images/imgs_g.png"></div>
+                    <div class="in_right">
+                        <div class="cont"><span>成美玻尿酸集中补水面膜</span><img src="../images/icon_close.png"></div>
+                        <p>商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                            商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                            商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="introduce">
+                    <div class="in_left"><img src="../images/imgs_g.png"></div>
+                    <div class="in_right">
+                        <div class="cont"><span>成美玻尿酸集中补水面膜</span><img src="../images/icon_close.png"></div>
+                        <p>商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                            商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                            商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                        </p>
+                    </div>
+                </div>
+
+                <p class="addBut">+在下方新建商品</p>
+
+                <div class="addButton">
+                    <p class="btn but_left">保存</p>
+                    <p class="btn but_cont">发布</p>
+                    <p class="btn but_right" id="preview">预览</p>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!--right-->
+</div>
+
+<!--商品列表-->
+<div id="mask" class="goods_list hide">
+        <div class="header list_header">
+            <div class="head">
+                <ul class="tit_box">
+                    <li class="tit selected">选择商品</li>
+                </ul>
+                <div class="search_box fr">
+                    <button type="submit" class="search_btn">搜索</button>
+                </div>
+                <div class="search_box search_name fr">
+                    <input type="search" class="search" placeholder="商品名称">
+                </div>
+                <div class="search_box fr">
+                    <input type="search" class="search" placeholder="商品id">
+                </div>
+            </div>
+            <div class="confirm">
+                <input type="button" class="checkwrap" value="确认选择">
+            </div>
+            <!--<ul class="list_tit">-->
+            <!--<li class="th_first">-->
+            <!--选择商品-->
+            <!--</li>-->
+            <!--<li class="th_second">商品id</li>-->
+            <!--<li class="th_three">商品名称</li>-->
+            <!--<li class="th_four">缩略图</li>-->
+            <!--<li class="th_five">已售</li>-->
+            <!--<li class="th_six">售价</li>-->
+            <!--</ul>-->
+            <table class="gridtable list_tit">
+                <tr class="list_tit">
+                    <th class="th_first">
+                        选择商品
+                    </th>
+                    <th class="th_second">商品id</th>
+                    <th class="th_three">商品名称</th>
+                    <th class="th_four">缩略图</th>
+                    <th class="th_five">已售</th>
+                    <th class="th_six">售价</th>
+                </tr>
+            </table>
+        </div>
+        <article>
+            <table class="gridtable">
+                <tr class="goods_info">
+                    <td class="th_first"><input type="checkbox"></td>
+                    <td class="th_second">346</td>
+                    <td class="th_three">断浪</td>
+                    <td class="pro_img th_four"><img src="../images/conr1.png"></td>
+                    <td class="th_five">344556</td>
+                    <td class="th_six">233545</td>
+                </tr>
+                <tr class="goods_info">
+                    <td class="th_first"><input type="checkbox"></td>
+                    <td class="th_second">346</td>
+                    <td class="th_three">断浪</td>
+                    <td class="pro_img th_four"><img src="../images/conr1.png"></td>
+                    <td class="th_five">344556</td>
+                    <td class="th_six">233545</td>
+                </tr>
+                <tr class="goods_info">
+                    <td class="th_first"><input type="checkbox"></td>
+                    <td class="th_second">346</td>
+                    <td class="th_three">断浪</td>
+                    <td class="pro_img th_four"><img src="../images/conr1.png"></td>
+                    <td class="th_five">344556</td>
+                    <td class="th_six">233545</td>
+                </tr>
+                <tr class="goods_info">
+                    <td class="th_first"><input type="checkbox"></td>
+                    <td class="th_second">346</td>
+                    <td class="th_three">断浪</td>
+                    <td class="pro_img th_four"><img src="../images/conr1.png"></td>
+                    <td class="th_five">344556</td>
+                    <td class="th_six">233545</td>
+                </tr>
+                <tr class="goods_info">
+                    <td class="th_first"><input type="checkbox"></td>
+                    <td class="th_second">346</td>
+                    <td class="th_three">断浪</td>
+                    <td class="pro_img th_four"><img src="../images/conr1.png"></td>
+                    <td class="th_five">344556</td>
+                    <td class="th_six">233545</td>
+                </tr>
+                <tr class="goods_info">
+                    <td class="th_first"><input type="checkbox"></td>
+                    <td class="th_second">346</td>
+                    <td class="th_three">断浪</td>
+                    <td class="pro_img th_four"><img src="../images/conr1.png"></td>
+                    <td class="th_five">344556</td>
+                    <td class="th_six">233545</td>
+                </tr>
+                <tr class="goods_info">
+                    <td class="th_first"><input type="checkbox"></td>
+                    <td class="th_second">346</td>
+                    <td class="th_three">断浪</td>
+                    <td class="pro_img th_four"><img src="../images/conr1.png"></td>
+                    <td class="th_five">344556</td>
+                    <td class="th_six">233545</td>
+                </tr>
+            </table>
+        </article>
+        <!--分页-->
+        <div class="pagingA">
+            <p class="num_page">
+                <a href="javascript:void(0);" class="arrow"><</a>
+                <a href="javascript:void(0);" class="active">1</a>
+                <a href="javascript:void(0);">2</a>
+                <a href="javascript:void(0);">3</a><span class="dot">…</span>
+                <a href="javascript:void(0);">6</a>
+                <a href="javascript:void(0);" class="arrow">></a>
+                <input type="text" class="page_box">
+                <span>页</span>
+                <input type="button" class="page_box page_btn" value="确定">
+                <span> 共<i>235</i>条记录</span>
+                <span> 共<i>7</i>页</span>
+            </p>
+        </div>
+</div>
+<!--点击预览-->
+    <div class="bg_img  hide"  id="preViewIframe">
+        <div class="bg_cont">
+            <div class="or_bcont">
+
+                <div id="articleDetail">
+                    <iframe src="./iframe.html" id="iphone-6-portrait" style="display:block; width:99%;height: 926px;margin: 0;"></iframe>
+                </div>
+            </div>
+            <script id="articleDetailScript" type="text/html" charset="UTF-8">
+                <div class="wrapper">
+                    <div class="article_detail">
+                        <!--达人推荐-->
+                        <div class="main_figure">
+                            <img src="{[picture]}">
+                        </div>
+                        <div class="talentIntroduce">
+                            <h1 class="tit">
+                                <p class="tit1">{[cate_name]}</p>
+                                <div class="line"></div>
+                                <p class="tit2">{[title]}</p>
+                            </h1>
+                            <div class="introduceCon">
+                                <div class="introduceCon_content"></div>
+                                <!--全球蛙推荐-->
+                                <div class="qqwTj">
+                                    <div class="tit">
+                                        <!--<span></span>-->
+                                        全球蛙为您推荐
+                                        <!--<span></span>-->
+                                    </div>
+                                    {[each list as value i]} {[if article_type==2 ]}
+                                    <div class="goodslist">
+                                        <img src="{[value.brand_picture]}">
+                                        <div class="titCon">
+                                            <p>{[value.brand_name]}</p>
+                                            {[value.brand_desc]}
+                                        </div>
+                                        <div class="goodsRelated">
+                                            <span class="fl">￥{[value.min_price]}元起</span>
+                                            <a href="/app-goods/brand?brand_id={[value.brand_id]}&brand_name={[value.brand_title_encode]}" class="fr btn">查看详情</a>
+                                            <!--<span class="fr collection"><em></em>37474喜欢</span>-->
+                                        </div>
+                                    </div>
+                                    {[else if article_type==1]}
+                                    <div class="goodslist">
+                                        <div class="titCon">
+                                            <p><span>{[i+1]}</span>{[value.goods_name]}</p>
+                                            {[value.goods_brief]}
+                                        </div>
+                                        <img src="{[value.goods_thumb]}">
+                                        <div class="goodsRelated">
+                                            <span class="fl">￥{[value.shop_price]}</span>
+                                            <a href="/app-goods/detail?id={[value.goods_id]}" class="fr btn">查看详情</a>
+                                            <span class="fr collection"><em></em>{[value.favorite_number]}人收藏</span>
+                                        </div>
+                                    </div>
+                                    {[/if]} {[/each]}
+
+                                </div>
+
+                            </div>
+                            {[if isdoyen!=1]}
+                            <a href="/app-article/list?cate_id={[cate.cate_id]}">
+                                <div class="recommended">
+                                    <div class="atcon">
+                                        <!--<img src="{[cate.picture]}">-->
+                                        <div class="atcon_div_bg">
+                                            <img src="{[cate.picture]}">
+                                        </div>
+                                        <p class="tit">- {[cate.name]} -</p>
+                                        <p class="Introduction">{[cate.slogan]}</p>
+                                        <p class="at_title">{[cate.article_num]}篇攻略</p>
+                                    </div>
+                                </div>
+                            </a>
+                            {[else if isdoyen==1]}
+                            <a href="/app-doyen/apply" class="memberslink">
+                                <img src="../static/css/product_funding/funding/app_img/home_pro_img09@2x.png">
+                            </a>
+                            {[/if]}
+                        </div>
+                    </div>
+                    <div class="goods_zan">
+                        <p>精心雕琢，给点辛苦费吧</p>
+                        <input type="button" id="btnOffer" tabindex="0" value="赞赏">
+                        <p class="zan_count"><span>{[reward_num]}</span>人赞赏</p>
+                        <div class="zan_imgs">
+                            {[each reward as value i]} {[if i
+                            <=22]} <img src="{[value.face]}">
+                            {[/if]} {[/each]} {[if reward.length>=23]}
+                            <span>...</span> {[/if]}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="goodsTj">
+                    <div class="tjtit">
+                        <div class="line"></div>
+                        <div class="con">相关推荐</div>
+                    </div>
+                    <div class="goodsbox swiper-container swiper-container-horizontal">
+                        <ul class="list swiper-wrapper">
+                            {[each rec as value i]}
+                            <li class="fl swiper-slide">
+                                <a href="/app-article/detail?id={[value.id]}">
+                                    <img src="{[value.picurl1]}">
+                                </a>
+                            </li>
+                            {[/each]}
+                        </ul>
+                    </div>
+                    <div class="while_block"></div>
+                </div>
+
+                <!--<div class="evalBar">
+                    <a class="thumb btn fl">
+                        <span class="icon fl"></span>
+                        <span class="thumb_num">{[love_num]}</span>
+                    </a>
+                    <a class="eval btn fl">
+                        <span class="icon fl"></span>
+                        <span class="comment_num">{[comment_num]}</span>
+                    </a>
+                </div>-->
+            </script>
+        </div>
+    </div>
+<script>
+    //模板渲染
+    $(function () {
+        //数据
+        "use strict";
+        $("#preview").click(function(){
+//            document.getElementById('talent').innerHTML=e.html;
+            document.getElementById('iphone-6-portrait').contentWindow.document.body.innerHTML = e.html;
+            $('#preViewIframe').petrus_alert({
+                $el: $('#preViewIframe')
+            });
+
+        });
+        var e = {
+            "html":"",
+            "data": {
+                "title": "厂家11",
+                "doyen_id": "7",
+                "doyen_name": "我去",
+                "face": "http://7xr1wo.com2.z0.glb.qiniucdn.com/image/160725/xplgo5kgo.jpg-w180",
+                "cate_name": "厂家直供1",
+                "clumun_name": "厂家直供",
+                "picture": "http://7xp9qs.com1.z0.glb.clouddn.com/57cd2f465ea7e.jpg",
+                "content": "万千瓦的",
+                "love_num": "0",
+                "comment_num": "0",
+                "share_num": "0",
+                "reward_num": "4",
+                "article_type": "2",
+                "isdoyen": "0",
+                "list": [
+                    {
+                        "brand_id": "6",
+                        "brand_name": "minimoto",
+                        "brand_picture": "http://7xr1wo.com2.z0.glb.qiniucdn.com/image/160725/ni902yx1r.png-w640",
+                        "min_price": "1",
+                        "brand_desc": null
+                    },
+                    {
+                        "brand_id": "7",
+                        "brand_name": "可特（美国）",
+                        "brand_picture": "http://7xr1wo.com2.z0.glb.qiniucdn.com/image/160725/ni902yx1r.png-w640",
+                        "min_price": "1",
+                        "brand_desc": null
+                    },
+                    {
+                        "brand_id": "8",
+                        "brand_name": "Lafite/拉菲",
+                        "brand_picture": "http://7xr1wo.com2.z0.glb.qiniucdn.com/image/160725/ni902yx1r.png-w640",
+                        "min_price": "1",
+                        "brand_desc": null
+                    },
+                    {
+                        "brand_id": "9",
+                        "brand_name": "可特（美国）",
+                        "brand_picture": "http://7xr1wo.com2.z0.glb.qiniucdn.com/image/160725/ni902yx1r.png-w640",
+                        "min_price": "1",
+                        "brand_desc": null
+                    }
+                ],
+                "rec": [
+                    {
+                        "id": "47",
+                        "picurl1": "http://7xp9qs.com1.z0.glb.clouddn.com/57d27fdd81579.jpg"
+                    },
+                    {
+                        "id": "45",
+                        "picurl1": "http://7xp9qs.com1.z0.glb.clouddn.com/57d27e9d801fc.jpg"
+                    },
+                    {
+                        "id": "44",
+                        "picurl1": "http://7xp9qs.com1.z0.glb.clouddn.com/57d27e9d801fc.jpg"
+                    },
+                    {
+                        "id": "43",
+                        "picurl1": "http://7xp9qs.com1.z0.glb.clouddn.com/57d27e9d801fc.jpg"
+                    },
+                    {
+                        "id": "34",
+                        "picurl1": "http://7xp9qs.com1.z0.glb.clouddn.com/57d126d194b6b.jpg"
+                    },
+                    {
+                        "id": "33",
+                        "picurl1": "http://7xp9qs.com1.z0.glb.clouddn.com/57d1259d2b84f.jpg"
+                    }
+                ],
+                "cate": {
+                    "cate_id": "5",
+                    "name": "厂家直供1",
+                    "picture": "http://7xp9qs.com1.z0.glb.clouddn.com/57cd2f465ea7e.jpg",
+                    "slogan": "",
+                    "article_num": "0"
+                },
+                "reward": [
+                    {
+                        "uid": "1000613",
+                        "nickname": "申林",
+                        "face": "http://wx.qlogo.cn/mmopen/Q3auHgzwzM7czREdXhjA4TCotZL0r4YgiaztGdj06TsJZG5QSGueOiakn7ricY12xWnT0MutUb26e8lbLe45sCyKQ/0"
+                    },
+                    {
+                        "uid": "1000615",
+                        "nickname": "aiden",
+                        "face": "http://wx.qlogo.cn/mmopen/kvEYORDAicI2otI1MZVd2CgFL85xJxdAS45DfTCkJsHFqrcVvz87T3YNibYrfeGkDCvgPhs5MWD22HbrkAn3BbE4fNAIc5INxd/0"
+                    },
+                    {
+                        "uid": "1000614",
+                        "nickname": "刘涛",
+                        "face": "http://wx.qlogo.cn/mmopen/FMajU52WvbFpfODjcWVFNGic3juVkIev3P6IX8bh8ndFONUZ8IFqbgX5MTlAyia086au5r4lqvPqQ6Rm3JNdsjcq2EiaZYf2NEY/0"
+                    },
+                    {
+                        "uid": "1000612",
+                        "nickname": "杨阔",
+                        "face": "http://wx.qlogo.cn/mmopen/vcDhXiaFEk6icvNd7mdkBgmZ0icxy1CmTUNF8kwOaFjd3BtxUasfI62TyhPdkLDkbXM0UVD4Hxr1JOJBxdnLAYXdCW0rrVSyT5k/0"
+                    }
+                ]
+            },
+            init: function () {
+                var e = this;
+                var data = e.data;
+                e.rederData(data);
+            },
+            rederData: function (data) {
+                var e = this
+                e.html = template('articleDetailScript', data);
+//                document.getElementById('talent').html= html;
+//                document.getElementById('iphone-6-portrait').contentWindow.document.body.innerHTML = html;
+                console.log(document.getElementById('iphone-6-portrait').contentWindow.document.body);
+            },
+        };
+
+        e.init();
+        //推荐商品轮播
+        setTimeout(function(){
+            var mySwiper = new Swiper('.goodsbox', {
+                slidesPerView: 'auto',
+                freeMode: true,
+            });
+        },0);
+    });
+</script>
+</body>
+</html>

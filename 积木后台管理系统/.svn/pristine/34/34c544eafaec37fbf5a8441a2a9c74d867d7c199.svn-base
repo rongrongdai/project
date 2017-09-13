@@ -1,0 +1,1258 @@
+﻿$axure.loadCurrentPage({
+  "url":"机票_地面.html",
+  "generationDate":new Date(1419937540555.76),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable"],
+  "page":{
+    "packageId":"8fce5937ed6243b48b40ddea6a62c588",
+    "type":"Axure:Page",
+    "name":"机票+地面",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"near",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFFFFFFF},
+      "image":null,
+      "imageHorizontalAlignment":"near",
+      "imageVerticalAlignment":"near",
+      "imageRepeat":"auto",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"应用字体",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"552cd27a108d4c4a9a5c597971bccd47",
+          "label":"",
+          "type":"referenceDiagramObject",
+          "styleType":"referenceDiagramObject",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":0,
+              "y":-10}},
+          "adaptiveStyles":{
+},
+          "masterId":"c0a6f8e65f9843a4bd1f1d0f4546bc5c"},
+{
+          "id":"4ea15f4c71294906bf459b91473386af",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":150,
+              "y":85},
+            "size":{
+              "width":1191,
+              "height":293}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"717f6446454244d5a36ba207c8e5b999",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":150,
+                  "y":85},
+                "size":{
+                  "width":1191,
+                  "height":293}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/u5.png"}},
+{
+          "id":"67f80538577e4edab16d7ae1267c4bdc",
+          "label":"",
+          "type":"buttonShape",
+          "styleType":"buttonShape",
+          "visible":true,
+          "style":{
+            "foreGroundFill":{
+              "fillType":"solid",
+              "color":0xFF000000,
+              "opacity":1},
+            "location":{
+              "x":637,
+              "y":216},
+            "size":{
+              "width":73,
+              "height":30},
+            "borderWidth":"-1"},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"e092835345704f51926aa51c016bcc00",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "foreGroundFill":{
+                  "fillType":"solid",
+                  "color":0xFF000000,
+                  "opacity":1},
+                "location":{
+                  "x":637,
+                  "y":216},
+                "size":{
+                  "width":73,
+                  "height":30},
+                "borderWidth":"-1"},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/u7.png"}},
+{
+          "id":"68422f4b9c974670a79614bb719cb996",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":600,
+              "y":136},
+            "size":{
+              "width":249,
+              "height":34}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"efec4cc36cd244ce8ef45dd2ccce3b8a",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":600,
+                  "y":136},
+                "size":{
+                  "width":249,
+                  "height":34}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/u9.png"}},
+{
+          "id":"6851238ffb914e0f860f670a2afc27fb",
+          "label":"",
+          "type":"comboBox",
+          "styleType":"comboBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":569,
+              "y":219},
+            "size":{
+              "width":45,
+              "height":25}},
+          "adaptiveStyles":{
+}},
+{
+          "id":"1502562214b04cd5b1d323eefe465a6a",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":149,
+              "y":374},
+            "size":{
+              "width":1189,
+              "height":176}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"3b1d038dc14e4c83b60179258dd212ad",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":149,
+                  "y":374},
+                "size":{
+                  "width":1189,
+                  "height":176}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/u12.png"}},
+{
+          "id":"f0d67b28da7d415fa96dac901a4a86d2",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":228,
+              "y":550},
+            "size":{
+              "width":890,
+              "height":278}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"c93b23733a56496ba8084e7634a50164",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":228,
+                  "y":550},
+                "size":{
+                  "width":890,
+                  "height":278}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/u14.png"}},
+{
+          "id":"69674018adc84cecbc46d6be17d952ef",
+          "label":"imgInsert",
+          "type":"buttonShape",
+          "styleType":"buttonShape",
+          "visible":true,
+          "style":{
+            "foreGroundFill":{
+              "fillType":"solid",
+              "color":0xFFFFFFFF,
+              "opacity":1},
+            "fill":{
+              "fillType":"solid",
+              "color":0xFF3C86C5},
+            "location":{
+              "x":420,
+              "y":615},
+            "size":{
+              "width":50,
+              "height":25},
+            "borderWidth":"-1",
+            "borderFill":{
+              "fillType":"solid",
+              "color":0xFF999999},
+            "cornerRadiusTopLeft":"2"},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"f93bbf03ee1a4ffeace23f7a4b72cd91",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "foreGroundFill":{
+                  "fillType":"solid",
+                  "color":0xFFFFFFFF,
+                  "opacity":1},
+                "fill":{
+                  "fillType":"solid",
+                  "color":0xFF3C86C5},
+                "location":{
+                  "x":420,
+                  "y":615},
+                "size":{
+                  "width":50,
+                  "height":25},
+                "borderWidth":"-1",
+                "borderFill":{
+                  "fillType":"solid",
+                  "color":0xFF999999},
+                "cornerRadiusTopLeft":"2"},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"fadeWidget",
+                      "description":"显示 imgZZ,<br>imgHs1,<br>imgHs2,<br>imgZZHC",
+                      "objectsToFades":[{
+                          "objectPath":["b01d9e9f40aa427e88159b0c73547cdf"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["7c5bf24ca44a45b19c55c6bbb8599a43"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["b10979bbf59649058cabfd7ca6ffc324"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["aac857d02abd494191bd76d5895aefab"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}}]},
+{
+                      "action":"moveWidget",
+                      "description":"移动 (Image) 相对位置为 (0,200),<br>(Image) 相对位置为 (0,200),<br>(Image) 相对位置为 (0,200)",
+                      "objectsToMoves":[{
+                          "objectPath":["272c8e3adabe443a8f315214cfbc0e5a"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"200",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["ac998ecc08394079800d09acd32b87fd"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"200",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["af277e6d77434a8e99b4462130186a5e"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"200",
+                              "stos":[]},
+                            "options":{
+}}}]},
+{
+                      "action":"fadeWidget",
+                      "description":"隐藏 imgFC",
+                      "objectsToFades":[{
+                          "objectPath":["351be20f56444024bf173f264348d284"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}}]}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/机票_地面/imginsert_u16.png"}},
+{
+          "id":"424e17fcb4034a7a90a5d61482e0fe5a",
+          "label":"",
+          "type":"buttonShape",
+          "styleType":"buttonShape",
+          "visible":true,
+          "style":{
+            "foreGroundFill":{
+              "fillType":"solid",
+              "color":0xFFFFFFFF,
+              "opacity":1},
+            "fill":{
+              "fillType":"solid",
+              "color":0xFF3C86C5},
+            "location":{
+              "x":996,
+              "y":560},
+            "size":{
+              "width":90,
+              "height":25},
+            "borderWidth":"-1",
+            "borderFill":{
+              "fillType":"solid",
+              "color":0xFF999999},
+            "cornerRadiusTopLeft":"2"},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"e0fb9771b27c4b7a9f452fd3572fff12",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "foreGroundFill":{
+                  "fillType":"solid",
+                  "color":0xFFFFFFFF,
+                  "opacity":1},
+                "fill":{
+                  "fillType":"solid",
+                  "color":0xFF3C86C5},
+                "location":{
+                  "x":996,
+                  "y":560},
+                "size":{
+                  "width":90,
+                  "height":25},
+                "borderWidth":"-1",
+                "borderFill":{
+                  "fillType":"solid",
+                  "color":0xFF999999},
+                "cornerRadiusTopLeft":"2"},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"fadeWidget",
+                      "description":"显示 imgRoute2,<br>imgHs3",
+                      "objectsToFades":[{
+                          "objectPath":["00c04a6142344e3bb40c06df4d165444"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["fef4ffebd8f44bda91f55a36450e9820"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}}]},
+{
+                      "action":"moveWidget",
+                      "description":"移动 (Image) 相对位置为 (0,550),<br>(Image) 相对位置为 (0,550),<br>(Image) 相对位置为 (0,550)",
+                      "objectsToMoves":[{
+                          "objectPath":["ac998ecc08394079800d09acd32b87fd"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"550",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["272c8e3adabe443a8f315214cfbc0e5a"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"550",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["af277e6d77434a8e99b4462130186a5e"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"550",
+                              "stos":[]},
+                            "options":{
+}}}]}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/机票_地面/u18.png"}},
+{
+          "id":"351be20f56444024bf173f264348d284",
+          "label":"imgFC",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":297,
+              "y":817},
+            "size":{
+              "width":814,
+              "height":314}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"50e2067912714785b909f83966ee5ef3",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":297,
+                  "y":817},
+                "size":{
+                  "width":814,
+                  "height":314}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/imgfc_u20.png"}},
+{
+          "id":"b01d9e9f40aa427e88159b0c73547cdf",
+          "label":"imgZZ",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":false,
+          "style":{
+            "location":{
+              "x":406,
+              "y":607},
+            "size":{
+              "width":656,
+              "height":377},
+            "visible":false},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"2f1eec1cca264704bd8e1cdaf37bb69c",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":false,
+              "style":{
+                "location":{
+                  "x":406,
+                  "y":607},
+                "size":{
+                  "width":656,
+                  "height":377},
+                "visible":false},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/imgzz_u22.png"}},
+{
+          "id":"7c5bf24ca44a45b19c55c6bbb8599a43",
+          "label":"imgHs1",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":false,
+          "style":{
+            "location":{
+              "x":1007,
+              "y":780},
+            "size":{
+              "width":25,
+              "height":23},
+            "visible":false},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"567cd55f7bd146348db16987a4b8bea1",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":false,
+              "style":{
+                "location":{
+                  "x":1007,
+                  "y":780},
+                "size":{
+                  "width":25,
+                  "height":23},
+                "visible":false},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"fadeWidget",
+                      "description":"隐藏 imgZZ,<br>imgHs2,<br>imgHs1,<br>imgZZHC",
+                      "objectsToFades":[{
+                          "objectPath":["b01d9e9f40aa427e88159b0c73547cdf"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["b10979bbf59649058cabfd7ca6ffc324"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["7c5bf24ca44a45b19c55c6bbb8599a43"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["aac857d02abd494191bd76d5895aefab"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}}]},
+{
+                      "action":"moveWidget",
+                      "description":"移动 (Image) 相对位置为 (0,-200),<br>(Image) 相对位置为 (0,-200),<br>(Image) 相对位置为 (0,-200)",
+                      "objectsToMoves":[{
+                          "objectPath":["272c8e3adabe443a8f315214cfbc0e5a"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"-200",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["ac998ecc08394079800d09acd32b87fd"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"-200",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["af277e6d77434a8e99b4462130186a5e"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"-200",
+                              "stos":[]},
+                            "options":{
+}}}]},
+{
+                      "action":"fadeWidget",
+                      "description":"显示 imgFC",
+                      "objectsToFades":[{
+                          "objectPath":["351be20f56444024bf173f264348d284"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}}]}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/机票_地面/imghs1_u24.png"}},
+{
+          "id":"b10979bbf59649058cabfd7ca6ffc324",
+          "label":"imgHs2",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":false,
+          "style":{
+            "location":{
+              "x":1007,
+              "y":949},
+            "size":{
+              "width":25,
+              "height":23},
+            "visible":false},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"e3fe066c32ac4732bd90553783b4fa5a",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":false,
+              "style":{
+                "location":{
+                  "x":1007,
+                  "y":949},
+                "size":{
+                  "width":25,
+                  "height":23},
+                "visible":false},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"fadeWidget",
+                      "description":"隐藏 imgZZ,<br>imgHs2,<br>imgHs1,<br>imgZZHC",
+                      "objectsToFades":[{
+                          "objectPath":["b01d9e9f40aa427e88159b0c73547cdf"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["b10979bbf59649058cabfd7ca6ffc324"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["7c5bf24ca44a45b19c55c6bbb8599a43"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["aac857d02abd494191bd76d5895aefab"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}}]},
+{
+                      "action":"moveWidget",
+                      "description":"移动 (Image) 相对位置为 (0,-200),<br>(Image) 相对位置为 (0,-200),<br>(Image) 相对位置为 (0,-200)",
+                      "objectsToMoves":[{
+                          "objectPath":["272c8e3adabe443a8f315214cfbc0e5a"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"-200",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["ac998ecc08394079800d09acd32b87fd"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"-200",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["af277e6d77434a8e99b4462130186a5e"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"-200",
+                              "stos":[]},
+                            "options":{
+}}}]},
+{
+                      "action":"fadeWidget",
+                      "description":"显示 imgFC",
+                      "objectsToFades":[{
+                          "objectPath":["351be20f56444024bf173f264348d284"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}}]}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/机票_地面/imghs1_u24.png"}},
+{
+          "id":"aac857d02abd494191bd76d5895aefab",
+          "label":"imgZZHC",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":false,
+          "style":{
+            "location":{
+              "x":298,
+              "y":984},
+            "size":{
+              "width":812,
+              "height":302},
+            "visible":false},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"0f41a5b641d6439fa3777cb9881d35e1",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":false,
+              "style":{
+                "location":{
+                  "x":298,
+                  "y":984},
+                "size":{
+                  "width":812,
+                  "height":302},
+                "visible":false},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/imgzzhc_u28.png"}},
+{
+          "id":"00c04a6142344e3bb40c06df4d165444",
+          "label":"imgRoute2",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":false,
+          "style":{
+            "location":{
+              "x":299,
+              "y":1060},
+            "size":{
+              "width":809,
+              "height":544},
+            "visible":false},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"3cf0084aa1dc47d7a6dca435b70b0dc6",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":false,
+              "style":{
+                "location":{
+                  "x":299,
+                  "y":1060},
+                "size":{
+                  "width":809,
+                  "height":544},
+                "visible":false},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/imgroute2_u30.png"}},
+{
+          "id":"fef4ffebd8f44bda91f55a36450e9820",
+          "label":"imgHs3",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":false,
+          "style":{
+            "location":{
+              "x":1069,
+              "y":1535},
+            "size":{
+              "width":25,
+              "height":23},
+            "visible":false},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"73387130e3f74e34b445fcbe75578257",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":false,
+              "style":{
+                "location":{
+                  "x":1069,
+                  "y":1535},
+                "size":{
+                  "width":25,
+                  "height":23},
+                "visible":false},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"fadeWidget",
+                      "description":"隐藏 imgRoute2,<br>imgHs3",
+                      "objectsToFades":[{
+                          "objectPath":["00c04a6142344e3bb40c06df4d165444"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["fef4ffebd8f44bda91f55a36450e9820"],
+                          "fadeInfo":{
+                            "fadeType":"hide",
+                            "options":{
+                              "showType":"none"}}}]},
+{
+                      "action":"moveWidget",
+                      "description":"移动 (Image) 相对位置为 (0,-550),<br>(Image) 相对位置为 (0,-550),<br>(Image) 相对位置为 (0,-550)",
+                      "objectsToMoves":[{
+                          "objectPath":["272c8e3adabe443a8f315214cfbc0e5a"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"-550",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["ac998ecc08394079800d09acd32b87fd"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"-550",
+                              "stos":[]},
+                            "options":{
+}}},
+{
+                          "objectPath":["af277e6d77434a8e99b4462130186a5e"],
+                          "moveInfo":{
+                            "moveType":"delta",
+                            "xValue":{
+                              "exprType":"stringLiteral",
+                              "value":"0",
+                              "stos":[]},
+                            "yValue":{
+                              "exprType":"stringLiteral",
+                              "value":"-550",
+                              "stos":[]},
+                            "options":{
+}}}]}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/机票_地面/imghs1_u24.png"}},
+{
+          "id":"272c8e3adabe443a8f315214cfbc0e5a",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":142,
+              "y":1529},
+            "size":{
+              "width":1192,
+              "height":479}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"246bb457d17744dfbfde7a22b8c4e421",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":142,
+                  "y":1529},
+                "size":{
+                  "width":1192,
+                  "height":479}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/u34.png"}},
+{
+          "id":"ac998ecc08394079800d09acd32b87fd",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":143,
+              "y":1173},
+            "size":{
+              "width":1189,
+              "height":361}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"5a1d5a926aac430eb1a20617c3a12660",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":143,
+                  "y":1173},
+                "size":{
+                  "width":1189,
+                  "height":361}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/u36.png"}},
+{
+          "id":"af277e6d77434a8e99b4462130186a5e",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":230,
+              "y":1094},
+            "size":{
+              "width":873,
+              "height":81}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"c30f88330ae54ad7ac42b2637cc3ee2c",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":230,
+                  "y":1094},
+                "size":{
+                  "width":873,
+                  "height":81}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/机票_地面/u38.png"}}]}},
+  "masters":{
+    "c0a6f8e65f9843a4bd1f1d0f4546bc5c":{
+      "packageId":"c0a6f8e65f9843a4bd1f1d0f4546bc5c",
+      "type":"Axure:Master",
+      "name":"产品管理",
+      "notes":{
+},
+      "style":{
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "pageAlignment":"near",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "image":null,
+        "imageHorizontalAlignment":"near",
+        "imageVerticalAlignment":"near",
+        "imageRepeat":"auto",
+        "favicon":null,
+        "sketchFactor":"0",
+        "colorStyle":"appliedColor",
+        "fontName":"应用字体",
+        "borderWidth":"0"},
+      "adaptiveStyles":{
+},
+      "interactionMap":{
+},
+      "diagram":{
+        "objects":[{
+            "id":"5024326008c74a3f90f4004ca3eb09ad",
+            "label":"",
+            "type":"imageBox",
+            "styleType":"imageBox",
+            "visible":true,
+            "style":{
+              "size":{
+                "width":1364,
+                "height":667}},
+            "adaptiveStyles":{
+},
+            "objects":[{
+                "id":"3533708ddaf64d53ab22ac58fbcf7457",
+                "label":"",
+                "isContained":true,
+                "type":"richTextPanel",
+                "styleType":"paragraph",
+                "visible":true,
+                "style":{
+                  "size":{
+                    "width":1364,
+                    "height":667}},
+                "adaptiveStyles":{
+}}],
+            "images":{
+              "normal~":"images/酒店/u1.png"}},
+{
+            "id":"b3d7ad7f6d44402fbfdfac4c0f1e8cb0",
+            "label":"",
+            "type":"buttonShape",
+            "styleType":"buttonShape",
+            "visible":true,
+            "style":{
+              "location":{
+                "x":140,
+                "y":76},
+              "size":{
+                "width":1226,
+                "height":591},
+              "linePattern":"none"},
+            "adaptiveStyles":{
+},
+            "objects":[{
+                "id":"b3e89a31a0f041cbbc6ef6f867f6e9ca",
+                "label":"",
+                "isContained":true,
+                "type":"richTextPanel",
+                "styleType":"paragraph",
+                "visible":true,
+                "style":{
+                  "location":{
+                    "x":140,
+                    "y":76},
+                  "size":{
+                    "width":1226,
+                    "height":591},
+                  "linePattern":"none"},
+                "adaptiveStyles":{
+}}],
+            "images":{
+              "normal~":"images/酒店/u3.png"}}]}}},
+  "objectPaths":{
+    "552cd27a108d4c4a9a5c597971bccd47":{
+      "scriptId":"u0",
+      "5024326008c74a3f90f4004ca3eb09ad":{
+        "scriptId":"u1"},
+      "3533708ddaf64d53ab22ac58fbcf7457":{
+        "scriptId":"u2"},
+      "b3d7ad7f6d44402fbfdfac4c0f1e8cb0":{
+        "scriptId":"u3"},
+      "b3e89a31a0f041cbbc6ef6f867f6e9ca":{
+        "scriptId":"u4"}},
+    "4ea15f4c71294906bf459b91473386af":{
+      "scriptId":"u5"},
+    "717f6446454244d5a36ba207c8e5b999":{
+      "scriptId":"u6"},
+    "67f80538577e4edab16d7ae1267c4bdc":{
+      "scriptId":"u7"},
+    "e092835345704f51926aa51c016bcc00":{
+      "scriptId":"u8"},
+    "68422f4b9c974670a79614bb719cb996":{
+      "scriptId":"u9"},
+    "efec4cc36cd244ce8ef45dd2ccce3b8a":{
+      "scriptId":"u10"},
+    "6851238ffb914e0f860f670a2afc27fb":{
+      "scriptId":"u11"},
+    "1502562214b04cd5b1d323eefe465a6a":{
+      "scriptId":"u12"},
+    "3b1d038dc14e4c83b60179258dd212ad":{
+      "scriptId":"u13"},
+    "f0d67b28da7d415fa96dac901a4a86d2":{
+      "scriptId":"u14"},
+    "c93b23733a56496ba8084e7634a50164":{
+      "scriptId":"u15"},
+    "69674018adc84cecbc46d6be17d952ef":{
+      "scriptId":"u16"},
+    "f93bbf03ee1a4ffeace23f7a4b72cd91":{
+      "scriptId":"u17"},
+    "424e17fcb4034a7a90a5d61482e0fe5a":{
+      "scriptId":"u18"},
+    "e0fb9771b27c4b7a9f452fd3572fff12":{
+      "scriptId":"u19"},
+    "351be20f56444024bf173f264348d284":{
+      "scriptId":"u20"},
+    "50e2067912714785b909f83966ee5ef3":{
+      "scriptId":"u21"},
+    "b01d9e9f40aa427e88159b0c73547cdf":{
+      "scriptId":"u22"},
+    "2f1eec1cca264704bd8e1cdaf37bb69c":{
+      "scriptId":"u23"},
+    "7c5bf24ca44a45b19c55c6bbb8599a43":{
+      "scriptId":"u24"},
+    "567cd55f7bd146348db16987a4b8bea1":{
+      "scriptId":"u25"},
+    "b10979bbf59649058cabfd7ca6ffc324":{
+      "scriptId":"u26"},
+    "e3fe066c32ac4732bd90553783b4fa5a":{
+      "scriptId":"u27"},
+    "aac857d02abd494191bd76d5895aefab":{
+      "scriptId":"u28"},
+    "0f41a5b641d6439fa3777cb9881d35e1":{
+      "scriptId":"u29"},
+    "00c04a6142344e3bb40c06df4d165444":{
+      "scriptId":"u30"},
+    "3cf0084aa1dc47d7a6dca435b70b0dc6":{
+      "scriptId":"u31"},
+    "fef4ffebd8f44bda91f55a36450e9820":{
+      "scriptId":"u32"},
+    "73387130e3f74e34b445fcbe75578257":{
+      "scriptId":"u33"},
+    "272c8e3adabe443a8f315214cfbc0e5a":{
+      "scriptId":"u34"},
+    "246bb457d17744dfbfde7a22b8c4e421":{
+      "scriptId":"u35"},
+    "ac998ecc08394079800d09acd32b87fd":{
+      "scriptId":"u36"},
+    "5a1d5a926aac430eb1a20617c3a12660":{
+      "scriptId":"u37"},
+    "af277e6d77434a8e99b4462130186a5e":{
+      "scriptId":"u38"},
+    "c30f88330ae54ad7ac42b2637cc3ee2c":{
+      "scriptId":"u39"}}});

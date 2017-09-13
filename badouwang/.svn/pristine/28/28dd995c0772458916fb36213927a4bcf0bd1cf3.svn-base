@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——预约报名</title>
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<link href="__ROOT__/public/css/home/bootstrap.min.css"  type="text/css" rel="stylesheet"/>
+<script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+</head>
+
+<body style="margin:8px;">
+<div class="per">
+   <div class="per-make">
+      <div class="make ymk aclick" id="exec">正在执行</div>
+      <div class="make ymk" id="done">已经结束</div>
+      <div class="done"><span>执行中（<{$undone}>）</span><span>已完成（<{$done}>）</span></div>
+   </div>
+   
+   <div  class="padd">
+      <table width="100%">
+            <tr class="td-title">
+                <td width="5%">序号</td>
+                <td>学生姓名</td>
+                <td>订单号</td>
+                <td>课时</td>
+                <td>上课地点</td>
+                <td>报名时间</td>
+                <td>执行状态</td>
+            </tr>
+        <foreach name="data" item="vo" key="i">
+            <?php $vo['sum']=$vo['sum']?$vo['sum']:0;?>
+            <tr <if condition="$i%2==1">style="background:#F7FAF7;"</if> >
+                <td><{$i+1+$limit}></td> 
+                <td><{$vo.stu_name}></td>
+                <td><div><{$vo.order_num}></div><div><{$vo.course}></div></td>
+                <td><div>订单金额：￥<{$vo.money}>元</div><div>已购买：<{$vo.hour}>小时</div><div>已完成：<{$vo.sum}>/<{$vo.hour}>小时</div></td>
+                <td><div><{$vo.address}></div><div><{$vo.place}></div></td>
+                <td><{$vo.bm_time|date='Y-m-d',###}></td>
+                <td><if condition="$vo.status eq 1">完成<else/>
+                  <if condition="$vo.classhour neq null">等待学生确认<else/><a href="javascript:classHour(<{$vo.id}>,<{$vo.suid}>,<{$vo.tuid}>,<{$vo.hour}>,<{$vo.sum}>)">课时确认</a></if>
+
+                </if></td>
+                
+            </tr>
+        </foreach>               
+        </table>  
+    </div>
+    <div style="text-align:center;"><{$link}></div> 
+</div>
+
+  <!-- 弹窗 -->
+<div class="popup">
+  <div class="back"></div>
+    <div class="tent bind">
+      <div class="title">课时确认<span>X</span></div>
+        <div class="line"><div class="left">上课日期：</div><input type="text" name="date" value="" onclick="WdatePicker({isShowWeek:true})" style="width:120px;" /></div>
+        <div class="line"><div class="left">完成课时：</div><input type="text" name="classhour" value="" /><span>小时</span></div>
+
+        <input type="hidden" name="kid" value="" />
+        <input type="hidden" name="stid" value="" />
+        <input type="hidden" name="tuid" value="" />
+        <div class="line" style="height:0px;"><div class="hint"></div></div>
+        <div class="line"><input class="sub" type="submit" value='确定' /></div>
+    </div>
+</div>    
+  <!-- 弹窗end -->  
+
+<script type="text/javascript">
+$(".ymk").click(function(){
+    if($(this).attr('id')==="exec"){ status=0;}else{ status=1}
+    location.href = "__URL__/schedule?status="+status;});
+if("<{$Think.get.status}>"=='1'){var done="#done";}else{var done="#exec";}
+$(".ymk").removeClass("aclick");$(done).addClass("aclick");
+
+function classHour(id,suid,tuid,h,sh){  shi=h-sh; $(".back").show() ;$(".tent").show();$(".hint").html("");$("input[name='kid']").val(id);$("input[name='stid']").val(suid);$("input[name='tuid']").val(tuid); }
+$(".title span").click(function(){  $(".back").hide() ;$(".tent").hide(); });
+$(".line .sub").click(function(){
+    var hour = $("input[name='classhour']").val(), date = $("input[name='date']").val();
+    if(date==''){$(".hint").html("上课日期不能空");return false;}
+    if(!(/(^[1-9]\d*$)/.test(hour))){$(".hint").html("请输入正整数");return false;}
+    if(hour>shi){$(".hint").html("输入大于有效课时");return false;
+    }else{ $(".bind").wrap('<form action="" method="post"></form>');}
+
+
+});
+
+</script>
+
+</body>
+</html>

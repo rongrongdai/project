@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>我的订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/mobiscroll.custom-2.17.0.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0.7rem;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        .order-header{font-size:0.3rem;background-color:#fff;text-align:center;margin:0 0 0.1rem 0;position:relative;height:0.68rem;}
+        .order-header>span{width:20%;float:left;line-height:0.68rem;}
+        .order-header>span.active{color: #ff6519;}
+        .order-header .active-line{position:absolute;background-color:#e24355;height:1px;width:20%;bottom:0;left:0;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .order-body{font-size:0.24rem;}
+        .order-body .order-item{background-color:#fff;margin: 0.2rem 0;}
+        .order-body .o-info1{height:0.7rem;line-height:0.7rem;padding:0 0.24rem;border-bottom:1px solid #eeeef1;font-size:0.28rem;}
+        .order-body .o-info1>span{display: inline-block;vertical-align:middle;}
+        .order-body .o-info1 .logo{width: 0.36rem;height: 0.31rem;background:url("images/industry/shop.png") no-repeat scroll center center / contain;}
+        .order-body .o-info1 .name{margin:0 0.45rem 0 0.12rem;font-size:0.28rem;}
+        .order-body .o-info1 .o-status1{float:right;}
+        .order-body .o-info1 .o-status2{float:right;}
+        .order-body .o-goods{padding:0 0.24rem;}
+        .order-body .o-goods .o-good{border-bottom:1px solid #eeeef1;padding: 0.2rem 0;overflow:auto;}
+        .order-body .o-goods .o-good>div{float:left;}
+        .order-body .o-goods .o-good .o-img-wrap{width:1.6rem;height:1.6rem;}
+        .order-body .o-goods .o-good .o-img-wrap img{width:100%;height:100%;}
+        .order-body .o-goods .o-good .o-info{width: 70%;margin-left: 0.15rem;}
+        .order-body .o-goods .o-good .o-info>div:first-child{position:relative;font-size:0.22rem;}
+        .order-body .o-goods .o-good .o-info .o-title{display: inline-block;vertical-align:top;width: 70%;}
+        .order-body .o-goods .o-good .o-info .o-price{position:absolute;top:0;right:0;}
+        .order-body .o-goods .o-good .o-info .o-num{float:right;}
+        .order-body .o-goods .o-good .o-line2{margin:0.15rem 0 0.05rem 0;}
+        .order-body .o-goods .o-good .o-details{font-size:0.2rem;color:#a3a3a3;}
+        .order-body .o-info2{height:0.5rem;line-height:0.5rem;padding:0 0.24rem;}
+        .order-body .o-info2 .o-count{margin-left:0.3rem;}
+        .order-body .o-btns{overflow: auto;border-top:1px solid #eeeef1;    text-align: right;}
+        .order-body .o-btns>span{display: inline-block;vertical-align: middle;min-width: 1.36rem;border-radius: 0.04rem;text-align: center;border-width: 0.02rem;border-style: solid;font-size: 0.26rem;padding: 0.05rem 0.1rem;box-sizing: border-box;}
+        .order-body .o-btns>span.btn1{border-color:#eeeef1;margin:0.1rem 0.2rem 0.1rem 0;}
+        .order-body .o-btns>span.btn2{border-color:#ff3c00;color:#ff3c00;margin:0.1rem 0.2rem 0.1rem 0;}
+
+        /*删除提示窗*/
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index: 3;position: fixed;display:none;}
+        .alert{width: 76.5625%;background: #fff;z-index: 4;position: fixed;font-size: 0.28rem;text-align: center;border-radius: 0.1rem;top: -100%;left: 11.71875%;-webkit-animation: animDialog .4s ease-out;animation: animDialog .4s ease-out;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 10ms;display:none;}
+        .alert-show{display:block;top:1.6rem;}
+        @-webkit-keyframes animDialog {
+         from{-webkit-transform: scale(.05);transform: scale(.05);}
+         to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        @keyframes animDialog {
+          from{-webkit-transform: scale(.05);transform: scale(.05);}
+          to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        .alert .a-info{padding:0.33rem 0.3rem 0.15rem 0.3rem;border-bottom: 1px solid #eeeef1;min-height: 0.7rem;}
+        .alert .a-btn{overflow:auto;border-top:1px solid #eeeef1;}
+        .alert .a-btn>div{width: 50%;float: left;    height: 0.62rem;line-height: 0.62rem;color:#226bfb;}
+        .alert .a-btn .cancel{border-right: 1px solid #eeeef1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+        .alert .a-title{text-align:left;padding: 0.3rem;}
+        .alert .a-cont{padding:0 0.3rem 0.45rem 0.3rem;text-align:left;}
+        .alert .a-cont>p{margin:0.4rem 0 0.2rem 0;}
+        .alert .a-cont .textarea-wrap{border:1px solid #7f7f7f;border-radius:0.06rem;}
+        .alert .a-cont .textarea-wrap>textarea{height: 1.02rem;width: 100%;padding: 5px;font-size: 0.24rem;box-shadow: none;box-sizing: border-box;color: #a3a3a3;}
+        .alert .a-cont>div span{display:inline-block;vertical-align:middle;}
+        .alert .a-cont .checkbox{height: 0.3rem;width: 0.3rem;border: 1px solid #777778;}
+        .alert .a-cont .active{background:url("images/select.png") no-repeat scroll center center / 80%;border: 1px solid #ff6519;}
+        .alert .a-cont .a-type{margin:0 0.3rem 0 0.2rem;}
+        /*原因*/
+        .dwl{display:none;}
+        .dwcc{text-align:center;}
+        .dwb1{float: left;}
+        .dwb0{float: right;}
+        .mbsc-ios .dwb{color: #ff3c00;font-size: 0.24rem;margin: 0.15rem 0.25rem;font-weight:normal;}
+        .mbsc-ios .dwbc{border:none;}
+        .mbsc-ios .dw-li{text-align:center;font-size:0.26rem;}
+        .mbsc-ios .dwwc{padding:0.5em .833333em .833333em .833333em;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article>
+        <div>
+            <div class="order-header">
+                <span class="active">全部</span><span>待付款</span><span>待发货</span><span>待收货</span><span>售后中</span>
+                <div class="active-line"></div>
+            </div>
+            <div class="order-body" id="wrapper">
+                <div id="scroller">
+                  <div class="order-item">
+                      <div class="o-info1"><span class="logo"></span><span class="name">拉菲曼尼</span><!--<span>订单号：852155669966</span>--><span class="o-status1">待付款</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                      <div class="o-btns"><span class="btn1 cancer-order">取消订单</span><span class="btn2">付款</span></div>
+                  </div>
+                  <div class="order-item">
+                      <div class="o-info1"><span class="logo"></span><span class="name">拉菲曼尼</span><!--<span>订单号：852155669966</span>--><span class="o-status1">待发货</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                      <div class="o-btns"><span class="btn1 change-btn">退换货申请</span><span class="btn2">确认收货</span></div>
+                  </div>
+                  <div class="order-item">
+                      <div class="o-info1"><span class="logo"></span><span class="name">拉菲曼尼</span><!--<span>订单号：852155669966</span>--><span  class="o-status2">退货待审核</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                  </div>
+                  <div class="order-item">
+                      <div class="o-info1"><span class="logo"></span><span class="name">拉菲曼尼</span><!--<span>订单号：852155669966</span>--><span class="o-status2">换货待审核</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                  </div>
+                  <div class="order-item">
+                      <div class="o-info1"><span class="logo"></span><span class="name">拉菲曼尼</span><!--<span>订单号：852155669966</span>--><span class="o-status2">企业待收货</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                  </div>
+                  <div class="order-item">
+                      <div class="o-info1"><span class="logo"></span><span class="name">拉菲曼尼</span><!--<span>订单号：852155669966</span>--><span class="o-status2">换货待收货</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                      <div class="o-btns"><span class="btn2">确认收货</span></div>
+                  </div>
+                  <div class="order-item">
+                      <div class="o-info1"><span class="logo"></span><span class="name">拉菲曼尼</span><!--<span>订单号：852155669966</span>--><span class="o-status1">已取消</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                      <div class="o-btns"><span class="btn1 del-btn">删除</span></div>
+                  </div>
+                  <div class="order-item">
+                      <div class="o-info1"><span class="logo"></span><span class="name">拉菲曼尼</span><!--<span>订单号：852155669966</span>--><span class="o-status1">交易完成</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                      <div class="o-btns"><span class="btn1">评价</span><span class="btn1 del-btn">删除</span></div>
+                  </div>
+                  <div class="order-item">
+                      <div class="o-info1"><span class="logo"></span><span class="name">拉菲曼尼</span><!--<span>订单号：852155669966</span>--><span class="o-status1">交易完成</span></div>
+                      <div class="o-goods">
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                        <div class="o-good">
+                            <div class="o-img-wrap"><img src="images/my/good.png" alt=""></div>
+                            <div class="o-info">
+                              <div><span class="o-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</span><span class="o-price">￥6800.00</span></div>
+                              <div class="o-line2"><span class="o-details">颜色分类：米黄皮三人位</span><span class="o-num">x1</span></div>
+                              <p class="o-details">适用人数：组合</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="o-info2"><span>共2件商品</span><span class="o-count">合计￥9685.00（含运费￥100.00）</span></div>
+                      <div class="o-btns"><span class="btn1 del-btn">删除</span></div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!--删除，弹窗-->
+    <div class="bg-layer"></div>
+    <div class="alert del-popup">
+        <div class="a-info">一旦删除就无法恢复，请确认是否删除？</div>
+        <div class="a-btn">
+            <div class="cancel">取消</div>
+            <div>确认</div>
+        </div>
+    </div>
+    <!--退换货，弹窗-->
+    <div class="alert change-popup">
+        <div class="a-title">退换货类型</div>
+        <div class="a-cont">
+          <div class="a-checkbox-wrap">
+            <span><span class="checkbox"></span><span class="a-type">退货申请</span></span>
+            <span><span class="checkbox"></span><span class="a-type">换货申请</span></span>
+          </div>
+          <p>申请理由</p>
+          <div class="textarea-wrap">
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+        <div class="a-btn">
+            <div class="cancel">取消</div>
+            <div>确认</div>
+        </div>
+    </div>
+    <!-- 选择原因 -->
+    <ul class="index_nameList" id="indexNameList"></ul>
+    
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/mobiscroll.custom-2.17.0.min.js"></script>
+    <script>
+        /*订单头部*/
+        $('.order-header>span').on('tap',function(){
+            var that = this;
+            $('.order-header>span').each(function(){
+                if(this==that){
+                  $(this).addClass('active');
+                }else{
+                  $(this).removeClass('active');
+                }
+            });
+            var i = $(this).index();
+            var left = Number(i)?(Number(i)*20):0;
+            $('.order-header .active-line').css('left',left+'%');
+        });
+         /*提示窗,删除、退换货申请*/
+        $('.order-item .del-btn').on('tap',function(){
+            $('.bg-layer').css('display','block');
+            $('.del-popup').addClass('alert-show');
+        });
+        $('.order-item .change-btn').on('tap',function(){
+            $('.bg-layer').css('display','block');
+            $('.change-popup').addClass('alert-show');
+        });
+        $('.change-popup .a-checkbox-wrap>span').on('tap',function(){
+            var that = $(this).find('.checkbox')[0];
+            $('.change-popup .checkbox').each(function(){
+                if(this==that){
+                  $(this).toggleClass('active');
+                }else{
+                  $(this).removeClass('active');
+                }
+            });
+            
+        });
+        $('.bg-layer').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+        $('.alert .cancel').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+        /*取消订单，弹窗*/
+        $('.cancer-order').on('tap',function(){
+            $('#indexNameList').mobiscroll("show");
+        });
+        var reasonList = [
+            { "reason": "我不想买了" },
+            { "reason": "信息填写错误，重拍" },
+            { "reason": "其他原因" }
+        ];
+        var reasonListData = listTree(reasonList);
+        $("#indexNameList").empty().append(reasonListData);
+        $('#indexNameList').mobiscroll().treelist({
+            theme: 'ios jiang',
+            lang: 'zh',
+            mode: 'scroller',
+            display: 'bottom',
+            fixedWidth: 200,
+            height: $("html").css("font-size").replace(/[^0-9\.]/g, "") * 0.7,
+            rows: 4,
+            labels: ['原因'],
+            onSelect: function (valueText, inst) {
+                console.log(valueText);
+            },
+            onChange:function(valueText, inst){
+                console.log(valueText);
+            }
+        });
+        //递归添加数据
+        function listTree(dataTemp) {
+            var temp = "";
+            $.each(dataTemp, function (i, item) {
+                temp += "<li data-val='" + item.reason + "'>" + item.reason;
+                if (item.children) {
+                    var temp2 = "<ul>";
+                    temp2 += listTree(item.children);
+                    temp2 += "</ul>";
+                    temp += temp2;
+                }
+                temp += "</li>";
+            });
+            return temp;
+        }
+    </script>
+</body>
+</html>

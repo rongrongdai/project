@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#3f3f3f;}
+        /*iscroll*/
+        #wrapper {width: 92.1875%;overflow: hidden;position: absolute;bottom:1.06rem;top: 1.06rem;background-color:#fff;left:3.90625%;border-radius:0.06rem;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;border-radius:0.06rem;}
+        .user-info{font-size:0.24rem;margin:0.28rem 0.28rem;color:#333;}
+        .user-info img{width:1.06rem;height:1.06rem;vertical-align:middle;}
+        .user-info span{width:1.06rem;height:1.06rem;margin-left:0.28rem;}
+        .u-code{}
+        .u-code img{width:4.55rem;height:4.55rem;margin:0 auto;display: block;}
+        .u-txt{text-align:center;font-size:0.22rem;margin-top: 0.54rem;color:#333;}
+
+        </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="user-info">
+                    <div><img src="images/my/user.png" alt=""><span>[A_Girl]</span></div>
+                </div>
+                <div class="u-code">
+                    <img src="images/my/code.png" alt="">
+                </div>
+                <div class="u-txt">分享给你的朋友或者邀请你的朋友扫一扫</div>
+            </div>
+        </div>
+        
+    </article>
+    
+</body>
+</html>

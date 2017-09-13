@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://www.jq-school.com/upload/20150521143648506/index.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>网友挽歌分享html5原创手机触摸全屏滚动效果</title>
+    <link rel="stylesheet" type="text/css" href="./网友挽歌分享html5原创手机触摸全屏滚动效果_files/css.css">
+    	<!--<script>
+function cutWord(str)
+{
+	var regex= new RegExp("(?:.*?)_(.*)");
+	return regex.exec(str)[1];
+}
+
+</script>
+<input type="button" value="Test" onclick="alert(cutWord('a_b_c_d'));" /> -->
+
+	<script type="text/javascript">
+	// 判断屏幕是否旋转
+	function orientationChange() {
+		var _alert=document.getElementById("alert");
+		switch(window.orientation) {
+		　　case 0: 
+				_alert.style.display="none";
+				break;
+		　　case -90:
+				_alert.style.display="block";
+				break;
+		　　case 90:
+				_alert.style.display="block";
+				break;
+		　　case 180:
+				_alert.style.display="none";
+			　　break;
+		}
+	}
+	// 添加事件监听
+	addEventListener('load', function(){
+		orientationChange();
+		window.onorientationchange = orientationChange;
+	});
+    </script>
+</head>
+<body id="body">
+	<!--最外层-->
+    <section id="content" data-y="0">
+        <!-- 这儿则是放置图片的列表 -->
+        <div class="page page1" data-class="page page1" style="height: 568px;">
+            <div style="background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/1.jpg);" class="page-con">
+                <div class="txt"></div>
+            </div>
+        </div>
+        <div class="page page2" data-class="page page2" style="height: 568px;">
+            <div style="background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/2.jpg);" class="page-con">
+            	<div class="txt">
+                    <div class="img" style=" background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/2_name.png)"></div>
+                </div>
+            </div>
+        </div>
+        <div class="page page3" data-class="page page3" style="height: 568px;">
+            <div style="background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/3.jpg);" class="page-con">
+            	<div class="txt">
+                    <div class="img" style=" background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/3_name.png)"></div>
+                </div>
+            </div>
+        </div>
+        <div class="page page4" data-class="page page4" style="height: 568px;">
+            <div style="background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/4.jpg);" class="page-con">
+            	<div class="txt">
+                    <div class="img" style=" background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/4_name.png)"></div>
+                </div>
+            </div>
+        </div>
+        <div class="page page5" data-class="page page5" style="height: 568px;">
+            <div style="background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/5.jpg);" class="page-con">
+            	<div class="txt">
+                    <div class="img" style=" background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/5_name.png)"></div>
+                </div>
+            </div>
+        </div>
+        <div class="page page6" data-class="page page6" style="height: 568px;">
+            <div style="background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/6.jpg);" class="page-con">
+            	<div class="txt">
+                    <div class="img" style=" background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/6_name.png)"></div>
+                </div>
+            </div>
+        </div>
+        <div class="page page7" data-class="page page7" style="height: 568px;">
+            <div style="background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/7.jpg);" class="page-con">
+            	<div class="txt">
+                    <div class="img" style=" background-image:url(http://www.jq-school.com/upload/20150521141045827/uploadfiles/7_name.png)"></div>
+                </div>
+            </div>
+        </div>
+        <!-- end -->
+    </section>
+	<!--最外层 end -->
+    <div id="alert"></div>
+    <script type="text/javascript">
+	window.onload=function(){		
+		document.ondragstart=function() {return false;}		//禁止拖拽页面图片
+		var	_mouseDown = false,								//滑动事件是否开始
+			num=0,											//当前页面的Index数
+			h=document.body.offsetHeight,							//页面的高度
+			$content=document.getElementById('content'),	//事件包裹的大标签
+			$page=$content.getElementsByClassName('page'),								//事件切换的标签
+			leng=$page.length;								//切换标签的个数			
+			
+			for(var i=0;i<leng;i++){
+				var Classname=$page[i].getAttribute('class');
+				$page[i].setAttribute('data-class',Classname);
+				$page[i].style.height=h+'px';				//给事件切换的标签加上与屏幕相同的高度
+			}
+		
+        //绑定事件
+		document.addEventListener('mousedown', touchSatrtFunc, false); 	//触摸事件
+		document.addEventListener('mousemove', touchMoveFunc, false); 	//滑动事件
+		document.addEventListener('mouseup', touchEndFunc, false); 		//离开元素事件
+		document.addEventListener('touchstart', touchSatrtFunc, false); 	//触摸事件
+		document.addEventListener('touchmove', touchMoveFunc, false); 	//滑动事件
+		document.addEventListener('touchend', touchEndFunc, false); 		//离开元素事件
+		
+		//触摸事件开始
+        function touchSatrtFunc(e) {
+			
+			//触摸开始时需要设置触摸点与滑动的距离为0。
+			
+            startY = 0;        //触摸点
+            endY = 0;          //滑动的距离
+			
+			//因为绑定多个事件支持手机电脑、所以判断当前触发的效果而获取不同的值。
+			if(e.type == 'touchstart'){
+				var touch = window.event.touches[0].pageY;
+			}else{
+				var touch = e.pageY||e.y;
+			}
+			_mouseDown = true;		//设置开启滑动事件
+            var y = Number(touch); //页面触点Y坐标  
+			$content.className='content';		//给父级加上class、使其在拖拽时添加content而覆盖原有的属性、
+            //记录触点初始位置  
+            startY = y;
+        }
+
+        //滑动事件开始
+        function touchMoveFunc(e) {
+            e.preventDefault()	//阻止触摸时浏览器的缩放、滚动条滚动等
+            
+			if(e.type == 'touchmove'){
+				var touch = window.event.touches[0].pageY;
+			}else{
+				var touch = e.pageY||e.y;
+			}
+            var y = Number(touch),
+				_top=$content.getAttribute('data-y');				//获取当前页面的data-y值
+            	
+            endY = y;
+			
+			//滑动过程中当前页面跟随滑动
+			if(_mouseDown==true){
+				if( startY - endY > 0){
+					$content.style.WebkitTransform='translate3d(0,'+(endY-startY-_top)+'px,0)';
+					$content.style.transform='translate3d(0,'+(endY-startY-_top)+'px,0)';
+				}else{
+					$content.style.WebkitTransform='translate3d(0,'+(-startY+endY-_top)+'px,0)';
+					$content.style.transform='translate3d(0,'+(-startY+endY-_top)+'px,0)';
+				}
+			}			
+        }
+        //离开元素事件  
+        function touchEndFunc(e) {
+			
+			_mouseDown=false;			//关闭滑动事件
+			
+			$content.className='';	//给父级删除class、使其恢复原先属性、
+			
+			//判断滑动的距离以及滑动的方向来判断是否进入到下一个页面
+			if( startY - endY > 50 && startY - endY != startY ){
+				//判断是否是最后一页、如是最后一页时不再向下滑动。
+				if(num >= leng - 1){
+					$content.style.WebkitTransform='translate3d(0,' + -num * h + 'px,0)';
+					$content.style.transform='translate3d(0,' + -num * h + 'px,0)';
+				}else{
+					num++;
+					$content.style.WebkitTransform='translate3d(0,' + -num * h + 'px,0)';
+					$content.style.transform='translate3d(0,' + -num * h + 'px,0)';
+				}
+				for(var i=0;i<leng;i++){
+					var Classname=$page[i].getAttribute('data-class');
+					$page[i].className=Classname;
+				}
+				var Classname=$page[num].getAttribute('data-class');
+				$page[num].className=Classname+' animate';
+				$content.setAttribute('data-y',num*h);
+			}else if( endY - startY > 50){
+				//判断是否是第一页、如是第一页时不再向上滑动。
+				if( num <= 0 ){
+					$content.style.WebkitTransform='translate3d(0,' + -num * h + 'px,0)';
+					$content.style.transform='translate3d(0,' + -num * h + 'px,0)';
+				} else {
+					num--;
+					$content.style.WebkitTransform='translate3d(0,' + -num * h + 'px,0)';
+					$content.style.transform='translate3d(0,' + -num * h + 'px,0)';
+				}
+				for(var i=0;i<leng;i++){
+					var Classname=$page[i].getAttribute('data-class');
+					$page[i].className=Classname;
+				}
+				var Classname=$page[num].getAttribute('data-class');
+				$page[num].className=Classname+' animate';
+				$content.setAttribute('data-y',num*h);
+			}else{
+				//未切换
+				$content.style.WebkitTransform='translate3d(0,' + -num * h + 'px,0)';
+				$content.style.transform='translate3d(0,' + -num * h + 'px,0)';
+			}
+        }
+		
+		//当浏览器窗口发生改变时重新定义
+		window.onresize=function(){
+			h=document.body.offsetHeight;
+			$content.setAttribute('data-y',num * h);
+			$content.style.WebkitTransform='translate3d(0,' + -num * h + 'px,0)';
+			$content.style.transform='translate3d(0,' + -num * h + 'px,0)';
+			for(var i=0;i<leng;i++){
+				$page[i].style.height=h+'px';
+			}
+		}
+	}
+    </script>
+
+
+
+</body></html>

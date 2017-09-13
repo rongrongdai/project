@@ -1,0 +1,57 @@
+<div class="sp-yi">
+      <div class="sp-yiapp"> 
+         <div class="sp-yiayi"> 
+             <div class="ayi-s">
+                 <div class="ayi-syi"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  width="158" height="144" src="<if condition="$user.user_pic neq '' "><if condition="strpos($user['user_pic'],'ttp')"><{$user.user_pic}><else/>__ROOT__/<{$user.user_pic}></if><else/>__ROOT__/public/images/home/uimg.png</if>"></div>
+
+                
+             </div>
+             
+                <div class="ayi-y" <if condition="$other neq ''"> style="display:block"<else/>style="display:none"</if>>
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/guanz.png" />
+                   <if condition="$concerend eq '1'"><span>已关注</span><else/><a href='javascrpt:;' name='concern'><span>关注该<if condition="$user.type eq 1">用户<elseif condition="$user.type eq 2" />教师<elseif condition="$user.type eq 3" />培训机构<elseif condition="$user.type eq 4" />代理商</if></span></a></if>
+                </div>  
+             
+         </div>
+         
+         <div class="sp-yiaer">
+
+             <p ><span class="spwyi"><if condition="$user.rname neq ''"><{$user.rname}></if></span>   <span class="spwer">等级：<{$user.u_lev}>星</span> <span class="spwer">积分：<{$user.u_credit}></span> </p>
+
+            
+             <p><span class="spwsan"><!--<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/diz.png" />-->所在地：<span><{$user.address}></span></span><span style="font-family: 宋体;font-size:14px;margin-left:99px;">性别:<span><if condition="$user.sex eq 1">男<elseif condition="$user.sex eq 2" />女<else/>暂未设置</if></span>&nbsp; </span>  </p>
+             <p class="sp-ly" ><span style="font-family: 宋体;font-size:14px;">身份:<span>学生</span>&nbsp;</span>  <span style="margin-left:235px;font-family: 宋体;font-size:14px;">生日:<span><if condition="$user.birth neq ''"><{$user.birth}><else/>暂无</if></span></span></p>    
+             <div style="clear:both;"></div>
+             <p><span class="spwsi">个性说明</span>：<span class="spwwu"><if condition="$user.content neq ''"><{$user.content}><else />暂未设置</if></span></p>
+<!--             <p class="spwwuy"><a href="__ROOT__/index.php/User/User/ucenter?page=uset" target="_blank">设置</a></p>-->
+
+         </div>
+         <div class="sp-yiasan">
+                   <div class="san-y">
+                          <div class="san-yi">
+                              <p class="sp-hui">关注</p>
+                              <p class="sp-dai"><if condition='$user.visitnumber gt 0'><{$user.visitnumber}><else/>0</if></p>
+                          </div>
+                          <div class="san-yi">
+                              <p class="sp-hui">粉丝</p>
+                              <p class="sp-dai"><if condition='$user.visitednumber gt 0'><{$user.visitednumber}><else/>0</if></p>
+                          </div>
+                          <div class="san-yi qxu">
+                              <p class="sp-hui">学问</p>
+                              <p class="sp-dai"><if condition='$user.sq gt 0'><{$user.sq}><else/>0</if></p>
+                          </div>
+                   </div>
+             <if condition="$other neq ''">
+                   <div class="san-e">
+                       <a href="javascript:;"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/huihua.png" /><span name="pmessage" mid="<{$user.uid}>">给TA私信</span></a>
+                  </div>
+                 </if>
+                   <div class="san-s" style='margin-top:10px;'>
+                       <p>标签：<{$user.lab}></p>
+                   </div>
+         </div>
+              
+      </div>
+    
+ 
+ </div>

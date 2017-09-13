@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>广告位管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+    input{width:50px;}
+    .aclick{border:1px solid red;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">广告位管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab2" class="selected">广告位</a></li> 
+                 
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    
+    
+    <ul class="seachform">
+    
+    <li><label>广告页面</label>
+        <select name="fname" style="margin-left:20px;height:26px;">
+                            <option value="请选择">请选择</option>
+                            <option value="首页">首页</option>
+                            <option value="新闻列表页">　新闻列表页</option>
+                            <option value="新闻详细页">　新闻详细页</option>
+                            <option value="家教主页">家教主页</option>
+                            <option value="家教详细页">　家教详细页</option>
+                            <option value="培训主页">培训主页</option>
+                            <option value="培训详细页">　培训详细页</option>
+                            <option value="题库主页">题库主页</option>
+                            <option value="学问主页">学问主页</option>
+                            <option value="学问详细页">　学问详细页</option>
+                            <option value="学吧主页">学吧主页</option>
+                            <option value="学吧详细页">　学吧详细页</option>
+        </select>
+    </li>
+     <li><label>页面位置</label>
+        <select name="pname" style="margin-left:20px;height:26px;"><option value="请选择">请选择</option><option value="头部">头部</option><option value="右侧">右侧</option><option value="中间">中间</option><option value="尾部">尾部</option><option value="左侧">左侧</option></select>
+    </li>
+
+    <li><label>可投放量</label>
+        <input type="text" name="ad_sum" value="<{$modata.ad_sum}>" />
+    </li>
+        <li><label>价格</label>
+        <input type="text" name="price" value="<{$modata.price}>" /><b>学豆/月</b>
+        <input type="hidden" name="mod" value="<{$modata.id}>" />
+    </li>
+           <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="添加广告位" id='sea'/><span></span></li>
+    </ul>
+
+    
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+            <th>序号</th><th>广告页面</th><th>页面位置</th><th>可投放量</th><th>价格</th><th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+         <foreach name='data' item='vo' key="i">
+                    <tr>
+                        <td><{$i+1+$limit}></td>
+                        <td><{$vo.fname}></td>
+                        <td><{$vo.pname}></td>
+                        <td><{$vo.ad_sum}></td>
+                        <td><{$vo.price}></td>
+                        <td><a href="javascript:mod(<{$vo.id}>);">修改</a> | <a href="javascript:del(<{$vo.id}>);">删除</a></td>
+                    </tr>
+        </foreach>
+        
+        
+    
+        </tbody>
+    </table>
+     <{$link}>
+   
+  
+    
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+  
+    </div>
+</body>
+
+</html>
+
+<script>
+var fname = "<{$modata.fname}>", pname = "<{$modata.pname}>";
+$("select[name='fname']").find('option[value='+fname+']').attr('selected',true);
+$("select[name='pname']").find('option[value='+pname+']').attr('selected',true);
+
+$('.scbtn').click(function(){
+	$(".seachform").wrap("<form action='' method='post'></form>");
+    //字段验证
+    var fname = !(/请选择/).test($("select[name='fname']").val());
+    var pname = !(/请选择/).test($("select[name='pname']").val());
+    var ad_sum = (/^[\d]{1,2}$/).test($("input[name='ad_sum']").val());
+    var price = (/^[\d]{1,6}$/).test($("input[name='price']").val());
+    if(!fname || !pname || !ad_sum || !price){
+        $(this).next().fadeIn().css('color','red').text('规范填写').fadeOut();
+        return false;
+    }else{
+        $(".seachform").parent().submit();
+    }
+return false;
+});
+
+function mod(id){
+	if(confirm('您确认编辑吗？')){
+	    window.location.href="__URL__/addArea?id="+id;
+	}
+}
+function del(id){
+	if(confirm('您确认删除吗？删除后不可恢复')){
+	    window.location.href="__URL__/delArea?id="+id;
+	}
+}
+
+</script>
+
+
+
+

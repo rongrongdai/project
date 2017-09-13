@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>售后进度</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script type="text/javascript" src="js/fx.js"></script>
+    <script type="text/javascript" src="js/imgEnlarge.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {width: 100%;overflow: hidden;position: absolute;bottom: 0rem;top:2.8rem;background-color: #fff;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;padding:0 0.24rem 0 0.24rem;box-sizing: border-box;}
+        .logistics-header{font-size:0.22rem;background-color: #fff;padding:0 0.24rem;position:relative;}
+        .logistics-header>div{display:inline-block;vertical-align:middle;}
+        .logistics-header>div img{width:0.8rem;height:0.8rem;}
+        .logistics-header>div p{margin:0.2rem 0;}
+        .logistics-header .l-col1{color:#a3a3a3;}
+        .logistics-header .l-col3{position: absolute;right: 0.24rem;bottom: 0.08rem;}
+        .logistics-header .l-col3 .consult-icon {display: inline-block;vertical-align: middle;width: 0.41rem;height: 0.41rem;background: url(images/consult.png) no-repeat center center / 100% 100%;margin-right: 0.1rem;}
+        .logistics-header .l-col3 .consult-txt {color: #0273ff;}
+
+        .logistics-title{font-size: 0.22rem;line-height: 0.68rem;background-color: #fff;padding-left: 0.24rem;}
+        .l-trans{margin-top: 0.2rem;border-bottom:1px solid #eeeef1;}
+        .logistics-body{font-size:0.22rem;padding: 0.2rem;box-sizing: border-box;border-top:1px solid #eee;color:#7f7f7f;}
+        .logistics-body ul{border-left: 1px solid #ddd;}
+        .logistics-body ul li{position:relative;}
+        
+        .logistics-body ul li .bullet{width:0.16rem;height:0.16rem;border-radius:100%;background-color:#ddd;position:absolute;left:-0.08rem;top:0.36rem;}
+        .logistics-body ul li.active{color:rgba(36,173,95,1);}
+        .logistics-body ul li.active .bullet{width:0.24rem;height:0.24rem;background-color:rgba(36,173,95,.5);left:-0.12rem;top:-0.04rem;}
+        .logistics-body ul li.active .bullet:after{content:'';position:absolute;border-radius:100%;width:64%;height:64%;background-color:rgba(36,173,95,1);left:18%;top:18%;}
+        .logistics-body ul li .info{padding:0.2rem 0;border-bottom:1px solid #eee;margin-left:0.5rem;}
+        .logistics-body ul li:first-child .info{padding:0 0 0.2rem 0;}
+        .logistics-body ul li .info>p{margin:0.12rem 0;}
+    </style>
+
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article>
+        <div class="logistics-header">
+            <!--<div><img src="images/my/user.png" alt=""><span class="u-arrow"></div>-->
+            <div>
+                <p><span class="l-col1">订单号：</span><span>123432141324</span></p>
+                <p><span class="l-col1">售后类型：</span><span>换货申请</span></p>
+            </div>
+            <span class="l-col3"><span class="consult-icon"></span><span class="consult-txt">在线咨询</span></span>
+        </div>
+        <div class="logistics-title l-trans">物流单号：154562569864</div>
+        <div class="logistics-title">售后进度</div>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="logistics-body">
+                    <ul>
+                        <li class="active">
+                            <div class="bullet"></div>
+                            <div class="info">
+                                <p>【深圳市】深圳龙华大浪公司,的派件已签收,签收人是 123,感谢使用韵达快递,期待再次为您服务</p>
+                                <p>2015-12-15  16:37:20</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="bullet"></div>
+                            <div class="info">
+                                <p>【深圳市】深圳龙华大浪公司,的派件已签收,签收人是 123,感谢使用韵达快递,期待再次为您服务</p>
+                                <p>2015-12-15  16:37:20</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="bullet"></div>
+                            <div class="info">
+                                <p>【深圳市】深圳龙华大浪公司,的派件已签收,签收人是 123,感谢使用韵达快递,期待再次为您服务</p>
+                                <p>2015-12-15  16:37:20</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="bullet"></div>
+                            <div class="info">
+                                <p>【深圳市】深圳龙华大浪公司,的派件已签收,签收人是 123,感谢使用韵达快递,期待再次为您服务</p>
+                                <p>2015-12-15  16:37:20</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="bullet"></div>
+                            <div class="info">
+                                <p>【深圳市】深圳龙华大浪公司,的派件已签收,签收人是 123,感谢使用韵达快递,期待再次为您服务</p>
+                                <p>2015-12-15  16:37:20</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="bullet"></div>
+                            <div class="info">
+                                <p>【深圳市】深圳龙华大浪公司,的派件已签收,签收人是 123,感谢使用韵达快递,期待再次为您服务</p>
+                                <p>2015-12-15  16:37:20</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="bullet"></div>
+                            <div class="info">
+                                <p>【深圳市】深圳龙华大浪公司,的派件已签收,签收人是 123,感谢使用韵达快递,期待再次为您服务</p>
+                                <p>2015-12-15  16:37:20</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+</body>
+</html>

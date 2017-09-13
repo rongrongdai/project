@@ -1,0 +1,8 @@
+<?php
+return array(
+        //项目分组设置
+	 'APP_GROUP_LIST' => 'User,Ajax,Organization,Proxyer,Consume,Source,Exam,Space,Teach,Organ',
+         //默认分组设置
+         'DEFAULT_GROUP'  => 'User'
+);
+?>

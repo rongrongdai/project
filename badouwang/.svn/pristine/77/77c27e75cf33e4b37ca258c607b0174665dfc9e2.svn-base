@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理员管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+
+<style>
+    span{display:inline;}
+    .hint{color:red;padding-left:10px;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+       <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">修改密码</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+        <form method='post' action='' id='dataform'>
+        <div class="formtitle"><span>修改密码</span></div>
+            <ul class="forminfo">
+            <li><label>旧密码</label><input name="opwd" id="opwd" type="password" class="dfinput" /><span class='hint'></span></li>
+            <li><label>新密码</label><input name="pwd" id="pwd" type="password" class="dfinput" /><span class='hint'></span></li>
+            <li><label>确认密码</label><input name="cpwd" id='cpwd' type="password" class="dfinput"/> <span class='hint'></span></li>
+            
+            <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认修改"/></li>
+            </ul>
+         </form>
+    </div> 
+    <script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+     <script type="text/javascript" src="__ROOT__/public/js/validater.js"></script>
+    <script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    <script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+        $(function(){
+            $("#dataform").submit(function(){
+                var n_check=['opwd','pwd','cpwd'];
+                var n_info=['旧密码','新密码','确认密码'];
+                var res=null_check(n_check,n_info);
+                if(res){
+                    $("#"+res[0]).next(".hint").text(res[1]);
+                    return false;
+                }else{
+                    if($("#pwd").val()===$("#cpwd").val()){
+                         return true;
+                    }else{
+                         $("#cpwd").next(".hint").text('新旧密码不一致！');
+                         return false;
+                    }
+                      
+                }
+            })
+            
+        })
+    </script>
+  
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+

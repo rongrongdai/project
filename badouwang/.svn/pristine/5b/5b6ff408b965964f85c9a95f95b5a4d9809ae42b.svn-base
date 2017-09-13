@@ -1,0 +1,51 @@
+<include file="../../../Public/default/header" />
+   <link href="__ROOT__/public/css/home/Detailspage.css" type="text/css" rel="stylesheet" />
+   <!--代理商内容-->
+   
+   
+   <div class="dails-one">
+      <div class="dails-o">当前位置 :<a href="javascript"> 培训 </a> <a href="javascript">优惠课程列表页（代理商培训）</a></div>
+      <div class="dails-oy">
+           <div class="ptw-ye">
+          <ul>
+            <li class="dslil">分类:</li>
+            <foreach name='cname' item='data'>
+                <li class="wda"><{$data.name}></li>
+            </foreach>
+          </ul>
+          
+        </div>
+          
+         <div class="syiy">
+        <foreach name='courses' item='course'>
+         <div class="ptw-kc">
+                <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/008.gif" class="pyw-kim" />
+                <p class="ptw-k-a"><span><{$course.city}></span><{$course.cname}></p>
+                <p class="ptw-k-b">￥<{$course.d_price}>起 <span>详情</span><span name="collect" cid="<{$course.id}>">收藏</span></p>
+                <p class="ptw-k-c">上课地址：<{$course.o_address}></p>
+                <p class="ptw-k-d">时间：<{$course.s_time|date="Y-m-d",###}></p>
+            </div> 
+            
+           </foreach> 
+      </div>
+    
+      </div>
+      <div class="dails-oe">
+          <p class="pt-re" >推荐机构</p>
+          <p class="pt-rs" ></p>
+          <div class="pt-rsw"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/011.gif" /></div>
+      
+      </div>
+   </div>
+<div style='clear:both;margin-top:100px; padding-bottom:40px;'><{$pages}></div> 
+</div>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script>
+    $("span[name=collect]").click(function(){
+        $.getJSON('__ROOT__/index.php/Ajax/AjaxCourse/collect',{'id':$(this).attr("cid")},function(data){
+            var type=data.code==='1'?1:2;
+            $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type:type,msg:data.message}});
+        });
+    });
+</script>
+<include file="../../../Public/default/footer" />

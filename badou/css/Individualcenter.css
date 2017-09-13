@@ -1,0 +1,153 @@
+@charset "utf-8";
+/* CSS Document */
+.Thehead{ height:65px; width:100%; margin:0px 0px;}
+.Thehead-y{ margin:0px auto; width:1200px; height:65px;}
+.Thehead-y input{ width:300px; height:35px; position:relative; top:-25px; left:130px;}
+.Thehead-yi{ width:55px; height:41px; position:relative; top:-66px; left:599px; background-color:#093;}
+.Thehead-yi img{ margin:10px 15px;}
+.Thehead-er{ width:390px; height:60px; position:relative; top:-120px; left:807px;}
+.Thehead-er a{ color:#000; text-decoration:none; line-height:60px;  height:60px; margin:10px 20px;}
+
+.Contentall{ height:1000px; margin:10px auto; width:1200px;}
+.Contentone{height:140px;  width:1100px; }
+.Contentoneyi{ width:200px; height:140px; float:left;}
+.Contentoneyi .wenyi{width:200px; height:50px; background-color:#E57951; margin:0px; text-align:center; font-size:14px; font-family:'Microsoft YaHei'; line-height:43px;}
+.wenyi a{ color:#fff; text-decoration:none; }
+.wenyi a:hover{ color:#C63;} 
+.wener{width:190px; height:90px; background-color:#FF966E; margin:0px 5px;}
+.weneryi{ width:70px; height:70px; background-color:#FFF; position:relative; top:10px; left:10px; }
+.wenerer{ width:100px; height:60px; position:relative; left:85px; top:-55px;}
+
+.Contentoneer{ width:900px; height:140px; float:left;}
+.Contentoneeryi{ width:200px; height:140px; border:1px #EEE solid; float:left;}
+.wenall{ width:140px; height:100px; margin:20px 30px 10px ;}
+.spanyi{ color:#666; font-size:12px; font-family:SimSun; margin:10px 40px; }
+.spaner{ color:#333; font-size:24px; font-family:Tahoma;  margin:10px 40px; width:200px;}
+.spansan { background-color:#FF8F65; height:30px; width:100px; font-size:12px; color:#FFF; margin:0px 25px; text-align:center; line-height:32px;}
+
+.Contentoneerer{ width:200px; height:140px; border:1px #EEE solid; float:left;}
+.Contentoneersan{ width:200px; height:140px; border:1px #EEE solid; float:left;}
+.Contentoneersi{ width:290px; height:140px; border:1px #EEE solid; float:left;}
+.spansi{ color:#666; font-size:12px; margin:10px 10px;}
+.spanwu{ color:#F00; font-size:12px; margin:10px 10px;}
+.upProgress{width:200px; height:11px; border:1px red solid; margin:-25px 40px;}
+.spanliu a{ text-decoration:none; font-size:12px; position:relative; left:250px; top:-5px;}
+
+
+.Contenttwo{ width:198px; height:850px; border:1px #EEE solid; float:left;}
+.tit_big { color:#333; font-family:'Microsoft YaHei'; font-size:14px; padding:10px 0px 0px 30px;}
+.Contenttwo dd a{ width:145px; font-family:SimSun; font-size:12px; color:#666; text-decoration:none; line-height:26px;}
+.Contenttwo dd hr{ width:145px;  position:relative; left:-25px; }
+.Contenttwo dd a:hover { text-decoration:none; color:#c00;}
+
+
+.Contentthree{ width:850px; height:850px; float:left;}
+
+
+
+
+
+
+/*个人设置*/
+.persoall{ width:800px; height:800px;}
+.persoallone{ width:630px;  border:1px #999 solid; margin:40px 40px 20px 40px; border-radius:10px;}
+.persoalloneyi{ width:630px; height:40px; }
+.persoalloneyi img{ margin:20px 0px 10px 20px;}
+.persoalloneyi .prewen{ margin:-27px 0px 0px 40px; color:#333; font-family:'Microsoft YaHei'; font-size:14px;}
+.persoalloneer{ width:530px; height:550px; margin:10px 0px 0px 70px;}
+.persoalloneer table td{ font-family:SimSun; font-size:12px; color:#666; height:50px;}
+.persoalloneer table #pernc{ width:240px; height:30px; margin:20px 0px 0px 0px;}
+.preone{ color:#F03;}
+.persoalloneer table #pregrjj{ width:335px; height:100px;}
+.persoalloneer table #perqreng{ width:100px; height:35px; background-color:#F03; color:#FFF;}
+
+/*修改密码*/
+#cpaswall{ width:800px; height:800px;}
+.cpaswallone{  width:570px; height:380px; border:1px #999 solid; margin:40px 40px 20px 40px; border-radius:10px;}
+.cpaswalloneyi{ width:570px; height:40px; }
+.cpaswalloneyi img{ margin:20px 0px 10px 20px;}
+.cpaswalloneyi .cpaswdwen{  margin:-32px 0px 0px 40px; color:#333; font-family:'Microsoft YaHei'; font-size:14px;}
+.cpaswalltwo{ width:570px; height:300px; margin:10px 0px 0px 70px;}
+.cpaswalltwo p{color:#F03; font-size:12px;}
+.cpaswalltwo table td{ font-family:SimSun; font-size:12px; color:#666; height:60px;}
+.cpaswalltwo table .cpaswdmm{ width:250px; height:30px;}
+.cpaswalltwo table .cpasdxgmm{ width:100px; height:35px; background-color:#F03; color:#FFF;}
+
+/*我的预约*/
+a{ cursor:pointer;}
+.appall{ width:800px; height:800px;}
+.app-allcen{ width:800px;  border:1px #999 solid;  margin:40px 40px 20px 40px; border-radius:10px;}
+.app-y ul{ margin:10px 0px 0px 0px;}
+.app-y li{ font-size:16px;}
+/*已预约*/
+#hiddyi{ width:700px;  margin:40px 0px 40px 40px;}
+#hiddyi table  tr td{ border:1px #CCC  solid; }
+#hiddyi table{ background-color:#FFF;}
+#hiddyi td{ font-size:12px; color: #666666; text-align:center;}
+#hiddyi .ta-yang td{ text-align:center; color:#000; }
+/*未预约*/
+#hidder{ width:700px;  margin:40px 0px 40px 40px;}
+#hidder table  tr td{ border:1px #CCC  solid; }
+#hidder table{ background-color:#FFF;}
+#hidder td{ font-size:12px; color: #666666; text-align:center;}
+#hidder .ta-yang td{ text-align:center; color:#000; }
+
+
+/*站内消息*/
+.tsmaall{ width:800px; height:800px;}
+.tsma-allcen{ width:800px;  border:1px #999 solid;  margin:40px 40px 20px 40px; border-radius:10px; }
+.ts-yi{ width:800px; }
+.ts-yi img{ margin:20px 0px 15px 20px;}
+.ts-yi p{ margin:-32px 0px 0px 45px; color:#333; font-family:'Microsoft YaHei'; font-size:14px;}
+
+.ts-er{  width:700px; margin:40px 0px 0px 40px;}
+.ts-er table tr td{ border:1px #CCC  solid;  width:700px; }
+.ts-er table{ background-color:#FFF;}
+.ts-er  td{ font-size:12px; color: #666666; text-align:center;}
+.ts-er .tstbs td{ text-align:center; color:#000;}
+
+.ts-san{ width:700px;   margin:20px 0px 40px 40px; height:40px;}
+.ts-sanyi{ width:320px; float:left;}
+.ts-sanyi p{ color:#000; font-size:14px; line-height:30px;}
+.ts-saner{ width:380px; float:left;}
+
+.ts-saner span{ color:#000; font-size:14px; line-height:30px;}
+.ts-saner .tsyey{ width:20px; height:14px;}
+
+/*申请认证*/
+p,span{ font-family:SimSun; font-size:15px; color:#666;}
+.sqoall{ width:800px; height:800px;}
+.sqaone{  width:600px;  border:1px #999 solid;  margin:40px 40px 20px 40px; border-radius:10px; }
+.sqaoneyi{  width:600px;}
+.sqaoneyi img{ margin:20px 0px 15px 20px;}
+.sqaoneyi p{ margin:-32px 0px 0px 45px; color:#333; font-family:'Microsoft YaHei'; font-size:14px;}
+
+.sqaoneer{ width:400px;   margin:30px 0px 40px 120px;}
+
+
+
+
+/*个人资料*/
+
+.hy-indall{ width:900px;}
+.hy-indall .hy-inone{ width:900px; height:220px; border:1px #00b38a solid; margin-bottom:20px; }
+.hy-indall .hy-inone .hy-iwy{ padding:30px; float:left;}
+.hy-indall .hy-inone .hy-iwy .hy-img{ width:150px; height:150px;}
+.hy-indall .hy-inone .hy-wen{ width:680px; height:150px; float:left; margin-top:30px;}
+.hy-indall .hy-inone .hy-wen span{ color:#fd6500; font-weight:bold;}
+.hy-indall .hy-inone .hy-wen .hy-zy{ font-size:16px; color:#000; font-weight:bold;}
+
+.hy-indall .hy-intwo{ width:900px; height:300px; }
+.hy-indall .hy-intwo .hy-intwyi{ width:630px; border:1px #00b38a solid;  border-radius:10px; float:left; }
+.hy-indall .hy-intwo .hy-intwyi .hy-ite{ width:630px; height:30px; border-bottom:1px #00b38a solid; border-radius:10px 10px 0px 0px;}
+.hy-indall .hy-intwo .hy-intwyi .py{ width:120px; height:35px; border-right:1px #00b38a solid; background:#f9f9f8;  border-radius:10px 10px 0px 0px; margin-top:0px; text-align:center; line-height:40px; color:#4d4d4d; font-weight:bold; }
+
+.hy-indall .hy-intwo .hy-intwyi .hy-itap{ height:135px;  background:#f9f9f8; border-bottom:1px #00b38a solid;}
+.hy-indall .hy-intwo .hy-itasi{ width:220px; height:65px; float:left; margin:25px;}
+.hy-indall .hy-intwo .hy-itasi img{ width:50px; height:50px; float:left;}
+.hy-indall .hy-intwo .hy-itasi p{ float:right;}
+.hy-indall .hy-intwo .hy-itasi a{ color:#1572bc; font-weight:bold;}
+
+
+.hy-indall .hy-intwo .hy-intwer{ width:260px; height:200px; border:1px #00b38a solid; float:right;}
+

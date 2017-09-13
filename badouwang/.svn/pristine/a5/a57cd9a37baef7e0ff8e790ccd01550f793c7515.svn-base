@@ -1,0 +1,107 @@
+<?php
+class ImageHandler{
+    public  function handle($data){
+        if($data['imgname']){
+            $pos=strpos($data['imgname'], 'upload');
+            return '/'.substr($data['imgname'],$pos);
+        }
+    }
+}
+//分组控制器
+class GroupAction extends CommonAction{
+    //获取分组列表
+    public function getGroup(){
+        $param=$this->getData(array('cpage','pagesize','uid'), 'get');
+        $where='';
+        if($param['uid']){
+            $where="cuid='$param[uid]'";
+        }
+        $limit=$this->initLimit($param);
+        $this->ajaxr(true,'', '',M('User_group')->where($where)->limit($limit[0],$limit[1]));
+    }
+    //获取附近分组
+    public function getAroundGroup(){
+        $param=$this->getData(array('Lng','Lat','cpage','pagesize'), 'get');
+        if($param['Lng'] && $param['Lat']){
+             $limit=$this->initLimit($param);
+             import('Com.MapService');
+             $this->ajaxr(1, '', '',MapService::getAround('group',array('Lng'=>$param['Lng'],'Lat'=>$param['Lat'],'cpage'=>$limit[0],'pagesize'=>$limit[1])));
+        }else{
+           $this->errorkey($param,array('cpage','pagesize','lprice','hprice'));
+        }
+    }
+    //创建分租
+    public function addGroup(){
+        $param=$this->getData(array('gname','uid','desc','city','Lng','Lat','cuid','huid','gpic'), 'post');
+        if($param['gname'] && $param['uid'] && $param['desc'] && $param['city'] && $param['Lng'] && $param['Lat'] && $param['uid'] && $param['huid']){
+            import('Com.config');
+            $glimit=  Config::getConfig('常规配置', 'group_limit');
+            $fnumber=M('User_follow')->where("fid='$param[uid]'")->count();
+            if($fnumber>$glimit){
+                $this->ajaxr(false, '', '好友数低于'.$glimit).'，建群失败';
+            }else{
+                $param['atime']=time();
+                if($_FILES['gpic']){
+                   $param['gpic']=$this->handUimg('gpic');
+                }
+                $res=M('User_group')->add($param);
+                if($res){
+                    //添加环信数据
+                    import('Com.HuanxinHelper');
+                    $ra=HuanxinHelper::manGroup('addGroup', array('groupname'=>$param['gname'],'desc'=>$param['desc'],'public'=>false,'maxusers'=>100,'approvals'=>true,'owner'=>$param['huid'] ));
+                    $res=M('User')->where("")->setField(array('hgid'=>$ra['data']['groupid'],'cuid'=>$param['huid']));
+                    //添加高德数据
+                    import('Com.MapService');
+                    $pdata=array('_name'=>$param['gname'],'_location'=>$param['Lng'].','.$param['Lat'],'desc'=>$param['desc'],'gid'=>$ra['data']['groupid']);
+                    if($param['gpic']){
+                        $pdata['_image']=$param['gpic'];
+                    }
+                    MapService::createSingle('group', $pdata);
+                }
+                $this->ajaxr($res,'建群成功','建群失败');
+            }
+        }else{
+            $this->errorkey($param);
+        }
+    }
+    //修改群信息
+    public function modGroup(){
+        $param=$this->getData(array('groupname','description','gid'), 'post');
+        if($param['gname'] && $param['desc'] && $param['huid']){
+            import('Com.HuanxinHelper');
+            HuanxinHelper::manGroup('modGroup', $param);
+            //添加高德数据
+            import('Com.MapService');
+            $pdata=array('_name'=>$param['groupname'],'desc'=>$param['description']);
+            if($param['gpic']){
+                        $pdata['_image']=$param['gpic'];
+            }
+            MapService::updateSingle('group', $pdata);
+        }else{
+            $this->errorkey($param);
+        }
+    }
+    //获取分组成员
+    public function getMembers(){
+        $param=$this->getData(array('gid','cpage','pagesize'), 'get');
+        if($param['gid']){
+            $limit=$this->initLimit($param);
+            $usql="select fi.rname,fi.user_pic,user.groupid from bd_user user left join bd_memberfields fi on fi.uid=user.uid where fi.groupid like '%$param[gid]%' limit $limit[0],$limit[1]";
+            $this->ajaxr(true, '', '',M()->query($usql));
+        }else{
+            $this->errorkey($param);
+        }
+    }
+    //添加组成员
+    public function addMember(){
+        $param=$this->getData(array('huid','gid'), 'post');
+        if($param['huid'] && $param['gid']){
+            import('Com.Huanxin');
+            $res=HuanxinHelper::manGroup('addUser', $param);
+            $this->ajaxr($res, '加入成功','加入失败');
+        }else{
+            $this->errorkey($param);
+        }
+    }
+}
+

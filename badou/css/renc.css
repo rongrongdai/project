@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ padding:0; margin:0; }
+body{  font-size:12px;}
+ul,li{ list-style:none;}
+a{ text-decoration:none;}
+.clear{ clear:both; width:100%; height:0; overflow:hidden;}
+img{ border:none;}
+
+.Tuserall{}
+
+/*导航条*/
+.nav-one{ width:100%; height:25px; background-color:#00b38a; }
+.nav-two{ width:100%; height:5px; background-color:#ec9f73;}
+
+.nav-there{ width:1200px; margin:0 auto;}
+.nav-yi{ float:left; }
+.nav-yi img{ margin:15px 0px 10px 0px;}
+.nav-er{ float:left; width:1025px; }
+.nav-er li{ width:100px; height:90px; float:left; margin-left:35px;  line-height:85px; color:#000;  font-size:18px; text-align:center; font-weight:800; }
+.nav-er .guan{ border-bottom:3px #00b38a solid;  color:#00b38a;}
+.nav-er .zhu{ background-color:#e5e4e4; width:150px; height:93px; padding-right:30px;}
+
+
+/*内容*/
+.renc-one{ width:100%;  background:#00b38a; float:left;}
+.renc-oneg{ width:1200px; margin:0 auto; height:370px; }
+.reno-yi{ width:530px; height:300px; margin-top:42px;  float:left;}
+.reno-y img{ margin:0 0 20px 30px;}
+.reno-e{ width:530px; height:200px; background:#31ac90;}
+.reno-e p{ font-size:18px; color:#FFF; line-height:32px; font-family:"微软雅黑"; text-indent: 2em;}
+.reno-er img{  width:530px; float:left; margin:35px 0 0 130px;}
+
+
+
+.renc-two{ width:100%;  background-color:#ececec; float:left; margin:30px 0 0 0;}
+
+.rent-yi{ width:100%; float:left;}
+.rt-yi{ width:165px; height:2px;  background:-webkit-gradient(linear, 0 0,  80% 100%, from(#d7d7d7), to(#7d7d7d)); position:relative; left:400px; top:100px;}
+.rt-er{ width:210px; margin:37px 0 0 565px;}
+.rt-ziw{ width:60px; float:left; font-size:98px; color:#daa571; font-weight:900; position:relative; top:-23px;}
+.rt-ziz{ width:150px; float:left; color:#2d415b; font-size:24px; position:relative; top:16px; right:10px; }
+
+.rt-san{ width:165px; height:2px;  background:-webkit-gradient(linear, 0 0,  80% 100%, from(#7d7d7d), to(#d7d7d7)); position:relative; left:757px; top:20px;}
+
+.rent-er{ width:100%;  float:left;}
+.rte-yi{ width:400px;  float:left; margin:0px 0px 50px 200px;}
+.rte-yi .retwe-y{ color:#2d415b; font-size:20px; margin:0px 0px 20px 0px; font-weight:800;}
+.rte-yi p{ color:#2d415b; font-size:15px; line-height:30px; }
+
+
+
+.renc-there{ width:100%; float:left;}
+
+
+.renc-four{ width:100%; float:left; background:#ececec;}
+.renc-four .rt-ziz{ width:180px; float:left; color:#2d415b; font-size:24px; position:relative; top:-92px; left:48px;}
+.renc-four .rt-san{ width:165px; height:2px;  background:-webkit-gradient(linear, 0 0,  80% 100%, from(#7d7d7d), to(#d7d7d7)); position:relative; left:790px; top:25px;}
+
+
+.renc-five{ width:100%; float:left;}
+.renc-five .rt-ziz{ width:210px; float:left; color:#2d415b; font-size:24px; position:relative; top:-92px; left:48px;}
+.renc-five .rt-san{ width:165px; height:2px;  background:-webkit-gradient(linear, 0 0,  80% 100%, from(#7d7d7d), to(#d7d7d7)); position:relative; left:820px; top:27px;}
+
+
+
+
+.renc-six{width:100%; float:left; background:#ececec;}
+
+.renc-Seven{ width:100%; float:left; background:#dcaf85;  margin:30px 0 0 0;}
+.renc-Seven p{ color:#FFF; font-size:30px; text-align:center; line-height:165px;}
+
+
+/*尾部*/
+.weibu{ width:100%; float:left;}
+.weibu p{ color:#6d6a6a; font-size:14px;}
+.weibu .Ceigt-yi{ margin:60px 0px 0px 490px;}
+.weibu .Ceigt-er{ margin:20px 0px 0px 410px;}
+.weibu .Ceigt-sa{ margin:20px 0px 50px 480px;}
+

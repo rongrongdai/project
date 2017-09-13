@@ -1,0 +1,88 @@
+﻿$axure.loadCurrentPage({
+  "url":"新增价格库存.html",
+  "generationDate":new Date(1419937541227.79),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable"],
+  "page":{
+    "packageId":"31a1809dc6fb416f9f17455324334bbe",
+    "type":"Axure:Page",
+    "name":"新增价格库存",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"near",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFFFFFFF},
+      "image":null,
+      "imageHorizontalAlignment":"near",
+      "imageVerticalAlignment":"near",
+      "imageRepeat":"auto",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"应用字体",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"2514ce35977d44ecaab3e4e3d7df86eb",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":140,
+              "y":103},
+            "size":{
+              "width":610,
+              "height":362}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"c9f88789760a46e183066a26edf0c8a1",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":140,
+                  "y":103},
+                "size":{
+                  "width":610,
+                  "height":362}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/新增价格库存/u0.png"}},
+{
+          "id":"36a347523293426fbfff33e18acc3f79",
+          "label":"",
+          "type":"comboBox",
+          "styleType":"comboBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":479,
+              "y":339},
+            "size":{
+              "width":130,
+              "height":25}},
+          "adaptiveStyles":{
+}}]}},
+  "masters":{
+},
+  "objectPaths":{
+    "2514ce35977d44ecaab3e4e3d7df86eb":{
+      "scriptId":"u0"},
+    "c9f88789760a46e183066a26edf0c8a1":{
+      "scriptId":"u1"},
+    "36a347523293426fbfff33e18acc3f79":{
+      "scriptId":"u2"}}});

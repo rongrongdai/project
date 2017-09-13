@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+/*提示框*/
+a{ text-decoration:none; color:#000;}
+#allwang{ width:500px; height:400px; margin:0px auto;}
+#allqbu{ width:500px; height:380px; border-radius:15px; border:1px solid #CCC; background-color:#EEE;}
+#allone{ width:500px; height:30px; background-color:#36F; border-radius:15px;  padding:10px 0px; }
+#allone p{ color:#FFF; font-size:14px; padding:0px 250px 0px; width:40px;}
+#alltwo{ width:500px; height:270px;}
+#alltree{width:500px; height:60px; background-color:#AAA; border-radius:15px;}
+
+/*找回密码-邮箱*/
+.emailall{ margin:0px auto; width:640px; height:100%;}
+.em-top{ width:640px; margin:10px 0px 0px 0px; background-color:#35a841;  height:76px; clear:both;}
+.top-img{ width:70px; float:left; margin:10px 0px 0px 10px;}
+.top-p{ width:355px; float:left;  font-size:24px; color:#FFF; margin:-10px 0px 0px 0px;}
+.top-p span{ font-size:18px;}
+.em-conne{ width:640px;} 
+.em-conneyi{ width:340px;  margin:40px 0px 0px 40px; font-family:"lucida Grande",Verdana,"Microsoft YaHei"; font-size:12px; color:#555; line-height:34px;}
+.em-conneyi span,
+.em-conneyi a{ color:#35a841; }
+
+.em-conneer p{color:#c5c5c5; font-size:12px; line-height:20px;}
+.em-connes p{ color:#555; font-size:16px; line-height:10px;}
+
+.em-connew{ margin:40px 0px 40px 130px;}
+.em-connew p{font-family: "lucida Grande",Verdana,"Microsoft YaHei"; font-size:14px; color: #555;}
+.em-connew a{ color:#35a841; }
+
+
+/*404报错页面*/
+
+.sall{ width:100%; }
+.sall p{color:#333; font-family:'Microsoft YaHei'; font-size:16px;}
+.sconone{ width:650px; height:310px; margin:175px auto; background-color:#FFF;}
+.syi{ width:650px; height:215px; }
+.syi img{ margin:10px 0px 10px 120px; }
+
+.ser{ width:650px; }
+.seryi{ width:650px; }
+.seryi-y{ width:400px;  margin:10px 0px 0px 90px;  }
+.seryi-y .pyi{ margin:-22px 0px 0px 25px;}
+.seryi-y  p a{ color:#FC0; }
+.seryi-y  p a:hover{ color:#009170;}
+.seryi-y .wuz{ position:relative; top:-20px; left:130px; }
+.seryi-y .per{ position:relative; top:-55px; left:155px; }
+.seryi-y .jingz{ position:relative; top:-89px; left:255px;}
+.seryi-y .psan{ position:relative; top:-128px; left:275px;}
+
+.seryi-er{ width:470px; height:40px;  margin:-130px 0px 0px 85px;}
+
+.seryi-er p{ color:#999; font-family:'Microsoft YaHei'; font-size:14px; }
+
+
+/*微笑页面*/
+.smlieal{ width:600px;  margin:200px auto;}
+.smlieal .smlie-yi{ float:left;}
+.smlieal .smlie-er{ float:left; margin-left:20px;}
+.smlieal .smlie-er .sm-y{ font-size:40px; margin-top:0px; font-weight:900;}
+.smlieal .smlie-er .sm-e{ font-size:20px;}
+.sm-e .pyi{ color:#FC0;}
+.sm-e .pyi:hover{  color:#009170;}

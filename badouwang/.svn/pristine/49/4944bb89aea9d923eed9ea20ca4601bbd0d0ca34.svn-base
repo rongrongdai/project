@@ -1,0 +1,32 @@
+<include file="../../../Public/default/header" />
+    <link href="__ROOT__/public/css/home/newuser.css" rel="stylesheet"  type="text/css" />
+   <div class="newu-all">
+        <div class="new-one">
+            <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src='__ROOT__/public/images/home/<if condition="$type eq 'qq'">QQ.png<else/>web.png</if>' width="22"/><span> hi,欢迎加入八斗网,请绑定你的账号!</span>
+        </div>
+        
+        <div class="new-two">
+            <div class="new-ty">
+              <div class="new-tyi nw"><p>创建一个新账号</p></div>
+            </div>
+            <form method="post" action="bind">
+            <div class="new-te">
+            
+                <p>请创建一个新的账号，并且绑定你现在登录的QQ或新浪微博.</p>
+                
+                <p class="bang-y">绑定成功后，你可以使用此邮箱号登录本网站。</p>
+                
+                <p class="bang-e"> 邮箱：<input type="email" id="emaile" name="email" value="" placeholder="请输入常用邮箱"> </p>
+                
+                <p class="bang-s"> 密码：<input type="password" id="passw" name="password" placeholder="密码(6-16个字母,数字,无空格)"> </p>
+                
+                <input type="submit" value="创建并绑定" class="newcjbd" />
+            </div>  
+           </form>
+        
+        
+        </div>
+        
+   </div>
+
+     <include file="../../../Public/default/footer" />

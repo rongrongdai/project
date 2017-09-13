@@ -1,0 +1,10 @@
+<?php
+//钱包控制器
+class PurseAction extends CommonAction{
+    //获取账户余额
+    //获取学豆
+    //充值
+    //提现
+    //获取订单记录
+}
+

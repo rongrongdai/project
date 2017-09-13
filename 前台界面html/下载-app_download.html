@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>下载</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        article{position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;width: 100%;overflow: hidden;font-size:0.36rem;text-align:center;color:#fff;background-color:#ffbcbd;}
+        article>div{overflow:auto;padding:0.78rem 0 0.5rem 0;}
+        .download-logo0{width:1.3rem;height:1.3rem;margin:0 auto 0.12rem auto;}
+        .download-logo0>img{width:100%;}
+        .download-logo1{width:2.59rem;height:3.72rem;margin:0.15rem auto 0.22rem auto;}
+        .download-logo1>img{width:100%;}
+        .logo-name{margin:0 auto;letter-spacing:2px;}
+        .download-btn{width:5rem;height:0.88rem;line-height:0.88rem;border-radius:0.1rem;background-color:#fff;color:#333;margin:0 auto 2.14rem auto;}
+        .footer-info{font-size:0.24rem;}
+    </style>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div>
+            <div class="download-logo0">
+                <img src="images/you.png" alt="">
+            </div>
+            <p class="logo-name">有货商城</p>
+            <div class="download-logo1">
+                <img src="images/logo1.png" alt="">
+            </div>
+            <div class="download-btn"><a href="#" onclick="">立即下载</a></div>
+            <p class="footer-info">惠信联盟合作伙伴</p>
+        </div>
+    </article>
+    <script>
+        
+    </script>
+</body>
+</html>

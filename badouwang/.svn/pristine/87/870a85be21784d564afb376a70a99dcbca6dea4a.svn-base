@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——个人设置</title>
+
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+
+</head>
+<body>
+
+<div class="per">
+     <div class="per-top">
+          <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/jjxxgl1.jpg" />
+          <p class="set-up">家教信息设置</p>
+     </div>
+
+     <div class="per-form" id="dataform">
+        <form action="" method="post" enctype="multipart/form-data">
+        
+           <div class="pheig">
+              <div class="pflat1">推荐语：</div>
+              <div class="pflat2"><input type="text" id="info"  class="inputcs" name="info" value="<{$data.info}>"/></div>
+              <span class="prompt"></span>
+           </div>
+
+           <div class="pheig">
+              <div class="pflat1">毕业学校：</div>
+              <div class="pflat2"><input type="text" id="school"  class="inputcs" name="school" value="<{$data.school}>"/></div>
+              <span class="prompt"></span>
+           </div> 
+                             
+           <div class="pheig">
+              <div class="pflat1">教育分类：</div>
+              <div class="pflat2" id="tclass">
+                  <select name="cid"><option value="<{$data.cid}>"><{$fidn}></option></select><select name="grade"><option value="<{$data.grade}>"><{$midn}></option></select><span id="chtt">[更改?]</span>
+              </div>
+              <span class="prompt"></span>
+           </div>
+           <div class="pheig">
+              <div class="pflat1">所在区域：</div>
+              <div class="pflat2" id="getcity">
+                  <select name="city"><option value="<{$data.city}>"><{$cityn}></option></select><select name="district"><option value="<{$data.district}>"><{$districtn}></option></select><span id="chtc">[更改?]</span>
+              </div>
+              <span class="prompt"></span>
+           </div>
+           <div class="pheig" style="height:80px;">
+              <div class="pflat1">图片上传:</div>
+              <div class="pflat2 pflat2tx"><input type="file"  name="id_front" /></div>
+              <if condition="$data['id_front']"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$data.id_front}>" width="100px" /><br/></if>
+           </div> 
+
+           <div class="pheig psub">
+              <input type="submit" class="subinput" name="submit" value="确认提交"  id="perqreng"/>
+           </div>  
+
+            <input type="hidden" name="token" value="<{$token}>" />
+            <input name="timestamp" type="hidden" value="<{$timestamp}>" />
+      </form>   
+	</div>
+</div>
+
+    <script src="__ROOT__/public/js/home/jquery.mousewheel.js"></script>
+    <script src="__ROOT__/public/js/home/nicescroll.js"></script>
+    <script src="__ROOT__/public/js/home/noscroll.js"></script>
+    <script src="__ROOT__/public/js/classfiy.js"></script>
+    <script src="__ROOT__/public/js/validater.js"></script>
+    <script src="__ROOT__/public/js/home/common.js"></script>
+<script>
+  $("#chtt").click(function(){
+    $("#tclass").html("");
+    getTclass('家教分类');//获取家教分类
+  });
+  $("#chtc").click(function(){
+    $("#getcity").html("");
+    getCity();
+  });
+
+  $("form").submit(function(){
+    if($("#fid").val()==='0'){
+      $("#fid").parent().parent().find(".prompt").text("家教分类不能为空").css('color','red');
+      return false;
+    }
+    if($("#gid").val()==='0'){
+      $("#gid").parent().parent().find(".prompt").text("阶段不能为空").css('color','red');
+      return false;
+    }
+    if($("#city").val()==='0'){
+      $("#city").parent().parent().find(".prompt").text("城市不能为空").css('color','red');
+      return false;
+    }
+    if($("#district").val()!=='0'){
+      return true;
+    }else{
+      $("#district").parent().parent().find(".prompt").text("区域不能为空").css('color','red');
+      return false;
+    }
+
+    return false;
+  });
+
+</script>
+</body>
+</html>

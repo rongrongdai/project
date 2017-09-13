@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>评价</title>
+<style>
+body{margin:0;font-family:"微软雅黑";}
+.content{width:90%;height:90%;margin:0 auto;}
+.content .top{margin:25px 0;overflow:hidden;}
+.content .top div{margin:0 40px;width:75px;float:left;overflow:hidden;padding:0 10px;border:1px solid transparent;border-radius:20px;cursor:pointer;}
+.content .top div.bor{border:1px solid #ECA8C1;}
+.content .top div input{display:none;}
+.content .top span{float:left;display:block;height:42px;line-height:40px;color:#ECA8C1;font-size:16px;cursor:pointer;}
+.content .ctent{border-radius:10px;border:1px solid #CCC;margin:0 20px;padding:5px;}
+.content .ctent textarea{border:none; outline:none;height:90px;width:60%;}
+.content .ctent .char{text-align:right;font-size:14px;color:#555;}
+.content .ment{height:24px;padding:40px 0;}
+.content .ment .vpl{float:left;margin-left:20px; font-size:16px;line-height:25px;}
+.content .ment .vimg{float:left;margin-left:20px;}
+.content .ment .vimg img:hover{cursor:pointer;}
+.content .firm{width:120px;height:36px;margin-left:160px;border:none;font-size:14px;line-height:36px;background:#ECA8C1;color:#FFF;border-radius:16px; text-align:center;cursor:pointer;outline:none;}
+.content .firm:hover{background:#F5D59C}
+textarea{
+    resize: none;
+}
+</style>
+</head>
+<body>
+
+<div class="content">
+
+
+
+    <div class="top">
+        <div class="lef v1 bor">
+            <label><input type="radio" name="Ra1" value="1" id="Ra1_0"><span><img src="__ROOT__/public/images/home/pic_01.jpg" /></span><span>好评</span></label>
+        </div>
+        <div class="lef v2">
+         	<label><input type="radio" name="Ra1" value="2" id="Ra1_1"><span><img src="__ROOT__/public/images/home/pic_02.jpg" /></span><span>差评</span></label>
+        </div>
+    </div>
+    <!---->
+    <div class="ctent">
+        <textarea type="text" name="ctext" onkeyup="checkLength(this)" placeholder="评论一下吧！"></textarea>
+        <div class="char" id="size">还可以输入200个字符数</div>
+    </div>
+    <!---->
+    <div class="ment">
+    	<div class="m_no">
+            <div class="vpl">评分</div>
+            <div class="vimg">
+            <img src="__ROOT__/public/images/home/pic_xin_yes.png" name='cmt'/>
+            <img src="__ROOT__/public/images/home/pic_xin_no.png"  name='cmt'/>
+            <img src="__ROOT__/public/images/home/pic_xin_no.png"  name='cmt'/>
+            <img src="__ROOT__/public/images/home/pic_xin_no.png"  name='cmt'/>
+            <img src="__ROOT__/public/images/home/pic_xin_no.png"  name='cmt'/>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <input type="submit" name="con" class="firm" value="确认评价" />
+
+
+
+
+</div>
+
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script>
+    function checkLength (target)    {
+        var maxLength = 200;
+        var targetLength = native2ascii (target.value);
+        var leftLength = maxLength - targetLength;
+        var size = document.getElementById ("size");
+        size.innerHTML = size.innerHTML.replace(/(\+|\-)?\d+/, leftLength);
+    }
+     
+    function native2ascii (value)    {
+        var nativecode = value.split ("");
+        var len = 0;
+        for ( var i = 0; i < nativecode.length; i++)  {
+            var code = Number (nativecode[i].charCodeAt (0));
+            if(code > 127){ len += 2; } else {  len++;   }
+        }
+        return len;
+    }
+
+
+
+globalVal = '1';//默认(自动(没选择时的)选择)值
+$('.top div').click(function(){	
+	var Name = $(this).attr('class').replace(/lef v/,'').replace(/ bor/,'');
+	//alert('"'+Name+'"')
+	if(Name=='2'){$('.m_no').hide()}else{$('.m_no').show()}
+	$('.top .lef').removeClass('bor');
+	$(this).addClass('bor');
+	globalVal = $(this).find('input').val();	//选择后的值
+})
+
+$(function(){
+    var ctype=1;
+    var grade=0;
+    $(".v1").click(function(){
+        ctype=1;
+    })
+    $(".v2").click(function(){
+        ctype=2;
+    })
+    var url=location.href;
+    url=url.substr(url.indexOf("type")).split("&");
+    var type=url[0].substr(url[0].indexOf("type")+5)
+    var id=url[1].substr(url[1].indexOf("id=")+3);
+    $("img[name=cmt]").click(function(){
+        grade=5-$(this).nextAll("img[name=cmt]").size();
+        $(this).prevAll("img[name=cmt]").attr("src","__ROOT__/public/images/home/pic_xin_yes.png");
+        $(this).attr("src","__ROOT__/public/images/home/pic_xin_yes.png");
+        $(this).nextAll("img[name=cmt]").attr("src","__ROOT__/public/images/home/pic_xin_no.png");
+    })
+    $("input[name=con]").click(function(){
+        $.getJSON("__APP__/Ajax/AjaxComment/comment",{'aid':id,'type':type,'content':$("textarea[name=ctext]").val(),'star':grade},function(data){
+            var type=data.code==='1'?1:2;
+            $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type:type,msg: data.message,yes: function(){
+                window.parent.location.reload();
+            }}});
+           
+        });
+    })
+})
+</script>
+</body>
+</html>

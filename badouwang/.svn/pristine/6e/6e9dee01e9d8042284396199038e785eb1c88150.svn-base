@@ -1,0 +1,142 @@
+<include file="../../../Public/default/header" />
+<style>
+    .tent_con{width:620px;padding:10px 20px;margin:0 auto;margin-top:10px;border:1px solid #ccc;overflow:hidden;font-family:"微软雅黑";}
+    .tent_con .top{height:28px;}
+    .tent_con .top div{float:left;line-height:28px;margin-left:5px; color:#636363;}
+    .tent_con .top img{float:left;width:20px; height:20px;margin-top:5px }
+    .tent_con .con{height:60px;padding:10px 0;}
+    .tent_con .con textarea{width:610px;height:52px;border:1px solid #CCC;outline:none;padding:4px 5px;color:#555; resize:none;}
+    .tent_con .bot{height:35px;}
+    .tent_con .bot .beft{float:left;margin-right:15px;height:25px;padding:5px 0;cursor:pointer;}
+    .tent_con .bot .beft .tet{float:left;line-height:28px;font-size:14px;color:#000}
+    .tent_con .bot .beft div.img{float:left;background-image:url(__ROOT__/public/images/home/space/icon2.png);width:28px;height:28px;}
+    .tent_con .bot .beft div.img.v1{ background-position:-25px 6px;}
+    .tent_con .bot .beft div.img.v2{ background-position:-25px -27px;}
+    .tent_con .bot .beft:hover div.img.v1{ background-position:6px 6px;}
+    .tent_con .bot .beft:hover div.img.v2{ background-position:6px -27px;}
+    .tent_con .bot .beft:hover .tet{color:#F93;}
+    .tent_con .bot .release{float:right;width:85px;height:35px;background:#00b38a;line-height:35px;text-align:center;border-radius:4px;color:#FFF;cursor:pointer;}
+    .tent_con .bot .release:hover{background:#009500;}
+
+    .addons .layer-content{
+            background:#fff;
+            padding:10px;
+            -moz-border-radius-bottomleft:4px;
+            -moz-border-radius-bottomright:4px;
+            -webkit-border-bottom-left-radius:4px;
+            -webkit-border-bottom-right-radius:4px;
+            border-bottom-left-radius:4px;
+            border-bottom-right-radius:4px
+    }
+    .addons .layer-content .emotions li{
+            border:1px solid #e8e8e8;
+            cursor:pointer;
+            float:left;
+            width:26px;
+            overflow:hidden;
+            padding:4px 2px;
+            text-align:center;
+            margin:0
+    }
+    .addons .layer-content .emotions li:hover{
+            border:1px solid #0095cd;
+            background:#fff9ec
+    }
+    .tent_reply{width:615px;padding:10px 20px;margin:30px auto;border:1px solid #ccc;overflow:hidden;font-family:"微软雅黑";}
+    .tent_reply .con{height:60px;padding:10px 0;}
+    .tent_reply .con textarea{width:600px;height:52px;border:1px solid #CCC;outline:none;padding:4px 5px;color:#555;}
+    .tent_reply .bot{height:35px;}
+    .tent_reply .bot .beft{float:left;margin-right:15px;height:25px;padding:5px 0;cursor:pointer;}
+    .tent_reply .bot .beft div.tet{float:left;line-height:28px;font-size:14px;}
+    .tent_reply .bot .beft div.img{float:left;background-image:url(__ROOT__/public/images/home/space/icon2.png);width:28px;height:28px;}
+    .tent_reply .bot .beft div.img.v1{ background-position:-25px 6px;}
+    .tent_reply .bot .beft:hover div.img.v1{ background-position:6px 6px;}
+    .tent_reply .bot .beft:hover div.tet{color:#F93;}
+    .tent_reply .bot .release{float:right;width:85px;height:35px;background:#00b38a;line-height:35px;text-align:center;border-radius:4px;color:#FFF;cursor:pointer;}
+    .tent_reply .bot .release:hover{background:#00b38a;}
+    .tent_reply .bot .rig_con{float:right;font-size:14px;line-height:35px;margin-right:20px;}
+</style>
+<link rel="stylesheet" href="__ROOT__/public/css/home/Space.css" />
+<include file="../../../Public/default/sheader" />
+<div class="sp-er">
+    <include file="../../../Public/default/sleft" />
+    <div class="sp-er-center">
+    <if condition="$from eq 'self'">
+        <div class="scenter-yi" id="#spred">
+          <form method="post" id="dataform" action="" enctype="multipart/form-data">
+            <div class="form-control" rows="5" name="content">
+               <div class="tent_con">
+                            <div class="top"><img  src="__ROOT__/public/images/home/space/icon3.png" /><div>疑难请教</div></div>
+                            <div class="con"><textarea  placeholder="分享内容..." id='content' name='content' ></textarea></div>
+                            </div>
+                <div class="scenter-ch">
+                    <span style="font-size: 12px; color:#636363">学问类别：<span id='tclass'></span></span><span class="msg"></span>
+                    <div class="scenter-cht"><span>发表</span></div>
+                </div>
+            </div>        
+          </form>
+        </div>
+    <else/>
+        <div class="center-yi cw">Ta的学问</div>
+    </if>    
+        <div name="questions">
+            <div name="jg" style="clear:both;"></div>
+            <foreach name="myQuestion" item="question">
+                <div class="askme-centesi">
+                    <p class="answ-wy"  name="question"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/020.png"/><a href="__ROOT__/index.php/Space/Question/answerdetail?tid=<{$question.id}>"><{$question.content}></a></p>
+                    <p class="answ-we" style="float:left;margin-right: 20px;">提问人：<{$question.qname}> </p>
+                    <p class="answ-we">时间：<{$question.c_timestamp|date="m-d H:i:s",###}> </p>
+                    <p class="answ-ws">阅读：<{$question.lnumber}></p>
+               </div>
+            </foreach> 
+        </div>      
+    </div>
+    <!--class(sp-er-center)-end-->
+
+   <!--热门培训课程-->
+    <div class="sp-er-righty">
+         <div class="askm-rty"><p>热门推荐</p></div> 
+      <foreach name="hotAsk" item="vo">   
+          <a href="__APP__/Space/Question/answerdetail?tid=<{$vo.id}>"><div class="askm-rer"><p><php>$content=$vo['content'];</php><{$vo.content|strip_tags|mb_substr="0","15","utf-8"}><if condition="strlen($content) gt 15">...</if></p></div></a>
+      </foreach>
+   </div>
+
+
+</div>
+<!--class(sp-er)-end-->
+
+
+<include file="../../../Public/default/footer" />
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script>
+  getTclass('学问分类');
+  $(".scenter-cht").click(function(){
+    var content = $("#content").val(),fid = $("#fid").val(),gid = $("#gid").val(),pattern = (/\S/).exec(content);
+    if(content.length<5 || !pattern){
+        $(".msg").html("提问字数不少于5");
+    }else if(fid == 0 || gid == 0){
+        $(".msg").html("请选择学问类别");
+    }else{
+        $(".msg").html("");
+        $(".scenter-tt").val("");
+        $.post("__APP__/Ajax/AjaxStudyCenter/ask",{'content':content,'cid':fid,'tid':gid},function(data){
+            if(data.code===1){
+                var node = '<div class="askme-centesi">'+
+                    '<p class="answ-wy"  name="question"><img onerror="javascript:this.src='+"'"+"__ROOT__/public/images/home/n_pic.png';"+'"'+'src="__ROOT__/public/images/home/xueba/020.png"/><a href="__APP__/Space/Question/answerdetail?tid='+data.id+'">'+data.content+'</a></p>'+
+                    '<p class="answ-we" style="float:left;margin-right: 20px;">提问人：'+data.uname+' </p>'+
+                    '<p class="answ-we">时间：'+data.time+' </p>'+
+                    '<p class="answ-ws">阅读：0</p>'+'</div>';
+               $(node).insertAfter("div[name='jg']");
+               var mess='提交学问成功，获取'+data.res.count+'经验值';
+               $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 1,msg:mess}});
+            }else{
+                 $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type:3,msg:'发布问题失败，请重试!'}});
+            }
+        },'json');
+    }
+
+    
+  });
+</script>

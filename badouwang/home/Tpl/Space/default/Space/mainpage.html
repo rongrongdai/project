@@ -1,0 +1,83 @@
+<include file="../../../Public/default/header" />
+<link href="__ROOT__/public/css/home/Space.css" type="text/javascript" rel="stylesheet" />
+<include file="../../../Public/default/sheader" />
+<div class="pxjg-two">
+     <div class="ptw-y">
+        <div class="ptw-yi"><p><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/007.gif" />上周更新周更周更周更周更周更周更周更周更周 <span class="pty-ged">更多</span></p></div>
+        <div class="ptw-ye">
+          <ul name="lti">
+            <li class="wda">学吧动态</li>
+            <li >学问</li>
+          </ul>
+
+        </div>
+        <script id="dynamic" type="text/html">
+            <div class="cent-yincy">
+                <div class="centw-ere" margin-top="40px">
+                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src='<if condition="$user.user_pic neq ''">__ROOT__/<{$user.user_pic}><else/>__ROOT__/public/images/home/xueba/022.gif</if>' width="60" style="float:left;margin-right:40px;"/>{{d.content}}
+                </div>
+                <div class="centw-ery">{{# if(d.contentpic){}}<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__{{d.contentpic}}" />{{#}}}</div>
+                <div class="centw-san">
+                                       <div class="centw-sy">
+                                         <a href="javascript:;"><span>折叠</span><div class="sy-yi"></div></a>
+                                        </div>
+                                        <div class="centw-se">
+                                        <span>发表于：{{d.publisttime}}</span>  
+                                        <span><a href="#">来自:<if condition="$nickname"><{$nickname}><else/><{$Think.session.uname}></if></a></span>     
+                                        <span>{{d.readnumber}} 人阅读</span>        
+                                        <span><a href="javascript:;" name="gcomment" number="<{$key}>"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/shuo.gif" /> <span name="goodnumber">{{d.goodnumber}}</span></a></span>        
+                                        </div>                           
+                </div> 
+            </div>
+
+        </script>    
+        <script id="question" type="text/html">
+            <div class="askme-centesi">
+                       <p class="answ-wy"  name="question"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xueba/020.png"/><a href="__ROOT__/index.php/Space/Question/answerdetail?tid=<{$question.id}>">{{d.content}}</a></p>
+                       <p class="answ-we">提问人：{{d.uname}} </p>
+                       <p class="answ-we">时间：{{d.c_timestamp}}</p>
+                       <p class="answ-ws">阅读：0</p>
+               </div>
+        </script>
+       
+            </div>
+     
+  
+  <!--八斗代购商-->
+<div class="ptw-er">
+     <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/009.gif" class="pt-ry" />
+     <div class="ptw-ery"></div>
+</div>
+</div> 
+</div>
+
+<script src="__ROOT__/public/js/laytpl.js"></script>
+<script>
+    $(function(){
+        $("ul[name=lti]").find("li").click(function(){
+             $("ul[name=lti]").find("li").removeClass("wda");
+             $(this).addClass("wda");
+        })
+    })
+    $(function(){
+        var dymics=[];
+        var ques=[];
+        var page=1;
+        var uid="<{$user.uid}>";
+        $.getJSON('__ROOT__/index.php/Ajax/AjaxUser/getDymics',{'uid':uid,'page':page},function(data){
+            if(data.code ===1){
+                dymics=data.dys;
+                for(var i in data.dys){
+                     var cdata=data.dys[i];
+                     var ttpl=document.getElementById('dynamic').innerHTML;
+                        laytpl(ttpl).render(cdata, function(html){
+                             $(".pxjg-two").append(html);
+                        });
+                }
+               //$(".pxjg-two").append("<button style='float:right;'>更多</button>");
+               $(".centw-ere").find("p").css("float","left");
+            }
+        });
+    })
+</script>
+<include file="../../../Public/default/footer" />

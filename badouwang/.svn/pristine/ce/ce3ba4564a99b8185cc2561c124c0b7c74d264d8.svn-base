@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<title>八斗网-管理后台</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="robots" content="" />
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="__ROOT__/public/css/admin/style.css"/>
+        <script src="__ROOT__/public/js/jquery-min.js"></script>
+	
+	<!--[if IE]><link rel="stylesheet" href="css/ie.css" media="all" /><![endif]-->
+	<!--[if lt IE 9]><link rel="stylesheet" href="css/lt-ie-9.css" media="all" /><![endif]-->
+</head>
+<body>
+<div class="testing">
+<header class="main">
+	<h1><strong>八斗网</strong> -管理后台</h1>
+	<input type="text" value="search" />
+</header>
+<section class="user">
+	<div class="profile-img">
+		<p><img src="__ROOT__/public/images/admin/uiface2.png" alt="" height="40" width="40" />欢迎回来 <{$Think.session.admin}></p>
+	</div>
+	<div class="buttons">
+		<button class="ico-font">&#9206;</button>
+		<span class="button dropdown">
+			<a href="#">常用功能 </a>
+			<ul class="notice">
+				<li>
+					<hgroup>
+						<h1>网站设置</h1>
+					</hgroup>
+					
+				</li>
+				<li>
+					<hgroup>
+						<h1>个人资料</h1>
+						
+					</hgroup>
+					
+				</li>
+				<li>
+					<hgroup>
+						<h1>配置管理</h1>
+						
+					</hgroup>
+					
+				</li>
+				<li>
+					<hgroup>
+						<h1>分类管理</h1>
+						
+					</hgroup>
+					
+				</li>
+			</ul>
+		</span> 
+		<span class="button blue"><a href="__APP__/Index/Index/">返回首页</a></span>
+		<span class="button blue"><a href="__APP__/Index/Index/logOut">退出登录</a></span>
+	</div>
+</section>
+    <script>
+        $(function(){
+            $(".dropdown").hover(function(){
+                $(".notice").show();
+            })
+            $(".dropdown").mouseleave(function(){
+                $(this).find(".notice").css("display","none");
+            })
+        })
+        
+    </script>
+</div>

@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,p,blockquote,form {margin:0; padding:0;}
+ul,ol {list-style:none;}
+a{ text-decoration:none;}
+img{border:0}
+ 
+/*导航条*/
+    .indexone{ background-color:#eeeeee; height:30px; width:100%;}
+    .indexone-y{ height:30px; position:absolute; left:73%; width:380px; }
+	.indexone-y a{ color:#60ba6a; font-size:12px; line-height:30px;  margin:0px 5px 0px 5px;}
+	.indexone-y a:hover{ color:#ea5a3d;}
+	
+	.indextwo{ width:100%; height:85px; background-color:#00b38a;}
+	.indextwo-y{ width:380px; height:85px; float:left;}
+	.indextwo-y img{ margin:5px 0px 0px 30px;}
+	.indextwo-y .mgimg { position:absolute; top:32px; left:64px;}
+	.indextwo-e{  width:105px; height:85px;  float:left;}
+	.indextwo-e p{ margin:33px 10px 0px 10px;}
+	
+	#idy-diply{ width:300px; height:400px;  position:absolute; top:120px; left:300px; display:none; border:1px red solid;}
+	
+	.indextwo-s{ width:350px; height:85px; float:left;}
+	
+	.indextwo-s #indexte{ width:270px; height:35px; margin:23px 0px 0px 0px; padding:0px 0px 0px 10px;}
+	
+    .indextwo-syi{ margin:-38px 0px 0px 280px; width:50px; height:38px; background-color:#007258;}
+	
+	.indextwo-syi img{ margin:6px 0px 0px 13px;}
+	
+	.indextwo-si{ width:520px; height:85px;  float:left;  position:absolute; left:60%;}
+	
+	.indextwo-si li{ width:90px; height:85px; float:left; position:relative; top:-16px; right:40px; line-height:85px; text-align:center;}
+	
+	.indextwo-si a{ color:#FFF; font-size:20px; }
+	
+	.indextwo-si li:hover{ background-color:#007258; }
+	
+	.indextwo-si .idebud{ margin:12px 0px 0px 10px;  height:65px;}
+	
+	.indextwo-si .idebud:hover{ background-color:#00b38a; }
+	
+    .indextwo-si .mgyi{ position:relative; top:-20px; right:10px;}
+	
+    .indextwo-si span{ position:relative; top:-23px; right:22px; color:#00b38a; font-size:20px;}
+
+
+
+/*问答页面内容ALL*/
+
+.answeY-one{ width:1250px;  margin:0 auto;}
+.anYe-cen-left{ width:840px; float:left;}
+.any-ye ul{ border-bottom:1px #CCC solid; height:50px; cursor:pointer;}
+.any-fl{ font-size:28px; color:#00b38a; margin-left:-39px;}
+.any-fy{ font-size:26px; color:#00b38a; border-bottom:3px  #00b38a solid;}
+.any-ye li{ width:100px; text-align:center;  float:left; line-height:50px; }
+.anY-wy{ margin-left:20px; font-size:14px; color:#808080;}
+.anY-wy .anY-wyi{ color:#00b38a ; margin-right:20px;}
+.anY-wy span{ color:#000;}
+
+.any-ys{ width:840px; border-bottom:1px #CCC solid; margin-top:20px;}
+.anY-ysy{ width:80px; height:80px; background:#7d7d7d;}
+.anY-yse{ width:730px; margin:-80px 0px 10px 105px; color:#808080; font-size:18px; line-height:25px; cursor:pointer; }
+.anY-yse .anY-ysey{ font-size:20px; color:#00b38a;}
+.anY-yse .anY-ysee{ font-size:12px;}
+.anY-yse .anY-yses{ font-size:24px; color:#000;}
+.anY-yse .anY-ysew{ position:relative; left:690px; top:-23px; width:40px; text-align:center; line-height:25px; background:#b5b5b5; color:#FFF; }
+.anY-yse .anY-ysel span{ margin-left:15px; color:#00b38a;}
+.anY-yse .anY-yseq{ margin-top:20px;}
+.anY-yse .anY-yseq .ay-y1{ font-size:12px;}
+.anY-yse .anY-yseq .ay-y2{ font-size:14px; color:#000;}
+.anY-yse .anY-yseba{ position:relative; width:200px; left:620px; top:-30px; font-size:14px;}
+
+
+
+
+.anYe-cen-right{ width:300px; float:left; margin-left:105px; margin-top:20px;}
+.pt-re{ width:300px; height:25px; border-left:5px #00b38a solid; margin-top:10px; padding-left:10px; font-size:24px; }
+.pt-rs{ width:300px; height:10px; border-bottom:1px #CCC solid; margin-bottom:20px;}
+
+.askm-rer{  width:300px; background:#eeeeee; border-radius:7px; font-size:14px; color:#999999; margin-bottom:15px;}
+.askm-rer p{ line-height:45px; margin-left:10px;}
+.askm-rer:hover{ background:#00b38a; color:#FFF;}
+
+
+

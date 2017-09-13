@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        .pay-pw{font-size:0.24rem;}
+        .pay-pw>p{margin:0.5rem 0 0.5rem 3.75%;}
+        .pay-pw .tixian-btn{height:0.68rem;line-height:0.68rem;text-align:center;width:92.5%;font-size:0.3rem;border-radius:0.06rem;margin:2.2rem auto 0.2rem auto;background-color:#ff3c00;color:#fff;}
+
+        .card-info{font-size:0.28rem;background-color:#fff;margin-top: 0.32rem;}
+        .card-info span{display:inline-block;vertical-align:top;}
+        .card-info>div{margin: 0 0.24rem;height:0.7rem;line-height:0.7rem;}
+        .card-info .un-set{color:rgba(0, 0, 0, 0.5);}
+        .c-line2>div{border-bottom: 1px solid #eeeef1;}
+        .c-line2>div>span{width:1.75rem;}
+        .c-line2>div>input{height: 0.5rem;display: inline-block;font-size: 0.28rem;vertical-align: middle;color: #333;}
+        .card-type{display: inline-block;width:4rem;}
+        .card-type .txt{display: inline-block;vertical-align: top;}
+        .card-type .arrow{width: 0.12rem;height: 0.7rem;background: url("images/right-arrow.png") no-repeat scroll center center / contain;margin-left: 0.2rem;float: right;}
+        /*卡类型选择*/
+        .filter-lv1{font-size:0.24rem;background-color: #eeeef1;position: fixed;top: 0;bottom: 0;right:-100%;z-index:7;width:100%;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 500ms;}
+        .filter-lv1-show{right:0;}
+        .filter-lv1 .f-lv1-wraper{position: absolute;z-index: 1;top:0.9rem;bottom: 0;left: 0;width: 100%;overflow: hidden;background-color:#fff;}
+        .filter-lv1 .f-lv1-scroller{position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .filter-lv1 .lv1-save{float:right;}
+        .filter-lv .f-header{display: block;height: 0.8rem;line-height: 0.8rem;border-bottom: 1px solid #eeeeef;background-color: #fff;text-align: center;clear: both;overflow: auto;}
+        .filter-lv .f-header>span{width: 20%;float: left;}
+        .filter-lv .f-header .lv-title{font-size: .24rem;width: 60%;height: 0.8rem;}
+        .f-line{padding: 0.2rem 0;border-bottom: 1px solid #dfdfe1;}
+        .filter-lv .f-line.click{background-color:#dfdfe1;}
+        .f-line>div{display:inline-block;vertical-align:middle;}
+        .f-line .f-line-left{width:0.8rem;height:0.8rem;margin:0 0.2rem 0 0.3rem;}
+        .f-line .f-line-left>img{width:100%;height:0.8rem;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <div class="pay-pw">
+                <div class="card-info c-line2" >
+                    <div><span>卡号</span><input type="text" placeholder="银行卡预留手机号"></div>
+                    <div><span>卡类型</span><div class="card-type"><span class="txt"></span><span class="arrow"></span></div></div>
+                </div>
+                <div class="tixian-btn">下一步</div>
+            </div>
+        </div>
+    </article>
+    <div class="filter-lv1 filter-lv">
+        <span class="f-header"><span class="cancel">取消</span><span class="lv-title"></span><!--span class="lv1-save">确定</span--></span>
+        <div class="f-lv1-wraper">
+            <div class="f-lv1-scroller">
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/BOC.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">中国银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/ICBC.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">中国工商银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/ABC.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">中国农业银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/BCM.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">交通银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/CCB.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">中国建设银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/CGB.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">广发银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/CEB.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">中国光大银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/CIB.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">兴业银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/CITIC.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">中信银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/CMB.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">招商银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/CMBC.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">中国民生银行</span></div>
+                </div>
+                
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/PAB.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">平安银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/PSBC.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">中国邮政储蓄银行</span></div>
+                </div>
+                <div class="f-line">
+                    <div class="f-line-left"><img src="images/bank/SPDB.png" alt=""></div>
+                    <div class="f-line-right"><span class="txt">浦发银行</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function fLv1ScrollerInit(){
+            var fLvScroller = new IScroll('.f-lv1-wraper', {
+                probeType: 3,
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        } 
+        document.addEventListener( "DOMContentLoaded", fLv1ScrollerInit, false );
+
+
+        $('.card-type').on('tap',function(){
+            $('.filter-lv1').addClass('filter-lv1-show');
+        });
+        $(".filter-lv1 .cancel").on("tap",function(e){
+            $('.filter-lv1').removeClass('filter-lv1-show');
+        });
+        $(".filter-lv1 .f-line").on("tap",function(e){
+
+            /*$(this).addClass('click');
+            var _that = this;
+            setTimeout(function(){
+                $(_that).removeClass('click');
+            },100);*/
+
+            $('.filter-lv1').removeClass('filter-lv1-show');
+            $('.card-type .txt').text($(this).find('.txt').text());
+        });
+    </script>
+</body>
+</html>

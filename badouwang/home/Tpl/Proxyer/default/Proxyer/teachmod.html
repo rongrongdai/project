@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——个人设置</title>
+
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+<script src="__ROOT__/public/js/validater.js"></script>
+
+</head>
+<body>
+<div class="per">
+    <div class="per-top">
+        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xiaotu.gif" />
+        <div class="set-up"><if condition="$hand">修改<else />添加</if>消息</div>
+    </div>
+
+    <div class="per-form">
+         <form action="" method="post" enctype="multipart/form-data" id="dataform">
+
+		        <div class="pheig">
+                <div class="pflat1">课程标题：</div>
+                <div class="pflat2">
+                    <input type='text' class="inputcs" name='title' id='title' value='<{$data.title}>' /> 
+                </div>
+                    <span class="prompt"></span>
+          	</div>
+                <div class="pheig">
+                    <div class="pflat1">老师：</div>
+                    <div class="pflat2"><{$data.real_name}></div>
+                    <span class="prompt"></span>
+          	</div>
+                <div class="pheig">
+                    <div class="pflat1">授课对象：</div>
+                    <div class="pflat2"><{$data.gname}>--<{$data.cname}></div>
+                    <span class="prompt"></span>
+                </div>
+                
+ 		       <div class="pheig">
+                    <div class="pflat1">上课时间:</div>
+                    <div class="pflat2">
+                              <input type="text" class="inputcs"  id="dtime"  name="dtime"  value="<{$data.dtime}>"/>
+                    </div>
+                    <span class="prompt">可上课时间：如周一，周六，早中晚均可。</span>
+          	</div>           
+            
+ 		<div class="pheig" style="height:100px;">
+          <div class="pflat1">课程图片:</div>
+            <div class="pflat2 pflat2tx">
+                <input type="file" id="c_img"  name="c_img" />
+                <if condition="$data.c_img neq ''"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$data.c_img}>" width="100px"></if>
+            </div>
+            <span class="prompt"></span>
+          </div>  
+
+
+ 		<div class="pheig">
+            <div class="pflat1">课程价格:</div>
+            <div class="pflat2">
+            <input type="text" class="inputcs" id="price"  name="price"   value="<{$data.price}>"/>
+            </div>
+            <span class="prompt">收费标准：元/小时</span>
+        </div>
+
+ 		         <div class="pheig">
+                <div class="pflat1">课程简介:</div>
+                <div class="pflat2"><{$edit}></div>
+                <span class="prompt"></span>
+          	</div>
+
+                     
+  			<div class="pheig psub">
+               <input type="submit"  class="subinput" value="确认添加"  id="perqreng"/>
+               <input type="hidden" name="uid" value="<{$data.uid}>"/>
+               <input type="hidden" name="fid" value="<{$data.cid}>"/>
+               <input type="hidden" name="gid" value="<{$data.grade}>"/>
+               <input type="hidden" name="city" value="<{$data.city}>"/>
+               <input type="hidden" name="district" value="<{$data.district}>"/>
+               <input type="hidden" name="token" value="<{$token}>"/>
+               <input type="hidden" name="timestamp" value="<{$timestamp}>"/>
+            
+          	</div>                      
+        </form>   
+   </div>
+</div>
+
+
+<script src="__ROOT__/public/js/home/common.js"></script>
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+
+<script>
+$("#content").text("<{$data.content}>");
+
+$("#dataform").submit(function(){
+    var content = ue.getContentTxt();
+
+      var type="<{$type}>";
+      var nullcheck=new Array('title','dtime','price');
+      var nullinfo=new Array('课程标题','开课时间','课程价格');
+      var res=null_check(nullcheck,nullinfo);
+      if(res){
+         $("#"+res[0]).parent().parent().find(".prompt").text(res[1]).css("color","red");
+          return false;
+      }
+      if(content !== '请填写内容...'){
+          return true;
+      }else{
+        $("#content").parent().parent().find(".prompt").text("课程介绍不能为空").css("color","red");
+          return false;
+      }
+      return false;
+  })
+</script>
+</body>
+</html>

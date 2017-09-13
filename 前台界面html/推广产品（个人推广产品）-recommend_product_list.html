@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top:0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#f2f2f2;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+       .goods{}
+       .goods .good-item{width: 93.75%;height: 2.4rem;font-size: 0.3rem;position: relative;padding: 0.1rem;background-color: #fff;margin: 0.2rem auto;box-sizing: border-box;}
+       .goods .good-item>img{width:3.4rem;height:2.2rem;display: inline-block;vertical-align: middle;}
+       .goods .good-item .info-wrap{background-color:#838383;color:#fff;width:2.4rem;height:2.2rem;display: inline-block;vertical-align: middle;padding: 0.2rem 0.16rem;box-sizing: border-box;position:relative;}
+       .goods .good-item .info-wrap .title{font-size:0.26rem;}
+       .goods .good-item .info-wrap .info{font-size:0.22rem;margin-top: 0.1rem;}
+       .goods .good-item .info-wrap .price-wrap{font-size:0.22rem;position:absolute;bottom:0.2rem;left:0.16rem;}
+       .goods .good-item .info-wrap .price-wrap .price{font-size:0.36rem;}
+       .goods .good-item .info-wrap .del-btn{width: 0.6rem;height: 0.6rem;background: url(images/close-btn.png) no-repeat center center / 50%;position: absolute;right: -0.3rem;top: -0.3rem;display:none;}
+       .edit-btn{position: fixed;right: 0.34rem;bottom: 0.26rem;width: 0.8rem;border-radius: 100%;background-color: rgba(0,0,0,.5);color: #fff;z-index: 2;font-size: 0.24rem;text-align: center;line-height: 0.8rem;}
+       
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <div class="goods">
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义1</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义2</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+              <div class="good-item">
+                <img src="images/good-recom.png" alt=""><div class="info-wrap">
+                  <p class="title">必长草经典主义</p>
+                  <p class="info">手感舒适，简约时尚的的款式！</p>
+                  <p class="price-wrap"><span>￥</span><span class="price">690.00</span></p>
+                  <span class="del-btn"></span>
+                </div>
+              </div>
+            </div>
+        </div>
+    </article>
+    <div class="edit-btn edit">编辑</div>
+    <script>
+        /*删除*/
+        $('.good-item .del-btn').on('tap',function(){
+          $(this).parents('.good-item').remove();
+          myScroll.refresh();
+        });
+        /*编辑*/
+        $('.edit-btn').on('tap',function(){
+          if($(this).hasClass('edit')){
+            $('.good-item .del-btn').css('display','block');
+            $(this).removeClass('edit');
+            $(this).text('完成');
+          }else{
+            $('.good-item .del-btn').css('display','none'); 
+            $(this).addClass('edit');
+            $(this).text('编辑');
+          }
+        });
+    </script>
+</body>
+</html>

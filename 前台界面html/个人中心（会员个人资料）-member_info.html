@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script type="text/javascript" src="js/fx.js"></script>
+    <script type="text/javascript" src="js/imgEnlarge.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {    width: 100%;overflow: hidden;position: absolute;bottom: 0.69rem;top: 1.3rem;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        .user-info{font-size:0.24rem;background-color:#fff;margin: 0.2rem 0;}
+        .user-info>div{margin: 0 0.22rem;height:0.7rem;line-height:0.7rem;}
+        .user-info .u-right{float: right;clear: both;}
+        .user-info span{display:inline-block;vertical-align:middle;}
+        .user-info .u-right .u-arrow{width: 0.12rem;height: 0.25rem;background: url("images/right-arrow.png") no-repeat scroll center center / contain;margin-left: 0.2rem;}
+        .user-info .un-set{color:rgba(0, 0, 0, 0.5);}
+        .u-line1 .u-right img{width:0.86rem;display:inline-block;vertical-align:middle;}
+        .u-line1>div{height:1.1rem;line-height:1.1rem;}
+        .u-line2>div{border-bottom: 1px solid #eeeef1;}
+        .u-line2>div:last-child{border-bottom:none;}
+        .u-line3>div{border-bottom: 1px solid #eeeef1;}
+        .u-line3>div:last-child{border-bottom:none;}
+
+        .footer{height:0.68rem;line-height:0.68rem;text-align:center;background: rgba(255,255,255,0.9);position:fixed;bottom:0;width:100%;}
+        .footer>div{font-size:0.28rem;}
+
+        /*头像放大，隐藏底部页码*/
+        #enlarge-Carousel .swipe-footer{display:none;}
+        #enlarge-Carousel .pic-swipe {background-color:#000;}
+    </style>
+
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div class="user-info u-line1">
+            <div><span>头像</span><span class="u-right"><img src="images/my/user.png" alt=""><span class="u-arrow"></span></span></div>
+            <input type="file" style="visibility:hidden;display:none">
+        </div>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="user-info u-line2" >
+                    <div><span>昵称</span><span class="u-right"><span class="un-set">未设置</span><span class="u-arrow"></span></span></div>
+                    <div><span>手机号</span><span class="u-right"><span class="">13266888868</span><span class="u-arrow"></span></span></div>
+                    <div><span>会员等级</span><span class="u-right"><span class="">V1</span><span class="u-arrow"></span></span></div>
+                    <div><span>分销商等级</span><span class="u-right"><span class="">三级</span><span class="u-arrow"></span></span></div>
+                    <div><span>我的上级</span><span class="u-right"><span class="">花花</span><span class="u-arrow"></span></span></div>
+                </div>
+                <div class="user-info u-line3">
+                    <div><span>我的收货地址</span><span class="u-right"><span class=""></span><span class="u-arrow"></span></span></div>
+                    <div><span>账号安全</span><span class="u-right"><span class=""></span><span class="u-arrow"></span></span></div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer class="footer"> 
+        <div>退出登录</div>
+    </footer>
+    <!--图片放大轮播-->
+    <div id="enlarge-Carousel"></div>
+    <script type="text/javascript" src="js/swiper.js"></script>
+    <script>
+        $('.u-line1>div').on('tap',function(e){
+            if($(this).find('img')[0] && $(this).find('img')[0]!=e.target){
+                console.log(e.target);
+                $(this).next('input').click();
+            }
+        });
+        /*图片放大 轮播*/
+       enlargeCarousel.createEnlargeCarousel('.u-line1>div img',false);
+    </script>
+</body>
+</html>

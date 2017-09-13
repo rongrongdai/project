@@ -1,0 +1,66 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/exam_re.css"/>
+
+<div class="pwid">
+	<div class="hotnav">当前位置：<a href="javascript:history.back()">  题库</a> >  <a href="javascript:"> 列表页</a></div>
+</div>
+
+
+<div class="pwid">
+<!------------------------------------------------------------------------>   
+    <div class="line">
+        <a class="aclick">全部分类:</a>
+        <foreach name="data1" item="fl" key="i">
+        	<if condition="$i lt 3">
+        		<a href="#"><{$fl.name}></a>
+        	</if>
+        </foreach>
+        <if condition="$i && $i egt 3"><a href="#" class="moer">更多</a></if>
+        <div class="nonea">
+         	<foreach name="data1" item="fl" key="i">
+	        	<if condition="$i egt 3">
+	        		<a href="#"><{$fl.name}></a>
+	        	</if>
+        	</foreach>
+        </div>
+    </div>
+<!---------------------------------------------------------------------->
+    <div class="list">
+        <if condition="$data">
+            <foreach name="data" item="vo" key="i">
+                <div class="lineb">
+                    <div class="cimg"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/exam/bsj.png" width="50" height="50" /></div>
+                    <div class="cten">
+                        <div class="titlea"><{$vo.name}></div>
+                        <div class="munder">总题<{$vo.tishu}>题　　考试时长<{$vo.time}>分钟　　总分<{$vo.total}>分　　最高得分<{$vo.max}>分　　<{$vo.ren}>人参考</div>
+                    </div>
+                    <div class="ctim"><{$vo.ctime|date="Y年m月d日",###}></div>
+                    <a class="cent" href="__URL__/detail?id=<{$vo.id}>">进入做题</a>
+                </div>
+            </foreach>
+        <else/>
+            <div class="lineb" align="center">
+                <span style="line-height:90px;">抱歉！暂无试题</span>   
+            </div>
+        </if>
+   
+    </div>
+    <!------------------------------------>
+        <div class="page" align="center">
+            <{$link}>
+        </div>
+    <!------------------------------------>
+</div>
+
+
+<script>
+function tion(c,t){	}
+$('.line a').click(function(){$('.line a').removeClass('aclick'); $(this).addClass('aclick');})
+
+$('.moer').click(function(){$('.nonea').slideToggle()})
+
+</script>
+
+
+
+<include file="../../../Public/default/footer" />

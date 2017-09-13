@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top:3rem;bottom: 1rem;left: 0;width: 100%;overflow: hidden;background-color:#f2f2f2;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+       
+        /*底部*/
+        .m-footer{width: 100%;position: fixed;bottom: 0;z-index: 9;height: 1rem;background: rgba(0,0,0,0.9);clear: both;overflow: hidden;}
+        .m-footer a{display: block;text-align: center;color: #fff;font-size: 0.2rem;text-align: center;box-sizing: border-box;width: 20%;float: left;}
+        .m-footer a span{display:block; width:0.68rem; height:0.48rem; margin:0.1rem auto;position:relative;}
+        .m-footer span.on+p{color:#f90016;}
+        .m-footer a.home span{background:url(images/index/footer-1.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.all-prize span{background:url(images/index/footer-2.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.cart span{background:url(images/index/footer-3.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.sup span{background:url(images/index/footer-5.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.my span{background:url(images/index/footer-4.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.home span.on{background:url(images/index/footer-1-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.all-prize span.on{background:url(images/index/footer-2-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.cart span.on{background:url(images/index/footer-3-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.sup span.on{background:url(images/index/footer-5-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.my span.on{background:url(images/index/footer-4-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.home p{font-size:0.2rem; padding-bottom:0.1rem;}
+       
+       /*用户信息*/
+       .user-info{font-size:0.28rem;position:relative;color: #333;background:url(images/my/head-bg.png) no-repeat center center/100% 100%;}
+       .user-info>div{display:inline-block;vertical-align:middle;}
+       .user-info .u-img-wrap{    height: 1.4rem;
+    width: 1.4rem;
+    margin: 0.8rem 0.2rem 0.8rem 0.24rem;}
+       .user-info .u-img-wrap>img{width: 100%;}
+       .user-info .u-txt{}
+       .user-info .u-txt>p{margin: 0.14rem 0;}
+
+       .goods{overflow:auto;padding:0.1rem;}
+       .goods .good-item{float:left;width:2.9rem;height:2.9rem;font-size:0.3rem;position:relative;margin:0.1rem;}
+       .goods .good-item>img{width:100%;height:100%;}
+       .goods .good-item>span{position:absolute;bottom:0;left:0;width:100%;line-height:0.5rem;color:#fff;background-color:rgba(0,0,0,.5);text-align:right;padding-right: 0.1rem;box-sizing: border-box;}
+       
+
+       
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article>
+        <div>
+            <div class="user-info">
+                <div class="u-img-wrap"><img src="images/my/user.png" alt=""></div>
+                <div  class="u-txt">
+                    <p>花花的店</p>
+                </div>
+            </div>
+            <div id="wrapper">
+              <div id="scroller">
+                  <div class="goods">
+                    <div class="good-item">
+                      <img src="images/good-recom.png" alt="">
+                      <span>￥3999.00</span>
+                    </div>
+                    <div class="good-item">
+                      <img src="images/good-recom.png" alt="">
+                      <span>￥3999.00</span>
+                    </div>
+                    <div class="good-item">
+                      <img src="images/good-recom.png" alt="">
+                      <span>￥3999.00</span>
+                    </div>
+                    <div class="good-item">
+                      <img src="images/good-recom.png" alt="">
+                      <span>￥3999.00</span>
+                    </div>
+                    <div class="good-item">
+                      <img src="images/good-recom.png" alt="">
+                      <span>￥3999.00</span>
+                    </div>
+                    <div class="good-item">
+                      <img src="images/good-recom.png" alt="">
+                      <span>￥3999.00</span>
+                    </div>
+                    <div class="good-item">
+                      <img src="images/good-recom.png" alt="">
+                      <span>￥3999.00</span>
+                    </div>
+                    <div class="good-item">
+                      <img src="images/good-recom.png" alt="">
+                      <span>￥3999.00</span>
+                    </div>
+                    <div class="good-item">
+                      <img src="images/good-recom.png" alt="">
+                      <span>￥3999.00</span>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </article>
+    <footer class="m-footer">
+        <a class="home" href="#" title="首页"><span></span><p>首页</p></a>
+        <a class="all-prize" href="#" title="活动"><span></span><p>活动</p></a>
+        <a class="sup" href="#" title="推荐"><span class="on"></span><p>推荐</p></a>
+        <a class="cart" href="#" title="购物车"><span></span><p>购物车</p></a>
+        <a class="my" href="#" title="我的"><span></span><p>我的</p></a>
+    </footer>
+    
+    <script>
+        /*footer action*/
+        $(".m-footer>a").on("tap",function(e){
+            var activeSpan = $(this).find("span")[0];
+            $(".m-footer>a>span").each(function(index, el) {
+                if(activeSpan!==this){
+                    if($(this).hasClass('on')){
+                        $(this).removeClass('on');
+                    }
+                }else{
+                    $(this).addClass('on');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

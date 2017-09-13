@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——个人设置</title>
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+<script src="__ROOT__/public/js/validater.js"></script>
+
+</head>
+<body>
+
+<div class="per">
+      <div class="per-top">
+          <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/hy3.gif" />
+          <p class="set-up">平台老师，需完善以下信息</p>
+      </div>
+
+      <div class="per-form">
+
+        <form action="__URL__/applyTeacher" method="post" enctype="multipart/form-data" id="rzform">
+
+          <div class="pheig">
+              <div id="name" class="pflat1">我的教龄：</div>
+              <div class="pflat2"><input type="text" class="inputcs"  name="t_age" id="t_age"/>年 <span class="hint"></span></div>
+          </div>
+
+           <div class="pheig">
+              <div id="phone" class="pflat1">上课价格：</div>
+              <div class="pflat2"><input type="text" class="inputcs"  name="price" id="price"/>元/小时 <span class="hint"></span></div>
+          </div>
+
+           <div class="pheig psub">
+				<input type="submit" class="subinput" name="submit" value="确认提交"  id="perqreng"/>
+          </div>
+          <input type="hidden" name="token" value="<{$token}>"/>
+          <input type="hidden" name="timestamp" value="<{$timestamp}>"/>
+
+ 
+        </form> 
+
+      </div> 
+</div>
+
+    <script src="__ROOT__/public/js/home/jquery.mousewheel.js"></script>
+    <script src="__ROOT__/public/js/home/nicescroll.js"></script>
+    <script src="__ROOT__/public/js/home/noscroll.js"></script>
+<script src="__ROOT__/public/js/home/common.js"></script>
+
+<script>
+$("#rzform").submit(function(){
+    var nullcheck=new Array('t_age','price');
+    var nullinfo=new Array('教龄','价格');
+    var res=null_check(nullcheck,nullinfo);
+    if(res){
+        $("#"+res[0]).next(".hint").text(res[1]).css("color","red");
+        return false;
+    }
+})         
+
+</script>
+</body>
+</html>

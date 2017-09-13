@@ -1,0 +1,148 @@
+<?php
+/**
+ * 加密算法
+ *@author Administrator
+ */
+class PasswordHelper {
+    //md5加密
+    public static function basicEncode($str){
+        return md5($str);
+    }
+    //加密算法
+    public static function aencrypt($data, $key)
+    {
+        $key = md5($key);
+        $x  = 0;
+        $len = strlen($data);
+        $l  = strlen($key);
+        for ($i = 0; $i < $len; $i++)
+        {
+            if ($x == $l) 
+            {
+             $x = 0;
+            }
+            $char .= $key{$x};
+            $x++;
+            
+        }
+        for ($i = 0; $i < $len; $i++)
+        {
+            
+            $str .= chr(ord($data{$i}) + (ord($char{$i})) % 256);
+        }
+        return base64_encode($str);
+    }
+    //解密算法
+    public static function adecrypt($data, $key)
+    {
+     $key = md5($key);
+        $x = 0;
+        $data = base64_decode($data);
+        $len = strlen($data);
+        $l = strlen($key);
+        for ($i = 0; $i < $len; $i++)
+        {
+            if ($x == $l) 
+            {
+             $x = 0;
+            }
+            $char .= substr($key, $x, 1);
+            $x++;
+        }
+        for ($i = 0; $i < $len; $i++)
+        {
+            if (ord(substr($data, $i, 1)) < ord(substr($char, $i, 1)))
+            {
+                $str .= chr((ord(substr($data, $i, 1)) + 256) - ord(substr($char, $i, 1)));
+            }
+            else
+            {
+                $str .= chr(ord(substr($data, $i, 1)) - ord(substr($char, $i, 1)));
+            }
+        }
+        return $str;
+    }
+    //加密用户密码
+    public static function advDecode($data){
+        $key=C('');
+        $key = md5($key);
+        $x = 0;
+        $data = base64_decode($data);
+        $len = strlen($data);
+        $l = strlen($key);
+        for ($i = 0; $i < $len; $i++)
+        {
+            if ($x == $l) 
+            {
+             $x = 0;
+            }
+            $char .= substr($key, $x, 1);
+            $x++;
+        }
+        for ($i = 0; $i < $len; $i++)
+        {
+            if (ord(substr($data, $i, 1)) < ord(substr($char, $i, 1)))
+            {
+                $str .= chr((ord(substr($data, $i, 1)) + 256) - ord(substr($char, $i, 1)));
+            }
+            else
+            {
+                $str .= chr(ord(substr($data, $i, 1)) - ord(substr($char, $i, 1)));
+            }
+        }
+        $str= md5(md5(base64_decode(md5($str))));
+        return $str;
+    }
+    
+ 
+    /**
+     * 加密
+     * @param string $str 要处理的字符串
+     * @param string $key 加密Key，为8个字节长度
+     * @return string
+     */
+    public static function encode($str, $key) {
+        $size = mcrypt_get_block_size(MCRYPT_DES, MCRYPT_MODE_CBC);
+        $str = self::pkcs5Pad($str, $size);
+        $aaa = mcrypt_cbc(MCRYPT_DES, $key, $str, MCRYPT_ENCRYPT, $key);
+        $ret = base64_encode($aaa);
+        return $ret;
+    }
+ 
+    /**
+     * 解密
+     * @param string $str 要处理的字符串
+     * @param string $key 解密Key，为8个字节长度
+     * @return string
+     */
+    public static function decode($str, $key) {
+        $strBin = base64_decode($str);
+        $str = mcrypt_cbc(MCRYPT_DES, $key, $strBin, MCRYPT_DECRYPT, $key);
+        $str = self::pkcs5Unpad($str);
+        return $str;
+    }
+ 
+    private static function hex2bin($hexData) {
+        $binData = "";
+        for ($i = 0; $i < strlen($hexData); $i += 2) {
+            $binData .= chr(hexdec(substr($hexData, $i, 2)));
+        }
+        return $binData;
+    }
+ 
+    private static function pkcs5Pad($text, $blocksize) {
+        $pad = $blocksize - (strlen($text) % $blocksize);
+        return $text . str_repeat(chr($pad), $pad);
+    }
+ 
+    private static function pkcs5Unpad($text) {
+        $pad = ord($text {strlen($text) - 1});
+        if ($pad > strlen($text))
+            return false;
+ 
+        if (strspn($text, chr($pad), strlen($text) - $pad) != $pad)
+            return false;
+ 
+        return substr($text, 0, - 1 * $pad);
+    }
+}

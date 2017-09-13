@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>支付失败</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        article{font-size:0.24rem;}
+        .result{}
+        .result .result-tip{color: #ff6519;background-color: #fff;padding: 0.45rem 0;text-align:center;margin-top: 0.2rem;}
+        .result .result-tip>img{width:0.6rem;height:0.6rem;margin-bottom:0.4rem;}
+        .result .result-tip>p{font-size:0.36rem;color:#ff332f;}
+        .result .re-btn{overflow:auto;margin-top:0.78rem;}
+        .result .re-btn>div{width:92.75%;line-height: 0.6rem;border-radius: 0.04rem;color:#fff;background-color:#ff3c00;border: 1px solid #ff3c00;text-align: center;margin:0 auto;}
+    </style>
+    <script>
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body>
+    <article>
+        <section class="result" >
+            <div class="result-tip">
+                <img src="images/failed.png" alt="">
+                <p>很遗憾，支付失败</p>
+            </div>
+            <div class="re-btn">
+                <div>重新支付</div>
+            </div>
+        </section>
+    </article>
+    
+</body>
+</html>

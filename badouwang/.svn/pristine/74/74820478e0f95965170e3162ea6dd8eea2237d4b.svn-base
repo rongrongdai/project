@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,p,blockquote,form {margin:0; padding:0;}
+ul,ol {list-style:none; }
+a{ text-decoration:none;}
+img{border:0}
+ 
+/*导航条*/
+   
+/*培训机构内容*/
+
+.pxjg-one{ width:100%; height:338px; background:#eeeeee;}
+.pxjg-cy{ margin-left:95px;  width:180px; height:260px; position:relative; top:35px; float:left; }
+.pxjg-ce{ width:180px; height:180px;  background:#FFF;  border:1px #CCC solid;}
+.pxjg-cs{ text-align:center; font-size:14px; line-height:30px; background:#FFF;  border:1px #CCC solid; border-top:none; width:180px;} 
+.pxjg-cs:hover{ background:#00b38a; color:#FFF;  cursor:pointer; }
+
+.pxjg-cw,.pxjg-cl{ font-size:12px; text-align:center; line-height:30px;}
+.pxjg-cw{ width:80px; border:1px #00b38a solid; float:left; margin:15px 0px 0px 10px;  }
+.pxjg-cl{ width:80px;  border:1px #00b38a solid; float:left; border-left:none; margin-top:15px;}
+.pxjg-cw:hover ,.pxjg-cl:hover{ background:#00b38a; color:#FFF; cursor:pointer;}
+
+
+.pxjg-er{ width:570px; height:180px; float:left; position:relative; left:50px; top:65px; border-right:1px #CCC solid;}
+.plwy{ font-size:20px; color:#000000; font-weight:bold; padding-bottom:20px;}
+.plwe ,.plws{ font-size:14px; padding-bottom:10px; }
+.plws span{ margin-left:50px;}
+.plwsi{width:500px; color:#808080; font-size:14px; line-height:20px;}
+
+.pxjg-san{ width:330px; height:230px; float:left; position:relative; left:120px; top:40px;}
+
+.ps-y{ width:95px; height:45px;float:left; border-right:1px #999 solid; margin-top:20px; text-align:center;}
+.ps-xy{ color:#808080; font-size:14px;}
+.ps-xe{ color:#00b38a; font-size:26px; font-weight:900;}
+
+.ps-e{ width:275px; height:50px;  border-radius:6px; background:#00b38a; margin:90px 0px 0px 20px; cursor:pointer;} 
+.ps-e p{ text-align:center; line-height:50px; font-size:18px; color:#FFF; }
+.ps-e img{ position:relative; top:5px; right:3px;}
+.ps-s{ font-size:14px; margin-left:20px; line-height:50px; cursor:pointer;}
+.ps-s span{  color:#00b38a;} 
+.ps-si{font-size:14px;margin-left:35px;}
+
+
+
+.pxjg-two{ width:1250px; margin:0 auto; margin-top:50px;} 
+.ptw-y{width:838px; float:left;}
+.pty-ged{ position:absolute; left:820px; margin-top:10px; color:#ea5a3d; cursor:pointer;}
+.ptw-yi{ height:43px; background:#fefbec; border:1px #f8f2d3 solid;}
+
+.ptw-ye ul{ border-bottom:1px #CCC solid; height:50px; cursor:pointer;}
+.ptw-ye li{ width:150px; text-align:center;  float:left; line-height:50px; }
+.ptw-ye .wda{ border-bottom:3px  #00b38a solid; color:#00b38a;}
+.ptw-ys{ width:100%; margin-bottom:20px;}
+.ptw-kc{ width:380px; height:153px; float:left; margin:10px 39px 10px 0px;}
+.pyw-kim{ width:170px; height:140px;}
+.ptw-k-a{ position:relative; top:-130px; left:190px; width:160px; font-size:12px;}
+.ptw-k-a span{ color:#890505;}
+.ptw-k-b{ position:relative; top:-120px; left:190px; color:#fe7e03;}
+.ptw-k-b span{ background:#3dae14; color:#FFF; margin-left:20px;cursor:pointer;} 
+.ptw-k-c{ position:relative; top:-100px; left:190px; font-size:12px; color:#c5c5c5;}
+.ptw-k-d{ position:relative; top:-90px; left:190px; font-size:12px; color:#c5c5c5;}
+
+
+.ptw-er{ width:310px; float:left; margin-left:100px;}
+.pt-ry{ width:302px; height:75px;}
+
+.pt-re{ width:290px; height:25px; border-left:5px #00b38a solid; margin-top:10px; padding:10px 0px 0px 10px; }
+.pt-rs{ width:295px; height:10px; border-bottom:1px #CCC solid; margin-bottom:20px;}
+.pt-rw{ width:295px;  border:1px #CCC solid; background:#e5e5e5; text-align:center; line-height:50px;}
+.pxa{ background:#eeeeee;}
+.pt-rv{ background:url(../images/pxu/010.gif); width:20px; height:20px; position:relative; left:-20px; top:25px;}
+
+

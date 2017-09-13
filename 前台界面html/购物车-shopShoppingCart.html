@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>购物车</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeeef;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom: 1.92rem;left: 0;width: 100%;overflow: hidden;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}        
+
+        /*底部操作*/
+        .m-footer-op{width:100%;position:fixed;bottom:1rem;z-index:2;font-size:0.24rem;text-align:center;background-color:#fff;border-top: 1px solid #cececf;}
+        .m-footer-op>div{height:0.9rem;}
+        .m-footer-op .del-all{border-bottom: 1px solid #eeeeef;text-align: left;float:left;line-height: 0.9rem;clear:both;}
+        .m-footer-op .del-all>span{display:inline-block;vertical-align:middle;}
+        .m-footer-op .del-all .check{height: 0.3rem;width: 0.3rem;border: 1px solid #777778;margin:0.3rem 0.12rem 0.3rem 0.24rem;}
+        .m-footer-op .del-all .delete{margin-left:0.2rem;}
+        .m-footer-op .del-all .active{background:url("images/select-box.png") no-repeat scroll center center / 135%;border: 1px solid #ff3c00;background-color:#ff3c00;}
+        .m-footer-op .m-line2{float:left;margin-left:0.6rem;text-align: left;padding: 0.17rem 0 0 0;box-sizing: border-box;-webkit-box-sizing: border-box;}
+        .m-footer-op .m-line2>div{}
+        .m-footer-op .count{color:#ff3c00;}
+        .m-footer-op .buy{background-color: #ff3c00;color: #fff;float: right;border-radius: 0.04rem;height: 0.54rem;width: 1.66rem;margin: 0.18rem 0.24rem 0 0;line-height: 0.54rem;}
+        /*底部导航*/
+        .m-footer{width:100%;position: fixed;bottom: 0;z-index: 9;height: 1rem;background: rgba(0,0,0,0.9);clear: both;overflow: auto;}
+        .m-footer a{display: block;text-align: center;color: #fff;font-size: 0.2rem;text-align: center;box-sizing: border-box;width: 25%;float: left;}
+        .m-footer a span{display:block; width:0.68rem; height:0.48rem; margin:0.1rem auto;position:relative;}
+        .m-footer span.on+p{color:#f90016;}
+        .m-footer a.home span{background:url(images/index/footer-1.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.all-prize span{background:url(images/index/footer-2.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.cart span{background:url(images/index/footer-3.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.my span{background:url(images/index/footer-4.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.home span.on{background:url(images/index/footer-1-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.all-prize span.on{background:url(images/index/footer-2-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.cart span.on{background:url(images/index/footer-3-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.my span.on{background:url(images/index/footer-4-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.home p{font-size:0.2rem; padding-bottom:0.1rem;}
+        .m-footer .cart-count{position: absolute; top: 0.04rem; right:0.12rem;display: inline-block; padding: 1px 3px; line-height: 9px; font-size: 0.18rem; font-weight: normal; color: #fff; background: #f25613; border-radius:20px;}
+        /*列表*/
+        .goods-list{font-size: 0.2rem;width: 100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+        .goods-list .good-cont{background-color: #fff;margin: 0.1rem 0;}
+        .goods-list .good-cont .good-wrap{padding: 0.2rem 0;}
+        .goods-list .good-cont .good-wrap>div{display:inline-block;vertical-align:middle;}
+        .goods-list .good-cont .op-wrap{text-align:right;padding: 0.2rem 0;border-top: 1px solid #eeeef1;}
+        .goods-list .good-cont .op-wrap>div{vertical-align: middle;width: 0.7rem;margin:0 0.24rem 0 0;border: 1px solid #aaa;text-align: center;border-radius: 0.06rem;padding: 0.05rem 0;display:none;}
+        .goods-list .good-cont .op-wrap>div:first-child{display:inline-block;}
+        .goods-list .good-cont .check{width:0.68rem;}
+        .goods-list .good-cont .check>div{height: 0.3rem;width: 0.3rem;border: 1px solid #777778;margin: 0 auto;}
+        .goods-list .good-cont .active>div{background:url("images/select-box.png") no-repeat scroll center center / 135%;border: 1px solid #ff3c00;background-color:#ff3c00;}
+        .goods-list .good-cont .good-img{width:1.6rem;height:1.6rem;}
+        .goods-list .good-cont .good-img>img{width:100%;height:100%;}
+        .goods-list .good-cont .good-info4{    overflow: auto;margin: 0 0.24rem 0 0.14rem;height: 1.6rem;width: 3.5rem;}
+        .goods-list .good-cont .good-info1{width: 100%;text-align:left;}
+        .goods-list .good-cont .good-info2{font-size:0.22rem;color:rgba(0,0,0,.5);margin:0.05rem 0;}
+        .goods-list .good-cont .good-info3{font-size:0.2rem;color:rgba(0,0,0,.5);margin:0.05rem 0;}
+        .goods-list .good-cont .good-info5{font-size:0.24rem;}
+        .goods-list .good-cont .good-info5>span:last-child{float:right;}
+        .goods-list .good-cont .good-info5>span:first-child{color:#ff3c00;}
+        .goods-list .good-cont .good-title{font-size:0.26rem;}
+        .goods-list .good-cont .good-price{clear: both;text-align:right;margin: 0.1rem 0.22rem 0.1rem 0;color:#ff0000;}
+        
+        .goods-list .good-cont .n-zoom{font-size:0.18rem;margin-right: 0.35rem;display:none;}
+        .goods-list .good-cont .n-zoom>span{display:inline-block;vertical-align:middle;width:0.56rem;line-height:0.48rem;text-align:center;border-radius:2px;font-size:0.24rem;}
+        .goods-list .good-cont .n-zoom .add{background-color:#e4e3e3;color:rgba(0,0,0,.5);font-size:0.3rem;}
+        .goods-list .good-cont .n-zoom .minus{background-color:#eeeef1;color:rgba(0,0,0,.5);font-size:0.3rem;}
+        .goods-list .good-cont .n-zoom .num{background-color:#e1e1e3;}
+        .goods-list .good-cont .del-icon{width:0.3rem;height:0.3rem;position:absolute;background: url("images/close.png") no-repeat scroll center center / contain;top: 0.1rem;right: 0.1rem;}
+
+        /*删除提示窗*/
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index: 3;position: fixed;display:none;}
+        .alert{width: 76.5625%;background: #fff;z-index: 4;position: fixed;font-size: 0.28rem;text-align: center;border-radius: 0.1rem;top: -100%;left: 11.71875%;-webkit-animation: animDialog .4s ease-out;animation: animDialog .4s ease-out;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 10ms;display:none;}
+        .alert-show{display:block;top: 22%;}
+        @-webkit-keyframes animDialog {
+         from{-webkit-transform: scale(.05);transform: scale(.05);}
+         to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        @keyframes animDialog {
+          from{-webkit-transform: scale(.05);transform: scale(.05);}
+          to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        .alert .a-info{padding:0.33rem 0.3rem 0.15rem 0.3rem;border-bottom: 1px solid #eeeef1;min-height: 0.7rem;}
+        .alert .a-btn>div{width: 50%;float: left;    height: 0.62rem;line-height: 0.62rem;color:#226bfb;}
+        .alert .a-btn .cancel{border-right: 1px solid #eeeef1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+       
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var Scroll,skuScroller;
+        function loaded () {
+            Scroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+           <section class="goods-list" >
+                <div class="good-cont">
+                    <div class="good-wrap">
+                        <div class="check"><div></div></div>
+                        <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                        <div class="good-info4">
+                            <div class="good-info1">
+                                <div class="good-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</div>
+                                <div class="good-info2">颜色分类：单人位+三人位+左贵妃</div>
+                                <!--<div class="good-info3">适用人数：组合</div>-->
+                                <div class="good-info5"><span class="price">￥<span class="num1">1600</span></span><span>x<span class="num2">1</span></span></div>
+                            </div>
+                            <div class="n-zoom">
+                                <span class="minus">-</span>
+                                <span class="num">1</span>
+                                <span class="add">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="op-wrap">
+                        <div class="edit">编辑</div>
+                        <div class="del">删除</div>
+                        <div class="complete">完成</div>
+                    </div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-wrap">
+                        <div class="check"><div></div></div>
+                        <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                        <div class="good-info4">
+                            <div class="good-info1">
+                                <div class="good-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</div>
+                                <div class="good-info2">颜色分类：单人位+三人位+左贵妃</div>
+                                <!--<div class="good-info3">适用人数：组合</div>-->
+                                <div class="good-info5"><span class="price">￥<span class="num1">1600</span></span><span>x<span class="num2">1</span></span></div>
+                            </div>
+                            <div class="n-zoom">
+                                <span class="minus">-</span>
+                                <span class="num">1</span>
+                                <span class="add">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="op-wrap">
+                        <div class="edit">编辑</div>
+                        <div class="del">删除</div>
+                        <div class="complete">完成</div>
+                    </div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-wrap">
+                        <div class="check"><div></div></div>
+                        <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                        <div class="good-info4">
+                            <div class="good-info1">
+                                <div class="good-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</div>
+                                <div class="good-info2">颜色分类：单人位+三人位+左贵妃</div>
+                                <!--<div class="good-info3">适用人数：组合</div>-->
+                                <div class="good-info5"><span class="price">￥<span class="num1">1600</span></span><span>x<span class="num2">1</span></span></div>
+                            </div>
+                            <div class="n-zoom">
+                                <span class="minus">-</span>
+                                <span class="num">1</span>
+                                <span class="add">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="op-wrap">
+                        <div class="edit">编辑</div>
+                        <div class="del">删除</div>
+                        <div class="complete">完成</div>
+                    </div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-wrap">
+                        <div class="check"><div></div></div>
+                        <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                        <div class="good-info4">
+                            <div class="good-info1">
+                                <div class="good-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</div>
+                                <div class="good-info2">颜色分类：单人位+三人位+左贵妃</div>
+                                <!--<div class="good-info3">适用人数：组合</div>-->
+                                <div class="good-info5"><span class="price">￥<span class="num1">1600</span></span><span>x<span class="num2">1</span></span></div>
+                            </div>
+                            <div class="n-zoom">
+                                <span class="minus">-</span>
+                                <span class="num">1</span>
+                                <span class="add">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="op-wrap">
+                        <div class="edit">编辑</div>
+                        <div class="del">删除</div>
+                        <div class="complete">完成</div>
+                    </div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-wrap">
+                        <div class="check"><div></div></div>
+                        <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                        <div class="good-info4">
+                            <div class="good-info1">
+                                <div class="good-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</div>
+                                <div class="good-info2">颜色分类：单人位+三人位+左贵妃</div>
+                                <!--<div class="good-info3">适用人数：组合</div>-->
+                                <div class="good-info5"><span class="price">￥<span class="num1">1600</span></span><span>x<span class="num2">1</span></span></div>
+                            </div>
+                            <div class="n-zoom">
+                                <span class="minus">-</span>
+                                <span class="num">1</span>
+                                <span class="add">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="op-wrap">
+                        <div class="edit">编辑</div>
+                        <div class="del">删除</div>
+                        <div class="complete">完成</div>
+                    </div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-wrap">
+                        <div class="check"><div></div></div>
+                        <div class="good-img"><img src="images/index/good.png" alt=""></div>
+                        <div class="good-info4">
+                            <div class="good-info1">
+                                <div class="good-title">简约欧式奢华沙发客厅组合 转 角L型小户型实木沙发组合</div>
+                                <div class="good-info2">颜色分类：单人位+三人位+左贵妃</div>
+                                <!--<div class="good-info3">适用人数：组合</div>-->
+                                <div class="good-info5"><span class="price">￥<span class="num1">1600</span></span><span>x<span class="num2">1</span></span></div>
+                            </div>
+                            <div class="n-zoom">
+                                <span class="minus">-</span>
+                                <span class="num">1</span>
+                                <span class="add">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="op-wrap">
+                        <div class="edit">编辑</div>
+                        <div class="del">删除</div>
+                        <div class="complete">完成</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </article>
+    <footer class="m-footer-op">
+        <div class="del-all">
+            <span class="check"></span><span class="check-all">全选</span><span class="delete">删除</span>
+        </div>
+        <div class="m-line2">
+            <div class="count">合计：<span class="total-price">0.00</span></div>
+            <div class="carriage">运费：<span>包邮</span></div>
+        </div>
+        <div class="buy">马上结算</div>
+    </footer>
+    <footer class="m-footer">
+        <a class="home" href="#" title="首页"><span></span><p>首页</p></a>
+        <a class="all-prize" href="#" title="活动"><span></span><p>活动</p></a>
+        <a class="cart" href="#" title="购物车"><span></span><p>购物车</p></a>
+        <a class="my" href="#" title="我的"><span class="on"></span><p>我的</p></a>
+    </footer>
+    <div class="bg-layer"></div>
+    <div class="alert">
+        <div class="a-info">确定将这<span class="num"></span>个删除宝贝？</div>
+        <div class="a-btn">
+            <div class="cancel">取消</div>
+            <div>确认</div>
+        </div>
+    </div>
+    
+    <script>
+        /*checkbox*/
+        $('.good-cont .check,.good-cont .good-img,.good-cont .good-info1').on('tap',function(){
+            $(this).parents('.good-cont').find('.check').toggleClass('active');
+            if(!$(this).hasClass('active')){
+                $('.m-footer-op .check').removeClass('active');
+            }
+            //countTotalPrice($('.check:has(.active)').parents('.good-cont'));
+            $('.total-price').text(countTotalPrice('good-cont','check','active','num1','num2'));
+        });
+        $('.m-footer-op .check,.m-footer-op .check-all').on('tap',function(){
+            var t = $(this).parent().find('.check');
+            t.toggleClass('active');
+            if(t.hasClass('active')){
+                $('.good-cont .check').addClass('active');
+            }
+            $('.total-price').text(countTotalPrice('good-cont','check','active','num1','num2'));
+        });
+        /*编辑按钮*/
+        $('.good-cont .edit').on('tap',function(){
+            $(this).css('display','none');
+            var p = $(this).parents('.good-cont');
+            p.find('.del').css('display','inline-block');
+            p.find('.complete').css('display','inline-block');
+
+            p.find('.good-info1').css('display','none');
+            p.find('.n-zoom').css('display','block');
+        });
+        $('.good-cont .complete').on('tap',function(){
+            $(this).css('display','none');
+            var p = $(this).parents('.good-cont');
+            p.find('.del').css('display','none');
+            p.find('.edit').css('display','inline-block');
+
+            p.find('.good-info1').css('display','block');
+            p.find('.n-zoom').css('display','none');
+        });
+        /*数量加减*/
+        $(".good-cont .minus").on("tap",function(e){
+            var nunObj = $(this).next(".num");
+            var num = nunObj.text();
+            if(Number(num)>0){
+                nunObj.text(Number(num)-1);
+                $(this).parents('.good-cont').find('.num2').text(Number(num)-1);
+                $('.total-price').text(countTotalPrice('good-cont','check','active','num1','num2'));
+            }
+        });
+        $(".good-cont .add").on("tap",function(e){
+            var nunObj = $(this).prev(".num");
+            var num = nunObj.text();
+            if(Number(num)>=0){
+                nunObj.text(Number(num)+1);
+                $(this).parents('.good-cont').find('.num2').text(Number(num)+1);
+                $('.total-price').text(countTotalPrice('good-cont','check','active','num1','num2'));
+            }
+        });
+        /*计算总价*/
+        function countTotalPrice(goodWrapClassName,checkboxClassName,checkboxActiveCN,priceCN,numCN){
+            var total = 0;
+            var wrapTemp,singalPrice,num;
+            $('.'+goodWrapClassName+' .'+checkboxClassName+'').each(function(){
+                if($(this).hasClass(checkboxActiveCN)){
+                   wrapTemp = $(this).parents('.'+goodWrapClassName);
+                   singalPrice = Number(wrapTemp.find('.'+priceCN).text());
+                   num = Number(wrapTemp.find('.'+numCN).text());
+                   total+=singalPrice*num;
+                }
+            });
+            return total;
+        }
+        /*删除提示窗*/
+        $('.good-cont .del,.m-footer-op .delete').on('tap',function(){
+            var num = 0;
+            if($(this).hasClass('delete')){
+                $('.good-cont .check').each(function(){
+                    if($(this).hasClass('active')){
+                       num+=1;
+                    }
+                    if(num>0){
+                        $('.alert .num').text(num);
+                        $('.bg-layer').css('display','block');
+                        $('.alert').addClass('alert-show');
+                    }
+                });
+            }else{
+                $('.alert .num').text('');
+                $('.bg-layer').css('display','block');
+                $('.alert').addClass('alert-show');
+            }
+        });
+        $('.bg-layer').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+        $('.alert .cancel').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+    </script>
+</body>
+</html>

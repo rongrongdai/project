@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>会员等级</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {width: 100%;overflow: hidden;position: absolute;bottom:0;top:0;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;background-color:#fff;}
+
+        .rank{font-size:0.26rem;padding: 0.4rem 0.3rem;}
+        .rank .rank-item{margin-bottom: 0.4rem;}
+        .rank .rank-item .r-title{font-size:0.34rem;color:#ffce00;}
+        .rank .rank-item .r-title>span{display:inline-block;vertical-align:middle;}
+        .rank .rank-item .r-title .r-icon{position:relative;width:0.33rem;height:0.37rem;background:url(images/rank.png) no-repeat center center / contain;text-align: right;}
+        .rank .rank-item .r-title .r-icon>span{font-size:0.2rem;}
+        .rank .rank-item .r-title .r-name{margin: 0 0.5rem 0 0.16rem;}
+        .rank .rank-item .r-info{margin-left: 0.5rem;}
+        .rank .rank-item .r-info>p:first-child{margin:0.3rem auto;}
+        .rank .rank-item .r-info .r-sub-title{font-size:0.3rem}
+        .rank .rank-item .r-info>p{margin:0.12rem auto;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="rank">
+                    <div class="rank-item">
+                        <div class="r-title"><span class="r-icon"><span>1</span></span><span class="r-name">银牌会员</span><span>8.8折</span></div>
+                        <div class="r-info">
+                            <p>购买金额累计超过1000元 且 购买次数超过  10次  </p>
+                            <p class="r-sub-title">银牌会员权益：</p>
+                            <p>(1)享受购买百信手机商城所有产品（包括手  机与配件）免邮费政策；</p>
+                            <p>(2)享受货到付款订单手续费8.8折</p>
+                            <p>(3)享受款到发货订单9.8折优惠</p>
+                            <p>(4)享受银牌会员及会员专享产品优惠</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="r-title"><span class="r-icon"><span>2</span></span><span class="r-name">金牌会员</span><span>7折</span></div>
+                        <div class="r-info">
+                            <p>购买金额累计超过1000元 且 购买次数超过  10次  </p>
+                            <p>银牌会员权益：</p>
+                            <p>(1)享受购买百信手机商城所有产品（包括手  机与配件）免邮费政策；</p>
+                            <p>(2)享受货到付款订单手续费8.8折</p>
+                            <p>(3)享受款到发货订单9.8折优惠</p>
+                            <p>(4)享受银牌会员及会员专享产品优惠</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="r-title"><span class="r-icon"><span>3</span></span><span class="r-name">钻石会员</span><span>6折</span></div>
+                        <div class="r-info">
+                            <p>购买金额累计超过1000元 且 购买次数超过  10次  </p>
+                            <p>银牌会员权益：</p>
+                            <p>(1)享受购买百信手机商城所有产品（包括手  机与配件）免邮费政策；</p>
+                            <p>(2)享受货到付款订单手续费8.8折</p>
+                            <p>(3)享受款到发货订单9.8折优惠</p>
+                            <p>(4)享受银牌会员及会员专享产品优惠</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</body>
+</html>

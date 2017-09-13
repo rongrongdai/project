@@ -1,0 +1,108 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>配置详情页面</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">配置详情页面</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab2" class="selected">配置详情</a></li> 
+                 
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    
+    
+<!--    <ul class="seachform">
+    
+    <li><label>会员名</label><input name="" type="text" class="scinput" /></li>
+    </li>
+    <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+    
+    </ul>-->
+    
+    
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+            <th width="20%">配置项</th><th width="20%">配置说明</th><th width="30%">配置值</th><th>操作<a href="./entity?c_name=<{$c_name}>" title="添加配置项"><span class="icon" style="color:gray;" >&oplus;</span></a></th>
+        </tr>
+        </thead>
+        <tbody>
+         <form method='post' action=''>
+                    <foreach name="configs" item="config">
+                        <tr>
+                            <td width="20%"><{$config.c_key}></td><td width="20%"><{$config.c_info}></td><td width="30%" ><input type='text' name='value' value='<{$config.c_value}>' style='width:50%'/><br><span class='hint'></span></td><td><a href='saveConfigItem?cid=<{$config.id}>' style="margin-top:-10px" name="save_item"><input type="button" class="btn" value="保存"/></a></td>
+                       </tr>
+                    </foreach>
+        </form>
+        
+        
+    
+        </tbody>
+    </table>
+     <{$page}>
+   
+  
+    
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+  
+    </div>
+</body>
+<script>
+    $(function(){
+       $("a[name=save_item]").click(function(){
+           var value=$(this).parent().parent().find("input[name=value]").val();
+           $(this).attr("href",$(this).attr("href")+"&val="+value);
+        }) 
+        
+    })
+</script>
+</html>
+
+

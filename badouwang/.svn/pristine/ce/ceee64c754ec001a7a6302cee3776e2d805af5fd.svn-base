@@ -1,0 +1,450 @@
+<?php
+
+class TeachAction extends CommonAction{
+	private $model;
+	public function __construct(){
+		//$this->$model = M('Teach');
+		parent::__construct();
+	}
+	public function index(){
+		//获取最新老师
+		$arr1 = $this->getArrId('小学');
+		$arr2 = $this->getArrId('初中');
+		$arr3 = $this->getArrId('高中');
+		$arr4 = $this->getArrId('文艺');
+
+		//本区域签约老师
+		$city = '200';//模拟城市
+		$sum = M('Authentication')->where("city=$city and type=4")->count();
+
+		//获取推荐老师
+		$data1 = $this->getHotTeacher('英语');
+
+		//获取最新信息
+		$sql = "SELECT h.*,m.user_pic,m.rname FROM bd_teacher_hunt h LEFT JOIN bd_memberfields m ON h.uid=m.uid ORDER BY ctime DESC LIMIT 4";
+		$message = M()->query($sql);
+		foreach($message as $key=>$val){
+			$sec = ceil(($_SERVER['REQUEST_TIME']-$val['ctime'])/60);
+			$message[$key]['btime'] = $this->beforeDate($sec,$val['ctime']);
+			if(empty($val['uid'])){
+				$message[$key]['user_pic'] = "public/images/home/youke.png";
+				$message[$key]['rname'] = "游客";
+			}else if(!empty($val['uid']) && empty($val['user_pic'])){
+				$message[$key]['user_pic'] = "public/images/home/nimg.png";
+			}
+			$len = mb_strlen($val['content'],'utf-8');
+			if($len>70){
+				$message[$key]['content'] = mb_substr($val['content'],0,70,'utf-8');
+				$message[$key]['txtmore'] = mb_substr($val['content'],70,$len-70,'utf-8');
+			}
+		}
+
+		//公告信息
+		/*import('Com.ClassfiyHelper');
+                $gid = M('Classfiy')->where("name='公告信息'")->getField('id');
+		$news = M('Article')->where("gid=$gid")->field('id,title,mtime')->select();*/
+                $cid=cookie('cid');
+                $notices=M('Notice')->where("type='1' and cid='$cid'")->limit(1,6)->select();
+		//合作机构
+		$hezuo = M('Friendlink')->where("type=2")->order("posttime desc")->limit(4)->select();
+
+		$this->assign(array('classfiy'=>$res,'message'=>$message,'arr1'=>$arr1,'arr2'=>$arr2,'arr3'=>$arr3,'arr4'=>$arr4,'sum'=>$sum,'data1'=>$data1,'notices'=>$notices,'hezuo'=>$hezuo));
+		$this->display();
+	}
+
+	//家教列表
+	public function lists(){
+		//家教科目分类
+		import('Com.ClassfiyHelper');
+		$course = ClassfiyHelper::getClassesByName('家教分类',1,M('Classfiy'));
+		//城市区域分类
+		$city=200; //模拟获取
+
+		$course1 = M('District')->where("city_id=$city")->select();
+
+		//热门教师
+		$sql = "SELECT k.id,a.real_name,a.id_front FROM bd_authentication a JOIN bd_teacher_km k ON k.uid=a.uid GROUP BY a.real_name LIMIT 12";
+		$hottch = M()->query($sql);
+		
+		//搜索结果
+	    $pagesize = 8;
+	    if($_GET['keyword']){
+	        $arr = $this->getData(array('keyword'),'get');
+	        $keyword = $arr['keyword'];
+			session('keyword',$keyword,3600);
+
+	        $sum = M('Teach')->where("title like '%{$keyword}%'")->count();
+	        $sql = "SELECT * FROM bd_teach WHERE title like '%{$keyword}%' ORDER BY atime DESC";
+	        $res = $this->setPage($pagesize,$sum,$sql);
+
+	    }else{
+
+	    	$condition = session('keyword');
+	    	$sum = M('Teach')->count();
+	        $sql = "SELECT * FROM bd_teach ORDER BY atime DESC";
+	        $res = $this->setPage($pagesize,$sum,$sql);
+	    }
+	    
+	    $data = $res['data'];    		
+		foreach($data as $key=>$val){
+			$sec = ceil(($_SERVER['REQUEST_TIME']-$val['atime'])/60);
+			$data[$key]['btime'] = $this->beforeDate($sec,$val['atime']);
+		}
+
+		$this->assign(array('course'=>$course,'district'=>$course1,'hot'=>$hottch,'data'=>$data,'link'=>$res['link'],'sum'=>$sum),'assign');
+		$this->display();
+	}
+
+	//代理商列表页
+	public function agentlist(){
+		//本城市所有代理商
+		$city=200; //模拟获取
+		$agent = M('Authentication')->where("city=$city and type=3")->select();
+		//分区代理
+		$arr = $this->getData(array('id'),'get');
+		$district = $arr['id'];
+		if(!empty($district)){
+			$data = M('Authentication')->where("district=$district and type=3")->select();
+		}else{
+			$data = $agent;
+		}
+
+		//隐藏无代理商的区域
+		$area_id = array();
+		foreach($agent as $key=>$val){
+			$area_id[] = $val['district']; 
+		}
+		$area_id = implode(',',array_unique($area_id));
+		if(!empty($area_id)){
+			$area = M('District')->where("id in ($area_id)")->select();
+		}
+		
+		//老师数量
+		foreach($data as $key=>$val){
+			$a_uid = $val['uid'];
+			$data[$key]['count_t']= M('Authentication')->where("uid=$a_uid and type=4")->count();
+			//获取科目老师
+			$data[$key]['yuwen'] = $this->getCourceTeacher('语文',$a_uid);
+			$data[$key]['shuxue'] = $this->getCourceTeacher('数学',$a_uid);
+			$data[$key]['yinyu'] = $this->getCourceTeacher('英语',$a_uid);
+			$data[$key]['wenyi'] = $this->getCourceTeacher('文艺',$a_uid);
+		}
+
+		$this->assign(array('area'=>$area,'agent'=>$data),'assign');
+		$this->display();
+	}
+
+	//家教详情页
+	public function agentdetail(){
+		$sid = $this->getData(array('id'),'get');
+		$id = $sid['id'];
+		if(!empty($id)){
+			//获取某个id的详情信息
+			$sql = "SELECT t.id,t.title,t.introduce,t.content,t.atime,t.price,t.hit,a.real_name,a.address,a.telephone,u.uname FROM bd_teach t JOIN bd_authentication a ON t.uid=a.uid JOIN bd_user u ON t.uid=u.uid WHERE t.id=$id";
+			$data = M()->query($sql);$data=$data[0];
+			$data['content'] = str_replace('\\','',$data['content']);
+			$data['telephones'] = substr_replace($data['telephone'],'****',3,4);
+			$course = $id; 
+
+			//显示评论
+			$sql = "SELECT t.content,t.ctime,m.rname,m.user_pic,u.uname FROM bd_teach_comment t JOIN bd_memberfields m ON t.uid=m.uid JOIN bd_user u ON m.uid=u.uid WHERE aid=$id ORDER BY t.ctime";
+			$comment = M()->query($sql);
+			foreach($comment as $key=>$value){
+				$comment[$key]['user_pic'] = $value['user_pic']?$value['user_pic']:"public/images/home/uimg.png";
+				$comment[$key]['uname'] = $value['rname']?$value['rname']:$value['uname'];
+			}
+		}
+
+		//Ta是否已经报名
+		$suid = session('uid');
+		if($suid){
+			$res_bm = M("jjbm")->where("course=$course and suid=$suid")->find();
+			//Ta是否收藏
+			$id = $id?$id:$pid;
+			$collect = M('Collection')->where("aid=$id and uid=$suid and type=1")->find();
+		}
+		$bm = $res_bm?1:0;
+
+		$this->assign(array('data'=>$data,'bm'=>$bm,'collect'=>$collect,'comment'=>$comment));
+		$this->display();
+	}
+
+	//学生家教报名
+	public function jjbm(){
+		$data = $this->getData(array('stu_name','course','tuid','telephone','qq','email','address'),'post');
+		$data['suid'] = session('uid');
+		$data['type'] = 1;
+		$data['bm_timestamp'] = time();
+		if($data['suid']){
+			$res = M('jjbm')->data($data)->add();
+			if($res){
+				$id = $data['course'];
+				$res2 = M('Teach')->where("id=$id")->setInc('pay');
+
+				//给老师发布站内信息
+				$arr = array();
+				$arr['from_uid'] = '';//系统信息
+				$arr['to_uid'] = $data['tuid'];
+				$arr['type'] = 1;
+				$arr['title'] = '家教报名';
+				$arr['body'] = $data['stu_name'].'报名了家教，快去家教管理栏看看吧';
+				$arr['ctime'] = $data['bm_timestamp'];
+				M('Message')->data($arr)->add();
+
+				//设置积分
+				$c_value = $this->setCredit('经验','yykc',$data['suid']);
+				$msg = "<font color='green'>+".$c_value."积分</font>";
+				
+				
+			}
+		}else{
+			$res = null;
+		}
+		$this->pagego('报名成功! '.$msg,'报名失败,请先登录',$res,"agentdetail?id=$id");
+	}
+
+	public function detail(){
+		$ids = $this->getData(array('id'),'get');
+		$id = (int)$ids['id'];
+		if($id){
+			$sql = "SELECT t.*,a.telephone,a.address FROM bd_teach t JOIN bd_authentication a ON t.uid=a.uid WHERE t.id=$id";
+			$res = M()->query($sql); $data = array();
+			foreach($res as $value){
+				$data = $value;
+			}
+
+			import('Com.UeditorHelper');
+			$txt = UeditorHelper::Ueditor(880,80,120,2);
+			//显示评论
+			$sql = "SELECT t.content,t.ctime,m.rname,m.user_pic,u.uname FROM bd_teach_comment t JOIN bd_memberfields m ON t.uid=m.uid JOIN bd_user u ON m.uid=u.uid WHERE aid=$id ORDER BY t.ctime";
+			$data1 = M()->query($sql);
+			foreach($data1 as $key=>$value){
+				$data1[$key]['user_pic'] = $value['user_pic']?$value['user_pic']:"public/images/home/uimg.png";
+				$data1[$key]['uname'] = $value['rname']?$value['rname']:$value['uname'];
+			}
+			//Ta还发布
+			$uid = $data['uid'];
+			$data2 = M('Teach')->where("uid=$uid")->select();
+			//Ta是否已经报名
+			$course = $id; $suid = session('uid');
+			if($suid){
+				$res_bm = M("jjbm")->where("course=$course and suid=$suid")->find();
+			}
+			$bm = $res_bm?1:0;
+		}
+
+		$this->assign(array('data'=>$data,'txt'=>$txt,'data1'=>$data1,'data2'=>$data2,'bm'=>$bm),'assign');
+		$this->display();
+	}
+
+	//平台老师列表
+	public function teachList(){
+		$arr = $this->getData(array('fname1','fname2','fname3','gname4','tp'),'get');
+		
+		$fname1 = $arr['fname1']?$arr['fname1']:'语文';
+		$fname2 = $arr['fname2']?$arr['fname2']:'语文';
+		$fname3 = $arr['fname3']?$arr['fname3']:'语文';
+		$gname4 = $arr['gname4']?$arr['gname4']:'音乐';
+
+		$data1 = $this->platTeach($fname1,'小学');
+		$data2 = $this->platTeach($fname2,'初中');
+		$data3 = $this->platTeach($fname3,'高中');
+		$data4 = $this->platTeach('文艺',$gname4);
+
+		$this->assign(array('data1'=>$data1,'data2'=>$data2,'data3'=>$data3,'data4'=>$data4,'fname1'=>$fname1,'fname2'=>$fname2,'fname3'=>$fname3,'gname4'=>$gname4,'tp'=>$arr['tp']));
+		$this->display();
+	}
+
+	//所有平台老师
+	public function listsnew(){
+		//家教科目分类
+		import('Com.ClassfiyHelper');
+		$course = ClassfiyHelper::getClassesByName('家教分类',1,M('Classfiy'));
+		
+		//城市区域分类
+		$city=200; //模拟获取
+		$course1 = M('District')->where("city_id=$city")->select();
+
+		//热门教师
+		$sql = "SELECT k.id,a.real_name,a.id_front FROM bd_authentication a JOIN bd_teacher_km k ON k.uid=a.uid GROUP BY a.real_name LIMIT 12";
+		$hottch = M()->query($sql);
+
+		//搜索结果
+	    $pagesize = 8;
+		$sum = M('Teacher_km')->count('distinct uid');
+	    $sql2 = "SELECT k.id,k.price2,a.id_front,a.real_name,a.info,a.t_age,a.address,b.name bname,c.name cname FROM bd_teacher_km k JOIN bd_authentication a ON k.uid=a.uid JOIN bd_classfiy b ON b.id=k.fid JOIN bd_classfiy c ON c.id=k.gid GROUP BY a.real_name";
+	    $res = $this->setPage($pagesize,$sum,$sql2);
+
+	    //最新入驻老师
+	    $sql3 = "SELECT a.real_name,a.id_front,a.t_age,b.name cname,c.name gname FROM bd_authentication a JOIN bd_classfiy b ON a.cid=b.id JOIN bd_classfiy c ON a.grade=c.id WHERE TYPE=5 ORDER BY ctime DESC LIMIT 5";
+	    $newtch = M()->query($sql3);
+
+		$this->assign(array('course'=>$course,'district'=>$course1,'hot'=>$hottch,'data'=>$res['data'],'link'=>$res['link'],'sum'=>$sum,'newtch'=>$newtch));
+		$this->display();
+	}
+
+	//平台老师详情页
+	public function teachDetail(){
+		$arr = $this->getData(array('pid'),'get');
+		$tid = $arr['pid'];
+		if($tid){
+			$sql = "SELECT k.*,a.t_age,a.address,a.real_name,a.id_front,a.info,a.teach_time,a.t_prof,a.school,b.name bname,c.name cname,m.sex FROM bd_teacher_km k JOIN bd_authentication a ON k.uid=a.uid JOIN bd_classfiy b ON b.id=k.fid JOIN bd_classfiy c ON k.gid=c.id JOIN bd_memberfields m ON k.uid=m.uid WHERE k.id=$tid";
+			$data = M('Teach')->query($sql);  $data = $data[0];
+			if(empty($data)) $this->error("抱歉！该课程已下架");
+		}
+		switch($data['sex']){
+			case 0:$data['sex'] = "保密";break;
+			case 1:$data['sex'] = "男";break;
+			case 2:$data['sex'] = "女";break;
+		}
+		$res = M()->query("SELECT SUM(HOUR) shi,COUNT(suid) shou,COUNT(DISTINCT suid) ren FROM bd_jjbm_order WHERE course_id=$tid AND type=1");
+		if($res[0]['shi']==null) $res[0]['shi']='0';
+		//用户是否收藏
+		$uid = session('uid');
+		if($uid){
+			$collect = M('Collection')->where("uid=$uid and aid=$tid")->find();
+		}
+
+		$this->assign(array('data'=>$data,'res'=>$res[0],'collect'=>$collect));
+		$this->display();
+	}
+
+	//预订家教平台老师
+	public function order(){
+		if(!empty($_POST)){
+			$arr = $this->getData(array('tuid','course','course_id','money','type','msg','address','stu_name','place','hour'),'post');
+			$arr['suid'] = session('uid');
+			$arr['bm_time'] = $_SERVER['REQUEST_TIME'];
+			$arr['order_num'] = '828'.str_shuffle($arr['bm_time']).mt_rand(100,999);
+			$res = M("Jjbm_order")->data($arr)->add();
+			if($res){
+				$id = $arr['order_num'];
+				$this->success('预订成功','orderDetail?id='.$id);
+			}else{
+				$this->error('预订失败');
+			}
+		}else{
+			$arr = $this->getData(array('tid'),'get');
+			$tid = $arr['tid'];
+			$sql = "SELECT k.*,a.real_name,a.id_front,a.address,b.name bname,c.name cname FROM bd_teacher_km k JOIN bd_authentication a ON k.uid=a.uid JOIN bd_classfiy b ON k.fid=b.id JOIN bd_classfiy c ON k.gid=c.id WHERE k.id=$tid";
+			$data = M()->query($sql);
+
+			$this->assign(array('data'=>$data[0]));
+			$this->display();			
+		}
+
+	}
+
+	//支付订单
+	public function orderDetail(){
+		if(!empty($_POST)){
+			$arr = $this->getData(array('oid','money','order_num','type'),'post');
+			$uid = session('uid');
+
+			//获取用户可用余额
+			$yue = M('Memberfields')->where("uid=$uid")->getField('money');
+			//余额支付
+			$money = $_POST['money'];
+			if($yue >= $money){
+				$id = $_POST['oid'];
+				$order_num = $_POST['order_num'];
+				$res = M('Memberfields')->where("uid=$uid")->setDec('money',$money);
+				if($res){
+					M('Jjbm_order')->where("id=$id and order_num=$order_num")->setField('ispay',1);
+					$_POST['uid'] = $uid;
+					$_POST['ctime'] = $_SERVER['REQUEST_TIME'];
+					M('Pay_log')->data($_POST)->add();
+				}
+			}else{
+				$res = null;
+			}
+
+			$this->pagego('支付成功','支付失败',$res,U('User/User/uframe').'?page=orderList&type=orderList');
+		}else{
+			$arr = $this->getData(array('id'),'get');
+			$id = $arr['id']?$arr['id']:0;
+			$sql = "SELECT b.*,a.real_name FROM bd_jjbm_order b JOIN bd_authentication a ON b.tuid=a.uid WHERE b.order_num='{$id}'";
+			$data = M()->query($sql);
+			$data[0]['price'] = $data[0]['money']/$data[0]['hour'];
+			//账户余额
+			$uid = session('uid');
+			$sql1 = "SELECT u.uname,m.money FROM bd_user u JOIN bd_memberfields m ON u.uid=m.uid WHERE u.uid=$uid";
+			$data1 = M()->query($sql1);
+			//$money = M('Memberfields')->where("uid=$uid")->getField('money');
+			$this->assign(array('data'=>$data[0],'uname'=>$data1[0]['uname'],'money'=>$data1[0]['money']));
+			$this->display();
+		}
+		
+	}
+
+	//获取家教首页分类最新老师的12条记录
+	private function getArrId($name){
+		$grade = M('Classfiy')->where("name = '{$name}'")->select();
+		$arr = array();
+		foreach($grade as $key=>$val){
+			$arr[] = $val['id'];
+		}
+
+		$list = implode(',',$arr);
+		if(!empty($list)){
+			$condition = strpos($list,',')?"t.gid in($list) and t.type=1":"t.fid in($list) and t.type=1";
+			$sql = "SELECT t.title,t.id,t.uid,t.c_img,t.price,t.content,a.real_name,a.school,a.self_info,a.address,c.name FROM bd_teach t JOIN bd_authentication a ON t.teacher_id=a.id JOIN bd_classfiy c ON c.id=t.fid WHERE $condition ORDER BY atime DESC LIMIT 12";
+			$data = M()->query($sql);
+			foreach($data as $key=>$val){
+				$data[$key]['self_info'] = mb_substr($val['self_info'],0,25,'utf-8');
+			}
+		}
+		
+		return $data;
+	}
+
+	//获取家教首页热门推荐老师的记录
+	private function getHotTeacher($name){
+		$grade = M('Classfiy')->where("name = '{$name}'")->getField('id');
+        if($grade){
+        	$sql = "SELECT a.uid,a.real_name,a.id_front,a.t_prof,a.info,a.address,b.name bname,c.name cname,k.price2,k.id FROM bd_authentication a JOIN bd_teacher_km k ON a.uid=k.uid JOIN bd_classfiy b ON k.fid=b.id JOIN bd_classfiy c ON k.gid=c.id WHERE a.type=5 AND k.fid=$grade LIMIT 4";
+        	$data = M()->query($sql);
+        }else{
+        	$data = null;
+        }
+		return $data;
+	}
+
+	//获取代理商的科目老师
+	private function getCourceTeacher($name,$uid){
+		$arr = M('Classfiy')->where("name = '{$name}'")->find();
+		$fid = (int)$arr['id'];
+		$sql = "SELECT a.real_name,a.self_img,t.id,t.price FROM bd_authentication a JOIN bd_teach t ON a.id=t.teacher_id WHERE a.uid=$uid and t.fid=$fid and a.type=4 LIMIT 5";
+		$data = M()->query($sql);
+
+		return $data;
+	}
+
+	//分页函数
+	private function getPage($page,$total,$pagesize){
+		//加载分页类
+	    import('Com.PageHelper');
+	    PageHelper::init($pagesize,10,$page,$total,'');
+	    $link = PageHelper::getPageInfos();
+	    $limit = PageHelper::getLimit();  $limit = $limit['min'];
+
+	    return array('link'=>$link,'limit'=>$limit);
+	}
+
+	//获取5位某科目平台老师
+	private function platTeach($fname,$gname){
+		$model = M('Classfiy');
+		$arr = $model->where("name='家教分类'")->field('lrf,rft')->find();
+		$fid = $model->where("lrf>{$arr['lrf']} and rft<{$arr['rft']} and name='{$fname}'")->field('lrf,rft')->find();
+		$gid = $model->where("lrf>{$fid['lrf']} and rft<{$fid['rft']} and name='{$gname}'")->getfield('id');
+		//$data = M('Teach')->where("gid=$gid and")->order('hit desc')->limit(5)->select();
+		if($gid){
+			$sql = "SELECT k.id,a.real_name,a.t_age,a.id_front,a.address FROM bd_teacher_km k JOIN bd_authentication a ON k.uid=a.uid WHERE k.gid=$gid LIMIT 5";
+        	$data = M()->query($sql);
+		}
+		return $data;
+	}
+
+
+
+}

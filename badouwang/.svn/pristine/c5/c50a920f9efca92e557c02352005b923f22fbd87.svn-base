@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——个人设置</title>
+
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+<script src="__ROOT__/public/js/validater.js"></script>
+
+</head>
+
+<body>
+<div class="per">
+    <div class="per-top">
+           <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/cz1.jpg" />
+           <div class="set-up">充值中心</div>
+    </div>
+    
+    <div class="per-form">
+        <form action="" method="post" enctype="multipart/form-data" id="dataform">
+           <div class="pheig">
+              <div class="pflat1">充值金额：</div>
+              <div class="pflat2">
+              		<input type="text" class="ipnutcs" id="real_name" name="real_name" value="<{$data.real_name}>" />
+              		<span class="prompt">请输入充值金额，最小为1元</if></span>
+              </div>
+           </div> 
+
+           <div class="pheig psub">
+				<input type="submit" class="subinput" value="确认充值"  id="perqreng"/>
+                <input type="hidden" name="token" value="<{$token}>"/>
+                <input type="hidden" name="timestamp" value="<{$timestamp}>"/>
+           </div> 
+        </form>   
+    </div>           
+</div>
+
+
+<script src="__ROOT__/public/js/home/common.js"></script>
+<script>
+</script>
+</body>
+</html>

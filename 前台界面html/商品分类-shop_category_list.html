@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>分类</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#fff;}
+        .search-area{width:100%;padding:0.18rem 0 0.28rem 0;border-bottom: 1px solid #797979;position:relative;}
+        .search-area>input{width:92.5%;margin:0 auto;height:0.5rem;background-color:#e8e8e8;border-radius:0.06rem;display: block;text-align:center;font-size:0.28rem;}
+        .search-area .s-icon {position: absolute;height: 0.5rem;width: 0.5rem;display: block;top: 0.18rem;left: 1.5rem;background: url(images/search.png) no-repeat center center / 70%;}
+        /*iscroll*/
+        #type-wrapper {width: 21.25%;overflow: hidden;position: absolute;bottom: 0;top:1rem;background-color:#fff;}
+        #type-scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        #type-scroller ul{font-size:0.24rem;}
+        #type-scroller ul li{border-bottom: 1px solid #f2f2f2;text-align: center;line-height: 0.92rem;}
+        #type-scroller ul li.active{color:#ff3c00;}
+
+        #goods-wrapper {width:78.75%;overflow: hidden;position: absolute;bottom: 0;top:1rem;left:21.25%;background-color:#f2f2f2;}
+        #goods-scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        #goods-scroller ul{font-size:0.24rem;}
+        #goods-scroller ul li{}
+        #goods-scroller ul li .type-title{font-size:0.24rem;color:#999;margin: 0.26rem 0 0.08rem 0.12rem;}
+        #goods-scroller ul li .t-goods{overflow: auto;}
+        #goods-scroller ul li .t-goods .t-good-item{width:1.5rem;float:left;background-color:#fff;margin: 0.12rem 0 0.12rem 0.12rem;}
+        #goods-scroller ul li .t-goods .t-good-item img{width:1.5rem;height:1.5rem;}
+        #goods-scroller ul li .t-goods .t-good-item span{display:block;width:1.5rem;line-height:0.46rem;font-size:0.24rem;color:#1e1e1e;text-align:center;}
+        
+        
+    </style>
+
+    <script type="text/javascript">
+        var typeScroll,goodsScroller;
+        function loaded () {
+            typeScroll = new IScroll('#type-wrapper', {
+                mouseWheel: true
+            });
+            goodsScroller = new IScroll('#goods-wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div class="search-area">
+            <input type="text" placeholder="寻找你喜欢的宝贝">
+            <span class="s-icon"></span>
+        </div>
+        <div  id="type-wrapper">
+            <div id="type-scroller">
+                <ul>
+                    <li class="active">女士服装</li>
+                    <li>男士服装</li>
+                    <li>时尚鞋靴</li>
+                    <li>家电办公</li>
+                    <li>护肤彩妆</li>
+                    <li>家居建材</li>
+                    <li>美食茶酒</li>
+                    <li>户外运动</li>
+                    <li>花鸟文娱</li>
+                    <li>动漫游戏</li>
+                    <li>护肤彩妆</li>
+                    <li>家居建材</li>
+                    <li>美食茶酒</li>
+                    <li>户外运动</li>
+                    <li>花鸟文娱</li>
+                    <li>动漫游戏</li>
+                </ul>
+            </div>
+        </div>
+        <div  id="goods-wrapper">
+            <div id="goods-scroller">
+                <ul>
+                    <li>
+                        <div class="type-title">应季热搜</div>
+                        <div class="t-goods">
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="type-title">应季热搜</div>
+                        <div class="t-goods">
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="type-title">应季热搜</div>
+                        <div class="t-goods">
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="type-title">应季热搜</div>
+                        <div class="t-goods">
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                            <div class="t-good-item">
+                                <img src="images/good-type.png" alt="">
+                                <span>藤吊椅</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </article>
+    <script>
+        $('.search-area>input').on('focus',function(){
+            $(this).attr('placeholder','');
+            $(this).next('.s-icon').css('background-image','none');
+        })
+        $('.search-area>input').on('blur',function(){
+            $(this).attr('placeholder','寻找你喜欢的宝贝');
+            $(this).next('.s-icon').css('background-image','url(images/search.png)');
+        })
+    </script>
+</body>
+</html>

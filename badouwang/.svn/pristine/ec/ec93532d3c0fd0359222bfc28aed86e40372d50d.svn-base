@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,p,blockquote,form {margin:0; padding:0;}
+ul,ol {list-style:none;}
+a{ text-decoration:none;}
+img{border:0}
+ 
+/*导航条*/
+  
+
+/*问答页面内容ALL*/
+
+.answeY-one{ width:1200px;  margin:0 auto;}
+.answeY-one .anYe-cen-left{ width:840px; float:left;}
+.answeY-one .anYe-cen-left .any-ye ul{ border-bottom:1px #CCC solid; height:50px; cursor:pointer; margin-top:10px;}
+/*返回栏*/
+.answeY-one .hotnav {height: 30px;line-height: 30px;border-bottom: 2px solid #009170;color: #333;font-size: 12px;}
+.answeY-one .hotnav a {color:#333;}
+.answeY-one .anYe-cen-left .any-ye .any-fl{ font-size:16px; color:#00b38a; /*margin-left:-30px;*/ font-weight:bold;}
+.any-fy{ font-size:14px; color:#00b38a;  color:#808080;}
+.any-fy:hover{ border-bottom:2px #00b38a solid; color:#00b38a;}
+
+.any-ye li{ /*width:100px;*/margin-right:32px; text-align:center;  float:left; line-height:50px;  }
+
+.anY-wy{ margin-left:20px; font-size:14px; color:#808080;}
+.anY-wy .anY-wyi{ color:#00b38a ; margin-right:20px;}
+.anY-wy span{ color:#000;}
+
+
+/*.any-ys{ width:840px; border-bottom:1px #CCC solid; padding:10px 0;overflow:hidden;}
+.any-ys .anY-ysy{ width:80px; height:80px; background:#7d7d7d;float:left;}
+.any-ys .anY-yse{ width:730px; float:left;margin-left:20px;color:#808080; font-size:18px; line-height:25px; cursor:pointer; }
+.any-ys .anY-yse a{font-size:14px; color:#000;}
+.any-ys .anY-yse a:hover{ color:#00b38a;}
+.any-ys .anY-yse .anY-ysey{ font-size:20px; color:#00b38a;}
+.any-ys .anY-yse .anY-ysee{ font-size:12px;}
+.any-ys .anY-yse .anY-yses{ font-size:24px; color:#000;}
+.any-ys .anY-yse .anY-ysew{ width:40px; text-align:center; line-height:25px; background:#b5b5b5; color:#FFF; font-size:14px; margin-left:690px; }
+.any-ys .anY-yse .anY-ysel span{ margin-left:15px; color:#00b38a;}
+.any-ys .anY-yse .anY-ysel a{color: #808080; font-size: 14px; line-height: 25px;}
+.any-ys .anY-yse .anY-yseq{}
+.any-ys .anY-yse .anY-yseq .ay-y1{ font-size:12px;}
+.any-ys .anY-yse .anY-yseq .ay-y2{ font-size:14px;}
+.any-ys .anY-yse .anY-yseba{ position:relative; width:200px; left:620px; top:-30px; font-size:14px;}
+*/
+
+.any-ysnew{ width:840px; border-bottom:1px #CCC dashed; padding:10px 0;overflow:hidden;}
+.any-ysnew .any-gyd{ color:#313131; font-size:18px; font-weight:normal; line-height:1.5; word-break:break-all; word-wrap:break-word; white-space:normal; cursor:pointer;  width:840px; overflow:hidden; }
+.any-ysnew .any-gyd a{ color:#313131;}
+.any-ysnew .any-gyd a:hover{color: #ea5a3d;}
+.any-ysnew .any-gyd .span{ padding:3px; background:#00b38a; color:#FFF; border-radius:5px; font-weight:bolder; margin-right:5px;}
+.any-ysnew .any-gyd .imgs{ width:23px; height:20px;}
+.any-ysnew .any-gyd .spany{color:#d8110b; font-size:14px;}
+
+.any-ysnew .any-ger{ width:840px; overflow:hidden; margin-top:20px;}
+.any-ysnew .any-ger p{color:#808080; line-height:1.6; font-size:14px;}
+.any-ysnew .any-ger a{ color:#00b38a;}
+.any-ysnew .any-ger a:hover{text-decoration: underline;}
+
+.any-ysnew .any-gsan{width:840px; overflow:hidden; color:#808080; font-size:14px; margin:20px 0px;}
+.any-ysnew .any-gsan img{ width:25px; height:25px;}
+.any-ysnew .any-gsan  .sper{ margin:0px 10px;}
+.any-ysnew .any-gsan  .spnd{color:#d8110b;}
+
+
+
+
+
+.anYe-cen-right{ width:300px; float:left; margin-left:60px; margin-top:20px;}
+.anYe-cen-right .pt-re{ width:300px; height:20px; border-left:4px #00b38a solid; margin-top:10px; padding-left:10px; font-size:16px; }
+.anYe-cen-right .pt-rs{ width:300px; height:10px; border-bottom:1px #CCC solid; margin-bottom:20px;}
+.anYe-cen-right .ahaw{ width:300px; overflow:hidden;}
+.anYe-cen-right a{ line-height:23px; color:#999999; width:260px; overflow:hidden; font-size:14px; float:right; margin-bottom:15px;}
+.anYe-cen-right span.ye-sp{ color:#FFF; margin-right:10px; width:22px; text-align:left; font-family: Arial, Helvetica, sans-serif; height:20px; float:left; background: #eb6100; padding-left:2px; padding-right:2px; text-align:center;}
+
+.anYe-cen-right a:hover{ color:#ea5a3d; text-decoration:underline;  }
+.page{ margin:20px 0px 25px 250px; }
+.page a{ font-size:16px; font-weight:bold; color:#666; }
+.page span{ margin-left:5px;}
+.page a:hover{color:#000;}

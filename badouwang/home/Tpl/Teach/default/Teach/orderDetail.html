@@ -1,0 +1,162 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/teach_detail.css"/>
+
+
+<div class="pwid">
+	<div class="hotnav">当前位置：<a href="javascript:"> 订单详情</a></div>
+</div>
+<style>
+    .order_detail{width:800px;margin:20px auto;border:1px solid #00b38a;border-radius:6px;font-family:"微软雅黑";}
+    .order_detail .nav{border-bottom: 1px solid #00b38a;font-size: 18px;padding: 8px 0;text-align: center; }
+	.order_detail .navfs{font-size: 18px;padding:0 100px;}
+    .order_detail ul{margin: 20px 100px; list-style-type:none;}
+    .order_detail ul li{margin:5px auto;color:#666;font-size:14px;padding-bottom:5px;}
+    .order_detail .num{font-size:16px;color:#f93;}
+    .order_detail .pay li span{position:relative;font-size:14px;}
+	.order_detail .pay li #yuo{color:#F93;}
+    .order_detail .pay li img {position:relative;top:6px;}
+    .order_detail .pay .msg{color:red; font-size:14px;margin-left:100px;}
+
+    .order_detail .btn{}
+
+    .order_detail .btn span{font-size:20px;color:#f90;}
+    .order_detail .btn .sub{background-color:#F80;color:white;border:none;cursor:pointer;border-radius:4px;width:150px;height:45px;}
+    .order_detail .btn .sub:hover{background-color:#363;}
+
+
+    #info{display:none;width:300px;height:150px;background:white;text-align:center;line-height:60px;font-weight:200;border:3px solid #ccc;position:absolute;top:0;left:0;z-index:9999;}
+    #info p{margin-bottom:10px;}
+    #info .error{font-size:12px;color:red;height:20px;line-height:20px;float:left;padding-left:100px;}
+    #info .colse{color:#666;font-size:10px;width:30px;height:20px;line-height:20px;float:right;cursor:pointer;}
+    #info .colse:hover{background-color:gray;color:white;}
+    #info input{margin-top:10px;height:30px;}
+    #info button{width:100px;height:30px;margin:20px 0;background:#00b38a;color:white;}
+
+    #background {display:none;position:absolute;top:0; left:0; z-index:9998;  background:gray;}
+
+</style>
+
+<div class="content">
+    <div class="order_detail">
+        <div class="nav">订单信息</div>
+        	<ul>
+        		<li><span>订单编号：<{$data.order_num}></span></li>
+        		<li><span>老师姓名：<{$data.real_name}></span></li>
+        		<li><span>购买课程：<{$data.course}></span></li>
+        		<li><span>课时费：<{$data.place}> <span class="num">￥<{$data.price}></span>/小时</span></li>
+        		<li><span>课时数：<{$data.hour}>小时</span></li>
+        		<li><span>支付金额：<span class="num">￥<{$data.money}></span>元</span></li>
+        	</ul>
+            
+        <div class="navfs">支付方式</div>
+        
+        	<ul class="pay">
+        		<li><label>
+                	<input type="radio" id="rz1" name="type" value="1" />
+        			<span class="meny">使用余额付款：可用余额 <span id="yuo"><{$money}></span> 元<span class="yebz">(余额不足)</span></span>
+                    </label>
+                </li>
+        		<li><label>
+                	<input type="radio" id="rz2" name="type" value="2" />
+        			<img src="__ROOT__/public/images/home/index/alipay.png" width="70px"><span class="msg"></span>
+                    </label>
+                </li>
+
+                <input type="hidden" name="order_num" value="<{$data.order_num}>" />
+                <input type="hidden" name="oid" value="<{$data.id}>" />
+                <input type="hidden" name="money" value="<{$data.money}>" />
+                <input type="hidden" name="ordsubject" value="八斗家教" />
+        	</ul>
+        	<ul class="btn"><button class="sub">支付订单</button></ul>
+
+    		<div id="info">
+                <p>
+                    <span class="error"></span>
+                    <span class="colse">关闭</span>
+                </p>
+            	<p style="clear:both;">
+                    <input id="password" type="password" placeholder="请输入支付密码" />
+                </p>
+                <button id="vpd">确认</button>
+            </div>
+    		<div id="background"></div>
+    </div>
+</div>
+
+
+
+<include file="../../../Public/default/footer" />
+
+
+<script type="text/javascript">
+/*---------余额是否足够判断---------*/
+var Fmoney = parseInt('<{$money}>');
+var Fdadtmoney = parseInt('<{$data.money}>');
+if(Fmoney<Fdadtmoney){
+    $('#rz1').attr('disabled','disabled');
+    $('#rz2').attr('checked','checked');
+    $(".pay").wrap("<form name='pay' action='__APP__/Pay/Pay/doalipay' method='post'></form");
+}else{
+    $('#rz1').attr('checked','checked');
+    $(".pay").wrap("<form name='pay' action='' method='post'></form");
+    $(".yebz").html("");
+}
+/*-------------------------*/
+
+    $(".sub").click(function(){
+        var chk = ($("input:checked").val());
+        if(chk === '1'){
+            //二次验证
+            verifyPass();
+            //$("form[name='pay']").submit();
+        }else if(chk === '2'){
+            $("form[name='pay']").submit();
+        }else{
+            $(".msg").html("请选择支付方式");
+        }
+    });
+    $(".pay").find("input").click(function(){
+        $(".msg").html("");
+        var chkn = $(this).val();
+        if(chkn==='1'){
+            var zhif = parseInt($("#zhif").text()),yuo = parseInt($("#yuo").text());
+            if(zhif>yuo){
+                $("#rz1").attr('checked',false);
+                $(".msg").html("您的余额不足！"); 
+            }else{
+                $("form[name='pay']").attr('action','');
+            }
+        }else{
+            $("form[name='pay']").attr('action','__APP__/Pay/Pay/doalipay');
+        }
+    });
+
+    function verifyPass(){
+        $(".colse").click(function(){
+            $("#info").fadeOut();$("#background").fadeOut();
+        });
+        $("#vpd").click(function(){
+            var pswd = $("#password").val(),uname = "<{$uname}>";
+            var isPswd = (/\S/).test(pswd);
+            if(isPswd){
+                $.post("__APP__/Ajax/AjaxUser/vpass",{uname:uname,password:pswd},function(data){
+                    if(data == 'pass'){
+                        $("form[name='pay']").submit();
+                      }else if(data.limit == 'limit'){
+                        $(".error").text(data.msg);
+                      }
+                },'json');
+            }else{
+                $(".error").html("支付密码不能空");
+            }        
+        });
+
+
+      var pageW = $(window).width(), pageH = $(window).height(), boxW = $("#info").outerWidth(),boxH = $("#info").outerHeight(),scrollH = $(window).scrollTop();
+
+      $("#info").css({'top':(pageH/2-boxH/2+scrollH)+'px','left':(pageW/2-boxW/2)+"px"}).fadeIn();
+      $("#background").css({"opacity":"0.6","filter":'Alpha(Opacity=60)',height:$(document).height(),width:$(document).width() }).fadeIn();;
+    }
+
+
+</script>

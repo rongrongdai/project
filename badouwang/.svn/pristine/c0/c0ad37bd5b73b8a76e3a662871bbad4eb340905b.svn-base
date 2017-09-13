@@ -1,0 +1,95 @@
+<div class="sp-er-left">
+                 <div class="sleft-y <if condition="$page eq 'index'">onw</if>">
+                        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/dymic.png"/>
+                        <span><if condition="$other neq ''">他<else/>我</if>的动态</span>
+                       <div class="sleft-yi  <if condition="$page eq 'index'">wod</if>"></div> 
+                 </div>
+                <div class="sleft-y <if condition="$page eq 'qcenter'">onw</if>">
+                        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/xiewen.png" />
+                        <span><if condition="$other neq ''">他<else/>我</if>的学问</span>
+                        <div class="sleft-yi <if condition="$page eq 'qcenter'">wod</if>"></div>
+                 </div>
+                 
+                 <div class="sleft-y <if condition="$page eq 'teach'">onw</if>">
+                        <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/jiajiao.png" />
+                        <span><if condition="$other neq ''">他<else/>我</if>的家教</span>
+                        <div class="sleft-yi <if condition="$page eq 'teach'">wod</if>"></div>
+                 </div>
+                 
+                 <div class="sleft-y <if condition="$page eq 'course'">onw</if>">
+                       <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/bx.png"/>
+                        <span><if condition="$other neq ''">他<else/>我</if>的培训</span>
+                        <div class="sleft-yi <if condition="$page eq 'course'">wod</if>"></div>
+                 </div>
+                 <if condition="!$other">
+                 <div class="sleft-y <if condition="$page eq 'exam'">onw</if>" >
+                       <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/kaoshi.png"/>
+                        <span><if condition="$other neq ''">他<else/>我</if>的考试</span>
+                        <div class="sleft-yi"></div>
+                 </div>
+                 </if>
+            <if condition="!$other">
+                <div class="sleft-y <if condition="$page eq 'find'">onw</if>" >
+                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/friend.png"/>
+                    <span>找人</span>
+                    <div class="sleft-yi"></div>
+                </div>
+
+                <!-- invite-friend-2015-6-26 -->
+<!--                <div class="sleft-y <if condition="$page eq 'invite'">onw</if>" onclick="invite()" >
+                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/friend.png"/>
+                    <span>邀请注册</span>
+                    <div class="sleft-yi"></div>
+                </div>-->
+
+            </if>
+                  <if condition="!$other">
+                        <div class="sleft-y <if condition="$page eq 'setting'">onw</if>" >
+
+                              <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/setting.png"/>
+                               <span>个性设置</span>
+                               <div class="sleft-yi"></div>
+                        </div>
+                  </if>
+            </div>
+
+
+<script>
+     $(function(){
+         $(".sp-er-left").find(".sleft-y").click(function(){
+             var ustr="";
+         if(location.href.indexOf('?')!==-1){
+              ustr=location.href.substr(location.href.indexOf('?'));
+         }
+       
+         switch($(this).find("span").text()){
+             case '<if condition="$other neq ''">他<else/>我</if>的动态':
+                 location.href="space"+ustr;
+                 break;
+            case '<if condition="$other neq ''">他<else/>我</if>的学问':
+                 location.href="qcenter"+ustr;
+                 break;
+            case '<if condition="$other neq ''">他<else/>我</if>的家教':
+                 location.href="teach"+ustr;
+                 break;
+            case '<if condition="$other neq ''">他<else/>我</if>的培训':
+                 location.href="course"+ustr;
+                 break;
+            case '<if condition="$other neq ''">他<else/>我</if>的考试':
+                 location.href="exam"+ustr;
+                 break;     
+            case '找人':
+                 location.href="find"+ustr;
+                 break;
+            case '个性设置':
+                 location.href="setting"+ustr;
+                 break;
+         };
+         
+     }); 
+     var src=$(".onw").find("img").attr('src');
+     $(".onw").find("img").attr('src',src.replace(/(\w+)\.(jpg|png)/,"$11.$2"));
+      $(".onw span").css("color","#FFF");
+     })
+
+</script>

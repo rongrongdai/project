@@ -1,0 +1,91 @@
+<include file="../../../Public/default/header" />
+    <style>
+.body{margin:0;}
+.pwid{width:1200px;margin:0 auto;}
+.pwid .hotnav{height:30px;line-height:30px;border-bottom:2px solid #009170;color:#333;font-size:14px;}
+.hotnav a{
+    color:#333;
+}
+.p---------------------p{}
+.pwid .tion{}
+.pwid .tion .content{overflow:hidden;}
+.pwid .tion .content .tcona{margin:15px 0 0 0;overflow:hidden;}
+.pwid .tion .content .tcona .conteta{float:left;width:500px;}
+.pwid .tion .content .way{float:left;color:#111;font-weight:normal;line-height:27px;}
+.pwid .tion .content .pui{float:left; font-style:normal;}
+.pwid .tion .content a{float:left;padding:6px 10px;font-size:13px;color:#111; text-decoration:none;}
+.pwid .tion .content .all{background:#009170;color:#FFF;}
+.pwid .tion .content .non{display:none;margin-left:80px;}
+
+
+.pwid .cent {padding:15px 0;overflow:hidden;}
+.pwid .cent .con{float:left;width:205px;height:180px;padding:10px;border:1px solid #999;border-radius:6px;margin:0 6px; background:#F9F9F9;}
+.pwid .cent .con .wtitle {width:205px;height:16px;overflow:hidden;margin-bottom:8px;color:#333;font-size:14px;}
+.pwid .cent .con .wimg   {width:205px;height:110px;overflow:hidden;}
+.pwid .cent .con .wlin   {overflow:hidden;padding-top:15px;}
+.pwid .cent .con .wlin span{color:#999;font-size:13px;}
+.pwid .cent .con .wlin a{float:right;background:#DAF4FE;border:1px solid #aaa;border-radius:3px;padding:4px 8px;color:#009170;text-decoration:none;}
+.pwid .cent .con .wlin a:hover{color:#093;background:#AAF4FE;}
+
+.p---------------------p{}
+.pwid .list{}
+.pwid .list .sous{padding:15px 10px 15px 0; font-family:"微软雅黑";border-bottom:1px solid #ddd;}
+.pwid .list .sous .sz{color:#F03;}
+.pwid .list .sous .jg{float:right;}
+.pwid .list .sous .jg img{float:right;}
+.pwid .list .tent {padding:15px 0;border-bottom:1px dashed #ddd;overflow:hidden;}
+.pwid .list .tent .tentimg{float:left;padding-right:10px;}
+.pwid .list .tent .ent{float:left;width:640px;}
+.pwid .list .tent .ent .contitle{font-size:20px;font-weight:bold;}
+.pwid .list .tent .ent .content{color:#555;font-size:12px;line-height:20px;}
+.pwid .list .tent .ent .time{color:#555;font-size:12px;}
+.pwid .list .tent .right{float:right;}
+.pwid .list .tent .right .xs{color:#F03;font-size:20px; text-align:center;padding:5px 0;}
+.pwid .list .tent .right .xx{padding:6px 10px;background:#009170;color:#FFF;}
+.pwid .list .tent .right .rd{color:#555;font-size:14px; text-align:center;padding:5px 0;}
+
+</style>
+<div class="pwid">
+    <div class="hotnav">当前位置： <a href="__ROOT__"/>首页</a> > 优惠劵列表页</div>
+	<div class="tion">
+		<!----------------------------------------分类1------------------------------------------->
+            <div class="content">
+            	<div class="tcona">
+                	<b class="way">所有分类:<a style="float:none" href="#" class="all">不限</a></b>
+                    <div class="conteta">
+                        <foreach name="classes" item="class">
+                            <a href="?id=<{$class.id}>"><{$class.name}></a>
+                        </foreach>
+                    </div>
+                </div>
+            </div>
+		<!----------------------------------------分类1------------------------------------------->
+    </div>
+    <!------------------------------------>
+    <div class="list" style="margin-top:80px;">
+    	<!--<div class="sous">搜索到<span class="sz">216</span>个相差家教<span class="jg">价格:<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  id="jgimg" src="#" width="20" height="20"></span></div>-->
+        <!------------------------------>
+        <div class="cent">
+            <foreach name="courses" item="course">
+                <div class="con">
+                    <div class="wtitle"><{$course.cname}></div>
+                    <div class="wimg"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$course.timg}>" width="205" height="110" /></div>
+                    <div class="wlin"><span>还剩<if condition="$course.blnumber gt 0"><{$course.blnumber}><else/>0</if>张</span><a href="__ROOT__/index.php/Organ/Organ/odetail?id=<{$course.id}>">立即领取</a></div>
+                </div>
+            </foreach>
+        </div>
+       <!------------------------------>
+    </div>
+</div>
+
+
+
+<script src="__ROOT__/public/js/home/jq.js"></script>
+<script>
+$('.content a').click(function(){
+	$('.' + $(this).parents('div.content').attr('class').replace(/content /,'') + ' a').removeClass('all');	
+	$(this).addClass('all');
+	})
+//$('.moer').click(function(){ $('.non.' + $(this).attr('class').replace(/moer /,'').replace(/ all/,'')).slideToggle();		})
+</script>
+<include file="../../../Public/default/footer" />

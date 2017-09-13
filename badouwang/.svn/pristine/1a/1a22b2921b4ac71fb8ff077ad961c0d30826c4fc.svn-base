@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="javascript:;">会员管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab2" class="selected" id='user'>会员管理</a></li> 
+                 
+            </ul>
+        </div> 
+  	<div id="tab2" class="tabson">
+    
+    
+    <ul class="seachform">
+    
+    <li><label>会员名</label><input name="uname" type="text" class="scinput" /></li>
+    </li>
+    <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询" id='sea'/></li>
+    
+    </ul>
+    
+    
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        
+        <th>会员ID<i class="sort"><img src="__ROOT__/public/images/admin/px.gif" /></i></th>
+        <th>用户名</th>
+        <th>地区</th>
+        <th>注册时间</th>
+        <th>注册IP</th>
+        <th>身份</th>
+        <th>使用状态</th>
+        <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <foreach name="users" item="user" key="i">
+                    <tr class="<if condition='$user.uid%2==1'>odd<else/>even</if>">
+                        <td><{$user.uid}></td>
+                        <td><{$user.uname}></td>
+                        <td><{$user.city}></td>
+                        <td><{$user.reg_timestamp|date="Y-m-d H:i:s",###}></td>
+                        <td><{$user.reg_ip}></td>
+                        <td><foreach name='identity' key='k' item='v'><if condition="$user['identity'] == $k"><{$v}></if></foreach></td>
+                        <td><foreach name='isforbidden' key='k' item='v'><if condition="$user['isforbidden'] == $k"><{$v}></if></foreach></td>
+                        <td>
+                        	<a href="">编辑</a>--
+                        	<if condition="$user['isforbidden'] == 0"><a href="javascript:forbd(<{$user.uid}>);" >禁用</a><else/><a href="javascript:restore(<{$user.uid}>);" style="color:#3B3E40;">恢复</a></if>
+                        </td>
+                    </tr>
+                </foreach>
+        
+        
+    
+        </tbody>
+    </table>
+     <{$link}>
+   
+  
+    
+    </div>  
+       
+	</div> 
+       <script src="__ROOT__/public/js/layer/layer-min.js"></script>
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+    <script>
+            function forbd(uid){
+                if(confirm('您确认要禁用该用户吗？')){
+                    window.location.href="__URL__/forbd?id="+uid;
+                }
+            }
+            function restore(uid){
+                if(confirm('您确认要恢复该用户吗？')){
+                    window.location.href="__URL__/restore?id="+uid;
+                }
+            } 
+            $(function(){
+                $("#sea").click(function(){
+                    var  uname=$("input[name=uname]").val();
+                    if(uname){
+                        var url=location.href;
+                        if(url.indexOf('uname')!==-1){
+                            url=url.substr(0,url.indexOf('uname')-1);
+                        }
+                        if(url.indexOf('?')!==-1){
+                            url+="&uname="+uname;
+                        }else{
+                            url+="?uname="+uname;
+                        }
+                        location.href=location.href+"?uname="+uname;
+                    }else{
+                       $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 2,msg: '请输入用户名！！'}}); 
+                    }
+                })
+            })
+            $(function(){
+                $("#user").click(function(){
+                    if(location.href.indexOf('?')!==-1){
+                        location.href=location.href.substr(0,location.href.indexOf("?"));
+                    }else{
+                        location.reload();
+                    }
+                    
+                });
+            })
+    </script>
+    </div>
+</body>
+
+</html>
+
+

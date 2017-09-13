@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,p,blockquote,form {margin:0; padding:0;}
+ul,ol {list-style:none; }
+a{ text-decoration:none;}
+img{border:0}
+/*导航条*/
+  
+/*代理商内容*/
+
+.dails-one{ width:1200px; margin:0px auto;}
+.dails-one .dails-o{ border-bottom:2px #00b38a solid; line-height:45px;   margin-bottom:20px; color:#4c4c4c; font-size:12px; }
+.dails-one .dails-o a{color:#4c4c4c;}
+.dails-one .dails-o a:hover{  color:#00b38a }
+.dails-one .dails-oy{ width:838px; margin-bottom:20px; float:left;  }
+
+.dails-one .dails-oy .ptw-yi{ height:43px; background:#fefbec; border:1px #f8f2d3 solid;}
+
+.ptw-ye ul{ border-bottom:1px #CCC solid; height:50px; cursor:pointer;}
+.dslil{ font-size:18px; color:#00b38a; margin-left:-27px;}
+.ptw-ye li{ width:100px; text-align:center;  float:left; line-height:50px; }
+.ptw-ye .wda{ border-bottom:3px  #00b38a solid; color:#00b38a;}
+.ptw-ys{ width:100%; margin-bottom:20px;}
+
+
+.syiy{ width:838px;}
+.syiy .ptw-kc{ width:380px; height:153px; float:left; margin:10px 39px 10px 0px;}
+.syiy .pyw-kim{ width:170px; height:140px;}
+.syiy .ptw-k-a{ position:relative; top:-130px; left:190px; width:160px; font-size:12px;}
+.syiy .ptw-k-a span{ color:#890505;}
+.syiy .ptw-k-b{ position:relative; top:-120px; left:190px; color:#fe7e03;}
+.syiy .ptw-k-b span{ background:#00b38a; color:#FFF; margin-left:20px;cursor:pointer;} 
+.syiy .ptw-k-b span:hover{ background:#3dae14;}
+.syiy .ptw-k-c{ position:relative; top:-100px; left:190px; font-size:12px; color:#c5c5c5;}
+.syiy .ptw-k-d{ position:relative; top:-90px; left:190px; font-size:12px; color:#c5c5c5;}
+
+
+
+.dails-oe{ width:300px; float:left; margin-left:60px; }
+.dails-oe .pt-re{ width:290px; height:25px; border-left:5px #00b38a solid; margin-top:21px; padding:10px 0px 0px 10px; }
+.dails-oe .pt-rs{ width:300px; height:10px; border-bottom:1px #CCC solid; margin-bottom:20px;}
+.dails-oe .pt-rsw img{ width:300px; height:127px; border:1px #FFF solid; cursor:pointer;}
+.dails-oe .pt-rsw img:hover{ border:1px #eb6100 solid;}
+.page{ margin:10px 0px 5px 450px;}
+.page a{ font-size:16px; font-weight:bold; color:#000; margin-left:10px;};

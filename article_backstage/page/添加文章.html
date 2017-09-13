@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新建文章</title>
+    <link rel="stylesheet" type="text/css" href="../sass/public.css">
+    <link rel="stylesheet" type="text/css" href="../sass/preview_article.css">
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/quanqiuwa.public.min.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../js/swiper-3.3.1.jquery.min.js"></script>
+    <script type="text/javascript" src="../js/alert_1.0.1.js"></script>
+    <script type="text/javascript" src="../kindeditor/kindeditor.js"></script>
+    <script type="text/javascript" src="../kindeditor/lang/zh_CN.js"></script>
+    <script>
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id');
+        });
+        /*** 点击弹出订单列表*/
+        $(function() {
+            $(".addBut").click(function(){
+                $('#mask').petrus_alert({
+                    $el: $('#mask')
+                });
+            });
+        });
+    </script>
+</head>
+<body  class="talent">
+   <div class="articleLists">
+       <!---头像的位置--->
+       <div class="nav_user">
+           <div class="user_box fl">
+               <div class="user_photo fl">
+                   <img src="../images/icon_head_big.png">
+               </div>
+               <ul class="down_menu hide">
+                   <li>
+                       <a><i class="exit"></i>退出</a>
+                   </li>
+               </ul>
+
+           </div>
+
+           <div class="arrow fl"></div>
+       </div>
+       <!--侧边栏-->
+       <div class="sidebar">
+      
+           <div class="leftA">
+               <ul>
+                   <li class="li_one"><img src="../images/logt2.png"></li>
+                   <li class="li_te"><img src="../images/icon_art.png"></li>
+                   <li><img src="../images/icon_order.png"> </li>
+               </ul>
+           </div>
+
+           <div class="rit_ctLf">
+               <div class="content1">
+                   <div class="c1_left"><a href=""><img src="../images/icon_column.png" ></a>栏目列表</div>
+                   <div class="c1_right"><a class="addLm"><img src="../images/icon_add.png"></a> 添加栏目</div>
+               </div>
+               <div class="content2 tes">
+                   <p class="p1"><img src="../images/icon_art.png"> 以木之名</p>
+                   <p>文章：3</p>
+               </div>
+               <div class="content2 jix">
+                   <p class="p1"><img src="../images/icon_na_02.png"> 一物</p>
+                   <p>文章：3</p>
+               </div>
+               <div class="columnA hide">
+                   <div class="bit">请选择你要选择的栏目</div>
+                   <div class="rid">
+                       <p><input class="col" type="radio" name="card" value="0"> 一物</p>
+                       <p><input class="col" type="radio" name="card" value="0">一木之名</p>
+                       <p><input class="col" type="radio" name="card" value="0">性冷淡家居</p>
+                       <p><input class="col" type="radio" name="card" value="0">小户型在线</p>
+                       <p><input class="col" type="radio" name="card" value="0">有家研究所</p>
+                   </div>
+                   <div class="butA">
+                       <input class="but_cancel" type="button" value="取消">
+                       <input class="but_confirm" type="button" value="确认">
+                   </div>
+               </div>
+
+           </div>
+
+
+
+       </div>
+       <!--侧边栏结束-->
+
+       <!--右边内容--->
+       <div class="rightContAll">
+           <div class="rit_top"></div>
+       <div class="rit_cont">
+           <div class="rit_ctRit">
+               <img class="tes cut" src="../images/bg_big.png">
+               <img src="../images/bg_big.png">
+               <img src="../images/bg_big.png">
+               <img src="../images/bg_big.png">
+               <img src="../images/bg_big.png">
+           </div>
+           <div class="rit_ctRitAll">
+               <input class="bit_bt" type="text" value="输入文章标题">
+               <div class="addImg">
+                   <img class="img" src="../images/icon_image.png">
+                   <p><img src="../images/icon_+.png">添加封面图片<span>(建议图片大小：宽1020X高540）</span></p>
+               </div>
+               <div class="editors">
+                   <div id="editor_id"></div>
+               </div>
+
+               <div class="introduce">
+                   <div class="in_left"><img src="../images/imgs_g.png"></div>
+                   <div class="in_right">
+                       <div class="cont"><span>成美玻尿酸集中补水面膜</span><img src="../images/icon_close.png"></div>
+                       <p>商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                           商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                           商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                       </p>
+                   </div>
+               </div>
+
+
+               <div class="introduce">
+                   <div class="in_left"><img src="../images/imgs_g.png"></div>
+                   <div class="in_right">
+                       <div class="cont"><span>成美玻尿酸集中补水面膜</span><img src="../images/icon_close.png"></div>
+                       <p>商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                           商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                           商品介绍图片，限制三行60字内商品介绍图片，限制三行60字内
+                       </p>
+                   </div>
+               </div>
+
+               <p class="addBut">+在下方新建商品</p>
+
+               <div class="addButton">
+                   <p class="btn but_left">保存</p>
+                   <p class="btn but_cont">发布</p>
+                   <p class="btn but_right" id="preview">预览</p>
+               </div>
+
+           </div>
+
+       </div>
+      </div>
+       <!--右边内容结束--->
+   </div>
+
+
+</body>
+</html>

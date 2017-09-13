@@ -1,0 +1,587 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/teach.css"/>
+<div class="tutor-all">
+<!--导航条-->
+
+<!--家教内容-->
+<div id="playBox">
+ <div class="pre"></div>
+    <div class="next"></div>
+    <div class="smalltitle hcenter">
+      <ul class="hecnter">
+        <li class="thistitle"></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <ul class="oUlplay">
+       <li><a href="javascript:;" target="_blank"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/banner1-jj.jpg" /></a></li>
+       <li><a href="javascript:;" target="_blank"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/banner2-jj.jpg" /></a></li>
+       <li><a href="javascript:;" target="_blank"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/banner3-jj.jpg" /></a></li>
+    </ul>
+  </div>
+
+
+        <div class="con_a">
+            <div class="con"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/pic_jj_01.jpg" /></div>
+            <div class="con"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/pic_jj_02.jpg" /></div>
+            <div class="con"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/pic_jj_03.jpg" /></div>
+            <div class="con" style="margin:0;border:none;">
+                <div class="title"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/gong.png" /><div>最新需求信息</div></div>
+                <div class="link">
+                     <foreach name="news" item="vo" key="i">
+                        <a href="__APP__/Index/Index/news?id=<{$vo.id}>"><div name="left"><li><{$vo.title}></li></div><span name="right"><{$vo.mtime|date="Y/m/d",###}></span></a>
+                     </foreach>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+<div style="width:1200px;margin:0 auto">
+     <div  class="trw-er">
+        <div class="tot-on">
+                  <div class="tut-y">
+                     <div class="tut-yi"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/jt2.png" style=" position:relative; top:8px; right:2px;" />最新老师</div>
+                     <div class="tut-er tou"><a class="xiaox-yi">小学</a></div>
+                     <div class="tut-er"><a class="xiaox-er">初中</a></div>
+                     <div class="tut-er"><a class="xiaox-san">高中</a></div>
+                     <div class="tut-er"><a class="xiaox-si">文艺</a></div>
+                     <div class="tut-er"><a href="__URL__/lists">更多</a></div>
+                  </div>
+                                                  
+                  
+                  <!--小学老师div-->
+                  <div class="tut-e" id="laoshiyi">
+
+                        <foreach name="arr1" item="vo" key="i">
+                            <div class="tut-laoy">
+                                <a href="__URL__/agentdetail?id=<{$vo.id}>">
+                                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vo.c_img}>" width="126px" height="89px" />
+                                    <div class="tut-laoyi">
+                                        <p class="ladw"><{$vo.real_name}>老师</p>
+                                        <p class="ladyy"><{$vo.self_info}>....</p>
+                                        <p class="ladey">立即查看>></p>
+                                    </div>
+                                </a>
+                              <div class="tut-laoer"><{$vo.name}>老师</div>
+                            </div>
+                        </foreach>
+
+                  </div>
+                  <!--老师div结束-->
+                 
+                 
+                  <!--初中老师div-->
+                  <div class="tut-e" style="display:none;" id="laoshier">
+
+                    <foreach name="arr2" item="vo" key="i">
+                            <div class="tut-laoy">
+                                <a href="__URL__/agentdetail?id=<{$vo.id}>">
+                                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vo.c_img}>" width="126px" height="89px" />
+                                    <div class="tut-laoyi">
+                                        <p class="ladw"><{$vo.real_name}>老师</p>
+                                        <p class="ladyy"><{$vo.self_info}>....</p>
+                                        <p class="ladey">立即查看>></p>
+                                    </div>
+                                </a>
+                              <div class="tut-laoer"><{$vo.name}>老师</div>
+                            </div>
+                    </foreach>
+
+                  </div>
+                  <!--老师div结束-->
+                      
+                 <!--高中老师div-->
+                  <div class="tut-e" style="display:none;" id="laoshisan">
+
+                    <foreach name="arr3" item="vo" key="i">
+                            <div class="tut-laoy">
+                                <a href="__URL__/agentdetail?id=<{$vo.id}>">
+                                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vo.c_img}>" width="126px" height="89px" />
+                                    <div class="tut-laoyi">
+                                        <p class="ladw"><{$vo.real_name}>老师</p>
+                                        <p class="ladyy"><{$vo.self_info}>....</p>
+                                        <p class="ladey">立即查看>></p>
+                                    </div>
+                                </a>
+                              <div class="tut-laoer"><{$vo.name}>老师</div>
+                            </div>
+                    </foreach>
+
+                </div>
+                <!--老师div结束-->
+                 
+                 
+                 <!--文艺老师div-->
+                  <div class="tut-e" style="display:none;" id="laoshisi">
+                  
+                    <foreach name="arr4" item="vo" key="i">
+                            <div class="tut-laoy">
+                                <a href="__URL__/agentdetail?id=<{$vo.id}>">
+                                    <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vo.c_img}>" width="126px" height="89px" />
+                                    <div class="tut-laoyi">
+                                        <p class="ladw"><{$vo.real_name}>老师</p>
+                                        <p class="ladyy"><{$vo.self_info}>....</p>
+                                        <p class="ladey">立即查看>></p>
+                                    </div>
+                                </a>
+                              <div class="tut-laoer"><{$vo.name}>老师</div>
+                            </div>
+                    </foreach>
+
+                  </div>
+                  <!--老师div结束-->
+                 
+        
+     </div>
+          <div class="tot-tw">
+               <div class="indexfour-w-e">
+                 <div class="indexfouryi"><p>我要找老师</p></div>
+              </div>
+               
+               <div class="tot-we">
+                 <textarea rows="12" class="zhal" cols="33" placeholder="需要什么老师?" maxlength="200"></textarea>
+                 <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/any.gif" class="xyas" onclick="hunt()" />
+               </div>
+          </div>
+          
+     </div>
+
+
+
+
+        <div class="trw-san">
+            <div class="trw-sany">
+               <p class="tcjie">推荐老师</p>
+               <p class="tcjiy">本地区域已有<a href="__URL__/teachList"><span class="zkq"> <{$sum}> </span></a>名老师加
+               盟八斗家教 > ><a href="__URL__/teachList"><span class="zkq">查看全部</span></a></p>
+        <div class="trw-yw aoshu"><p onclick="hot('英语')">英语</p></div>
+        <div class="trw-yw"><p onclick="hot('奥数')">奥数</p></div>
+        <div class="trw-yw"><p onclick="hot('中考')">中考</p></div>
+        <div class="trw-yw"><p onclick="hot('高考')">高考</p></div>
+        <div class="trw-yw"><p onclick="hot('音乐')">音乐</p></div>
+  
+            </div>
+             
+             
+         <!--奥数div-->
+            <div class="trw-sane">
+            <foreach name="data1" item="vo" key="i">  
+
+               <div class="trw-saye">
+                    <div class="tu-zy">
+                      <div class="tu-zyi">
+                        <div><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vo.c_img}>" class="t-yua" /></div>
+                          <p class="t-yuy"><{$vo.real_name}></p><!-- <p class="t-yue">长江家政</p> --><p class="t-yus v<{$i}>" id="yin1yi">在校大学生</p>
+                      </div>
+                             
+                      <div class="tu-zer">
+                        <p class="tu-zery"><{$vo.title}></p>
+                        <p class="tu-zere">授课对象:</p>
+                        <p>刚刚接触英语的小学生，</p>
+                        <p>口语成绩不好，写作能力不行的。</p>
+                        <p class="tu-zere">授课范围:</p>
+                        <p><{$vo.address}></p>
+                      </div>
+                      
+                      <div class="tu-zsan">
+                        <div class="tu-zsany"><p class="t-hp">好评</p><p>10分</p></div>
+                        <div class="tu-zsanyi">
+                           <p class="t-hp">服务费</p><p><{$vo.price}>/小时</p>
+                        </div>
+                        <a href="__URL__/teachDetail?pid=<{$vo.id}>"><p class="t-yiy">查看详情</p></a>
+                        <!-- <p class="t-yie">剩余时间：6天 10:10</p> -->
+                      </div>
+                  </div>
+                  <div class="tu-wan v<{$i}>" style="display:none;" id="jsyi">
+                      <div class="tu-watup" ><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pic_shanj.png" /></div>
+                     <p>介绍：<{$vo.content}></p>
+                  </div>
+               </div>
+
+            </foreach>   
+    
+        </div>
+        <!--奥数div结束-->
+             
+      </div>
+
+
+        <div  class="trw-si"><a name="news"></a>
+             <div class="trw-sy">
+              <div class="indexfour-w-e">
+                 <div class="indexfouryi"><p>最新信息</p></div>
+              </div>
+
+    
+            <div id="message">  
+              <foreach name="message" item="vo" key="i">
+                <div class="trw-sie">
+                    <div class="trw-siey"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.user_pic}>" width="68px" height="72px" /></div>
+                    <div class="trw-sieer">
+                      <p><b style="font-size:14px;"><{$vo.rname}> 说：</b>“<{$vo.content}><if condition="$vo.txtmore neq ''"><span id="more1">···详情</span><span id="more2"><{$vo.txtmore}></span></if>”<div class="to-fz"><{$vo.btime}></div><p></p>
+                    </div>                  
+                </div>
+              </foreach>
+            </div>  
+               <div id="chakg" style="width:800px;padding:30px 0;"><input type="button" value="查看更多" class="chaokg" onclick="more(<{$vo.id}>)"/></div>
+             </div>
+             
+             
+             
+             
+             <!--合作机构-->
+             <div class="trw-se">
+                <div class="indexfour-w-e">
+                 <div class="indexfouryi"><p>合作机构</p>
+                 </div>
+                 
+              </div>
+                 <foreach name="hezuo" item="vo" key="i">
+                   <div class="trz-syi">
+                      <a href="http://<{$vo.url}>"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$vo.logo}>" class="tiyrdf" /></a>
+                   </div>
+                 </foreach>
+             </div>
+             
+             
+        </div>
+
+<div id="infos">发表</div><div id="info">成功</div>
+</div>
+</div>
+
+<script>
+    //文字滚动
+    function scroll_news(){
+    $(function(){
+    $('.link a').eq(0).fadeOut('slow',function(){
+    //   alert($(this).clone().html());
+    //克隆:不用克隆的话，remove()就没了。
+    $(this).clone().appendTo($(this).parent()).fadeIn('slow');
+    $(this).remove();
+    });
+    });
+    }
+    setInterval('scroll_news()',1500);
+    </script>
+<script src="__ROOT__/public/js/jquery.vticker-min.js"></script>
+
+
+<script type="text/javascript">
+    $('.tut-er').mouseover(function(){
+          $('.tut-er').removeClass('tou');
+         $(this).addClass('tou');
+    });
+        
+         $('.xiaox-yi').mouseover(function(){
+              $('#laoshiyi').css({display:'block'});
+              $('#laoshier').css({display:'none'});
+              $('#laoshisan').css({display:'none'});
+              $('#laoshisi').css({display:'none'});           
+         });
+         
+        $('.xiaox-er').mouseover(function(){
+              $('#laoshiyi').css({display:'none'});
+              $('#laoshier').css({display:'block'});
+              $('#laoshisan').css({display:'none'});
+              $('#laoshisi').css({display:'none'});           
+         });
+         
+         $('.xiaox-san').mouseover(function(){
+              $('#laoshiyi').css({display:'none'});
+              $('#laoshier').css({display:'none'});
+              $('#laoshisan').css({display:'block'});
+              $('#laoshisi').css({display:'none'});           
+         });
+         
+         $('.xiaox-si').mouseover(function(){
+              $('#laoshiyi').css({display:'none'});
+              $('#laoshier').css({display:'none'});
+              $('#laoshisan').css({display:'none'});
+              $('#laoshisi').css({display:'block'});              
+         });
+/*             $('.tut-laoy').mouseover(function(){
+                
+                 $(this).find('.tut-laoyi').css({display:'block'});
+                 $(this).find('.tut-laoer').css({display:'none'});
+             
+             });
+                
+            $('.tut-laoy').mouseout(function(){
+                 $(this).find('.tut-laoyi').css({display:'none'});
+                 $(this).find('.tut-laoer').css({display:'block'});
+            
+             });    */    
+                    
+                    
+$(".tu-zy #yin1yi").live('mouseover',function(){
+   vfid = '.tu-wan.' + $(this).attr('class').replace(/t-yus /,''); 
+    $(vfid).css({display:'block'});
+})
+$(".tu-zy #yin1yi").live('mouseout',function(){
+   vfid = '.tu-wan.' + $(this).attr('class').replace(/t-yus /,''); 
+    $(vfid).css({display:'none'});
+})
+    
+
+ $('.trw-yw').click(function(){ 
+          $('.trw-yw').removeClass('aoshu');
+         $(this).addClass('aoshu');
+    });
+
+//最新信息
+$(".trw-sieer").find("#more1").live('click',function(){
+  $(this).hide();
+  $(this).next("#more2").show();
+  var h = $(this).parent().height(),hh = parseInt($(this).parent().parent().parent().css('height'));
+  $(this).parent().parent().parent().css('height',h+65);
+  $(this).parent().parent().css('backgroundColor','pink');
+
+  $(this).parent().parent().parent().mouseleave(function(){
+    $(this).find("#more1").show();
+    $(this).find("#more2").hide();
+    $(this).css('height',hh);
+    $(this).find(".trw-sieer").css('backgroundColor','white');
+  });
+
+});
+
+
+
+
+function hunt(){
+  var content = $(".zhal").val();
+  var pattern = (/\S/).exec(content);
+  
+  if(content == '' || !pattern){
+      shows('亲！请填写需求信息');
+  }else if(content.length<20){
+      shows('亲！您输入的内容太少');
+  }else{
+    $.post("__ROOT__/index.php/Ajax/AjaxTeach/hunt",{'content':content},function(data){
+      if(data){
+        $(".zhal").val('');
+        if(data.txtmore){
+          var node = '<div class="trw-sie"><div class="trw-siey"><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"  src="__ROOT__/'+data.img+'" width="68px" height="72px" /></div><div class="trw-sieer"><p><b style="font-size:14px;">'+data.rname+' 说：</b>“'+data.content+'<span id="more1">···详情</span><span id="more2">'+data.txtmore+'</span>”<div class="to-fz">'+data.btime+'</div></p></div></div>';
+        }else{
+          var node = '<div class="trw-sie"><div class="trw-siey"><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"  src="__ROOT__/'+data.img+'" width="68px" height="72px" /></div><div class="trw-sieer"><p><b style="font-size:14px;">'+data.rname+' 说：</b>“'+data.content+'”<div class="to-fz">'+data.btime+'</div></p></div></div>';
+        }
+        
+        $(node).fadeIn(300).prependTo("#message");
+        window.location.href = "#news";
+        show('发布成功');
+      }
+    },'json')
+
+  }
+}
+
+function more(id){
+    $("#chakg").html("");
+    $('<div style="margin-left:50%"><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"   src="__ROOT__/public/images/home/jiazai.gif" width="30" height="30" /></div>').appendTo("#chakg");
+    $.post("__ROOT__/index.php/Ajax/AjaxTeach/more",{'id':id},function(data){
+        if(data){
+          for(var i=0;i<data.length;i++){
+            if(data[i].txtmore){
+              var node = '<div class="trw-sie"><div class="trw-siey"><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"  src="__ROOT__/'+data[i].user_pic+'" width="68px" height="72px" /></div><div class="trw-sieer"><p><b style="font-size:14px;">'+data[i].rname+' 说：</b>“'+data[i].content+'<span id="more1">···详情</span><span id="more2">'+data[i].txtmore+'</span>”<div class="to-fz">'+data[i].btime+'</div></p></div></div>';
+            }else{
+              var node = '<div class="trw-sie"><div class="trw-siey"><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"  src="__ROOT__/'+data[i].user_pic+'" width="68px" height="72px" /></div><div class="trw-sieer"><p><b style="font-size:14px;">'+data[i].rname+' 说：</b>“'+data[i].content+'”<div class="to-fz">'+data[i].btime+'</div></p></div></div>';
+            }
+            $(node).appendTo("#message");
+            var mid = data[i].id;
+          }
+          $("#chakg").html("");
+          var nodd = '<input type="button" value="查看更多" class="chaokg" onclick="more('+mid+')"/>';
+          $(nodd).appendTo("#chakg");
+        }else{
+          $("#chakg").html("");
+          $("<span class='chaokg'>没有更多信息啦</span>").appendTo("#chakg");
+        }
+    },'json')
+}
+
+function shows(text){
+  $("#infos").html(text).css({'top':'900px','left':"1040px"}).fadeIn(1000).delay(500).fadeOut(1000);
+}
+function show(text){
+  var pageW = $(window).width(), pageH = $(window).height(), boxW = $("#info").outerWidth(),boxH = $("#info").outerHeight(),scrollH = $(window).scrollTop();
+  $("#info").html(text).css({'top':(pageH/2-boxH/2+scrollH)+'px','left':(pageW/2-boxW/2)+"px"}).fadeIn(1000).delay(500).fadeOut(1000);
+}
+
+//切换推荐老师
+function hot(id){
+    $(".trw-sane").html("");
+    $.post("__ROOT__/index.php/Ajax/AjaxTeach/getHot",{'id':id},function(data){
+        if(data){
+          for(var i=0;i<data.length;i++){
+              var node = '<div class="trw-saye"><div class="tu-zy"><div class="tu-zyi"><div><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"  src="__ROOT__'+data[i].c_img+'" class="t-yua" /></div><p class="t-yuy">'+data[i].real_name+'</p><p class="t-yus v'+i+'" id="yin1yi">在校大学生</p></div><div class="tu-zer"><p class="tu-zery">'+data[i].title+'</p><p class="tu-zere">授课对象:</p><p>刚刚接触英语的小学生，</p><p>口语成绩不好，写作能力不行的。</p><p class="tu-zere">授课范围:</p><p>'+data[i].address+'</p></div><div class="tu-zsan"><div class="tu-zsany"><p class="t-hp">好评</p><p>10分</p></div><div class="tu-zsanyi"><p class="t-hp">服务费</p><p>'+data[i].price+'/小时</p></div><a href="__URL__/agentdetail?pid='+data[i].id+'"><p class="t-yiy">查看详情</p></a></div></div><div class="tu-wan v'+i+'" style="display:none;" id="jsyi"><div class="tu-watup" ><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"  src="__ROOT__/public/images/home/pic_shanj.png" /></div><p>介绍：'+data[i].self_info+'</p></div></div>';
+
+              $(node).appendTo(".trw-sane");
+          }
+        }
+
+    },'json');
+
+}
+
+//搜索
+$("#indexte").attr('placeholder','家教搜索');
+function search(){
+  $("#indexte").wrap("<form id='search' action='__URL__/lists' method='get'></form>");
+  var tt = $("#indexte").val();
+  if(tt){ $("#search").submit(); }
+
+}
+
+$(window).keydown(function(e){
+  //if(e.keyCode == 13){search();}
+});
+
+
+		function getStyle(obj,name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name]
+	}
+	else
+	{
+		return getComputedStyle(obj,false)[name]
+	}
+}
+
+function getByClass(oParent,nClass)
+{
+	var eLe = oParent.getElementsByTagName('*');
+	var aRrent  = [];
+	for(var i=0; i<eLe.length; i++)
+	{
+		if(eLe[i].className == nClass)
+		{
+			aRrent.push(eLe[i]);
+		}
+	}
+	return aRrent;
+}
+
+function startMove(obj,att,add)
+{
+	clearInterval(obj.timer)
+	obj.timer = setInterval(function(){
+	   var cutt = 0 ;
+	   if(att=='opacity')
+	   {
+		   cutt = Math.round(parseFloat(getStyle(obj,att)));
+	   }
+	   else
+	   {
+		   cutt = Math.round(parseInt(getStyle(obj,att)));
+	   }
+	   var speed = (add-cutt)/4;
+	   speed = speed>0?Math.ceil(speed):Math.floor(speed);
+	   if(cutt==add)
+	   {
+		   clearInterval(obj.timer)
+	   }
+	   else
+	   {
+		   if(att=='opacity')
+		   {
+			   obj.style.opacity = (cutt+speed)/100;
+			   obj.style.filter = 'alpha(opacity:'+(cutt+speed)+')';
+		   }
+		   else
+		   {
+			   obj.style[att] = cutt+speed+'px';
+		   }
+	   }
+	   
+	},30)
+}
+
+  window.onload = function()
+  {
+          $(".trw-y").css("position",'relative').css("left","25px");
+          $(".trw-y").find("li").each(function(){
+            var lt=$(this).find("a").find("span[name=left]").text();
+           if(lt.length>4){
+               $(this).find("a").find("span[name=left]").text(lt.substr(0,4)+"..");
+           };
+         })
+         $(".trw-biali").vTicker({
+                speed: 500,
+                pause: 3000,
+                showItems: 4,
+                animation: 'fade',
+                mousePause: false,
+                height: 180,
+                direction: 'up'
+          });
+	  var oDiv = document.getElementById('playBox');
+	  var oPre = getByClass(oDiv,'pre')[0];
+	  var oNext = getByClass(oDiv,'next')[0];
+	  var oUlBig = getByClass(oDiv,'oUlplay')[0];
+	  var aBigLi = oUlBig.getElementsByTagName('li');
+	  var oDivSmall = getByClass(oDiv,'smalltitle')[0];
+          var aLiSmall=$(".smalltitle").find("li");
+	  var width=$("#playBox").innerWidth();
+          var rate=width/1440;
+          $("#playBox").height($("#playBox").height()*rate);
+          $(".oUlplay").find("img").width(width);
+	  function tab()
+	  {
+	     for(var i=0; i<aLiSmall.length; i++)
+	     {
+		    aLiSmall[i].className = '';
+	     }
+	     aLiSmall[now].className = 'thistitle'
+	     startMove(oUlBig,'left',-(now*aBigLi[0].offsetWidth))
+	  }
+	  var now = 0;
+	  for(var i=0; i<aLiSmall.length; i++)
+	  {
+		  aLiSmall[i].index = i;
+		  aLiSmall[i].onclick = function()
+		  {
+			  now = this.index;
+			  tab();
+		  }
+	 }
+	  oPre.onclick = function()
+	  {
+		  now--
+		  if(now ==-1)
+		  {
+			  now = aBigLi.length;
+		  }
+		   tab();
+	  }
+	   oNext.onclick = function()
+	  {
+		   now++
+		  if(now ==aBigLi.length)
+		  {
+			  now = 0;
+		  }
+		  tab();
+	  }
+	  var timer = setInterval(oNext.onclick,5000) //滚动间隔时间设置
+	  oDiv.onmouseover = function()
+	  {
+		  clearInterval(timer)
+	  }
+	   oDiv.onmouseout = function()
+	  {
+		  timer = setInterval(oNext.onclick,5000) //滚动间隔时间设置
+	  }
+  }
+ 
+
+</script>
+
+
+<include file="../../../Public/default/footer" />

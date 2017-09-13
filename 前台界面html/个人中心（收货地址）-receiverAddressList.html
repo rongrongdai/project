@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>收货地址</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeeef;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0.1rem;bottom: 0.88rem;left: 0;width: 100%;overflow: hidden;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}        
+
+        /*头部*/
+        header{width:100%;position:fixed;top:0;z-index:2;font-size:0.24rem;text-align:center;background-color:#fff;height:0.8rem;}
+        header .del-btn{float: right;padding: 0 0.2rem;border: 1px solid #aaa;line-height: 0.5rem;height: 0.5rem;margin: 0.15rem;border-radius: 0.1rem;}
+        /*底部*/
+        .m-footer{width:100%;position:fixed;bottom: 0;z-index:2;font-size:0.24rem;text-align:center;background-color:#fff;overflow: hidden;}
+        .m-footer>span{display:inline-block;vertical-align:middle;}
+        .m-footer .plus-icon{color: #999;cursor: pointer;font:400 1rem/0.88 arial;text-align: center;width: 0.88rem;}
+        /*删除提示窗*/
+        .bg-layer{background: rgba(0,0,0,0.5);width: 100%;top:0;bottom:0;z-index: 3;position: fixed;display:none;}
+        .alert{width: 76.5625%;background: #fff;z-index: 4;position: fixed;font-size: 0.28rem;text-align: center;border-radius: 0.1rem;top: -100%;left: 11.71875%;-webkit-animation: animDialog .4s ease-out;animation: animDialog .4s ease-out;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 10ms;display:none;}
+        .alert-show{display:block;top: 22%;}
+        @-webkit-keyframes animDialog {
+         from{-webkit-transform: scale(.05);transform: scale(.05);}
+         to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        @keyframes animDialog {
+          from{-webkit-transform: scale(.05);transform: scale(.05);}
+          to{-webkit-transform: scale(1);transform: scale(1);}
+        }
+        .alert .a-info{padding:0.33rem 0.3rem 0.15rem 0.3rem;border-bottom: 1px solid #eeeef1;min-height: 0.7rem;}
+        .alert .a-btn>div{width: 50%;float: left;    height: 0.62rem;line-height: 0.62rem;color:#226bfb;}
+        .alert .a-btn .cancel{border-right: 1px solid #eeeef1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+
+        /*地址列表*/
+        .a-item{font-size: 0.26rem;background-color: #fff;margin: 0 0 0.2rem 0;}
+        .a-item .a-info{padding: 0.24rem;width: 100%;box-sizing: border-box;}
+        .a-item .a-info>p{margin:0.1rem 0;}
+        .a-item .a-info .a-user>span{font-size:0.3rem;}
+        .a-item .a-info .a-user .a-phoneNo{margin-left:0.9rem;}
+        .a-item .a-operate{overflow: auto;line-height: 0.7rem;margin: 0 0.24rem;border-top: 1px solid #eeeef1;}
+        .a-item .a-operate .check{float:left;}
+        .a-item .a-operate .check>span{display:inline-block;vertical-align:middle;}
+        .a-item .a-operate .check .check-box{height: 0.3rem;width: 0.3rem;background:url("images/select-box0.png") no-repeat scroll center center /contain;margin-right:0.16rem;}
+        .a-item .a-operate .check>span.active{background-image:url("images/select-box1.png");}
+        .a-item .a-operate .del-wrap{float:right;}
+        .a-item .a-operate .del-wrap>span{display:inline-block;vertical-align:middle;}
+        .a-item .a-operate .del-wrap .del-icon{height: 0.3rem;width: 0.3rem;background:url("images/del-icon.png") no-repeat scroll center center / contain;margin-right:0.16rem;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var Scroll,skuScroller;
+        function loaded () {
+            Scroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <!--<header>
+        <span class="del-btn">删除</span>
+    </header>-->
+    <article id="wrapper">
+        <div id="scroller">
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+           <div class="a-item">
+               <div class="a-info">
+                   <p class="a-user"><span>罗小姐</span><span class="a-phoneNo">13322225555</span></p>
+                   <p>湖北省恩施市航空大道39号拾花摄（电力公司斜对面摩尔城旁）</p>
+               </div>
+               <div class="a-operate">
+                 <div class="check">
+                     <span class="check-box"></span><span>选择地址</span>
+                 </div>
+                 <div class="del-wrap"><span class="del-icon"></span><span>删除</span></div>
+               </div>
+           </div>
+        </div>
+    </article>
+    <footer class="m-footer">
+            <span class="plus-icon">+</span><span>添加收货地址</span>
+    </footer>
+    <div class="bg-layer"></div>
+    <div class="alert">
+        <div class="a-info">确定删除该地址？</div>
+        <div class="a-btn">
+            <div class="cancel">取消</div>
+            <div>确认</div>
+        </div>
+    </div>
+    
+    <script>
+        /*checkbox*/
+        $('.a-item .check').on('tap',function(){
+            $(this).find('.check-box').toggleClass('active');
+        });
+        /*删除提示窗*/
+        $('.a-item .del-wrap').on('tap',function(){
+            $('.bg-layer').css('display','block');
+            $('.alert').addClass('alert-show');
+        });
+        $('.bg-layer').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+        $('.alert .cancel').on('tap',function(){
+            $('.bg-layer').css('display','none');
+            $('.alert').removeClass('alert-show');
+        });
+
+        
+        //$('.alert').addClass('alert-show');
+    </script>
+</body>
+</html>

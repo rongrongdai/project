@@ -1,0 +1,48 @@
+<?php
+//家教控制器
+class TeachAction extends CommonAction{
+    //获取附近家教列表
+    public function getAroundTeach(){
+        
+    }
+    //报名家教
+    public function inTeach(){
+        $arr = $this->getData(array('tuid','course','course_id','type','msg','address','stu_name','place','hour'),'post');
+        if(!empty($arr['tuid'] && $arr['course'] && $arr['course_id']  && $arr['address'] && $arr['place'] && $arr['hour'])){
+                        //课程价格从数据库获取，防止用户篡改
+			switch($arr['place']){
+				case '老师上门':$price = "price1";break;
+				case '学生上门':$price = "price2";break;
+				case '协商地点':$price = "price3";break;
+			}
+			$prices = M('Teacher_km')->where("id=".$arr['course_id'])->getField($price);
+			$arr['money'] = $prices*$arr['hour'];       
+			$arr['suid'] = session('uid');
+			$arr['bm_time'] = $_SERVER['REQUEST_TIME'];
+			$arr['order_num'] = '828'.str_shuffle($arr['bm_time']).mt_rand(100,999);
+			$res = M("Jjbm_order")->data($arr)->add();
+			if($res){
+				$id = $arr['order_num'];
+				$this->success('预订成功','orderDetail?id='.$id);
+			}else{
+				$this->error('预订失败');
+			}
+        }else{
+            $this->errorkey($arr,array('msg'));
+        }
+    }
+    //分享家教
+    //收藏家教老师
+    public function Tcollect(){
+        $param=$this->getData(array('uid'), 'post');
+        if( $param['uid']){
+            $param['aid']=$param['uid'];
+            $param['type']=5;$param['c_timestamp']=time();
+            $res=M('Collection')->add($param);
+            $this->ajaxr($res, '收藏成功', '收藏失败');
+        }else{
+            $this->errorkey($param);
+        }
+    }
+}
+

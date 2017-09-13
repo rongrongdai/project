@@ -1,0 +1,10 @@
+<?php
+//好友控制器
+class FriendAction extends CommonAction{
+    //获取附近好友
+    //关注
+    //获取好友列表
+    //获取培训机构
+    //获取家教
+}
+

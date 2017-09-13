@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>我的订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/mobiscroll.custom-2.17.0.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0.7rem;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        .order-header{font-size:0.24rem;background-color:#fff;text-align:center;margin:0 0 0.1rem 0;position:relative;height:0.68rem;}
+        .order-header>span{width:20%;float:left;line-height:0.68rem;}
+        .order-header>span.active{color: #ff6519;}
+        .order-header .active-line{position:absolute;background-color:#e24355;height:1px;width:20%;bottom:0;left:0;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-perspective: 1000;perspective: 1000;-webkit-transform-style: preserve-3d;-webkit-transition-duration: 400ms;}
+        .order-body{font-size:0.24rem;}
+
+        .no-data{text-align: center;}
+        .no-data .img-wrap{width: 1.5rem;height: 1.5rem;border-radius: 100%;margin: 2rem auto 0 auto;background-color: #fff;line-height: 1.5rem;}
+        .no-data .img-wrap img{width:100%;}
+        .no-data .msg{font-size:0.3rem;margin: 0.62rem 0 0.3rem 0;color:#7f7f7f;}
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article>
+        <div>
+            <div class="order-header">
+                <span class="active">全部</span><span>待付款</span><span>待发货</span><span>待收货</span><span>售后中</span>
+                <div class="active-line"></div>
+            </div>
+            <div class="order-body" id="wrapper">
+                <div id="scroller">
+                  <div class="no-data"> 
+                    <div class="img-wrap">
+                      <img src="images/order-empty.png" alt="">
+                    </div>
+                    <p class="msg">您还没订单~</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+    <script>
+        /*订单头部*/
+        $('.order-header>span').on('tap',function(){
+            var that = this;
+            $('.order-header>span').each(function(){
+                if(this==that){
+                  $(this).addClass('active');
+                }else{
+                  $(this).removeClass('active');
+                }
+            });
+            var i = $(this).index();
+            var left = Number(i)?(Number(i)*20):0;
+            $('.order-header .active-line').css('left',left+'%');
+        });
+        
+    </script>
+</body>
+</html>

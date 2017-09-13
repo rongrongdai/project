@@ -1,0 +1,176 @@
+@charset "UTF-8";
+/*CSS public 2016.1.7*/
+
+/* 客服详情页*/ 
+.kefu_box{
+	margin-top: 1.0rem;
+	padding: 0.44rem 0.34rem;
+	background: #fff;
+}
+.kefu_icon{
+	width: 100%;
+	height: 1.74rem;
+}
+.kefu_icon img{
+	height: 1.74rem;
+	width:1.74rem;
+	margin:0 auto;
+	display: block;
+}
+.number{
+	padding:0.3rem 0;
+	border-bottom:1px solid #ccc;
+}
+.number_list{
+	height:50px;
+	line-height: 50px;
+	padding-left:0.4rem;
+}
+.number_list p{display:inline-block;}
+.number_list .gf{
+	color: #fff;
+	display:inline-block;
+	margin-right: 0.14rem;
+	margin-top:0.2rem;
+	height:0.3rem;
+	line-height:0.3rem;
+	background:#1b96fe;
+	padding: 0.06rem 0.14rem;
+	border-radius:0.06rem;
+}
+.phone{
+	color:#1b96fe;
+}
+.tishi{
+	padding-left:0.4rem;
+	margin-bottom:0.5rem;
+	margin-top:0.3rem;
+}
+.tishi p{
+ 	line-height:0.5rem;
+}
+.tishi .tit{
+	font-size:0.4rem;
+	color:#323232;
+}
+.qqbox{
+	width:100%;
+	height:0.9rem;
+	line-height:0.9rem;
+	position:fixed;
+	bottom:0.4rem;
+}
+
+
+
+/*订单页面*/
+.talent {
+    background: #fff;
+}
+.fr{
+   float: right;
+}
+.order_box{
+    font-size: 15px;
+    color: #1b96fe;
+}
+.order_box:after{ visibility: hidden; display: block; font-size: 0; content: " ";   clear: both;  }
+
+.order_box .tit {
+    width: 50%;
+    text-align: center;
+    font-size: 0.42rem;
+}
+
+
+.order_box .selected{
+	border-bottom: 2px solid #1b96fe;
+	color: #1b96fe;
+}
+
+.order_lga{
+	height: 0.3rem;
+}
+
+.order_detail{
+	text-align: center;
+}
+.order_det1_2{
+	display: inline-flex;
+	height: 3rem;
+	margin-top: 0.3rem;
+}
+
+.order_detail .tjtit{
+    height: 0.74rem;
+    line-height: 0.74rem;
+    margin-bottom: 0.2rem;
+    position: relative;
+    margin-top: 0.5rem;
+
+}
+
+.order_detail .tjtit .line {
+    position: absolute;
+    left: 1.05rem;
+    top: 0.37rem;
+    width: 80%;
+    height: 1px;
+    background: #e6e6e6;
+}
+.order_detail .tjtit .con {
+    height: 0.74rem;
+    line-height: 0.74rem;
+    position: absolute;
+    left: 3.95rem;
+    top: 0.02rem;
+    padding: 0 0.22rem;
+    background: #fff;
+    font-size: 15px;
+    color: #323232;
+}
+
+.order_box > div{
+
+}
+
+.order_box > span{
+	display: block;
+	color: inherit;
+
+}
+img.orimg{
+	width: 2rem;
+	margin: 0px 0.4rem;
+}
+
+img.title_img{
+	width: 4.5rem;
+}
+
+img.code_img{
+	width: 4.5rem;
+    margin-top: 0.17rem;
+}
+
+
+.order_det1_1 .title{
+	height: 1.5rem;
+    line-height: 1.5rem;
+}
+.order_det1_1 .title > span{
+	color: #1b96fe;
+    font-size: large;
+    display: inline;
+    margin-bottom: 0.4rem;
+}
+.order_det1_1 > p{
+    font-size: 14px;
+    text-align: left;
+    color: #66666;
+    padding: 0.3rem;
+    line-height: 0.55rem;
+}
+.order_det1_1 .font_size{
+   visibility: collapse;
+}

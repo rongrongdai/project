@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+*{ padding:0; margin:0; }
+body{ /*font-family:"微软雅黑";*/ sans-serif;font-size:12px;}
+ul,li{ list-style:none;}
+a{ text-decoration:none;}
+.clear{ clear:both; width:100%; height:0; overflow:hidden;}
+img{ border:none;}
+
+
+
+/*导航条*/
+.nav-one{ width:100%; height:25px; background-color:#00b38a; }
+.nav-two{ width:100%; height:5px; background-color:#ec9f73;}
+
+.nav-there{  width:100%;}
+.nav-yi{ width:230px; float:left;}
+.nav-yi img{ margin:15px 20px 10px 40px;}
+.nav-er{ float:left; width:1170px;}
+.nav-er ul{ width:1170px;}
+.nav-er li{ width:120px; height:90px;  float:left; margin:0px 20px 0px 20px; line-height:85px; color:#000;  font-size:18px; text-align:center; font-weight:800; }
+.nav-er .guan{ border-bottom:3px #00b38a solid;  color:#00b38a;}
+.nav-er .zhu{ background-color:#e5e4e4; width:150px; height:93px;}
+
+
+/*内容*/
+.help-one{ float:left; height:12px; width:100%; background:#00b38a;}
+.help-two{ width:100%; float:left;}
+
+.help-twy{width:1200px;/* margin-left:45px;*/ margin:0 auto;}
+
+.hepl-ton{height:795px; width:250px; background:#f5f5f5;  overflow:auto;  margin-bottom:40px; /*position:fixed;*/ float:left;}
+.xishou{ margin:20px 0px 5px 20px; font-size:16px; color:#000;}
+.xishou img{ margin-right:10px;}
+.help-y{ width:220px; height:30px; line-height:30px; color:#a7a7a7; font-size:12px;}
+/*.help-y:hover{ border-left:2px #00b38a solid; color:#00b38a; background:#e5e5e5; }*/
+.help-y:hover{ color:#00b38a;}
+.help-y span{ margin-left:60px;}
+
+
+.cur{border-left:2px #00b38a solid; color:#00b38a; background:#e5e5e5;}
+
+
+
+.hepl-totw{ width:900px;  margin:0px 20px; float:left;}
+.hepl-totw p{ color:#7d7d7d; font-size:14px; line-height:25px;}
+.hepl-totw .bi-t{ font-size:18px; color:#1b1b1b; font-weight:bolder; margin:10px 0;}
+.hepl-totw .bi-te{color:#1b1b1b; font-weight:600; margin:13px 0;}
+.hepl-totw img{ margin:10px;}
+
+
+/*尾部*/
+.weibu{ width:100%; float:left;}
+.weibu p{ color:#6d6a6a; font-size:14px;}
+.weibu .Ceigt-yi{ margin:60px 0px 0px 490px;}
+.weibu .Ceigt-er{ margin:20px 0px 0px 410px;}
+.weibu .Ceigt-sa{ margin:20px 0px 50px 480px;}
+

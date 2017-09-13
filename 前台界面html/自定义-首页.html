@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>惠信联盟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="set-index/css/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="set-index/css/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="set-index/css/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="css/colpick.css"/>
+    <script type="text/javascript" src="set-index/js/jquery.min.js"></script>
+    <script type="text/javascript" src="set-index/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/colpick.js"></script>
+    <style>
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,td,button { margin:0;padding:0;border:0;outline:none;}
+        a{text-decoration:none;outline:none;}
+        /*空白*/
+        .space{width:100%;height:10px;background-color:#fff;padding: 10px 0;}
+        /*分割线*/
+        .sep-line{width:100%;height:10px;background-color:#000;padding: 10px 0;}
+        /*焦点图*/
+        .swiper-container {width: 100%;height: 150px;margin-left: auto;margin-right: auto;font-size: 14px;}
+        .swiper-slide {text-align: center;font-size: 18px;background: #000;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;}
+        .swiper-slide img {width: 100%;height: 100%;max-width: 100%;max-height: 100%;-ms-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);transform: translate(-50%, -50%);position: absolute;left: 50%;top: 50%;}
+        /*商品分类*/
+        .classify{width:100%;overflow:auto;}
+        .classify .classify-cont>div{float:left;width:25%;font-size:14px;text-align:center;margin: 5px 0;}
+        .classify .title{}
+        .classify .img{width: 38.75%;margin: 0 auto 5px;padding: 38.75% 0 0 0;}
+        .classify .posi-0 .img{background: url("set-index/nav-0.png") no-repeat scroll center center / contain ;}
+        .classify .posi-1 .img{background: url("set-index/nav-1.png") no-repeat scroll center center / contain ;}
+        .classify .posi-2 .img{background: url("set-index/nav-2.png") no-repeat scroll center center / contain ;}
+        .classify .posi-3 .img{background: url("set-index/nav-3.png") no-repeat scroll center center / contain ;}
+        .classify .posi-4 .img{background: url("set-index/nav-4.png") no-repeat scroll center center / contain ;}
+        .classify .posi-5 .img{background: url("set-index/nav-5.png") no-repeat scroll center center / contain ;}
+        .classify .posi-6 .img{background: url("set-index/nav-6.png") no-repeat scroll center center / contain ;}
+        .classify .posi-7 .img{background: url("set-index/nav-7.png") no-repeat scroll center center / contain ;}
+        /*广告*/
+        .ad{width:100%;}
+        .ad .ad-cont>div{background-position: center center;background-size: contain;background-repeat: no-repeat;width: 100%;padding-bottom: 31.25%;}
+        #ad .ad-cont>div{background-image: url("set-index/ad.png");}
+        #ad1 .ad-cont>div{background-image: url("set-index/ad1.png");}
+        /*标题栏*/
+        .pic-ad{}
+        .title-bar .title-bg{position:relative;height:20px;width:33.125%;margin:12px auto;background-position: center center;background-size: contain;background-repeat: no-repeat;}
+        .title-bar .title{font-size:14px;position:absolute;width:100%;text-align:center;top:-9px;}
+        #bideng .title-bg{background-image: url("set-index/title-bar-bg.png");}
+        #shafa .title-bg{background-image: url("set-index/title-bar-bg.png");}
+
+        /*商品列表*/
+        /*列表*/
+        .goods-list{font-size: 10px;overflow: auto;}
+        .goods-list .good-cont{width: 91.875%;margin: 2.7% 0.3125% 2.7% 5%;position:relative;overflow:auto;float:left;}
+        .goods-list .good-img{padding-bottom: 27.2%;width: 34.7%;float: left;background: url("set-index/good.png") no-repeat scroll center center / contain ;}
+        .goods-list .good-title{width: 60.2%;position: absolute;left: 38%;top: 18.75%;}
+        .goods-list .good-price{position: absolute;left: 38%;bottom:10%;}
+        .goods-list .good-sub-price{}
+        .goods-list .good-paid{position: absolute;left: 54%;bottom:10%;font-size: 8px;}
+        .goods-list .good-car{position: absolute;left: 75%;bottom:10%;color: #ff0000;}
+        .goods-list .seprate{width: 61%;height: 1px;background-color: #eee;float: left;margin-left: 39%;}
+        /*大图*/
+        .goods-big-pic{font-size: 10px;width: 100%;padding: 5px 12px;overflow: auto;box-sizing: border-box;background-color: #fff;}
+        .goods-big-pic>{width:100%;}
+        .goods-big-pic .good-cont{position:relative;overflow:auto;}
+        .goods-big-pic .good-img{width:100%;padding-bottom:100%;background: url("images/index/good1.png") no-repeat scroll center center / contain ;}
+        .goods-big-pic .good-title{text-indent:20px;font-size:12px;}
+        .goods-big-pic .good-p{margin:8px 0;}
+        .goods-big-pic .good-price{color: #ff0000;font-size:14px;}
+        .goods-big-pic .good-sale{float:right;display:block;width:40px;height:14px;line-height:14px;text-align:center;background:url(images/sale.png) no-repeat center center / contain;color:#fff;margin-right:5px;}
+        /*小图*/
+        .goods-small-pic{font-size: 10px;width: 100%;}
+        .goods-small-pic .goods-small-pic-tont{width: 93.75%;margin: 0 auto;overflow: auto;}
+        .goods-small-pic .goods-small-pic-tont>div{width:50%;float:left;}
+        .goods-small-pic .good-cont{position:relative;overflow:auto;}
+        .goods-small-pic .good-img{width:96.6%;padding-bottom:100%;background: url("set-index/good1.png") no-repeat scroll center center / contain ;}
+        .goods-small-pic .good-title{text-indent: 10px;}
+        .goods-small-pic .good-price{color: #ff0000;}
+        .goods-small-pic .good-sub-price{}
+        .goods-small-pic .good-paid{display:none;}
+        .goods-small-pic .good-car{display:none;}
+        .more{text-align: right;height: 20px;line-height: 20px;width: 95%;padding-right: 15%;border-bottom: 1px solid #aaa;font-size: 10px;margin-bottom: 5px;}
+
+        /*手机内容区域*/
+        .phone-view{background: #fff none repeat scroll 0 0;border: 1px solid #ccc;border-radius: 15px;float: left;width: 345px;margin:20px;}
+        .phone-view .p-header{width:100%;font-size:15px;text-align: center;}
+        .phone-view .p-header .p-title{ -moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;background-position: 0 0;border-color: #22292c #22292c -moz-use-text-color;border-image: none;border-style: solid solid none;border-width: 1px 1px 0;color: #fff;cursor: pointer;font-size: 18px;height: 32px;overflow: hidden;padding-top: 32px;text-align: center;width: 320px;background: rgba(0, 0, 0, 0) url("set-index/phone.png") no-repeat scroll 0 0;margin:0 auto;}
+        .phone-view .p-header i{height: 34px;margin: 13px auto;width: 98px;background: rgba(0, 0, 0, 0) url("set-index/phone.png") no-repeat scroll 0 -74px;display: block;}
+        .phone-view .p-body{background-color: #f9f9f9;border: 1px solid #ccc;margin: 0 auto;min-height: 470px;overflow: hidden;width: 320px;}
+        .phone-view .p-body section {position:relative;overflow: auto;}
+        .phone-view .p-body section .edit-area{box-sizing: border-box;cursor: pointer;height: 100%;left: 0;position: absolute;top: 0;width: 320px;z-index: 111;font-size:12px;}
+        .phone-view .p-body section .edit-area .edit-btns{bottom: 0;display: none;height: 16px;left: 0;position: absolute;text-align: right;width: 100%;background-color: rgba(255,160,0,0.8);padding: 3px 0;}
+        .phone-view .p-body section .edit-area:hover{border: 2px dashed #fa0;}
+        .phone-view .p-body section .edit-area:hover .edit-btns{display:block;}
+        .phone-view .p-body section .edit-area .edit-btns>a{background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;color: #fff;display: inline-block;line-height: 16px;text-align: center;width: 30px;z-index: 111;vertical-align:middle;border-radius: 3px;}
+        .phone-view .p-body section .edit-area .edit-btns .move-up{height: 16px;width:20px;background: rgba(0, 0, 0, 0) url("set-index/move-up.png") no-repeat scroll center center/contain;}
+        .phone-view .p-body section .edit-area .edit-btns .move-down{height: 16px;width:20px;background: rgba(0, 0, 0, 0) url("set-index/move-down.png") no-repeat scroll center center/contain;}
+
+        .phone-view .p-footer{height: 61px;margin: 10px auto;width: 62px;background: rgba(0, 0, 0, 0) url("set-index/phone.png") no-repeat scroll -253px -70px;display: block;}
+
+
+
+        /*编辑区域*/
+        .edit-pannel{float: left;margin: 20px;}
+        .edit-pannel .e-body{background-color: #f8f8f8;border: 1px solid #ccc;border-radius: 5px;padding: 10px;position: relative;width: 550px;min-height: 200px;}
+        .edit-pannel .e-body:after,.edit-pannel .e-body:before{color: #f8f8f8;content: "◆";display: block;font-family: simsun;font-size: 24px;height: 18px;left: -12px;position: absolute;top: 8px;width: 9px;z-index: 111;}
+        .edit-pannel .e-body:after{color: #ccc;left: -13px;z-index: 11;}
+
+            /*标题栏*/
+            .e-title-bar{border: 1px dashed #ff3c00;}
+            .e-title-bar .t-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-title-bar .t-cont{margin: 10px 0 0 40px;font-size:14px;}
+            .e-title-bar .t-cont tr{line-height: 30px;}
+            .e-title-bar .t-cont tr td{}
+            .e-title-bar .t-cont .t-title{text-align:right;}
+            .e-title-bar .t-cont .set-color{display: inline-block;vertical-align: middle;border: 1px solid #ccc;border-radius: 3px;font-size: 12px;line-height: 12px;padding: 5px;margin-left: 20px;background-color: #5cb85c;color:#fff;cursor:pointer;}
+            .e-title-bar .t-cont .plus-icon{border: 1px dashed #999;color: #999;cursor: pointer;font: 700 50px/1 arial;text-align: center;width: 60px;margin: 10px 0;}
+            .e-title-bar .t-cont .link-area{}
+            .e-title-bar .t-cont .link-area>input{display:inline-block;vertical-align:middle;padding:0;border:1px solid #ccc;height: 19px;}
+            .e-title-bar .t-cont .link-area>span{display:inline-block;vertical-align:middle;}
+            .e-title-bar .t-cont .link-area .link-icon{height: 19px;width: 20px;background: rgba(0, 0, 0, 0) url("set-index/link.png") no-repeat scroll center center/70%;border:1px solid #ccc;margin-left: -1px;}
+            .e-title-bar .t-cont .select{width:70px;height:25px;line-height:25px;text-align:center;border: 1px solid #ccc;border-radius: 3px;background-color: #5cb85c;color:#fff;cursor:pointer;}
+            
+            /*图片广告*/
+            .e-pic-ad{border: 1px dashed #ff3c00;margin-top:10px;}
+            .e-pic-ad .p-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-pic-ad .p-cont{margin: 10px 0 0 40px;font-size:14px;width:500px;}
+            .e-pic-ad .p-cont tr{line-height: 30px;width: 500px;}
+            .e-pic-ad .p-cont .p-title{}
+            .e-pic-ad .p-cont .p-height{border: 1px solid #ccc;margin:5px 0;padding:5px;}
+            .e-pic-ad .p-cont .p-height .input{width:80px;margin:0 5px;}
+            .e-pic-ad .p-cont .p-inner{border: 1px solid #ccc;margin:10px 0;padding:5px;position:relative;}
+            .e-pic-ad .p-cont .p-inner>div{display:inline-block;vertical-align:middle;cursor:pointer;}
+            .e-pic-ad .p-cont .p-inner .p-pic{width:70px;height:70px;line-height:70px;border:1px solid #ccc;text-align:center;}
+            .e-pic-ad .p-cont .p-inner .p-txt{text-align:left;}
+            .e-pic-ad .p-cont .p-inner .p-txt>div>span{display:inline-block;vertical-align:middle;}
+            .e-pic-ad .p-cont .p-inner .p-txt>div>input{display:inline-block;vertical-align:middle;padding:0;border:1px solid #ccc;height: 19px;}
+            .e-pic-ad .p-cont .p-inner .p-txt{text-align:left;}
+            .e-pic-ad .p-cont .p-inner .p-txt .link-icon{height: 19px;width: 20px;background: rgba(0, 0, 0, 0) url("set-index/link.png") no-repeat scroll center center/70%;border:1px solid #ccc;margin-left: -1px;}
+            .e-pic-ad .p-cont .p-inner .p-btns{position:absolute;top:0;right:10px;}
+            .e-pic-ad .p-cont .p-inner .p-btns>span{display:inline-block;vertical-align:middle;}
+            .e-pic-ad .p-cont .p-inner .move-up{height: 16px;width: 20px;background: rgba(0, 0, 0, 0) url("set-index/move-up.png") no-repeat scroll center center/contain;}
+            .e-pic-ad .p-cont .p-inner .move-down{height: 16px;width: 20px;background: rgba(0, 0, 0, 0) url("set-index/move-down.png") no-repeat scroll center center/contain;}
+            .e-pic-ad .p-cont .p-inner .del-icon{height: 16px;width: 20px;background: rgba(0, 0, 0, 0) url("set-index/close.png") no-repeat scroll center center/contain;}
+
+            .e-pic-ad .p-cont .plus-icon{border: 1px dashed #999;color: #999;cursor: pointer;font: 700 50px/1 arial;text-align: center;margin: 10px 0;}
+            /*分割线*/
+            .e-separate{border: 1px dashed #ff3c00;margin-top:10px;}
+            .e-separate .s-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-separate .s-cont{margin: 10px 0 10px 40px;font-size:14px;overflow:auto;}
+            .e-separate .s-cont>div{float:left;margin-right:30px;}
+            .e-separate .s-cont>div>span{display:inline-block;vertical-align:middle;}
+            .e-separate .s-cont .s-color{width:30px;height:30px;background-color:#ccc;cursor:pointer;}
+            .e-separate .s-cont .s-width{width:30px;height:30px;background-color:#ccc;cursor:pointer;}
+            .e-separate .s-cont .s-style{width:30px;height:30px;background-color:#ccc;cursor:pointer;}
+            /*空白区域*/
+            .e-space{border: 1px dashed #ff3c00;margin-top:10px;}
+            .e-space .sp-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-space .sp-cont{margin: 25px 0 10px 40px;font-size:14px;}
+            .e-space .sp-cont>div{display:inline-block;vertical-align:middle;margin-right:5px;}
+            /*商品*/
+            .e-goods{border: 1px dashed #ff3c00;margin-top:10px;}
+            .e-goods>div{border: 1px solid #000;margin:10px 0;}
+            .e-goods .g-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-goods .g-cont{margin: 25px 0 10px 40px;font-size:14px;}
+            .e-goods .g-cont tr{line-height: 30px;}
+            .e-goods .g-cont .plus-icon{border: 1px dashed #999;color: #999;cursor: pointer;font: 700 50px/1 arial;text-align: center;width: 60px;margin: 10px;float:left;}
+            .e-goods .g-cont .select-type{width:70px;height:25px;line-height:25px;text-align:center;border: 1px solid #ccc;border-radius: 3px;background-color: #5cb85c;color:#fff;cursor:pointer;}
+            .e-goods .img-wrap{float:left;border: 1px solid #999;width: 60px;height:60px;margin: 5px 0;position:relative;}
+            .e-goods .img-wrap>img{width:100%;}
+            .e-goods .img-wrap:hover .del-icon{display:block;}
+            .e-goods .img-wrap>.del-icon{position: absolute;width: 100%;height: 100%;background:  rgba(0, 0, 0, 0) url("images/close-s.png") no-repeat scroll center center/40%;top: 0;display:none;cursor:pointer;}
+            /*图片导航区域*/
+            .e-nav{border: 1px dashed #ff3c00;margin-top:10px;}
+            .e-nav .n-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-nav .n-cont{margin: 10px 0 0 40px;font-size:14px;width:500px;}
+            .e-nav .n-cont tr{line-height: 30px;width: 500px;}
+            .e-nav .n-cont .n-title{}
+            .e-nav .n-cont .n-inner{border: 1px solid #ccc;margin:10px 0;padding:5px;position:relative;}
+            .e-nav .n-cont .n-inner>div{display:inline-block;vertical-align:middle;text-align:center;cursor:pointer;}
+            .e-nav .n-cont .n-inner .n-pic{width:70px;height:70px;line-height:70px;border:1px solid #ccc;}
+            .e-nav .n-cont .n-inner .n-txt{text-align:left;}
+            .e-nav .n-cont .n-inner .n-txt>div>span{display:inline-block;vertical-align:middle;}
+            .e-nav .n-cont .n-inner .n-txt>div>input{display:inline-block;vertical-align:middle;padding:0;border:1px solid #ccc;height: 19px;}
+            .e-nav .n-cont .n-inner .n-txt{text-align:left;}
+            .e-nav .n-cont .n-inner .n-txt .link-icon{height: 19px;width: 20px;background: rgba(0, 0, 0, 0) url("set-index/link.png") no-repeat scroll center center/70%;border:1px solid #ccc;margin-left: -1px;}
+            .e-nav .n-cont .n-inner .n-btns{position:absolute;top:0;right:10px;}
+            .e-nav .n-cont .n-inner .n-btns>span{display:inline-block;vertical-align:middle;}
+            .e-nav .n-cont .n-inner .move-up{height: 16px;width: 20px;background: rgba(0, 0, 0, 0) url("set-index/move-up.png") no-repeat scroll center center/contain;}
+            .e-nav .n-cont .n-inner .move-down{height: 16px;width: 20px;background: rgba(0, 0, 0, 0) url("set-index/move-down.png") no-repeat scroll center center/contain;}
+            .e-nav .n-cont .n-inner .del-icon{height: 16px;width: 20px;background: rgba(0, 0, 0, 0) url("set-index/close.png") no-repeat scroll center center/contain;}
+            .e-nav .n-cont .plus-icon{border: 1px dashed #999;color: #999;cursor: pointer;font: 700 50px/1 arial;text-align: center;margin: 10px 0;}
+            /*搜索*/
+            .e-search{border: 1px dashed #ff3c00;margin-top:10px;}
+            .e-search .se-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-search .se-cont{margin: 10px 0 0 40px;font-size:14px;}
+            .e-search .se-cont tr{line-height: 30px;}
+            .e-search .se-cont tr td{}
+            .e-search .se-cont .se-title{text-align:right;}
+            .e-search .se-cont .plus-icon{border: 1px dashed #999;color: #999;cursor: pointer;font: 700 50px/1 arial;text-align: center;width: 60px;margin: 10px 0;}
+            /*增加区域*/
+            .e-add{border: 1px dashed #ff3c00;margin-top:10px;}
+            .e-add .a-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-add .a-cont{margin: 10px 0 0 40px;font-size:14px;overflow:auto;text-align: center;}
+            .e-add .a-cont>div{width: 12%;float: left;margin-right: 6.6%;}
+            .e-add .a-cont>div>img{width: 100%;}
+            .e-add .a-cont>div>span{display:block;}
+            .e-add .a-footer{    width: 80%;margin: 30px auto 20px auto;height: 40px;line-height: 40px;border: 1px dashed #ccc;text-align: center;border-radius: 3px;}
+            /*选择商品*/
+            .e-choose-goods{border: 1px dashed #ff3c00;margin-top:10px;}
+            .e-choose-goods .c-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-choose-goods .c-cont{margin: 10px 0 0 20px;font-size:14px;overflow:auto;text-align: center;}
+            .e-choose-goods .c-cont .c-search{text-align: right;padding-right: 30px;}
+            .e-choose-goods .c-cont .c-search>input{height: 23px;border: 1px solid #ccc;padding: 0;}
+            .e-choose-goods .c-cont .c-search>select{height: 25px;}
+            .e-choose-goods .c-cont .c-search>span{display: inline-block;width: 50px;height: 25px;background-color: #73d2ff;border-radius: 3px;line-height: 25px;cursor:pointer;text-align:center;}
+            .e-choose-goods .c-cont .c-search>span i{}
+            .e-choose-goods .c-cont .c-goods{height: 300px;overflow-y: scroll;}
+            .e-choose-goods .c-cont .c-goods .c-good{text-align: left;border: 1px solid #ccc;padding: 5px;margin: 10px 5px;width:460px;}
+            .e-choose-goods .c-cont .c-goods .c-good>div{display:inline-block;vertical-align:middle;}
+            .e-choose-goods .c-cont .c-goods .c-img{}
+            .e-choose-goods .c-cont .c-goods .c-txt{width: 300px;margin: 0 10px;}
+            .e-choose-goods .c-cont .c-goods .c-txt>p{margin: 5px 0;}
+            .e-choose-goods .c-cont .c-goods .c-btn{width: 50px;height: 25px;background-color: #73d2ff;border-radius: 3px;line-height: 25px;cursor:pointer;text-align:center;}
+            .e-choose-goods .c-footer{text-align: right;padding-right: 30px; }
+            .e-choose-goods .c-footer>span{width: 70px;margin: 30px 15px;height: 30px;line-height: 30px;border: 1px solid #ccc;text-align: center;border-radius: 3px;display: inline-block;cursor:pointer;}
+            
+
+             /*设置链接*/
+            .e-link{border: 1px dashed #ff3c00;margin-top:10px;}
+            .e-link .l-main-title{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #ccc;}
+            .e-link .l-cont{margin: 10px 0 0 15px;font-size:14px;overflow:auto;text-align: center;}
+            .e-link .l-cont .l-search{text-align: right;padding-right: 30px;}
+            .e-link .l-cont .l-search>input{height: 23px;border: 1px solid #ccc;padding: 0;}
+            .e-link .l-cont .l-search>select{height: 25px;}
+            .e-link .l-cont .l-search>span{display: inline-block;width: 50px;height: 25px;background-color: #73d2ff;border-radius: 3px;line-height: 25px;cursor:pointer;text-align:center;}
+            .e-link .l-cont .l-search>span i{}
+            .e-link .l-cont .l-goods{height: 300px;overflow-y: scroll;}
+            .e-link .l-cont .l-goods .l-good{text-align: left;border: 1px solid #ccc;padding: 5px;margin: 10px 5px;width:460px;}
+            .e-link .l-cont .l-goods .l-good>div{display:inline-block;vertical-align:middle;}
+            .e-link .l-cont .l-goods .l-img{}
+            .e-link .l-cont .l-goods .l-txt{width: 300px;margin: 0 10px;}
+            .e-link .l-cont .l-goods .l-txt>p{margin: 5px 0;}
+            .e-link .l-cont .l-goods .l-c-btn{width: 50px;height: 25px;background-color: #73d2ff;border-radius: 3px;line-height: 25px;cursor:pointer;text-align:center;}
+            .e-link .l-footer{text-align: right;padding-right: 30px; }
+            .e-link .l-footer>span{width: 70px;margin: 30px 15px;height: 30px;line-height: 30px;border: 1px solid #ccc;text-align: center;border-radius: 3px;display: inline-block;cursor:pointer;}
+            /*底部*/
+            footer{}
+            footer table{border: 1px solid #aaa;padding: 10px;}
+            footer table .save{display:inline-block;padding:5px 10px;background-color:#5cb85c;color:#fff;cursor:pointer;border-radius:6px;margin-left: 50px;}
+            footer table .save-preview{display:inline-block;padding:5px 10px;background-color:#5cb85c;color:#fff;cursor:pointer;border-radius:6px;margin-left: 12px;}
+    </style>
+</head>
+<body>
+    <article class="phone-view">
+            <div class="p-header">
+                <i class=""></i>
+                <div class="p-title">店铺首页</div>
+            </div>
+            <div class="p-body">
+                <section class="space">
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="sep-line">
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="focus-pic">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                           <div class="swiper-slide">
+                                <img src="set-index/banner.png">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="set-index/banner.png">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="set-index/banner.png">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="set-index/banner.png">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="set-index/banner.png">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="set-index/banner.png">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                    <script src="js/swiper.min.js"></script>
+                    <script>
+                        var appendNumber = 4;
+                        var prependNumber = 1;
+                        var swiper = new Swiper('.swiper-container', {
+                            pagination: '.swiper-pagination',
+                            slidesPerView: 1,
+                            paginationClickable: true,
+                            //spaceBetween: 30,
+                            centeredSlides: true,
+                            loop: true,
+                            autoplay: 2500,
+                            autoplayDisableOnInteraction: false,
+                        });
+                    </script> 
+                </section>
+                <section class="classify">
+                    <div class="classify-cont">
+                        <div class="posi-0">
+                            <div class="img"></div>
+                            <div class="title"><span>沙发类</span></div>
+                        </div>
+                        <div class="posi-1">
+                            <div class="img"></div>
+                            <div class="title"><span>花洒</span></div>
+                        </div>
+                        <div class="posi-2">
+                            <div class="img"></div>
+                            <div class="title"><span>几类</span></div>
+                        </div>
+                        <div class="posi-3">
+                            <div class="img"></div>
+                            <div class="title"><span>床类</span></div>
+                        </div>
+                        <div class="posi-4">
+                            <div class="img"></div>
+                            <div class="title"><span>壁灯</span></div>
+                        </div>
+                        <div class="posi-5">
+                            <div class="img"></div>
+                            <div class="title"><span>吊灯</span></div>
+                        </div>
+                        <div class="posi-6">
+                            <div class="img"></div>
+                            <div class="title"><span>定制柜</span></div>
+                        </div>
+                        <div class="posi-7">
+                            <div class="img"></div>
+                            <div class="title"><span>瓷砖</span></div>
+                        </div>
+                    </div>
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="ad" id="ad">
+                    <div class="ad-cont">
+                        <div></div>
+                    </div>
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="title-bar" id="shafa">
+                    <div class="title-bg">
+                        <span class="title">客厅沙发</span>
+                    </div>
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="goods-small-pic">
+                    <div  class="goods-small-pic-tont">
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                            <div class="good-price">￥1600</div>
+                            <div class="good-sub-price"></div>
+                            <div class="good-paid"><span class="">702</span>人付款</div>
+                            <div class="good-car">加入购物车</div>
+                        </div>
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                            <div class="good-price">￥1600</div>
+                            <div class="good-sub-price"></div>
+                            <div class="good-paid"><span class="">702</span>人付款</div>
+                            <div class="good-car">加入购物车</div>
+                        </div>
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                            <div class="good-price">￥1600</div>
+                            <div class="good-sub-price"></div>
+                            <div class="good-paid"><span class="">702</span>人付款</div>
+                            <div class="good-car">加入购物车</div>
+                        </div>
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                            <div class="good-price">￥1600</div>
+                            <div class="good-sub-price"></div>
+                            <div class="good-paid"><span class="">702</span>人付款</div>
+                            <div class="good-car">加入购物车</div>
+                        </div>
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                            <div class="good-price">￥1600</div>
+                            <div class="good-sub-price"></div>
+                            <div class="good-paid"><span class="">702</span>人付款</div>
+                            <div class="good-car">加入购物车</div>
+                        </div>
+                    </div>
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="goods-big-pic">
+                </section>
+                <section class="ad" id="ad1">
+                    <div class="ad-cont">
+                        <div></div>
+                    </div>
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="title-bar" id="bideng">
+                    <div class="title-bg">
+                        <span class="title">水晶壁灯</span>
+                    </div>
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="goods-list">
+                    <div class="goods-list-cont">
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                            <div class="good-price">￥1600</div>
+                            <div class="good-sub-price"></div>
+                            <div class="good-paid"><span class="">702</span>人付款</div>
+                            <div class="good-car">加入购物车</div>
+                        </div>
+                        <div class="seprate"></div>
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                            <div class="good-price">￥1600</div>
+                            <div class="good-sub-price"></div>
+                            <div class="good-paid"><span class="">702</span>人付款</div>
+                            <div class="good-car">加入购物车</div>
+                        </div>
+                        <div class="seprate"></div>
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                            <div class="good-price">￥1600</div>
+                            <div class="good-sub-price"></div>
+                            <div class="good-paid"><span class="">702</span>人付款</div>
+                            <div class="good-car">加入购物车</div>
+                        </div>
+                        <div class="seprate"></div>
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                            <div class="good-price">￥1600</div>
+                            <div class="good-sub-price"></div>
+                            <div class="good-paid"><span class="">702</span>人付款</div>
+                            <div class="good-car">加入购物车</div>
+                        </div>
+                    </div>
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="goods-big-pic">
+                    <div class="goods-cont">
+                        <div class="good-cont">
+                            <div class="good-img"></div>
+                            <div class="good-title">酷窝白色创意烤漆圆形大茶几矮桌 现代简约小户型茶桌 多功能家具</div>
+                            <div class="good-p"><span class="good-price">￥1600</span><span class="good-sale">5折</span></div>
+                        </div>
+                    </div>
+                    <div class="edit-area">
+                        <div class="edit-btns">
+                            <a class="move-up" href="javascript:;"></a>
+                            <a class="move-down" href="javascript:;"></a>
+                            <a class="edit" href="javascript:;">编辑</a>
+                            <a class="del" href="javascript:;">删除</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <i class="p-footer"></i>
+    </article>
+    <div class="edit-pannel">
+        <div class="e-body">
+            <!--标题栏-->
+            <div class="e-title-bar">
+                <div class="t-main-title">[标题栏]区域设置</div>
+                <table class="t-cont">
+                    <tr>
+                        <td class="t-title">标题名称：</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="t-title">链接：</td>
+                        <td class="link-area"><input type="text"><span class="link-icon"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="t-title">对齐方式：</td>
+                        <td>
+                            <div>
+                                <span><input type="radio"><label for="">居左</label></span>
+                                <span><input type="radio"><label for="">居中</label></span>
+                                <span><input type="radio"><label for="">居右</label></span>
+                            </div>
+                            <!--<div>
+                                <input type="checkbox"><span>显示右边图标</span>
+                            </div>-->
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div><span class="set-color" id="txt-color">设置文字颜色</span><span  class="set-color" id="bg-color">设置背景颜色</span></div>
+                            <script>$('#txt-color').colpick({'onSubmit':function(ev){
+                                $('#txt-color').colpickHide();
+                                console.log($.colpick.hsbToHex(ev));
+                            }});$('#bg-color').colpick();</script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="t-title">左边图标：</td>
+                        <td>
+                            <div class="plus-icon">+</div>
+                        </td>
+                    </tr>
+                    <!--<tr>
+                        <td class="t-title">右边图标：</td>
+                        <td>
+                            <div class="plus-icon">+</div>
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td class="t-title">边框形状：</td>
+                        <td><div class="select">选择</div></td>
+                    </tr>-->
+                </table>
+            </div>
+            <!--图片广告-->
+            <div class="e-pic-ad">
+                <div class="p-main-title">[图片广告]区域设置</div>
+                <table class="p-cont">
+                    <tr>
+                        <td class="p-title">显示方式：</td>
+                        <td>
+                            <span><input type="radio"><label for="">折叠轮播</label></span>
+                            <span><input type="radio"><label for="">分开显示</label></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-title">整体上下留白：</td>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="p-height">
+                                <div><input type="checkbox"><span>统一图片高度</span></div>
+                                <div><span><input type="radio"><label for="">固定高度</label></span><input type="text" class="input">px</div>
+                                <div><span><input type="radio"><label for="">固定高度</label></span><input type="text" class="input">:<input type="text" class="input"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="p-inner">
+                                <div class="p-pic">选择图片</div>
+                                <div class="p-txt">
+                                    <div><span>链接：</span><input type="text"><span class="link-icon"></span></div>
+                                    <div><span>标题：</span><input type="text"></div>
+                                </div>
+                                <div class="p-btns"><span class="move-up"></span><span class="move-down"></span><span class="del-icon"></span></div>
+                            </div>
+                            <div class="p-inner">
+                                <div class="p-pic">选择图片</div>
+                                <div class="p-txt">
+                                    <div><span>链接：</span><input type="text"><span class="link-icon"></span></div>
+                                    <div><span>标题：</span><input type="text"></div>
+                                </div>
+                                <div class="p-btns"><span class="move-up"></span><span class="move-down"></span><span class="del-icon"></span></div>
+                            </div>
+                            <div class="plus-icon">+</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--分割线-->
+            <div class="e-separate">
+                <div class="s-main-title">[分割线]区域设置</div>
+                <div class="s-cont">
+                    <div><span>线条颜色：</span><span class="s-color" id="line-color"></span></div><script>$('#line-color').colpick();$('#bg-color').colpick();</script>
+                    <div><span>线宽：</span><span class="s-width"></span></div>
+                    <div><span>线条样式：</span><span class="s-style"></span></div>
+                </div>
+            </div>
+            <!--空白区-->
+            <div class="e-space">
+                <div class="sp-main-title">[空白]区域设置</div>
+                <div class="sp-cont">
+                    <div>高度：</div><input class="easyui-slider" style="width:300px" data-options="showTip:true"><div>px</div>
+                </div>
+            </div>
+            <!--商品-->
+            <div class="e-goods">
+                <div class="g-static">
+                    <div class="g-main-title">[静态商品列表]区域设置</div>
+                    <div class="g-cont">
+                        <table>
+                            <tr>
+                                <td>布局风格：</td>
+                                <td>
+                                    <div>
+                                        <span><input type="radio"><label for="">列表</label></span>
+                                        <span><input type="radio"><label for="">小图</label></span>
+                                        <span><input type="radio"><label for="">大图</label></span>
+                                        <span><input type="radio"><label for="">一大两小</label></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <input type="checkbox"><span>显示已售数量</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>选择商品：</td>
+                                <td>
+                                    <div class="img-wrap">
+                                        <img src="set-index/nav-2.png" alt="">
+                                        <span class="del-icon"></span>
+                                    </div>
+                                    <div class="plus-icon">+</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="g-dynamic">
+                    <div class="g-main-title">[动态商品列表]区域设置</div>
+                    <div class="g-cont">
+                        <table>
+                            <tr>
+                                <td>布局风格：</td>
+                                <td>
+                                    <div>
+                                        <span><input type="radio"><label for="">列表</label></span>
+                                        <span><input type="radio"><label for="">小图</label></span>
+                                        <span><input type="radio"><label for="">大图</label></span>
+                                        <span><input type="radio"><label for="">一大两小</label></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <input type="checkbox"><span>显示已售数量</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>选择商品分类：</td>
+                                <td>
+                                    <div class="select-type">选择</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>显示商品个数：</td>
+                                <td>
+                                    <span><input type="radio"><label for="">6</label></span>
+                                    <span><input type="radio"><label for="">12</label></span>
+                                    <span><input type="radio"><label for="">18</label></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--导航-->
+            <div class="e-nav">
+                <div class="n-main-title">[图片导航]区域设置</div>
+                <table class="n-cont">
+                    <tr>
+                        <td class="n-title">显示列数：</td>
+                        <td>
+                            <span><input type="radio"><label for="">3列</label></span>
+                            <span><input type="radio"><label for="">4列</label></span>
+                            <span><input type="radio"><label for="">5列</label></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="n-inner">
+                                <div class="n-pic">选择图片</div>
+                                <div class="n-txt">
+                                    <div><span>链接：</span><input type="text"><span class="link-icon"></span></div>
+                                    <div><span>标题：</span><input type="text"></div>
+                                </div>
+                                <div class="n-btns"><span class="move-up"></span><span class="move-down"></span><span class="del-icon"></span></div>
+                            </div>
+                            <div class="n-inner">
+                                <div class="n-pic">选择图片</div>
+                                <div class="n-txt">
+                                    <div><span>链接：</span><input type="text"><span class="link-icon"></span></div>
+                                    <div><span>标题：</span><input type="text"></div>
+                                </div>
+                                <div class="n-btns"><span class="move-up"></span><span class="move-down"></span><span class="del-icon"></span></div>
+                            </div>
+                            <div class="plus-icon">+</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--搜索-->
+            <div class="e-search">
+                <div class="se-main-title">[搜索栏]区域设置</div>
+                <table class="se-cont">
+                    <tr>
+                        <td class="se-title">提示信息：</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="se-title">对齐方式：</td>
+                        <td>
+                            <div>
+                                <span><input type="radio"><label for="">居左</label></span>
+                                <span><input type="radio"><label for="">居中</label></span>
+                                <span><input type="radio"><label for="">居右</label></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!--<tr>
+                        <td class="se-title">左边图标：</td>
+                        <td>
+                            <div class="plus-icon">+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="se-title">右边图标：</td>
+                        <td>
+                            <div class="plus-icon">+</div>
+                        </td> 
+                    </tr>-->
+                </table>
+            </div>
+            <!--添加-->
+            <div class="e-add">
+                <div class="a-main-title">增加</div>
+                <div class="a-cont">
+                    <div>
+                        <img src="set-index/nav-2.png" alt="">
+                        <span>标题栏</span>
+                    </div>
+                    <div>
+                        <img src="set-index/nav-2.png" alt="">
+                        <span>辅助空白</span>
+                    </div>
+                    <div>
+                        <img src="set-index/nav-2.png" alt="">
+                        <span>分割线</span>
+                    </div>
+                    <div>
+                        <img src="set-index/nav-2.png" alt="">
+                        <span>图片广告</span>
+                    </div>
+                    <div>
+                        <img src="set-index/nav-2.png" alt="">
+                        <span>图片导航</span>
+                    </div>
+                    <div>
+                        <img src="set-index/nav-2.png" alt="">
+                        <span>固定商品列表</span>
+                    </div>
+                    <div>
+                        <img src="set-index/nav-2.png" alt="">
+                        <span>分类商品列表</span>
+                    </div>
+                    <div>
+                        <img src="set-index/nav-2.png" alt="">
+                        <span>搜索栏</span>
+                    </div>
+                </div>
+                <div class="a-footer">确定</div>
+            </div>
+            <!--选择商品-->
+            <div class="e-choose-goods">
+                <div class="c-main-title">选择商品</div>
+                <div class="c-cont">
+                   <div class="c-search">
+                       <input type="text">
+                       <select name="" id="">
+                           <option value="">在售中</option>
+                           <option value="">仓库中</option>
+                       </select>
+                       <span><i></i>查询</span>
+                    </div>
+                   <div class="c-goods">
+                       <div class="c-good">
+                           <div class="c-img"><img src="set-index/nav-2.png" alt=""></div>
+                           <div class="c-txt">
+                               <p>商品名称</p>
+                               <p>已售数量</p>
+                               <p>商品价格（7折起）</p>
+                           </div>
+                           <div class="c-btn">选择</div>
+                       </div>
+                       <div class="c-good">
+                           <div class="c-img"><img src="set-index/nav-2.png" alt=""></div>
+                           <div class="c-txt">
+                               <p>商品名称</p>
+                               <p>已售数量</p>
+                               <p>商品价格（7折起）</p>
+                           </div>
+                           <div class="c-btn">选择</div>
+                       </div>
+                       <div class="c-good">
+                           <div class="c-img"><img src="set-index/nav-2.png" alt=""></div>
+                           <div class="c-txt">
+                               <p>商品名称</p>
+                               <p>已售数量</p>
+                               <p>商品价格（7折起）</p>
+                           </div>
+                           <div class="c-btn">选择</div>
+                       </div>
+                       <div class="c-good">
+                           <div class="c-img"><img src="set-index/nav-2.png" alt=""></div>
+                           <div class="c-txt">
+                               <p>商品名称</p>
+                               <p>已售数量</p>
+                               <p>商品价格（7折起）</p>
+                           </div>
+                           <div class="c-btn">选择</div>
+                       </div><div class="c-good">
+                           <div class="c-img"><img src="set-index/nav-2.png" alt=""></div>
+                           <div class="c-txt">
+                               <p>商品名称</p>
+                               <p>已售数量</p>
+                               <p>商品价格（7折起）</p>
+                           </div>
+                           <div class="c-btn">选择</div>
+                       </div>
+                       <div class="c-good">
+                           <div class="c-img"><img src="set-index/nav-2.png" alt=""></div>
+                           <div class="c-txt">
+                               <p>商品名称</p>
+                               <p>已售数量</p>
+                               <p>商品价格（7折起）</p>
+                           </div>
+                           <div class="c-btn">选择</div>
+                       </div>
+                       <div class="c-good">
+                           <div class="c-img"><img src="set-index/nav-2.png" alt=""></div>
+                           <div class="c-txt">
+                               <p>商品名称</p>
+                               <p>已售数量</p>
+                               <p>商品价格（7折起）</p>
+                           </div>
+                           <div class="c-btn">选择</div>
+                       </div>
+                   </div>
+                </div>
+                <div class="c-footer">
+                    <span>确定</span><span>取消</span>
+                </div>
+            </div>
+            <!--设置链接-->
+            <div class="e-link">
+                <div class="l-main-title">设置链接目标</div>
+                <div class="l-cont">
+                    <div class="easyui-tabs" id="tt" style="width:98%;height:auto;">
+                        <div title="商品" style="padding:10px">
+                            <div class="l-search">
+                               <input type="text">
+                               <select name="" id="">
+                                   <option value="">在售中</option>
+                                   <option value="">仓库中</option>
+                               </select>
+                               <span><i></i>查询</span>
+                            </div>
+                            <div class="l-goods">
+                           <div class="l-good">
+                               <div class="l-img"><img src="set-index/nav-2.png" alt=""></div>
+                               <div class="l-txt">
+                                   <p>商品名称</p>
+                                   <p>已售数量</p>
+                                   <p>商品价格（7折起）</p>
+                               </div>
+                               <div class="l-c-btn">选择</div>
+                           </div>
+                           <div class="l-good">
+                               <div class="l-img"><img src="set-index/nav-2.png" alt=""></div>
+                               <div class="l-txt">
+                                   <p>商品名称</p>
+                                   <p>已售数量</p>
+                                   <p>商品价格（7折起）</p>
+                               </div>
+                               <div class="l-c-btn">选择</div>
+                           </div>
+                           <div class="l-good">
+                               <div class="l-img"><img src="set-index/nav-2.png" alt=""></div>
+                               <div class="l-txt">
+                                   <p>商品名称</p>
+                                   <p>已售数量</p>
+                                   <p>商品价格（7折起）</p>
+                               </div>
+                               <div class="l-c-btn">选择</div>
+                           </div>
+                           <div class="l-good">
+                               <div class="l-img"><img src="set-index/nav-2.png" alt=""></div>
+                               <div class="l-txt">
+                                   <p>商品名称</p>
+                                   <p>已售数量</p>
+                                   <p>商品价格（7折起）</p>
+                               </div>
+                               <div class="l-c-btn">选择</div>
+                           </div><div class="l-good">
+                               <div class="l-img"><img src="set-index/nav-2.png" alt=""></div>
+                               <div class="l-txt">
+                                   <p>商品名称</p>
+                                   <p>已售数量</p>
+                                   <p>商品价格（7折起）</p>
+                               </div>
+                               <div class="l-c-btn">选择</div>
+                           </div>
+                           <div class="l-good">
+                               <div class="l-img"><img src="set-index/nav-2.png" alt=""></div>
+                               <div class="l-txt">
+                                   <p>商品名称</p>
+                                   <p>已售数量</p>
+                                   <p>商品价格（7折起）</p>
+                               </div>
+                               <div class="l-c-btn">选择</div>
+                           </div>
+                           <div class="l-good">
+                               <div class="l-img"><img src="set-index/nav-2.png" alt=""></div>
+                               <div class="l-txt">
+                                   <p>商品名称</p>
+                                   <p>已售数量</p>
+                                   <p>商品价格（7折起）</p>
+                               </div>
+                               <div class="l-c-btn">选择</div>
+                           </div>
+                            </div>
+                        </div>
+                        <div title="分类商品列表" style="padding:10px">
+                        </div>
+                        <div title="内置链接" style="padding:10px">
+                        </div>
+                        <div title="外部网址" style="padding:10px">
+                        </div>
+                    </div>
+                </div>
+                <div class="l-footer">
+                    <span>确定</span><span>取消</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <table>
+            <tr>
+                <td>魔法页面名称：</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>备注：</td>
+                <td><textarea name="" id="" cols="50" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2"><span class="save">保存</span><span class="save-preview">保存并预览</span></td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>

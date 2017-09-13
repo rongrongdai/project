@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>认证管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+       <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">认证管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab1" <if condition="$type eq '已经审核'">class="selected"</if> name='type'>已经审核</a></li> 
+                  <li><a href="#tab2" <if condition="$type eq '待审核'">class="selected"</if> name='type'>待审核</a></li> 
+            </ul>
+        </div> 
+    
+  	<div id="tab1" class="tabson">
+    
+    
+    <ul class="seachform">
+    
+    <li><label>会员名</label><input type="text" name="real_name"  class="scinput"/></li>
+    <li><label>城市</label><input type="text" name="city"  class="scinput"/></li>
+    <li><label>类别</label><select name="type" style='width:120px;'><option value="1">教师</option><option value="2">机构</option><option value="3">代理商</option></select></li>
+    </ul>
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th>序号<i class="sort"><img src="__ROOT__/public/images/admin/px.gif" /></i></th>
+        <th>用户名</th>
+        <th>真实姓名</th>
+        <th>认证状态</th>
+       <th>类别</th>
+       <th>城市</th>
+       <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+
+          <foreach name='datas' item='teacher' key="i">
+                    <tr>
+                        <td><{$i+1+$limit}></td>
+                        <td><{$teacher.uname}></td>
+                        <td><{$teacher.real_name}></td>
+                        <td><if condition="$teacher.verified eq 1">已认证<else />待认证</if></td>
+                        <td><foreach name='identity' key='k' item='v'><if condition="$teacher['type'] == $k"><{$v}></if></foreach></td>
+                        <td><{$teacher.name}></td>
+                        <td><if condition="$teacher['verified'] eq 3"><a href="./detail?id=<{$teacher.id}>&type=teacher&uid=<{$teacher.uid}>" title="审核">审核</a><else /><a style="color:green;">已审核</a></if></td>
+                    </tr>
+                </foreach>
+        
+        
+    
+        </tbody>
+    </table>
+     <{$link}>
+   
+  
+    
+    </div> 
+  	<div id="tab2" class="tabson">
+    
+    
+    <ul class="seachform">
+    
+    <li><label>会员名</label><input type="text" name="real_name"  class="scinput"/></li>
+    <li><label>城市</label><input type="text" name="city"  class="scinput"/></li>
+    <li><label>类别</label><select name="type" style='width:120px;height:34px;'><option value="1">教师</option><option value="2">机构</option><option value="3">代理商</option></select></li>
+    <li><input name="psea" type="button" class="scbtn" value="查询" id='sea'></li>
+    </ul>
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th>序号<i class="sort"><img src="__ROOT__/public/images/admin/px.gif" /></i></th>
+        <th>用户名</th>
+        <th>真实姓名</th>
+        <th>认证状态</th>
+       <th>类别</th>
+       <th>城市</th>
+       <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+          <foreach name='datas' item='teacher' key="i">
+                    <tr>
+                        <td><{$i+1+$limit}></td>
+                        <td><{$teacher.uname}></td>
+                        <td><{$teacher.real_name}></td>
+                        <td><if condition="$teacher.verified eq 1">已认证<else />待认证</if></td>
+                        <td><foreach name='identity' key='k' item='v'><if condition="$teacher['type'] == $k"><{$v}></if></foreach></td>
+                        <td><{$teacher.name}></td>
+                        <td><if condition="$teacher['verified'] eq 3"><a href="./detail?id=<{$teacher.id}>&type=teacher&uid=<{$teacher.uid}>" title="审核">审核</a><else /><a style="color:green;">已审核</a></if></td>
+                    </tr>
+                </foreach>
+        
+        
+    
+        </tbody>
+    </table>
+     <{$link}>
+   
+  
+    
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+        $(function(){
+                $("a[name=type]").click(function(){
+                    window.location.href = "?type="+$(this).text();
+                });
+                $("#sea").click(function(){
+                    $(".seachform").wrap('<form action="" method="post" id="search"></form>');
+
+                });
+         })
+    </script>
+  
+    </div>
+</body>
+
+</html>
+
+
+

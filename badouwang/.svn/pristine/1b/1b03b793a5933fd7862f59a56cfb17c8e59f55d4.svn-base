@@ -1,0 +1,255 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/Space.css" />
+<link type="text/css"  rel="stylesheet" href="__ROOT__/public/css/home/index.css"/>
+<include file="../../../Public/default/sheader" />
+<div class="sp-er">
+<include file="../../../Public/default/sleft" />
+ <div class="sp-er-center">
+        <div class="lookre-one">
+          <ul>
+            <li class="lookr-yi look" name="find">找人</li>
+            <li class="lookr-yi" name="lab">标签</li>
+           
+          </ul>
+        </div>
+         <div class="lookre-two" name="search">
+              <div class="loot-yi"><input type="text" id="indelook" placeholder="按地区，昵称，个性简介，性别查找。" style="padding-left:10px;"/></div>
+              <a href="javascript:;"><div class="loot-er" id="seabut"><p>搜索</p></div></a>
+         </div>
+         <div class="lookre-there" style="display:none;margin-top:40px;" id="tag">
+             <div class="look-ty"><p class="rmen"><a href="javascript:;">标签列表</a><span class="huan-y"><a href="javascrpipt:;" name="change">换一换</a></span></p></div>
+             
+             <div class="look-te">
+                <div class="look-teyi tag"> <span></span> </div>
+                <div class="look-teer tag"> <span></span> </div>
+                <div class="look-tesan tag"> <span></span> </div>
+                <div class="look-tesi tag"> <span></span> </div>
+                <div class="look-tewu tag"> <span></span> </div>
+                <div class="look-teliu tag"> <span></span> </div>
+                <div class="look-teqi tag"> <span></span> </div>
+                <div class="look-teba tag"> <span></span> </div>
+                
+             </div>
+         </div>
+ 
+        
+        <div class="lookre-there" style="display:block;" id="find">
+            <div class="looere-yi res" name="res">
+            </div>
+              <div style="clear:both;"></div>
+            
+        <!--分页-->
+            <div class="look-fover">
+             <p class="rmen"><a href="#" class="hurm">达人榜</a><span class="huan-y"><a href="javascript:;" name="change" style="display:none;">换一换</a></span></p>
+            </div>
+        
+            <div class="looere-yi">
+              <div class="looere-yyi">
+                   <div class="lomkimy"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/yjn.gif" /></div>
+                   <div class="lomkime">
+                   <p class="houd">华文达<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/txing.gif" /></p>
+                   <p>粉丝：1101</p>
+                   <p>简介：小学，中学..</p>
+                   <p class="guanzh">关注</p>
+                   </div>
+                </div>
+              
+                <div class="looere-yyi">
+                   <div class="lomkimy"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/yjn.gif" /></div>
+                   <div class="lomkime">
+                   <p class="houd">华文达<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/txing.gif" /></p>
+                   <p>粉丝：1101</p>
+                   <p>简介：小学，中学..</p>
+                   <p class="guanzh">关注</p>
+                   </div>
+                </div>
+              
+                <div class="looere-yyi">
+                  <div class="lomkimy"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/yjn.gif" /></div>
+                   <div class="lomkime">
+                   <p class="houd">华文达<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/txing.gif" /></p>
+                   <p>粉丝：1101</p>
+                   <p>简介：小学，中学..</p>
+                   <p class="guanzh">关注</p>
+                   </div>
+                </div>
+                
+            </div>
+        
+        </div>
+      </div>
+ </div>
+<script src="__ROOT__/public/js/home/easing.js"></script>
+<script src="__ROOT__/public/js/home/circulate.js"></script>
+<script src="__ROOT__/public/js/layer/layer-min.js"></script>
+<script src="__ROOT__/public/js/laytpl.js"></script>
+<script id="tuser" type="text/html">
+    <div class="looere-yyi">
+        <div class="lomkimy"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/{{# if(!d.img){d.img="public/imgages/nimg.png";}}}{{d.img}}" style="width:82px;height:85px"/></div>
+         <div class="lomkime">
+            <p class="houd">{{d.rname}}<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/space/txing.gif" /></p>
+            <p>粉丝:<span name="fs">{{d.visitednumber}}</span></p><p>{{#  if(d.content){d.content=d.content.substr(0,5)+"..."}}}
+                {{d.content}}</p>
+            <p class="guanzh"><a href="javascript:;" id="{{d.uid}}" style="width:60px;color:#FFF;text-decoraguanzhtion:none;margin-left:3px;">{{# if(d.sum>0){d.foid="查看空间"}else{d.foid="关注"}}}{{d.foid}}</a></p>
+            </div>
+        </div>
+</script>
+<script>
+    $(function(){
+                var page=1;
+                var lpage=1;
+                var labs=[];
+                var sum=0;
+                var url="__ROOT__/index.php/Ajax/AjaxFind/getpPerson";
+                var res=[];
+                var sval='';
+                $(".lookre-one").find(".lookr-yi").click(function(){
+                    $(".lookre-one").find(".lookr-yi").removeClass("look");
+                    $(this).addClass("look");
+                })
+                function initg(){
+                    $(".guanzh").click(function(){
+                        var sobj=$(this);
+                        if(sobj.find("a").text()==='关注'){
+                            $.getJSON("__ROOT__/index.php/Space/Space/concern",{'uid':$(this).find("a").attr("id")},function(data){
+                                   var type=data.code==='1'?1:2;
+                                   sobj.text("进入空间");
+                                   var te=parseInt(sobj.parent().find("span[name=fs]").text());
+                                   sobj.parent().find("span[name=fs]").text(te+1);
+                                   $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: type,msg: data.message}});
+                                });
+                            
+                        }else{
+                            location.href="__ROOT__/index.php/Space/Space/space?uid="+$(this).find("a").attr("id");
+                        }
+                        
+                    })
+                }
+                $("#seabut").click(function(){
+                    if($("#indelook").val() && $("#indelook").val()!==sval){
+                        sval=$(this).val();
+                        $.getJSON('__ROOT__/index.php/Ajax/AjaxUser/getUsers',{'keyword':$("#indelook").val()},function(data){
+                            if(data.sum>0){
+                                $("div[name=res]").find(".looere-yyi").remove();
+                                for(var i in data.entities){
+                                     var gettpl = document.getElementById('tuser').innerHTML;
+                                     laytpl(gettpl).render(data.entities[i], function(html){
+                                     $("div[name=res]").append(html);
+                                    });
+                                    
+                                }
+                                initg();
+                            }else{
+                                $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 3,msg:'找不到相关会员！'}});
+                            }
+                        });
+                    }
+                })
+                function move(){
+                     $(".tag").circulate({
+                                    speed: 400,                  // Speed of each quarter segment of animation, 1000 = 1 second
+                                    height: 200,                 // Distance vertically to travel
+                                    width: 200,                  // Distance horizontally to travel
+                                    sizeAdjustment: 100,         // Percentage to grow or shrink
+                                    loop: false,                 // Circulate continuously
+                                    zIndexValues: [1, 1, 1, 1]   // Sets z-index value at each stop of animation
+                      });
+                }
+                function adata(arr,sum){
+                    for(var i in arr){
+                            var uimg=arr[i].img?"__ROOT__"+arr[i].img:"__ROOT__/public/images/home/uimg.png";
+                            var vit=arr[i].visitednumber?arr[i].visitednumber:0;
+                            var intr=arr[i].self_info?'<p>简介：'+arr[i].self_info+'</p>':''.substr(0.6)+"...";
+                            var hand=arr[i].isF?'查看空间':'关注';
+                            arr[i].uname=arr[i].uname.substr(0,6)+"...";
+                            var pagesize=9;
+                            sum=sum;
+                            var item='<div class="looere-yyi">'+
+                                    '<div class="lomkimy"><img onerror="javascript:this.src='+"'"+"__ROOT__/public/images/home/n_pic.png';"+'"'+'  src="'+uimg+'" style="width:82px;height:85px"/></div>'+
+                                    '<div class="lomkime">'+
+                                    '<p class="houd">'+arr[i].uname+'<img onerror="javascript:this.src='+"'"+"__ROOT__/public/images/home/n_pic.png';"+'"'+'  src="__ROOT__/public/images/home/space/txing.gif" /></p>'+
+                                    '<p>粉丝:'+vit+'</p>'+intr+
+                                    '<p class="guanzh"><a href="javascript:;" id="'+arr[i].uid+'" style="width:60px;color:#FFF;text-decoration:none;margin-left:3px;">'+hand+'</a></p>'+
+                                    '</div>'+
+                                 '</div>';
+                           $("div[name=res]").append(item);
+                           if(sum>pagesize){
+                               $("a[name=change]").show();
+                           }
+                    }
+                }
+                function loadData(obj){
+                     $.getJSON(url,obj,function(data){
+                         if(!res.length){
+                            res=data.datas;
+                           
+                         }
+                        adata(data.datas,data.sum);
+                        initg();
+                    })
+                }
+                loadData({'page':page});
+                $("li[name=find]").click(function(){
+                        $("#find").show();
+                        $("#tag").hide();
+                        $("div[name=search]").show();
+                        $("div[name=res]").find(".looere-yyi").remove();
+                        adata(res,res.length);
+                    })
+                    $("li[name=lab]").click(function(){
+                        $("#find").hide();
+                        $("#tag").show();
+                        $("div[name=search]").hide();
+                        if(labs.length>0){
+                           move();
+                        }else{
+                            $.getJSON('__ROOT__/index.php/Ajax/AjaxConfig/getConfig',{'type':'用户配置','key':'u_label'},function(data){
+                                labs=data.labs.c_value.split('，');
+                                $(".tag").each(function(k){
+                                    $(this).find("span").text(labs[k]);
+                                })
+                                $(".tag").show();
+                                move();
+                            });
+                        }
+                    })
+                    $(".tag").click(function(){
+                        $("#tag").hide();
+                        $("div[name=res]").find(".looere-yyi").remove();
+                        loadData({'lab':$(this).find("span").text(),'page':page});
+                        $("#find").show();
+                    })
+                    $("li[name=zone]").click(function(){
+                        
+                    })
+                    
+                    $("a[name=change]").click(function(){
+                        lpage++;
+                        var star=(lpage-1)*8-1;
+                        if(star<0){
+                            star=0;
+                        }
+                        if(lpage*8<labs.length){
+                            $(".tag").each(function(k){
+                                star=star+k;
+                                $(this).find("span").text(labs[star]);
+                            })
+                        }else{
+                            $(".tag").each(function(k){
+                                star=star+k;
+                                if(star===labs.length){
+                                    star=0;
+                                }
+                                $(this).find("span").text(labs[star]);
+                                lpage=0;
+                            })
+                        }
+                        
+                        move();
+                    })
+    })
+  
+    
+</script>
+<div style="clear:both;"><{$pages}></div>
+<include file="../../../Public/default/footer" />

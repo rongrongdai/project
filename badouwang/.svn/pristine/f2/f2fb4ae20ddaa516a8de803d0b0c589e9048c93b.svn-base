@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="__ROOT__/public/js/jquery-min.js" type="text/javascript"></script>
+<style type="text/css">
+    a{ text-decoration:none;}
+    ul,ol {list-style:none;}
+	p{ margin:0;}
+   .keb-all{width:900px; border:1px #00b38a  solid; margin:0 0 8px 0; border-radius:5px;}
+   .keb-all .pck{font-weight:bolder; border-bottom:1px solid #00b38a; padding-left:40px; line-height:40px; height:40px;}
+   .keb-all .k-cent-y{height:37px; }
+   .keb-all .k-cent-y ul{ margin-left:30px; height:20px;}
+   .keb-all .k-cent-y li{ float:left; width:190px; font-size:14px; color:#333333; text-align:center; line-height:35px;}
+   .keb-all .k-cent-y .cw{ border-bottom:3px solid #00b38a; color:#00b38a;}
+   .keb-all .k-cent-y li:hover{ border-bottom:3px solid #00b38a; color:#00b38a; cursor:pointer;}
+   .keb-all .k-cent-y li span ,.keb-all .k-cent .k-cent-y li span:hover{color: #FFCC33;}
+   
+   .keb-all .k-cent{ margin-bottom:40px;}
+   .keb-all .k-cent .k-cent-e{ width:760px; height:220px; border:1px #C0CFCB solid; margin-left:69px; margin-bottom:20px;}
+   .keb-all .k-cent .k-cent-e .k-ct-y{width:540px; float:left; border-right:1px #C0CFCB solid; height:220px;}
+   /*.keb-all .k-cent .k-cent-e .k-ct-y td{ width:85px; text-align:center; line-height:32px; color:#999999;}*/
+   .keb-all .k-cent .k-cent-e .k-ct-y .tei{ color:#1E1E1E;}
+   .keb-all .k-cent .k-cent-e .k-ct-e{ float:right; height:220px; width:215px;}
+   .keb-all .k-cent .k-cent-e .k-ct-e .k_date{margin:10px 0 0 20px;}
+   .keb-all .k-cent .k-cent-e .k-ct-e .k_date span{margin-right:20px;}
+   .keb-all #prev,.keb-all #next{padding:0 5px;cursor:pointer;}
+   .keb-all #prev:hover,.keb-all #next:hover{background:#888;color:#fff;}
+   .keb-all .k-cent .k-cent-e .k-ct-e .k_day{text-align:center;}
+
+   .keb-all .k-cent .k-wan{  width:760px; height:230px; border:1px #C0CFCB solid; margin-left:69px;}
+   .keb-all .k-cent .k-wan .k-wp{ border-bottom:1px solid #C0CFCB;  color:#333333; font-size:14px; background:#f0f7ff; margin:0; line-height:35px; padding-left:20px;}
+   .keb-all .k-cent .k-wan .k-wp span{ margin-left:90px;}
+   .keb-all .k-cent .k-wan .k-w-al{ width:760px; height:130px; border-bottom:1px solid #C0CFCB;}
+   .keb-all .k-cent .k-wan .k-w-al .k-w-ay{ width:250px; height:130px; float:left; border-right:1px #C0CFCB solid; }
+   .keb-all .k-cent .k-wan .k-w-al .k-w-ay img{ width:80px; height:95px; margin:15px 10px; float:left;}
+   .keb-all .k-cent .k-wan .k-w-al .k-w-ay .k-w-alf{ width:145px; float:right; font-size:12px; margin-top:20px;  color:#999999; line-height:25px;}
+   .keb-all .k-cent .k-wan .k-w-al .k-w-ay .k-w-alf .bt{ color:#333333; font-size:14px; }
+   .keb-all .k-cent .k-wan .k-w-al .k-w-ae{ width:180px; height:130px; float:left; border-right:1px #C0CFCB solid;}
+   .keb-all .k-cent .k-wan .k-w-al .k-w-ae p,.keb-all .k-cent .k-wan .k-w-al .k-w-as p{ text-align:center; color:#999999; font-size:14px;  margin-top:20px;}
+   .keb-all .k-cent .k-wan .k-w-al .k-w-as{ width:180px; height:130px; float:left; border-right:1px #C0CFCB solid;}
+   .keb-all .k-cent .k-wan .k-w-al .k-w-aw{ width:145px; height:130px; float:right; text-align:center;}
+   .keb-all .k-cent .k-wan .k-w-al .k-w-aw  p{ margin-top:20px;}
+   .keb-all .k-cent .k-wan .k-w-al .k-w-aw a{color:#999999; font-size:14px;}
+   .keb-all .k-cent .k-wan .k-w-al .k-w-aw a:hover{color:#FFCC33;}
+   .keb-all .k-cent .k-wan .k-ph{ border-bottom:1px solid #C0CFCB;  color:#333333; font-size:14px; line-height:30px; padding-left:10px;}
+   .keb-all .k-cent .k-wan .k-ps{  color:#333333; font-size:14px; line-height:30px; padding-left:10px;}
+   .keb-all .k-cent .k-wan .k-ps span{ color: #FF6600;}
+  
+   
+   .keb-all .cs-cent{  width:760px; height:230px; border:1px #C0CFCB solid; margin-left:69px; margin-bottom:40px;}
+   .keb-all .cs-cent .k-wp{ border-bottom:1px solid #C0CFCB;  color:#333333; font-size:14px; background:#f0f7ff; margin:0; line-height:35px; padding-left:20px;}
+   .keb-all .cs-cent .k-wp span{ margin-left:90px;}
+   .keb-all .cs-cent .k-w-al{ width:760px; height:130px; border-bottom:1px solid #C0CFCB;}
+   .keb-all .cs-cent .k-w-al .k-w-ay{ width:250px; height:130px; float:left; border-right:1px #C0CFCB solid; }
+   .keb-all .cs-cent .k-w-al .k-w-ay img{ width:80px; height:95px; margin:15px 10px; float:left;}
+   .keb-all .cs-cent .k-w-al .k-w-ay .k-w-alf{ width:145px; float:right; font-size:12px; margin-top:20px;  color:#999999; line-height:25px;}
+   .keb-all .cs-cent .k-w-al .k-w-ay .k-w-alf .bt{ color:#333333; font-size:14px; }
+   .keb-all .cs-cent .k-w-al .k-w-ae{ width:180px; height:130px; float:left; border-right:1px #C0CFCB solid;}
+   .keb-all .cs-cent .k-w-al .k-w-ae p, .keb-all .cs-cent .k-w-al .k-w-as p{ text-align:center; color:#999999; font-size:14px;  margin-top:20px;}
+   .keb-all .cs-cent .k-w-al .k-w-as{ width:180px; height:130px; float:left; border-right:1px #C0CFCB solid;}
+   .keb-all .cs-cent .k-w-al .k-w-aw{ width:145px; height:130px; float:right; text-align:center;}
+   .keb-all .cs-cent .k-w-al .k-w-aw  p{ margin-top:20px;}
+   .keb-all .cs-cent .k-w-al .k-w-aw a{color:#999999; font-size:14px;}
+   .keb-all .cs-cent .k-w-al .k-w-aw a:hover{color:#FFCC33;}
+   .keb-all .cs-cent .k-ph{ border-bottom:1px solid #C0CFCB;  color:#333333; font-size:14px; line-height:30px; padding-left:10px;}
+   .keb-all .cs-cent .k-ps{  color:#333333; font-size:14px; line-height:30px; padding-left:10px;}
+   .keb-all .cs-cent .k-ps span{ color: #FF6600;}
+   
+   
+   .keb-all .sad-cent{  width:760px; height:230px; border:1px #C0CFCB solid; margin-left:69px; margin-bottom:40px;}
+   .keb-all .sad-cent .k-wp{ border-bottom:1px solid #C0CFCB;  color:#333333; font-size:14px; background:#f0f7ff; margin:0; line-height:35px; padding-left:20px;}
+   .keb-all .sad-cent .k-wp span{ margin-left:90px;}
+   .keb-all .sad-cent .k-w-al{ width:760px; height:130px; border-bottom:1px solid #C0CFCB;}
+   .keb-all .sad-cent .k-w-al .k-w-ay{ width:250px; height:130px; float:left; border-right:1px #C0CFCB solid; }
+   .keb-all .sad-cent .k-w-al .k-w-ay img{ width:80px; height:95px; margin:15px 10px; float:left;}
+   .keb-all .sad-cent .k-w-al .k-w-ay .k-w-alf{ width:145px; float:right; font-size:12px; margin-top:20px;  color:#999999; line-height:25px;}
+   .keb-all .sad-cent .k-w-al .k-w-ay .k-w-alf .bt{ color:#333333; font-size:14px; }
+   .keb-all .sad-cent .k-w-al .k-w-ae{ width:180px; height:130px; float:left; border-right:1px #C0CFCB solid;}
+   .keb-all .sad-cent .k-w-al .k-w-ae p, .keb-all .sad-cent .k-w-al .k-w-as p{ text-align:center; color:#999999; font-size:14px;  margin-top:20px;}
+   .keb-all .sad-cent .k-w-al .k-w-as{ width:180px; height:130px; float:left; border-right:1px #C0CFCB solid;}
+   .keb-all .sad-cent .k-w-al .k-w-aw{ width:145px; height:130px; float:right; text-align:center;}
+   .keb-all .sad-cent .k-w-al .k-w-aw  p{ margin-top:20px;}
+   .keb-all .sad-cent .k-w-al .k-w-aw a{color:#999999; font-size:14px;}
+   .keb-all .sad-cent .k-w-al .k-w-aw a:hover{color:#FFCC33;}
+   .keb-all .sad-cent .k-ph{ border-bottom:1px solid #C0CFCB;  color:#333333; font-size:14px; line-height:30px; padding-left:10px;}
+   .keb-all .sad-cent .k-ps{ color:#333333; font-size:14px; line-height:30px; padding-left:10px;}
+   .keb-all .sad-cent .k-ps span{ color:#FF6600;}
+   
+ 
+ 
+   .keb-all .wad-cent{  width:760px; height:230px; border:1px #C0CFCB solid; margin-left:69px; margin-bottom:40px;}
+   .keb-all .wad-cent .k-wp{ border-bottom:1px solid #C0CFCB;  color:#333333; font-size:14px; background:#f0f7ff; margin:0; line-height:35px; padding-left:20px;}
+   .keb-all .wad-cent .k-wp span{ margin-left:90px;}
+   .keb-all .wad-cent .k-w-al{ width:760px; height:130px; border-bottom:1px solid #C0CFCB;}
+   .keb-all .wad-cent .k-w-al .k-w-ay{ width:250px; height:130px; float:left; border-right:1px #C0CFCB solid; }
+   .keb-all .wad-cent .k-w-al .k-w-ay img{ width:80px; height:95px; margin:15px 10px; float:left;}
+   .keb-all .wad-cent .k-w-al .k-w-ay .k-w-alf{ width:145px; float:right; font-size:12px; margin-top:20px;  color:#999999; line-height:25px;}
+   .keb-all .wad-cent .k-w-al .k-w-ay .k-w-alf .bt{ color:#333333; font-size:14px; }
+   .keb-all .wad-cent .k-w-al .k-w-ae{ width:180px; height:130px; float:left; border-right:1px #C0CFCB solid;}
+   .keb-all .wad-cent .k-w-al .k-w-ae p, .keb-all .wad-cent .k-w-al .k-w-as p{ text-align:center; color:#999999; font-size:14px;  margin-top:20px;}
+   .keb-all .wad-cent .k-w-al .k-w-as{ width:180px; height:130px; float:left; border-right:1px #C0CFCB solid;}
+   .keb-all .wad-cent .k-w-al .k-w-aw{ width:145px; height:130px; float:right; text-align:center;}
+   .keb-all .wad-cent .k-w-al .k-w-aw  p{ margin-top:20px;}
+   .keb-all .wad-cent .k-w-al .k-w-aw a{color:#999999; font-size:14px;}
+   .keb-all .wad-cent .k-w-al .k-w-aw a:hover{color:#FFCC33;}
+   .keb-all .wad-cent .k-ph{ border-bottom:1px solid #C0CFCB;  color:#333333; font-size:14px; line-height:30px; padding-left:10px;}
+   .keb-all .wad-cent .k-ps{ color:#333333; font-size:14px; line-height:30px; padding-left:10px;}
+   .keb-all .wad-cent .k-ps span{ color:#FF6600;}
+   
+   
+</style>
+</head>
+
+<body>
+   <div class="keb-all">
+        <p class="pck">我的课表</p>
+        
+        
+             <div class="k-cent-y">
+                <ul>
+                 <li class="kecy cw" id="kcdjy">课程日历</li>
+                 <li class="kecy" id="kcdje">待确定约课 <span>1</span></li>
+                 <li class="kecy" id="kcdjs">待上课 <span>0</span></li>
+                 <li class="kecy" id="kcdjw">待确定酬劳  <span>1</span></li>
+                 </ul>
+             </div>
+             
+             
+      <!-- 课程日历-->     
+           <div class="k-cent" style="display:block;">
+           <div class="k-cent-e">
+                <div class="k-ct-y">
+                  <{$calendar.table}>
+                </div>
+                <div class="k-ct-e">
+                  <div class="k_date">
+                    <span class="current" id="prev"><</span>
+                    <span class="date"></span>
+                    <span class="current" id="next">></span>
+                  </div>
+                  <div class="k_day"></div>
+                </div>
+           </div>
+           
+             <div class="k-wan">
+                <p class="k-wp">2015-7-31  <span>约课单号：24324325432</span>  <span>老师：曾老师</span> </p>
+                <div class="k-w-al">
+                  <div class="k-w-ay">
+                    <img src="__ROOT__/public/images/home/u127.jpg" />
+                    <div class="k-w-alf">
+                       <p class="bt">高中数学专业辅导...</p>
+                       <p>学生上门</p>
+                    </div>
+                  </div>
+                  
+                  <div class="k-w-ae">
+                    <p>08月01号</p>
+                    <p>12：00-13：00</p>
+                    <p>1.0 小时</p>
+                  </div>
+                  
+                  <div class="k-w-as">
+                  <p>待老师确定</p>
+                  </div>
+                  
+                  <div class="k-w-aw">
+                  <p><a href="javascript:">修改时间</a></p>
+                  <p><a href="javascript:">取消约课</a></p>
+                  </div>
+                </div>
+                <p class="k-ph">上课地址：广东深圳龙华新区东环一路天汇大厦a座</p>
+                <p class="k-ps"><span>备注：</span>请老师能早点确定上课的时间</p>
+             </div>
+        </div>
+        
+        
+        
+<!--待确定约课-->
+       <div class="cs-cent" style="display:none;">
+           <p class="k-wp">2015-7-31  <span>约课单号：24324325432</span>  <span>老师：曾老师</span> </p>
+                <div class="k-w-al">
+                  <div class="k-w-ay">
+                    <img src="__ROOT__/public/images/home/u127.jpg" />
+                    <div class="k-w-alf">
+                       <p class="bt">高中数学专业辅导...</p>
+                       <p>学生上门</p>
+                    </div>
+                  </div>
+                  
+                  <div class="k-w-ae">
+                    <p>08月01号</p>
+                    <p>12：00-13：00</p>
+                    <p>1.0 小时</p>
+                  </div>
+                  
+                  <div class="k-w-as">
+                  <p>待老师确定</p>
+                  </div>
+                  
+                  <div class="k-w-aw">
+                  <p><a href="javascript:">修改时间</a></p>
+                  <p><a href="javascript:">取消约课</a></p>
+                  </div>
+                </div>
+                <p class="k-ph">上课地址：广东深圳龙华新区东环一路天汇大厦a座</p>
+                <p class="k-ps"><span>备注：</span>请老师能早点确定上课的时间</p>
+             </div>
+       
+       
+<!--待上课-->       
+       <div class="sad-cent" style="display:none;">
+           <p class="k-wp">2015-7-31  <span>约课单号：24324325432</span>  <span>老师：曾老师</span> </p>
+                <div class="k-w-al">
+                  <div class="k-w-ay">
+                    <img src="__ROOT__/public/images/home/u127.jpg" />
+                    <div class="k-w-alf">
+                       <p class="bt">高中数学专业辅导...</p>
+                       <p>学生上门</p>
+                    </div>
+                  </div>
+                  
+                  <div class="k-w-ae">
+                    <p>08月01号</p>
+                    <p>12：00-13：00</p>
+                    <p>1.0 小时</p>
+                  </div>
+                  
+                  <div class="k-w-as">
+                  <p>待老师确定</p>
+                  </div>
+                  
+                  <div class="k-w-aw">
+                  <p><a href="javascript:">修改时间</a></p>
+                  <p><a href="javascript:">取消约课</a></p>
+                  </div>
+                </div>
+                <p class="k-ph">上课地址：广东深圳龙华新区东环一路天汇大厦a座</p>
+                <p class="k-ps"><span>备注：</span>请老师能早点确定上课的时间</p>
+       </div>
+     
+        
+ <!--待确定酬劳-->       
+         <div class="wad-cent" style="display:none;">
+           <p class="k-wp">2015-7-31  <span>约课单号：24324325432</span>  <span>老师：曾老师</span> </p>
+                <div class="k-w-al">
+                  <div class="k-w-ay">
+                    <img src="__ROOT__/public/images/home/u127.jpg" />
+                    <div class="k-w-alf">
+                       <p class="bt">高中数学专业辅导...</p>
+                       <p>学生上门</p>
+                    </div>
+                  </div>
+                  
+                  <div class="k-w-ae">
+                    <p>08月01号</p>
+                    <p>12：00-13：00</p>
+                    <p>1.0 小时</p>
+                  </div>
+                  
+                  <div class="k-w-as">
+                  <p>待老师确定</p>
+                  </div>
+                  
+                  <div class="k-w-aw">
+                  <p><a href="javascript:">确定课酬</a></p>
+                  <p><a href="javascript:">我要退课</a></p>
+                  </div>
+                </div>
+                <p class="k-ph">上课地址：广东深圳龙华新区东环一路天汇大厦a座</p>
+                <p class="k-ps"><span>备注：</span>请老师能早点确定上课的时间</p>
+             </div>
+       </div>
+        
+        
+        
+   </div>
+<script type="text/javascript">
+$('.kecy').click(function(){
+	$('.kecy').removeClass("cw");
+	$(this).addClass('cw')
+})
+
+ 
+$('#kcdjy').click(function(){
+	 $('.k-cent').css({display:'block'});
+     $('.cs-cent').css({display:'none'});
+     $('.sad-cent').css({display:'none'});
+     $('.wad-cent').css({display:'none'});   
+})
+$('#kcdje').click(function(){
+	 $('.k-cent').css({display:'none'});
+     $('.cs-cent').css({display:'block'});
+     $('.sad-cent').css({display:'none'});
+     $('.wad-cent').css({display:'none'});   
+})
+$('#kcdjs').click(function(){
+	 $('.k-cent').css({display:'none'});
+     $('.cs-cent').css({display:'none'});
+     $('.sad-cent').css({display:'block'});
+     $('.wad-cent').css({display:'none'});   
+})
+$('#kcdjw').click(function(){
+	 $('.k-cent').css({display:'none'});
+     $('.cs-cent').css({display:'none'});
+     $('.sad-cent').css({display:'none'});
+     $('.wad-cent').css({display:'block'});   
+})
+
+/*日历事件--begin--*/
+$(".k-cent").attr({'onselectstart':"return false"});
+$(".k_date>.date").html("<{$calendar.date}>");
+var day = "",data_day = new Array(),cY = parseInt($(".bd_today").attr("data-year")),cM = parseInt($(".bd_today").attr("data-month"));
+data_day = ['周日','周一','周二','周三','周四','周五','周六'];
+$(".k_day").html("<span style='font-size:7em;color:#777;'>"+$(".bd_today").attr("data-date")+"</span>"+data_day[$(".bd_today").attr("data-day")]);
+
+$(".getCalendar").live('click',function(){
+  day = $(this).attr('data-day');
+  $(".getCalendar").removeClass('aclick');
+  $(this).addClass('aclick');
+  $(".k_day").html("<span style='font-size:7em;color:#777;'>"+$(this).text()+"</span>"+data_day[day]);
+});
+
+//$.ajaxSetup({async:false});
+$(".current").click(function(){
+  var id = $(this).attr("id"); if(id === "prev"){cM--;if(cM<1){cM = 12;cY--;}}else if(id === "next"){cM++;if(cM>12){cM = 1;cY++;}}
+  $.post("__APP__/Ajax/AjaxUser/Calendar",{cy:cY,cm:cM},function(data){
+    if(data){
+      $(".k-ct-y").html(data.table);
+      $(".k_date>.date").html(data.date);
+      $(".k_day").html("");
+    }
+  },'json');
+});
+
+/*日历事件--end--*/
+
+
+
+</script>
+
+</body>
+</html>

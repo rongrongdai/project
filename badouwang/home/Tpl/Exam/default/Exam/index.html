@@ -1,0 +1,153 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/exam.css"/>
+<div class="bnner">
+	<!--<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/banner.jpg"  height="350" />-->
+</div>
+
+<div class="con_a">
+	<div class="con">
+    	<h2>在线考试</h2>
+        <div class="tet">
+        	报道，第一次来，但看好老师。新手一个，请师老师和师兄帮提几点注意事项，谢谢。
+        </div>
+        <div class="inp">
+        	<a href="#" class="test">免费考试</a>
+            <span><a></a></span>
+        </div>
+    </div>
+    <!------------------------------------>
+	<div class="con">
+    	<h2>在线考试</h2>
+        <div class="tet">
+        	报道，第一次来，但看好老师。新手一个，请师老师和师兄帮提几点注意事项，谢谢。
+        </div>
+        <div class="inp">
+        	<a href="#" class="test">免费考试</a>
+            <span><a></a></span>
+        </div>
+    </div>
+    <!------------------------------------>
+	<div class="con">
+    	<h2>在线考试</h2>
+        <div class="tet">
+        	报道，第一次来，但看好老师。新手一个，请师老师和师兄帮提几点注意事项，谢谢。
+        </div>
+        <div class="inp">
+        	<a href="#" class="test">免费考试</a>
+            <span><a></a></span>
+        </div>
+    </div>
+    <!------------------------------------>
+	<div class="con" style="margin:0;border:none;">
+		<div class="title"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/gong.png" /><div>最新需求信息</div></div>
+        <div class="link">
+            <foreach name="notices" item="notice">
+                <a href="<{$notice.link}>"><div><{$notice.ntext}></div><span><{$notice.atime|date="Y-m-d",###}></span></a>
+            </foreach>
+        	
+        </div>
+    </div>
+</div>
+
+
+<div class="back">
+<div class="con_b">
+	<div class="conent">
+		<foreach name="classfiy" item="vo" key="i">
+			<if condition="$i heq 0">
+				<div class="tent"><div class="cus img1 vimg1" onclick="getFen(<{$vo.id}>,1)"></div><div class="tet"><{$vo.name}></div></div>
+			<else />
+				<div class="tent"><div class="cus img<{$i+1}>" onclick="getFen(<{$vo.id}>,<{$i+1}>)"></div><div class="tet"><{$vo.name}></div></div>
+			</if>
+		</foreach>
+    	<!--<div class="tent" style="margin:0;"><div class="cus img10"></div><div class="tet">已选</div></div>-->
+    </div>
+    <div class="tran"><span></span></div>
+
+	<div id="img1" class="coner img1" style="display:block">
+		<if condition="$data2">
+			<foreach name="data2" item="vo" key="i">
+				<div class="imgaes">
+	        	<a class="imga" href="#" ><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"   src="__ROOT__/public/images/home/exam/zg1.png" width="50" height="50" /></a>
+	            <a class="imgb" href="__URL__/examlist?fid=<{$vo.id}>"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"   src="__ROOT__/public/images/home/exam/zg2.png" width="50" height="50" /></a>
+	            <div><{$vo.name}></div>
+	        </div>
+			</foreach>
+		<else/>
+			<div style="text-align:center;height:100px;line-height:100px;">
+	    		抱歉！暂时没有相关试题
+	    	</div>
+		</if>
+	</div>
+
+<!--	<div id="img2" class="coner img2"></div>
+	<div id="img3" class="coner img3"></div>
+	<div id="img4" class="coner img4"></div>
+	<div id="img5" class="coner img5"></div>
+	<div id="img6" class="coner img6"></div>
+	<div id="img7" class="coner img7"></div>
+	<div id="img8" class="coner img8"></div>
+	<div id="img9" class="coner img9"></div>
+	<div id="img10" class="coner img10"><div class="load"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/jiazai.gif" /></div></div>-->
+
+</div>
+</div>
+<script>
+    //文字滚动
+    function scroll_news(){
+    $(function(){
+    $('.link a').eq(0).fadeOut('slow',function(){
+    //   alert($(this).clone().html());
+    //克隆:不用克隆的话，remove()就没了。
+    $(this).clone().appendTo($(this).parent()).fadeIn('slow');
+    $(this).remove();
+    });
+    });
+    }
+    setInterval('scroll_news()',1500);
+    </script>
+<script>
+
+function vs(){	for(i=1;i<12;i++){		$('.cus').removeClass('vimg'+i)		}	}
+$('.conent .cus').click(function(){
+	var css = $(this).attr('class').replace(/cus /,'');
+	if(css=='img1'){		$('.tran span').css({left:'40px'});vs();$('.cus.'+css).addClass('vimg1')	;}
+	else if(css=='img2'){   $('.tran span').css({left:'160px'});vs();$('.cus.'+css).addClass('vimg2') }
+	else if(css=='img3'){   $('.tran span').css({left:'285px'});vs();$('.cus.'+css).addClass('vimg3') }
+	else if(css=='img4'){   $('.tran span').css({left:'400px'});vs();$('.cus.'+css).addClass('vimg4') }
+	else if(css=='img5'){   $('.tran span').css({left:'525px'});vs();$('.cus.'+css).addClass('vimg5') }
+	else if(css=='img6'){   $('.tran span').css({left:'650px'});vs();$('.cus.'+css).addClass('vimg6') }
+	else if(css=='img7'){   $('.tran span').css({left:'770px'});vs();$('.cus.'+css).addClass('vimg7') }
+	else if(css=='img8'){   $('.tran span').css({left:'890px'});vs();$('.cus.'+css).addClass('vimg8') }
+	else if(css=='img9'){   $('.tran span').css({left:'1015px'});vs();$('.cus.'+css).addClass('vimg9') }
+	//else if(css=='img10'){   $('.tran span').css({left:'1140px'});vs();$('.cus.'+css).addClass('vimg10') }
+	else{}
+	//$('.coner').hide();
+	//$('.coner.' + css).show();
+	})
+
+	//获取二级分类
+	function getFen(fid,id){
+			var load = '<div class="load"><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"  src="__ROOT__/public/images/home/jiazai.gif" width="30px" /></div>';
+			$("#img1").css('height','195px').html(load);
+		$.post("__ROOT__/index.php/Ajax/AjaxExam/getFen",{'fid':fid},function(data){
+			
+
+			if(data != ''){
+				$("#img1").html("");
+				for(var i=0;i<data.length;i++){
+					var node = '<div class="imgaes"><a class="imga" href="#" ><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"   src="__ROOT__/public/images/home/exam/zg1.png" width="50" height="50" /></a><a class="imgb" href="__URL__/examlist?fid='+data[i].id+'"><img onerror="javascript:this.src=__ROOT__/public/images/home/n_pic.png"   src="__ROOT__/public/images/home/exam/zg2.png" width="50" height="50" /></a><div>'+data[i].name+'</div></div>';
+					$(node).appendTo("#img1");
+				}
+			}else{
+				var node = '<div class="sorry">抱歉！暂时没有相关试题</div>';
+        		$("#img1").fadeIn(300).html(node);
+			}
+		},'json');
+	}
+
+</script>
+
+
+
+<include file="../../../Public/default/footer" />

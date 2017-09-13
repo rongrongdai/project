@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name="apple-touch-fullscreen" content="yes">
+	    <meta name="format-detection" content="telephone=no,email=no">
+	    <meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta http-equiv="Expires" content="-1">
+	    <meta http-equiv="Cache-Control" content="no-cache">
+	    <meta http-equiv="Pragma" content="no-cache">
+		<title></title>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		
+		<script type="text/javascript">
+//			// 判断屏幕是否旋转
+//			function orientationChange() {
+//				var _alert=document.getElementById("alert");
+//				switch(window.orientation) {
+//				　　case 0: 
+//						_alert.style.display="none";
+//						break;
+//				　　case -90:
+//						_alert.style.display="block";
+//						break;
+//				　　case 90:
+//						_alert.style.display="block";
+//						break;
+//				　　case 180:
+//						_alert.style.display="none";
+//					　　break;
+//				}
+//			}
+//			// 添加事件监听
+//			addEventListener('load', function(){
+//				orientationChange();
+//				window.onorientationchange = orientationChange;
+//			});
+	    </script>
+	</head>
+
+	<body id="body">
+		<!-- loading -->
+		<div id="loading" class="load-container load">
+			<div class="loader">Loading...</div>
+			<div style="color: #666; text-align: center;">正在加载中，请稍后...</div>
+		</div>
+
+		<div id="audio_btn" class="video_exist" style="display: block;">
+            <a id="yinfu" class="rotate" onClick="playOrPaused();"></a>
+            <audio id="audio" loop src="1.mp3" autoplay preload></audio>
+        </div>
+	    <section id="content" data-y="0">
+	        <!-- page one -->
+	        <div id="page1" class="page page1 " data-class="page page1">
+	            <div style="background-image: url(img/bg-scenery-01.jpg);" class="page-con">
+					<div class="ele-box">
+						<figcaption>
+							<div class="fig-hd">
+								<h1>一旅</h1>
+			                	<p>"私奔内蒙"独家定制小众团</p>
+							</div>
+							<div class="fig-md"></div>
+							<div class="fig-bd">
+								<p>招募</p>
+								<p>2015.08.20-24</p>
+							</div>
+						</figcaption>
+		            </div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page two -->
+	        <div class="page page2" data-class="page page2">
+	            <div style="background-image: url(img/bg-scenery-02.jpg)" class="page-con">
+	            	<div class="ele-box">
+	            		<div class="ele-box-img" style="background-image:url(img/bg-page2-pic.png)">
+	            			<div class="ele-box-cont">
+	            				<div class="ele-box-con-img"></div>
+	            			</div>
+	            		</div>
+	            	</div>
+	                <div class="page2-con">
+	                	<p>我想起了那天在夕阳下的奔跑</p>
+	                	<p>那是我们逝去的青春</p>
+	                	<p>黄昏的地平线画出一句离别</p>
+	                	<p>让一旅带我们私奔</p>
+	                </div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page three -->
+	        <div class="page page3" data-class="page page3">
+	            <div style="background-image: url(img/bg-scenery-03.jpg);" class="page-con">
+	            	<div class="ele-box">
+	                    <div class="ele-box-img" style="background-image:url(img/bg-page3-pic.png)">
+	                    	<div class="ele-box-cont">
+	            				<div class="ele-box-con-img" style="background-image:url(img/bg-scenery-03.jpg)"></div>
+	            			</div>
+	            			<div class="page3-con">
+			                	<p>你在，等一个人</p>
+			                	<p>还是等一个故事</p>
+			                	<p>青春漫漫， 辗转在谁的天涯</p>
+			                	<p>捡起行装，抛下所有</p>
+			                	<p>和一旅，私奔</p>
+			                </div>
+	                    </div>
+	                </div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page four -->
+	        <div class="page page4" data-class="page page4">
+	            <div style="background-image: url(img/bg-scenery-04.jpg);" class="page-con">
+	            	<div class="ele-box">
+	            		<div id="pageSide" class="ele-box-lt">
+	            			<div class="side-row-one">08.20</div>
+	            			<div class="side-row-two">08.21</div>
+	            			<div class="side-row-three">08.22</div>
+	            			<div class="side-row-four">08.23</div>
+	            			<div class="side-tips">温馨提示</div>
+	            			<div class="comp_img"></div>
+	            		</div>
+	            		<div class="middle-line"></div>
+	            		<div id="pageMain" class="ele-box-rt">
+	            			<div class="ele-row main-row-one">
+	            				<p>北京 – 赤峰 – 热水塘镇</p>
+	            				<p>关键词：主题公寓，温泉洗去疲惫， 初识草原</p>
+	            			</div>
+	            			<div class="line"></div>
+	            			<div class="ele-row main-row-two">
+	            				<p>热水塘镇 – 阿斯哈图 – 锡林浩特</p>
+	            				<p>关键词：达达线，热阿线，纯正烤羊排初体验，石林，“多根肋骨的东乌羊”手把肉，博古假日酒店</p>
+	            			</div>
+	            			<div class="line"></div>
+	            			<div class="ele-row main-row-three">
+	            				<p>锡林浩特 – 西乌珠穆沁旗私家牧场</p>
+	            				<p>关键词：与旅行社说再见，深度体验腹地草场，牧民私家山头日落，策马奔腾，深夜星空，纯正蒙古美食，牧民生活（挤奶、放羊）</p>
+	            			</div>
+	            			<div class="line"></div>
+	            			<div class="ele-row main-row-four">
+	            				<p>私家牧场 – 北京</p>
+	            				<p>关键词：独家草场点观日出，享回程沿途风景，与风车零距离接触，再见是为了再见面</p>
+	            			</div>
+	            			<div class="line"></div>
+	            			<div class="ele-row main-tips">
+	            				<p>*早晚温差大，需带厚外套</p>
+	            				<p>*带防晒霜，预防晒伤</p>
+	            				<p>*丝巾和墨镜在草原更配哦。预防风沙入眼，也是拍照利器</p>
+	            			</div>
+	            		</div>
+	            	</div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page five -->
+	        <div class="page page5" data-class="page page5">
+	            <div style="background-image: url(img/bg-scenery-01.jpg);" class="page-con">
+	            	<div class="circle-box"></div>
+	                <h2 class="circle-box-title">路</h2>
+	                <div class="circle-box-cont">
+	                	<h3>等你探索</h3>
+	                	<div class="line"></div>
+	                </div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page six -->
+	        <div class="page page6" data-class="page page6">
+	            <div style="background-image: url(img/bg-scenery-06.jpg);" class="page-con">
+	            	<div class="circle-box"></div>
+	                <h2 class="circle-box-title">天</h2>
+	                <div class="circle-box-cont">
+	                	<h3>等你点亮</h3>
+	                	<div class="line"></div>
+	                </div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page seven -->
+	        <div class="page page7" data-class="page page7">
+	            <div style="background-image: url(img/bg-scenery-07.jpg);" class="page-con">
+	            	<div class="circle-box"></div>
+	                <h2 class="circle-box-title">云</h2>
+	                <div class="circle-box-cont">
+	                	<h3>等你追逐</h3>
+	                	<div class="line"></div>
+	                </div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page eight -->
+	        <div class="page page8" data-class="page page8">
+	            <div style="background-image: url(img/bg-scenery-08.jpg);" class="page-con">
+	            	<div class="circle-box"></div>
+	                <h2 class="circle-box-title">星</h2>
+	                <div class="circle-box-cont">
+	                	<h3>等你璀璨</h3>
+	                	<div class="line"></div>
+	                </div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page nine -->
+	        <div class="page page9" data-class="page page9">
+	            <div style="background-image: url(img/bg-scenery-09.jpg);" class="page-con">
+	            	<div class="circle-box"></div>
+	                <h2 class="circle-box-title">一旅</h2>
+	                <div class="circle-box-cont">
+	                	<h3>等你启程</h3>
+	                	<div class="line"></div>
+	                </div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page ten -->
+	        <div class="page page10" data-class="page page10">
+	            <div style="background-image: url(img/bg-scenery-10.jpg);" class="page-con">
+	            	<div class="ele-box">
+	            		<div class="pic-page10 pic-page10-01"><img src="img/pic-page10-01.jpg" alt=""></div>
+	            		<div class="pic-page10 pic-page10-02"><img src="img/pic-page10-02.jpg" alt=""></div>
+	            		<div class="pic-page10 pic-page10-03"><img src="img/pic-page10-03.jpg" alt=""></div>
+            			<div class="pic-page10 pic-page10-04"><img src="img/pic-page10-04.jpg" alt=""></div>
+            			<div class="pic-page10 pic-page10-05"><img src="img/pic-page10-05.jpg" alt=""></div>
+	            	</div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page eleven -->
+	        <div class="page page11" data-class="page page11">
+	            <div style="background-image: url(img/bg-scenery-10.jpg);" class="page-con">
+	            	<div class="ele-box">
+	            		<div class="pic-page11 pic-page11-01"><img src="img/pic-page11-01.jpg" alt=""></div>
+	            		<div class="pic-page11 pic-page11-02"><img src="img/pic-page11-02.jpg" alt=""></div>
+	            		<div class="pic-page11 pic-page11-03"><img src="img/pic-page11-03.jpg" alt=""></div>
+            			<div class="pic-page11 pic-page11-04"><img src="img/pic-page11-04.jpg" alt=""></div>
+            			<div class="pic-page11 pic-page11-05"><img src="img/pic-page11-05.jpg" alt=""></div>
+	            	</div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page twelve -->
+	        <div class="page page12" data-class="page page12">
+	            <div style="background-image: url(img/bg-scenery-10.jpg);" class="page-con">
+	            	<div class="ele-box">
+	            		<div class="pic-page12 pic-page12-01"><img src="img/pic-page12-01.jpg" alt=""></div>
+	            		<div class="pic-page12 pic-page12-02"><img src="img/pic-page12-02.jpg" alt=""></div>
+	            		<div class="pic-page12 pic-page12-03"><img src="img/pic-page12-03.jpg" alt=""></div>
+            			<div class="pic-page12 pic-page12-04"><img src="img/bg-scenery-01.jpg" alt=""></div>
+	            	</div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page thirteen -->
+	        <div class="page page13" data-class="page page13">
+	            <div style="background-image: url(img/bg-scenery-13.jpg);" class="page-con">
+	            	<div class="ele-box">
+	            		<div class="ele-box-cont">
+	            			<p>无留念，不青春</p>
+		            		<p>别让流年逝去无痕</p>
+		            		<p>记录你曾踏过的每条路</p>
+		            		<p>记录嘴角曾扬起的每个弧度</p>
+		            		<p>在未来某日</p>
+		            		<p>看旧照，享回忆，念曾经</p>
+		            		<p>在某个风和日丽</p>
+		            		<p>看最真实的自己</p>
+		            		<p>&nbsp;</p>
+		            		<p>—— 秋笔映像摄影</p>
+		            		<p>&nbsp;</p>
+		            		<p>“一旅”独家同期奉上独一无二旅拍服务让旅行，不只是精彩（照片或微记录）</p>
+		            		<p>&nbsp;</p>
+		            		<p>为保证质量，此团拍摄仅限名额：两席（个人/情侣/闺蜜/家庭）</p>
+		            		<p>&nbsp;</p>
+	            		</div>
+	            	</div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page fourteen  -->
+	        <div class="page page14" data-class="page page14">
+	            <div style="background-image: url(img/bg-scenery-14.jpg);" class="page-con">
+	            	<div class="ele-box">
+	            		<div class="ele-box-img" style="background-image: url(img/pic-page14.jpg);"></div>
+	            		<div class="ele-box-cont">
+	            			<h2>旅拍项目</h2>
+	            			<div class="line"></div>
+	            			<p>&nbsp;</p>
+	            			<p>对象：个人/情侣/闺蜜/家庭</p>
+	            			<p>&nbsp;</p>
+	            			<p>旅行四天同期拍摄</p>
+	            			<p>照片或微视频纪录片</p>
+	            			<p>欲了解摄影风格及具体细节</p>
+	            			<p>请联系女摄影师秋笔沟通，微信：qiubi0517</p>
+	            		</div>
+	            	</div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page fiveteen -->
+	        <div class="page page15" data-class="page page15">
+	            <div style="background-image: url(img/bg-scenery-14.jpg);" class="page-con">
+	            	<div class="ele-box">
+	            		<div class="ele-box-img" style="background-image: url(img/pic-page15.jpg);"></div>
+	            		<div class="ele-box-cont">
+	            			<h2>旅行费用</h2>
+	            			<div class="line"></div>
+	            			<p style="height: 0.5rem;"></p>
+	            			<p>单人：3999 人民币</p>
+	            			<p>情侣/闺蜜：5999 人民币</p>
+	            			<p>家庭：6299 人民币</p>
+	            			<p>* 费用含：车马劳顿费，住宿费，餐饮费，保险费，草原娱乐活动费用</p>
+	            			<p>* 费用不含：旅拍费</p>
+	            			<p>* 一人成团，六人封顶</p>
+	            		</div>
+	            	</div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page sixteen -->
+	        <div class="page page16" data-class="page page16">
+	            <div class="page-con">
+	            	<div class="ele-box">
+	            		<div class="ele-box-hd">
+	            			<div class="join">JOIN US</div>
+	            			<div class="arrow-right"><span></span></div>
+	            		</div>
+	            		<div class="ele-box-bd">
+	            			<p>报名截止2015.08.16</p>
+		            		<p>
+		            			<label>咨询电话：</label>&nbsp;&nbsp;18359255309 洪先生<br>
+		            			<label style="visibility: hidden;">咨询电话：</label>&nbsp;&nbsp;&nbsp;18612996598 林先生</p>
+		            		<p>咨询微信：freelinwei ; kazemidori ; qiubi0517</p>
+		            		<p><b>一旅探险，等你同行</b></p>
+	            		</div>
+	            	</div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        
+	        <!-- page seventeen -->
+	        <div class="page page17" data-class="page page17">
+	            <div class="page-con">
+	            	<div class="ele-box">
+	            		<div class="ele-box-title"><b>“私奔内蒙”独家定制小众团招募！一旅</b></div>
+	            		<div class="yilv"><b>一旅</b></div>
+	            	</div>
+	            </div>
+	        	<div class="u-arrow-bottom"><img src="img/btn01_arrow.png"></div>
+	        </div>
+	        <!-- end -->
+	    </section>
+	    
+		
+		<script type="text/javascript">
+			
+			
+			window.onload = function(){
+				initLoading();
+				pageAnimate();
+				sideHeight();
+				
+				document.ondragstart = function() {return false;}		//禁止拖拽页面图片
+				var	_mouseDown = false,									//滑动事件是否开始
+					num = 0,											//当前页面的Index数
+					h = document.body.offsetHeight,						//页面的高度
+					$content = document.getElementById('content'),		//事件包裹的大标签
+					$page = $content.getElementsByClassName('page'),	//事件切换的标签
+					leng = $page.length,								//切换标签的个数
+					page1 = document.getElementById("page1");
+					
+				for(var i = 0; i < leng; i++) {
+					var Classname = $page[i].getAttribute('class');
+					$page[i].setAttribute('data-class', Classname);
+					$page[i].style.height = h + 'px';				//给事件切换的标签加上与屏幕相同的高度
+				}
+				
+		        //绑定事件
+				document.addEventListener('mousedown', touchSatrtFunc, false); 	//触摸事件
+				document.addEventListener('mousemove', touchMoveFunc, false); 	//滑动事件
+				document.addEventListener('mouseup', touchEndFunc, false); 		//离开元素事件
+				document.addEventListener('touchstart', touchSatrtFunc, false); //触摸事件
+				document.addEventListener('touchmove', touchMoveFunc, false); 	//滑动事件
+				document.addEventListener('touchend', touchEndFunc, false); 	//离开元素事件
+				
+				//触摸事件开始
+		        function touchSatrtFunc(e) {
+					
+					//触摸开始时需要设置触摸点与滑动的距离为0。
+					
+		            startY = 0;        //触摸点
+		            endY = 0;          //滑动的距离
+					
+					//因为绑定多个事件支持手机电脑、所以判断当前触发的效果而获取不同的值。
+					if(e.type == 'touchstart'){
+						var touch = window.event.touches[0].pageY;
+					}else{
+						var touch = e.pageY||e.y;
+					}
+					_mouseDown = true;		// 设置开启滑动事件
+		            var y = Number(touch);	// 页面触点Y坐标  
+					$content.className = 'content';		// 给父级加上class、使其在拖拽时添加content而覆盖原有的属性、
+		            // 记录触点初始位置  
+		            startY = y;
+		        }
+		
+		        //滑动事件开始
+		        function touchMoveFunc(e) {
+		            e.preventDefault();	//阻止触摸时浏览器的缩放、滚动条滚动等
+		            
+					if(e.type == 'touchmove'){
+						var touch = window.event.touches[0].pageY;
+					}else{
+						var touch = e.pageY||e.y;
+					}
+		            var y = Number(touch),
+						_top = $content.getAttribute('data-y');				//获取当前页面的data-y值
+		            	
+		            endY = y;
+					
+					//滑动过程中当前页面跟随滑动
+					if(_mouseDown == true){
+						if( startY - endY > 0){
+							$content.style.WebkitTransform = 'translate3d(0,' + (endY - startY - _top) + 'px,0)';
+							$content.style.transform = 'translate3d(0,' + (endY - startY - _top) + 'px,0)';
+						}else{
+							$content.style.WebkitTransform = 'translate3d(0,' + (-startY + endY - _top) + 'px,0)';
+							$content.style.transform = 'translate3d(0,' + (-startY + endY - _top) + 'px,0)';
+						}
+					}			
+		        }
+		        //离开元素事件  
+		        function touchEndFunc(e) {
+					
+					_mouseDown = false;			//关闭滑动事件
+					
+					$content.className = '';	//给父级删除class、使其恢复原先属性、
+					
+					//判断滑动的距离以及滑动的方向来判断是否进入到下一个页面
+					if( startY - endY > 50 && startY - endY != startY ){
+						//判断是否是最后一页、如是最后一页时不再向下滑动。
+						if(num >= leng - 1){
+							$content.style.WebkitTransform = 'translate3d(0,' + -num * h + 'px,0)';
+							$content.style.transform = 'translate3d(0,' + -num * h + 'px,0)';
+						} else {
+							num++;
+							$content.style.WebkitTransform = 'translate3d(0,' + -num * h + 'px,0)';
+							$content.style.transform = 'translate3d(0,' + -num * h + 'px,0)';
+						}
+						for(var i = 1; i < leng; i++){
+							var Classname = $page[i].getAttribute('data-class');
+							$page[i].className = Classname;
+						}
+						var Classname = $page[num].getAttribute('data-class');
+						$page[num].className = Classname + ' animate';
+						$content.setAttribute('data-y', num * h);
+						
+						if(num != 0) {
+							page1.setAttribute('class', 'page page1');
+							page1.setAttribute('data-class', 'page page1');
+						} 
+					} else if( endY - startY > 50){
+						//判断是否是第一页、如是第一页时不再向上滑动。
+						if( num <= 0 ){
+							$content.style.WebkitTransform = 'translate3d(0,' + -num * h + 'px,0)';
+							$content.style.transform = 'translate3d(0,' + -num * h + 'px,0)';
+						} else {
+							num--;
+							$content.style.WebkitTransform = 'translate3d(0,' + -num * h + 'px,0)';
+							$content.style.transform = 'translate3d(0,' + -num * h + 'px,0)';
+						}
+						for(var i = 0; i < leng; i++){
+							var Classname = $page[i].getAttribute('data-class');
+							$page[i].className = Classname;
+						}
+						var Classname = $page[num].getAttribute('data-class');
+						$page[num].className = Classname + ' animate';
+						$content.setAttribute('data-y', num * h);
+					}else{
+						//未切换
+						$content.style.WebkitTransform = 'translate3d(0,' + -num * h + 'px,0)';
+						$content.style.transform = 'translate3d(0,' + -num * h + 'px,0)';
+					}
+		        }
+				
+				//当浏览器窗口发生改变时重新定义
+				window.onresize=function(){
+					h = document.body.offsetHeight;
+					$content.setAttribute('data-y', num * h);
+					$content.style.WebkitTransform = 'translate3d(0,' + -num * h + 'px,0)';
+					$content.style.transform = 'translate3d(0,' + -num * h + 'px,0)';
+					for(var i = 0; i < leng; i++){
+						$page[i].style.height = h + 'px';
+					}
+				}
+			}
+			
+			// loading
+			var initLoading = function(){
+				document.getElementById("loading").style.display = 'none'
+			}
+			
+			// 页面加载成功后第一页做动画
+			var pageAnimate = function(){
+				var oPage1 = document.getElementById("page1");
+				oPage1.className = oPage1.className + 'animate';
+			}
+			
+			var sideHeight = function(){
+				var pageSide = document.getElementById("pageSide");
+				var pageMain = document.getElementById("pageMain");
+				
+				// var mainOne = document.getElementById(nth(pageMain, "div", 0).id);
+				var mainOne = document.getElementsByClassName("main-row-one")[0],
+					mainTwo = document.getElementsByClassName("main-row-two")[0],
+					mainThree = document.getElementsByClassName("main-row-three")[0],
+					mainFour = document.getElementsByClassName("main-row-four")[0],
+					sideOne = document.getElementsByClassName("side-row-one")[0],
+					sideTwo = document.getElementsByClassName("side-row-two")[0],
+					sideThree = document.getElementsByClassName("side-row-three")[0],
+					sideFour = document.getElementsByClassName("side-row-four")[0];
+				// 将右侧div高度分别赋给左侧对应区块的div
+				sideOne.style.height = eleHeight(mainOne);
+				sideTwo.style.height = eleHeight(mainTwo);
+				sideThree.style.height = eleHeight(mainThree);
+				sideFour.style.height = eleHeight(mainFour);
+				// 设置行高
+				sideOne.style.lineHeight = eleHeight(mainOne);
+				sideTwo.style.lineHeight = eleHeight(mainTwo);
+				sideThree.style.lineHeight = eleHeight(mainThree);
+				sideFour.style.lineHeight = eleHeight(mainFour);
+			}
+			
+			function eleHeight(obj) {
+				return obj.offsetHeight / 20 + 'rem';
+			}
+		
+			/**
+			* @param parent 父节点
+			* @param ele 要选取的元素标签
+			* @param num 第几个元素
+			* @return 
+			*/
+			function nth(parent, ele, num){
+				// 将父节点的子节点转换成数组_ele;	eleArray为只储存元素节点的数组
+				var _ele = Array.prototype.slice.call(parent.childNodes),
+					eleArray = [];
+				for(var i = 0, len = _ele.length; i < len; i++){
+					if(_ele[i].nodeType==1){
+						eleArray.push(_ele[i]);	// 过滤掉非元素节点
+					}
+				}
+				if(arguments.length === 2){
+					// 如果只传入2个参数,则如果第二个参数是数字,则选取父节点下的第几个元素
+					// 如果第二个参数是字符串,则选取父节点下的所有参数代表的节点
+					if(typeof arguments[1] === "string"){
+						_ele = Array.prototype.slice.call(parent.getElementsByTagName(arguments[1]));
+						return _ele;
+					} else if (typeof arguments[1] === "number"){
+						return eleArray[arguments[1]];
+					}
+				} else {
+					// 如果参数齐全,则返回第几个某节点,索引从0开始
+					_ele = Array.prototype.slice.call(parent.getElementsByTagName(ele));
+					return _ele[num];
+				}
+			}
+
+			
+			function playOrPaused(){
+				var yinfu = document.getElementById("yinfu");
+				if(audio.paused){
+					audio.play();
+					yinfu.className = "rotate";
+					return;
+				}
+				audio.pause();
+				yinfu.className = "rotatend";
+			}
+		</script>
+	</body>
+</html>

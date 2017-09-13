@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>八斗网——课程管理</title>
+
+<link href="__ROOT__/public/css/home/Individualcenter.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/public/css/home/imgareaselect-animated.css">
+<script src="__ROOT__/public/js/jquery-min.js"></script>
+<script src="__ROOT__/public/js/validater.js"></script>
+<style>
+    .jcrop-holder{
+        margin-top:30px;
+    }
+</style>
+</head>
+<body>
+<div class="per">
+     <div class="per-top">
+          <img src="__ROOT__/public/images/home/zjkc1.jpg" />
+          <p class="set-up"><if condition="$hand">修改<else />添加</if>课程</p>
+     </div>
+
+
+     <div class="per-form">
+          <form action="" method="post" enctype="multipart/form-data" id="dataform">
+           <div class="pheig">
+              <div class="pflat1">课程名称：</div>
+              <div class="pflat2">
+              		<input type="text"  class="inputcs" name="aname" id='aname' value="<{$data.aname}>" />
+                    <span class="prompt">课程名称，中英文均可， 不超过20字符</span>
+              </div>
+           </div>
+           <div class="pheig" id="div_img" style="overflow:hidden;">
+              <div class="pflat1">课程Log：</div>
+              <div class="pflat2 pflat2tx" >
+                  <div><input type="file" id="c_img"  name="c_img"  <if condition='!$hand'>onchange="change(this)"</if> /></div>
+                    <if condition="$data.c_img neq ''">
+                        <div>
+                            <img id="cimg" class="size_img" style="float:left;margin-right:20px;width:300px;border:1px solid lightgrey;margin-top:10px;" onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"   src="__ROOT__/<{$data.c_img}>" />
+                            <if condition='!$hand'><div id="preview" style="margin-top:10px;margin-left:10px;width: 277px; height: 191px; overflow: hidden;border:1px solid lightgrey"><img id="view_photo" src="__ROOT__/<{$data.c_img}>"   style="width: 277px;height:191px;float:left; " onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"></div></if>
+                        </div>
+                    </if>
+              </div>
+             
+           </div>
+           <div class="pheig">
+              <div class="pflat1">课程价格：</div>
+              <div class="pflat2">
+              		<input type="text"  class="inputcs" name="price" id="price" value="<{$data.price}>" />
+                    <span class="prompt">课程价格（元）</span>
+              </div>
+           </div>
+           <div class="pheig">
+              <div class="pflat1">课程分类：</div>
+              <div class="pflat2" id="cid">
+                    
+              </div>
+              <span class="prompt"></span>
+           </div>
+
+           <div class="pheigtet">
+              <div class="pflat1">课程简介:</div>
+              <div class="pflat2">
+              		<textarea name="introduce" id="introduce" class="pregrjj"/><{$data.introduce}></textarea>
+                    <span class="prompt">课程简介，不超过100字符</span>
+              </div>
+           </div>
+           
+           <div class="pheigtet">
+              <div class="pflat1">课程详情:</div>
+              <div class="pflat2">
+					<textarea name="descript" id="descript" class="pregrjj"/><{$data.descript}></textarea>
+                    <span class="prompt">课程详情，不超过400字符</span>
+              </div>
+           </div>
+
+           <div class="pheig psub">
+                <input type="hidden" name="id" value="<{$id}>">
+                <input type="hidden" name="cid" value="">
+                <input type="hidden" name="token" value="<{$token}>"/>
+                <input type="hidden" name="timestamp" value="<{$timestamp}>"/>
+                <input  type="hidden" id="startX" name="x" />
+	        <input type="hidden" id="startY" name="y" /><br/>
+                <input type="hidden" id="width" name="w" />
+	        <input type="hidden" id="height" name="h" />
+                <input type="submit" class="subinput" value="确认<if condition='$hand'>修改<else/>添加</if>"  id="perqreng"/>
+           </div>
+        </form>   
+    </div>
+</div>
+<script src="__ROOT__/public/js/home/common.js"></script>
+<script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+<script src="__ROOT__/public/js/classfiy.js"></script>
+<script src="__ROOT__/public/js/pic.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/home/jquery.imgareaselect.min.js"></script>
+<script>	
+    var height;
+	    $(function(){
+                 height=$("#div_img").find("#cimg").height()+10;
+                $("#div_img").height($("#div_img").height()+height);
+                var cid="<{$data.cid}>";
+                initclass('cid','培训分类','','',cid);
+                $("#dataform").submit(function(){
+                $("#cname").val($("select[name=class]:last").val());
+                var nullcheck=new Array('aname','introduce','price','descript');
+                var nullinfo=new Array('课程名称','课程简介','课程价格','课程详情');
+                var res=null_check(nullcheck,nullinfo);
+                  if(res){
+                      $("#"+res[0]).parent().find(".prompt").text(res[1]).css("color","red");
+                      return false;
+                  }else{
+                     var pattern=/(\d+)(\.){0,1}(\d+)/
+                     if($("#price").val().match(pattern)){
+                         var cid=$("#cid").find("select:last").val();
+                         if(cid && cid!=='请选择分类' ){
+                              $("input[name=cid]").val(cid);
+                               if($("#cimg").height()>191 && $("#cimg").height()!==300){
+                                    return true;
+                                }else{
+                                    $("#c_img").next(".prompt").css("color","red").text("请上传图片宽度不低于300，且高、宽比小于2的图片！");
+                                    return false;
+                                }
+                         }else{
+                              $("#cid").parent().find(".prompt").text("请选择课程分类!").css("color","red");
+                             return false;
+                         }
+                     }else{
+                         $("#price").parent().find(".prompt").text("课程价格格式不正确!").css("color","red");
+                         return false;
+                     }
+                     $(this).attr('action',$(this).attr('action')+"?c")
+                     return true;
+                  }
+                  return false;
+
+            });
+            })
+
+
+
+
+</script>
+<script type="text/javascript">
+                    
+
+                     function change(file){
+                     // Get a reference to the fileList
+                     var files = !!file.files ? file.files : [];
+                     // If no files were selected, or no FileReader support, return
+                     if (!files.length || !window.FileReader) return;
+                         // Create a new instance of the FileReader
+                         var reader = new FileReader();
+                         // Read the local file as a DataURL
+                         reader.readAsDataURL(files[0]);
+                   
+                         // When loaded, set image data as background of div
+                         reader.onloadend = function(){
+                         var img=$('#cimg');
+                         img.attr("src",this.result);
+                         $("#view_photo").attr("src",this.result);
+                         img.load(function(){
+                           // 加载完成 
+                           var img=$('#cimg');
+                           img.width('100%');
+                           img.height('100%');
+                           var rect = clacImgZoomParam(300, 300, img.width(), img.height());
+                           img.width(rect.width);
+                           img.height(rect.height); 
+                           //$("#preview").width(img.width()/3);
+                           //$("#preview").height(img.width()/3*selectrate);
+                           init(277,191,'cimg');
+                           $("#div_img").height($("#div_img").height()+$("#div_img").find("#cimg").height()-height+10);
+                         });
+                       }
+                 }
+                </script>  
+		<script type="text/javascript">
+			$(function() {
+				<if condition="!$hand">init(277,191,'cimg');</if>
+			});
+                        
+		</script>
+</body>
+</html>

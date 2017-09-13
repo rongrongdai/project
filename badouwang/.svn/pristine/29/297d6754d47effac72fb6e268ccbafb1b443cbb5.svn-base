@@ -1,0 +1,70 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/newslist.css"/>
+
+<!---------------------------->
+
+<div id="news">
+	<div class="ad_new"><a href="#"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/banner2.jpg" /></a></div>
+	<div class="result-bar"><span>新闻资讯</span><span><a href="./newslist">更多</a></span></div>
+	<div class="t-content">
+		<div class="left">
+			<div class="hh"><{$data['title']}></div>
+			<div class="other">发布时间：<{$data.mtime|date="Y-m-d H:i:s",###}>  点击次数：<{$data.hit}></div>
+			<div class="text"><{$data['content']}></div>
+			<div class="bottom">
+				<if condition="$pre"> <a href="javascript:hit(<{$pre}>)">上一条</a></if>
+				<if condition="$next"> <a href="javascript:hit(<{$next}>)">下一条</a></if>
+				<div class="nav-xw"><div class="nav-fx"><div class="share"></div></div></div>
+			</div>
+		</div>
+		<div class="right">
+			<div class="leftbt">热门文章</div>
+			<div>
+			<foreach name="hotnews" item="vo">
+				<a href="javascript:hit(<{$vo.id}>);"><{$vo.title}></a>
+			</foreach>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+<!---------------------------->
+
+
+<include file="../../../Public/default/footer" />
+
+
+
+
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);</script>
+
+<script>
+  function hit(id){
+    $.get("__APP__/Ajax/AjaxIndex/hit",{'id':id},function(data){
+      window.location.href="__APP__/Index/Index/news?id="+id;
+    });
+  }
+
+
+	$('.nav-fx').append('\
+	<div class="share">\
+	  <span>分享：</span>\
+	        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">\
+	        	<a class="bds_sqq"></a>\
+	            <a class="bds_qzone"></a>\
+	            <a class="bds_tsina"></a>\
+	            <a class="bds_tqq"></a>\
+	            <span class="bds_more"></span>\
+	        </div>\
+	</div>\
+	');
+
+	$('.nav-fx').css({});
+	$('.nav-fx .share > span').css({float:"left",lineHeight:"24px", height:"24px", color:"#666", fontSize:"12px", padding:"2px 0 0 0"});
+	$('#bdshare').css( { float:"left"});
+</script>

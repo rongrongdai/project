@@ -1,0 +1,12 @@
+<?php
+
+//课程控制器
+class CourseAction extends CommonAction{
+    //获取课程列表
+    //收藏课程
+    //分享课程
+    //回去最新发布
+    //获取推荐列表
+    
+}
+

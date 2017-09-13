@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册 - 八斗网</title>
+<link type="text/css" href="__ROOT__/public/css/home/style.css" rel="stylesheet" />
+<link href="__ROOT__/public/images/home/2.ico" type="image/x-icon" rel="shortcut icon">
+<script src="__ROOT__/public/js/jquery-min.js" type="text/javascript"></script>
+</head>
+
+<body>
+ <div id="allba">
+     <div id="thehead">
+        <div class="theheadone">
+            <a title="返回首页" href="__APP__"><img  src="__ROOT__/public/images/home/fheader.gif" /></a>  
+        </div>
+        <div class="theheadtwo-yit">
+
+    <if condition="!$vist">    
+        	<div class="Contentone">
+         		 <form id="loginForm" class="loginForm" name="reg" method="post" action="__URL__/register">
+            		<input type="text"  class="inr" id="emaile" name="uname" value="" placeholder="请输入常用邮箱地址" autofocus /><span></span> <br />
+            		<input type="password"  class="inr" id="passwords" name="password" placeholder="设置密码(长度6~12位)"><span></span><br />
+            		<input type="password"   class="inr" id="angpasswords" name="repass" placeholder="确认密码"><span></span><br />
+
+            <input type="text" id="text" name="vcode" placeholder="请输入验证码">
+              <a href="#" class="imgeeems"><img  src="__URL__/vcode" style="cursor:pointer" onclick="this.src='__URL__/vcode/rand/'+Math.random()" /></a><span id='vcd' class="error"></span><br/>
+            <input type="checkbox" id="rememberyi" value="1" checked="checked" name="agree">
+            <span class="cherwen">我已阅读并同意<a href="#">《八斗用户协议》</a></span ><br/>
+            <input type="submit" id="submitregis" value="注   册"> 
+          </form>     
+        </div>
+    <else />
+      <div class="Contentone">
+          <div style="margin:35px 50px;color:#777;"><h3>请选择邀请方式：</h3><span class="nav-fx"></span></div>
+      </div>
+    </if>
+
+        <div class="Contenttwo">
+           <div class="Contenttwoyi"></div>
+           <div class="pepro">您是第 <span><{$num}></span> 位注册用户</div>
+           <div class="Contenttwoer"> 已有八斗帐号</div> 
+            <a href="__URL__/login" class="registor_now">直接登录</a>
+             <div class="login_others">
+              使用以下帐号直接登录:
+            </div>  
+           <div class="tupcs">
+           <div class="icon_wb" ><a href="__ROOT__/index.php/User/User/webLogin" target="_blank" title="使用新浪微博帐号登录"></a></div> 
+           <div class="icon_qq"><a href="__ROOT__/index.php/User/User/qqLogin"  target="_blank" title="使用腾讯QQ帐号登录"></a> </div>
+<!--           <div class="icon_weixin"><a href="#"  target="_blank" title="使用微信帐号登录"></a></div>-->
+            </div>
+        </div>
+        
+        </div>     
+     </div>
+  </div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+window.onload = function(){
+  //1.找到元素
+  var fm = document.forms['reg'];
+  var username = fm.elements['uname'];
+  var password = fm.elements['password'];
+  var repass = fm.elements['repass'];
+  var vcode = fm.elements['vcode'];
+  //var agree = fm.elements['agree'];
+
+  //2.绑定事件
+  username.onblur = function(){
+    var span = this.nextSibling;
+    var pattern = /^([\w]{3,})@([\da-z]{2,6})((.cn)$|(.com)$)/;
+    if(pattern.test(this.value)){
+      $.get('__ROOT__/index.php/Ajax/AjaxUser/vuser',{'uname':this.value},function(data){
+        if(data == "not"){//可以注册
+          var info = "<img  src='__ROOT__/public/images/home/right.png' />";
+          span.className = "right";
+          span.innerHTML = info;
+        }else if(data == "exists"){
+          var info = "已被注册";
+          span.className = "error";
+          span.innerHTML = info;
+        }
+      })
+    }else{
+      //验证失败
+      var info = "<img  src='__ROOT__/public/images/home/error.png' />";
+      span.className = "error";
+      span.innerHTML = info;
+    }
+  }
+  
+  //password.onfocus =function(){var span = this.nextSibling;span.removeAttribute("class");}
+  password.onblur = function(){
+    var span = this.nextSibling;
+    if(this.value.length>=6 && this.value.length<=12){
+      //验证成功
+      var info = "<img  src='__ROOT__/public/images/home/right.png' />";
+      span.className = "right";
+      span.innerHTML = info;
+    }else{
+      //验证失败
+      var info = "<img  src='__ROOT__/public/images/home/error.png' />";
+      span.className = "error";
+      span.innerHTML = info;
+    }
+  }
+  
+  //repass.onfocus =function(){var span = this.nextSibling;span.removeAttribute("class");}
+  repass.onblur = function(){
+    var span = this.nextSibling;
+    if(this.value == password.value && this.value.length > 0){
+      //验证成功
+      var info = "<img  src='__ROOT__/public/images/home/right.png' />";
+      span.className = "right";
+      span.innerHTML = info;
+    }else{
+      //验证失败
+      var info = "<img  src='__ROOT__/public/images/home/error.png' />";
+      span.className = "error";
+      span.innerHTML = info;
+    }
+  }
+
+ vcode.onblur = function(){
+    var span = document.getElementById("vcd");
+    $.get('__ROOT__/index.php/Ajax/AjaxUser/vcode',{'vcode':this.value},function(data){
+      if(data == 'right'){
+        //验证成功
+      var info = "<img  src='__ROOT__/public/images/home/right.png' />";
+      span.className = "right";
+      span.innerHTML = info;
+      }else if(data == 'error'){
+        //验证失败
+        var info = "<img  src='__ROOT__/public/images/home/error.png' />"
+        span.className = "error";
+        span.innerHTML = info;
+      }
+    })
+  }
+
+  fm.onsubmit = function(evt){
+    for(var i=0;i<fm.elements.length;i++){
+      fm.elements[i].focus();
+      fm.elements[i].blur();
+    }
+    var childs = fm.childNodes;
+    for(var i=0;i<childs.length;i++){
+      if(childs[i].nodeType==1 && childs[i].nodeName.toLowerCase()=='span'){
+        if(childs[i].className=='error'){ 
+          var e = evt || window.event;
+          typeof e.preventDefault=='undefined'?e.returnValue=false:e.preventDefault();
+          return;
+        }
+      }
+    }
+  }
+}
+
+
+</script>
+
+
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);</script>
+
+<script>
+  $('.nav-fx').append('\
+  <div class="share">\
+          <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">\
+            <a class="bds_sqq"></a>\
+              <a class="bds_qzone"></a>\
+              <a class="bds_tsina"></a>\
+              <a class="bds_tqq"></a>\
+              <span class="bds_more"></span>\
+          </div>\
+  </div>\
+  ');
+</script>

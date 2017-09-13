@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#3f3f3f;}
+        /*iscroll*/
+        #wrapper {width:5.4rem;overflow: hidden;position: absolute;top:2.12rem;background-color:#fff;left:.5rem;border-radius:0.1rem;height:4.5rem;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;border-radius:0.06rem;}
+        .share-body{}
+        .share-title{font-size:0.34rem;margin:0.46rem 0 0.25rem 0.32rem;}
+        .share-main{}
+        .share-main>img{width:1.1rem;display:inline-block;vertical-align:middle;margin-left: 0.32rem;}
+        .share-main>p{font-size:0.28rem;width:3.52rem;display:inline-block;vertical-align:middle;}
+        .share-info{font-size:0.22rem;margin-left: 0.32rem;}
+        .share-txt{width:4.76rem;height:0.5rem;border:1px solid #c7c7c7;margin: 0.25rem 0 0.4rem 0;font-size:0.22rem;}
+        .share-btn{font-size:0.3rem;border-top:1px solid #afafbc;}
+        .share-btn>span{display:inline-block;vertical-align:middle;height:0.88rem;line-height:0.88rem;text-align:center;width: 50%;
+    box-sizing: border-box;}
+        .share-btn .cancel{border-right:1px solid #afafbc;}
+        .share-btn .save{}
+
+        </style>
+    <script type="text/javascript">
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body>
+    <article>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="share-body">
+                    <p class="share-title">邀请好友，一起来赚钱！！</p>
+                    <div class="share-main">
+                        <img src="images/share1.png" alt="">
+                        <p>美好生活及服务平台,轻松掌上购物,随时随地有收益,欢迎加入  </p>
+                    </div>
+                    <div class="share-info">来自：<span>惠云</span><input type="text" placeholder="说些什么" class="share-txt"></div>
+                </div>
+                <div class="share-btn">
+                    <span class="cancel">取消</span><span class="save">确定</span>
+                </div>
+            </div>
+        </div>
+    </article>
+</body>
+</html>

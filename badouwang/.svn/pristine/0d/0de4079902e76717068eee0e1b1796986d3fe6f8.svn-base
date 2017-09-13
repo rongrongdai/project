@@ -1,0 +1,220 @@
+<include file="../../../Public/default/header" />
+   <link href="__ROOT__/public/css/home/Detailspage.css" type="text/css" rel="stylesheet" />
+   
+   
+     <div class="detali-one"><p>当前位置 : <a href="javascript:">培训</a> > : <a href="javascript:">培训详情 </a>> <{$course.aname}></p></div>
+       
+       <div class="detali-twozs">
+
+           <div class="det-one">
+           <h1><{$course.aname}></h1>
+           <p class="py"><if condition="$course.introduce neq ''"><{$course.introduce}><else/>抱歉，暂无相关简介！</if>
+           </p>
+           </div>
+           
+           <div class="det-two">
+               <div class="det-ty"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src='__ROOT__ <if condition='$course.img neq ""'><{$course.img}><else/>/pulbic/images/home/n_pic.png</if>'  /> </div>
+               <div class="det-te">
+                   <p class="pq"><span class="qy">￥<if condition="$course.d_price gt 0"><{$course.d_price}></if></span>
+                   <span class="qe">￥<if condition="$course.price gt 0"><{$course.price}></if></span>
+                   <php>
+                           if($course['d_price']){
+                                $discount=((float)$course['d_price'])/((float)$course['price']);
+                                $discount=number_format($discount, 2, '.', '')*10;
+                           }else{
+                                $discount='该课程没有折扣!';
+                           }
+                           
+                       </php>
+                   <span class="qs"><{$discount}>折</span></p>
+                   
+                   <p class="pe">已售：<span class="qsi">196</span>  
+                   <span class="qw">5人已评价</span>   
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" />
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" />
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" />
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" />
+                   <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/sjxpx.png" />
+                   <span class="ql">5.0</span>分
+                   </p>
+                   
+                   <p>活动类型：优惠劵</p>
+                   <p>机构名称：<a href="javascrip:" class="qq"><if condition="$organ.real_name neq ''"><{$organ.real_name}><else/>暂无机构信信息！</if></a></p>
+                   <p>使用学生：小学生</p>
+                   <p>开课日期：<{$course.s_time|date='Y-m-d',###}> 至 <{$course.e_time|date='Y-m-d',###}>  </p>
+                   
+                   <div class="ljq">
+                     <if condition="$isin lt 1"><a href="inclass?id=<{$course.id}>">√立即抢购<else/><a href="javascript:;">已报名！</if></a>
+                     <p class="qk"><span>剩余名额：<if condition='$course.number gt 0'><if condition='$course.ain gt 0'><php>echo $course['number']-$course['ain'];</php><else/><{$course.number}></if><else/>0</if></span></p>
+                   </div>
+               </div>
+               
+               <div class="det-ts">
+                  <div class="dey">
+                  <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/wxfh.gif" />
+                  <div class="deon">
+                    <p class="da">HI~</p>
+                    <P>扫一扫有惊喜哦</P>
+                    <P>最新教育质询发布平台</P>
+                  </div>
+                  </div>
+                  
+                  <div class="deer">
+                     <div class="deyff">
+                       <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xrt1.gif" /><br />
+                       <p>在线咨询</p>
+                     </div>
+                     <div class="dee">
+                       <img style="margin: 10px 0 0 20px;" onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/xrt2.gif" />
+                       <p><if condition="$organ.telephone neq ''"><{$organ.telephone}><else/>抱歉，暂无联系方式</if></p>
+                     </div>
+                  </div>
+                  
+                  <div class="desan">
+                     <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/x1r.gif" /><a href="javascript:" name='collect' id='<{$course.id}>'>收藏本课程</a>
+                    <div style="float:left;padding-top:10px;" class="bshare-custom icon-medium"  url="http://<{$Think.server.http_host}>__SELF__" summary="<{$course.introduce}>" pic="http://<{$Think.server.http_host}>__ROOT__<{$course.img}>>
+                  </div> <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/x2r.gif" class="imq"/><a href="javascript:">分享到</a>
+                  </div>
+                  
+               </div>
+           </div>
+               
+       </div>
+
+ <div class="detali-there">
+     <div class="detre-yi">
+             <div class="decet-one">
+               <a class="decet-oyi dec" name="info" href="javascrpt:;">课程详情</a>
+               <a class="decet-oyi" name="detail" href="javascript:;">课程评论(<if condition="$sum"><{$sum}><else/>0</if>)</a>
+             </div>
+              <!--隐藏__课程详情-->
+             <div class="decet-two" id="info" >
+                   <{$course.descript|html_entity_decode}>
+             </div>
+             
+             <!--隐藏__课程评论-->
+             <div class="decet-two" style="display:none" id="cmt">
+                 <foreach name="comments" item="comment">
+                   <if condition="$comment.ctid neq ''">
+                            <div class="dectw-kcyi">
+                                     <div class="dectw-kcyceny">
+                                     <div class="dectw-kcycenyi"></div>
+                                     <p class="de-xmi">Better Man</p>
+                                    </div>
+
+                                   <div class="dectw-kcycene">
+                                       <php>
+                                          for($i=0;$i<$comment['star'];$i++){
+                                                echo '<img  src="__ROOT__/public/images/home/pxu/xxin.png" />';
+                                          }
+                                          for($i=0;$i<5-$comment['star'];$i++){
+                                            echo '<img  src="__ROOT__/public/images/home/pxu/xxingx.png" />';
+                                          }
+                                        </php>
+                                    <p><{$comment.content}></p>
+                                    <p class="shij"><{$comment.com_timestamp|date="Y-m-d H:i",###}></p>
+                                   </div>
+                               
+                             </div>
+                             <else/>
+                             <div style='margin:20px;margin-left:180px;'>
+                                <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/pxu/baoc.png" /><p>抱歉，暂无相关评论！</p>
+                             </div>
+                       </if>
+             </foreach>
+                 
+       </div></div>
+          
+          <div class="detre-er">
+                <p class="pt-re" >类似优惠课程</p>
+                <p class="pt-rs" ></p>
+                <foreach name="courses" item="course">
+                     <div class="deter-san">
+                         <div class="deter-sny"><if condition="$course.timg neq ''"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$course.timg}>" style="width:105px;height:52px;"/></if></div>
+                         <div class="deter-sne"><p><a href="__ROOT__/index.php/Organ/Organ/odetail?type=1&id=<{$course.id}>"><{$course.aname}></a></p></div>
+                     </div>
+                     <div style="clear:both;"></div>
+                </foreach>
+              
+          
+ </div>
+ 
+ <!--关注学校-->
+<div class="Lpage-twossas">
+        <div class="Lpage-two">
+             <div class="indexsix-y">
+                <div class="indexsix-yi"><p>最受关注的学校</p></div>
+             </div>
+             <div class="indexsix-e">
+                  <div class="schooly"><a href="http://www.gedu.org" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s1.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.xdf.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s2.png" /></a></div>
+                  <div class="schooly"><a href="http://www.bdqn.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s3.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.bond520.com" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s4.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.tedu.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s5.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.21edu.com" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s6.jpg" /></a></div>
+                  <div class="schooly"><a href="http://www.ef.com.cn" target="new"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/index/s7.jpg" /></a></div>
+             </div>
+        </div>
+</div>       
+</div> </div>
+     <script src="__ROOT__/public/js/layer/layer-min.js"></script>
+     <script type="text/javascript" ckharset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&uuid=&pophcol=2&lang=zh"></script>  
+     <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script> 
+     <script>
+         $(function(){
+             $("a[name=collect]").click(function(){
+             $.getJSON('__ROOT__/index.php/Ajax/AjaxCourse/collect',{'id':$(this).attr("id")},function(data){
+             var type=data.code==='1'?1:2;
+             $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type:type,msg:data.message}});
+            });
+             })
+			 
+			 
+             $(".decet-oyi").click(function(){
+               $(".decet-oyi").removeClass("dec");
+               $(this).addClass("dec");
+               if($(this).attr('name')==='info'){
+                   $("#info").show();
+                   $("#cmt").hide();
+               }else{
+                   $("#info").hide();
+                   $("#cmt").show();
+               }
+			   
+			   
+          });
+           //bShare分享  
+            var iBShare = {  
+                //初始化  
+                init: function() {  
+                    var $shareBox = $(".bshare-custom");  
+                    //加载分享工具  
+                    var tools = '<a title="分享到QQ空间" class="bshare-qzone"></a>';  
+                    tools += '<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>';  
+                    tools += '<a title="分享到人人网" class="bshare-renren"></a>';  
+                    tools += '<a title="分享到腾讯微博" class="bshare-qqmb"></a>';  
+                    tools += '<a title="分享到网易微博" class="bshare-neteasemb"></a>';  
+                    tools += '<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>';  
+                    $shareBox.append(tools);  
+                    //绑定分享事件  
+                    $shareBox.children("a").click(function() {  
+                        var parents = $(this).parent(); 
+                        bShare.addEntry({  
+                            title: parents.attr("title"),  
+                            url: parents.attr("url"),  
+                            summary: parents.attr("summary"),  
+                            pic: parents.attr("pic")  
+                        });  
+                    });  
+                }  
+            }  
+            iBShare.init();
+
+         })
+         
+     
+     </script>
+<include file="../../../Public/default/footer" />
+
+</body>
+</html>

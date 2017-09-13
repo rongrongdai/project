@@ -1,0 +1,948 @@
+[ 2015-08-19T09:12:03+08:00 ] ERR: (ThinkException) �������ӷ���һ��ʱ���û����ȷ�𸴻����ӵ�����û�з�Ӧ�����ӳ���ʧ�ܡ�
+
+[ 2015-08-19T09:12:33+08:00 ] ERR: (ThinkException) �������ӷ���һ��ʱ���û����ȷ�𸴻����ӵ�����û�з�Ӧ�����ӳ���ʧ�ܡ�
+
+[ 2015-08-19T10:18:39+08:00 ] 127.0.0.1 /badouwang/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant __INFO__ - assumed '__INFO__' E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 31 行.
+NOTIC: [8] Undefined offset: 2 E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 32 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SELECT a.uid,a.real_name,a.id_front,m.visitednumber,c.name cname,d.name dname FROM bd_authentication a JOIN bd_memberfields m ON a.uid=m.uid JOIN bd_classfiy c ON a.cid=c.id JOIN bd_classfiy d ON a.grade=d.id WHERE a.type=1 ORDER BY m.visitednumber DESC LIMIT 4 [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.046875s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.015625s ]
+SQL: select spred.id,spred.price,spred.d_price,course.cname aname,course.timg,spred.number from bd_organ_spred spred left join  bd_proxyermanage course on spred.cid=course.id where d_price>0 and d_price<spred.price and spred.type=2 limit 0,5 [ RunTime:0.000000s ]
+SQL: SELECT q.id,q.content,q.lnumber FROM bd_question q  order by q.lnumber desc LIMIT 10  [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE name='焦点新闻' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_article` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_article` WHERE gid=165 LIMIT 11   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_authentication` [ RunTime:0.031250s ]
+SQL: SELECT `uid`,`real_name`,`lincence`,`address` FROM `bd_authentication` WHERE type=3 LIMIT 3   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=30 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_jjbm` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=30 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=34 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=34 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=39 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=39 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name,id from bd_classfiy where lrf>'154' and rft<'179]'  and ishot=1 [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_organ_spred` WHERE ic_comment=1  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.031250s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 5   [ RunTime:0.000000s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Index\IndexAction.class.php on line 48 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'104' and rft<'153]' and lev-2=1 [ RunTime:0.000000s ]
+SQL: SELECT `lrf`,`rft` FROM `bd_classfiy` WHERE id=71 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE lrf>105 and rft<112  [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_ex_paper` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_ex_paper` WHERE sid in (72,73,74) LIMIT 10   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.640625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 33 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 43 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.640625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.093750s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.734375s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.750000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.750000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.750000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.750000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:18:40+08:00 ] 127.0.0.1 /badouwang/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant __INFO__ - assumed '__INFO__' E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 31 行.
+NOTIC: [8] Undefined offset: 2 E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 32 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SELECT a.uid,a.real_name,a.id_front,m.visitednumber,c.name cname,d.name dname FROM bd_authentication a JOIN bd_memberfields m ON a.uid=m.uid JOIN bd_classfiy c ON a.cid=c.id JOIN bd_classfiy d ON a.grade=d.id WHERE a.type=1 ORDER BY m.visitednumber DESC LIMIT 4 [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.015625s ]
+SQL: select spred.id,spred.price,spred.d_price,course.cname aname,course.timg,spred.number from bd_organ_spred spred left join  bd_proxyermanage course on spred.cid=course.id where d_price>0 and d_price<spred.price and spred.type=2 limit 0,5 [ RunTime:0.000000s ]
+SQL: SELECT q.id,q.content,q.lnumber FROM bd_question q  order by q.lnumber desc LIMIT 10  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.031250s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE name='焦点新闻' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_article` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_article` WHERE gid=165 LIMIT 11   [ RunTime:0.031250s ]
+SQL: SHOW COLUMNS FROM `bd_authentication` [ RunTime:0.031250s ]
+SQL: SELECT `uid`,`real_name`,`lincence`,`address` FROM `bd_authentication` WHERE type=3 LIMIT 3   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=30 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_jjbm` [ RunTime:0.062500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=30 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=34 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=34 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=39 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=39 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.031250s ]
+SQL: select name,id from bd_classfiy where lrf>'154' and rft<'179]'  and ishot=1 [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_organ_spred` WHERE ic_comment=1  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 5   [ RunTime:0.015625s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Index\IndexAction.class.php on line 48 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'104' and rft<'153]' and lev-2=1 [ RunTime:0.000000s ]
+SQL: SELECT `lrf`,`rft` FROM `bd_classfiy` WHERE id=71 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE lrf>105 and rft<112  [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_ex_paper` [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_ex_paper` WHERE sid in (72,73,74) LIMIT 10   [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.531250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 33 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 43 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.531250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.078125s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.609375s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.609375s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.609375s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.609375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.609375s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:18:52+08:00 ] 127.0.0.1 /badouwang/index.php/User/User/login
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.015625s ]
+INFO: [ route_check ] --END-- [ RunTime:0.015625s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.031250s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.203125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046875s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.250000s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.250000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.250000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.250000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.250000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:12+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxUser/vpass
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:-0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+NOTIC: [2] md5() expects parameter 1 to be string, array given E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 68 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 79 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 90 行.
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' LIMIT 1   [ RunTime:0.015625s ]
+SQL: UPDATE `bd_user` SET `err_login`=0 WHERE uname='qiyunfanbo@126.com' [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' and password='13d986e951294e328b607007337f17e6' LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:12+08:00 ] 127.0.0.1 /badouwang/index.php/User/User/doLogin
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.031250s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [2] md5() expects parameter 1 to be string, array given E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 68 行.
+NOTIC: [8] Undefined variable: char E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 79 行.
+NOTIC: [8] Undefined variable: str E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\PasswordHelper.class.php 第 90 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_user` WHERE uname='qiyunfanbo@126.com' and password='13d986e951294e328b607007337f17e6' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.015625s ]
+SQL: SELECT `rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_config` [ RunTime:0.015625s ]
+SQL: SELECT `c_value`,`c_info` FROM `bd_config` WHERE c_name='经验' and c_key='login' LIMIT 1   [ RunTime:0.031250s ]
+SQL: UPDATE `bd_memberfields` SET `u_credit`=u_credit+10 WHERE uid=11 [ RunTime:0.031250s ]
+SQL: SHOW COLUMNS FROM `bd_credit_log` [ RunTime:0.015625s ]
+SQL: INSERT INTO `bd_credit_log` (`uid`,`type`,`name`,`val`,`ctime`) VALUES (11,'经验','每日登录赠送积分',10,1439950752) [ RunTime:0.203125s ]
+SQL: UPDATE `bd_user` SET `err_time`=1439950752 WHERE uid=11 [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.531250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.531250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.546875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.546875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.546875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.546875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.562500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:14+08:00 ] 127.0.0.1 /badouwang/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant __INFO__ - assumed '__INFO__' E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 31 行.
+NOTIC: [8] Undefined offset: 2 E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 32 行.
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.015625s ]
+SQL: SELECT `user_pic`,`lab`,`rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.000000s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.046875s ]
+SQL: SELECT `type` FROM `bd_user` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_message` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=1 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=3 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=2 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: sCount E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 120 行.
+SQL: SELECT a.uid,a.real_name,a.id_front,m.visitednumber,c.name cname,d.name dname FROM bd_authentication a JOIN bd_memberfields m ON a.uid=m.uid JOIN bd_classfiy c ON a.cid=c.id JOIN bd_classfiy d ON a.grade=d.id WHERE a.type=1 ORDER BY m.visitednumber DESC LIMIT 4 [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.000000s ]
+SQL: select spred.id,spred.price,spred.d_price,course.cname aname,course.timg,spred.number from bd_organ_spred spred left join  bd_proxyermanage course on spred.cid=course.id where d_price>0 and d_price<spred.price and spred.type=2 limit 0,5 [ RunTime:0.000000s ]
+SQL: SELECT q.id,q.content,q.lnumber FROM bd_question q  order by q.lnumber desc LIMIT 10  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE name='焦点新闻' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_article` [ RunTime:0.031250s ]
+SQL: SELECT * FROM `bd_article` WHERE gid=165 LIMIT 11   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_authentication` [ RunTime:0.031250s ]
+SQL: SELECT `uid`,`real_name`,`lincence`,`address` FROM `bd_authentication` WHERE type=3 LIMIT 3   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=30 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_jjbm` [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=30 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=34 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=34 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=39 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=39 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.015625s ]
+SQL: select name,id from bd_classfiy where lrf>'154' and rft<'179]'  and ishot=1 [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_organ_spred` WHERE ic_comment=1  [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 5   [ RunTime:0.015625s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Index\IndexAction.class.php on line 48 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'104' and rft<'153]' and lev-2=1 [ RunTime:0.000000s ]
+SQL: SELECT `lrf`,`rft` FROM `bd_classfiy` WHERE id=71 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE lrf>105 and rft<112  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_ex_paper` [ RunTime:0.031250s ]
+SQL: SELECT * FROM `bd_ex_paper` WHERE sid in (72,73,74) LIMIT 10   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.578125s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: dCount E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 46 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.578125s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046875s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.625000s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.625000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.640625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.640625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.640625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:15+08:00 ] 127.0.0.1 /badouwang/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant __INFO__ - assumed '__INFO__' E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 31 行.
+NOTIC: [8] Undefined offset: 2 E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 32 行.
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.031250s ]
+SQL: SELECT `user_pic`,`lab`,`rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.031250s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT `type` FROM `bd_user` WHERE uid='11' LIMIT 1   [ RunTime:0.031250s ]
+SQL: SHOW COLUMNS FROM `bd_message` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=1 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=3 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=2 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sCount E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 120 行.
+SQL: SELECT a.uid,a.real_name,a.id_front,m.visitednumber,c.name cname,d.name dname FROM bd_authentication a JOIN bd_memberfields m ON a.uid=m.uid JOIN bd_classfiy c ON a.cid=c.id JOIN bd_classfiy d ON a.grade=d.id WHERE a.type=1 ORDER BY m.visitednumber DESC LIMIT 4 [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.015625s ]
+SQL: select spred.id,spred.price,spred.d_price,course.cname aname,course.timg,spred.number from bd_organ_spred spred left join  bd_proxyermanage course on spred.cid=course.id where d_price>0 and d_price<spred.price and spred.type=2 limit 0,5 [ RunTime:0.000000s ]
+SQL: SELECT q.id,q.content,q.lnumber FROM bd_question q  order by q.lnumber desc LIMIT 10  [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE name='焦点新闻' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_article` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_article` WHERE gid=165 LIMIT 11   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_authentication` [ RunTime:0.046875s ]
+SQL: SELECT `uid`,`real_name`,`lincence`,`address` FROM `bd_authentication` WHERE type=3 LIMIT 3   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=30 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_jjbm` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=30 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=34 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=34 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=39 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=39 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name,id from bd_classfiy where lrf>'154' and rft<'179]'  and ishot=1 [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_organ_spred` WHERE ic_comment=1  [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 5   [ RunTime:0.000000s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Index\IndexAction.class.php on line 48 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'104' and rft<'153]' and lev-2=1 [ RunTime:0.000000s ]
+SQL: SELECT `lrf`,`rft` FROM `bd_classfiy` WHERE id=71 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE lrf>105 and rft<112  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_ex_paper` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_ex_paper` WHERE sid in (72,73,74) LIMIT 10   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.640625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: dCount E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 46 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.640625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062500s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.703125s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.703125s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.703125s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.703125s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.703125s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:27+08:00 ] 127.0.0.1 /badouwang/index.php/Teach/Teach/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.046875s ]
+SQL: SELECT `user_pic`,`lab`,`rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.093750s ]
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT `type` FROM `bd_user` WHERE uid='11' LIMIT 1   [ RunTime:0.031250s ]
+SQL: SHOW COLUMNS FROM `bd_message` [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=1 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=3 LIMIT 1   [ RunTime:0.046875s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=2 LIMIT 1   [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sCount E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 120 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_classfiy` WHERE name = '小学'  [ RunTime:0.015625s ]
+SQL: SELECT t.title,t.id,t.uid,t.c_img,t.price,t.content,a.real_name,a.school,a.self_info,a.address,c.name FROM bd_teach t JOIN bd_authentication a ON t.teacher_id=a.id JOIN bd_classfiy c ON c.id=t.fid WHERE t.gid in(103,117,120,123,147) and t.type=1 ORDER BY atime DESC LIMIT 12 [ RunTime:0.218750s ]
+SQL: SELECT * FROM `bd_classfiy` WHERE name = '初中'  [ RunTime:0.062500s ]
+SQL: SELECT t.title,t.id,t.uid,t.c_img,t.price,t.content,a.real_name,a.school,a.self_info,a.address,c.name FROM bd_teach t JOIN bd_authentication a ON t.teacher_id=a.id JOIN bd_classfiy c ON c.id=t.fid WHERE t.gid in(104,118,121,124,126,128,131,145,148) and t.type=1 ORDER BY atime DESC LIMIT 12 [ RunTime:0.046875s ]
+SQL: SELECT * FROM `bd_classfiy` WHERE name = '高中'  [ RunTime:0.015625s ]
+SQL: SELECT t.title,t.id,t.uid,t.c_img,t.price,t.content,a.real_name,a.school,a.self_info,a.address,c.name FROM bd_teach t JOIN bd_authentication a ON t.teacher_id=a.id JOIN bd_classfiy c ON c.id=t.fid WHERE t.gid in(105,119,122,125,127,129,130,132,146,149) and t.type=1 ORDER BY atime DESC LIMIT 12 [ RunTime:0.078125s ]
+SQL: SELECT * FROM `bd_classfiy` WHERE name = '文艺'  [ RunTime:0.015625s ]
+SQL: SELECT t.title,t.id,t.uid,t.c_img,t.price,t.content,a.real_name,a.school,a.self_info,a.address,c.name FROM bd_teach t JOIN bd_authentication a ON t.teacher_id=a.id JOIN bd_classfiy c ON c.id=t.fid WHERE t.fid in(144) and t.type=1 ORDER BY atime DESC LIMIT 12 [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_authentication` [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE city=200 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE name = '英语' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT a.uid,a.real_name,a.id_front,a.t_prof,a.info,a.address,b.name bname,c.name cname,k.price2,k.id FROM bd_authentication a JOIN bd_teacher_km k ON a.uid=k.uid JOIN bd_classfiy b ON k.fid=b.id JOIN bd_classfiy c ON k.gid=c.id WHERE a.type=5 AND k.fid=110 LIMIT 4 [ RunTime:0.000000s ]
+SQL: SELECT h.*,m.user_pic,m.rname FROM bd_teacher_hunt h LEFT JOIN bd_memberfields m ON h.uid=m.uid ORDER BY ctime DESC LIMIT 4 [ RunTime:0.062500s ]
+SQL: SHOW COLUMNS FROM `bd_notice` [ RunTime:0.031250s ]
+SQL: SELECT * FROM `bd_notice` WHERE type='1' and cid='200' LIMIT 1,6   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_friendlink` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_friendlink` WHERE type=2 ORDER BY posttime desc LIMIT 4   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: res E:\wamp\wamp\www\badouwang\home\Lib\Action\Teach\TeachAction.class.php 第 51 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-1.234375s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Teach\d3f857edb7da8af2f3efc118fef52929.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Teach\d3f857edb7da8af2f3efc118fef52929.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Teach\d3f857edb7da8af2f3efc118fef52929.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Teach\d3f857edb7da8af2f3efc118fef52929.php 第 19 行.
+NOTIC: [8] Undefined variable: dCount E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Teach\d3f857edb7da8af2f3efc118fef52929.php 第 46 行.
+NOTIC: [8] Undefined index: txtmore E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Teach\d3f857edb7da8af2f3efc118fef52929.php 第 519 行.
+NOTIC: [8] Undefined index: txtmore E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Teach\d3f857edb7da8af2f3efc118fef52929.php 第 519 行.
+NOTIC: [8] Undefined index: txtmore E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Teach\d3f857edb7da8af2f3efc118fef52929.php 第 519 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-1.234375s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062500s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-1.296875s ]
+INFO: Run TokenBuild Behavior [ RunTime:-1.296875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-1.296875s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-1.296875s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-1.296875s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:32+08:00 ] 127.0.0.1 /badouwang/index.php/Organ/Organ/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.015625s ]
+SQL: SELECT `user_pic`,`lab`,`rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.000000s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.031250s ]
+SQL: SELECT `type` FROM `bd_user` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_message` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=1 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=3 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=2 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sCount E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 120 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name from bd_classfiy where lrf>'154' and rft<'179]' and lev-2=1 [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_organ_spred` WHERE blnumber>0 LIMIT 1   [ RunTime:0.015625s ]
+SQL: select spred.id,course.cname aname,course.timg,spred.number from bd_organ_spred spred left join  bd_proxyermanage course on spred.cid=course.id where d_price>0 and d_price<price and spred.type=2 limit 0,5 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: spreds E:\wamp\wamp\www\badouwang\home\Lib\Action\Organ\OrganAction.class.php 第 31 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\wamp\wamp\www\badouwang\home\Lib\Action\Organ\OrganAction.class.php 第 31 行.
+SQL: SHOW COLUMNS FROM `bd_notice` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_notice` WHERE type='2' and cid='200' LIMIT 1,6   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_friendlink` [ RunTime:0.000000s ]
+SQL: SELECT `url`,`logo`,`descrip`,`name` FROM `bd_friendlink` WHERE type=3 LIMIT 0,6   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: spreds E:\wamp\wamp\www\badouwang\home\Lib\Action\Organ\OrganAction.class.php 第 39 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.390625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 19 行.
+NOTIC: [8] Undefined variable: dCount E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 46 行.
+NOTIC: [8] Undefined index: timg E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 484 行.
+NOTIC: [8] Undefined index: aname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 485 行.
+NOTIC: [8] Undefined index: id E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Organ\8bc3c4a8d54fa6ad5066672ca116fa7c.php 第 487 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.390625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.078125s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.484375s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.484375s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.484375s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.484375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.484375s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:32+08:00 ] ERR: (ThinkException) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=1' at line 1
+ [ SQL语句 ] : select name,id from bd_classfiy where lrf>'155' and rft<'172]' and lev-3=1 and =1
+[ 2015-08-19T10:19:33+08:00 ] 127.0.0.1 /badouwang/index.php/Ajax/AjaxCourse/getChildCourse?type=%E5%AD%A6%E4%B9%A0%E8%BE%85%E5%AF%BC
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.015625s ]
+SQL: SELECT `user_pic`,`lab`,`rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.000000s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT `type` FROM `bd_user` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_message` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=1 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=3 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=2 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sCount E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 120 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='学习辅导' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select id from bd_classfiy where lrf>'155' and rft<'172]'  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.015625s ]
+SQL: select * from(select spred.s_time,spred.price,spred.id,spred.d_price,spred.type,course.cid cuid,course.cname,course.timg aname,course.city p_address,ifnull(course.o_address,spred.address)address from bd_organ_spred spred left join bd_proxyermanage course on spred.cid=course.id left join bd_classfiy type on type.id=course.cid ) sp where sp.cuid in(102,103,104,105,106,107,108,167) and sp.type=2 limit 0,8 [ RunTime:0.015625s ]
+SQL: select * from(select spred.s_time,spred.id,spred.type,spred.price,spred.d_price,course.cid cuid,course.aname,auth.p_address,ifnull(auth.address,spred.address)address,course.c_img timg from bd_organ_spred spred left join bd_course course on spred.cid=course.id left join bd_classfiy type on type.id=course.cid left join bd_authentication auth on course.aid=auth.id) sp where sp.cuid in(102,103,104,105,106,107,108,167) and sp.type=1 limit 0,7 [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:36+08:00 ] 127.0.0.1 /badouwang/index.php/Exam/Exam/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.015625s ]
+SQL: SELECT `user_pic`,`lab`,`rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.062500s ]
+SQL: SELECT `type` FROM `bd_user` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_message` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=1 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=3 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=2 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sCount E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 120 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.031250s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Exam\ExamAction.class.php on line 8 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'104' and rft<'153]' and lev-2=1 [ RunTime:0.015625s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Exam\ExamAction.class.php on line 15 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='会计' LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'105' and rft<'112]' and lev-3=1 [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_notice` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_notice` WHERE type='3' and cid='200' LIMIT 1,6   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.390625s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Exam\d1f3bb3de0ba2654b6d01a28c1950ed1.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Exam\d1f3bb3de0ba2654b6d01a28c1950ed1.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Exam\d1f3bb3de0ba2654b6d01a28c1950ed1.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Exam\d1f3bb3de0ba2654b6d01a28c1950ed1.php 第 19 行.
+NOTIC: [8] Undefined variable: dCount E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Exam\d1f3bb3de0ba2654b6d01a28c1950ed1.php 第 46 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.390625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046875s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.453125s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.453125s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.453125s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.453125s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.453125s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:41+08:00 ] 127.0.0.1 /badouwang/index.php/Space/StudyCenter
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+NOTIC: [8] Undefined offset: 3 E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 35 行.
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.015625s ]
+SQL: SELECT `user_pic`,`lab`,`rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT `type` FROM `bd_user` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_message` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=1 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=3 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=2 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: sCount E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 120 行.
+SQL: SHOW COLUMNS FROM `bd_teach` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_teach` ORDER BY hit desc LIMIT 6   [ RunTime:0.031250s ]
+SQL: SELECT t.title,t.id,t.hit,a.rname FROM bd_teach t JOIN bd_memberfields a ON t.uid=a.uid ORDER BY t.atime LIMIT 10 [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 12   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 8   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 10   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_dynamic` [ RunTime:0.015625s ]
+SQL: select dymic.content,dymic.publisttime,fields.priv,dymic.uid,fields.rname,fields.user_pic,dymic.readnumber from bd_dynamic dymic left join bd_memberfields fields on dymic.uid=fields.uid where fields.priv=1 order by publisttime desc  limit 0,5 [ RunTime:0.015625s ]
+SQL: select dymic.content,dymic.publisttime,fields.priv,dymic.uid,fields.rname,fields.user_pic,dymic.readnumber,awr.sum from bd_dynamic dymic left join bd_memberfields fields on dymic.uid=fields.uid left join (select aid,count(id)sum from bd_comment group by aid) awr on awr.aid=dymic.id where fields.priv=1 order by awr.sum desc limit 0,10 [ RunTime:0.031250s ]
+SQL: SHOW COLUMNS FROM `bd_notice` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_notice` WHERE type='4' and cid='200' LIMIT 1,6   [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.484375s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 19 行.
+NOTIC: [8] Undefined variable: dCount E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 46 行.
+NOTIC: [8] Undefined index: id E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 434 行.
+NOTIC: [8] Undefined index: id E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 441 行.
+NOTIC: [8] Undefined index: id E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 441 行.
+NOTIC: [8] Undefined index: id E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 441 行.
+NOTIC: [8] Undefined index: id E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\def8f232c707a3ecffdc20ebb74c5841.php 第 441 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.484375s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.093750s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.578125s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.578125s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.578125s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.578125s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.578125s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T10:19:42+08:00 ] 127.0.0.1 /badouwang/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.015625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant __INFO__ - assumed '__INFO__' E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 31 行.
+NOTIC: [8] Undefined offset: 2 E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 32 行.
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.015625s ]
+SQL: SELECT `user_pic`,`lab`,`rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.015625s ]
+SQL: SELECT `type` FROM `bd_user` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_message` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=1 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=3 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=2 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: sCount E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 120 行.
+SQL: SELECT a.uid,a.real_name,a.id_front,m.visitednumber,c.name cname,d.name dname FROM bd_authentication a JOIN bd_memberfields m ON a.uid=m.uid JOIN bd_classfiy c ON a.cid=c.id JOIN bd_classfiy d ON a.grade=d.id WHERE a.type=1 ORDER BY m.visitednumber DESC LIMIT 4 [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.031250s ]
+SQL: select spred.id,spred.price,spred.d_price,course.cname aname,course.timg,spred.number from bd_organ_spred spred left join  bd_proxyermanage course on spred.cid=course.id where d_price>0 and d_price<spred.price and spred.type=2 limit 0,5 [ RunTime:0.000000s ]
+SQL: SELECT q.id,q.content,q.lnumber FROM bd_question q  order by q.lnumber desc LIMIT 10  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE name='焦点新闻' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_article` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_article` WHERE gid=165 LIMIT 11   [ RunTime:0.031250s ]
+SQL: SHOW COLUMNS FROM `bd_authentication` [ RunTime:0.031250s ]
+SQL: SELECT `uid`,`real_name`,`lincence`,`address` FROM `bd_authentication` WHERE type=3 LIMIT 3   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=30 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_jjbm` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=30 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=34 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=34 LIMIT 1   [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=39 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=39 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name,id from bd_classfiy where lrf>'154' and rft<'179]'  and ishot=1 [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_organ_spred` WHERE ic_comment=1  [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 5   [ RunTime:0.000000s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Index\IndexAction.class.php on line 48 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'104' and rft<'153]' and lev-2=1 [ RunTime:0.015625s ]
+SQL: SELECT `lrf`,`rft` FROM `bd_classfiy` WHERE id=71 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE lrf>105 and rft<112  [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_ex_paper` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_ex_paper` WHERE sid in (72,73,74) LIMIT 10   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.500000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: dCount E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 46 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.500000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.109375s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.609375s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.609375s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.609375s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.609375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.625000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T17:28:14+08:00 ] 127.0.0.1 /badouwang/index.php/User/User/logout
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.062500s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.234375s ]
+SQL: SELECT `user_pic`,`lab`,`rname` FROM `bd_memberfields` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.031250s ]
+SQL: SELECT `type` FROM `bd_user` WHERE uid='11' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_message` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=1 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=3 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=2 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_message` WHERE to_uid=11 and is_read=0 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: sCount E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 120 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.671875s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.671875s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.687500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.687500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.687500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.687500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.687500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T17:28:20+08:00 ] 127.0.0.1 /badouwang/index.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant __INFO__ - assumed '__INFO__' E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 31 行.
+NOTIC: [8] Undefined offset: 2 E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 32 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.125000s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SELECT a.uid,a.real_name,a.id_front,m.visitednumber,c.name cname,d.name dname FROM bd_authentication a JOIN bd_memberfields m ON a.uid=m.uid JOIN bd_classfiy c ON a.cid=c.id JOIN bd_classfiy d ON a.grade=d.id WHERE a.type=1 ORDER BY m.visitednumber DESC LIMIT 4 [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.078125s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.031250s ]
+SQL: select spred.id,spred.price,spred.d_price,course.cname aname,course.timg,spred.number from bd_organ_spred spred left join  bd_proxyermanage course on spred.cid=course.id where d_price>0 and d_price<spred.price and spred.type=2 limit 0,5 [ RunTime:0.203125s ]
+SQL: SELECT q.id,q.content,q.lnumber FROM bd_question q  order by q.lnumber desc LIMIT 10  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE name='焦点新闻' LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_article` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_article` WHERE gid=165 LIMIT 11   [ RunTime:0.031250s ]
+SQL: SHOW COLUMNS FROM `bd_authentication` [ RunTime:0.031250s ]
+SQL: SELECT `uid`,`real_name`,`lincence`,`address` FROM `bd_authentication` WHERE type=3 LIMIT 3   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=30 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_jjbm` [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=30 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=34 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=34 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=39 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=39 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.000000s ]
+SQL: select name,id from bd_classfiy where lrf>'154' and rft<'179]'  and ishot=1 [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_organ_spred` WHERE ic_comment=1  [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.031250s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 5   [ RunTime:0.000000s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Index\IndexAction.class.php on line 48 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.015625s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'104' and rft<'153]' and lev-2=1 [ RunTime:0.000000s ]
+SQL: SELECT `lrf`,`rft` FROM `bd_classfiy` WHERE id=71 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE lrf>105 and rft<112  [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_ex_paper` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_ex_paper` WHERE sid in (72,73,74) LIMIT 10   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-4.343750s ]
+INFO: [ view_template ] --END-- [ RunTime:0.015625s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 33 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 43 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-4.343750s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.093750s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-4.437500s ]
+INFO: Run TokenBuild Behavior [ RunTime:-4.437500s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-4.437500s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-4.437500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-4.437500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T17:28:21+08:00 ] 127.0.0.1 /badouwang/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant __INFO__ - assumed '__INFO__' E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 31 行.
+NOTIC: [8] Undefined offset: 2 E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 32 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SELECT a.uid,a.real_name,a.id_front,m.visitednumber,c.name cname,d.name dname FROM bd_authentication a JOIN bd_memberfields m ON a.uid=m.uid JOIN bd_classfiy c ON a.cid=c.id JOIN bd_classfiy d ON a.grade=d.id WHERE a.type=1 ORDER BY m.visitednumber DESC LIMIT 4 [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_user` [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_user` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_organ_spred` [ RunTime:0.015625s ]
+SQL: select spred.id,spred.price,spred.d_price,course.cname aname,course.timg,spred.number from bd_organ_spred spred left join  bd_proxyermanage course on spred.cid=course.id where d_price>0 and d_price<spred.price and spred.type=2 limit 0,5 [ RunTime:0.000000s ]
+SQL: SELECT q.id,q.content,q.lnumber FROM bd_question q  order by q.lnumber desc LIMIT 10  [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.015625s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE name='焦点新闻' LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_article` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_article` WHERE gid=165 LIMIT 11   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_authentication` [ RunTime:0.031250s ]
+SQL: SELECT `uid`,`real_name`,`lincence`,`address` FROM `bd_authentication` WHERE type=3 LIMIT 3   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=30 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_jjbm` [ RunTime:0.031250s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=30 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=34 and type=4 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=34 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_authentication` WHERE uid=39 and type=4 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `bd_jjbm` WHERE tuid=39 LIMIT 1   [ RunTime:0.015625s ]
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='培训分类' LIMIT 1   [ RunTime:0.015625s ]
+SQL: select name,id from bd_classfiy where lrf>'154' and rft<'179]'  and ishot=1 [ RunTime:0.000000s ]
+SQL: SELECT * FROM `bd_organ_spred` WHERE ic_comment=1  [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_memberfields` [ RunTime:0.125000s ]
+SQL: SELECT * FROM `bd_memberfields` LIMIT 5   [ RunTime:0.015625s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Index\IndexAction.class.php on line 48 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='在线考试' LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'104' and rft<'153]' and lev-2=1 [ RunTime:0.015625s ]
+SQL: SELECT `lrf`,`rft` FROM `bd_classfiy` WHERE id=71 LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `bd_classfiy` WHERE lrf>105 and rft<112  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `bd_ex_paper` [ RunTime:0.015625s ]
+SQL: SELECT * FROM `bd_ex_paper` WHERE sid in (72,73,74) LIMIT 10   [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.656250s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 19 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 33 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Index\b0cfccd32a8aecbbf5895237c16bc75a.php 第 43 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.656250s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062500s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.718750s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.718750s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.718750s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.718750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.718750s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-19T17:28:22+08:00 ] 127.0.0.1 /badouwang/index.php/Space/Question
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: city E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 29 行.
+NOTIC: [8] Undefined offset: 3 E:\wamp\wamp\www\badouwang\home\Lib\Action\CommonAction.class.php 第 35 行.
+SQL: SHOW COLUMNS FROM `bd_city` [ RunTime:0.015625s ]
+SQL: select city.id,city.name,pro.name pname from bd_city city left join bd_province pro on city.provincei_d=pro.id where city.isopen=1 [ RunTime:0.015625s ]
+NOTIC: [8] Undefined index: 北京 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 上海 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+NOTIC: [8] Undefined index: 广东 E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ArrayHelper.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `bd_classfiy` [ RunTime:0.031250s ]
+NOTIC: [2] Missing argument 4 for ClassfiyHelper::getClassesByName(), called in E:\wamp\wamp\www\badouwang\home\Lib\Action\Space\QuestionAction.class.php on line 11 and defined E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 59 行.
+SQL: SELECT `id`,`lrf`,`rft`,`lev` FROM `bd_classfiy` WHERE name='学问分类' LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: fields E:\wamp\wamp\www\badouwang\core\Extend\Library\Com\ClassfiyHelper.class.php 第 69 行.
+SQL: select id,name,cimg,ctextbrand from bd_classfiy where lrf>'190' and rft<'309]' and lev-2=1 [ RunTime:0.000000s ]
+SQL: SELECT q.id,q.content,a.content asw FROM bd_question q JOIN (SELECT * FROM bd_answer GROUP BY tid) a ON q.id=a.tid LIMIT 10 [ RunTime:0.015625s ]
+SQL: SHOW COLUMNS FROM `bd_question` [ RunTime:0.031250s ]
+SQL: SELECT * FROM `bd_question` WHERE aswnum=0 LIMIT 10   [ RunTime:0.000000s ]
+SQL: SELECT q.id,q.content,q.aswnum,a.suma FROM bd_question q JOIN (SELECT count(id) suma,tid FROM bd_answer GROUP BY tid) a ON q.id=a.tid order by q.aswnum desc LIMIT 0,8 [ RunTime:0.015625s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:-0.343750s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 19 行.
+NOTIC: [8] Undefined variable: cityid E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 19 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 33 行.
+NOTIC: [8] Undefined index: uname E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 43 行.
+NOTIC: [8] Use of undefined constant aswnum - assumed 'aswnum' E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 401 行.
+NOTIC: [8] Undefined variable: qus E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 401 行.
+NOTIC: [8] Use of undefined constant aswnum - assumed 'aswnum' E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 401 行.
+NOTIC: [8] Undefined variable: qus E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 401 行.
+NOTIC: [8] Use of undefined constant aswnum - assumed 'aswnum' E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 401 行.
+NOTIC: [8] Undefined variable: qus E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 401 行.
+NOTIC: [8] Use of undefined constant aswnum - assumed 'aswnum' E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 401 行.
+NOTIC: [8] Undefined variable: qus E:\wamp\wamp\www\badouwang\home\Runtime\Cache\Space\fe6de2b859a14f1606bd54d5e919df75.php 第 401 行.
+INFO: Run ParseTemplate Behavior [ RunTime:-0.343750s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046875s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.390625s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.390625s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.390625s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.390625s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.390625s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+

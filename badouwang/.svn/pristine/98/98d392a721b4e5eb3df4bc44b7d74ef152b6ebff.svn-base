@@ -1,0 +1,195 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/teach_list new.css"/>
+
+<div class="pwid">
+	<div class="hotnav">当前位置： <a href="javascript:history.back()" >平台教师</a> >  <a href="javascript:" >列表页</a></div>
+	<div class="tion">
+		<!----------------------------------分类1-------------------------->
+        <div class="ction jspy">
+            <div class="content txt1"><b class="way">课程类别:</b>
+              <i class="pui">
+                    <a id="txt1" class="all" value="0" onclick='km(0,this.id)'>全部</a>
+                    <foreach name="course" item="vo">
+						<a id='txt1' value='<{$vo.id}>' onclick='km(<{$vo.id}>,this.id)'><{$vo.name}></a>
+					</foreach>
+                </i>
+            </div>
+            
+            <div class="content txt2"><b class="way">老师身份:</b>
+             <i class="pui" id='gid'>
+                	<a id="txt2" class="all" value="0" onclick='km(0,this.id)'>全部</a>
+					<a id='txt2'>小学</a>
+					<a id='txt2'>初中</a>
+					<a id='txt2'>高中</a>
+                </i>
+            </div>
+            
+            <div class="content txt3"><b class="way">授课区域:</b>
+                 <i class="pui">
+                    <a id="txt3" class="all" value="0" onclick='km(0,this.id)'>全部</a>
+                    <foreach name="district" item="vo" key="i">
+                    	<a id='txt3' value='<{$vo.id}>' onclick='km(<{$vo.id}>,this.id)'><{$vo.name}></a>
+                    </foreach>
+                </i>
+            </div>
+        
+        </div>
+
+		<!----------------------------------------分类1------------------------------------------->
+    </div>
+    <!------------------------------------>
+    <a name="pos"></a>
+    <div class="roll">
+    	<div class="prev"></div>
+        <div id='roll'>
+        	<foreach name="hot" item="vo" key="i">
+        		<a href="__URL__/teachDetail?pid=<{$vo.id}>">
+                	<img  src="__ROOT__<{$vo.id_front}>" width="100%" height="100%" />
+                    <div class="ptli">
+                    <div class="tils"><{$vo.real_name}></div>
+                    <div class="tixq">查看详情</div>
+                    </div>
+                </a>
+        	</foreach>
+        </div>
+        <div class="next"></div>
+    </div>
+    <!------------------------------------>
+    <div class="list">
+    	<div class="sous">搜索到 <span class="sz"><{$sum}></span> 个相差家教<span class="jg">价格:<img  id="jgimg" src="__ROOT__/public/images/home/jiantou.png" width="20" height="20" onclick="km('pin',this.id)" alt="pin" /></span></div>
+	  
+        <div class="souswy"></div>
+      
+	  <div id="seek">
+        <foreach name="data" item="vo" key="i">
+          <a href="__URL__/teachDetail?pid=<{$vo.id}>">
+	        <div class="tent">
+	        	<img  class="tentimg" src="__ROOT__<{$vo.id_front}>"/>
+	        	<div class="ent">
+	               <p><span class="yax"><{$vo.real_name}></span>  评分:<for start="0" end="5"><img  src="__ROOT__/public/images/home/pxu/sjxpx.png" /></for> 5分</p>
+                    <p class="py"><{$vo.info}></p>
+                    <p><img  src="__ROOT__/public/images/home/pxu/002.png" class="imd" />科目：<{$vo.cname}>/<{$vo.bname}></p>
+                    <p><img  src="__ROOT__/public/images/home/pxu/002.png" class="imd"/>教龄：<{$vo.t_age}></p>
+                    <p><img  src="__ROOT__/public/images/home/pxu/002.png" class="imd"/>区域：<{$vo.address}></p> 
+                    <p class="hed"><span>亲切</span> <span>负责</span> <span>良师益友</span></p>
+	            </div>
+                
+                <div class="enty">
+                   <p>￥<strong class="price"><{$vo.price2}>.00</strong> 元 / 小时</p>
+                   <p class="sc">机构价： 150	 元 / 小时</p>
+                </div>
+                
+                <div class="ente">
+                   <p><img  src="__ROOT__/public/images/home/pxu/w2.png" />身份认证</p>
+                   <p><img  src="__ROOT__/public/images/home/pxu/w1.png"/>学历认证</p>
+                </div>
+	        </div>
+          </a>
+	    </foreach>
+	    <div class="tent" style="text-align:center;"><{$link}></div>
+
+	  </div>
+
+    </div>
+
+
+    <div class="tising">
+
+        <div class="tisle">最新入驻</div>
+        <div class="tisgao tisbor"></div>
+
+      <foreach name="newtch" item="vv">  
+        <div class="tisero">
+          <a href="__APP__/Space/Space/space?uid=<{$vv.id}>"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__<{$vv.self_img}>" class="img"/></a>
+          <div class="yeo">
+          <p><a href="__APP__/Space/Space/space?uid=<{$vv.id}>"><{$vv.real_name}></a>教龄:<{$vv.t_age}>以上</p>
+          <p><{$vv.cname}>/<{$vv.gname}></p>
+          </div>
+        </div>
+      </foreach>  
+    </div>
+
+</div>
+
+
+
+<script>
+function tetgy(t,s){	$(s + ' a').removeClass('all');	$(t).addClass('all');	}
+$('.txt1 a').click(function(){tetgy(this,'.txt1')	})
+$('.txt2 a').live('click',function(){tetgy(this,'.txt2')	})
+$('.txt3 a').click(function(){tetgy(this,'.txt3')	})
+
+
+function set(a){
+	var vb = $('#roll').find('a');
+	var Tvb = vb[a].innerHTML; 
+	var Hvb = vb[a].href; 
+	if(a==0){	$(vb[a]).remove();	document.getElementById('roll').innerHTML = document.getElementById('roll').innerHTML + '<a href="'+ Hvb + '">'+ Tvb +'</a>'	}
+	if(a==9){	$(vb[a]).remove();	document.getElementById('roll').innerHTML = '<a href="'+ Hvb + '">'+ Tvb +'</a>' + document.getElementById('roll').innerHTML  	}
+}
+$('.next').click(function(){ set(0);	})
+$('.prev').click(function(){ set(9);	})
+
+function hit(id){
+    $.get("__APP__/Ajax/AjaxTeach/hit",{'tid':id},function(){
+        window.location.href="__URL__/agentdetail?id="+id;
+    });
+}
+
+//begin--6-17---
+function km(fid,id){
+    var txt1 = $('.txt1').find('.all').attr('value'),txt2 = $('.txt2').find('.all').attr('value'),txt3 = $('.txt3').find('.all').attr('value'),page = 1,price = $("#jgimg").attr('alt');
+    if(id === 'txt1') txt1 = fid; if(id === 'txt2') txt2 = fid; if(id === 'txt3') txt3 = fid; if(id === 'page') page = fid;
+
+    if(id === 'jgimg'){
+        if(price === 'up'){
+            $("#jgimg").attr({src: "__ROOT__/public/images/home/jiantj.png",onclick: "km('down',this.id)",alt: "down"}); price = 'down';
+        }else{
+            $("#jgimg").attr({src: "__ROOT__/public/images/home/jiantou.png",onclick: "km('up',this.id)",alt: "up"}); price = 'up';
+        }
+    }
+
+	$.post("__ROOT__/index.php/Ajax/AjaxTeach/platTeacher",{'action':id,'txt1':txt1,'txt2':txt2,'txt3':txt3,'pages':page,'price':price},function(data){
+		$("#seek").html("");
+		if(data.res != ''){
+			for(var i=0;i<data.res.length;i++){
+				var node = '<a href="__URL__/teachDetail?pid='+data.res[i].id+'"><div class="tent"><img  class="tentimg" src="__ROOT__'+data.res[i].id_front+'"/><div class="ent"><p><span class="yax">'+data.res[i].real_name+'</span>  评分:<for start="0" end="5"><img  src="__ROOT__/public/images/home/pxu/sjxpx.png" /></for> 5分</p><p class="py">'+data.res[i].info+'</p><p><img  src="__ROOT__/public/images/home/pxu/002.png" class="imd" />科目：'+data.res[i].cname+'/'+data.res[i].bname+'</p><p><img  src="__ROOT__/public/images/home/pxu/002.png" class="imd"/>教龄：'+data.res[i].t_age+'</p><p><img  src="__ROOT__/public/images/home/pxu/002.png" class="imd"/>区域：'+data.res[i].address+'</p><p class="hed"><span>亲切</span> <span>负责</span> <span>良师益友</span></p></div><div class="enty"><p>￥<strong class="price">'+data.res[i].price2+'.00</strong> 元 / 小时</p><p class="sc">机构价： 150    元 / 小时</p></div><div class="ente"><p><img  src="__ROOT__/public/images/home/pxu/w2.png" />身份认证</p><p><img  src="__ROOT__/public/images/home/pxu/w1.png"/>学历认证</p></div></div></a>';
+				$(node).appendTo("#seek");
+			}
+            if(data.page){ $(data.page).appendTo("#seek"); }
+		}else{
+			$('<div class="tent"><span>抱歉！该分类暂无相关信息</span></div>').fadeIn(300).appendTo("#seek");
+		}
+        $(".sz").html(data.sum);
+        
+        if(id == 'txt1'){
+            $("#gid").html('<a id="txt2" class="all" value="0" onclick="km(0,this.id)">不限</a>');
+            for(var i=0;i<data.gid.length;i++){
+                var node = "<a id='txt2' value="+data.gid[i].id+" onclick='km("+data.gid[i].id+",this.id)'>"+data.gid[i].name+"</a>";
+                $(node).appendTo("#gid")
+            } 
+        }
+
+	},'json');
+}
+//end---6-17---
+
+
+//搜索
+$("#indexte").attr('placeholder','家教搜索');
+function search(){
+  $("#indexte").wrap("<form id='search' action='__URL__/lists' method='get'></form>");
+  var tt = $("#indexte").val();
+  if(tt){ $("#search").submit(); }
+
+}
+
+$(window).keydown(function(e){
+  if(e.keyCode == 13){search();}
+});
+
+</script>
+
+
+
+<include file="../../../Public/default/footer" />

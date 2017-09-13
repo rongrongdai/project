@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>前端主页设置</title>
+    <style>
+    .hPage-using{font-size:12px;}
+    .hPage-using-preview {max-height: 295px;overflow: hidden;width: 175px;}
+    .hPage-using-preview img {height: auto;width: 100%;}
+    .fl {float: left;}
+    .hPage-using-info {margin:0 0 0 30px;}
+    .hPage-using-info li {margin: 5px auto 20px;}
+    .hPage-using-copy {display: inline-block;min-width:380px;max-width: 500px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    a.btn.btn-small {height: 22px;line-height: 22px;}
+    .btn.btn-success {background-color: #5cb85c;border-color: #4cae4c;color: #fff;margin-top:-5px;}
+
+    .btn.btn-primary {background-color: #428bca;border-color: #357ebd;line-height: 28px;color:#fff;}
+    .btn {background-color: #fff;border: 1px solid #ccc;color: #333;cursor: pointer;display: inline-block;font-size: 12px;height: 30px;margin-bottom: 2px;margin-top: 1px;padding: 0 12px;position: relative;vertical-align: baseline; border-radius: 2px;text-align: center;}
+    .mgl15 {margin-left: 20px;}
+    a {color: #000;text-decoration: none;}
+    .hPage-using-qrcode {border: 1px solid #ddd;height: 120px;width: 120px;}
+    dl, ul {list-style: outside none none;padding:0;}
+    img {vertical-align: top;}
+
+    .share{padding:10px 5px;clear: both;font-size:12px;}
+    .share .share-way{margin:20px 0;position:relative;border:1px solid #aaa;border-radius:3px;padding: 30px 20px;}
+    .share .share-way .a-title{position:absolute;height:20px;line-height:20px;width:100px;top:-10px;background-color:#fff;border:1px solid #aaa;left: 10px;border-radius:3px;text-align:center;}
+    .share .share-way .a-info{margin:20px 0;}
+    .share .share-way .a-info>span{display:inline-block;vertical-align:middle;min-width:60px;}
+    .share .share-way .a-info>input{display:inline-block;vertical-align:middle;}
+    .share .s-save-btn{width:80px;line-height:25px;background-color: #5cb85c;text-align:center;border-radius:3px;color:#fff;cursor:pointer;}
+
+    </style>
+</head>
+<body>
+    <div class="hPage-using">
+        <div class="hPage-using-preview fl">
+            <img alt="模板23" src="images/set-main-page/23.png">
+        </div>
+        <ul class="fl hPage-using-info">
+            <li>
+                <span>模板名称：</span>
+                <span>模板23</span>
+                <a class="btn btn-success btn-small" href="javascript:;">选择魔法页面</a>
+            </li>
+            <li>
+                <span>店铺首页链接：</span>
+                <span class="hPage-using-copy">http://m.wxfenxiao.com/Shop/index/sid/2014534.html</span>
+                <a class="btn btn-success btn-small" href="javascript:;">复制</a>
+            <li>
+                <span>分销申请链接：</span>
+                <span class="hPage-using-copy">http://m.wxfenxiao.com/User/dist_apply/sid/2014534.html</span>
+                <a class="btn btn-success btn-small" href="javascript:;">复制</a>
+            <li>
+                <span>店铺首页二维码：</span>
+                <span>
+                    <img class="hPage-using-qrcode" src="images/set-main-page/qrcode.png">
+                </span>
+                <span class="mgl15">分销申请二维码：</span>
+                <span>
+                    <img class="hPage-using-qrcode" src="images/set-main-page/qrcode.png">
+                </span>
+            </li>
+            <!--<li>
+                <a class="btn btn-primary hPage-using-edit" href="#">编辑</a>
+            </li>-->
+        </ul>
+    </div>
+    
+    <div class="share">
+        <p>用户到社交平台申请APP KEY，在此处填写后，你的应用就可以分享到各社交平台了</p>
+        <div class="share-way">
+            <div class="a-title">分享到QQ</div>
+            <div class="a-info"><span>APP ID:</span><input type="text"></div>
+            <div class="a-info"><span>APP ID:</span><input type="text"></div>
+        </div>
+        <div class="share-way">
+            <div class="a-title">分享到微信</div>
+            <div class="a-info"><span>APP ID:</span><input type="text"></div>
+            <div class="a-info"><span>APP ID:</span><input type="text"></div>
+        </div>
+        <div class="share-way">
+            <div class="a-title">分享到微博</div>
+            <div class="a-info"><span>APP ID:</span><input type="text"></div>
+            <div class="a-info"><span>APP ID:</span><input type="text"></div>
+        </div>
+        <div class="s-save-btn">保存</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>领取奖品</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom: 0;left: 0;width: 100%;overflow: hidden;background-color: #eeeef1;}      
+
+        .award{font-size:0.24rem;padding: 0.2rem;}
+        .award .address{padding:0.24rem 0.04rem;background-color: #fff;margin:0.02rem 0 0 0;text-align:center;}
+        .award .address>div{display:inline-block;vertical-align:middle;}
+        .award .address .position{width:0.35rem;height:0.35rem;background:url("images/activity/position.png") no-repeat scroll center center / contain;}
+        .award .address .details{width:5rem;text-align: left;}
+        .award .address .right-arrow{width:0.35rem;height:0.35rem;background:url("images/activity/right-arrow.png") no-repeat scroll center center / contain;}
+        .award .address .user-info{font-size:0.26rem;}
+        .award .address .user-info .phone{margin-left:0.24rem;float:right;margin-right:0.3rem;}
+        .award .address .ad-info{font-size:0.22rem;margin-top: 0.15rem;}
+        .award .address .ad-info>span{display: inline-block;vertical-align:middle;}
+        .award .address .ad-info>span:last-child{width:90%;}
+        .award .good-info{background-color: #fff;clear: both;overflow: auto;padding:0.4rem 0.2rem;}
+        .award .good-info .img-wrap{width:1.38rem;height:1.38rem;float: left;}
+        .award .good-info .img-wrap>img{width:100%;height:100%;}
+        .award .good-info .info-wrap{margin-left:0.24rem;position: relative;width: 70%;float: left;height: 1.38rem;}
+        .award .good-info .info-wrap .row2{position: absolute;bottom:0;width: 100%;color:#7f7f7f;font-size:0.22rem;}
+        .award .a-save-btn{background-color: #fff;line-height: 0.58rem;text-align: center;margin:0.2rem 0 0 0;color:#ff3c00;}
+
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body>
+    <article id="wrapper">
+        <section class="award" >
+            <div class="good-info">
+                <div class="img-wrap"><img src="images/activity/record1.png" alt=""></div>
+                <div class="info-wrap">
+                    <div><span>hellokitty抱枕</span></div>
+                    <div class="row2"><span>萌卡通可爱小猫咪头顶小怪物抱枕靠垫公 仔午睡枕头玩偶</span></div>
+                </div>
+            </div>
+            <div class="address">
+                <div class="position"></div>
+                <div class="details">
+                    <div class="user-info"><span>收件人：</span><span>罗小姐</span><span class="phone">13266886888</span></div>
+                    <div class="ad-info"><span>广东省深圳市龙华新区龙华市场荣昌街哎呀呀龙华新区龙华 市场荣昌街</span></div>
+                </div>
+                <div class="right-arrow"></div>
+            </div>
+            <div class="a-save-btn">确定</div>
+        </section>
+    </article>
+    <script>
+        
+    </script>
+</body>
+</html>

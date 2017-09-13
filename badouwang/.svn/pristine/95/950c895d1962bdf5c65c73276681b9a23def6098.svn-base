@@ -1,0 +1,228 @@
+<include file="../../../Public/default/header" />
+<link rel="stylesheet" href="__ROOT__/public/css/home/teach_detail.css"/>
+
+
+<div class="pwid">
+	<div class="hotnav">当前位置：<a href="javascript:history.go(-2)">  家教</a> > <a href="javascript:history.go(-1)">  列表页</a> > <a href="javascript:"> 详情页</a></div>
+</div>
+
+<div class="conner">
+<div class="con">
+	<div class="c_top_title">
+    	<span class="s_name">王老师</span><span class="cher_name">语文老师</span>
+        <div class="c_top_right">
+            <span class="sc_name"><span>★</span>收藏</span>
+            <span class="fx_name"><span><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/sharebtn.jpg" width="" height="" /></span><span>分享</span></span>        
+        </div>
+    </div>
+    <div class="tent_con">
+        <div class="c_left">
+        	<div class="img_name"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="#" width="130" height="130" /></div>
+    		<div class="den_name"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/hls.png" width="17" height="16" /><span>身份证认证</span></div>
+            <div class="ets_name">
+            	<div class="bg_name"><div class="bg_name_con" style="background-image:url(__ROOT__/public/images/home/pic_xin_max.png)"></div></div>
+                <span>5分</span>
+            </div>
+            <div class="foc_name"><span class="span">+</span><span>关注</span></div>
+        </div>
+        <div class="c_con">
+            <div class="top_name">教龄：7年 | 性别：女 | 年龄：31岁 | 授课地点：龙华地铁站边</div>
+            <div class="con_name">说明：做学生的良师益友，亲其师才能信其道。教学风格幽默风趣，语言简练富有亲和力。课堂气氛活跃，寓教于乐。洞悉中高考考纲、考点，精研中高考教材教法。辅导学生有耐心、有方法，能迅速提高学生成绩，树立学生学习的自信心。</div>
+            <div class="bot_name">
+            	说明：做学生的良师益友，亲其师才能信其道。教学风格幽默风趣，语言简练富有亲和力。课堂气氛活跃，寓教于乐。洞悉中高考考纲、考点，精研中高考教材教法。辅导学生有耐心、有方法，能迅速提高学生成绩，树立学生学习的自信心。
+            	<span class="b_top"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/b_top.png" /></span>
+                <span class="b_bot"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/b_bot.png" /></span>
+            </div>
+        </div>
+        <div class="c_right">
+        	<div class="top">先试听后付费，不满意不付费</div>
+            <div class="fol">好老师价</div>
+            <div class="pri"><span class="su">150</span><span class="qi">元/时起</span></div>
+            <a href="javascript:;" id="enter"><div class="bout">向Ta约课</div></a>
+            <div class="shi">试听成功率：100%</div>
+            <div class="kes"><div class="lei">累计课时：10</div><div class="ren">学生人数：999</div></div>
+        </div>
+	</div>
+</div>
+</div>
+
+
+
+
+<div class="content">
+
+
+<div class="drop">
+    <div class="hotnoe">进来是客，点击关注，有神密礼物送给你哦！<a href="">查看</a></div>
+
+	<div class="drop-top">
+    	<div class="drop-lr xq activ">   详情       </div>
+    	<div class="drop-lr pl">        评论动态     </div>
+	</div>
+    <div class="drop-con">
+	<div class="jscs xq">
+    	<h1><{$data.title}></h1>
+        <p><{$data.content}></p>
+    </div>
+	<div class="jscs pl" style="display:none">
+    <if condition="$comment">
+        <foreach name="comment" item="vo" key="i">
+            <div class="con_yes">
+                <img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  class="yimg" src="__ROOT__<{$vo.user_pic}>" width="90" height="90" />
+                <div class="ytet">
+                    <div class="tet_con"><{$vo.content}></div>
+                    <div class="tim_tit"><{$vo.uname}><span>评论时间：<{$vo.ctime|date="Y-m-d H:i:s",###}></span></div>
+                 </div>
+            </div>
+        </foreach>
+    <else />
+        <div class="con_no">暂无评论</div>
+    </if>    
+    </div>
+</div>
+</div>
+
+
+
+<div class="drop-right">
+	<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="#" width="100%" height="65" />
+
+   <if condition="$data['type'] neq 1">
+    <div class="tion">代理信息</div>
+    <div class="tom">
+    	<img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/<{$data.dl_img}>" width="100%" height="165" />
+        <div class="tet1">八斗网深圳代理商 V2</div>  
+        <div class="tet2"><{$data.dl_info}></div>  
+        <div class="tet3">
+        	<div class="pname">
+            	<div class="vs">老师数量</div>
+                <div class="rom"><{$data.dl_count}></div>
+            </div>
+        	<div class="pname">
+            	<div class="vs">学生评价</div>
+                <div class="rom">9分</div>
+            </div>
+        	<div class="pname" style="border:none;">
+            	<div class="vs">报务学生</div>
+                <div class="rom">100名</div>
+            </div>
+        </div>
+        <div class="phoo">联系电话：400-12345678</div>  
+    </div>
+    </if>
+
+</div>
+
+
+</div>
+
+
+<!----报名弹框及背景遮罩---->
+<div id="faqdiv2" class="faqdiv3" style="display:none;position:absolute;left:450px;top:160px;z-index: 100;">
+    <h2 id="pb">网上报名<span style="float:right;padding-right:10px;"><a href="#" id="close">关闭</a></span></h2>         
+    <div class="form">
+    <form method="post" name="form2" action="__URL__/jjbm">
+        <div class="fmp"><div>姓名：<input type="text" name="stu_name" id="username" value="" placeholder="(必填)"></div><div id="lmsg1"></div></div>
+        <div class="fmp"><div>手机：<input type="text" name="telephone" id="mobphone" placeholder="(必填)"></div><div id="lmsg2"></div></div>
+        <div class="fmp"><div>Q　Q：<input type="text" name="qq" id="qq" placeholder="(必填)"></div><div id="lmsg3"></div></div>
+        <div class="fmp"><div>邮箱：<input type="text" name="email" id="email" placeholder="(必填)"></div><div id="lmsg4"></div></div>                    
+        <div>地址：<input type="text" name="address" id="address" style="width:410px;" placeholder="(选填)"></div>  
+        <div style="clear:both; margin:20px auto 20px auto; width:100px"><img onerror="javascript:this.src='__ROOT__/public/images/home/n_pic.png';"  src="__ROOT__/public/images/home/submit.png" name="define2" id="define2"></div>
+        <div align="center">如需了解课程更多信息，请直接电话联系</div>
+
+        <input type="hidden" name="tuid" value="<{$data.uid}>" />
+        <input type="hidden" name="course" value="<{$data.id}>" />                  
+    </form>
+  </div> 
+</div>
+<!--<div id="info">收藏成功</div>
+<div id="backghidd" style="position:absolute; z-index:99; background:#999; top:0px; bottom:0px;"></div>
+-->
+
+<script>
+$('.drop-lr').click(function(){
+	$('.jscs').hide();
+	$('.jscs.' + $(this).attr('class').replace(/drop-lr /,'').replace(/ activ/,'')).show();
+	$('.drop-lr').removeClass('activ');
+	$(this).addClass('activ');
+
+	})
+
+
+
+//报名
+$('#define2').click(function(){
+    var use = (/[^u4e00-u9fa5]{2,5}$/).exec($("#username").val());
+    var mob = (/^[0-9]{11}$/).exec($('#mobphone').val());
+    var qq = (/^[1-9][0-9]{4,12}$/).exec($("#qq").val());
+    var emai = (/^[-a-zA-Z0-9_\.]+\@([0-9A-Za-z][0-9A-Za-z-]+\.)+[A-Za-z]{2,5}$/).exec($("#email").val());
+    if(!use){document.getElementById("lmsg1").innerHTML="中文姓名字数必须在2-5个之间"; }
+    if(!mob){document.getElementById("lmsg2").innerHTML="请输入正确的手机号码!";}
+    if(!qq){document.getElementById("lmsg3").innerHTML="请输入正确的QQ号码!";}
+    if(!emai){document.getElementById("lmsg4").innerHTML="请输入正确的邮箱地址!"  }
+    if(use && mob && qq && emai){$('form[name="form2"]').submit(); }//这里设置提交
+});
+
+var posX,posY;
+document.onmouseup = function(){document.onmousemove = null}  
+document.getElementById("pb").onmousedown=function(){
+    po = document.getElementById("faqdiv2").style; parsein();
+}
+
+function parsein(e){
+    if(!e) e = window.event;  //IE
+    posX = e.clientX - parseInt(po.left);
+    posY = e.clientY - parseInt(po.top);
+    document.onmousemove = mousemove; 
+}
+function mousemove(ev){
+    if(ev==null) ev = window.event;//IE
+    po.left = (ev.clientX - posX) + "px";
+    po.top = (ev.clientY - posY) + "px";
+} 
+
+$(function(){ 
+    $("#enter").click(function(){
+        var uid='<?php echo session('uid')?>';
+        if(uid){
+            $("#faqdiv2").css({display:"block"}); 
+            $('#backghidd').css({
+                "opacity" : "0.3",
+                "filter" : 'Alpha(Opacity = 30)',
+                height : $(document).height(),
+                width : $(window).width()
+            }).fadeIn();
+        }else{
+            show('亲！您还没有登录呢');
+        }
+        
+    })
+
+})
+$("#close").click(function(){$("#faqdiv2").css({display:"none"});  $("#backghidd").fadeOut()});
+
+function show(text){
+  var pageW = $(window).width(), pageH = $(window).height(), boxW = $("#info").outerWidth(),boxH = $("#info").outerHeight(),scrollH = $(window).scrollTop();
+  $("#info").html(text).css({'top':(pageH/2-boxH/2+scrollH)+'px','left':(pageW/2-boxW/2)+"px"}).fadeIn(1000).delay(500).fadeOut(1000);
+}
+
+
+
+//搜索
+$("#indexte").attr('placeholder','家教搜索');
+function search(){
+  $("#indexte").wrap("<form id='search' action='__URL__/lists' method='get'></form>");
+  var tt = $("#indexte").val();
+  if(tt){ $("#search").submit(); }
+
+}
+
+$(window).keydown(function(e){
+  if(e.keyCode == 13){search();}
+});
+
+</script> 
+
+
+
+<include file="../../../Public/default/footer" />

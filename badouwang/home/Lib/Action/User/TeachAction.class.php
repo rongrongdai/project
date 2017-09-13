@@ -1,0 +1,421 @@
+<?php
+
+class ImageHandler{
+    public  function handle($data){
+        if($data['imgname']){
+            $pos=strpos($data['imgname'], 'upload');
+            return '/'.substr($data['imgname'],$pos);
+        }
+    }
+}
+class TeachAction extends CommonAction{
+	private $model;
+    public function __construct() {
+        $this->model=new AuthenticationModel();
+        parent::__construct();
+    }
+
+    public function apply(){//认证与否
+        $uid = session('uid');
+        $sql = "SELECT a.*,c.name cname,d.name dname FROM bd_authentication a JOIN bd_city c ON a.city=c.id JOIN bd_district d ON a.district=d.id WHERE uid=".$uid;
+        $res = M()->query($sql);
+        $res = $res[0];
+        if($res['verified'] == 3){//认证等待中
+            $data =$res;
+            $data['freson'] = "认证等待中···";
+        }else if($res['verified'] == 1){//认证通过
+            $data = $res;
+        }else if($res['verified'] == 2){//认证不通过
+            $data = $res;
+            $data['freson'] = $res['freson'];
+        }
+        switch($data['type']){
+            case 1:
+                $data['type'] = "老师";
+                break;
+            case 2:
+               $data['type'] = "机构";
+                break; 
+            case 3:
+               $data['type'] = "代理商";
+                break;
+            case 5:
+               $data['type'] = "平台教师";
+                break;     
+        }
+        
+        $data['city'] = $res['cname'].$res['dname'];
+        $timestamp = time();
+        //设置表单填写时间戳
+        session('ftoken',$timestamp);
+        $this->assign(array('data'=>$data,'token'=>md5('unique_salt'.$timestamp),'timestamp'=>$timestamp));
+        $this->display();
+    }
+
+    public function doApply(){//提交认证
+    	//安全过滤部分字段
+    	$data = $this->getData(array('type','real_name','telephone','grade','fid','gid','city','district','address','self_info','info','school','id_img','c_url','dymess','invite'),'post');
+        $data['uid'] = session('uid');
+        $data['ctime'] = time();
+        $f_time = $this->f_check('timestamp');
+        session('ftoken',null);
+
+        if($f_time){
+            if($data['type'] == '1'){
+                $data['cid'] = $data['fid'];
+                $data['grade'] = $data['gid'];
+            }
+            if($_FILES['id_front']['name']!=""){
+                $data['id_front']=$this->handUimg('id_front');
+            }
+            if($_FILES['lincence']['name']!=""){
+                $data['lincence']=$this->handUimg('lincence');
+            }
+            if($_FILES['id_img']['name']!=""){
+                $data['id_img']=$this->handUimg('id_img');
+            }
+
+            //验证认证老师石否为代理商邀请
+            if($data['type'] == '1' && !empty($data['invite'])){
+                $invite = $data['invite'];
+                $vuid = M('Teacher_invite')->where("code='{$invite}' and status=1")->getField('uid');
+                if($vuid){
+                    $data['type'] = 5;
+                    $data['invite'] = $vuid;
+                }
+            }
+
+            if(M('Authentication')->create()){
+                $res = M('Authentication')->add($data);
+                if($res){//添加积分
+                    $uid = session('uid');
+                    $c_value = $this->setCredit('经验','rz',$uid);
+                    $msg = "<font color='green'>+".$c_value."积分</font>";
+                }
+                if($vuid){
+                    M('Teacher_invite')->where("code='{$invite}'")->setField(array('status'=>2,'tuid'=>$uid,'ctime'=>time()));
+                    $url = 'applyTeacher';
+                }else{
+                    $url = 'apply';
+                }
+                //$url = $vuid?'applyTeacher':'apply';
+                $this->pagego('申请成功! '.$msg,'申请失败',$res,$url);
+            }else{
+                var_dump($this->model->getError());
+            }
+        }else{
+            echo "已提交，请等待";
+            sleep(3);
+            $this->pagego('申请成功','申请失败',1,'apply');
+        }
+    }
+
+    //平台老师完善信息
+    public function applyTeacher(){
+        if(!empty($_POST)){
+            $arr = $this->getData(array('t_age','t_prof'),'post');
+            $arr['teach_time'] = json_encode($_POST['teach_time']);
+            $uid = session('uid');
+            $res = M('Authentication')->where("uid=$uid and type=5")->save($arr);
+            if($res){
+                $isg=M('Memberfields')->where("uid=$uid and type=5")->field('gd_id,address,real_name,user_pic,id,info')->find();
+                $isg['price']=M('Teacher_km')->where("uid='$uid'")->field('price2')->find();
+                if(!$isg){
+                    import('Com.MapService');
+                    $res=MapService::createSingle('teach', array('_address'=>$isg['address'],'_name'=>  mb_substr($isg['real_name'], 0,1).'老师','spred_pic'=>$isg['user_pic'],'spred_id'=>$isg['id'],'spred_indro'=>$isg['info'],'price'=>$isg['price']));
+                    if($res){
+                        M('Authentication')->where("uid=$uid and type=5")->setField('gd_id',$res['_id']);
+                    }
+                }
+            }
+            $this->pagego('完善成功','完善失败',$res,'apply');
+        }else{
+            $arr =$this->getData(array('kid'),'get');
+            $kid = $arr['kid'];
+            $uid = session('uid');
+            $sql = "SELECT k.*,f.name fname,g.name gname FROM bd_teacher_km k JOIN bd_classfiy f ON k.fid=f.id JOIN bd_classfiy g ON k.gid=g.id WHERE k.uid=$uid ORDER BY k.ctime DESC";
+            $data = M()->query($sql);
+            if(!empty($kid)){
+                $res = M('Teacher_km')->where("id=$kid and uid=$uid")->find();
+            }
+            $rest = M('Authentication')->where("uid=$uid")->field('t_age,t_prof,teach_time')->find();
+
+            $this->assign(array('data'=>$data,'res'=>$res,'rest'=>$rest));
+            $this->display();
+        }
+    }
+
+    //平台老师添加科目
+    public function addKmo(){
+        if(!empty($_POST['kid'])){
+            $id = $_POST['kid'];
+            M('Teacher_km')->create();
+            $res = M('Teacher_km')->where("id=$id")->save();
+            //添加高德数据
+            $uid=session('uid');
+            $isg=M('Authentication')->where("uid=$uid and type=5")->field('gd_id,address,real_name,user_pic,id,info');
+            import('Com.MapService');
+            $carr=M()->query("select distinct km.fid,km.uid,cf.name from bd_teacher_km km left join bd_classfiy cf on km.fid=cf.id");
+            $course='';
+            foreach ($carr as $key=>$val){
+                $course.=$val['name'].',';
+            }
+            if($isg['gd_id']){
+               $res=MapService::updateSingle('teach',array('course'=>  substr($course,0,  strlen($course)-1))); 
+            }else{
+                 $res=  MapService::createSingle('teach', array('_address'=>$isg['address'],'_name'=>  mb_substr($isg['real_name'], 0,1).'老师','spred_pic'=>$isg['user_pic'],'spred_id'=>$isg['id'],'spred_indro'=>$isg['info'],'price'=>$isg['price'],'course'=>$course));
+            }
+            $this->pagego('修改成功','未修改',$res,'applyTeacher');
+        }else{
+            $arr = $this->getData(array('fid','gid','price1','price2','price3'),'post');
+            $arr['uid'] = session('uid');
+            $arr['ctime'] = $_SERVER['REQUEST_TIME'];
+            $res = M('Teacher_km')->data($arr)->add();
+            $this->pagego('添加成功','添加失败',$res,'applyTeacher');
+        }
+    }
+
+    //平台教师删除科目
+    public function delKmo(){
+        $arr = $this->getData(array('kid'),'get');
+        $kid = $arr['kid'];
+        $exists = M('Jjbm_order')->where("course_id=$kid and type=1 and status=0")->find();
+        if($exists){
+            $res = null;
+        }else{
+            $res = M('Teacher_km')->where("id=$kid")->delete();
+        }
+        $this->pagego('删除成功','该科目已被报名，不可删除',$res,'applyTeacher');
+    }
+
+
+
+    public function message(){//教师发布招生消息
+        $uid = session('uid');
+        $vmoney = M('Memberfields')->where("uid=$uid")->getField('vmoney');
+        //免费发布次数
+        $vcount = M('Teach')->where("uid=$uid")->count();
+        import('Com.UeditorHelper');
+        $txt = UeditorHelper::ueditor(450,150,200,1);
+        $timestamp = time();
+        session('ftoken',$timestamp);
+        $this->assign(array('vmoney'=>$vmoney,'vcount'=>$vcount,'txt'=>$txt,'token'=>md5('unique_salt'.$timestamp),'timestamp'=>$timestamp));
+        $this->display();
+    }
+    
+    public function setting(){
+        $uid = session('uid');
+        if(!empty($_POST)){
+            $arr = $this->getData(array('info','school'),'post');
+            $_POST['uid'] = $uid;
+            $_POST['info'] = $arr['info'];
+            $_POST['school'] = $arr['school'];
+            if($_FILES['id_front']['name']!=""){
+                $_POST['id_front']=$this->handUimg('id_front');
+            }
+            $_POST['cid'] = $_POST['cid']?$_POST['cid']:$_POST['fid'];
+            $_POST['grade'] = $_POST['grade']?$_POST['grade']:$_POST['gid'];
+
+            $res = M('authentication')->where("uid=$uid and type=1")->data($_POST)->save();
+            $this->pagego('设置成功','没有修改项',$res,'');
+        }else{
+            $res = M('Authentication')->where("uid=$uid and type=1")->find();
+            //获取分类名称
+            $fid = $res['cid']; $mid = $res['grade']; $city = $res['city']; $district = $res['district'];
+            if(!empty($fid) && !empty($mid)){
+                $fidn = M('Classfiy')->where("id=$fid")->getField('name');
+                $midn = M('Classfiy')->where("id=$mid")->getField('name');
+            }
+            if(!empty($city) && !empty($district)){
+                $cityn = M('City')->where("id=$city")->getField('name');
+                $districtn = M('District')->where("id=$district")->getField('name');
+            }
+            
+            $timestamp = time();
+            $this->assign(array('fidn'=>$fidn,'midn'=>$midn,'cityn'=>$cityn,'districtn'=>$districtn,'data'=>$res,'token'=>md5('unique_salt'.$timestamp),'timestamp'=>$timestamp));
+            $this->display();
+        }
+   
+    }
+  
+    public function domessage(){//提交表单处理
+        $uid = session('uid');
+        //安全过滤部分字段
+        $data = $this->getData(array('title','fid','gid','city','district','price','introduce','content','dtime','style'),'post');
+      
+        $f_time = $this->f_check('timestamp');
+        if($f_time){
+            session('ftoken',null);
+            if($_FILES['c_img']['name']!=""){
+                $data['c_img']=$this->handUimg('c_img');
+            }
+            $data['uid'] = $uid;
+            $data['teacher_id'] = M('Authentication')->where("uid=$uid")->getField('id');
+            $data['atime'] = time();
+
+            $teach = D('Teach');
+            if($teach->create()){
+                $res = $teach->add($data);
+                if($res){
+                    $u_credit = $this->setCredit('经验','jj_fbxx',$uid);
+                    $vmoney = $this->setCredit('学豆','jj_fbxx',$uid);
+                    $msg = "<font color='green'>+".$u_credit."积分,".$vmoney."学豆</font>";
+                }
+
+                $this->pagego('发布成功! '.$msg,'发布失败',$res,'manage');
+            }
+        }else{
+            echo "已提交，请等待";
+            sleep(3);
+            $this->pagego('发布成功! '.$msg,'发布失败',1,'manage');
+
+        }
+        
+    }
+
+    public function manage(){//管理自己发布的消息
+        $uid = session('uid');
+        $teach = M('Teach');
+
+        $pagesize = 5;
+        $sum = $teach->where("uid=$uid")->count();
+        $sql = "SELECT t.*,c.name FROM bd_teach t JOIN bd_classfiy c ON t.fid=c.id WHERE uid=$uid";
+        $res = $this->setPage($pagesize,$sum,$sql);
+
+        $this->assign(array('link'=>$res['link'],'ress'=>$res['data'],'limit'=>$res['limit']));
+        $this->display();
+    }
+
+    public function del(){
+        $id = $_GET['id'];
+        $res = M('Teach')->where("id=$id")->delete();
+        $this->pagego('删除成功','删除失败',$res,'manage');
+    }
+
+    public function mod(){//修改家教发布内容
+        $id = $_GET['id'];
+        $res = D('Teach')->where("id=$id")->find();
+        import('Com.UeditorHelper');
+        $txt = UeditorHelper::ueditor(450,150,200,1);
+        $timestamp = time();
+        //获取分类名称
+        $fid = $res['fid']; $mid = $res['gid']; $city = $res['city']; $district = $res['district'];
+        $fidn = M('Classfiy')->where("id=$fid")->getField('name');
+        $midn = M('Classfiy')->where("id=$mid")->getField('name');
+        $cityn = M('City')->where("id=$city")->getField('name');
+        $districtn = M('District')->where("id=$district")->getField('name');
+
+        $this->assign(array('fidn'=>$fidn,'midn'=>$midn,'cityn'=>$cityn,'districtn'=>$districtn,'txt'=>$txt,'res'=>$res,'token'=>md5('unique_salt'.$timestamp),'timestamp'=>$timestamp));
+        $this->display();
+    }
+
+    public function domod(){//执行修改
+        if($_POST){
+            $data = $this->getData(array('price','introduce','content','dtime'),'post');
+            if($_FILES['c_img']['name']!=""){
+                $data['c_img']=$this->handUimg('c_img');
+            }
+            $mid = $_POST['mid'];
+            $add = M('Teach')->where("id=$mid")->setField($data);
+            $this->pagego('修改成功','没有修改操作',$add,'manage');
+        }
+
+    }
+
+    //预约学生列表
+    public function student(){
+        $tuid = session('uid');
+
+        $pagesize = 5;
+        $sum = M('jjbm')->where("tuid=$tuid")->count();
+        $sql = "SELECT b.*,t.title FROM bd_jjbm b JOIN bd_teach t ON b.course=t.id WHERE tuid=$tuid";
+        $res = $this->setPage($pagesize,$sum,$sql);
+
+        $this->assign(array('link'=>$res['link'],'student'=>$res['data'],'limit'=>$res['limit']),'assign');
+        $this->display();
+    }
+
+    //确认报名操作
+    public function accept(){
+        $arr = $this->getData(array('id','suid'),'get');
+        $id = $arr['id'];
+
+        $res = M('Jjbm')->where("id=$id")->setField('status','1');
+        if($res){
+            $data = array();
+            $data['to_uid'] = $arr['suid'];
+            $data['type'] = 1;
+            $data['title'] = "家教报名状态";
+            $data['body'] = "老师已确认，保持手机畅通吧";
+            $data['ctime'] = time();
+            M('Message')->data($data)->add();
+        }
+        $this->pagego('确认成功','确认失败',$res,'student');
+    }
+
+    //我的收藏(家教)
+    public function collect(){
+        $uid = session('uid');  
+        $pagesize=6;
+        $page=$this->initPage();
+        $type=$this->getData(array('type'), 'get');
+        import('Com.PageHelper');
+        if($type['type']){
+            $csql="select co.id,spred.id aid,spred.s_time dtime,IFNULL(pc.aname,oc.aname) title,IFNULL(pc.telephone,oc.telephone) telephone,IFNULL(pc.id,oc.id) cid,IFNULL(pc.p_address,oc.p_address) address,IFNULL(pc.real_name,oc.real_name) real_name from bd_collection co left join bd_organ_spred spred on co.aid=spred.id 
+            left join (select auth.telephone,course.id,course.cname aname,auth.p_address,auth.real_name from bd_proxyermanage course left join bd_authentication auth on auth.id=course.pid) pc on pc.id=spred.cid 
+            left join (select auth.telephone,course.id,course.aname,auth.p_address,auth.real_name from bd_course course left join bd_authentication auth on auth.id=course.aid) oc on oc.id=spred.cid where co.uid='$uid' and co.type=2";
+            $sum=M('Collection')->where("uid='$uid' and type=2")->count();
+            PageHelper::init($pagesize, 10, $page['page'], $sum,'');
+            $limit=  PageHelper::getLimit();
+            $csql.=" limit $limit[min],$pagesize";
+            $this->assignData(array('data'=>M()->query($csql),'pages'=>  PageHelper::getPageInfos(),'type'=>$type['type']),'assign');
+        }else{
+            $sum = M('Collection')->where("uid=$uid and type=1")->count();
+            $sql = "SELECT c.*,t.title,t.dtime,a.real_name,a.telephone,a.address FROM bd_collection c JOIN bd_teach t ON c.aid=t.id JOIN bd_authentication a ON t.teacher_id=a.id WHERE c.uid=$uid and c.type=1";
+            $res = $this->setPage($pagesize,$sum,$sql); 
+            $this->assign(array('data'=>$res['data'],'link'=>$res['link']));
+        }
+       
+        $this->display();
+    }
+    public function delc(){
+        $iarr=$this->getData(array('ids'), 'get');
+        $uid=session('uid');
+        if($iarr['ids']){
+            $ids= $iarr['ids'];
+            $sql="delete from bd_collection where uid ='$uid'";
+            if(strlen($ids)>1){
+                $sql.=" and id in ($ids)";
+            }else{
+                $sql.=" and id='$ids'";
+            }
+           $res=M('Collection')->execute($sql);
+           $this->pagego('删除成功！','删除失败，请重试！', $res,'');
+        }else{
+           $this->pagego('', '请选择后在删除！',false,'');
+        }
+    }
+
+    //我的课表
+    public function schedule(){
+        if(!empty($_POST)){
+            $arr = $this->getData(array('kid','stid','tuid','date','classhour'),'post');
+            $arr['ttime'] = $_SERVER['REQUEST_TIME'];
+            $res = M('teacher_ks')->data($arr)->add();
+            $this->pagego('等待学生确认','发送失败，请重试',$res,'schedule');
+        }else{
+            $uid = session('uid');
+            $sql1 = "SELECT COUNT(a.id) sum1,COUNT(b.id) sum2 FROM bd_jjbm_order z LEFT JOIN bd_jjbm_order a ON z.id=a.id AND a.status=0 LEFT JOIN bd_jjbm_order b ON z.id=b.id AND b.status=1 WHERE z.ispay=1 AND z.type=1 AND z.tuid=$uid";
+            $sum = M()->query($sql1);
+
+            $arr = $this->getData(array('status'),'get');
+            $status = $arr['status']?$arr['status']:0;
+            $sql = "SELECT o.*,sum(k.classhour) sum  FROM bd_jjbm_order o LEFT JOIN bd_teacher_ks k ON o.id=k.kid AND k.k_status=1 WHERE o.tuid=$uid AND o.ispay=1 AND o.type=1 AND o.status=$status GROUP BY o.id";
+            $data = M()->query($sql);
+
+            $this->assign(array('data'=>$data,'done'=>$sum[0]['sum2'],'undone'=>$sum[0]['sum1'],'sum'=>$done+$undone));
+            $this->display();
+        }
+        
+    }
+}

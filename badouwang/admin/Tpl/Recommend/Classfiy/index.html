@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>分类推荐管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+        <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">推荐管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="?type=1" <if condition="$type eq 1">class="selected"</if>>培训首页</a></li> 
+                <li><a href="?type=2" <if condition="$type eq 2">class="selected"</if>>网站首页</a></li> 
+                <li><a href="?type=3" <if condition="$type eq 3">class="selected"</if>>优惠课程</a></li
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    
+    
+    <ul class="seachform">
+    
+    
+    <li><label>上级分类</label>  
+        <input type="text" name="cname" />
+    </li>
+        <li><label>&nbsp;</label><input name="psea" type="button" class="scbtn" value="查询"/></li>
+    </ul>
+    
+    
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <tr>
+            <th>标题<i class="sort"><img src="__ROOT__/public/images/admin/px.gif" /></i></th>
+            <th>图片</th>
+            <th>发布人</th>
+            <th>城市</th>
+            <th>开课时间</th>
+            <th>推荐到期时间</th>
+            <th>操作</th>
+        </tr>
+        </tr>
+        </thead>
+        <tbody>
+        <foreach name="courses" item="course" >
+            <tr id="<{$course.id}>">
+                <td><{$course.cname}></td>
+                <td><img src="__ROOT__/<{$course.timg}>" width="50"></td>
+                <td><{$course.real_name}></td>
+                 <td><{$course.city}></td>
+                <td><{$course.s_time|date="Y-m-d",###}></td>
+                <td><input type="text" name="time" style="height:20px;padding-left:5px;border:1px solid gray;" onclick="WdatePicker({isShowWeek:true})" value='<if condition="$type eq '1'"><if condition="$course.ic_time neq 0"><{$course.ic_time|date="Y-m-d",###}></if><elseif condition="$type eq 2"/><if condition="$course.cin_time neq 0"><{$course.cin_time|date="Y-m-d",###}></if><elseif condition="$type eq 3"/><if condition="$course.ci_time neq 0"><{$course.ci_time|date="Y-m-d",###}>qqq</if></if>'/></td>
+                <td><input type="button" class="scbtn" name="conf" value="确认" style="width:40px;height:25px;"/></td>
+            </tr> 
+        </foreach>
+        </tbody>
+    </table>
+    </div>  
+       
+	</div> 
+  <script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+  <script src="__ROOT__/public/js/layer/layer-min.js"></script>
+    <script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+        $(function(){
+            var type="<{$type}>";
+            var url=location.href;
+            $("input[name=psea]").click(function(){
+                if(url.indexOf('&')!==-1){
+                    url=url.substr(0,url.indexOf('&'));
+                }
+                if($("input[name=classfiy]").val()){
+                        if(url.indexOf("classfiy")===-1){
+                            url+="&classfiy="+$("input[name=classfiy]").val();
+                        }
+                }
+                if($("input[name=senter]").val()){
+                          if(url.indexOf('senter')===-1){
+                              url+='&senter='+$("input[name=senter]").val();
+                          }
+                }
+                if($("input[name=city]").val()){
+                         
+                          if(url.indexOf('city')===-1){
+                              url+='&city='+$("input[name=city]").val();
+                          }
+                }
+                location.href=url;
+                
+            })
+            $("div[name=tpages]").find("a").click(function(){
+                if($(this).attr("href").indexOf("type")===-1){
+                   $(this).attr("href",$(this).attr("href")+"&type="+type); 
+                }
+                
+            })
+            $("a[name=index]").click(function(){
+                url=url.substr(0,url.indexOf('&'));
+               type="index";
+               if(url.indexOf("?")!==-1){
+                   url=url.substr(0,url.indexOf('?')+1)+"type="+type;
+               }else{
+                  url=url+"?type="+type;  
+               }
+               location.href=url;
+            })
+            $("a[name=tindex]").click(function(){
+               type="tindex";
+               if(url.indexOf("?")!==-1){
+                   url=url.substr(0,url.indexOf('?')+1)+"type="+type;
+               }else{
+                  url=url+"?type="+type;  
+               }
+               location.href=url;
+            })
+             $("a[name=tnindex]").click(function(){
+               type="tnindex";
+              if(url.indexOf("?")!==-1){
+                   url=url.substr(0,url.indexOf('?')+1)+"type="+type;
+               }else{
+                  url=url+"?type="+type;  
+               }
+               location.href=url;
+            })
+           
+           
+            $("input[name=conf]").click(function(){
+                var id=$(this).parent().parent().attr("id");
+                var time=$(this).parent().parent().find("input[name=time]").val();
+                if(time){
+                        $.getJSON("__ROOT__/admin.php/Ajax/AjaxCourse/setHot",{"id":id,'time':time,'type':type},function(data){
+                        var res=data.code===1?1:2;
+                        if(res===1){
+                            var text=parseInt($("a[name="+type+"]").find("span:first").text());
+                            $("a[name="+type+"]").find("span:first").text(text+1)
+                        }
+                        $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: res,msg:data.message}});
+                     });
+                }else{
+                    $.layer({type: 0,title: '操作提示',maxmin: true,shadeClose: true,area : ['300px' , '200px'],offset : ['200px', ''],dialog: {type: 2,msg:'请选择日期！'}});
+                }
+                
+            })
+        })
+    </script>
+    </div>
+</body>
+
+</html>

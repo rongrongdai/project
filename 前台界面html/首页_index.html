@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>惠信联盟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {position: absolute;z-index: 1;top: 0;bottom: 1rem;left: 0;width: 100%;overflow: hidden;background-color: #eeeef1;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        /*搜索*/
+        .search{height:0.75rem;position: relative;}
+        .search>input{font-size: 0.22rem;height: 0.56rem;background-color: #fff;top: 50%;left: 0.24rem;margin-top: -0.28rem;position: absolute;width:92.5%;border-radius:0.1rem;padding: 0 0.1rem 0 0.2rem;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-ms-box-sizing: border-box;-o-box-sizing: border-box;}
+        .search .s-icon{    position: absolute;height: 0.56rem;width: 0.56rem;display: block;top: 50%;right: 0.3rem;margin-top: -0.28rem;background:url(images/search.png) no-repeat center center / 70%;}
+        /*焦点图*/
+        .swiper-container {width: 100%;height: 2.84rem;font-size: 14px;}
+        .swiper-slide {text-align: center;font-size: 18px;background: #000;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;}
+        .swiper-slide img {width: 100%;height: 100%;max-width: 100%;max-height: 100%;-ms-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);transform: translate(-50%, -50%);position: absolute;left: 50%;top: 50%;}
+        /*底部*/
+        .m-footer{width: 100%;position: fixed;bottom: 0;z-index: 9;height: 1rem;background-color:#000;clear: both;overflow: hidden;}
+        .m-footer a{display: block;text-align: center;color: #fff;font-size: 0.2rem;text-align: center;box-sizing: border-box;width: 25%;float: left;}
+        .m-footer a span{display:block; width:0.68rem; height:0.48rem; margin:0.1rem auto;position:relative;}
+        .m-footer span.on+p{color:#f90016;}
+        .m-footer a.home span{background:url(images/index/footer-1.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.all-prize span{background:url(images/index/footer-2.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.cart span{background:url(images/index/footer-3.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.my span{background:url(images/index/footer-4.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.home span.on{background:url(images/index/footer-1-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.all-prize span.on{background:url(images/index/footer-2-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.cart span.on{background:url(images/index/footer-3-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.my span.on{background:url(images/index/footer-4-on.png) no-repeat;background-size: contain;background-position: center center;}
+        .m-footer a.home p{font-size:0.2rem; padding-bottom:0.1rem;}
+        .m-footer .cart-count{position: absolute; top: 0.04rem; right:0.12rem;display: inline-block; padding: 1px 3px; line-height: 9px; font-size: 0.18rem; font-weight: normal; color: #fff; background: #f25613; border-radius:20px;}
+        /*商品分类*/
+        .classify{width:100%;overflow:auto;background-color:#fff;}
+        .classify>div{float:left;width:25%;font-size:0.28rem;text-align:center;margin: 0.1rem 0;}
+        .classify .title{}
+        .classify .img{width: 38.75%;margin: 0 auto 5px;padding: 38.75% 0 0 0;}
+        .classify .posi-0 .img{background-image:url(images/index/nav-0.png);background-size: contain;background-position: center center;}
+        .classify .posi-1 .img{background-image:url(images/index/nav-1.png);background-size: contain;background-position: center center;}
+        .classify .posi-2 .img{background-image:url(images/index/nav-2.png);background-size: contain;background-position: center center;}
+        .classify .posi-3 .img{background-image:url(images/index/nav-3.png);background-size: contain;background-position: center center;}
+        .classify .posi-4 .img{background-image:url(images/index/nav-4.png);background-size: contain;background-position: center center;}
+        .classify .posi-5 .img{background-image:url(images/index/nav-5.png);background-size: contain;background-position: center center;}
+        .classify .posi-6 .img{background-image:url(images/index/nav-6.png);background-size: contain;background-position: center center;}
+        .classify .posi-7 .img{background-image:url(images/index/nav-7.png);background-size: contain;background-position: center center;}
+        /*广告*/
+        .ad{width:100%;}
+        .ad>div{background-position: center center;background-size: contain;background-repeat: no-repeat;width: 100%;padding-bottom: 31.25%;}
+        #ad>div{background-image: url("images/index/ad.png");}
+        #ad1>div{background-image: url("images/index/ad1.png");}
+        /*标题栏*/
+        .title-bar{height:0.7rem;line-height:0.7rem;background-color:#fff;font-size:0.28rem;text-align:center;}
+        .title-bar .title-bg{position:relative;height:0.4rem;width:33.125%;margin:0.24rem auto;background-position: center center;background-size: contain;background-repeat: no-repeat;}
+        .title-bar .title{font-size:0.28rem;position:absolute;width:100%;text-align:center;top:-0.18rem;}
+        #bideng .title-bg{background-image: url("images/index/title-bar-bg.png");}
+        #shafa .title-bg{background-image: url("images/index/title-bar-bg.png");}
+        .title-bar .f-arrow{width: 0.12rem;height: 0.25rem;float:right;margin:0.225rem 0.22rem;background: url("images/right-arrow.png") no-repeat scroll center center / contain;}
+        /*空白*/
+        .space{width:100%;height:0.1rem;background-color:#eeeef1;}
+        /*分割线*/
+        .sep-line{width:100%;height:0.02rem;background-color:#000;}
+        /*商品列表*/
+        /*列表*/
+        .goods-list{font-size: 0.2rem;}
+        .goods-list .good-cont{width: 100%;padding: 2.7% 3.125% 2.7% 5%;position: relative;overflow: auto;margin: 0 0 1px 0;background-color: #fff;box-sizing: border-box;}
+        .goods-list .good-img{padding-bottom: 27.2%;width: 27.2%;float: left;background: url("images/index/good.png") no-repeat scroll center center / contain ;border: 1px solid #eeeef1;}
+        .goods-list .good-title{width: 64%;position: absolute;left: 32.65%;top: 18.75%;font-size:0.22rem;}
+        .goods-list .good-line3{position: absolute;left: 32.65%;bottom:10%;width: 64%;}
+        .goods-list .good-line3>span{display:inline-block;vertical-align:middle;}
+        .goods-list .good-price{font-size:0.26rem;color:#e24355;}
+        .goods-list .good-discount{width: 0.8rem;height: 0.28rem;line-height: 0.28rem;text-align: center;background: url(images/sale.png) no-repeat center center / contain;color: #fff;float:right;}
+        /*大图*/
+        .goods-big-pic{font-size: 0.2rem;width: 100%;padding: 0.1rem 0.25rem;overflow: auto;box-sizing: border-box;background-color: #fff;}
+        .goods-big-pic>{width:100%;}
+        .goods-big-pic .good-cont{position:relative;overflow:auto;}
+        .goods-big-pic .good-img{width:100%;padding-bottom:100%;background: url("images/index/good1.png") no-repeat scroll center center / contain ;}
+        .goods-big-pic .good-title{text-indent: 10px;font-size:0.22rem;}
+        .goods-big-pic .good-line3{margin:0.15rem 0;}
+        .goods-big-pic .good-price{color: #ff0000;font-size:0.26rem;}
+        .goods-big-pic .good-discount{float:right;display:block;width:0.8rem;height:0.28rem;line-height:0.28rem;text-align:center;background:url(images/sale.png) no-repeat center center / contain;color:#fff;margin-right:0.1rem;}
+        
+        /*小图*/
+        .goods-small-pic{width:100%;overflow: auto;font-size: 0.2rem;}
+        .goods-small-pic>div{}
+        .goods-small-pic .good-cont{position:relative;overflow:auto;width:49.21875%;float:left;padding:0.1rem;box-sizing: border-box;background-color:#fff;margin-bottom:0.1rem;}
+        .goods-small-pic .good-cont:nth-child(even){margin-left:0.78125%;}
+        .goods-small-pic .good-cont:nth-child(odd){margin-right:0.78125%;}
+        .goods-small-pic .good-img{width:100%;padding-bottom:100%;background: url("images/index/good1.png") no-repeat scroll center center / contain ;}
+        .goods-small-pic .good-title{text-indent: 10px;font-size:0.22rem;}
+        .goods-small-pic .good-line3{margin-top: 0.1rem;}
+        .goods-small-pic .good-line3>span{display:inline-block;vertical-align:middle;}
+        .goods-small-pic .good-price{font-size:0.26rem;color:#e24355;}
+        .goods-small-pic .good-discount{width: 0.8rem;height: 0.28rem;line-height: 0.28rem;text-align: center;background: url(images/sale.png) no-repeat center center / contain;color: #fff;float:right;}
+        /*搜索界面*/
+        .search-pannel{position: fixed;z-index: -1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;background-color:#fff;max-width: 1024px;}
+        .search-pannel .s-header{font-size:0.3rem;background-color:#000;color:#fff;}
+        .search-pannel .s-header>div{display:inline-block;vertical-align:middle;}
+        .search-pannel .s-header .s-back{width:1rem;text-align:center;font-size: 0.4rem;}
+        .search-pannel .s-header .s-back>span{width: 0.36rem;height: 0.36rem;background: url("images/back.png") no-repeat scroll center center / contain;margin-left: 0.2rem;display:inline-block;}
+        .search-pannel .s-header .s-input-wrap{width:4.5rem;margin: 0.24rem 0;}
+        .search-pannel .s-header .s-input-wrap>input{width:100%;height:0.5rem;border-radius:0.06rem;}
+        .search-pannel .s-header .s-go{width:0.9rem;text-align:center;}
+        .search-pannel .s-body{font-size:0.24rem;}
+        #s-wrapper{width:100%;margin: 0 auto;overflow: hidden;height:6rem;max-height: 600px;position:relative;color:#515151;padding: 0 0.24rem;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;-ms-box-sizing: border-box;}
+        #s-scroller {-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+        .search-pannel .s-body .s-line1{margin: 0 0.24rem;border-bottom: 1px solid #eeeef1;padding: 0.24rem 0;}
+        #s-scroller>div{border-bottom: 1px solid #eeeef1;padding: 0.24rem;}
+        .search-pannel .s-body .s-clear{width:1.92rem;padding:0.12rem 0.24rem;border:1px solid #ff3c00;border-radius:0.06rem;text-align:center;color:#ff3c00;position: absolute;bottom: 0.32rem;margin-left: 2.24rem;}
+        
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll,sScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+            sScroll = new IScroll('#s-wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="wrapper">
+        <div id="scroller">
+            <section class="search">
+                <input type="text" placeholder="商品搜索：请输入商品关键字" disabled="disabled">
+                <span class="s-icon"></span>
+            </section>   
+            <section class="focus-pic">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                       <div class="swiper-slide">
+                            <!-- Required swiper-lazy class and image source specified in data-src attribute -->
+                            <img src="images/index/banner.png">
+                            <!-- Preloader image -->
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/index/banner.png">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/index/banner.png">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/index/banner.png">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/index/banner.png">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/index/banner.png">
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows 
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>-->
+                </div>
+                <script src="js/swiper.min.js"></script>
+                <script>
+                var appendNumber = 4;
+                var prependNumber = 1;
+                var swiper = new Swiper('.swiper-container', {
+                    pagination: '.swiper-pagination',
+                    slidesPerView: 1,
+                    paginationClickable: true,
+                    //spaceBetween: 30,
+                    centeredSlides: true,
+                    loop: true,
+                    autoplay: 2500,
+                    autoplayDisableOnInteraction: false,
+                });
+                </script> 
+            </section>
+            <section class="classify">
+                <div class="posi-0">
+                    <div class="img"></div>
+                    <div class="title"><span>沙发类</span></div>
+                </div>
+                <div class="posi-1">
+                    <div class="img"></div>
+                    <div class="title"><span>花洒</span></div>
+                </div>
+                <div class="posi-2">
+                    <div class="img"></div>
+                    <div class="title"><span>几类</span></div>
+                </div>
+                <div class="posi-3">
+                    <div class="img"></div>
+                    <div class="title"><span>床类</span></div>
+                </div>
+                <div class="posi-4">
+                    <div class="img"></div>
+                    <div class="title"><span>壁灯</span></div>
+                </div>
+                <div class="posi-5">
+                    <div class="img"></div>
+                    <div class="title"><span>吊灯</span></div>
+                </div>
+                <div class="posi-6">
+                    <div class="img"></div>
+                    <div class="title"><span>定制柜</span></div>
+                </div>
+                <div class="posi-7">
+                    <div class="img"></div>
+                    <div class="title"><span>瓷砖</span></div>
+                </div>
+            </section>
+            <section class="space"></section>
+            <section class="ad" id="ad">
+                <div>
+                </div>
+            </section>
+            <section class="space"></section>
+            <section class="title-bar" id="shafa">
+                <!--<div class="title-bg">
+                    <span class="title">客厅沙发</span>
+                </div>-->
+                <span>客厅沙发</span>
+                <span class="f-arrow"></span>
+            </section>
+            <section class="space"></section>
+            <section class="goods-big-pic">
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+            </section>
+            <section class="sep-line"></section>
+            <section class="space"></section>
+            <section class="goods-small-pic">
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>                
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>                
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+            </section>
+            <section class="sep-line"></section>
+            <section class="space"></section>
+            <section class="ad" id="ad1">
+                <div>
+                </div>
+            </section>
+            <section class="space"></section>
+            <section class="title-bar" id="bideng">
+                <span>水晶壁灯</span>
+                <span class="f-arrow"></span>
+            </section>
+            <section class="space"></section>
+            <section class="goods-list" >
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>                
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>                
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+                <div class="good-cont">
+                    <div class="good-img"></div>
+                    <div class="good-title">AOZZO/奥朵CL10113/24欧式壁灯吸 顶灯卧室灯书房灯饰水晶灯</div>
+                    <div class="good-line3"><span class="good-price">￥1600</span><span class="good-discount">6.28折</span></div>
+                </div>
+            </section>
+        </div>
+    </article>
+    <footer class="m-footer">
+        <a class="home" href="#" title="首页"><span class="on"></span><p>首页</p></a>
+        <a class="all-prize" href="#" title="活动"><span></span><p>活动</p></a>
+        <a class="cart" href="#" title="购物车"><span></span><p>购物车</p></a>
+        <a class="my" href="#" title="我的"><span></span><p>我的</p></a>
+    </footer>
+    <div class="search-pannel">
+        <div class="s-header">
+            <div class="s-back"><span class=""></span></div><div class="s-input-wrap"><input type="text"></div><div class="s-go"><span>搜索</span></div>
+        </div>
+        <div class="s-body">
+            <div class="s-line1">历史搜索</div>
+            <div id="s-wrapper">
+                 <div id="s-scroller">
+                    <div>公主床</div>
+                    <div>茶几</div>
+                    <div>沙发</div>
+                    <div>公主床</div>
+                    <div>茶几</div>
+                    <div>沙发</div>
+                    <div>公主床</div>
+                    <div>茶几</div>
+                    <div>沙发</div><div>公主床</div>
+                    <div>茶几</div>
+                    <div>沙发</div>
+                    <div>公主床</div>
+                    <div>茶几</div>
+                    <div>沙发</div>
+                    <div>公主床</div>
+                    <div>茶几</div>
+                    <div>沙发</div>
+                    <div>公主床</div>
+                    <div>茶几</div>
+                    <div>沙发</div>
+                 </div>
+            </div>
+            <div class="s-clear">清除历史搜索</div>
+        </div>
+    </div>
+    <script>
+        /*搜索框*/
+        $('.search>input').on('tap',function(){
+            $('.search-pannel').css('z-index','10');
+            $('.search-pannel .s-input-wrap>input')[0].focus();
+        });
+        $('.search-pannel .s-back').on('tap',function(){
+            this.focus();
+            $('.search-pannel').css('z-index','-1');
+        });
+        $('.search-pannel .s-clear').on('tap',function(){
+            $('#s-wrapper').empty();
+            sScroll.refresh();
+        });
+        /*footer action*/
+        $(".m-footer>a").on("tap",function(e){
+            var activeSpan = $(this).find("span")[0];
+            $(".m-footer>a>span").each(function(index, el) {
+                if(activeSpan!==this){
+                    if($(this).hasClass('on')){
+                        $(this).removeClass('on');
+                    }
+                }else{
+                    $(this).addClass('on');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

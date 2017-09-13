@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+ul,li{ list-style:none;}
+a{ text-decoration:none;}
+.clear{ clear:both; width:100%; height:0; overflow:hidden;}
+img{ border:none;}
+
+
+.newu-all{ width:800px; margin:0 auto; margin-top:120px;}
+
+.new-one{ height:62px; background:#00b38a; width:800px;}
+.new-one img{ margin:3px 0px 0px 30px;}
+.new-one span{ color:#FFF; position:relative; top:-10px; }
+
+.new-two{ width:798px; border:1px #CCC solid; margin-top:20px; border-radius:10px;}
+.new-ty{ width:740px; height:55px; border-bottom:3px #e5e6e7 solid; margin:0 auto;}
+.new-tyi{ width:180px; height:55px; float:left; color:#00528d;}
+.new-tyi p{ text-align:center;}
+.nw{ border-bottom:3px #8b9599 solid; color:#000;}
+
+.new-te{ width:600px; margin:40px 0px 100px 70px;}
+.bang-y{ font-size:12px; color:#444444;}
+.bang-e{ color:#444444; font-size:14px;}
+.new-te #emaile ,.new-te #passw{ width:280px; height:30px;  font-size:14px; color:#777;  padding:5px 10px;}
+
+.bang-s{ color:#444444; font-size:14px; margin-left:48px;}
+.new-te .newcjbd{ width:115px; height:35px; margin:20px 0px 0px 88px; background:#00b38a; font-size:14px; color:#FFF;}

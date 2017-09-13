@@ -1,0 +1,106 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理员管理</title>
+<link href="__ROOT__/public/css/admin/other/style.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__/public/css/admin/other/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/public/js/jquery-min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="__ROOT__/public/js/admin/other/select-ui.min.js"></script>
+<style>
+    span{display:inline;}
+</style>
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+       <li><a href="__APP__" target="_top">网站首页</a></li>
+        <li><a href="#">管理员管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+        <div class="itab">
+            <ul> 
+                <li><a href="#tab2" class="selected">管理员</a></li> 
+                 
+            </ul>
+        </div> 
+    
+  	
+  	<div id="tab2" class="tabson">
+    
+    
+<!--    <ul class="seachform">
+    
+    <li><label>会员名</label><input name="" type="text" class="scinput" /></li>
+    </li>
+    <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+    
+    </ul>-->
+    
+    
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        
+        <th>管理员名称<i class="sort"><img src="__ROOT__/public/images/admin/px.gif" /></i></th>
+        <th>管理员状态</th>
+        <th>管理员角色</th>
+        <th>操作</th>
+       
+        </tr>
+        </thead>
+        <tbody>
+         <foreach name='admins' item='admin'>
+                    <tr>
+                        <td width="20%"><{$admin.admin}></td><td width="20%"><if condition="$admin.isforbidden eq 0">正常状态<else /><span style="color:red;">禁用状态</span></if></td><td width="20%"><{$admin.c_key}></td><td><span class="s_info"><a href="configDetail?cid=<{$config.id}>">权限管理</a></span><span class="s_info"><a href="handelAdmin?fid=<{$admin.id}>"><if condition="$admin.isforbidden eq 0">锁定用户<else />解除锁定</if></a></span></td>
+                    </tr>
+                </foreach>
+        
+        
+    
+        </tbody>
+    </table>
+        <{$page}>
+    </div>  
+       
+	</div> 
+ 
+	<script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    <script src="__ROOT__/public/js/datapicker/WdatePicker.js"></script>
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".select1").uedSelect({
+                        width : 345			  
+                });
+                $(".select2").uedSelect({
+                        width : 167  
+                });
+                $(".select3").uedSelect({
+                        width : 100
+                });
+        });
+    </script>
+  
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+

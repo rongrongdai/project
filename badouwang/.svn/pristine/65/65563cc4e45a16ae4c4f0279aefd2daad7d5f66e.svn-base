@@ -1,0 +1,9 @@
+<?php
+//家教信息控制器
+class TeachAction extends CommonAction{
+    //获取家教列表
+    //收藏家教
+    //家教报名
+    //获取机构信息
+}
+

@@ -1,0 +1,98 @@
+@charset "utf-8";
+/* CSS Document */
+body{height:100%; margin:0; padding:0; font:14px/22px "微软雅黑","宋体",Arial; color:#333; word-wrap:break-word; background-color:#00b38a;}
+#allba{ height:610px; width:100%; }
+#thehead{ margin:0 auto; width:650px; height:425px; top:70px; position:relative;}
+.theheadone{ height:120px; width:650px;}
+/*.theheadoneyi{ width:290px; height:120px; border:1px red solid;}*/
+/*登录*/
+.theheadtwo{height:320px; width:650px; background-color:#eafffd;}
+.Contentone{ width:395px; height:300px; float:left;}
+
+.loginForm input#email{ width:350px; height:45px; margin:40px 20px 0px 20px ; font-size:16px; color:#777; border:none; padding:5px 10px;}
+.loginForm input#password{ width:350px; height:45px; margin:20px 20px 0px 20px ; font-size:16px; color:#777; border:none;padding:5px 10px;}
+
+input[type=checkbox]{margin: 20px 0px 0px 20px;  font-size:16px; color:#777; }
+.wenyi{font-size:16px; color:#777; margin: 20px 0px 0px 10px; }
+.fr{ text-decoration:none; margin: 20px 0px 0px 200px; font-size:16px; color:#777;  }
+.fr:hover{color:#019875}
+#submitLogin{ width:155px; height:46px; font-size:16px; line-height:46px;  background:#00b38a; color:#fff; border:none; text-align:center; margin:30px 0 0 20px;}
+
+
+.Contenttwo{ width:240px; height:300px; float:left;}
+.Contenttwoyi{ border-right:1px dashed #999; float:left; height:240px; margin:40px 0 0 0px;}
+.pepro{margin:40px 0px 10px 20px; font-size:14px; color:#777; }
+.pepro span{ color:#F60;}
+.Contenttwoer{ margin:20px 0px 10px 20px; font-size:16px; color:#777; }
+.registor_now{ color:#00a57f;  text-decoration:none;  font-size:16px;  margin:30px 0px 0px 20px;}
+.registor_now:hover { color:#00a57f;  text-decoration:underline;}
+
+.login_others{  margin:40px 20px 10px 20px; font-size:14px; color:#777;}
+
+.tupcs{  margin:0px 0px 0px 20px; width:220px; height:60px;}
+.icon_wb a{ width:54px; height:56px; float:left; background-image:url(../images/xinl.gif);}
+.icon_wb a:hover{ background-image:url(../images/xl1.gif);width:54px; height:56px;}
+.icon_qq a{ width:58px; height:56px; float:left;  background-image:url(../images/qq.gif);}
+
+.icon_qq a:hover{width:58px; height:56px;   background-image:url(../images/qq1.gif);}
+.icon_weixin a{ width:58px; height:55px;  float:left; background-image:url(../images/weix.gif);}
+.icon_weixin a:hover{ width:58px; height:55px;  background-image:url(../images/weix1.gif);}
+
+/*注册*/
+.Contentone table td{ font-family:SimSun; font-size:12px; color:#666; height:15px;}
+.Contentone table #emaile{ width:350px; height:20px; margin:30px 10px 0px 20px ; font-size:16px; color:#777; border:none; padding:5px 10px;}
+.Contentone table #passwords{ width:350px; height:20px; margin:10px 10px 0px 20px ; font-size:16px; color:#777; border:none; padding:5px 10px;}
+.Contentone table #angpasswords{ width:350px; height:20px; margin:10px 10px 0px 20px ; font-size:16px; color:#777; border:none; padding:5px 10px;}
+.Contentone table .adess{  margin:10px 0px 0px 30px ; }
+.Contentone table #text{  margin:0px 0px 10px 20px; width:150px; height:20px; font-size:16px; color:#777; border:none;padding:5px 10px;}
+.imgeeems{ position:relative; top:10px;}
+.Contentone table #s_province{ margin:10px 0px 0px 10px ;}
+.Contentone table #s_city{ margin:10px 0px 0px 10px ;}
+.Contentone table #s_county{ margin:10px 0px 0px 10px ;}
+
+.Contentone table #rememberyi{  margin:0px 0px 10px 30px;}
+.Contentone table #submitregis{ width:155px; height:35px; font-size:16px; line-height:35px;  background:#00b38a; color:#fff; border:none; text-align:center;  margin:0px 0px 0px 30px;}
+
+
+/*找回密码*/
+.retrievpasdwd{ width:375px; height:210px; border:1px #FFF solid; margin:0px 120px; position:relative; top:45px;}
+.retrievpasdwdyuan{ background:none repeat scroll 0 0 #00b38a;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px; position:absolute;}
+.retrievpasdwd .yuanwen { font-size:16px; position:relative; top:-13px; left:10px; font-weight:bold; color:#FFF;}
+.retrievpasdwdzhengfx{ width:150px; height:6px; background-color:#CCC; position:relative; top:-43px; left:30px; }
+.retrievpasdwdyuanyi{background:none repeat scroll 0 0 #CCC;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px; position:absolute;
+ top:0px; left:150px; }
+.retrievpasdwd .yuanwenyi{  font-size:16px; position:relative; font-weight:bold; top:-72px; left:160px; color:#FFF;}
+.retrizhengfxer{ width:150px; height:6px; background-color:#CCC; position:relative; top:-102px; left:180px; }
+
+.retrievpasdwdyuaner{ background:none repeat scroll 0 0 #CCC;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px; position:absolute;
+ top:0px; left:300px; }
+.retrievpasdwd .yuanwener{font-size:16px; position:relative; font-weight:bold; top:-132px; left:310px; color:#FFF;}
+.repaemill{ position:relative; top:-140px; left:-20px; font-size:14px; color:#333; font-family:'Microsoft YaHei';}
+.repaemillone{ position:relative; top:-160px; left:140px; font-size:14px; color:#333; font-family:'Microsoft YaHei';}
+.repaemilltwo{ position:relative; top:-185px; left:290px; font-size:14px; color:#333; font-family:'Microsoft YaHei';}
+.retemailinput input{ width:350px; height:30px;  font-size:16px; color:#777; border:none; padding:5px 10px; position:relative; top:-150px;}
+.retrzhaomim input{ width:155px; height:46px; font-size:16px; line-height:46px;  background:#00b38a; color:#fff; border:none; text-align:center; margin:20px 0px 0 0px; position:relative; top:-150px;}
+
+/*找回密码第二步*/
+.retrievpasdwdzhengfxyi{ width:150px; height:6px; background-color:#00b38a; position:relative; top:-43px; left:30px;}
+.retrievpasdwdyuanyiyi{background:none repeat scroll 0 0 #00b38a;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px;
+ position:absolute; top:0px; left:150px; }
+ .retrczmimm{ position:relative; left:100px; top:-80px;  font-size:16px; color:#CCC; font-family:'Microsoft YaHei';}
+ .retrczmimm span{  font-size:18px;  color:#00b38a;}
+ .retrczmimmyi{  position:relative; left:100px; top:-60px;  font-size:16px; color:#CCC; font-family:'Microsoft YaHei';}
+ .retrdengluyoux input{ width:155px; height:46px; font-size:16px; line-height:46px;  background:#00b38a; color:#fff; border:none; text-align:center; margin:20px 0px 0px 100px; position:relative; top:-50px;}
+
+
+/*找回密码第三步*/
+.retrizhengfxeryi{ width:150px; height:6px; background-color:#00b38a; position:relative; top:-102px; left:180px; }
+.retrievpasdwdyuaneryi{ background:none repeat scroll 0 0 #00b38a;  border-radius:78.5px 78.5px 78.5px 78.5px; padding:15px 15px; 
+ position:absolute;top:0px; left:300px;}
+
+.retryouxingdiz{ position:relative; left:100px; top:-90px;  font-size:16px; color:#CCC; font-family:'Microsoft YaHei';}
+.retryouxingdiz span{ font-size:18px;  color:#00b38a;}
+.retemimainput #email{ width:350px; height:30px;  font-size:16px; color:#777; border:none; padding:5px 10px; position:relative; top:-80px; 
+left:100px;}
+.retemimainput #password{ width:350px; height:30px;  font-size:16px; color:#777; border:none; padding:5px 10px; position:relative; top:-70px; 
+left:100px;}
+.retemimainput #qingd{ width:155px; height:35px; font-size:16px; line-height:35px;  background:#00b38a; color:#fff; border:none; position:relative; top:-15px; right:273px;  text-align:center;}
+

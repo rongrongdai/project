@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color:#eeeef1;}
+        /*iscroll*/
+        #wrapper {width: 100%;overflow: hidden;position: absolute;bottom:0;top: 1.2rem;}
+        #scroller {position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;user-select: none;-webkit-text-size-adjust: none;text-size-adjust: none;}
+
+        .yongjin-header{font-size:0.28rem;background-color:#fff;margin-bottom: 0.1rem;height:1rem;line-height:1rem;}
+        .yongjin-header>div>span{display:inline-block;vertical-align:middle;}
+        .yongjin-header .m-icon{width:0.32rem;height:0.32rem;background:url("images/my/money.png") no-repeat scroll center center / contain;margin:0 0.12rem 0 0.25rem;}
+        .yongjin-header .m-num{margin:0 0 0 0.2rem;}
+        .yongjin-item{background-color:#fff;border-bottom:1px solid #eeeef1;padding:0.2rem 0.21rem 0.18rem 0.25rem;}
+        .yongjin-item>div>span:last-child{float:right;}
+        .yongjin-item .y-line1{font-size:0.24rem;}
+        .yongjin-item .y-line1 .y-title{}
+        .yongjin-item .y-line1 .y-num{color:#ff3c00;}
+        .yongjin-item .y-line2{font-size:0.2rem;margin:0.18rem 0;color:rgba(0,0,0,.5);}
+        .yongjin-item .y-line3{font-size:0.2rem;color:rgba(0,0,0,.5);}
+
+        
+    </style>
+    <script type="text/javascript" src="js/iscroll.js"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper', {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body  onload="loaded()">
+    <article>
+        <div class="yongjin-header">
+            <div><span class="m-icon"></span><span class="">我的分佣金</span><span class="m-num">￥200.00</span></div>
+        </div>
+        <div  id="wrapper">
+            <div id="scroller">
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+                <div class="yongjin-item">
+                    <div class="y-line1"><span class="y-title">分佣金</span><span class="y-num">+￥5.00</span></div>
+                    <div class="y-line2"><span class="">来源订单号：102411115562</span><span class="">余额：￥200</span></div>
+                    <div class="y-line3"><span class="">买家：小小</span><span class="">2015/05/20</span></div>
+                </div>
+
+            </div>
+        </div>
+    </article>
+    
+</body>
+</html>

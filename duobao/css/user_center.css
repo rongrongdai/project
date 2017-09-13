@@ -1,0 +1,291 @@
+@charset "UTF-8";
+/*CSS public 2016.1.7*/
+
+/* 个人中心主页*/ 
+.user_box{
+	margin-top: 1.0rem;
+	color:#323232;
+}
+.user_info{
+	padding:0.26rem 0.28rem;
+	background:#fff;
+	border-bottom:1px solid #ccc;
+	overflow: hidden;
+	margin-bottom:0.28rem;
+}
+.user_con{
+	float:left;
+}
+.user_con .user_face{
+	float:left;
+	position:relative;
+	margin-right:0.3rem;
+}
+.user_face .user_name{
+	position:absolute;
+	bottom:0px;
+	left: 0px;
+	width:2.06rem;
+	height:0.78rem;
+	background:url("../img/icon_deng.png") no-repeat;
+	background-size: 2.06rem 0.78rem;
+}
+.user_name .namebox{
+	padding-left: 0.68rem;
+	height:0.78rem;
+	line-height:0.88rem;
+	display:block;
+	color:#1c97ff;
+}
+ .user_face img{
+ 	width:2.06rem;
+ 	height:2.06rem;
+ }
+.user_con .con_box{
+	float:left;
+	padding:0.36rem 0;
+}
+.user_con .con_box p{
+	line-height:0.8rem;
+	font-size:0.4rem;
+}
+.user_con .user_phone{
+	color:#323232;
+}
+.user_con .id{
+	color:#1c97ff;
+	font-size:0.4rem;
+}
+.cz_btn{
+	width:1.86rem;
+	height:0.72rem;
+	border-radius:0.05rem;
+	background:#1c97ff;
+	float:right;
+	text-align:center;
+	color:#fff;
+	line-height:0.72rem;
+	margin-top:0.8rem;
+	font-size:0.34rem;
+}
+.page_link{
+	background:#fff;
+	border-top:1px solid #ccc;
+}
+.page_link a{
+	padding:0 0.36rem;
+	display:block;
+	border-bottom:1px solid #ccc;
+	height:1.16rem;
+	line-height:1.16rem;
+	font-size:0.36rem;
+	color:#323232;
+}
+.page_link a .icon{
+	float:left;
+	width:0.42rem;
+	height:0.48rem;
+	background-size:96%;
+	margin-top:0.32rem;
+	margin-right:0.2rem;
+}
+.page_link .arrow{
+	float:right;
+	width:0.2rem;
+	height:0.44rem;
+	font-size:0.4rem;
+	color:#666;
+}
+.page_link .order_icon{
+	background:url("../img/icon_jl.png") no-repeat center center;
+
+}
+.page_link .dizhi_icon{
+	background:url("../img/icon_dz.png") no-repeat center center;
+
+}
+.page_link .kefu_icon{
+	background:url("../img/icon_erji.png") no-repeat center center;
+
+}
+/* 客服详情页*/ 
+.kefu_box{
+	margin-top: 1.0rem;
+	padding: 0.44rem 0.34rem;
+	background: #fff;
+}
+.kefu_icon{
+	width: 100%;
+	height: 1.74rem;
+}
+.kefu_icon img{
+	height: 1.74rem;
+	width:1.74rem;
+	margin:0 auto;
+	display: block;
+}
+.number{
+	padding:0.3rem 0;
+	border-bottom:1px solid #ccc;
+}
+.number_list{
+	height:50px;
+	line-height: 50px;
+	padding-left:0.4rem;
+}
+.number_list p{display:inline-block;
+font-size:0.38rem;
+}
+.number_list .gf{
+	color: #fff;
+	display:inline-block;
+	margin-right: 0.14rem;
+	margin-top:0.2rem;
+	height:0.3rem;
+	line-height:0.3rem;
+	background:#1b96fe;
+	padding: 0.06rem 0.14rem;
+	border-radius:0.06rem;
+}
+.phone{
+	color:#1b96fe;
+	font-size:0.38rem;
+}
+.tishi{
+	padding-left:0.4rem;
+	margin-bottom:0.5rem;
+	margin-top:0.3rem;
+}
+.tishi p{
+ 	line-height:0.6rem;
+ 	font-size:0.38rem;
+}
+.tishi .tit{
+	font-size:0.42rem;
+	color:#323232;
+	margin-bottom:0.2rem;
+}
+.qqbox{
+	width:100%;
+	height:1.2rem;
+	line-height:1.2rem;
+	position:fixed;
+	bottom:0.6rem;
+}
+.contact{
+	width:88%;
+	height:1.1rem;
+	background:#1b96fe;
+	margin:0 auto;
+	border-radius:0.06rem;
+	text-align: center;
+	color:#fff;
+	font-size:0.4rem;
+}
+.qqicon{
+	float: left;
+	width:0.50rem;
+	height:0.52rem;
+	background:url("../img/qq.png") no-repeat;  
+	background-size:0.50rem 0.52rem;
+	margin-right:0.1rem;
+	margin-top:0.32rem;
+}
+.contact p{
+	margin: 0 auto;
+	width:2.7rem;
+	line-height:1.1rem;
+	font-size:0.4rem;
+	color:#fff;
+}
+
+
+
+
+/*订单页面*/
+.talent {
+    background: #f9f9f9;
+}
+.fl {
+    float: left;
+}
+.fr{
+   float: right;
+}
+.order_box{
+    height: 1rem;
+    line-height: 1rem;
+    background: #fff;
+    width: 100%;
+    border-bottom: 0.01rem solid #c1c0bd;
+    font-size: 0.38rem;
+}
+.order_box:after{ visibility: hidden; display: block; font-size: 0; content: " ";   clear: both;  }
+
+.order_box .tit {
+    width: 50%;
+    text-align: center;
+    font-size: 0.38rem;
+}
+
+
+.order_box .selected{
+	border-bottom: 2px solid #1b96fe;
+	color: #1b96fe;
+}
+
+.order_lga{
+	height: 0.3rem;
+}
+
+.order_detail{  width: 100%; 
+	background-color: #fff; 
+          border-bottom:  1px solid #c1c0bd;
+}
+
+.order_detail .order_det1{
+         width: 92%;
+         margin:0 auto;
+}
+.order_detail .order_det1_1{
+      border-bottom:1px solid #c1c0bd;
+      margin-bottom: 0.2rem;
+}
+
+.order_detail .order_det1_1:after{ visibility: hidden; display: block; font-size: 0; content: " ";   clear: both;  }
+
+.order_detail .order_det1_1 p{
+	font-size: 0.38rem;
+	 line-height: 1rem;
+	 height: 1.0rem;
+}
+.order_detail .order_det1_1 span{
+   width: 1.0rem;
+    height: 1.0rem;
+    background-size: 0.5rem 0.5rem !important;
+   display: block;
+   background:url("../img/icon_dele@2x.png") no-repeat center center;  
+}
+.order_detail  .order_det1_2 { margin:0.2rem 0; }
+.order_detail  .order_det1_2:after{ visibility: hidden; display: block; font-size: 0; content: " ";   clear: both;  }
+
+.order_detail  .order_det1_2 .orimg{ width:2.2rem ; height: 2.5rem; border:1px solid #c1c0bd;  margin-right: 0.3rem;}
+
+
+.order_detail  .order_det1_2 .or_left{  }
+.or_left .big{ font-size: 0.34rem; margin:0.2rem 0; }
+
+.gong{    color: #666;}
+.qie{ margin-left: 2.4rem;    color: #1b96fe; }
+
+
+
+.sw_order{ margin:4rem 0 0 2.7rem;   width: 50%; text-align: center;}
+.sw_order img{ width: 2rem; height: 2rem; }
+.sw_order .or1{font-size: 0.42rem; margin:0.2rem 0 0.5rem 0;}
+.sw_order .or2{ width: 2.5rem; height: 0.8rem; line-height: 0.8rem; background-color: #1b96fe;  color: #fff; text-align: center; border-radius: 0.1rem;  margin-left: 1.2rem;}
+
+
+
+.switch_le{ display: block; }
+.switch_er{ display: none;  }

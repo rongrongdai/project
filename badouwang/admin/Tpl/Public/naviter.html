@@ -1,0 +1,47 @@
+<nav>
+	<ul id="nav">
+                <li <if condition="$mmenu eq 'webconfig'" name="mmemu"> style="background:#208ed3;"</if>>
+			<a href="javascript:;"><span class="icon">&#59171;</span>网站设置</a>
+			<ul class="submenu" <if condition="$mmenu eq 'webconfig'"> style="display:block"</if>>
+				<li <if condition="$smenu eq 'c_config'"> style="background:#262626;"</if>><a href="__ROOT__/admin.php/WebConfig/BasicConfig/configView" >配置管理 </a></li>
+				<li <if condition="$smenu eq 'w_config'"> style="background:#262626;"</if>><a href="__ROOT__/admin.php/WebConfig/BasicConfig/index">网站设置</a></li>
+                                <li <if condition="$smenu eq 'classfiy'"> style="background:#262626;"</if>><a href="__ROOT__/admin.php/WebConfig/Classfiy/index">分类管理</a></li>
+                                <li <if condition="$smenu eq 'seo'"> style="background:#262626;"</if>><a href="page-timeline.html">seo管理</a></li>
+			</ul>	
+		</li>
+		
+		<li name="mmemu">
+			<a href="javascript:;"><span class="icon">&#59160;</span> 用户管理 </a><!--<span class="pip">12</span>-->
+			<ul class="submenu">
+				<li><a href="__ROOT__/admin.php/User/User/index">会员管理</a></li>
+				<li><a href="blog-table.html">管理员管理</a></li>
+				<li><a href="comments-timeline.html">教师管理</a></li>
+                                <li><a href="comments-timeline.html">代理商管理</a></li>
+			</ul>
+		</li>
+                <li name="mmemu">
+			<a href="javascript:;"><span class="icon">&#59160;</span> 内容管理 </a>
+			<ul class="submenu">
+				<li><a href="blog-new.html">课程管理</a></li>
+				<li><a href="blog-table.html">新闻内容管理</a></li>
+				<li><a href="comments-timeline.html">文章管理</a></li>
+                                <li><a href="comments-timeline.html">学习资料管理</a></li>
+                                <li><a href="comments-timeline.html">在线考试管理</a></li>
+                                
+			</ul>
+		</li>
+                <li name="mmemu">
+			<a href="javascript:;"><span class="icon">&#59160;</span> 财务管理 </a>
+			<ul class="submenu">
+				<li><a href="blog-new.html">报表查看</a></li>
+				<li><a href="blog-table.html">收益状况</a></li>
+				<li><a href="comments-timeline.html">统计报表</a></li>
+			</ul>
+		</li>
+                 
+                 
+               
+                
+                
+	</ul>
+</nav>

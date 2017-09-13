@@ -1,0 +1,156 @@
+<?php
+/**
+ * 分类推荐管理
+ * @author 樊波
+ */
+class ClassfiyAction extends CommonAction{
+    //课程管理
+    public function index(){
+        $tarr=$this->getData(array('type'), 'get');
+        switch($tarr['type']){
+            case '1':
+                $ctype='ishot';
+                break;
+            case '2':
+                 $ctype='ischot';
+                break;
+            case '3':
+                $ctype='isclihost';
+                break;
+            default:
+                $tarr['type']=1;
+                $ctype='ishot';
+                      
+        }
+        $this->loadData($ctype);
+        $this->assignData(array('type'=>$tarr['type']),'assign');
+        $this->display();
+    }
+    private function loadData($type){
+        if($type ==='ishot'){
+            $ftime='ic_time';
+        }else if($type ==='ischot'){
+            $ftime='cin_time';
+        }else{
+            $ftime='ci_time';
+        }
+        $ids=M('Classfiy')->where("$type =1")->field('id')->select();
+        $idstr='';
+        foreach($ids as $key=>$val){
+            $idstr.=$val['id'].',';
+        }
+        $idstr=  substr($idstr, 0,strlen($idstr)-1);
+        if($idstr){
+            $page=$this->initPage();
+            import('Com.PageHelper');
+            $pagesize=10;
+            $ssql="";
+            $csql="select spreds.*,auth.real_name from(select spred.*,proxy.cid courseid,proxy.pid,proxy.oid,proxy.timg,proxy.cname from bd_organ_spred spred right join bd_proxyermanage proxy on proxy.id=spred.cid  where spred.type=2) spreds left join bd_authentication auth on auth.uid=spreds.pid and auth.type=3  where spreds.courseid in($idstr)";
+            $sum=M('')->query("select count(spr.id) sum from ($csql) spr");
+            PageHelper::init($pagesize,10,$page['page'],$sum[0]['sum'],'');
+            $csql.=" order by $ftime desc,spreds.timestamp desc";
+            $course=M('Organ_spred')->query($csql);
+            $this->assignData(array('pages'=>  PageHelper::getPageInfos(),'courses'=>$course), 'assign');
+        }
+        
+    }
+    //分类管理
+    public function classfiy(){
+        import('Com.ClassfiyHelper');
+        $type=$this->getData(array('type','search'), 'get');
+        $class='培训分类';
+        if(!$type['type']){
+            $class=$type['search']?$type['search']:'培训分类';
+        }
+       
+        $self=  ClassfiyHelper::selfInfo($class, M('Classfiy'));
+        if(!count($self)){
+            $this->error('暂无相关分类!');
+        }
+        $page=$this->initPage();
+        if($type['type']){
+            $page['page']=1;
+        }
+        $pagesize=10;
+        import('Com.PageHelper');
+        $sql="select id,name,ishot,ischot,isclihost,isthot from bd_classfiy where lrf>$self[lrf] and rft<$self[rft]";
+        $sum=M('')->query("select count(id) sum from ($sql) sum");
+        if($type['type']){
+            $page=$this->initPage();
+        }
+        PageHelper::init($pagesize,10,$page['page'], $sum[0]['sum'],'');
+        $cpages=  PageHelper::getPageInfos();
+        $limit=  PageHelper::getLimit();
+        $sql.=" limit $limit[min],$pagesize";
+        $cclass=M('Classfiy')->query($sql);
+        $class='家教分类';
+        if($type['type']){
+            if($type['search']){
+                $class=$type['search'];
+            }
+        }
+        $tself=  ClassfiyHelper::selfInfo($class, M('Classfiy'));
+        $tsql="select id,name,ishot,ischot,isclihost,isthot from bd_classfiy where lrf>$tself[lrf] and rft<$tself[rft]";
+        $sum=M('')->query("select count(id) sum from  ($tsql) sum");
+        PageHelper::init($pagesize,10,$page['page'], $sum[0]['sum'],'');
+        $limit=PageHelper::getLimit();
+        $tsql.=" limit $limit[min],$pagesize";
+        $tclass=M('Classfiy')->query($tsql);
+        $this->assignData(array('cclass'=>$cclass,'tclass'=>$tclass,'cpages'=>$cpages,'tpages'=>  PageHelper::getPageInfos(),'type'=>$type['type']),'assign');
+        $this->display();
+    }
+    //家教推荐
+    public  function teach(){
+        $page=$this->initPage();
+        import('Com.PageHelper');
+        $type=$this->getData(array('type','classfiy','senter','city'),'get');
+        if(!$type['type']){
+           $type['type']='index';
+        }
+        $sumarr=array('isum'=>M('Teach')->where("ic_time <> 0")->count(),'tisum'=>M('Teach')->where("ti_time <> 0")->count(),'tinsum'=>M('Teach')->where("tin_time <> 0")->count());
+        if($type['type']==='index'){
+            $sql="select teach.ic_time time,teach.id,teach.atime,auth.real_name,teach.c_img,teach.title,city.name from bd_teach teach left join bd_city city on teach.city=city.id left join bd_authentication auth on teach.teacher_id=auth.id where teach.type=1";
+            $ftime='ic_time';
+        }else if($type['type']==='tindex'){
+            $sql="select teach.id,teach.ti_time time,teach.atime,auth.real_name,teach.c_img,teach.title,city.name from bd_teach teach left join bd_city city on teach.city=city.id left join bd_authentication auth on teach.teacher_id=auth.id where 1=1";
+            $ftime='tin_time';
+        }else if($type['type']==='tnindex'){
+            $sql="select teach.id,teach.atime,teach.tin_time time,auth.real_name,teach.c_img,teach.title,city.name from bd_teach teach left join bd_city city on teach.city=city.id left join bd_authentication auth on teach.teacher_id=auth.id where teach.type=2";
+            $ftime='ti_time';
+        }
+        if($type['classfiy']){
+               import('Com.ClassfiyHelper');
+               if($type['type']==='tindex'){
+                   $carr=  ClassfiyHelper::getClassesByName($type['classfiy'], '',M('Classfiy'),'id');
+                   $cids='';
+                   foreach($carr as $key=>$val){
+                       $cids.=$val['id'].',';
+                   }
+               }else{
+                    $carr=  ClassfiyHelper::selfInfo($type['classfiy'], M('Classfiy'));
+                    $cids=$carr['id'];
+               }
+               unset($carr);
+               if($cids){
+                   $sql.=" and teach.fid in($cids)";  
+               }
+        }
+        if($type['city']){
+            $cid=M('City')->where("name='$type[city]'")->field('id')->find();
+            if($cid){
+                $sql .=" and teach.city='$cid[id]'";
+            }
+        }
+        if($type['senter']){
+           $sql .=" and real_name='$type[senter]'";
+        }
+        $sql.=" order by $ftime desc,atime desc";
+        $pagesize=10;
+        $sum=M('Teach')->query("select count(res.id) sum from ($sql) res");
+        PageHelper::init($pagesize, 10, $page['page'], $sum[0]['sum'],'');
+        $limit=  PageHelper::getLimit();
+        $sql.=" limit $limit[min],$pagesize";
+        $this->assignData(array('teachs'=>M('Teach')->query($sql),'cpages'=>PageHelper::getPageInfos(),'type'=>$type['type'],'sumarr'=>$sumarr),'assign');
+        $this->display();
+    }
+}
